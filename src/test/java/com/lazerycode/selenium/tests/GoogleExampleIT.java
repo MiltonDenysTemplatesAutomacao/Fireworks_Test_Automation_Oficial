@@ -11,7 +11,6 @@ import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 public class GoogleExampleIT extends DriverBase {
 
 
-    @Test(invocationCount = 10)
     public void googleCheeseExample() throws Exception {
         // Create a new WebDriver instance
         // Notice that the remainder of the code relies on the interface, not the implementation.
