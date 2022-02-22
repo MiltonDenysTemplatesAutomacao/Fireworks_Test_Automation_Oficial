@@ -47,7 +47,7 @@ public class StepDefinitions extends DriverBase {
 	public void i_can_see_in_the_page_title(String title)  throws Exception{
 		googleSearchPage.waitForPageTitleToStartWith(searchTerm);
 
-		assertThat(googleSearchPage.getPageTitle()).isEqualTo(title);
+		assertThat(googleSearchPage.getPageTitle()).contains(title);
     clearCookies();
 	}
 
