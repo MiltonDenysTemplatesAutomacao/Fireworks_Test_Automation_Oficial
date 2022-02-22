@@ -1,4 +1,4 @@
-package com.lazerycode.selenium.config;
+package config.browser_factory;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.core.Logger;
@@ -10,7 +10,9 @@ import org.openqa.selenium.remote.RemoteWebDriver;
 import java.net.MalformedURLException;
 import java.net.URL;
 
-import static com.lazerycode.selenium.config.DriverType.*;
+import static config.browser_factory.DriverType.CHROME;
+import static config.browser_factory.DriverType.valueOf;
+
 import static org.openqa.selenium.Proxy.ProxyType.MANUAL;
 import static org.openqa.selenium.remote.CapabilityType.PROXY;
 
@@ -27,7 +29,7 @@ public class DriverFactory {
     private final String proxyPassword = System.getProperty("proxyPassword");
     private final String proxyDetails = String.format("%s:%d", proxyHostname, proxyPort);
 
-    private RemoteWebDriver driver;
+    private static RemoteWebDriver driver;
     private final DriverType selectedDriverType;
 
     public DriverFactory() {
@@ -55,7 +57,7 @@ public class DriverFactory {
         return driver;
     }
 
-    public void quitDriver() {
+    public static void quitDriver() {
         if (null != driver) {
             driver.quit();
             driver = null;

@@ -1,4 +1,4 @@
-package com.lazerycode.selenium.config;
+package config.browser_factory;
 
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;

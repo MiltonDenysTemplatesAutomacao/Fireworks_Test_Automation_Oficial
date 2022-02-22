@@ -1,4 +1,4 @@
-package com.lazerycode.selenium.config;
+package config.browser_factory;
 
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
