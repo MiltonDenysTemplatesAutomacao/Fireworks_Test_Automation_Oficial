@@ -1,6 +1,8 @@
 package pages;
 
 import config.DriverBase;
+import config.browser_factory.DriverFactory;
+import io.github.cdimascio.dotenv.Dotenv;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -19,7 +21,7 @@ public class BasePage {
 
 //    public static void openHomePage() throws Exception {
 //        Dotenv dotenv = Dotenv.load();
-//        DriverFactory.getDriver().get(dotenv.get("APP_URL"));
+//        DriverBase.getDriver().get(dotenv.get("APP_URL"));
 //
 //    }
 

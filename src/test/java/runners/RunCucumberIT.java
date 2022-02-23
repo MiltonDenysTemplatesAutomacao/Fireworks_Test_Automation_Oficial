@@ -15,12 +15,14 @@ import static io.cucumber.junit.platform.engine.Constants.PLUGIN_PROPERTY_NAME;
 @ConfigurationParameter(key = PLUGIN_PROPERTY_NAME, value = "pretty")
 public class RunCucumberIT {
 
-    @BeforeClass
-    public static void initAll() {
-        //ExtentReportsSetUp.initializeReport();
-    }
-    @AfterClass
-    public static void finishAll() {
-        ExtentReportsSetUp.endTestReport();
-    }
+//    @BeforeClass
+//    public static void initAll() {
+//
+//        ExtentReportsSetUp.initializeReport();
+//
+//    }
+//    @AfterClass
+//    public static void finishAll() {
+//        ExtentReportsSetUp.endTestReport();
+//    }
 }

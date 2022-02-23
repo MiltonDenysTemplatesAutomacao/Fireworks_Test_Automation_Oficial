@@ -33,6 +33,10 @@
 *.iws
 .idea
 
+
+# Miscelaneous #
+output
+
 # Maven #
 #########
 **/target/*
