@@ -58,10 +58,10 @@
         <read.timeout>30000</read.timeout>
         <connection.timeout>40000</connection.timeout>
         <retry.attempts>4</retry.attempts>
-        <browser>firefox</browser>
+        <browser>chrome</browser>
         <threads>1</threads>
         <remote>false</remote>
-        <headless>true</headless>
+        <headless>false</headless>
         <seleniumGridURL/>
         <platform/>
         <browserVersion/>
@@ -92,6 +92,8 @@
     </dependencyManagement>
 
     <dependencies>
+
+
         <dependency>
             <groupId>org.apache.logging.log4j</groupId>
             <artifactId>log4j-core</artifactId>
@@ -189,7 +191,6 @@
             <version>1.5.4</version>
         </dependency>
     </dependencies>
-
     <build>
         <plugins>
             <plugin>
@@ -201,8 +202,14 @@
                 </configuration>
                 <version>${maven-compiler-plugin.version}</version>
             </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>3.0.0-M5</version>
+            </plugin>
         </plugins>
     </build>
+
 
     <profiles>
         <profile>
