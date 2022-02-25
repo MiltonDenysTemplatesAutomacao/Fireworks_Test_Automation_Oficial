@@ -36,6 +36,7 @@
 
 # Miscelaneous #
 output
+failed_scenarios
 
 # Maven #
 #########
