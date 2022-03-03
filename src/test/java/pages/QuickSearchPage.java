@@ -11,9 +11,11 @@ public class QuickSearchPage extends BasePage{
      */
     public static void validateIfSearchResultIsCorrect(String parameter) {
         try {
-            String text = getText(By.cssSelector(quickSearchManagerTable));
+            String text = getText(By.xpath("//*[@id='quickSearchManagerTable']/tbody"));
             System.out.println(text);
-            System.out.println(mass.get(0).get(parameter));
+            String data = mass.get(0).get(parameter);
+
+            System.out.println(data);
             if (text.contains(mass.get(0).get(parameter))) {
                 ExtentReportsSetUp.testingPass("I validate if a search for " + parameter + " result is correct");
             } else {

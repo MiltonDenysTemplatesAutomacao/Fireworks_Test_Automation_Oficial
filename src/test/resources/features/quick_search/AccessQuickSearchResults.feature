@@ -7,7 +7,7 @@ Feature: Search by name
   Scenario: to verify quick search returns results for person phone number searches
     Given I login as firestarter
     And I create a person
-      |Firstname	|Lastname		|Fullname				|Role1	|Phone					|PhoneType|
+      |Firstname	|Lastname		|Fullname				|Role1	        |Phone					|PhoneType|
       |Robert		|Brandon		|Robert Brandon	|Person	|1-720-839-1218	|Home			|
     And I go to Home page
     When I quick search "Phone"

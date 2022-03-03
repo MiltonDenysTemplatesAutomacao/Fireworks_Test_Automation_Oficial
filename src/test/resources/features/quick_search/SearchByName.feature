@@ -7,8 +7,8 @@ Feature: Search by name
   Scenario: to Quick Search for person Firstname, Lastname, First and Last name and partial name
     Given I login as firestarter
     And I create a person
-      |Firstname	|Lastname	|Fullname			 |EmailAddress						|EmailType		|EmailOptInMethod	|Role1	|phone				|phoneType|address1					|city		|state		|country			|postalCode	|
-      |Voorhis		|George		|Voorhis George|vgeorges@McDowells.com	|Personal			|Inquiry					|Person	|888-411-7733	|Home			|6207 E Colfax Ave|Denver	|Colorado	|United States|80220			|
+      |Firstname	|Lastname	|Fullname	    |EmailAddress			|EmailType		|EmailOptInMethod	|Role1	|phone			|phoneType|address1					|city		|state		|country			|postalCode	|
+      |Voorhis		|George		|Voorhis George |vgeorges@McDowells.com	|Personal		|Inquiry			|Person	|888-411-7733	|Home	  |6207 E Colfax Ave        |Denver	    |Colorado	|United States      |80220		|
     And I go to Home page
     When I quick search "Firstname"
     Then I validate if result for "Firstname" is correct
