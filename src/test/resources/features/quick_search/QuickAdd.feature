@@ -21,4 +21,4 @@ Feature: QuickAdd
       |Firstname|Lastname	|Phone		|PhoneType|Role1	|
       |Diane	|Selwyn		|555-555-555|Home	  |Person	|
     And I clickQuickAddPersonSaveAndGo
-    Then I recieve an alert message
+    Then I validate if "Person has been created" message is correct

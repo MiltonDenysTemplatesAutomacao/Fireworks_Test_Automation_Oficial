@@ -31,12 +31,17 @@ Feature: Search by name
   Scenario: access quick search results for staff
     Given I login as firestarter
     And I create a staff
-      |Firstname	|Lastname	|Fullname		|EmailAddress			|EmailType  |AccountStartDate	|AccountEndDate	|PermissionGroup|
-      |Officer		|BigMac	    |Officer BigMac	|obigmac@mcdonalds.com	|Personal	|07/10/2017			|07/10/2025		|Administrator	|
+      |Firstname	|Lastname	|Fullname		|EmailAddress			|EmailType  |AccountStartDate	|AccountEndDate	|PermissionGroup|Phone			|PhoneType|Comment  |
+      |Officer		|BigMac	    |Officer BigMac	|obigmac@mcdonalds.com	|Personal	|07/10/2017			|07/10/2025		|Administrator	|(720) 839-1318 |Business |Comments |
     And I go to Home page
     When I quick search "Fullname"
     Then I validate if result for "Officer" is correct
     And I open a record
     And I navigate to contact
-    When I update phone number
-#    Then I validate if "Fullname"summary opened properly
+    When I update "Phone", "PhoneType" and "Comment"
+    Then I validate if "Staff member has been updated" message is correct
+    And I go to Home page
+    When I quick search "Phone"
+    Then I validate if result for "Phone" is correct
+    And I open a record
+    Then I validate if "Name"summary opened properly

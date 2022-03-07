@@ -4,6 +4,7 @@ import config.DriverBase;
 import config.browser_factory.DriverFactory;
 import io.github.cdimascio.dotenv.Dotenv;
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -131,10 +132,6 @@ public class BasePage {
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.id(id)));
     }
 
-//    public static void quit() {
-//        DriverBase.killDriver();
-//    }
-
     public static void waitUntilElementPresence(By by, int time) throws Exception {
         WebDriverWait wait = new WebDriverWait(DriverBase.getDriver(),time);
         wait.until(ExpectedConditions.presenceOfElementLocated(by));
@@ -147,10 +144,20 @@ public class BasePage {
     public static int wait(int miliseconds) {
         try {
             Thread.sleep(miliseconds);
-
         } catch (Exception e) {
         }
         return miliseconds;
+    }
+    /*
+     * Method to scroll until element is visible
+     */
+    public static void scrollToElement(By by){
+        try {
 
+            JavascriptExecutor js = (JavascriptExecutor) DriverBase.getDriver();
+            WebElement element = DriverBase.getDriver().findElement(by);
+            js.executeScript("arguments[0].scrollIntoView();",element);
+        } catch (Exception e) {
+        }
     }
 }

@@ -380,7 +380,6 @@ public class GlobalNavPage extends BasePage{
                 BasePage.selectElementsList(quickAddStaffPermissionsGroupDropdownList, "a");
                 clickOnListOfElements(mass.get(0).get("PermissionGroup"));
             }
-
             ExtentReportsSetUp.testingPass("I quick add a staff");
         } catch (Exception e) {
             System.err.println("Error - I quick add a staff");
@@ -435,17 +434,16 @@ public class GlobalNavPage extends BasePage{
     }
 
     /*
-     * Method to validate alert message after add a person
+     * Method to validate alert message
      */
-    public static void alertMessageAfterAddPerson() {
+    public static void alertMessageAfterAddPerson(String alertMessage) {
         try {
             waitElementById("alertMessage", 10);
-
-            if (alertMessageByIdContains("alertMessage", "Person has been created") == true) {
-                ExtentReportsSetUp.testingPass("I recieve an alert message");
+            if (alertMessageByIdContains("alertMessage", alertMessage) == true) {
+                ExtentReportsSetUp.testingPass("I received " +alertMessage+" alert message");
             } else {
-                System.err.println("Error - I recieve an alert message");
-                ExtentReportsSetUp.testingFail("FAILED to Recieve an alert message");
+                System.err.println("FAILED to recieve "+alertMessage+" alert message");
+                ExtentReportsSetUp.testingFail("FAILED to recieve "+alertMessage+" alert message");
                 Assert.assertFalse(true);
             }
         } catch (Exception e) {

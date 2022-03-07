@@ -4,7 +4,6 @@ import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import pages.BasePage;
 import pages.GlobalNavPage;
 import pages.LoginPage;
 public class QuickAddSteps {
@@ -80,16 +79,10 @@ public class QuickAddSteps {
         GlobalNavPage.quickAddStaffSaveGoButton();
     }
 
-    @Then("I recieve an alert message")
-    public static void alertMessage() {
-        GlobalNavPage.alertMessageAfterAddPerson();
+    @Then("I validate if {string} message is correct")
+    public static void alertMessage(String message) {
+        GlobalNavPage.alertMessageAfterAddPerson(message);
     }
-
-//    @And("finalize")
-//    public static void finalizeProcess() {
-//        BasePage.quit();
-//    }
-
     @And("I go to Home page")
     public static void goToHomePage() {
         GlobalNavPage.goToHomePage();

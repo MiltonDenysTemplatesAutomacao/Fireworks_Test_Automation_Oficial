@@ -8,7 +8,6 @@ public class QuickSearchPage extends BasePage{
     public static String objectTitleElement = "objectTitle";
     public static String quickSearchManagerTableRow0 = "#quickSearchManagerTable_row_0_col_0_link_0";
 
-
     /*
      * Method to verify and validate a result from quick search
      */
@@ -27,7 +26,6 @@ public class QuickSearchPage extends BasePage{
 
         }
     }
-
     /*
      * Method to verify and validate a result from partial quick search
      */
