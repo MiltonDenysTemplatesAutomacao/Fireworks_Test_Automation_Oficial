@@ -472,9 +472,9 @@ public class GlobalNavPage extends BasePage{
             String data = mass.get(0).get(parameter);
             BasePage.write(By.cssSelector(homeQuickSearchField), data.substring(0, 5));
             BasePage.click(By.cssSelector(homeQuickSearchButton));
-            ExtentReportsSetUp.testingPass("I quick search partial firstname from home page");
+            ExtentReportsSetUp.testingPass("I quick search partial" +parameter);
         } catch (Exception e) {
-            ExtentReportsSetUp.testingFail("FAILED to quick search partial firstname from home page");
+            ExtentReportsSetUp.testingFail("FAILED to quick search partial" +parameter);
             Assert.assertFalse(true);
         }
     }
