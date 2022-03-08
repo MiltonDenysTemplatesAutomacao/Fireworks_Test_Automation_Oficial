@@ -1,7 +1,6 @@
 package pages;
 
 import config.extent_reports.ExtentReportsSetUp;
-import io.cucumber.datatable.DataTable;
 import org.junit.Assert;
 import org.openqa.selenium.By;
 
@@ -48,7 +47,7 @@ public class StaffPage extends BasePage{
             ExtentReportsSetUp.testingPass("I update phone number");
 
         } catch (Exception e) {
-
+            System.err.println("Fail on updatePhoneNumber");
         }
     }
     public static void clickContactSaveChanges(){
@@ -61,7 +60,6 @@ public class StaffPage extends BasePage{
             Assert.assertFalse(true);
             System.err.println("Error while trying to save changes");
             ExtentReportsSetUp.testingFail("Error while trying to save changes");
-
         }
     }
 

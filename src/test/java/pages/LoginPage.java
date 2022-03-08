@@ -31,7 +31,7 @@ public class LoginPage {
             BasePage.write(By.cssSelector(usernameField),username);
             BasePage.write(By.cssSelector(passwordField),password);
             BasePage.click(By.cssSelector(loginButton));
-            if(BasePage.alertMessageByIdContains("alertMessage",fullName)==true) {
+            if(BasePage.alertMessageByIdContains("alertMessage",fullName)) {
                 loginSucess=true;
             }else {
                 System.err.println("Error - I login as firestarter");
@@ -39,7 +39,7 @@ public class LoginPage {
             }
 
         } catch (Exception e) {
-
+            System.err.println("Fail on login");
         }
         return loginSucess;
     }
@@ -48,7 +48,7 @@ public class LoginPage {
      */
     public static void loginAsFirestarter() {
         try {
-            if(LoginPage.login(firestarterUsername,firestarterPassword,firestarterFullName)==true) {
+            if(LoginPage.login(firestarterUsername,firestarterPassword,firestarterFullName)) {
                 ExtentReportsSetUp.testingPass("I login as firestarter");
             }else {
                 System.err.println("Error - I login as firestarter");
@@ -57,7 +57,7 @@ public class LoginPage {
             }
 
         } catch (Exception e) {
-
+            System.err.println("Fail on loginAsFirestarter");
         }
 
 

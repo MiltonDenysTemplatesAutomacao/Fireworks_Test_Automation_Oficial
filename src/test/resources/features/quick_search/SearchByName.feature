@@ -35,7 +35,7 @@ Feature: Search by name
     Then I validate if result for "Name" is correct
     And I go to Home page
     When I quick search partial "Name"
-    Then I validate if partial result for "Name" is correct
+    Then I validate if result for "Name" is correct
 
 
   @SearchStaffFirstNameRecord

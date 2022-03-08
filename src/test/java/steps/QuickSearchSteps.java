@@ -8,12 +8,6 @@ public class QuickSearchSteps {
     public static void validateIfSearchResultIsCorrect(String parameter) {
         QuickSearchPage.validateIfSearchResultIsCorrect(parameter);
     }
-
-    @Then("I validate if partial result for {string} is correct")
-    public static void validateIfSearchPartialResultIsCorrect(String parameter) {
-        QuickSearchPage.validateIfSearchPartialResultIsCorrect(parameter);
-    }
-
     @And("I open a record")
     public static void openRecord() {
         QuickSearchPage.openRecord();

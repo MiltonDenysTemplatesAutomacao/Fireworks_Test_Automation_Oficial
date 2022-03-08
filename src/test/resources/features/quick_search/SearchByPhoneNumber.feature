@@ -34,3 +34,23 @@ Feature: Search by phone number
     And I go to Home page
     When I quick search "PhoneFormatted"
     Then I validate if result for "PhoneFormatted" is correct
+
+  @SearchStaffPhoneNumber
+  Scenario: to Quick Search a staff by Phone Number, partial, with or without dashes, spaces or parenthesis
+    Given I login as firestarter
+    And I create a staff
+      |Firstname	|Lastname	|Fullname		|EmailAddress		|EmailType  |AccountStartDate	|AccountEndDate	|PermissionGroup|PhoneFormatted	|Phone        |PhoneType|Comment  |
+      |Roddy		|Lucky	    |Roddy Lucky	|Lucky@Roddy.com	|Personal	|07/10/2017			|07/10/2025		|Administrator	|(720) 839-4163 |720-839-4163 |Business |Comments |
+    And I go to Home page
+    When I quick search "Firstname"
+    Then I validate if result for "Officer" is correct
+    And I open a record
+    And I navigate to contact
+    When I update "Phone", "PhoneType" and "Comment"
+    Then I validate if "Staff member has been updated" message is correct
+    And I go to Home page
+    When I quick search partial "Phone"
+    Then I validate if result for "PhoneFormatted" is correct
+    And I go to Home page
+    When I quick search "PhoneFormatted"
+    Then I validate if result for "PhoneFormatted" is correct

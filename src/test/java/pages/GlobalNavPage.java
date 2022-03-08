@@ -6,10 +6,8 @@ import org.junit.Assert;
 import org.openqa.selenium.By;
 
 public class GlobalNavPage extends BasePage{
-    // protected static List<Map<String, String>> mass;
 
     public static String fireWorksIcon = "smallHeaderLogo";
-
     public static String homeQuickSearchField = "#homeBillboardSearch";
     public static String homeQuickSearchButton = "#mainSearchSubmitBtn";
 
@@ -100,11 +98,8 @@ public class GlobalNavPage extends BasePage{
             navigateQuickAddCreatePersonPage();
             quickAddPerson(data);
             quickAddPersonSaveGoButton();
-            // ExtentReportsSetUp.testingPass("I create a Person");
-
         } catch (Exception e) {
-//			ExtentReportsSetUp.testingFail("FAILED while creating a person");
-//			Assert.assertFalse(true);
+            System.err.println("Fail - createPerson");
         }
 
     }
@@ -117,13 +112,9 @@ public class GlobalNavPage extends BasePage{
             navigateQuickAddCreateOrganizationPage();
             quickAddOrganization(data);
             quickAddOrganizationSaveGoButton();
-            // ExtentReportsSetUp.testingPass("I create an organization");
-
         } catch (Exception e) {
-//			ExtentReportsSetUp.testingFail("FAILED while creating an organization");
-//			Assert.assertFalse(true);
+            System.err.println("Fail - createOrganization");
         }
-
     }
 
     /*
@@ -134,20 +125,15 @@ public class GlobalNavPage extends BasePage{
             navigateQuickAddCreateStaffPage();
             quickAddStaff(data);
             quickAddStaffSaveGoButton();
-            // ExtentReportsSetUp.testingPass("I create a staff");
-
         } catch (Exception e) {
-//			ExtentReportsSetUp.testingFail("FAILED while creating a staff");
-//			Assert.assertFalse(true);
+            System.err.println("Fail - createStaff");
         }
-
     }
 
     /*
      * Method to go to Home Page
      */
     public static void goToHomePage() {
-        // waitUntilElementPresence(By.id(fireWorksIcon),20);
         try {
             BasePage.click(By.id(fireWorksIcon));
             ExtentReportsSetUp.testingPass("I go to Home Page");
@@ -170,9 +156,7 @@ public class GlobalNavPage extends BasePage{
         } catch (Exception e) {
             ExtentReportsSetUp.testingFail("FAILED to I navigate to QuickAddCreatePersonPage");
             Assert.assertFalse(true);
-
         }
-
     }
 
     /*
@@ -187,9 +171,7 @@ public class GlobalNavPage extends BasePage{
         } catch (Exception e) {
             ExtentReportsSetUp.testingFail("FAILED to I navigate to QuickAddCreateOrganizationPage");
             Assert.assertFalse(true);
-
         }
-
     }
 
     /*
@@ -204,9 +186,7 @@ public class GlobalNavPage extends BasePage{
         } catch (Exception e) {
             ExtentReportsSetUp.testingFail("FAILED to I navigate to QuickAddCreateStaffPage");
             Assert.assertFalse(true);
-
         }
-
     }
 
     /*
@@ -214,10 +194,7 @@ public class GlobalNavPage extends BasePage{
      */
     public static void quickAddPerson(DataTable data) {
         BasePage.wait(3000);
-        // waitUntilElementToBeSelected(By.cssSelector(quickAddPersonSaveGoButton),20);
-
         try {
-
             mass = data.asMaps(String.class, String.class);
             if (mass.get(0).get("Firstname") != null) {
                 BasePage.write(By.cssSelector(quickAddPersonFirstNameField), mass.get(0).get("Firstname"));
@@ -281,7 +258,6 @@ public class GlobalNavPage extends BasePage{
             }
             ExtentReportsSetUp.testingPass("I quick add a person");
         } catch (Exception e) {
-            System.err.println("Error - I quick add a person");
             ExtentReportsSetUp.testingFail("FAILED to Quick add a person");
             Assert.assertFalse(true);
         }
@@ -345,11 +321,9 @@ public class GlobalNavPage extends BasePage{
             }
             ExtentReportsSetUp.testingPass("I quick add an organization");
         } catch (Exception e) {
-            System.err.println("Error - I quick add an organization");
             ExtentReportsSetUp.testingFail("FAILED to Quick add an organization");
             Assert.assertFalse(true);
         }
-
     }
 
     /*
@@ -382,7 +356,6 @@ public class GlobalNavPage extends BasePage{
             }
             ExtentReportsSetUp.testingPass("I quick add a staff");
         } catch (Exception e) {
-            System.err.println("Error - I quick add a staff");
             ExtentReportsSetUp.testingFail("FAILED to Quick add a staff");
             Assert.assertFalse(true);
         }
@@ -396,11 +369,9 @@ public class GlobalNavPage extends BasePage{
             click(By.cssSelector(quickAddPersonSaveGoButton));
             ExtentReportsSetUp.testingPass("I clickQuickAddStaffSaveAndGo");
         } catch (Exception e) {
-            System.err.println("Error - I clickQuickAddStaffSaveAndGo");
             ExtentReportsSetUp.testingFail("FAILED to ClickQuickAddStaffSaveAndGo");
             Assert.assertFalse(true);
         }
-
     }
 
     /*
@@ -411,7 +382,6 @@ public class GlobalNavPage extends BasePage{
             click(By.cssSelector(quickAddOrgSaveGoButton));
             ExtentReportsSetUp.testingPass("I clickQuickAddOrganizationSaveAndGo");
         } catch (Exception e) {
-            System.err.println("Error - I clickQuickAddOrganizationSaveAndGo");
             ExtentReportsSetUp.testingFail("FAILED to ClickQuickAddOrganizationSaveAndGo");
             Assert.assertFalse(true);
         }
@@ -426,7 +396,6 @@ public class GlobalNavPage extends BasePage{
             click(By.cssSelector(quickAddStaffSaveGoButton));
             ExtentReportsSetUp.testingPass("I clickQuickAddOrganizationSaveAndGo");
         } catch (Exception e) {
-            System.err.println("Error - I clickQuickAddOrganizationSaveAndGo");
             ExtentReportsSetUp.testingFail("FAILED to ClickQuickAddOrganizationSaveAndGo");
             Assert.assertFalse(true);
         }
@@ -437,16 +406,19 @@ public class GlobalNavPage extends BasePage{
      * Method to validate alert message
      */
     public static void alertMessageAfterAddPerson(String alertMessage) {
+        String errorMessage = "FAILED to recieve "+alertMessage+" alert message";
+        String passMessage = "I received " +alertMessage+" alert message";
         try {
             waitElementById("alertMessage", 10);
-            if (alertMessageByIdContains("alertMessage", alertMessage) == true) {
-                ExtentReportsSetUp.testingPass("I received " +alertMessage+" alert message");
+            if (alertMessageByIdContains("alertMessage", alertMessage)) {
+                ExtentReportsSetUp.testingPass(passMessage);
             } else {
-                System.err.println("FAILED to recieve "+alertMessage+" alert message");
-                ExtentReportsSetUp.testingFail("FAILED to recieve "+alertMessage+" alert message");
+                System.err.println(errorMessage);
+                ExtentReportsSetUp.testingFail(errorMessage);
                 Assert.assertFalse(true);
             }
         } catch (Exception e) {
+            System.err.println(errorMessage);
         }
     }
 
