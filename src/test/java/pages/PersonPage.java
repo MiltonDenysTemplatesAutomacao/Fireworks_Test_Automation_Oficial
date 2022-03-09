@@ -29,23 +29,19 @@ public class PersonPage extends BasePage{
 
 
     public static void navigateToBasic(){
-        String errorMessage = "Error while navigating to basic";
-        String passMessage ="I navigate to basic";
         try {
             BasePage.click(By.id(recordNavTabBasic));
-            ExtentReportsSetUp.testingPass(passMessage);
+            ExtentReportsSetUp.testingPass(LogPage.navigateToBasicPass);
         } catch (Exception e) {
-            ExtentReportsSetUp.testingFail(errorMessage);
+            ExtentReportsSetUp.testingFail(LogPage.navigateToBasicFail);
             Assert.assertFalse(true);
-            System.err.println(errorMessage);
+            System.err.println(LogPage.navigateToBasicFail);
         }
     }
+
     public static void updateCitizenshipValues(String citizenshipType,String countryOfCitizenship,String ssn){
         BasePage.wait(3000);
-
         try {
-            BasePage.scrollToElement(By.xpath("//*[@id='basic']/form/div/div[2]/div[2]/div/div[1]/div/div/div/p"));
-
             if (mass.get(0).get(citizenshipType) != null) {
                 BasePage.click(By.cssSelector(citizenshipTypeDropdown));
                 BasePage.selectElementsList(citizenshipTypeDropdownList, "a");
@@ -60,11 +56,11 @@ public class PersonPage extends BasePage{
                 BasePage.write(By.cssSelector(socialSecurityNumberField), mass.get(0).get(ssn));
             }
             saveChangesBtnPersonBasic();
-            ExtentReportsSetUp.testingPass("I update phone number");
+            ExtentReportsSetUp.testingPass(LogPage.updateCitizenshipPass);
         } catch (Exception e) {
-            ExtentReportsSetUp.testingFail("Fail on updatePhoneNumber");
+            ExtentReportsSetUp.testingFail(LogPage.updateCitizenshipFail);
             Assert.assertFalse(true);
-            System.err.println("Fail on updatePhoneNumber");
+            System.err.println(LogPage.updateCitizenshipFail);
         }
     }
     public static void updateNameValues(String firstName,String lastName,String middleName,String preferredName, String suffix, String salutation){
@@ -93,37 +89,33 @@ public class PersonPage extends BasePage{
                 clickOnListOfElements(mass.get(0).get(salutation));
             }
             saveChangesBtnPersonContact();
-            ExtentReportsSetUp.testingPass("I update name");
+            ExtentReportsSetUp.testingPass(LogPage.updateNamePass);
         } catch (Exception e) {
-            ExtentReportsSetUp.testingFail("Fail on updateNameValues");
+            ExtentReportsSetUp.testingFail(LogPage.updateNameFail);
             Assert.assertFalse(true);
-            System.err.println("Fail on updateNameValues");
+            System.err.println(LogPage.updateNameFail);
         }
     }
     public static void saveChangesBtnPersonBasic(){
         BasePage.wait(2000);
-        String errorMessage = "Error while trying to save changes";
-        String passMessage ="I click on save changes";
         try {
             BasePage.scrollToElement(By.id(personBasicSaveChangesButton));
             BasePage.click(By.id(personBasicSaveChangesButton));
-            ExtentReportsSetUp.testingPass(passMessage);
+            ExtentReportsSetUp.testingPass(LogPage.saveChangesPass);
         } catch (Exception e) {
             Assert.assertFalse(true);
-            System.err.println(errorMessage);
+            System.err.println(LogPage.saveChangesFail);
         }
     }
     public static void saveChangesBtnPersonContact(){
         BasePage.wait(2000);
-        String errorMessage = "Error while trying to save changes";
-        String passMessage ="I click on save changes";
         try {
             BasePage.scrollToElement(By.id(saveChangesBtnPersonContact));
             BasePage.click(By.id(saveChangesBtnPersonContact));
-            ExtentReportsSetUp.testingPass(passMessage);
+            ExtentReportsSetUp.testingPass(LogPage.saveChangesPass);
         } catch (Exception e) {
             Assert.assertFalse(true);
-            System.err.println(errorMessage);
+            System.err.println(LogPage.saveChangesFail);
         }
     }
 }

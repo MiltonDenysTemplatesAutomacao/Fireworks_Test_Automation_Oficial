@@ -13,15 +13,13 @@ public class StaffPage extends BasePage{
     private static String staffContactSaveChangesButton = "saveChangesBtnStaffContact";
 
     public static void navigateToContact(){
-        String errorMessage = "Error while navigating to contact";
-        String passMessage ="I navigate to contact";
         try {
             BasePage.click(By.id(recordNavTabContact));
-            ExtentReportsSetUp.testingPass(passMessage);
+            ExtentReportsSetUp.testingPass(LogPage.navigateToContactPass);
         } catch (Exception e) {
-            ExtentReportsSetUp.testingFail(errorMessage);
+            ExtentReportsSetUp.testingFail(LogPage.navigateToContactFail);
             Assert.assertFalse(true);
-            System.err.println(errorMessage);
+            System.err.println(LogPage.navigateToContactFail);
         }
     }
     public static void updatePhoneNumber(String phone,String phoneType,String comment){
@@ -40,26 +38,21 @@ public class StaffPage extends BasePage{
                 BasePage.write(By.id(contactPhoneCommentsField), mass.get(0).get(comment));
             }
             saveChangesBtnStaffContact();
-            ExtentReportsSetUp.testingPass("I update phone number");
+            ExtentReportsSetUp.testingPass(LogPage.updatePhoneNumberPass);
         } catch (Exception e) {
-            System.err.println("Fail on updatePhoneNumber");
+            System.err.println(LogPage.updatePhoneNumberFail);
         }
     }
     public static void saveChangesBtnStaffContact(){
         BasePage.wait(2000);
-        String errorMessage = "Error while trying to save changes";
-        String passMessage ="I click on save changes";
         try {
             BasePage.scrollToElement(By.id(staffContactSaveChangesButton));
             BasePage.click(By.id(staffContactSaveChangesButton));
-            ExtentReportsSetUp.testingPass(passMessage);
+            ExtentReportsSetUp.testingPass(LogPage.saveChangesPass);
         } catch (Exception e) {
+            ExtentReportsSetUp.testingFail(LogPage.saveChangesFail);
             Assert.assertFalse(true);
-            System.err.println(errorMessage);
-            ExtentReportsSetUp.testingFail(errorMessage);
+            System.err.println(LogPage.saveChangesFail);
         }
     }
-
-
-
 }
