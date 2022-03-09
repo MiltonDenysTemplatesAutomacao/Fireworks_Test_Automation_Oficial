@@ -12,16 +12,16 @@ public class StaffPage extends BasePage{
     private static String contactPhoneCommentsField = "entity_phone_0_phone_comments";
     private static String staffContactSaveChangesButton = "saveChangesBtnStaffContact";
 
-
-
     public static void navigateToContact(){
+        String errorMessage = "Error while navigating to contact";
+        String passMessage ="I navigate to contact";
         try {
             BasePage.click(By.id(recordNavTabContact));
-            ExtentReportsSetUp.testingPass("I navigate to contact");
+            ExtentReportsSetUp.testingPass(passMessage);
         } catch (Exception e) {
+            ExtentReportsSetUp.testingFail(errorMessage);
             Assert.assertFalse(true);
-            System.err.println("Error while navigating to contact");
-            ExtentReportsSetUp.testingFail("Error while navigating to contact");
+            System.err.println(errorMessage);
         }
     }
     public static void updatePhoneNumber(String phone,String phoneType,String comment){
@@ -38,28 +38,25 @@ public class StaffPage extends BasePage{
             }
             if (mass.get(0).get(comment) != null) {
                 BasePage.write(By.id(contactPhoneCommentsField), mass.get(0).get(comment));
-            }else{
-                Assert.assertFalse(true);
-                System.err.println("Error while updating phone number");
-                ExtentReportsSetUp.testingFail("Error while updating phone number");
             }
-            clickContactSaveChanges();
+            saveChangesBtnStaffContact();
             ExtentReportsSetUp.testingPass("I update phone number");
-
         } catch (Exception e) {
             System.err.println("Fail on updatePhoneNumber");
         }
     }
-    public static void clickContactSaveChanges(){
+    public static void saveChangesBtnStaffContact(){
         BasePage.wait(2000);
+        String errorMessage = "Error while trying to save changes";
+        String passMessage ="I click on save changes";
         try {
             BasePage.scrollToElement(By.id(staffContactSaveChangesButton));
             BasePage.click(By.id(staffContactSaveChangesButton));
-            ExtentReportsSetUp.testingPass("I click on save changes");
+            ExtentReportsSetUp.testingPass(passMessage);
         } catch (Exception e) {
             Assert.assertFalse(true);
-            System.err.println("Error while trying to save changes");
-            ExtentReportsSetUp.testingFail("Error while trying to save changes");
+            System.err.println(errorMessage);
+            ExtentReportsSetUp.testingFail(errorMessage);
         }
     }
 

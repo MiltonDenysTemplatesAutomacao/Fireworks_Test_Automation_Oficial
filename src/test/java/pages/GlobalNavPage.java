@@ -47,10 +47,23 @@ public class GlobalNavPage extends BasePage{
     public static String quickAddPersonRoleDropdown = "div#quickAddPersonPersonRole_component";
     public static String quickAddPersonRoleDropdownList = "#quickAddPersonPersonRole_dropdown_menu";
     public static String quickAddStudentStatusCategoryDropdown = "div#person_student_status_0_quickAddPersonStudentStatusCategory_component";
+    public static String quickAddStudentStatusCategoryDropdownList = "#person_student_status_0_quickAddPersonStudentStatusCategory_dropdown_menu";
+
+
     public static String quickAddStudentStatusDropdown = "div#person_student_status_0_quickAddPersonStudentStatus_component";
+    public static String quickAddStudentStatusDropdownList = "#person_student_status_0_quickAddPersonStudentStatus_dropdown_menu";
+
+
+
     public static String quickAddStudentTypeDropdown = "div#quickAddPersonStudentType_component";
+    public static String quickAddStudentTypeDropdownList = "#quickAddPersonStudentType_dropdown_menu";
+
+
     public static String quickAddStudentStatusDateField = "#person_student_status_0_quickAddPersonStudentStatusDate";
     public static String quickAddStudentStatusEntryTermDropdown = "div#person_student_status_0_quickAddPersonStatusEntryTerm_component";
+    public static String quickAddStudentStatusEntryTermDropdownList = "#person_student_status_0_quickAddPersonStatusEntryTerm_dropdown_menu";
+
+
     public static String quickAddPersonSaveGoButton = "#modalSubmitButtonquickAddPersonSaveGo";
     public static String quickAddPersonSaveCloseButton = "#modalSubmitButtonquickAddPersonSaveClose";
     /*
@@ -255,6 +268,29 @@ public class GlobalNavPage extends BasePage{
                 BasePage.click(By.cssSelector(quickAddPersonCountryDropdown));
                 BasePage.selectElementsList(quickAddPersonCountryDropdownList, "a");
                 clickOnListOfElements(mass.get(0).get("Country"));
+            }
+            if (mass.get(0).get("StudentType") != null) {
+                BasePage.click(By.cssSelector(quickAddStudentTypeDropdown));
+                BasePage.selectElementsList(quickAddStudentTypeDropdownList, "a");
+                clickOnListOfElements(mass.get(0).get("StudentType"));
+            }
+            if (mass.get(0).get("StudentStatusCategory") != null) {
+                BasePage.click(By.cssSelector(quickAddStudentStatusCategoryDropdown));
+                BasePage.selectElementsList(quickAddStudentStatusCategoryDropdownList, "a");
+                clickOnListOfElements(mass.get(0).get("StudentStatusCategory"));
+            }
+            if (mass.get(0).get("StudentStatus") != null) {
+                BasePage.click(By.cssSelector(quickAddStudentStatusDropdown));
+                BasePage.selectElementsList(quickAddStudentStatusDropdownList, "a");
+                clickOnListOfElements(mass.get(0).get("StudentStatus"));
+            }
+            if (mass.get(0).get("StudentStatusDate") != null) {
+                BasePage.write(By.cssSelector(quickAddStudentStatusDateField), mass.get(0).get("StudentStatusDate"));
+            }
+            if (mass.get(0).get("EntryTerm") != null) {
+                BasePage.click(By.cssSelector(quickAddStudentStatusEntryTermDropdown));
+                BasePage.selectElementsList(quickAddStudentStatusEntryTermDropdownList, "a");
+                clickOnListOfElements(mass.get(0).get("EntryTerm"));
             }
             ExtentReportsSetUp.testingPass("I quick add a person");
         } catch (Exception e) {

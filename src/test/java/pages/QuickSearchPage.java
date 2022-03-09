@@ -20,11 +20,13 @@ public class QuickSearchPage extends BasePage{
             if (text.contains(mass.get(0).get(parameter))) {
                 ExtentReportsSetUp.testingPass(passMessage);
             } else {
+                ExtentReportsSetUp.testingFail(errorMessage);
                 Assert.assertFalse(true);
                 System.err.println(errorMessage);
-                ExtentReportsSetUp.testingFail(errorMessage);
             }
         } catch (Exception e) {
+            ExtentReportsSetUp.testingFail(errorMessage);
+            Assert.assertFalse(true);
             System.err.println(errorMessage);
         }
     }

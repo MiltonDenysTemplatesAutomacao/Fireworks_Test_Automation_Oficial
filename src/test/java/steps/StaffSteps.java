@@ -10,7 +10,7 @@ public class StaffSteps {
     public static void navigateToContact() {
         StaffPage.navigateToContact();
     }
-    @When("I update {string}, {string} and {string}")
+    @When("I update {string}, {string} and {string} to update phone number")
     public static void updatePhoneNumber(String phone,String phoneType,String comment) {
         StaffPage.updatePhoneNumber(phone,phoneType,comment);
     }
