@@ -27,7 +27,9 @@ public class PersonPage extends BasePage{
 
 
 
-
+    /*
+     * go to Basic tab on records
+     */
     public static void navigateToBasic(){
         try {
             BasePage.click(By.id(recordNavTabBasic));
@@ -39,6 +41,9 @@ public class PersonPage extends BasePage{
         }
     }
 
+    /*
+     * to update Citizenship values in basic tab on records
+     */
     public static void updateCitizenshipValues(String citizenshipType,String countryOfCitizenship,String ssn){
         BasePage.wait(3000);
         try {
@@ -63,6 +68,9 @@ public class PersonPage extends BasePage{
             System.err.println(LogPage.updateCitizenshipFail);
         }
     }
+    /*
+     * to update names values values in contact tab on records
+     */
     public static void updateNameValues(String firstName,String lastName,String middleName,String preferredName, String suffix, String salutation){
         BasePage.wait(3000);
         try {
@@ -96,6 +104,9 @@ public class PersonPage extends BasePage{
             System.err.println(LogPage.updateNameFail);
         }
     }
+    /*
+     * to save changes  in Basic tab on records
+     */
     public static void saveChangesBtnPersonBasic(){
         BasePage.wait(2000);
         try {
@@ -107,6 +118,9 @@ public class PersonPage extends BasePage{
             System.err.println(LogPage.saveChangesFail);
         }
     }
+    /*
+     * to save changes in Contact tab on records
+     */
     public static void saveChangesBtnPersonContact(){
         BasePage.wait(2000);
         try {

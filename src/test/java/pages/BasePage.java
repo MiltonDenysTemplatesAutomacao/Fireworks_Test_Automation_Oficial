@@ -149,13 +149,9 @@ public class BasePage {
     /*
      * Method to scroll until element is visible
      */
-    public static void scrollToElement(By by){
-        try {
+    public static void scrollToElement(By by)throws Exception{
             JavascriptExecutor js = (JavascriptExecutor) DriverBase.getDriver();
             WebElement element = DriverBase.getDriver().findElement(by);
             js.executeScript("arguments[0].scrollIntoView();",element);
-        } catch (Exception e) {
-            System.err.println("Fail while trying to scroll to an element");
-        }
     }
 }

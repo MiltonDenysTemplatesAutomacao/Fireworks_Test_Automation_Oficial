@@ -4,12 +4,14 @@ import org.openqa.selenium.By;
 import config.extent_reports.ExtentReportsSetUp;
 
 public class QuickSearchPage extends BasePage{
+
     public static String quickSearchManagerTable = "//*[@id='quickSearchManagerTable']/tbody";
     public static String objectTitleElement = "objectTitle";
     public static String quickSearchManagerTableRow0 = "#quickSearchManagerTable_row_0_col_0_link_0";
 
     /*
      * Method to verify and validate a result from quick search
+     * I did not use LogPage class for this method because this method can be use with more parameters
      */
     public static void validateIfSearchResultIsCorrect(String parameter) {
             String errorMessage = "Error while verifying a quick search for " + parameter + " result";
@@ -34,15 +36,13 @@ public class QuickSearchPage extends BasePage{
      * Method to open a record
      */
     public static void openRecord() {
-        String errorMessage = "Error while clicking on a record";
-        String passMessage = "I click on a record";
         try {
             BasePage.click(By.cssSelector(quickSearchManagerTableRow0));
-            ExtentReportsSetUp.testingPass(passMessage);
+            ExtentReportsSetUp.testingPass(LogPage.openRecordPass);
         } catch (Exception e) {
             Assert.assertFalse(true);
-            System.err.println(errorMessage);
-            ExtentReportsSetUp.testingFail(errorMessage);
+            System.err.println(LogPage.openRecordFail);
+            ExtentReportsSetUp.testingFail(LogPage.openRecordFail);
         }
     }
 
@@ -50,20 +50,18 @@ public class QuickSearchPage extends BasePage{
      * validate if opened corrected summary
      */
     public static void validateIfOpenedSummaryProperly(String parameter) {
-        String errorMessage = "Error while validating if opened summary from a record correctly";
-        String passMessage = "I validate if opened corrected summary";
         try {
             String text = getText(By.id(objectTitleElement));
 
             if (mass.get(0).get(parameter).equals(text)) {
-                ExtentReportsSetUp.testingPass(passMessage);
+                ExtentReportsSetUp.testingPass(LogPage.validateIfOpenedSummaryProperlyPass);
             } else {
+                ExtentReportsSetUp.testingFail(LogPage.validateIfOpenedSummaryProperlyFail);
                 Assert.assertFalse(true);
-                System.err.println(errorMessage);
-                ExtentReportsSetUp.testingFail(errorMessage);
+                System.err.println(LogPage.validateIfOpenedSummaryProperlyFail);
             }
         } catch (Exception e) {
-            System.err.println(errorMessage);
+            System.err.println(LogPage.validateIfOpenedSummaryProperlyFail);
         }
     }
 }
