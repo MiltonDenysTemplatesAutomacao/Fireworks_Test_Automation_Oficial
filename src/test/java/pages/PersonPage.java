@@ -45,7 +45,7 @@ public class PersonPage extends BasePage{
      * to update Citizenship values in basic tab on records
      */
     public static void updateCitizenshipValues(String citizenshipType,String countryOfCitizenship,String ssn){
-        BasePage.wait(3000);
+        BasePage.wait(2000);
         try {
             if (mass.get(0).get(citizenshipType) != null) {
                 BasePage.click(By.cssSelector(citizenshipTypeDropdown));

@@ -36,13 +36,14 @@ public class QuickSearchPage extends BasePage{
      * Method to open a record
      */
     public static void openRecord() {
+        wait(2000);
         try {
             BasePage.click(By.cssSelector(quickSearchManagerTableRow0));
             ExtentReportsSetUp.testingPass(LogPage.openRecordPass);
         } catch (Exception e) {
+            ExtentReportsSetUp.testingFail(LogPage.openRecordFail);
             Assert.assertFalse(true);
             System.err.println(LogPage.openRecordFail);
-            ExtentReportsSetUp.testingFail(LogPage.openRecordFail);
         }
     }
 

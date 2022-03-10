@@ -11,6 +11,11 @@ public class LogPage {
     public static String updateCitizenshipFail = "Fail on updateCitizenshipFail";
     public static String updateCitizenshipPass = "I update CitizenshipValues";
 
+    public static String updateEmailAddressPass = "I update email address";
+    public static String updateEmailAddressFail = "Fail on updateEmailAddress";
+
+
+
     public static String updateNameFail = "Fail on updateNameValues";
     public static String updateNamePass = "I update CitizenshipValues";
 
