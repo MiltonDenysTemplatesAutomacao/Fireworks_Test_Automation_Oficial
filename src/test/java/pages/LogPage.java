@@ -14,7 +14,8 @@ public class LogPage {
     public static String updateEmailAddressPass = "I update email address";
     public static String updateEmailAddressFail = "Fail on updateEmailAddress";
 
-
+    public static String updateExternalIdTypesFail = "Fail on updateExternalIdTypes";
+    public static String updateExternalIdTypesPass = "I update ExternalIdTypes";
 
     public static String updateNameFail = "Fail on updateNameValues";
     public static String updateNamePass = "I update CitizenshipValues";
@@ -24,6 +25,9 @@ public class LogPage {
 
     public static String navigateToBasicFail = "Error while navigating to basic";
     public static  String navigateToBasicPass ="I navigate to basic";
+
+    public static String navigateToIdTypesFail = "Error while navigating to ID Types";
+    public static  String navigateToIdTypesPass ="I navigate to ID Types";
 
     public static  String createPersonFail ="Fail - createPerson";
     public static  String createOrganizationFail ="Fail - createOrganizationFail";
