@@ -1,8 +1,6 @@
 package pages;
 
 import config.DriverBase;
-import config.browser_factory.DriverFactory;
-import io.github.cdimascio.dotenv.Dotenv;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
@@ -41,7 +39,6 @@ public class BasePage {
      */
     public static void selectElementsList(String css, String tag) throws Exception {
         listOfElements = elementsList(css, tag);
-
     }
 
     /*
@@ -145,19 +142,16 @@ public class BasePage {
         try {
             Thread.sleep(miliseconds);
         } catch (Exception e) {
+            System.err.println("Fail while trying to use wait method");
         }
         return miliseconds;
     }
     /*
      * Method to scroll until element is visible
      */
-    public static void scrollToElement(By by){
-        try {
-
+    public static void scrollToElement(By by)throws Exception{
             JavascriptExecutor js = (JavascriptExecutor) DriverBase.getDriver();
             WebElement element = DriverBase.getDriver().findElement(by);
             js.executeScript("arguments[0].scrollIntoView();",element);
-        } catch (Exception e) {
-        }
     }
 }

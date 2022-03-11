@@ -38,7 +38,7 @@ Feature: Search by name
     Then I validate if result for "Officer" is correct
     And I open a record
     And I navigate to contact
-    When I update "Phone", "PhoneType" and "Comment"
+    When I update "Phone", "PhoneType" and "Comment" to update phone number
     Then I validate if "Staff member has been updated" message is correct
     And I go to Home page
     When I quick search "Phone"

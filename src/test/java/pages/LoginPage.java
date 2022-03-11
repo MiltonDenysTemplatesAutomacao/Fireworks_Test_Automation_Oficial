@@ -31,15 +31,13 @@ public class LoginPage {
             BasePage.write(By.cssSelector(usernameField),username);
             BasePage.write(By.cssSelector(passwordField),password);
             BasePage.click(By.cssSelector(loginButton));
-            if(BasePage.alertMessageByIdContains("alertMessage",fullName)==true) {
+            if(BasePage.alertMessageByIdContains("alertMessage",fullName)) {
                 loginSucess=true;
             }else {
-                System.err.println("Error - I login as firestarter");
-                ExtentReportsSetUp.testingFail("FAILED to login");
+                System.err.println(LogPage.loginFail);
             }
-
         } catch (Exception e) {
-
+            System.err.println(LogPage.loginFail);
         }
         return loginSucess;
     }
@@ -48,18 +46,15 @@ public class LoginPage {
      */
     public static void loginAsFirestarter() {
         try {
-            if(LoginPage.login(firestarterUsername,firestarterPassword,firestarterFullName)==true) {
-                ExtentReportsSetUp.testingPass("I login as firestarter");
+            if(LoginPage.login(firestarterUsername,firestarterPassword,firestarterFullName)) {
+                ExtentReportsSetUp.testingPass(LogPage.loginAsFirestarterPass);
             }else {
-                System.err.println("Error - I login as firestarter");
-                ExtentReportsSetUp.testingFail("FAILED to login as firestarter");
+                System.err.println(LogPage.loginAsFirestarterFail);
+                ExtentReportsSetUp.testingFail(LogPage.loginAsFirestarterFail);
                 Assert.assertFalse(true);
             }
-
         } catch (Exception e) {
-
+            System.err.println(LogPage.loginAsFirestarterFail);
         }
-
-
     }
 }

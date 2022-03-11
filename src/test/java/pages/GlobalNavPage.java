@@ -2,14 +2,13 @@ package pages;
 
 import config.extent_reports.ExtentReportsSetUp;
 import io.cucumber.datatable.DataTable;
+import lombok.extern.java.Log;
 import org.junit.Assert;
 import org.openqa.selenium.By;
 
 public class GlobalNavPage extends BasePage{
-    // protected static List<Map<String, String>> mass;
 
     public static String fireWorksIcon = "smallHeaderLogo";
-
     public static String homeQuickSearchField = "#homeBillboardSearch";
     public static String homeQuickSearchButton = "#mainSearchSubmitBtn";
 
@@ -49,10 +48,14 @@ public class GlobalNavPage extends BasePage{
     public static String quickAddPersonRoleDropdown = "div#quickAddPersonPersonRole_component";
     public static String quickAddPersonRoleDropdownList = "#quickAddPersonPersonRole_dropdown_menu";
     public static String quickAddStudentStatusCategoryDropdown = "div#person_student_status_0_quickAddPersonStudentStatusCategory_component";
+    public static String quickAddStudentStatusCategoryDropdownList = "#person_student_status_0_quickAddPersonStudentStatusCategory_dropdown_menu";
     public static String quickAddStudentStatusDropdown = "div#person_student_status_0_quickAddPersonStudentStatus_component";
+    public static String quickAddStudentStatusDropdownList = "#person_student_status_0_quickAddPersonStudentStatus_dropdown_menu";
     public static String quickAddStudentTypeDropdown = "div#quickAddPersonStudentType_component";
+    public static String quickAddStudentTypeDropdownList = "#quickAddPersonStudentType_dropdown_menu";
     public static String quickAddStudentStatusDateField = "#person_student_status_0_quickAddPersonStudentStatusDate";
     public static String quickAddStudentStatusEntryTermDropdown = "div#person_student_status_0_quickAddPersonStatusEntryTerm_component";
+    public static String quickAddStudentStatusEntryTermDropdownList = "#person_student_status_0_quickAddPersonStatusEntryTerm_dropdown_menu";
     public static String quickAddPersonSaveGoButton = "#modalSubmitButtonquickAddPersonSaveGo";
     public static String quickAddPersonSaveCloseButton = "#modalSubmitButtonquickAddPersonSaveClose";
     /*
@@ -100,11 +103,8 @@ public class GlobalNavPage extends BasePage{
             navigateQuickAddCreatePersonPage();
             quickAddPerson(data);
             quickAddPersonSaveGoButton();
-            // ExtentReportsSetUp.testingPass("I create a Person");
-
         } catch (Exception e) {
-//			ExtentReportsSetUp.testingFail("FAILED while creating a person");
-//			Assert.assertFalse(true);
+            System.err.println(LogPage.createPersonFail);
         }
 
     }
@@ -117,13 +117,9 @@ public class GlobalNavPage extends BasePage{
             navigateQuickAddCreateOrganizationPage();
             quickAddOrganization(data);
             quickAddOrganizationSaveGoButton();
-            // ExtentReportsSetUp.testingPass("I create an organization");
-
         } catch (Exception e) {
-//			ExtentReportsSetUp.testingFail("FAILED while creating an organization");
-//			Assert.assertFalse(true);
+            System.err.println(LogPage.createOrganizationFail);
         }
-
     }
 
     /*
@@ -134,26 +130,20 @@ public class GlobalNavPage extends BasePage{
             navigateQuickAddCreateStaffPage();
             quickAddStaff(data);
             quickAddStaffSaveGoButton();
-            // ExtentReportsSetUp.testingPass("I create a staff");
-
         } catch (Exception e) {
-//			ExtentReportsSetUp.testingFail("FAILED while creating a staff");
-//			Assert.assertFalse(true);
+            System.err.println(LogPage.createStaffFail);
         }
-
     }
 
     /*
      * Method to go to Home Page
      */
     public static void goToHomePage() {
-        // waitUntilElementPresence(By.id(fireWorksIcon),20);
         try {
             BasePage.click(By.id(fireWorksIcon));
-            ExtentReportsSetUp.testingPass("I go to Home Page");
-
+            ExtentReportsSetUp.testingPass(LogPage.goToHomePagePass);
         } catch (Exception e) {
-            ExtentReportsSetUp.testingFail("FAILED to go to Home Page");
+            ExtentReportsSetUp.testingFail(LogPage.goToHomePageFail);
             Assert.assertFalse(true);
         }
     }
@@ -166,13 +156,11 @@ public class GlobalNavPage extends BasePage{
             BasePage.click(By.cssSelector(footerQuickAddMen));
             wait(2000);
             BasePage.click(By.cssSelector(footerQuickAddPersonMenuItem));
-            ExtentReportsSetUp.testingPass("I navigate to QuickAddCreatePersonPage");
+            ExtentReportsSetUp.testingPass(LogPage.navigateQuickAddCreatePersonPagePass);
         } catch (Exception e) {
-            ExtentReportsSetUp.testingFail("FAILED to I navigate to QuickAddCreatePersonPage");
+            ExtentReportsSetUp.testingFail(LogPage.navigateQuickAddCreatePersonPageFail);
             Assert.assertFalse(true);
-
         }
-
     }
 
     /*
@@ -183,13 +171,11 @@ public class GlobalNavPage extends BasePage{
             BasePage.click(By.cssSelector(footerQuickAddMen));
             BasePage.wait(3000);
             BasePage.click(By.cssSelector(footerQuickAddOrganizationMenuItem));
-            ExtentReportsSetUp.testingPass("I navigate to QuickAddCreateOrganizationPage");
+            ExtentReportsSetUp.testingPass(LogPage.navigateQuickAddCreateOrganizationPagePass);
         } catch (Exception e) {
-            ExtentReportsSetUp.testingFail("FAILED to I navigate to QuickAddCreateOrganizationPage");
+            ExtentReportsSetUp.testingFail(LogPage.navigateQuickAddCreateOrganizationPageFail);
             Assert.assertFalse(true);
-
         }
-
     }
 
     /*
@@ -200,13 +186,11 @@ public class GlobalNavPage extends BasePage{
             BasePage.click(By.cssSelector(footerQuickAddMen));
             BasePage.wait(2000);
             BasePage.click(By.cssSelector(footerQuickAddStaffMenuItem));
-            ExtentReportsSetUp.testingPass("I navigate to QuickAddCreateStaffPage");
+            ExtentReportsSetUp.testingPass(LogPage.navigateQuickAddCreateStaffPagePass);
         } catch (Exception e) {
-            ExtentReportsSetUp.testingFail("FAILED to I navigate to QuickAddCreateStaffPage");
+            ExtentReportsSetUp.testingFail(LogPage.navigateQuickAddCreateStaffPageFail);
             Assert.assertFalse(true);
-
         }
-
     }
 
     /*
@@ -214,10 +198,7 @@ public class GlobalNavPage extends BasePage{
      */
     public static void quickAddPerson(DataTable data) {
         BasePage.wait(3000);
-        // waitUntilElementToBeSelected(By.cssSelector(quickAddPersonSaveGoButton),20);
-
         try {
-
             mass = data.asMaps(String.class, String.class);
             if (mass.get(0).get("Firstname") != null) {
                 BasePage.write(By.cssSelector(quickAddPersonFirstNameField), mass.get(0).get("Firstname"));
@@ -279,10 +260,32 @@ public class GlobalNavPage extends BasePage{
                 BasePage.selectElementsList(quickAddPersonCountryDropdownList, "a");
                 clickOnListOfElements(mass.get(0).get("Country"));
             }
-            ExtentReportsSetUp.testingPass("I quick add a person");
+            if (mass.get(0).get("StudentType") != null) {
+                BasePage.click(By.cssSelector(quickAddStudentTypeDropdown));
+                BasePage.selectElementsList(quickAddStudentTypeDropdownList, "a");
+                clickOnListOfElements(mass.get(0).get("StudentType"));
+            }
+            if (mass.get(0).get("StudentStatusCategory") != null) {
+                BasePage.click(By.cssSelector(quickAddStudentStatusCategoryDropdown));
+                BasePage.selectElementsList(quickAddStudentStatusCategoryDropdownList, "a");
+                clickOnListOfElements(mass.get(0).get("StudentStatusCategory"));
+            }
+            if (mass.get(0).get("StudentStatus") != null) {
+                BasePage.click(By.cssSelector(quickAddStudentStatusDropdown));
+                BasePage.selectElementsList(quickAddStudentStatusDropdownList, "a");
+                clickOnListOfElements(mass.get(0).get("StudentStatus"));
+            }
+            if (mass.get(0).get("StudentStatusDate") != null) {
+                BasePage.write(By.cssSelector(quickAddStudentStatusDateField), mass.get(0).get("StudentStatusDate"));
+            }
+            if (mass.get(0).get("EntryTerm") != null) {
+                BasePage.click(By.cssSelector(quickAddStudentStatusEntryTermDropdown));
+                BasePage.selectElementsList(quickAddStudentStatusEntryTermDropdownList, "a");
+                clickOnListOfElements(mass.get(0).get("EntryTerm"));
+            }
+            ExtentReportsSetUp.testingPass(LogPage.quickAddPersonPass);
         } catch (Exception e) {
-            System.err.println("Error - I quick add a person");
-            ExtentReportsSetUp.testingFail("FAILED to Quick add a person");
+            ExtentReportsSetUp.testingFail(LogPage.quickAddPersonFail);
             Assert.assertFalse(true);
         }
 
@@ -343,13 +346,11 @@ public class GlobalNavPage extends BasePage{
             if (mass.get(0).get("Region") != null) {
                 BasePage.write(By.cssSelector(quickAddOrgRegionField), mass.get(0).get("Region"));
             }
-            ExtentReportsSetUp.testingPass("I quick add an organization");
+            ExtentReportsSetUp.testingPass(LogPage.quickAddOrganizationPass);
         } catch (Exception e) {
-            System.err.println("Error - I quick add an organization");
-            ExtentReportsSetUp.testingFail("FAILED to Quick add an organization");
+            ExtentReportsSetUp.testingFail(LogPage.quickAddOrganizationFail);
             Assert.assertFalse(true);
         }
-
     }
 
     /*
@@ -380,10 +381,9 @@ public class GlobalNavPage extends BasePage{
                 BasePage.selectElementsList(quickAddStaffPermissionsGroupDropdownList, "a");
                 clickOnListOfElements(mass.get(0).get("PermissionGroup"));
             }
-            ExtentReportsSetUp.testingPass("I quick add a staff");
+            ExtentReportsSetUp.testingPass(LogPage.quickAddStaffPass);
         } catch (Exception e) {
-            System.err.println("Error - I quick add a staff");
-            ExtentReportsSetUp.testingFail("FAILED to Quick add a staff");
+            ExtentReportsSetUp.testingFail(LogPage.quickAddStaffFail);
             Assert.assertFalse(true);
         }
     }
@@ -394,13 +394,11 @@ public class GlobalNavPage extends BasePage{
     public static void quickAddPersonSaveGoButton() {
         try {
             click(By.cssSelector(quickAddPersonSaveGoButton));
-            ExtentReportsSetUp.testingPass("I clickQuickAddStaffSaveAndGo");
+            ExtentReportsSetUp.testingPass(LogPage.clickQuickAddPersonSaveAndGoPass);
         } catch (Exception e) {
-            System.err.println("Error - I clickQuickAddStaffSaveAndGo");
-            ExtentReportsSetUp.testingFail("FAILED to ClickQuickAddStaffSaveAndGo");
+            ExtentReportsSetUp.testingFail(LogPage.clickQuickAddPersonSaveAndGoFail);
             Assert.assertFalse(true);
         }
-
     }
 
     /*
@@ -409,13 +407,11 @@ public class GlobalNavPage extends BasePage{
     public static void quickAddOrganizationSaveGoButton() {
         try {
             click(By.cssSelector(quickAddOrgSaveGoButton));
-            ExtentReportsSetUp.testingPass("I clickQuickAddOrganizationSaveAndGo");
+            ExtentReportsSetUp.testingPass(LogPage.quickAddOrganizationSaveGoButtonPass);
         } catch (Exception e) {
-            System.err.println("Error - I clickQuickAddOrganizationSaveAndGo");
-            ExtentReportsSetUp.testingFail("FAILED to ClickQuickAddOrganizationSaveAndGo");
+            ExtentReportsSetUp.testingFail(LogPage.quickAddOrganizationSaveGoButtonFail);
             Assert.assertFalse(true);
         }
-
     }
 
     /*
@@ -424,10 +420,9 @@ public class GlobalNavPage extends BasePage{
     public static void quickAddStaffSaveGoButton() {
         try {
             click(By.cssSelector(quickAddStaffSaveGoButton));
-            ExtentReportsSetUp.testingPass("I clickQuickAddOrganizationSaveAndGo");
+            ExtentReportsSetUp.testingPass(LogPage.quickAddStaffSaveGoButtonPass);
         } catch (Exception e) {
-            System.err.println("Error - I clickQuickAddOrganizationSaveAndGo");
-            ExtentReportsSetUp.testingFail("FAILED to ClickQuickAddOrganizationSaveAndGo");
+            ExtentReportsSetUp.testingFail(LogPage.quickAddStaffSaveGoButtonFail);
             Assert.assertFalse(true);
         }
 
@@ -435,23 +430,28 @@ public class GlobalNavPage extends BasePage{
 
     /*
      * Method to validate alert message
+     * I did not use LogPage class for this method because this method can be use with more parameters
      */
     public static void alertMessageAfterAddPerson(String alertMessage) {
+        String errorMessage = "FAILED to recieve "+alertMessage+" alert message";
+        String passMessage = "I received " +alertMessage+" alert message";
         try {
             waitElementById("alertMessage", 10);
-            if (alertMessageByIdContains("alertMessage", alertMessage) == true) {
-                ExtentReportsSetUp.testingPass("I received " +alertMessage+" alert message");
+            if (alertMessageByIdContains("alertMessage", alertMessage)) {
+                ExtentReportsSetUp.testingPass(passMessage);
             } else {
-                System.err.println("FAILED to recieve "+alertMessage+" alert message");
-                ExtentReportsSetUp.testingFail("FAILED to recieve "+alertMessage+" alert message");
+                System.err.println(errorMessage);
+                ExtentReportsSetUp.testingFail(errorMessage);
                 Assert.assertFalse(true);
             }
         } catch (Exception e) {
+            System.err.println(errorMessage);
         }
     }
 
     /*
      * Method to quick search using one String parameter
+     * I did not use LogPage class for this method because this method can be use with more parameters
      */
     public static void quickSearchOneParameter(String parameter) {
         try {
@@ -466,15 +466,16 @@ public class GlobalNavPage extends BasePage{
 
     /*
      * Method to quick search from home page partial
+     * I did not use LogPage class for this method because this method can be use with more parameters
      */
     public static void quickSearchQuickPartial(String parameter) {
         try {
             String data = mass.get(0).get(parameter);
             BasePage.write(By.cssSelector(homeQuickSearchField), data.substring(0, 5));
             BasePage.click(By.cssSelector(homeQuickSearchButton));
-            ExtentReportsSetUp.testingPass("I quick search partial firstname from home page");
+            ExtentReportsSetUp.testingPass("I quick search partial" +parameter);
         } catch (Exception e) {
-            ExtentReportsSetUp.testingFail("FAILED to quick search partial firstname from home page");
+            ExtentReportsSetUp.testingFail("FAILED to quick search partial" +parameter);
             Assert.assertFalse(true);
         }
     }

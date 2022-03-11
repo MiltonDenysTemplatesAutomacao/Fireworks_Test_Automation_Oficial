@@ -11,7 +11,7 @@ Feature: QuickAdd
       |Firstname|Lastname	|EmailAddress				  |EmailType|EmailOptInMethod	|Role1	|
       |Camilla	|Rhodes		|CRhodes@Mulholland-Drive.com |Personal	|Inquiry			|Person	|
     And I clickQuickAddPersonSaveAndGo
-    Then I recieve an alert message
+    Then I validate if "Person has been created" message is correct
 
   @0220QuickAdd_CreatePersonOnlyPhoneNumberCept
   Scenario: Verify a person record can be created via quick add with only phone number
