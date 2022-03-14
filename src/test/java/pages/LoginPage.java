@@ -34,10 +34,10 @@ public class LoginPage {
             if(BasePage.alertMessageByIdContains("alertMessage",fullName)) {
                 loginSucess=true;
             }else {
-                System.err.println(LogPage.loginFail);
+                System.err.println(LogPage.LOGIN_FAIL);
             }
         } catch (Exception e) {
-            System.err.println(LogPage.loginFail);
+            System.err.println(LogPage.LOGIN_FAIL);
         }
         return loginSucess;
     }
@@ -47,14 +47,14 @@ public class LoginPage {
     public static void loginAsFirestarter() {
         try {
             if(LoginPage.login(firestarterUsername,firestarterPassword,firestarterFullName)) {
-                ExtentReportsSetUp.testingPass(LogPage.loginAsFirestarterPass);
+                ExtentReportsSetUp.testingPass(LogPage.LOGIN_AS_FIRESTARTER_PASS);
             }else {
-                System.err.println(LogPage.loginAsFirestarterFail);
-                ExtentReportsSetUp.testingFail(LogPage.loginAsFirestarterFail);
+                System.err.println(LogPage.LOGIN_AS_FIRESTARTER_FAIL);
+                ExtentReportsSetUp.testingFail(LogPage.LOGIN_AS_FIRESTARTER_FAIL);
                 Assert.assertFalse(true);
             }
         } catch (Exception e) {
-            System.err.println(LogPage.loginAsFirestarterFail);
+            System.err.println(LogPage.LOGIN_AS_FIRESTARTER_FAIL);
         }
     }
 }

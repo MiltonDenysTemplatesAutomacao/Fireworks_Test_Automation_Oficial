@@ -18,11 +18,11 @@ public class StaffPage extends BasePage{
     public static void navigateToContact(){
         try {
             BasePage.click(By.id(recordNavTabContact));
-            ExtentReportsSetUp.testingPass(LogPage.navigateToContactPass);
+            ExtentReportsSetUp.testingPass(LogPage.NAVIGATE_TO_CONTACT_PASS);
         } catch (Exception e) {
-            ExtentReportsSetUp.testingFail(LogPage.navigateToContactFail);
+            ExtentReportsSetUp.testingFail(LogPage.NAVIGATE_TO_CONTACT_FAIL);
             Assert.assertFalse(true);
-            System.err.println(LogPage.navigateToContactFail);
+            System.err.println(LogPage.NAVIGATE_TO_CONTACT_FAIL);
         }
     }
     /*
@@ -43,9 +43,9 @@ public class StaffPage extends BasePage{
                 BasePage.write(By.id(contactPhoneCommentsField), mass.get(0).get(comment));
             }
             saveChangesBtnStaffContact();
-            ExtentReportsSetUp.testingPass(LogPage.updatePhoneNumberPass);
+            ExtentReportsSetUp.testingPass(LogPage.UPDATE_PHONE_NUMBER_PASS);
         } catch (Exception e) {
-            System.err.println(LogPage.updatePhoneNumberFail);
+            System.err.println(LogPage.UPDATE_PHONE_NUMBER_FAIL);
         }
     }
     /*
@@ -56,11 +56,11 @@ public class StaffPage extends BasePage{
         try {
             BasePage.scrollToElement(By.id(staffContactSaveChangesButton));
             BasePage.click(By.id(staffContactSaveChangesButton));
-            ExtentReportsSetUp.testingPass(LogPage.saveChangesPass);
+            ExtentReportsSetUp.testingPass(LogPage.SAVE_CHANGES_PASS);
         } catch (Exception e) {
-            ExtentReportsSetUp.testingFail(LogPage.saveChangesFail);
+            ExtentReportsSetUp.testingFail(LogPage.SAVE_CHANGES_FAIL);
             Assert.assertFalse(true);
-            System.err.println(LogPage.saveChangesFail);
+            System.err.println(LogPage.SAVE_CHANGES_FAIL);
         }
     }
 }

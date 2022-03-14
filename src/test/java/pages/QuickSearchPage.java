@@ -39,11 +39,11 @@ public class QuickSearchPage extends BasePage{
         wait(2000);
         try {
             BasePage.click(By.cssSelector(quickSearchManagerTableRow0));
-            ExtentReportsSetUp.testingPass(LogPage.openRecordPass);
+            ExtentReportsSetUp.testingPass(LogPage.OPEN_RECORD_PASS);
         } catch (Exception e) {
-            ExtentReportsSetUp.testingFail(LogPage.openRecordFail);
+            ExtentReportsSetUp.testingFail(LogPage.OPEN_RECORD_FAIL);
             Assert.assertFalse(true);
-            System.err.println(LogPage.openRecordFail);
+            System.err.println(LogPage.OPEN_RECORD_FAIL);
         }
     }
 
@@ -55,14 +55,14 @@ public class QuickSearchPage extends BasePage{
             String text = getText(By.id(objectTitleElement));
 
             if (mass.get(0).get(parameter).equals(text)) {
-                ExtentReportsSetUp.testingPass(LogPage.validateIfOpenedSummaryProperlyPass);
+                ExtentReportsSetUp.testingPass(LogPage.VALIDATE_IF_OPENED_SUMMARY_PROPERLY_PASS);
             } else {
-                ExtentReportsSetUp.testingFail(LogPage.validateIfOpenedSummaryProperlyFail);
+                ExtentReportsSetUp.testingFail(LogPage.VALIDATE_IF_OPENED_SUMMARY_PROPERLY_FAIL);
                 Assert.assertFalse(true);
-                System.err.println(LogPage.validateIfOpenedSummaryProperlyFail);
+                System.err.println(LogPage.VALIDATE_IF_OPENED_SUMMARY_PROPERLY_FAIL);
             }
         } catch (Exception e) {
-            System.err.println(LogPage.validateIfOpenedSummaryProperlyFail);
+            System.err.println(LogPage.VALIDATE_IF_OPENED_SUMMARY_PROPERLY_FAIL);
         }
     }
 }

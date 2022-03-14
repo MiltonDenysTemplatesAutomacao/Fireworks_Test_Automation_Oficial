@@ -2,7 +2,6 @@ package pages;
 
 import config.extent_reports.ExtentReportsSetUp;
 import io.cucumber.datatable.DataTable;
-import lombok.extern.java.Log;
 import org.junit.Assert;
 import org.openqa.selenium.By;
 
@@ -104,7 +103,7 @@ public class GlobalNavPage extends BasePage{
             quickAddPerson(data);
             quickAddPersonSaveGoButton();
         } catch (Exception e) {
-            System.err.println(LogPage.createPersonFail);
+            System.err.println(LogPage.CREATE_PERSON_FAIL);
         }
 
     }
@@ -118,7 +117,7 @@ public class GlobalNavPage extends BasePage{
             quickAddOrganization(data);
             quickAddOrganizationSaveGoButton();
         } catch (Exception e) {
-            System.err.println(LogPage.createOrganizationFail);
+            System.err.println(LogPage.CREATE_ORGANIZATION_FAIL);
         }
     }
 
@@ -131,7 +130,7 @@ public class GlobalNavPage extends BasePage{
             quickAddStaff(data);
             quickAddStaffSaveGoButton();
         } catch (Exception e) {
-            System.err.println(LogPage.createStaffFail);
+            System.err.println(LogPage.CREATE_STAFF_FAIL);
         }
     }
 
@@ -141,9 +140,9 @@ public class GlobalNavPage extends BasePage{
     public static void goToHomePage() {
         try {
             BasePage.click(By.id(fireWorksIcon));
-            ExtentReportsSetUp.testingPass(LogPage.goToHomePagePass);
+            ExtentReportsSetUp.testingPass(LogPage.GO_TO_HOME_PAGE_PASS);
         } catch (Exception e) {
-            ExtentReportsSetUp.testingFail(LogPage.goToHomePageFail);
+            ExtentReportsSetUp.testingFail(LogPage.GO_TO_HOME_PAGE_FAIL);
             Assert.assertFalse(true);
         }
     }
@@ -156,9 +155,9 @@ public class GlobalNavPage extends BasePage{
             BasePage.click(By.cssSelector(footerQuickAddMen));
             wait(2000);
             BasePage.click(By.cssSelector(footerQuickAddPersonMenuItem));
-            ExtentReportsSetUp.testingPass(LogPage.navigateQuickAddCreatePersonPagePass);
+            ExtentReportsSetUp.testingPass(LogPage.NAVIGATE_QUICK_ADD_CREATE_PERSON_PAGE_PASS);
         } catch (Exception e) {
-            ExtentReportsSetUp.testingFail(LogPage.navigateQuickAddCreatePersonPageFail);
+            ExtentReportsSetUp.testingFail(LogPage.NAVIGATE_QUICK_ADD_CREATE_PERSON_PAGE_FAIL);
             Assert.assertFalse(true);
         }
     }
@@ -171,9 +170,9 @@ public class GlobalNavPage extends BasePage{
             BasePage.click(By.cssSelector(footerQuickAddMen));
             BasePage.wait(3000);
             BasePage.click(By.cssSelector(footerQuickAddOrganizationMenuItem));
-            ExtentReportsSetUp.testingPass(LogPage.navigateQuickAddCreateOrganizationPagePass);
+            ExtentReportsSetUp.testingPass(LogPage.NAVIGATE_QUICK_ADD_CREATE_CREATE_ORGANIZATION_PAGE_PASS);
         } catch (Exception e) {
-            ExtentReportsSetUp.testingFail(LogPage.navigateQuickAddCreateOrganizationPageFail);
+            ExtentReportsSetUp.testingFail(LogPage.NAVIGATE_QUICK_ADD_CREATE_CREATE_ORGANIZATION_PAGE_FAIL);
             Assert.assertFalse(true);
         }
     }
@@ -186,9 +185,9 @@ public class GlobalNavPage extends BasePage{
             BasePage.click(By.cssSelector(footerQuickAddMen));
             BasePage.wait(2000);
             BasePage.click(By.cssSelector(footerQuickAddStaffMenuItem));
-            ExtentReportsSetUp.testingPass(LogPage.navigateQuickAddCreateStaffPagePass);
+            ExtentReportsSetUp.testingPass(LogPage.NAVIGATE_QUICK_ADD_CREATE_CREATE_STAFF_PAGE_PASS);
         } catch (Exception e) {
-            ExtentReportsSetUp.testingFail(LogPage.navigateQuickAddCreateStaffPageFail);
+            ExtentReportsSetUp.testingFail(LogPage.NAVIGATE_QUICK_ADD_CREATE_CREATE_STAFF_PAGE_FAIL);
             Assert.assertFalse(true);
         }
     }
@@ -283,9 +282,9 @@ public class GlobalNavPage extends BasePage{
                 BasePage.selectElementsList(quickAddStudentStatusEntryTermDropdownList, "a");
                 clickOnListOfElements(mass.get(0).get("EntryTerm"));
             }
-            ExtentReportsSetUp.testingPass(LogPage.quickAddPersonPass);
+            ExtentReportsSetUp.testingPass(LogPage.QUICK_ADD_PERSON_PASS);
         } catch (Exception e) {
-            ExtentReportsSetUp.testingFail(LogPage.quickAddPersonFail);
+            ExtentReportsSetUp.testingFail(LogPage.QUICK_ADD_PERSON_FAIL);
             Assert.assertFalse(true);
         }
 
@@ -346,9 +345,9 @@ public class GlobalNavPage extends BasePage{
             if (mass.get(0).get("Region") != null) {
                 BasePage.write(By.cssSelector(quickAddOrgRegionField), mass.get(0).get("Region"));
             }
-            ExtentReportsSetUp.testingPass(LogPage.quickAddOrganizationPass);
+            ExtentReportsSetUp.testingPass(LogPage.QUICK_ADD_ORGANIZATION_PASS);
         } catch (Exception e) {
-            ExtentReportsSetUp.testingFail(LogPage.quickAddOrganizationFail);
+            ExtentReportsSetUp.testingFail(LogPage.QUICK_ADD_ORGANIZATION_FAIL);
             Assert.assertFalse(true);
         }
     }
@@ -381,9 +380,9 @@ public class GlobalNavPage extends BasePage{
                 BasePage.selectElementsList(quickAddStaffPermissionsGroupDropdownList, "a");
                 clickOnListOfElements(mass.get(0).get("PermissionGroup"));
             }
-            ExtentReportsSetUp.testingPass(LogPage.quickAddStaffPass);
+            ExtentReportsSetUp.testingPass(LogPage.QUICK_ADD_STAFF_PASS);
         } catch (Exception e) {
-            ExtentReportsSetUp.testingFail(LogPage.quickAddStaffFail);
+            ExtentReportsSetUp.testingFail(LogPage.QUICK_ADD_STAFF_FAIL);
             Assert.assertFalse(true);
         }
     }
@@ -394,9 +393,9 @@ public class GlobalNavPage extends BasePage{
     public static void quickAddPersonSaveGoButton() {
         try {
             click(By.cssSelector(quickAddPersonSaveGoButton));
-            ExtentReportsSetUp.testingPass(LogPage.clickQuickAddPersonSaveAndGoPass);
+            ExtentReportsSetUp.testingPass(LogPage.CLICK_QUICK_ADD_PERSON_SAVE_AND_GO_PASS);
         } catch (Exception e) {
-            ExtentReportsSetUp.testingFail(LogPage.clickQuickAddPersonSaveAndGoFail);
+            ExtentReportsSetUp.testingFail(LogPage.CLICK_QUICK_ADD_PERSON_SAVE_AND_GO_FAIL);
             Assert.assertFalse(true);
         }
     }
@@ -407,9 +406,9 @@ public class GlobalNavPage extends BasePage{
     public static void quickAddOrganizationSaveGoButton() {
         try {
             click(By.cssSelector(quickAddOrgSaveGoButton));
-            ExtentReportsSetUp.testingPass(LogPage.quickAddOrganizationSaveGoButtonPass);
+            ExtentReportsSetUp.testingPass(LogPage.CLICK_QUICK_ADD_ORGANIZATION_SAVE_AND_GO_PASS);
         } catch (Exception e) {
-            ExtentReportsSetUp.testingFail(LogPage.quickAddOrganizationSaveGoButtonFail);
+            ExtentReportsSetUp.testingFail(LogPage.CLICK_QUICK_ADD_ORGANIZATION_SAVE_AND_GO_FAIL);
             Assert.assertFalse(true);
         }
     }
@@ -420,9 +419,9 @@ public class GlobalNavPage extends BasePage{
     public static void quickAddStaffSaveGoButton() {
         try {
             click(By.cssSelector(quickAddStaffSaveGoButton));
-            ExtentReportsSetUp.testingPass(LogPage.quickAddStaffSaveGoButtonPass);
+            ExtentReportsSetUp.testingPass(LogPage.CLICK_QUICK_ADD_STAFF_SAVE_AND_GO_PASS);
         } catch (Exception e) {
-            ExtentReportsSetUp.testingFail(LogPage.quickAddStaffSaveGoButtonFail);
+            ExtentReportsSetUp.testingFail(LogPage.CLICK_QUICK_ADD_STAFF_SAVE_AND_GO_FAIL);
             Assert.assertFalse(true);
         }
 
@@ -430,11 +429,10 @@ public class GlobalNavPage extends BasePage{
 
     /*
      * Method to validate alert message
-     * I did not use LogPage class for this method because this method can be use with more parameters
      */
     public static void alertMessageAfterAddPerson(String alertMessage) {
-        String errorMessage = "FAILED to recieve "+alertMessage+" alert message";
-        String passMessage = "I received " +alertMessage+" alert message";
+        String errorMessage = String.format(LogPage.ALERT_MESSAGE_FAIL,alertMessage);
+        String passMessage = String.format(LogPage.ALERT_MESSAGE_PASS,alertMessage);
         try {
             waitElementById("alertMessage", 10);
             if (alertMessageByIdContains("alertMessage", alertMessage)) {
@@ -451,31 +449,34 @@ public class GlobalNavPage extends BasePage{
 
     /*
      * Method to quick search using one String parameter
-     * I did not use LogPage class for this method because this method can be use with more parameters
      */
     public static void quickSearchOneParameter(String parameter) {
+        String errorMessage = String.format(LogPage.QUICK_SEARCH_ONE_PARAMETER_FAIL,parameter);
+        String passMessage = String.format(LogPage.QUICK_SEARCH_ONE_PARAMETER_PASS,parameter);
         try {
             BasePage.write(By.cssSelector(homeQuickSearchField), mass.get(0).get(parameter));
             BasePage.click(By.cssSelector(homeQuickSearchButton));
-            ExtentReportsSetUp.testingPass("I quick search " + parameter + " from home page");
+            ExtentReportsSetUp.testingPass(passMessage);
         } catch (Exception e) {
-            ExtentReportsSetUp.testingFail("FAILED to quick search " + parameter + " firstname from home page");
+            ExtentReportsSetUp.testingFail(errorMessage);
             Assert.assertFalse(true);
+            System.err.println(errorMessage);
         }
     }
 
     /*
      * Method to quick search from home page partial
-     * I did not use LogPage class for this method because this method can be use with more parameters
      */
     public static void quickSearchQuickPartial(String parameter) {
+        String errorMessage = String.format(LogPage.QUICK_SEARCH_PARTIAL_FAIL,parameter);
+        String passMessage = String.format(LogPage.QUICK_SEARCH_PARTIAL_PASS,parameter);
         try {
             String data = mass.get(0).get(parameter);
             BasePage.write(By.cssSelector(homeQuickSearchField), data.substring(0, 5));
             BasePage.click(By.cssSelector(homeQuickSearchButton));
-            ExtentReportsSetUp.testingPass("I quick search partial" +parameter);
+            ExtentReportsSetUp.testingPass(passMessage);
         } catch (Exception e) {
-            ExtentReportsSetUp.testingFail("FAILED to quick search partial" +parameter);
+            ExtentReportsSetUp.testingFail(errorMessage);
             Assert.assertFalse(true);
         }
     }

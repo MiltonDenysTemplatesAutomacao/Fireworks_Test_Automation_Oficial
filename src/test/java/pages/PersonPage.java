@@ -45,11 +45,11 @@ public class PersonPage extends BasePage{
     public static void navigateToBasic(){
         try {
             BasePage.click(By.id(recordNavTabBasic));
-            ExtentReportsSetUp.testingPass(LogPage.navigateToBasicPass);
+            ExtentReportsSetUp.testingPass(LogPage.NAVIGATE_TO_BASIC_PASS);
         } catch (Exception e) {
-            ExtentReportsSetUp.testingFail(LogPage.navigateToBasicFail);
+            ExtentReportsSetUp.testingFail(LogPage.NAVIGATE_TO_BASIC_FAIL);
             Assert.assertFalse(true);
-            System.err.println(LogPage.navigateToBasicFail);
+            System.err.println(LogPage.NAVIGATE_TO_BASIC_FAIL);
         }
     }
     /*
@@ -58,11 +58,11 @@ public class PersonPage extends BasePage{
     public static void navigateToIdTypes(){
         try {
             BasePage.click(By.id(recordNavTabIdTypes));
-            ExtentReportsSetUp.testingPass(LogPage.navigateToIdTypesPass);
+            ExtentReportsSetUp.testingPass(LogPage.NAVIGATE_TO_ID_TYPES_PASS);
         } catch (Exception e) {
-            ExtentReportsSetUp.testingFail(LogPage.navigateToIdTypesFail);
+            ExtentReportsSetUp.testingFail(LogPage.NAVIGATE_TO_ID_TYPES_FAIL);
             Assert.assertFalse(true);
-            System.err.println(LogPage.navigateToIdTypesFail);
+            System.err.println(LogPage.NAVIGATE_TO_ID_TYPES_FAIL);
         }
     }
     /*
@@ -85,11 +85,11 @@ public class PersonPage extends BasePage{
                 BasePage.write(By.cssSelector(socialSecurityNumberField), mass.get(0).get(ssn));
             }
             saveChangesBtnPersonBasic();
-            ExtentReportsSetUp.testingPass(LogPage.updateCitizenshipPass);
+            ExtentReportsSetUp.testingPass(LogPage.UPDATE_CITIZENSHIP_PASS);
         } catch (Exception e) {
-            ExtentReportsSetUp.testingFail(LogPage.updateCitizenshipFail);
+            ExtentReportsSetUp.testingFail(LogPage.UPDATE_CITIZENSHIP_FAIL);
             Assert.assertFalse(true);
-            System.err.println(LogPage.updateCitizenshipFail);
+            System.err.println(LogPage.UPDATE_CITIZENSHIP_FAIL);
         }
     }
     /*
@@ -121,11 +121,11 @@ public class PersonPage extends BasePage{
                 clickOnListOfElements(mass.get(0).get(salutation));
             }
             saveChangesBtnPersonContact();
-            ExtentReportsSetUp.testingPass(LogPage.updateNamePass);
+            ExtentReportsSetUp.testingPass(LogPage.UPDATE_NAME_PASS);
         } catch (Exception e) {
-            ExtentReportsSetUp.testingFail(LogPage.updateNameFail);
+            ExtentReportsSetUp.testingFail(LogPage.UPDATE_NAME_FAIL);
             Assert.assertFalse(true);
-            System.err.println(LogPage.updateNameFail);
+            System.err.println(LogPage.UPDATE_NAME_FAIL);
         }
     }
     /*
@@ -156,12 +156,12 @@ public class PersonPage extends BasePage{
                 BasePage.write(By.cssSelector(commentsField), mass.get(0).get(comments));
             }
             saveChangesBtnPersonIdTypes();
-            ExtentReportsSetUp.testingPass(LogPage.updateExternalIdTypesPass);
+            ExtentReportsSetUp.testingPass(LogPage.UPDATE_EXTERNAL_ID_TYPES_PASS);
 
         } catch (Exception e) {
-            ExtentReportsSetUp.testingFail(LogPage.updateExternalIdTypesFail);
+            ExtentReportsSetUp.testingFail(LogPage.UPDATE_EXTERNAL_ID_TYPES_FAIL);
             Assert.assertFalse(true);
-            System.err.println(LogPage.updateExternalIdTypesFail);
+            System.err.println(LogPage.UPDATE_EXTERNAL_ID_TYPES_FAIL);
         }
     }
     /*
@@ -172,10 +172,10 @@ public class PersonPage extends BasePage{
         try {
             BasePage.scrollToElement(By.id(personBasicSaveChangesButton));
             BasePage.click(By.id(personBasicSaveChangesButton));
-            ExtentReportsSetUp.testingPass(LogPage.saveChangesPass);
+            ExtentReportsSetUp.testingPass(LogPage.SAVE_CHANGES_PASS);
         } catch (Exception e) {
             Assert.assertFalse(true);
-            System.err.println(LogPage.saveChangesFail);
+            System.err.println(LogPage.SAVE_CHANGES_FAIL);
         }
     }
     /*
@@ -186,10 +186,10 @@ public class PersonPage extends BasePage{
         try {
             BasePage.scrollToElement(By.id(saveChangesBtnPersonContact));
             BasePage.click(By.id(saveChangesBtnPersonContact));
-            ExtentReportsSetUp.testingPass(LogPage.saveChangesPass);
+            ExtentReportsSetUp.testingPass(LogPage.SAVE_CHANGES_PASS);
         } catch (Exception e) {
             Assert.assertFalse(true);
-            System.err.println(LogPage.saveChangesFail);
+            System.err.println(LogPage.SAVE_CHANGES_FAIL);
         }
     }
     /*
@@ -200,14 +200,10 @@ public class PersonPage extends BasePage{
         try {
             BasePage.scrollToElement(By.id(saveChangesBtnPersonIdTypes));
             BasePage.click(By.id(saveChangesBtnPersonIdTypes));
-            ExtentReportsSetUp.testingPass(LogPage.saveChangesPass);
+            ExtentReportsSetUp.testingPass(LogPage.SAVE_CHANGES_PASS);
         } catch (Exception e) {
             Assert.assertFalse(true);
-            System.err.println(LogPage.saveChangesFail);
+            System.err.println(LogPage.SAVE_CHANGES_FAIL);
         }
     }
-
-
-
-
 }

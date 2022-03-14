@@ -47,11 +47,11 @@ public class OrgPage extends BasePage{
                 clickOnListOfElements(mass.get(0).get(emailOpt));
             }
             saveChangesBtnOrgContact();
-            ExtentReportsSetUp.testingPass(LogPage.updateEmailAddressPass);
+            ExtentReportsSetUp.testingPass(LogPage.UPDATE_EMAIL_ADDRESS_PASS);
         } catch (Exception e) {
-            ExtentReportsSetUp.testingFail(LogPage.updateEmailAddressFail);
+            ExtentReportsSetUp.testingFail(LogPage.UPDATE_EMAIL_ADDRESS_FAIL);
             Assert.assertFalse(true);
-            System.err.println(LogPage.updateEmailAddressFail);
+            System.err.println(LogPage.UPDATE_EMAIL_ADDRESS_FAIL);
         }
     }
 
@@ -64,10 +64,10 @@ public class OrgPage extends BasePage{
         try {
             BasePage.scrollToElement(By.id(orgBasicSaveChangesButton));
             BasePage.click(By.id(orgBasicSaveChangesButton));
-            ExtentReportsSetUp.testingPass(LogPage.saveChangesPass);
+            ExtentReportsSetUp.testingPass(LogPage.SAVE_CHANGES_PASS);
         } catch (Exception e) {
             Assert.assertFalse(true);
-            System.err.println(LogPage.saveChangesFail);
+            System.err.println(LogPage.SAVE_CHANGES_FAIL);
         }
     }
     /*
@@ -98,12 +98,12 @@ public class OrgPage extends BasePage{
                 BasePage.write(By.cssSelector(commentsField), mass.get(0).get(comments));
             }
             saveChangesBtnPersonIdTypes();
-            ExtentReportsSetUp.testingPass(LogPage.updateExternalIdTypesPass);
+            ExtentReportsSetUp.testingPass(LogPage.UPDATE_EXTERNAL_ID_TYPES_PASS);
 
         } catch (Exception e) {
-            ExtentReportsSetUp.testingFail(LogPage.updateExternalIdTypesFail);
+            ExtentReportsSetUp.testingFail(LogPage.UPDATE_EXTERNAL_ID_TYPES_FAIL);
             Assert.assertFalse(true);
-            System.err.println(LogPage.updateExternalIdTypesFail);
+            System.err.println(LogPage.UPDATE_EXTERNAL_ID_TYPES_FAIL);
         }
     }
 
@@ -115,10 +115,10 @@ public class OrgPage extends BasePage{
         try {
             BasePage.scrollToElement(By.id(saveChangesBtnOrgIdTypes));
             BasePage.click(By.id(saveChangesBtnOrgIdTypes));
-            ExtentReportsSetUp.testingPass(LogPage.saveChangesPass);
+            ExtentReportsSetUp.testingPass(LogPage.SAVE_CHANGES_PASS);
         } catch (Exception e) {
             Assert.assertFalse(true);
-            System.err.println(LogPage.saveChangesFail);
+            System.err.println(LogPage.SAVE_CHANGES_FAIL);
         }
     }
 
