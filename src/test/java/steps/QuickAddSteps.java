@@ -14,6 +14,7 @@ public class QuickAddSteps {
 
     @And("I create a person")
     public static void createPerson(DataTable data) {
+
         GlobalNavPage.createPerson(data);
     }
 
@@ -25,7 +26,6 @@ public class QuickAddSteps {
 
     @And("I create a staff")
     public static void createStaff(DataTable data) {
-
         GlobalNavPage.createStaff(data);
     }
     @When("I quick search {string}")

@@ -19,6 +19,8 @@ public class GlobalNavPage extends BasePage{
     public static String footerQuickAddPersonMenuItem = "#global_nav_add_person";
     public static String footerQuickAddOrganizationMenuItem = "#global_nav_add_org";
     public static String footerQuickAddStaffMenuItem = "#global_nav_add_staff";
+    public static String footerToolsMenu = "#global_nav_tools_toggle";
+    public static String footerToolsTasksMenuItem = "#global_nav_task";
 
     /*
      * Quick Add Person Css
@@ -479,5 +481,20 @@ public class GlobalNavPage extends BasePage{
             ExtentReportsSetUp.testingFail(errorMessage);
             Assert.assertFalse(true);
         }
+    }
+    /*
+     * Method to navigate to tasks
+     */
+    public static void navigateToTasks(){
+        try {
+            BasePage.click(By.cssSelector(footerToolsMenu));
+            BasePage.wait(2000);
+            BasePage.click(By.cssSelector(footerToolsTasksMenuItem));
+            ExtentReportsSetUp.testingPass(LogPage.NAVIGATE_TO_TASKS_PASS);
+        } catch (Exception e) {
+            ExtentReportsSetUp.testingFail(LogPage.NAVIGATE_TO_TASKS_FAIl);
+            Assert.assertFalse(true);
+        }
+
     }
 }
