@@ -7,6 +7,8 @@ import org.openqa.selenium.By;
 public class PersonPage extends BasePage{
 
     private static String recordNavTabBasic = "recordNavTab_basic";
+    private static String recordNavTabIdTypes = "recordNavTab_id_types";
+
     private static String citizenshipTypeDropdown = "#s2id_citizenship_type";
     private static String citizenshipTypeDropdownList = "#select2-results-21";
     private static String citizenshipCountryDropdown = "#s2id_country_of_citizenship";
@@ -25,6 +27,16 @@ public class PersonPage extends BasePage{
     private static String salutationDropdownList = "#person_name_0_salutation_dropdown_menu";
     private static String saveChangesBtnPersonContact = "saveChangesBtnPersonContact";
 
+    private static String typeDropdown = "#s2id_entity_external_id_0_id_type";
+    private static String typeDropdownList = "#select2-drop";
+    private static String idNumberField = "#entity_external_id_0_id_number";
+    private static String idRecordedDateField = "#entity_external_id_0_id_date";
+    private static String whoAddedIdDropdown = "#s2id_entity_external_id_0_id_user";
+    private static String whoAddedIdDropdownList = "#select2-drop";
+    private static String commentsField = "#entity_external_id_0_id_comments";
+    private static String plusButtonExternalId = "//*[@id='entity_external_id_0_add']";
+    private static String saveChangesBtnPersonIdTypes = "saveChangesBtnPersonIdTypes";
+
 
 
     /*
@@ -33,19 +45,31 @@ public class PersonPage extends BasePage{
     public static void navigateToBasic(){
         try {
             BasePage.click(By.id(recordNavTabBasic));
-            ExtentReportsSetUp.testingPass(LogPage.navigateToBasicPass);
+            ExtentReportsSetUp.testingPass(LogPage.NAVIGATE_TO_BASIC_PASS);
         } catch (Exception e) {
-            ExtentReportsSetUp.testingFail(LogPage.navigateToBasicFail);
+            ExtentReportsSetUp.testingFail(LogPage.NAVIGATE_TO_BASIC_FAIL);
             Assert.assertFalse(true);
-            System.err.println(LogPage.navigateToBasicFail);
+            System.err.println(LogPage.NAVIGATE_TO_BASIC_FAIL);
         }
     }
-
+    /*
+     * go to Basic tab on records
+     */
+    public static void navigateToIdTypes(){
+        try {
+            BasePage.click(By.id(recordNavTabIdTypes));
+            ExtentReportsSetUp.testingPass(LogPage.NAVIGATE_TO_ID_TYPES_PASS);
+        } catch (Exception e) {
+            ExtentReportsSetUp.testingFail(LogPage.NAVIGATE_TO_ID_TYPES_FAIL);
+            Assert.assertFalse(true);
+            System.err.println(LogPage.NAVIGATE_TO_ID_TYPES_FAIL);
+        }
+    }
     /*
      * to update Citizenship values in basic tab on records
      */
     public static void updateCitizenshipValues(String citizenshipType,String countryOfCitizenship,String ssn){
-        BasePage.wait(3000);
+        BasePage.wait(2000);
         try {
             if (mass.get(0).get(citizenshipType) != null) {
                 BasePage.click(By.cssSelector(citizenshipTypeDropdown));
@@ -61,11 +85,11 @@ public class PersonPage extends BasePage{
                 BasePage.write(By.cssSelector(socialSecurityNumberField), mass.get(0).get(ssn));
             }
             saveChangesBtnPersonBasic();
-            ExtentReportsSetUp.testingPass(LogPage.updateCitizenshipPass);
+            ExtentReportsSetUp.testingPass(LogPage.UPDATE_CITIZENSHIP_PASS);
         } catch (Exception e) {
-            ExtentReportsSetUp.testingFail(LogPage.updateCitizenshipFail);
+            ExtentReportsSetUp.testingFail(LogPage.UPDATE_CITIZENSHIP_FAIL);
             Assert.assertFalse(true);
-            System.err.println(LogPage.updateCitizenshipFail);
+            System.err.println(LogPage.UPDATE_CITIZENSHIP_FAIL);
         }
     }
     /*
@@ -97,11 +121,47 @@ public class PersonPage extends BasePage{
                 clickOnListOfElements(mass.get(0).get(salutation));
             }
             saveChangesBtnPersonContact();
-            ExtentReportsSetUp.testingPass(LogPage.updateNamePass);
+            ExtentReportsSetUp.testingPass(LogPage.UPDATE_NAME_PASS);
         } catch (Exception e) {
-            ExtentReportsSetUp.testingFail(LogPage.updateNameFail);
+            ExtentReportsSetUp.testingFail(LogPage.UPDATE_NAME_FAIL);
             Assert.assertFalse(true);
-            System.err.println(LogPage.updateNameFail);
+            System.err.println(LogPage.UPDATE_NAME_FAIL);
+        }
+    }
+    /*
+     * to update Id Types in contact tab on records
+     */
+    public static void updateExternalIdTypes(String type,String idNumber,String idRecordedDate,String whoAddedId, String comments){
+        BasePage.wait(2000);
+        try {
+            BasePage.scrollToElement(By.xpath(plusButtonExternalId));
+
+            if (mass.get(0).get(type) != null) {
+                BasePage.click(By.cssSelector(typeDropdown));
+                BasePage.selectElementsList(typeDropdownList, "a");
+                clickOnListOfElements(mass.get(0).get(type));
+            }
+            if (mass.get(0).get(idNumber) != null) {
+                BasePage.write(By.cssSelector(idNumberField), mass.get(0).get(idNumber));
+            }
+            if (mass.get(0).get(idRecordedDate) != null) {
+                BasePage.write(By.cssSelector(idRecordedDateField), mass.get(0).get(idRecordedDate));
+            }
+            if (mass.get(0).get(whoAddedId) != null) {
+                BasePage.click(By.cssSelector(whoAddedIdDropdown));
+                BasePage.selectElementsList(whoAddedIdDropdownList, "a");
+                clickOnListOfElements(mass.get(0).get(whoAddedId));
+            }
+            if (mass.get(0).get(comments) != null) {
+                BasePage.write(By.cssSelector(commentsField), mass.get(0).get(comments));
+            }
+            saveChangesBtnPersonIdTypes();
+            ExtentReportsSetUp.testingPass(LogPage.UPDATE_EXTERNAL_ID_TYPES_PASS);
+
+        } catch (Exception e) {
+            ExtentReportsSetUp.testingFail(LogPage.UPDATE_EXTERNAL_ID_TYPES_FAIL);
+            Assert.assertFalse(true);
+            System.err.println(LogPage.UPDATE_EXTERNAL_ID_TYPES_FAIL);
         }
     }
     /*
@@ -112,10 +172,10 @@ public class PersonPage extends BasePage{
         try {
             BasePage.scrollToElement(By.id(personBasicSaveChangesButton));
             BasePage.click(By.id(personBasicSaveChangesButton));
-            ExtentReportsSetUp.testingPass(LogPage.saveChangesPass);
+            ExtentReportsSetUp.testingPass(LogPage.SAVE_CHANGES_PASS);
         } catch (Exception e) {
             Assert.assertFalse(true);
-            System.err.println(LogPage.saveChangesFail);
+            System.err.println(LogPage.SAVE_CHANGES_FAIL);
         }
     }
     /*
@@ -126,10 +186,24 @@ public class PersonPage extends BasePage{
         try {
             BasePage.scrollToElement(By.id(saveChangesBtnPersonContact));
             BasePage.click(By.id(saveChangesBtnPersonContact));
-            ExtentReportsSetUp.testingPass(LogPage.saveChangesPass);
+            ExtentReportsSetUp.testingPass(LogPage.SAVE_CHANGES_PASS);
         } catch (Exception e) {
             Assert.assertFalse(true);
-            System.err.println(LogPage.saveChangesFail);
+            System.err.println(LogPage.SAVE_CHANGES_FAIL);
+        }
+    }
+    /*
+     * to save changes in Id Types tab on records
+     */
+    public static void saveChangesBtnPersonIdTypes(){
+        BasePage.wait(2000);
+        try {
+            BasePage.scrollToElement(By.id(saveChangesBtnPersonIdTypes));
+            BasePage.click(By.id(saveChangesBtnPersonIdTypes));
+            ExtentReportsSetUp.testingPass(LogPage.SAVE_CHANGES_PASS);
+        } catch (Exception e) {
+            Assert.assertFalse(true);
+            System.err.println(LogPage.SAVE_CHANGES_FAIL);
         }
     }
 }

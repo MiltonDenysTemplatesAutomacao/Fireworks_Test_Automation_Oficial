@@ -18,4 +18,12 @@ public class PersonSteps {
     public static void updateName(String firstName,String lastName,String middleName,String preferredName, String suffix, String salutation) {
         PersonPage.updateNameValues(firstName,lastName,middleName,preferredName,suffix,salutation);
     }
+    @When("I update {string}, {string}, {string}, {string}, and {string} to update external ID Types for person")
+    public static void updateExternalIdTypes(String type,String idNumber,String idRecordedDate,String whoAddedId, String comments) {
+        PersonPage.updateExternalIdTypes(type,idNumber,idRecordedDate,whoAddedId,comments);
+    }
+    @Then("I navigate to ID Types")
+    public static void navigateToIdTypes() {
+        PersonPage.navigateToIdTypes();
+    }
 }
