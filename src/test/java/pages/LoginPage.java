@@ -8,18 +8,18 @@ public class LoginPage {
     /*
      * Css
      */
-    public static String usernameField = "#loginForm #loginAccountEmail";
-    public static String passwordField = "#loginForm #loginAccountPass";
-    public static String loginButton = "#loginForm #loginAccountSubmit";
+    public static final String usernameField = "#loginForm #loginAccountEmail";
+    public static final String passwordField = "#loginForm #loginAccountPass";
+    public static final String loginButton = "#loginForm #loginAccountSubmit";
 
 
 
     /*
      * Users
      */
-    public static String firestarterUsername = "firestarter@fire-engine-red.com";
-    public static String firestarterPassword = "CkCgb8GEwM!MW3#2T*Kd";
-    public static String firestarterFullName = "Fire Starter";
+    public static final String firestarterUsername = "firestarter@fire-engine-red.com";
+    public static final String firestarterPassword = "CkCgb8GEwM!MW3#2T*Kd";
+    public static final String firestarterFullName = "Fire Starter";
 
 
     /*

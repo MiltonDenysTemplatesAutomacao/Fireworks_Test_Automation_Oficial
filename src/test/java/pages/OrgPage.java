@@ -6,25 +6,25 @@ import org.openqa.selenium.By;
 
 public class OrgPage extends BasePage{
 
-    private static String emailAddressField = "#entity_email_0_org_email_address";
-    private static String emailTypeDropDown = "#s2id_entity_email_0_org_email_type";
-    private static String emailTypeDropDownList = "#select2-drop";
+    private static final String emailAddressField = "#entity_email_0_org_email_address";
+    private static final String emailTypeDropDown = "#s2id_entity_email_0_org_email_type";
+    private static final String emailTypeDropDownList = "#select2-drop";
 
-    private static String emailOptDropDown = "#s2id_entity_email_0_org_opt_in_method_id";
-    private static String emailOptDropDownList = "#select2-drop";
+    private static final String emailOptDropDown = "#s2id_entity_email_0_org_opt_in_method_id";
+    private static final String emailOptDropDownList = "#select2-drop";
 
-    private static String orgBasicSaveChangesButton = "saveChangesBtnOrgContact";
-    private static String organizationNameField = "#org_name_0_org_name_formal";
+    private static final String orgBasicSaveChangesButton = "saveChangesBtnOrgContact";
+    private static final String organizationNameField = "#org_name_0_org_name_formal";
 
-    private static String typeDropdown = "#select2-chosen-6";
-    private static String typeDropdownList = "#select2-drop";
-    private static String idNumberField = "#entity_external_id_0_org_id_number";
-    private static String idRecordedDateField = "#entity_external_id_0_org_id_date";
-    private static String whoAddedIdDropdown = "#select2-chosen-7";
-    private static String whoAddedIdDropdownList = "#select2-drop";
-    private static String commentsField = "#entity_external_id_0_org_id_comments";
-    private static String plusButtonExternalId = "//*[@id='entity_external_id_0_add']";
-    private static String saveChangesBtnOrgIdTypes = "saveChangesBtnOrgIdTypes";
+    private static final String typeDropdown = "#select2-chosen-6";
+    private static final String typeDropdownList = "#select2-drop";
+    private static final String idNumberField = "#entity_external_id_0_org_id_number";
+    private static final String idRecordedDateField = "#entity_external_id_0_org_id_date";
+    private static final String whoAddedIdDropdown = "#select2-chosen-7";
+    private static final String whoAddedIdDropdownList = "#select2-drop";
+    private static final String commentsField = "#entity_external_id_0_org_id_comments";
+    private static final String plusButtonExternalId = "//*[@id='entity_external_id_0_add']";
+    private static final String saveChangesBtnOrgIdTypes = "saveChangesBtnOrgIdTypes";
 
     /*
      * to update email address in Contact tab on records
@@ -49,9 +49,7 @@ public class OrgPage extends BasePage{
             saveChangesBtnOrgContact();
             ExtentReportsSetUp.testingPass(LogPage.UPDATE_EMAIL_ADDRESS_PASS);
         } catch (Exception e) {
-            ExtentReportsSetUp.testingFail(LogPage.UPDATE_EMAIL_ADDRESS_FAIL);
-            Assert.assertFalse(true);
-            System.err.println(LogPage.UPDATE_EMAIL_ADDRESS_FAIL);
+            FailureDelegatePage.handlePageException(LogPage.UPDATE_EMAIL_ADDRESS_FAIL);
         }
     }
 
@@ -66,8 +64,7 @@ public class OrgPage extends BasePage{
             BasePage.click(By.id(orgBasicSaveChangesButton));
             ExtentReportsSetUp.testingPass(LogPage.SAVE_CHANGES_PASS);
         } catch (Exception e) {
-            Assert.assertFalse(true);
-            System.err.println(LogPage.SAVE_CHANGES_FAIL);
+            FailureDelegatePage.handlePageException(LogPage.SAVE_CHANGES_FAIL);
         }
     }
     /*
@@ -101,9 +98,7 @@ public class OrgPage extends BasePage{
             ExtentReportsSetUp.testingPass(LogPage.UPDATE_EXTERNAL_ID_TYPES_PASS);
 
         } catch (Exception e) {
-            ExtentReportsSetUp.testingFail(LogPage.UPDATE_EXTERNAL_ID_TYPES_FAIL);
-            Assert.assertFalse(true);
-            System.err.println(LogPage.UPDATE_EXTERNAL_ID_TYPES_FAIL);
+            FailureDelegatePage.handlePageException(LogPage.UPDATE_EXTERNAL_ID_TYPES_FAIL);
         }
     }
 
@@ -117,9 +112,7 @@ public class OrgPage extends BasePage{
             BasePage.click(By.id(saveChangesBtnOrgIdTypes));
             ExtentReportsSetUp.testingPass(LogPage.SAVE_CHANGES_PASS);
         } catch (Exception e) {
-            Assert.assertFalse(true);
-            System.err.println(LogPage.SAVE_CHANGES_FAIL);
+            FailureDelegatePage.handlePageException(LogPage.SAVE_CHANGES_FAIL);
         }
     }
-
 }

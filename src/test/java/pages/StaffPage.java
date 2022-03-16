@@ -5,12 +5,12 @@ import org.junit.Assert;
 import org.openqa.selenium.By;
 
 public class StaffPage extends BasePage{
-    private static String recordNavTabContact = "recordNavTab_contact";
-    private static String contactPhoneNumberField = "entity_phone_0_phone_number";
-    private static String contactPhoneTypeDropdown = "s2id_entity_phone_0_phone_type";
-    private static String contactPhoneTypeDropdownList = "#select2-drop";
-    private static String contactPhoneCommentsField = "entity_phone_0_phone_comments";
-    private static String staffContactSaveChangesButton = "saveChangesBtnStaffContact";
+    private static final String recordNavTabContact = "recordNavTab_contac";
+    private static final String contactPhoneNumberField = "entity_phone_0_phone_number";
+    private static final String contactPhoneTypeDropdown = "s2id_entity_phone_0_phone_type";
+    private static final String contactPhoneTypeDropdownList = "#select2-drop";
+    private static final String contactPhoneCommentsField = "entity_phone_0_phone_comments";
+    private static final String staffContactSaveChangesButton = "saveChangesBtnStaffContact";
 
     /*
      * to go to Contact tab on records
@@ -20,9 +20,7 @@ public class StaffPage extends BasePage{
             BasePage.click(By.id(recordNavTabContact));
             ExtentReportsSetUp.testingPass(LogPage.NAVIGATE_TO_CONTACT_PASS);
         } catch (Exception e) {
-            ExtentReportsSetUp.testingFail(LogPage.NAVIGATE_TO_CONTACT_FAIL);
-            Assert.assertFalse(true);
-            System.err.println(LogPage.NAVIGATE_TO_CONTACT_FAIL);
+            FailureDelegatePage.handlePageException(LogPage.NAVIGATE_TO_CONTACT_FAIL);
         }
     }
     /*
@@ -45,7 +43,7 @@ public class StaffPage extends BasePage{
             saveChangesBtnStaffContact();
             ExtentReportsSetUp.testingPass(LogPage.UPDATE_PHONE_NUMBER_PASS);
         } catch (Exception e) {
-            System.err.println(LogPage.UPDATE_PHONE_NUMBER_FAIL);
+            FailureDelegatePage.handlePageException(LogPage.UPDATE_PHONE_NUMBER_FAIL);
         }
     }
     /*
@@ -58,9 +56,7 @@ public class StaffPage extends BasePage{
             BasePage.click(By.id(staffContactSaveChangesButton));
             ExtentReportsSetUp.testingPass(LogPage.SAVE_CHANGES_PASS);
         } catch (Exception e) {
-            ExtentReportsSetUp.testingFail(LogPage.SAVE_CHANGES_FAIL);
-            Assert.assertFalse(true);
-            System.err.println(LogPage.SAVE_CHANGES_FAIL);
+            FailureDelegatePage.handlePageException(LogPage.SAVE_CHANGES_FAIL);
         }
     }
 }

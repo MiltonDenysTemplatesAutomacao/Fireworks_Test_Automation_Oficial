@@ -7,9 +7,9 @@ import org.openqa.selenium.By;
 
 public class GlobalNavPage extends BasePage{
 
-    public static String fireWorksIcon = "smallHeaderLogo";
-    public static String homeQuickSearchField = "#homeBillboardSearch";
-    public static String homeQuickSearchButton = "#mainSearchSubmitBtn";
+    public static final String fireWorksIcon = "smallHeaderLogo";
+    public static final String homeQuickSearchField = "#homeBillboardSearch";
+    public static final String homeQuickSearchButton = "#mainSearchSubmitBtn";
 
     /*
      * Footer Css
@@ -144,8 +144,7 @@ public class GlobalNavPage extends BasePage{
             BasePage.click(By.id(fireWorksIcon));
             ExtentReportsSetUp.testingPass(LogPage.GO_TO_HOME_PAGE_PASS);
         } catch (Exception e) {
-            ExtentReportsSetUp.testingFail(LogPage.GO_TO_HOME_PAGE_FAIL);
-            Assert.assertFalse(true);
+            FailureDelegatePage.handlePageException(LogPage.GO_TO_HOME_PAGE_FAIL);
         }
     }
 
@@ -159,8 +158,7 @@ public class GlobalNavPage extends BasePage{
             BasePage.click(By.cssSelector(footerQuickAddPersonMenuItem));
             ExtentReportsSetUp.testingPass(LogPage.NAVIGATE_QUICK_ADD_CREATE_PERSON_PAGE_PASS);
         } catch (Exception e) {
-            ExtentReportsSetUp.testingFail(LogPage.NAVIGATE_QUICK_ADD_CREATE_PERSON_PAGE_FAIL);
-            Assert.assertFalse(true);
+            FailureDelegatePage.handlePageException(LogPage.NAVIGATE_QUICK_ADD_CREATE_PERSON_PAGE_FAIL);
         }
     }
 
@@ -174,8 +172,7 @@ public class GlobalNavPage extends BasePage{
             BasePage.click(By.cssSelector(footerQuickAddOrganizationMenuItem));
             ExtentReportsSetUp.testingPass(LogPage.NAVIGATE_QUICK_ADD_CREATE_CREATE_ORGANIZATION_PAGE_PASS);
         } catch (Exception e) {
-            ExtentReportsSetUp.testingFail(LogPage.NAVIGATE_QUICK_ADD_CREATE_CREATE_ORGANIZATION_PAGE_FAIL);
-            Assert.assertFalse(true);
+            FailureDelegatePage.handlePageException(LogPage.NAVIGATE_QUICK_ADD_CREATE_CREATE_ORGANIZATION_PAGE_FAIL);
         }
     }
 
@@ -189,8 +186,7 @@ public class GlobalNavPage extends BasePage{
             BasePage.click(By.cssSelector(footerQuickAddStaffMenuItem));
             ExtentReportsSetUp.testingPass(LogPage.NAVIGATE_QUICK_ADD_CREATE_CREATE_STAFF_PAGE_PASS);
         } catch (Exception e) {
-            ExtentReportsSetUp.testingFail(LogPage.NAVIGATE_QUICK_ADD_CREATE_CREATE_STAFF_PAGE_FAIL);
-            Assert.assertFalse(true);
+            FailureDelegatePage.handlePageException(LogPage.NAVIGATE_QUICK_ADD_CREATE_CREATE_STAFF_PAGE_FAIL);
         }
     }
 
@@ -286,8 +282,7 @@ public class GlobalNavPage extends BasePage{
             }
             ExtentReportsSetUp.testingPass(LogPage.QUICK_ADD_PERSON_PASS);
         } catch (Exception e) {
-            ExtentReportsSetUp.testingFail(LogPage.QUICK_ADD_PERSON_FAIL);
-            Assert.assertFalse(true);
+            FailureDelegatePage.handlePageException(LogPage.QUICK_ADD_PERSON_FAIL);
         }
 
     }
@@ -349,8 +344,7 @@ public class GlobalNavPage extends BasePage{
             }
             ExtentReportsSetUp.testingPass(LogPage.QUICK_ADD_ORGANIZATION_PASS);
         } catch (Exception e) {
-            ExtentReportsSetUp.testingFail(LogPage.QUICK_ADD_ORGANIZATION_FAIL);
-            Assert.assertFalse(true);
+            FailureDelegatePage.handlePageException(LogPage.QUICK_ADD_ORGANIZATION_FAIL);
         }
     }
 
@@ -384,8 +378,7 @@ public class GlobalNavPage extends BasePage{
             }
             ExtentReportsSetUp.testingPass(LogPage.QUICK_ADD_STAFF_PASS);
         } catch (Exception e) {
-            ExtentReportsSetUp.testingFail(LogPage.QUICK_ADD_STAFF_FAIL);
-            Assert.assertFalse(true);
+            FailureDelegatePage.handlePageException(LogPage.QUICK_ADD_STAFF_FAIL);
         }
     }
 
@@ -397,8 +390,7 @@ public class GlobalNavPage extends BasePage{
             click(By.cssSelector(quickAddPersonSaveGoButton));
             ExtentReportsSetUp.testingPass(LogPage.CLICK_QUICK_ADD_PERSON_SAVE_AND_GO_PASS);
         } catch (Exception e) {
-            ExtentReportsSetUp.testingFail(LogPage.CLICK_QUICK_ADD_PERSON_SAVE_AND_GO_FAIL);
-            Assert.assertFalse(true);
+            FailureDelegatePage.handlePageException(LogPage.CLICK_QUICK_ADD_PERSON_SAVE_AND_GO_FAIL);
         }
     }
 
@@ -410,8 +402,7 @@ public class GlobalNavPage extends BasePage{
             click(By.cssSelector(quickAddOrgSaveGoButton));
             ExtentReportsSetUp.testingPass(LogPage.CLICK_QUICK_ADD_ORGANIZATION_SAVE_AND_GO_PASS);
         } catch (Exception e) {
-            ExtentReportsSetUp.testingFail(LogPage.CLICK_QUICK_ADD_ORGANIZATION_SAVE_AND_GO_FAIL);
-            Assert.assertFalse(true);
+            FailureDelegatePage.handlePageException(LogPage.CLICK_QUICK_ADD_ORGANIZATION_SAVE_AND_GO_FAIL);
         }
     }
 
@@ -423,8 +414,7 @@ public class GlobalNavPage extends BasePage{
             click(By.cssSelector(quickAddStaffSaveGoButton));
             ExtentReportsSetUp.testingPass(LogPage.CLICK_QUICK_ADD_STAFF_SAVE_AND_GO_PASS);
         } catch (Exception e) {
-            ExtentReportsSetUp.testingFail(LogPage.CLICK_QUICK_ADD_STAFF_SAVE_AND_GO_FAIL);
-            Assert.assertFalse(true);
+            FailureDelegatePage.handlePageException(LogPage.CLICK_QUICK_ADD_STAFF_SAVE_AND_GO_FAIL);
         }
 
     }
@@ -440,9 +430,7 @@ public class GlobalNavPage extends BasePage{
             if (alertMessageByIdContains("alertMessage", alertMessage)) {
                 ExtentReportsSetUp.testingPass(passMessage);
             } else {
-                System.err.println(errorMessage);
-                ExtentReportsSetUp.testingFail(errorMessage);
-                Assert.assertFalse(true);
+                FailureDelegatePage.handlePageException(errorMessage);
             }
         } catch (Exception e) {
             System.err.println(errorMessage);
@@ -460,9 +448,7 @@ public class GlobalNavPage extends BasePage{
             BasePage.click(By.cssSelector(homeQuickSearchButton));
             ExtentReportsSetUp.testingPass(passMessage);
         } catch (Exception e) {
-            ExtentReportsSetUp.testingFail(errorMessage);
-            Assert.assertFalse(true);
-            System.err.println(errorMessage);
+            FailureDelegatePage.handlePageException(errorMessage);
         }
     }
 
@@ -478,8 +464,7 @@ public class GlobalNavPage extends BasePage{
             BasePage.click(By.cssSelector(homeQuickSearchButton));
             ExtentReportsSetUp.testingPass(passMessage);
         } catch (Exception e) {
-            ExtentReportsSetUp.testingFail(errorMessage);
-            Assert.assertFalse(true);
+            FailureDelegatePage.handlePageException(errorMessage);
         }
     }
     /*
@@ -492,8 +477,7 @@ public class GlobalNavPage extends BasePage{
             BasePage.click(By.cssSelector(footerToolsTasksMenuItem));
             ExtentReportsSetUp.testingPass(LogPage.NAVIGATE_TO_TASKS_PASS);
         } catch (Exception e) {
-            ExtentReportsSetUp.testingFail(LogPage.NAVIGATE_TO_TASKS_FAIl);
-            Assert.assertFalse(true);
+            FailureDelegatePage.handlePageException(LogPage.NAVIGATE_TO_TASKS_FAIl);
         }
 
     }

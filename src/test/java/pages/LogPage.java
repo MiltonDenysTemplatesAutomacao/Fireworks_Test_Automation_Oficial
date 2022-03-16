@@ -77,5 +77,15 @@ public class LogPage {
     public static final String NAVIGATE_TO_TASKS_FAIl = "FAILED to navigate to to task";
     public static final String CREATE_TASK_BUTTON_PASS = "I click on create task button";
     public static final String CREATE_TASK_BUTTON_FAIL = "FAILED to click on create task button";
+    public static final String UPDATE_TASK_PASS = "I update task";
+    public static final String UPDATE_TASK_FAIL = "FAILED while updating task";
+    public static final String VERIFY_TASK_FAIL = "FAILED while verifying task";
+    public static final String VERIFY_TASK_PASS = "I verify if task was created correctly";
+
+    public static final String SEARCH_SMART_SEARCH_PICKER_FAIL = "Fail while trying to smart search";
+    public static final String PICK_SMART_SEARCH_FAIL = "Fail while trying to pick a smart search";
+    public static final String OPEN_TASK_FAIL = "Fail while trying to open task";
+
+
 
 }
