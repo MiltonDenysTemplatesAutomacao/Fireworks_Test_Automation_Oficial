@@ -1,6 +1,5 @@
 package pages;
 
-import config.DriverBase;
 import config.extent_reports.ExtentReportsSetUp;
 import org.openqa.selenium.By;
 import org.testng.Assert;
@@ -32,12 +31,80 @@ public class TasksPage extends BasePage{
     public static final String taskManagerSearchField = "#taskManagerTableControlsTableSearch";
     public static final String taskManagerTableRow1 = "#taskManagerTable_row_0";
     public static final String taskManagerTableRow1Col0 = "#taskManagerTable_row_0_col_0";
+    public static final String clearChangesButton = "clearChangesButton";
+    public static final String modalClearChangesConfirmationButton = "modalSubmitButtonclearChangesConfirmation";
 
 
+    public static void validateTaskDataTable(){
+        wait(2000);
+        //improve this
+        //String text =
+        try {
+            if (mass.get(0).get("Name") != null) {
+                String text = BasePage.getText(By.cssSelector(taskManagerTableRow1));
+                Assert.assertEquals(text,mass.get(0).get("Name"));
+            }
+            if (mass.get(0).get("Status") != null) {
+                String text = BasePage.getText(By.cssSelector(taskManagerTableRow1));
+                //contains
+                Assert.assertEquals(text,mass.get(0).get("Status"));
+            }
+            if (mass.get(0).get("AssignTo") != null) {
+                String text = BasePage.getText(By.cssSelector(taskManagerTableRow1));
+                Assert.assertEquals(text,mass.get(0).get("AssignTo"));
+            }
+            if (mass.get(0).get("Type") != null) {
+                String text = BasePage.getText(By.cssSelector(taskManagerTableRow1));
+                Assert.assertEquals(text,mass.get(0).get("Type"));
+            }
+            if (mass.get(0).get("DueDate") != null) {
+                String text = BasePage.getText(By.cssSelector(taskManagerTableRow1));
+                Assert.assertEquals(text,mass.get(0).get("DueDate"));
+            }
+        } catch (Exception e) {
+            FailureDelegatePage.handlePageException(LogPage.CLEAR_CHANGES_FAIL);
+        }
+    }
 
+
+    /*
+     * Method to clear changes
+     */
+    public static void clearChanges(){
+        try {
+            clickClearChanges();
+            affirmClearChanges();
+            ExtentReportsSetUp.testingPass(LogPage.CLEAR_CHANGES_PASS);
+
+        } catch (Exception e) {
+            FailureDelegatePage.handlePageException(LogPage.CLEAR_CHANGES_FAIL);
+
+        }
+    }
+    /*
+     * Method to click on clear changes button
+     */
+    public static void clickClearChanges()throws Exception{
+        BasePage.scrollToElement(By.id(commentsField));
+        wait(2000);
+        BasePage.click(By.id(clearChangesButton));
+    }
+    /*
+     * Method to affirm clear changes
+     */
+    public static void affirmClearChanges()throws Exception{
+        wait(2000);
+        BasePage.click(By.id(modalClearChangesConfirmationButton));
+    }
+    /*
+     * Method to click on choose button on smart search picker modal
+     */
     public static void smartSearchPickerModalChooseButton()throws Exception{
             BasePage.click(By.id(smartSearchPickerModalChooseButton));
     }
+    /*
+     * Method to click on create task button
+     */
     public static void clickCreateTaskButton(){
         try {
             wait(2000);
@@ -47,6 +114,9 @@ public class TasksPage extends BasePage{
             FailureDelegatePage.handlePageException(LogPage.CREATE_TASK_BUTTON_FAIL);
         }
     }
+    /*
+     * Method to pick a smart search
+     */
     public static void pickSmartSearch(String smartSearch){
         wait(2000);
         try {
@@ -58,6 +128,9 @@ public class TasksPage extends BasePage{
         }
 
     }
+    /*
+     * Method to search a smart search and validate if it is corrected with the one searched
+     */
     public static void searchSmartSearchPicker (String searchName)throws Exception{
         wait(2000);
         try {
@@ -72,7 +145,9 @@ public class TasksPage extends BasePage{
             FailureDelegatePage.handlePageException(LogPage.SEARCH_SMART_SEARCH_PICKER_FAIL);
         }
     }
-
+    /*
+     * Method to validate a smart search
+     */
     public static boolean verifySmartSearchFound (String searchName)throws Exception{
         boolean alertMessage = false;
         String text = getText(By.cssSelector(smartSearchPickerModalTableRow1Col1));
@@ -81,10 +156,21 @@ public class TasksPage extends BasePage{
         }
         return alertMessage;
     }
-
-    public static void updateTask(){
+    public static void createTask(){
         try {
-
+            updateTaskFields();
+            taskSaveChangesButton();
+            ExtentReportsSetUp.testingPass(LogPage.CREATE_TASK_PASS);
+        } catch (Exception e) {
+            FailureDelegatePage.handlePageException(LogPage.CREATE_TASK_FAIL);
+        }
+    }
+    /*
+     * Method to update task
+     */
+    public static void updateTaskFields(){
+        try {
+            BasePage.scrollToElement(By.id(taskNameField));
             if (mass.get(0).get("Name") != null) {
                 BasePage.write(By.id(taskNameField), mass.get(0).get("Name"));
             }
@@ -128,18 +214,20 @@ public class TasksPage extends BasePage{
             if (mass.get(0).get("Comments") != null) {
                 BasePage.write(By.id(commentsField), mass.get(0).get("Comments"));
             }
-            taskSaveChangesButton();
-            ExtentReportsSetUp.testingPass(LogPage.UPDATE_TASK_PASS);
+            ExtentReportsSetUp.testingPass(LogPage.UPDATE_FIELDS_TASK_PASS);
         } catch (Exception e) {
-            FailureDelegatePage.handlePageException(LogPage.UPDATE_TASK_FAIL);
+            FailureDelegatePage.handlePageException(LogPage.UPDATE_FIELDS_TASK_FAIL);
         }
     }
+    /*
+     * Method to verify if update is correctly
+     */
     public static void verifyTask(){
         try {
             wait(2000);
             if (mass.get(0).get("Name") != null) {
                String text = BasePage.getAtribute(By.id(taskNameField),"value");
-                   Assert.assertEquals(text,mass.get(0).get("Name"));
+               Assert.assertEquals(text,mass.get(0).get("Name"));
             }
             if (mass.get(0).get("Description") != null) {
                 String text = BasePage.getAtribute(By.id(taskDescriptionField),"value");
@@ -185,8 +273,66 @@ public class TasksPage extends BasePage{
         } catch (Exception e) {
             FailureDelegatePage.handlePageException(LogPage.VERIFY_TASK_FAIL);
         }
+    }/*
+     * Method to verify if update is correctly
+     */
+    public static void validateClearChanges(){
+        try {
+            wait(2000);
+            if (mass.get(1).get("Name") != null) {
+               String text = BasePage.getAtribute(By.id(taskNameField),"value");
+               Assert.assertEquals(text,mass.get(1).get("Name"));
+            }
+            if (mass.get(1).get("Description") != null) {
+                String text = BasePage.getAtribute(By.id(taskDescriptionField),"value");
+                Assert.assertEquals(text,mass.get(1).get("Description"));
+            }
+            BasePage.scrollToElement(By.id(taskDescriptionField));
+            if (mass.get(1).get("Type") != null) {
+                String text = BasePage.getText(By.xpath(taskTypeDisabledDropdown));
+                Assert.assertEquals(text,mass.get(1).get("Type"));
+            }
+            if (mass.get(1).get("SmartSearch") != null) {
+                String text = BasePage.getAtribute(By.cssSelector(smartSearchElement),"value");
+                Assert.assertEquals(text,mass.get(1).get("SmartSearch"));
+            }
+            BasePage.scrollToElement(By.id(smartSearchPickerButton));
+
+            if (mass.get(1).get("AssignTo") != null) {
+                String text = BasePage.getText(By.cssSelector(assignToDropdown));
+                Assert.assertEquals(text,mass.get(1).get("AssignTo"));
+            }
+            if (mass.get(1).get("DueDate") != null) {
+                String text = BasePage.getAtribute(By.id(dueDateField),"value");
+                Assert.assertEquals(text,mass.get(1).get("DueDate"));
+            }
+            if (mass.get(1).get("DueTime") != null) {
+                String text = BasePage.getAtribute(By.id(dueTimeField),"value");
+                Assert.assertEquals(text,mass.get(1).get("DueTime"));
+            }
+            if (mass.get(1).get("Priority") != null) {
+                String text = BasePage.getText(By.cssSelector(priorityDropdown));
+                Assert.assertEquals(text,mass.get(1).get("Priority"));
+
+            }
+            if (mass.get(1).get("Status") != null) {
+                String text = BasePage.getText(By.cssSelector(statusDropdown));
+                Assert.assertEquals(text,mass.get(1).get("Status"));
+            }
+            if (mass.get(1).get("Comments") != null) {
+                String text = BasePage.getAtribute(By.id(commentsField),"value");
+                Assert.assertEquals(text,mass.get(1).get("Comments"));
+            }
+            ExtentReportsSetUp.testingPass(LogPage.VALIDATE_CLEAR_CHANGES_PASS);
+        } catch (Exception e) {
+            FailureDelegatePage.handlePageException(LogPage.VALIDATE_CLEAR_CHANGES_FAIL);
+        }
     }
-    public static void taskSaveChangesButton()throws Exception{
+    /*
+     * Method to click on save changes button
+     */
+    public static void taskSaveChangesButton(){
+        wait(2000);
         try {
             BasePage.scrollToElement(By.id(commentsField));
             BasePage.click(By.id(taskSaveChangesButton));
@@ -194,28 +340,39 @@ public class TasksPage extends BasePage{
             FailureDelegatePage.handlePageException(LogPage.SAVE_CHANGES_FAIL);
         }
     }
-    public static void openTask(){
+    /*
+     * Method to open task
+     */
+    public static void openTask(String task){
         wait(2000);
-        String nameTask = mass.get(0).get("PreviousName");
+        String nameTask = mass.get(0).get(task);
         try {
             searchTaskManager(nameTask);
             verifyTaskFound(nameTask);
             BasePage.click(By.cssSelector(taskManagerTableRow1Col0));
-
+            ExtentReportsSetUp.testingPass(LogPage.VALIDATE_CLEAR_CHANGES_PASS);
         } catch (Exception e) {
             FailureDelegatePage.handlePageException(LogPage.OPEN_TASK_FAIL);
-
         }
     }
-    public static void searchTaskManager(String name)throws Exception{
-        BasePage.write(By.cssSelector(taskManagerSearchField), name);
+    /*
+     * Method to search a task
+     */
+    public static void searchTaskManager(String name){
+        wait(2000);
+        try {
+            String nameTask = mass.get(0).get(name);
+            BasePage.write(By.cssSelector(taskManagerSearchField), nameTask);
+            ExtentReportsSetUp.testingPass(LogPage.SEARCH_TASK_PASS);
+        } catch (Exception e) {
+            FailureDelegatePage.handlePageException(LogPage.SEARCH_TASK_FAIL);
+        }
     }
+    /*
+     * Method to verify if searched task is correctly
+     */
     public static void verifyTaskFound(String name)throws Exception{
         String text = BasePage.getText(By.cssSelector(taskManagerTableRow1));
         Assert.assertTrue(text.contains(name));
     }
-
-
-
-
 }

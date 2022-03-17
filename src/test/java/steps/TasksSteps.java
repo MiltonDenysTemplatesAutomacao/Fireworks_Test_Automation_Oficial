@@ -10,13 +10,31 @@ public class TasksSteps {
     public static void clickCreateTaskButton( ) {
         TasksPage.clickCreateTaskButton();
     }
-    @When("I update task")
+    @When("I create a task")
     public static void updateTask( ) {
-        TasksPage.updateTask();
+        TasksPage.createTask();
+    }@When("I update task fields")
+    public static void updateTaskFields( ) {
+        TasksPage.updateTaskFields();
     }
-    @When("I open task")
-    public static void openTask( ) {
-        TasksPage.openTask();
+    @When("I open task {string}")
+    public static void openTask(String task) {
+        TasksPage.openTask(task);
+    }
+    @When("I search a task {string}")
+    public static void searchTask(String task) {
+        TasksPage.searchTaskManager(task);
+    }
+    @When("I validate if manager table shows the task created")
+    public static void validateTaskDataTable( ) {
+        TasksPage.validateTaskDataTable();
+    }
+    @When("I clear changes")
+    public static void clickClearChanges( ) {
+        TasksPage.clearChanges();
+    }@When("I validate if clear changes worked")
+    public static void validateClearChanges( ) {
+        TasksPage.validateClearChanges();
     }
     @When("I verify if task was created correctly")
     public static void validateTask( ) {
