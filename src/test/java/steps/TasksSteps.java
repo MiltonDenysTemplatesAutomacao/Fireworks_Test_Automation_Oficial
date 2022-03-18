@@ -1,5 +1,6 @@
 package steps;
 
+import io.cucumber.datatable.DataTable;
 import io.cucumber.java.en.When;
 import pages.GlobalNavPage;
 import pages.TasksPage;
@@ -10,12 +11,29 @@ public class TasksSteps {
     public static void clickCreateTaskButton( ) {
         TasksPage.clickCreateTaskButton();
     }
+    @When("I erase Due Date field")
+    public static void eraseField() {
+        TasksPage.eraseFieldDueDateField();
+    }
+    @When("I validate id duo time is disabled")
+    public static void validateDuoTimeDisabled( ) {
+        TasksPage.validateDuoTimeDisabled();
+    }
+    @When("I click on Save Changes button")
+    public static void clickSaveChangesButton( ) {
+        TasksPage.clickTaskSaveChangesButton();
+    }
     @When("I create a task")
     public static void updateTask( ) {
         TasksPage.createTask();
-    }@When("I update task fields")
+    }
+    @When("I update task fields")
     public static void updateTaskFields( ) {
         TasksPage.updateTaskFields();
+    }
+    @When("I fill task fields")
+    public static void fillTaskFields(DataTable data) {
+        TasksPage.fillTaskFields(data);
     }
     @When("I open task {string}")
     public static void openTask(String task) {
@@ -24,6 +42,10 @@ public class TasksSteps {
     @When("I search a task {string}")
     public static void searchTask(String task) {
         TasksPage.searchTaskManager(task);
+    }
+    @When("I validate if {string} validation alert message is correct")
+    public static void validateAlertMessage(String alertMessage) {
+        TasksPage.validationAlertMessage(alertMessage);
     }
     @When("I validate if manager table shows the task created")
     public static void validateTaskDataTable( ) {

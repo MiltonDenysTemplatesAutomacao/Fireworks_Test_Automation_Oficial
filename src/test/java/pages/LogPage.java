@@ -96,6 +96,10 @@ public class LogPage {
     public static final String VALIDATE_MANAGER_DATA_TABLE_FAIL = "Fail while trying to validate if manager table shows the task created";
     public static final String SEARCH_TASK_PASS = "I search a task";
     public static final String SEARCH_TASK_FAIL = "Fail while trying to search a task";
+    public static final String VALIDATE_DUO_TIME_DISABLED_PASS = "I validate if duo time is disabled";
+    public static final String VALIDATE_DUO_TIME_DISABLED_FAIL = "FAIL while trying to validate if duo time is disabled";
+    public static final String ERASE_DUE_DATE_FIELD_PASS = "I erase Due Date field";
+    public static final String ERASE_DUE_DATE_FIELD_FAIL = "Fail while trying to erase Due Date field";
 
 
 }

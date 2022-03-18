@@ -1,6 +1,8 @@
 package pages;
 
+import config.DriverBase;
 import config.extent_reports.ExtentReportsSetUp;
+import io.cucumber.datatable.DataTable;
 import org.openqa.selenium.By;
 import org.testng.Assert;
 
@@ -33,8 +35,64 @@ public class TasksPage extends BasePage{
     public static final String taskManagerTableRow1Col0 = "#taskManagerTable_row_0_col_0";
     public static final String clearChangesButton = "clearChangesButton";
     public static final String modalClearChangesConfirmationButton = "modalSubmitButtonclearChangesConfirmation";
+    public static final String dueTimeDisabledField = "#task_due_time_display[disabled]";
 
 
+    public static void eraseFieldDueDateField(){
+        try {
+            BasePage.write(By.id(dueDateField), "");
+            ExtentReportsSetUp.testingPass(LogPage.ERASE_DUE_DATE_FIELD_PASS);
+        } catch (Exception e) {
+            FailureDelegatePage.handlePageException(LogPage.ERASE_DUE_DATE_FIELD_FAIL);
+        }
+    }
+    /*
+     * Method to validate if Duo Time is disabled
+     */
+    public static void validateDuoTimeDisabled(){
+        try {
+            if(checkIfElementIsVisible(By.cssSelector(dueTimeDisabledField))){
+                ExtentReportsSetUp.testingPass(LogPage.VALIDATE_DUO_TIME_DISABLED_PASS);
+            }else{
+            }
+        } catch (Exception e) {
+            FailureDelegatePage.handlePageException(LogPage.VALIDATE_DUO_TIME_DISABLED_FAIL);
+        }
+    }
+
+
+    /*
+     * Method to validate alert message
+     */
+    public static void validationAlertMessage(String alertMessage) {
+        String errorMessage = String.format(LogPage.ALERT_MESSAGE_FAIL,alertMessage);
+        String passMessage = String.format(LogPage.ALERT_MESSAGE_PASS,alertMessage);
+        try {
+            waitElementById("pageValidationAlertMessageClose", 10);
+            String fullNameReturn = BasePage.getText(By.id("pageAlertMessages"));
+            if (alertMessageByIdContains("pageAlertMessages", alertMessage)) {
+                ExtentReportsSetUp.testingPass(passMessage);
+            } else {
+                FailureDelegatePage.handlePageException(errorMessage);
+            }
+        } catch (Exception e) {
+            System.err.println(errorMessage);
+        }
+    }
+    /*
+     * Method to click on save changes button
+     */
+    public static void clickTaskSaveChangesButton(){
+        try {
+            taskSaveChangesButton();
+            ExtentReportsSetUp.testingPass(LogPage.SAVE_CHANGES_PASS);
+        } catch (Exception e) {
+            FailureDelegatePage.handlePageException(LogPage.SAVE_CHANGES_FAIL);
+        }
+    }
+    /*
+     * Method to validate task data table
+     */
     public static void validateTaskDataTable(){
         wait(2000);
         try {
@@ -61,8 +119,6 @@ public class TasksPage extends BasePage{
             FailureDelegatePage.handlePageException(LogPage.VALIDATE_MANAGER_DATA_TABLE_FAIL);
         }
     }
-
-
     /*
      * Method to clear changes
      */
@@ -152,6 +208,9 @@ public class TasksPage extends BasePage{
         }
         return alertMessage;
     }
+    /*
+     * Method to create task
+     */
     public static void createTask(){
         try {
             updateTaskFields();
@@ -166,6 +225,62 @@ public class TasksPage extends BasePage{
      */
     public static void updateTaskFields(){
         try {
+            BasePage.scrollToElement(By.id(taskNameField));
+            if (mass.get(0).get("Name") != null) {
+                BasePage.write(By.id(taskNameField), mass.get(0).get("Name"));
+            }
+            if (mass.get(0).get("Description") != null) {
+                BasePage.write(By.id(taskDescriptionField), mass.get(0).get("Description"));
+            }
+            BasePage.scrollToElement(By.id(taskDescriptionField));
+            if (mass.get(0).get("Type") != null) {
+                BasePage.click(By.cssSelector(taskTypeDropdown));
+                BasePage.selectElementsList(taskTypeDropdownList, "a");
+                clickOnListOfElements(mass.get(0).get("Type"));
+            }
+            if (mass.get(0).get("SmartSearch") != null) {
+                pickSmartSearch(mass.get(0).get("SmartSearch"));
+            }
+            BasePage.scrollToElement(By.id(smartSearchPickerButton));
+
+            if (mass.get(0).get("AssignTo") != null) {
+                wait(2000);
+                BasePage.click(By.cssSelector(assignToDropdown));
+                BasePage.selectElementsList(assignToDropdownList, "a");
+                clickOnListOfElements(mass.get(0).get("AssignTo"));
+            }
+            if (mass.get(0).get("DueDate") != null) {
+                BasePage.write(By.id(dueDateField), mass.get(0).get("DueDate"));
+            }
+            if (mass.get(0).get("DueTime") != null) {
+                BasePage.click(By.id(dueTimeField));
+                BasePage.write(By.id(dueTimeField), mass.get(0).get("DueTime"));
+            }
+            if (mass.get(0).get("Priority") != null) {
+                BasePage.click(By.cssSelector(priorityDropdown));
+                BasePage.selectElementsList(priorityDropdownList, "a");
+                clickOnListOfElements(mass.get(0).get("Priority"));
+            }
+            if (mass.get(0).get("Status") != null) {
+                BasePage.click(By.cssSelector(statusDropdown));
+                BasePage.selectElementsList(statusDropdownList, "a");
+                clickOnListOfElements(mass.get(0).get("Status"));
+            }
+            if (mass.get(0).get("Comments") != null) {
+                BasePage.write(By.id(commentsField), mass.get(0).get("Comments"));
+            }
+            ExtentReportsSetUp.testingPass(LogPage.UPDATE_FIELDS_TASK_PASS);
+        } catch (Exception e) {
+            FailureDelegatePage.handlePageException(LogPage.UPDATE_FIELDS_TASK_FAIL);
+        }
+    }
+    /*
+     * Method to update task
+     */
+    public static void fillTaskFields(DataTable data){
+        try {
+            mass = data.asMaps(String.class, String.class);
+
             BasePage.scrollToElement(By.id(taskNameField));
             if (mass.get(0).get("Name") != null) {
                 BasePage.write(By.id(taskNameField), mass.get(0).get("Name"));

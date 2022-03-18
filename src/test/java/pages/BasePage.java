@@ -23,7 +23,19 @@ public class BasePage {
 //        DriverBase.getDriver().get(dotenv.get("APP_URL"));
 //
 //    }
-
+    /*
+     * Method to check if an element is visible
+     */
+    public static boolean checkIfElementIsVisible(By by)throws Exception{
+        boolean display =  DriverBase.getDriver().findElement(by).isDisplayed();
+        return display;
+    }
+    /*
+     * Method to clear fields
+     */
+    public static void clearField(By by)throws Exception{
+        DriverBase.getDriver().findElement(by).clear();
+    }
     /*
      * Method to list elements in a list by css and tag
      */
