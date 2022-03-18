@@ -20,9 +20,6 @@ Feature: Search by phone number
     And I search a task "Name"
     Then I validate if manager table shows the task created
 
-
-
-
   @UpdateTaskStaff
   Scenario: to clear changes and update a task for staff member
     Given I login as firestarter

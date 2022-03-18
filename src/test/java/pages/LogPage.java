@@ -88,13 +88,14 @@ public class LogPage {
 
     public static final String SEARCH_SMART_SEARCH_PICKER_FAIL = "Fail while trying to smart search";
     public static final String PICK_SMART_SEARCH_FAIL = "Fail while trying to pick a smart search";
+    public static final String OPEN_TASK_PASS = "I open task";
     public static final String OPEN_TASK_FAIL = "Fail while trying to open task";
     public static final String CLEAR_CHANGES_PASS = "I clear changes";
     public static final String CLEAR_CHANGES_FAIL = "Fail while trying to clear changes";
     public static final String VALIDATE_MANAGER_DATA_TABLE_PASS = "I validate if manager table shows the task created";
     public static final String VALIDATE_MANAGER_DATA_TABLE_FAIL = "Fail while trying to validate if manager table shows the task created";
-    public static final String SEARCH_TASK_PASS = "Fail while trying to validate if manager table shows the task created";
-    public static final String SEARCH_TASK_FAIL = "Fail while trying to validate if manager table shows the task created";
+    public static final String SEARCH_TASK_PASS = "I search a task";
+    public static final String SEARCH_TASK_FAIL = "Fail while trying to search a task";
 
 
 }

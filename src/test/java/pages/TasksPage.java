@@ -37,32 +37,28 @@ public class TasksPage extends BasePage{
 
     public static void validateTaskDataTable(){
         wait(2000);
-        //improve this
-        //String text =
         try {
+            String dataTableText = BasePage.getText(By.cssSelector(taskManagerTableRow1));
             if (mass.get(0).get("Name") != null) {
-                String text = BasePage.getText(By.cssSelector(taskManagerTableRow1));
-                Assert.assertEquals(text,mass.get(0).get("Name"));
+                Assert.assertTrue(dataTableText.contains(mass.get(0).get("Name")));
             }
             if (mass.get(0).get("Status") != null) {
-                String text = BasePage.getText(By.cssSelector(taskManagerTableRow1));
-                //contains
-                Assert.assertEquals(text,mass.get(0).get("Status"));
+                Assert.assertTrue(dataTableText.contains(mass.get(0).get("Status")));
             }
             if (mass.get(0).get("AssignTo") != null) {
-                String text = BasePage.getText(By.cssSelector(taskManagerTableRow1));
-                Assert.assertEquals(text,mass.get(0).get("AssignTo"));
+                Assert.assertTrue(dataTableText.contains(mass.get(0).get("AssignTo")));
             }
             if (mass.get(0).get("Type") != null) {
-                String text = BasePage.getText(By.cssSelector(taskManagerTableRow1));
-                Assert.assertEquals(text,mass.get(0).get("Type"));
+                Assert.assertTrue(dataTableText.contains(mass.get(0).get("Type")));
             }
             if (mass.get(0).get("DueDate") != null) {
-                String text = BasePage.getText(By.cssSelector(taskManagerTableRow1));
-                Assert.assertEquals(text,mass.get(0).get("DueDate"));
+                Assert.assertTrue(dataTableText.contains(mass.get(0).get("DueDate")));
+            }else{
+                FailureDelegatePage.handlePageException(LogPage.VALIDATE_MANAGER_DATA_TABLE_FAIL);
             }
+            ExtentReportsSetUp.testingPass(LogPage.VALIDATE_MANAGER_DATA_TABLE_PASS);
         } catch (Exception e) {
-            FailureDelegatePage.handlePageException(LogPage.CLEAR_CHANGES_FAIL);
+            FailureDelegatePage.handlePageException(LogPage.VALIDATE_MANAGER_DATA_TABLE_FAIL);
         }
     }
 
@@ -350,7 +346,7 @@ public class TasksPage extends BasePage{
             searchTaskManager(nameTask);
             verifyTaskFound(nameTask);
             BasePage.click(By.cssSelector(taskManagerTableRow1Col0));
-            ExtentReportsSetUp.testingPass(LogPage.VALIDATE_CLEAR_CHANGES_PASS);
+            ExtentReportsSetUp.testingPass(LogPage.OPEN_TASK_PASS);
         } catch (Exception e) {
             FailureDelegatePage.handlePageException(LogPage.OPEN_TASK_FAIL);
         }
@@ -358,11 +354,15 @@ public class TasksPage extends BasePage{
     /*
      * Method to search a task
      */
-    public static void searchTaskManager(String name){
+    public static void searchTaskManager(String searchedTask){
         wait(2000);
         try {
-            String nameTask = mass.get(0).get(name);
-            BasePage.write(By.cssSelector(taskManagerSearchField), nameTask);
+            if(searchedTask.equals("Name")||searchedTask.equals("AssignTo")){
+                String taskManager = mass.get(0).get(searchedTask);
+                BasePage.write(By.cssSelector(taskManagerSearchField), taskManager);
+            }else{
+                BasePage.write(By.cssSelector(taskManagerSearchField), searchedTask);
+            }
             ExtentReportsSetUp.testingPass(LogPage.SEARCH_TASK_PASS);
         } catch (Exception e) {
             FailureDelegatePage.handlePageException(LogPage.SEARCH_TASK_FAIL);
