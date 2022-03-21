@@ -1,4 +1,6 @@
 #Author: Milton Silva
+#Regression testcase TL-244: Search by Phone
+#Regression testcase TL-56: Access Quick Search Results
 
 @SearchByPhoneNumber
 Feature: Search by phone number

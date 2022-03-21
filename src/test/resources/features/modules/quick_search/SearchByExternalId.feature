@@ -1,4 +1,5 @@
 #Author: Milton Silva
+#Regression testcase TL-248: Search by ID
 
 @SearchById
 Feature: Search by external Id

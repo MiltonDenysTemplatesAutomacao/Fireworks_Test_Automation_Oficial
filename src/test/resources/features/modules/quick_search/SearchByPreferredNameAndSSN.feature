@@ -1,4 +1,6 @@
 #Author: Milton Silva
+#Regression testcase TL-245: Search by Preferred Name
+#Regression testcase TL-247: Search by Social Security Number
 
 @SearchByPreferredNameAndSSN
 Feature: Search by phone number

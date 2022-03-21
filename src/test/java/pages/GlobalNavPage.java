@@ -2,10 +2,9 @@ package pages;
 
 import config.extent_reports.ExtentReportsSetUp;
 import io.cucumber.datatable.DataTable;
-import org.junit.Assert;
 import org.openqa.selenium.By;
 
-public class GlobalNavPage extends BasePage{
+public class GlobalNavPage extends BasePage {
 
     public static final String fireWorksIcon = "smallHeaderLogo";
     public static final String homeQuickSearchField = "#homeBillboardSearch";
@@ -14,87 +13,87 @@ public class GlobalNavPage extends BasePage{
     /*
      * Footer Css
      */
-    public static String footerNavElement = "#footerNave";
-    public static String footerQuickAddMen = "#global_nav_quick_add_toggle";
-    public static String footerQuickAddPersonMenuItem = "#global_nav_add_person";
-    public static String footerQuickAddOrganizationMenuItem = "#global_nav_add_org";
-    public static String footerQuickAddStaffMenuItem = "#global_nav_add_staff";
-    public static String footerToolsMenu = "#global_nav_tools_toggle";
-    public static String footerToolsTasksMenuItem = "#global_nav_task";
+    public static final String footerNavElement = "#footerNave";
+    public static final String footerQuickAddMen = "#global_nav_quick_add_toggle";
+    public static final String footerQuickAddPersonMenuItem = "#global_nav_add_person";
+    public static final String footerQuickAddOrganizationMenuItem = "#global_nav_add_org";
+    public static final String footerQuickAddStaffMenuItem = "#global_nav_add_staff";
+    public static final String footerToolsMenu = "#global_nav_tools_toggle";
+    public static final String footerToolsTasksMenuItem = "#global_nav_task";
 
     /*
      * Quick Add Person Css
      */
-    public static String quickAddPersonFirstNameField = "#person_name_0_quickAddPersonNameFirst";
-    public static String quickAddPersonLastNameField = "#person_name_0_quickAddPersonNameLast";
-    public static String quickAddPersonEmailAddressField = "#entity_email_0_quickAddPersonEmailAddress";
-    public static String quickAddPersonEmailTypeDropdown = "#entity_email_0_quickAddPersonEmailType_component";
-    public static String quickAddPersonEmailTypeDropdownList = "#entity_email_0_quickAddPersonEmailType_dropdown_menu";
-    public static String quickAddPersonPhoneNumberField = "#entity_phone_0_quickAddPersonPhoneNumber";
-    public static String quickAddPersonPhoneTypeDropdown = "div#entity_phone_0_quickAddPersonPhoneType_component";
-    public static String quickAddPersonPhoneTypeDropdownList = "#entity_phone_0_quickAddPersonPhoneType_dropdown_menu";
-    public static String quickAddPersonOptInMethodDropdown = "#entity_email_0_quickAddPersonOptInMethod_toggle";
-    public static String quickAddPersonOptInMethodDropdownList = "#entity_email_0_quickAddPersonOptInMethod_dropdown_menu";
-    public static String quickAddPersonAddress1Field = "#entity_address_0_quickAddPersonAddress1";
-    public static String quickAddPersonAddress2Field = "#entity_address_0_quickAddPersonAddress2";
-    public static String quickAddPersonAddress3Field = "#entity_address_0_quickAddPersonAddress3";
-    public static String quickAddPersonAddress4Field = "#entity_address_0_quickAddPersonAddress4";
-    public static String quickAddPersonCityField = "#entity_address_0_quickAddPersonAddressCity";
-    public static String quickAddPersonStateDropdown = "div#entity_address_0_quickAddPersonAddressState_component";
-    public static String quickAddPersonStateDropdownList = "#entity_address_0_quickAddPersonAddressState_dropdown_menu";
-    public static String quickAddPersonCountryDropdown = "div#entity_address_0_quickAddPersonAddressCountry_component";
-    public static String quickAddPersonCountryDropdownList = "#entity_address_0_quickAddPersonAddressCountry_dropdown_menu";
-    public static String quickAddPersonPostalCodeField = "#entity_address_0_quickAddPersonAddressPostalCode";
-    public static String quickAddPersonRegionField = "#entity_address_0_quickAddPersonAddressRegion";
-    public static String quickAddPersonRoleDropdown = "div#quickAddPersonPersonRole_component";
-    public static String quickAddPersonRoleDropdownList = "#quickAddPersonPersonRole_dropdown_menu";
-    public static String quickAddStudentStatusCategoryDropdown = "div#person_student_status_0_quickAddPersonStudentStatusCategory_component";
-    public static String quickAddStudentStatusCategoryDropdownList = "#person_student_status_0_quickAddPersonStudentStatusCategory_dropdown_menu";
-    public static String quickAddStudentStatusDropdown = "div#person_student_status_0_quickAddPersonStudentStatus_component";
-    public static String quickAddStudentStatusDropdownList = "#person_student_status_0_quickAddPersonStudentStatus_dropdown_menu";
-    public static String quickAddStudentTypeDropdown = "div#quickAddPersonStudentType_component";
-    public static String quickAddStudentTypeDropdownList = "#quickAddPersonStudentType_dropdown_menu";
-    public static String quickAddStudentStatusDateField = "#person_student_status_0_quickAddPersonStudentStatusDate";
-    public static String quickAddStudentStatusEntryTermDropdown = "div#person_student_status_0_quickAddPersonStatusEntryTerm_component";
-    public static String quickAddStudentStatusEntryTermDropdownList = "#person_student_status_0_quickAddPersonStatusEntryTerm_dropdown_menu";
-    public static String quickAddPersonSaveGoButton = "#modalSubmitButtonquickAddPersonSaveGo";
-    public static String quickAddPersonSaveCloseButton = "#modalSubmitButtonquickAddPersonSaveClose";
+    public static final String quickAddPersonFirstNameField = "#person_name_0_quickAddPersonNameFirst";
+    public static final String quickAddPersonLastNameField = "#person_name_0_quickAddPersonNameLast";
+    public static final String quickAddPersonEmailAddressField = "#entity_email_0_quickAddPersonEmailAddress";
+    public static final String quickAddPersonEmailTypeDropdown = "#entity_email_0_quickAddPersonEmailType_component";
+    public static final String quickAddPersonEmailTypeDropdownList = "#entity_email_0_quickAddPersonEmailType_dropdown_menu";
+    public static final String quickAddPersonPhoneNumberField = "#entity_phone_0_quickAddPersonPhoneNumber";
+    public static final String quickAddPersonPhoneTypeDropdown = "div#entity_phone_0_quickAddPersonPhoneType_component";
+    public static final String quickAddPersonPhoneTypeDropdownList = "#entity_phone_0_quickAddPersonPhoneType_dropdown_menu";
+    public static final String quickAddPersonOptInMethodDropdown = "#entity_email_0_quickAddPersonOptInMethod_toggle";
+    public static final String quickAddPersonOptInMethodDropdownList = "#entity_email_0_quickAddPersonOptInMethod_dropdown_menu";
+    public static final String quickAddPersonAddress1Field = "#entity_address_0_quickAddPersonAddress1";
+    public static final String quickAddPersonAddress2Field = "#entity_address_0_quickAddPersonAddress2";
+    public static final String quickAddPersonAddress3Field = "#entity_address_0_quickAddPersonAddress3";
+    public static final String quickAddPersonAddress4Field = "#entity_address_0_quickAddPersonAddress4";
+    public static final String quickAddPersonCityField = "#entity_address_0_quickAddPersonAddressCity";
+    public static final String quickAddPersonStateDropdown = "div#entity_address_0_quickAddPersonAddressState_component";
+    public static final String quickAddPersonStateDropdownList = "#entity_address_0_quickAddPersonAddressState_dropdown_menu";
+    public static final String quickAddPersonCountryDropdown = "div#entity_address_0_quickAddPersonAddressCountry_component";
+    public static final String quickAddPersonCountryDropdownList = "#entity_address_0_quickAddPersonAddressCountry_dropdown_menu";
+    public static final String quickAddPersonPostalCodeField = "#entity_address_0_quickAddPersonAddressPostalCode";
+    public static final String quickAddPersonRegionField = "#entity_address_0_quickAddPersonAddressRegion";
+    public static final String quickAddPersonRoleDropdown = "div#quickAddPersonPersonRole_component";
+    public static final String quickAddPersonRoleDropdownList = "#quickAddPersonPersonRole_dropdown_menu";
+    public static final String quickAddStudentStatusCategoryDropdown = "div#person_student_status_0_quickAddPersonStudentStatusCategory_component";
+    public static final String quickAddStudentStatusCategoryDropdownList = "#person_student_status_0_quickAddPersonStudentStatusCategory_dropdown_menu";
+    public static final String quickAddStudentStatusDropdown = "div#person_student_status_0_quickAddPersonStudentStatus_component";
+    public static final String quickAddStudentStatusDropdownList = "#person_student_status_0_quickAddPersonStudentStatus_dropdown_menu";
+    public static final String quickAddStudentTypeDropdown = "div#quickAddPersonStudentType_component";
+    public static final String quickAddStudentTypeDropdownList = "#quickAddPersonStudentType_dropdown_menu";
+    public static final String quickAddStudentStatusDateField = "#person_student_status_0_quickAddPersonStudentStatusDate";
+    public static final String quickAddStudentStatusEntryTermDropdown = "div#person_student_status_0_quickAddPersonStatusEntryTerm_component";
+    public static final String quickAddStudentStatusEntryTermDropdownList = "#person_student_status_0_quickAddPersonStatusEntryTerm_dropdown_menu";
+    public static final String quickAddPersonSaveGoButton = "#modalSubmitButtonquickAddPersonSaveGo";
+    public static final String quickAddPersonSaveCloseButton = "#modalSubmitButtonquickAddPersonSaveClose";
     /*
      * Quick Add Organization Css
      */
-    public static String quickAddOrgOrganizationNameField = "#org_name_0_quickAddOrganizationOrgName";
-    public static String quickAddOrgPhoneNumberField = "#entity_phone_0_quickAddOrganizationPhoneNumber";
-    public static String quickAddOrgRoleDropdown = "#quickAddOrganizationOrgRole_component";
-    public static String quickAddOrgRoleDropdownList = "#quickAddOrganizationOrgRole_dropdown_menu";
-    public static String quickAddOrgPhoneTypeDropdown = "#entity_phone_0_quickAddOrganizationPhoneType_component";
-    public static String quickAddOrgPhoneTypeDropdownList = "#entity_phone_0_quickAddOrganizationPhoneType_dropdown_menu";
-    public static String quickAddOrgAddress1Field = "#entity_address_0_quickAddOrganizationAddress1";
-    public static String quickAddOrgAddress2Field = "#entity_address_0_quickAddOrganizationAddress2";
-    public static String quickAddOrgAddress3Field = "#entity_address_0_quickAddOrganizationAddress3";
-    public static String quickAddOrgAddress4Field = "#entity_address_0_quickAddOrganizationAddress4";
-    public static String quickAddOrgCityField = "#entity_address_0_quickAddOrganizationAddressCity";
-    public static String quickAddOrgStateDropdown = "#entity_address_0_quickAddOrganizationAddressState_component";
-    public static String quickAddOrgStateDropdownList = "#entity_address_0_quickAddOrganizationAddressState_dropdown_menu";
-    public static String quickAddOrgRegionField = "#entity_address_0_quickAddOrganizationAddressRegion";
-    public static String quickAddOrgPostalCodeField = "#entity_address_0_quickAddOrganizationAddressPostalCode";
-    public static String quickAddOrgCountryDropdown = "#entity_address_0_quickAddOrganizationAddressCountry_component";
-    public static String quickAddOrgCountryDropdownList = "#entity_address_0_quickAddOrganizationAddressCountry_dropdown_menu";
-    public static String quickAddOrgSaveGoButton = "#modalSubmitButtonquickAddOrganizationSaveGo";
+    public static final String quickAddOrgOrganizationNameField = "#org_name_0_quickAddOrganizationOrgName";
+    public static final String quickAddOrgPhoneNumberField = "#entity_phone_0_quickAddOrganizationPhoneNumber";
+    public static final String quickAddOrgRoleDropdown = "#quickAddOrganizationOrgRole_component";
+    public static final String quickAddOrgRoleDropdownList = "#quickAddOrganizationOrgRole_dropdown_menu";
+    public static final String quickAddOrgPhoneTypeDropdown = "#entity_phone_0_quickAddOrganizationPhoneType_component";
+    public static final String quickAddOrgPhoneTypeDropdownList = "#entity_phone_0_quickAddOrganizationPhoneType_dropdown_menu";
+    public static final String quickAddOrgAddress1Field = "#entity_address_0_quickAddOrganizationAddress1";
+    public static final String quickAddOrgAddress2Field = "#entity_address_0_quickAddOrganizationAddress2";
+    public static final String quickAddOrgAddress3Field = "#entity_address_0_quickAddOrganizationAddress3";
+    public static final String quickAddOrgAddress4Field = "#entity_address_0_quickAddOrganizationAddress4";
+    public static final String quickAddOrgCityField = "#entity_address_0_quickAddOrganizationAddressCity";
+    public static final String quickAddOrgStateDropdown = "#entity_address_0_quickAddOrganizationAddressState_component";
+    public static final String quickAddOrgStateDropdownList = "#entity_address_0_quickAddOrganizationAddressState_dropdown_menu";
+    public static final String quickAddOrgRegionField = "#entity_address_0_quickAddOrganizationAddressRegion";
+    public static final String quickAddOrgPostalCodeField = "#entity_address_0_quickAddOrganizationAddressPostalCode";
+    public static final String quickAddOrgCountryDropdown = "#entity_address_0_quickAddOrganizationAddressCountry_component";
+    public static final String quickAddOrgCountryDropdownList = "#entity_address_0_quickAddOrganizationAddressCountry_dropdown_menu";
+    public static final String quickAddOrgSaveGoButton = "#modalSubmitButtonquickAddOrganizationSaveGo";
     /*
      * Quick Add Staff Css
      */
-    public static String quickAddStaffModal = "#quickAddStaffModal";
-    public static String quickAddStaffModalLabel = "#quickAddStaffModalLabel";
-    public static String quickAddStaffFirstNameField = "#quickAddStaffNameFirst";
-    public static String quickAddStaffLastNameField = "#quickAddStaffNameLast";
-    public static String quickAddStaffEmailAddressField = "#quickAddStaffEmailAddress";
-    public static String quickAddStaffEmailTypeDropdown = "#s2id_quickAddStaffEmailType.select2-container.form-control.select2 a";
-    public static String quickAddStaffAccountStartDate = "#quickAddStaffDatetimepickerStart";
-    public static String quickAddStaffAccountEndDate = "#quickAddStaffDatetimepickerEnd";
-    public static String quickAddStaffPermissionsGroupDropdown = "#s2id_quickAddStaffPermissionGroup.select2-container.form-control.select2 a";
-    public static String quickAddStaffPermissionsGroupDropdownList = "#select2-results-1";
-    public static String quickAddStaffSaveGoButton = "#quickAddStaffModalSaveGo";
-    public static String quickAddStaffSaveCloseButton = "#quickAddStaffModalSaveClose";
+    public static final String quickAddStaffModal = "#quickAddStaffModal";
+    public static final String quickAddStaffModalLabel = "#quickAddStaffModalLabel";
+    public static final String quickAddStaffFirstNameField = "#quickAddStaffNameFirst";
+    public static final String quickAddStaffLastNameField = "#quickAddStaffNameLast";
+    public static final String quickAddStaffEmailAddressField = "#quickAddStaffEmailAddress";
+    public static final String quickAddStaffEmailTypeDropdown = "#s2id_quickAddStaffEmailType.select2-container.form-control.select2 a";
+    public static final String quickAddStaffAccountStartDate = "#quickAddStaffDatetimepickerStart";
+    public static final String quickAddStaffAccountEndDate = "#quickAddStaffDatetimepickerEnd";
+    public static final String quickAddStaffPermissionsGroupDropdown = "#s2id_quickAddStaffPermissionGroup.select2-container.form-control.select2 a";
+    public static final String quickAddStaffPermissionsGroupDropdownList = "#select2-results-1";
+    public static final String quickAddStaffSaveGoButton = "#quickAddStaffModalSaveGo";
+    public static final String quickAddStaffSaveCloseButton = "#quickAddStaffModalSaveClose";
 
     /*
      * Method to create a Person
@@ -423,8 +422,8 @@ public class GlobalNavPage extends BasePage{
      * Method to validate alert message
      */
     public static void alertMessageAfterAddPerson(String alertMessage) {
-        String errorMessage = String.format(LogPage.ALERT_MESSAGE_FAIL,alertMessage);
-        String passMessage = String.format(LogPage.ALERT_MESSAGE_PASS,alertMessage);
+        String errorMessage = String.format(LogPage.ALERT_MESSAGE_FAIL, alertMessage);
+        String passMessage = String.format(LogPage.ALERT_MESSAGE_PASS, alertMessage);
         try {
             waitElementById("alertMessage", 10);
             if (alertMessageByIdContains("alertMessage", alertMessage)) {
@@ -441,8 +440,8 @@ public class GlobalNavPage extends BasePage{
      * Method to quick search using one String parameter
      */
     public static void quickSearchOneParameter(String parameter) {
-        String errorMessage = String.format(LogPage.QUICK_SEARCH_ONE_PARAMETER_FAIL,parameter);
-        String passMessage = String.format(LogPage.QUICK_SEARCH_ONE_PARAMETER_PASS,parameter);
+        String errorMessage = String.format(LogPage.QUICK_SEARCH_ONE_PARAMETER_FAIL, parameter);
+        String passMessage = String.format(LogPage.QUICK_SEARCH_ONE_PARAMETER_PASS, parameter);
         try {
             BasePage.write(By.cssSelector(homeQuickSearchField), mass.get(0).get(parameter));
             BasePage.click(By.cssSelector(homeQuickSearchButton));
@@ -456,8 +455,8 @@ public class GlobalNavPage extends BasePage{
      * Method to quick search from home page partial
      */
     public static void quickSearchQuickPartial(String parameter) {
-        String errorMessage = String.format(LogPage.QUICK_SEARCH_PARTIAL_FAIL,parameter);
-        String passMessage = String.format(LogPage.QUICK_SEARCH_PARTIAL_PASS,parameter);
+        String errorMessage = String.format(LogPage.QUICK_SEARCH_PARTIAL_FAIL, parameter);
+        String passMessage = String.format(LogPage.QUICK_SEARCH_PARTIAL_PASS, parameter);
         try {
             String data = mass.get(0).get(parameter);
             BasePage.write(By.cssSelector(homeQuickSearchField), data.substring(0, 5));
@@ -467,10 +466,11 @@ public class GlobalNavPage extends BasePage{
             FailureDelegatePage.handlePageException(errorMessage);
         }
     }
+
     /*
      * Method to navigate to tasks
      */
-    public static void navigateToTasks(){
+    public static void navigateToTasks() {
         try {
             BasePage.click(By.cssSelector(footerToolsMenu));
             BasePage.wait(2000);

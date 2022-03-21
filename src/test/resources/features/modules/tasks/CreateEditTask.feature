@@ -1,4 +1,6 @@
 #Author: Milton Silva
+#Regression testcase TL-1120: Create a new task
+#Regression testcase TL-1122: Task Manager
 
 @CreateEditTask
 Feature: Search by phone number

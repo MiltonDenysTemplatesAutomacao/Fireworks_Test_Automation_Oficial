@@ -1,6 +1,5 @@
 package pages;
 
-import config.DriverBase;
 import config.extent_reports.ExtentReportsSetUp;
 import io.cucumber.datatable.DataTable;
 import org.openqa.selenium.By;
@@ -36,9 +35,66 @@ public class TasksPage extends BasePage{
     public static final String clearChangesButton = "clearChangesButton";
     public static final String modalClearChangesConfirmationButton = "modalSubmitButtonclearChangesConfirmation";
     public static final String dueTimeDisabledField = "#task_due_time_display[disabled]";
+    public static final String deleteTaskButton = "deleteTaskButton";
+    public static final String taskDeleteModalYesDeleteButton = "modalSubmitButtondeleteTask";
+    public static final String taskDeleteModalCancelButton = "modalCancelButtondeleteTask";
 
-
-    public static void eraseFieldDueDateField(){
+    /*
+     * Method to click on Yes button on delete task modal
+     */
+    public static void validateDeletedTask(){
+        wait(3000);
+        try {
+            String task = getText(By.cssSelector(taskManagerTableRow1Col0));
+            if(task != mass.get(0).get("Name")){
+                ExtentReportsSetUp.testingPass(LogPage.VALIDATE_DELETED_TASK_PASS);
+            }else{
+                FailureDelegatePage.handlePageException(LogPage.VALIDATE_DELETED_TASK_FAIL);
+            }
+        } catch (Exception e) {
+            FailureDelegatePage.handlePageException(LogPage.VALIDATE_DELETED_TASK_FAIL);
+        }
+    }
+    /*
+     * Method to click on delete button
+     */
+    public static void deleteTaskButton(){
+        wait(3000);
+        try {
+            BasePage.click(By.id(deleteTaskButton));
+            ExtentReportsSetUp.testingPass(LogPage.DELETE_TASK_PASS);
+        } catch (Exception e) {
+            FailureDelegatePage.handlePageException(LogPage.DELETE_TASK_FAIL);
+        }
+    }
+    /*
+     * Method to click on Cancel button on delete task modal
+     */
+    public static void cancelDeleteTaskButton(){
+        wait(3000);
+        try {
+            BasePage.click(By.id(taskDeleteModalCancelButton));
+            ExtentReportsSetUp.testingPass(LogPage.CANCEL_BUTTON_DELETE_TASK_MODAL_PASS);
+        } catch (Exception e) {
+            FailureDelegatePage.handlePageException(LogPage.CANCEL_BUTTON_DELETE_TASK_MODAL_FAIL);
+        }
+    }
+    /*
+     * Method to click on Yes button on delete task modal
+     */
+    public static void taskDeleteModalYesDeleteButton(){
+        wait(3000);
+        try {
+            BasePage.click(By.id(taskDeleteModalYesDeleteButton));
+            ExtentReportsSetUp.testingPass(LogPage.YES_BUTTON_DELETE_TASK_MODAL_PASS);
+        } catch (Exception e) {
+            FailureDelegatePage.handlePageException(LogPage.YES_BUTTON_DELETE_TASK_MODAL_FAIL);
+        }
+    }
+    /*
+     * Method to erase DueDate field
+     */
+    public static void eraseDueDateField(){
         try {
             BasePage.write(By.id(dueDateField), "");
             ExtentReportsSetUp.testingPass(LogPage.ERASE_DUE_DATE_FIELD_PASS);
@@ -54,6 +110,7 @@ public class TasksPage extends BasePage{
             if(checkIfElementIsVisible(By.cssSelector(dueTimeDisabledField))){
                 ExtentReportsSetUp.testingPass(LogPage.VALIDATE_DUO_TIME_DISABLED_PASS);
             }else{
+                FailureDelegatePage.handlePageException(LogPage.VALIDATE_DUO_TIME_DISABLED_FAIL);
             }
         } catch (Exception e) {
             FailureDelegatePage.handlePageException(LogPage.VALIDATE_DUO_TIME_DISABLED_FAIL);
@@ -201,12 +258,8 @@ public class TasksPage extends BasePage{
      * Method to validate a smart search
      */
     public static boolean verifySmartSearchFound (String searchName)throws Exception{
-        boolean alertMessage = false;
         String text = getText(By.cssSelector(smartSearchPickerModalTableRow1Col1));
-        if (text.equals(searchName)) {
-            alertMessage = true;
-        }
-        return alertMessage;
+        return text.equals(searchName);
     }
     /*
      * Method to create task
@@ -446,6 +499,7 @@ public class TasksPage extends BasePage{
         wait(2000);
         try {
             BasePage.scrollToElement(By.id(commentsField));
+            wait(2000);
             BasePage.click(By.id(taskSaveChangesButton));
         } catch (Exception e) {
             FailureDelegatePage.handlePageException(LogPage.SAVE_CHANGES_FAIL);

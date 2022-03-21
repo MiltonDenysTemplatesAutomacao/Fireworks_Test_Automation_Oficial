@@ -1,8 +1,8 @@
 #Author: Milton Silva
+#Regression testcase TL-246 (2 of 2): Search by Email
 
 @SearchByEmail
 Feature: Search by phone number
-
   @SearchPersonByEmail
   Scenario: to Quick Search a person by Email, full or partial
     Given I login as firestarter

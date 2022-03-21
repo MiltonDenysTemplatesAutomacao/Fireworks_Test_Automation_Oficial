@@ -1,7 +1,8 @@
 #Author: Milton Silva
+#Regression testcase TL-1121: Tasks Composer: Validation
 
-@TaskRequiredFieldsValidation
-Feature: Task Required Fields Validation
+  @TaskRequiredFieldsValidation
+  Feature: Task Required Fields Validation
 
   @StaffTaskRequiredFieldsValidation
   Scenario: Verify required field validation on task composer

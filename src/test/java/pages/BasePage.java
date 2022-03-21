@@ -101,11 +101,9 @@ public class BasePage {
     /*
      * Method replace a String
      */
-    public static String replaceString(String name, String from, String to) throws Exception{
+    public static String replaceString(String name, String from, String to) {
         String text = name;
-        String correctedText = text.replace(from, to);
-        return correctedText;
-
+        return name.replace(from, to);
     }
 
     /*********
