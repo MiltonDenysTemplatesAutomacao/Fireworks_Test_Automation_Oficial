@@ -23,7 +23,19 @@ public class BasePage {
 //        DriverBase.getDriver().get(dotenv.get("APP_URL"));
 //
 //    }
-
+    /*
+     * Method to check if an element is visible
+     */
+    public static boolean checkIfElementIsVisible(By by)throws Exception{
+        boolean display =  DriverBase.getDriver().findElement(by).isDisplayed();
+        return display;
+    }
+    /*
+     * Method to clear fields
+     */
+    public static void clearField(By by)throws Exception{
+        DriverBase.getDriver().findElement(by).clear();
+    }
     /*
      * Method to list elements in a list by css and tag
      */
@@ -47,6 +59,7 @@ public class BasePage {
     public static void clickOnListOfElements(String value) throws Exception {
         for (int i = 0; i < listOfElements.size(); i++) {
             if (listOfElements.get(i).getText().equals(value)) {
+                System.out.println(listOfElements.get(i).getText());
                 listOfElements.get(i).click();
                 break;
             }
@@ -77,6 +90,10 @@ public class BasePage {
         return DriverBase.getDriver().findElement(by).getText();
     }
 
+    public static String getAtribute(By by,String value) throws Exception {
+        return DriverBase.getDriver().findElement(by).getAttribute(value);
+    }
+
     public String getText(String id) throws Exception {
         return getText(By.id(id));
     }
@@ -84,7 +101,7 @@ public class BasePage {
     /*
      * Method replace a String
      */
-    public static String replaceString(String name, String from, String to) {
+    public static String replaceString(String name, String from, String to) throws Exception{
         String text = name;
         String correctedText = text.replace(from, to);
         return correctedText;
