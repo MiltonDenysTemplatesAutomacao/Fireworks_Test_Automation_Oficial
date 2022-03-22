@@ -2,7 +2,6 @@ package steps;
 
 import io.cucumber.datatable.DataTable;
 import io.cucumber.java.en.When;
-import pages.GlobalNavPage;
 import pages.TasksPage;
 
 public class TasksSteps {
@@ -19,7 +18,7 @@ public class TasksSteps {
     public static void eraseField() {
         TasksPage.eraseDueDateField();
     }
-    @When("I validate id duo time is disabled")
+    @When("I validate if duo time is disabled")
     public static void validateDuoTimeDisabled( ) {
         TasksPage.validateDuoTimeDisabled();
     }

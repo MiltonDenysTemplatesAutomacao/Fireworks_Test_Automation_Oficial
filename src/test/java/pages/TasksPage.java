@@ -38,13 +38,14 @@ public class TasksPage extends BasePage{
     public static final String deleteTaskButton = "deleteTaskButton";
     public static final String taskDeleteModalYesDeleteButton = "modalSubmitButtondeleteTask";
     public static final String taskDeleteModalCancelButton = "modalCancelButtondeleteTask";
+    public static final String taskDeleteModalLabel = "deleteTaskModalLabel";
 
     /*
      * Method to click on Yes button on delete task modal
      */
     public static void validateDeletedTask(){
-        wait(3000);
         try {
+            waitElementBy(By.cssSelector(taskManagerTableRow1Col0),20);
             String task = getText(By.cssSelector(taskManagerTableRow1Col0));
             if(task != mass.get(0).get("Name")){
                 ExtentReportsSetUp.testingPass(LogPage.VALIDATE_DELETED_TASK_PASS);
@@ -71,8 +72,8 @@ public class TasksPage extends BasePage{
      * Method to click on Cancel button on delete task modal
      */
     public static void cancelDeleteTaskButton(){
-        wait(3000);
         try {
+            waitElementBy(By.id(taskDeleteModalLabel),10);
             BasePage.click(By.id(taskDeleteModalCancelButton));
             ExtentReportsSetUp.testingPass(LogPage.CANCEL_BUTTON_DELETE_TASK_MODAL_PASS);
         } catch (Exception e) {
@@ -83,8 +84,8 @@ public class TasksPage extends BasePage{
      * Method to click on Yes button on delete task modal
      */
     public static void taskDeleteModalYesDeleteButton(){
-        wait(3000);
         try {
+            waitElementBy(By.id(taskDeleteModalYesDeleteButton),10);
             BasePage.click(By.id(taskDeleteModalYesDeleteButton));
             ExtentReportsSetUp.testingPass(LogPage.YES_BUTTON_DELETE_TASK_MODAL_PASS);
         } catch (Exception e) {
@@ -125,7 +126,7 @@ public class TasksPage extends BasePage{
         String errorMessage = String.format(LogPage.ALERT_MESSAGE_FAIL,alertMessage);
         String passMessage = String.format(LogPage.ALERT_MESSAGE_PASS,alertMessage);
         try {
-            waitElementById("pageValidationAlertMessageClose", 10);
+            waitElementBy(By.id("pageValidationAlertMessageClose"), 10);
             String fullNameReturn = BasePage.getText(By.id("pageAlertMessages"));
             if (alertMessageByIdContains("pageAlertMessages", alertMessage)) {
                 ExtentReportsSetUp.testingPass(passMessage);
@@ -151,8 +152,8 @@ public class TasksPage extends BasePage{
      * Method to validate task data table
      */
     public static void validateTaskDataTable(){
-        wait(2000);
         try {
+            waitElementBy(By.cssSelector(taskManagerTableRow1),20);
             String dataTableText = BasePage.getText(By.cssSelector(taskManagerTableRow1));
             if (mass.get(0).get("Name") != null) {
                 Assert.assertTrue(dataTableText.contains(mass.get(0).get("Name")));
@@ -195,14 +196,14 @@ public class TasksPage extends BasePage{
      */
     public static void clickClearChanges()throws Exception{
         BasePage.scrollToElement(By.id(commentsField));
-        wait(2000);
+        waitElementBy(By.id(clearChangesButton),20);
         BasePage.click(By.id(clearChangesButton));
     }
     /*
      * Method to affirm clear changes
      */
     public static void affirmClearChanges()throws Exception{
-        wait(2000);
+        waitElementBy(By.id(modalClearChangesConfirmationButton),20);
         BasePage.click(By.id(modalClearChangesConfirmationButton));
     }
     /*
@@ -216,7 +217,7 @@ public class TasksPage extends BasePage{
      */
     public static void clickCreateTaskButton(){
         try {
-            wait(2000);
+            waitElementBy(By.cssSelector(createTaskButton), 10);
             BasePage.click(By.cssSelector(createTaskButton));
             ExtentReportsSetUp.testingPass(LogPage.CREATE_TASK_BUTTON_PASS);
         } catch (Exception e) {
@@ -227,8 +228,8 @@ public class TasksPage extends BasePage{
      * Method to pick a smart search
      */
     public static void pickSmartSearch(String smartSearch){
-        wait(2000);
         try {
+            waitElementBy(By.id(smartSearchPickerButton),20);
             BasePage.click(By.id(smartSearchPickerButton));
             searchSmartSearchPicker(smartSearch);
             smartSearchPickerModalChooseButton();
@@ -241,11 +242,11 @@ public class TasksPage extends BasePage{
      * Method to search a smart search and validate if it is corrected with the one searched
      */
     public static void searchSmartSearchPicker (String searchName)throws Exception{
-        wait(2000);
         try {
+            waitElementBy(By.id(smartSearchPickerModalSearchField),20);
             BasePage.write(By.id(smartSearchPickerModalSearchField), searchName);
             if(verifySmartSearchFound(searchName)){
-                wait(2000);
+                waitElementBy(By.cssSelector(smartSearchPickerModalRow1Checkbox),20);
                 BasePage.click(By.cssSelector(smartSearchPickerModalRow1Checkbox));
             }else{
                 FailureDelegatePage.handlePageException(LogPage.SEARCH_SMART_SEARCH_PICKER_FAIL);
@@ -278,6 +279,7 @@ public class TasksPage extends BasePage{
      */
     public static void updateTaskFields(){
         try {
+            wait(2000);
             BasePage.scrollToElement(By.id(taskNameField));
             if (mass.get(0).get("Name") != null) {
                 BasePage.write(By.id(taskNameField), mass.get(0).get("Name"));
@@ -298,6 +300,7 @@ public class TasksPage extends BasePage{
 
             if (mass.get(0).get("AssignTo") != null) {
                 wait(2000);
+                waitElementBy(By.cssSelector(assignToDropdown),20);
                 BasePage.click(By.cssSelector(assignToDropdown));
                 BasePage.selectElementsList(assignToDropdownList, "a");
                 clickOnListOfElements(mass.get(0).get("AssignTo"));
@@ -353,7 +356,7 @@ public class TasksPage extends BasePage{
             BasePage.scrollToElement(By.id(smartSearchPickerButton));
 
             if (mass.get(0).get("AssignTo") != null) {
-                wait(2000);
+                waitElementBy(By.cssSelector(assignToDropdown),10);
                 BasePage.click(By.cssSelector(assignToDropdown));
                 BasePage.selectElementsList(assignToDropdownList, "a");
                 clickOnListOfElements(mass.get(0).get("AssignTo"));
@@ -388,7 +391,7 @@ public class TasksPage extends BasePage{
      */
     public static void verifyTask(){
         try {
-            wait(2000);
+            waitElementBy(By.id(taskNameField),20);
             if (mass.get(0).get("Name") != null) {
                String text = BasePage.getAtribute(By.id(taskNameField),"value");
                Assert.assertEquals(text,mass.get(0).get("Name"));
@@ -443,6 +446,7 @@ public class TasksPage extends BasePage{
     public static void validateClearChanges(){
         try {
             wait(2000);
+
             if (mass.get(1).get("Name") != null) {
                String text = BasePage.getAtribute(By.id(taskNameField),"value");
                Assert.assertEquals(text,mass.get(1).get("Name"));
@@ -496,10 +500,10 @@ public class TasksPage extends BasePage{
      * Method to click on save changes button
      */
     public static void taskSaveChangesButton(){
-        wait(2000);
         try {
+            waitElementBy(By.id(taskSaveChangesButton),10);
             BasePage.scrollToElement(By.id(commentsField));
-            wait(2000);
+            waitElementBy(By.id(taskSaveChangesButton),10);
             BasePage.click(By.id(taskSaveChangesButton));
         } catch (Exception e) {
             FailureDelegatePage.handlePageException(LogPage.SAVE_CHANGES_FAIL);

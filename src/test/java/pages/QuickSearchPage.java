@@ -16,7 +16,7 @@ public class QuickSearchPage extends BasePage{
         String errorMessage = String.format(LogPage.QUICK_SEARCH_ONE_PARAMETER_FAIL,parameter);
         String passMessage = String.format(LogPage.QUICK_SEARCH_ONE_PARAMETER_PASS,parameter);
         try {
-            wait(2000);
+            waitElementBy(By.xpath(quickSearchManagerTable),20);
             String text = getText(By.xpath(quickSearchManagerTable));
             if (text.contains(mass.get(0).get(parameter))) {
                 ExtentReportsSetUp.testingPass(passMessage);
@@ -31,8 +31,8 @@ public class QuickSearchPage extends BasePage{
      * Method to open a record
      */
     public static void openRecord() {
-        wait(2000);
         try {
+            waitElementBy(By.cssSelector(quickSearchManagerTableRow0),20);
             BasePage.click(By.cssSelector(quickSearchManagerTableRow0));
             ExtentReportsSetUp.testingPass(LogPage.OPEN_RECORD_PASS);
         } catch (Exception e) {

@@ -14,13 +14,11 @@ public class QuickAddSteps {
 
     @And("I create a person")
     public static void createPerson(DataTable data) {
-
         GlobalNavPage.createPerson(data);
     }
 
     @And("I create an organization")
     public static void createOrganization(DataTable data) {
-
         GlobalNavPage.createOrganization(data);
     }
 

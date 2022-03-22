@@ -5,7 +5,7 @@ public class LogPage {
     public static final String SAVE_CHANGES_FAIL = "Error while trying to save changes";
     public static final String SAVE_CHANGES_PASS = "I click on save changes";
     public static final String DELETE_TASK_PASS = "I click on delete task";
-    public static final String DELETE_TASK_FAIL = "FAILED while trying to click on save changes";
+    public static final String DELETE_TASK_FAIL = "FAILED while trying to delete task";
     public static final String CANCEL_BUTTON_DELETE_TASK_MODAL_PASS = "I click on cancel button on delete task modal";
     public static final String CANCEL_BUTTON_DELETE_TASK_MODAL_FAIL = "FAILED while trying to click on cancel button on delete task modal";
     public static final String YES_BUTTON_DELETE_TASK_MODAL_PASS = "I click on yes button on delete task modal";
@@ -61,7 +61,7 @@ public class LogPage {
     public static final String ALERT_MESSAGE_FAIL = "FAILED to recieve %s alert message";
     public static final String ALERT_MESSAGE_PASS = "I received %s alert message";
     public static final String QUICK_SEARCH_ONE_PARAMETER_PASS = "I quick search %s from home page";
-    public static final String QUICK_SEARCH_ONE_PARAMETER_FAIL = "FAILED to quick search %s firstname from home page";
+    public static final String QUICK_SEARCH_ONE_PARAMETER_FAIL = "FAILED to quick search %s from home page";
     public static final String QUICK_SEARCH_PARTIAL_PASS = "I quick search partial %s";
     public static final String QUICK_SEARCH_PARTIAL_FAIL = "FAILED to quick search partial %s";
     public static final String NAVIGATE_TO_TASKS_PASS = "I navigate to tasks";

@@ -30,8 +30,8 @@ public class OrgPage extends BasePage{
      * to update email address in Contact tab on records
      */
     public static void updateEmailAddress(String emailAddress,String emailType,String emailOpt, String optStatus, String optDate, String emailStatus, String emailContent){
-        BasePage.wait(2000);
         try {
+            waitElementBy(By.cssSelector(emailAddressField),20);
             BasePage.scrollToElement(By.cssSelector(organizationNameField));
             if (mass.get(0).get(emailAddress) != null) {
                 BasePage.write(By.cssSelector(emailAddressField), mass.get(0).get(emailAddress));
@@ -58,8 +58,8 @@ public class OrgPage extends BasePage{
      * to save changes in Contact tab on records
      */
     public static void saveChangesBtnOrgContact(){
-        BasePage.wait(2000);
         try {
+            waitElementBy(By.id(orgBasicSaveChangesButton),20);
             BasePage.scrollToElement(By.id(orgBasicSaveChangesButton));
             BasePage.click(By.id(orgBasicSaveChangesButton));
             ExtentReportsSetUp.testingPass(LogPage.SAVE_CHANGES_PASS);
@@ -71,8 +71,8 @@ public class OrgPage extends BasePage{
      * to update Id Types in contact tab on records
      */
     public static void updateExternalIdTypes(String type,String idNumber,String idRecordedDate,String whoAddedId, String comments){
-        BasePage.wait(2000);
         try {
+            waitElementBy(By.xpath(plusButtonExternalId),20);
             BasePage.scrollToElement(By.xpath(plusButtonExternalId));
 
             if (mass.get(0).get(type) != null) {
@@ -106,8 +106,8 @@ public class OrgPage extends BasePage{
      * to save changes in Id Types tab on records
      */
     public static void saveChangesBtnPersonIdTypes(){
-        BasePage.wait(2000);
         try {
+            waitElementBy(By.id(saveChangesBtnOrgIdTypes),20);
             BasePage.scrollToElement(By.id(saveChangesBtnOrgIdTypes));
             BasePage.click(By.id(saveChangesBtnOrgIdTypes));
             ExtentReportsSetUp.testingPass(LogPage.SAVE_CHANGES_PASS);

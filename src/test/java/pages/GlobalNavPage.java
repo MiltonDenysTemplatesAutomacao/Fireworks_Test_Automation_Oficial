@@ -153,7 +153,7 @@ public class GlobalNavPage extends BasePage {
     public static void navigateQuickAddCreatePersonPage() {
         try {
             BasePage.click(By.cssSelector(footerQuickAddMen));
-            wait(2000);
+            waitElementBy(By.cssSelector(footerQuickAddPersonMenuItem),20);
             BasePage.click(By.cssSelector(footerQuickAddPersonMenuItem));
             ExtentReportsSetUp.testingPass(LogPage.NAVIGATE_QUICK_ADD_CREATE_PERSON_PAGE_PASS);
         } catch (Exception e) {
@@ -166,8 +166,9 @@ public class GlobalNavPage extends BasePage {
      */
     public static void navigateQuickAddCreateOrganizationPage() {
         try {
+            BasePage.wait(1000);
             BasePage.click(By.cssSelector(footerQuickAddMen));
-            BasePage.wait(3000);
+            BasePage.wait(1000);
             BasePage.click(By.cssSelector(footerQuickAddOrganizationMenuItem));
             ExtentReportsSetUp.testingPass(LogPage.NAVIGATE_QUICK_ADD_CREATE_CREATE_ORGANIZATION_PAGE_PASS);
         } catch (Exception e) {
@@ -180,8 +181,9 @@ public class GlobalNavPage extends BasePage {
      */
     public static void navigateQuickAddCreateStaffPage() {
         try {
+            BasePage.wait(1000);
             BasePage.click(By.cssSelector(footerQuickAddMen));
-            BasePage.wait(2000);
+            BasePage.wait(1000);
             BasePage.click(By.cssSelector(footerQuickAddStaffMenuItem));
             ExtentReportsSetUp.testingPass(LogPage.NAVIGATE_QUICK_ADD_CREATE_CREATE_STAFF_PAGE_PASS);
         } catch (Exception e) {
@@ -425,7 +427,7 @@ public class GlobalNavPage extends BasePage {
         String errorMessage = String.format(LogPage.ALERT_MESSAGE_FAIL, alertMessage);
         String passMessage = String.format(LogPage.ALERT_MESSAGE_PASS, alertMessage);
         try {
-            waitElementById("alertMessage", 10);
+            waitElementBy(By.id("alertMessage"), 10);
             if (alertMessageByIdContains("alertMessage", alertMessage)) {
                 ExtentReportsSetUp.testingPass(passMessage);
             } else {
@@ -473,7 +475,7 @@ public class GlobalNavPage extends BasePage {
     public static void navigateToTasks() {
         try {
             BasePage.click(By.cssSelector(footerToolsMenu));
-            BasePage.wait(2000);
+            waitElementBy(By.cssSelector(footerToolsTasksMenuItem),10);
             BasePage.click(By.cssSelector(footerToolsTasksMenuItem));
             ExtentReportsSetUp.testingPass(LogPage.NAVIGATE_TO_TASKS_PASS);
         } catch (Exception e) {

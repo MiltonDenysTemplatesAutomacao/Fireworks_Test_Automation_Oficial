@@ -64,8 +64,8 @@ public class PersonPage extends BasePage{
      * to update Citizenship values in basic tab on records
      */
     public static void updateCitizenshipValues(String citizenshipType,String countryOfCitizenship,String ssn){
-        BasePage.wait(2000);
         try {
+            waitElementBy(By.cssSelector(citizenshipTypeDropdown),20);
             if (mass.get(0).get(citizenshipType) != null) {
                 BasePage.click(By.cssSelector(citizenshipTypeDropdown));
                 BasePage.selectElementsList(citizenshipTypeDropdownList, "a");
@@ -89,8 +89,8 @@ public class PersonPage extends BasePage{
      * to update names values values in contact tab on records
      */
     public static void updateNameValues(String firstName,String lastName,String middleName,String preferredName, String suffix, String salutation){
-        BasePage.wait(3000);
         try {
+            waitElementBy(By.id(firstNameField),20);
             if (mass.get(0).get(firstName) != null) {
                 BasePage.write(By.id(firstNameField), mass.get(0).get(firstName));
             }
@@ -123,10 +123,9 @@ public class PersonPage extends BasePage{
      * to update Id Types in contact tab on records
      */
     public static void updateExternalIdTypes(String type,String idNumber,String idRecordedDate,String whoAddedId, String comments){
-        BasePage.wait(2000);
         try {
+            waitElementBy(By.cssSelector(typeDropdown),20);
             BasePage.scrollToElement(By.xpath(plusButtonExternalId));
-
             if (mass.get(0).get(type) != null) {
                 BasePage.click(By.cssSelector(typeDropdown));
                 BasePage.selectElementsList(typeDropdownList, "a");
@@ -157,8 +156,8 @@ public class PersonPage extends BasePage{
      * to save changes  in Basic tab on records
      */
     public static void saveChangesBtnPersonBasic(){
-        BasePage.wait(2000);
         try {
+            waitElementBy(By.id(personBasicSaveChangesButton),20);
             BasePage.scrollToElement(By.id(personBasicSaveChangesButton));
             BasePage.click(By.id(personBasicSaveChangesButton));
             ExtentReportsSetUp.testingPass(LogPage.SAVE_CHANGES_PASS);
@@ -170,8 +169,8 @@ public class PersonPage extends BasePage{
      * to save changes in Contact tab on records
      */
     public static void saveChangesBtnPersonContact(){
-        BasePage.wait(2000);
         try {
+            waitElementBy(By.id(saveChangesBtnPersonContact),20);
             BasePage.scrollToElement(By.id(saveChangesBtnPersonContact));
             BasePage.click(By.id(saveChangesBtnPersonContact));
             ExtentReportsSetUp.testingPass(LogPage.SAVE_CHANGES_PASS);
@@ -183,8 +182,8 @@ public class PersonPage extends BasePage{
      * to save changes in Id Types tab on records
      */
     public static void saveChangesBtnPersonIdTypes(){
-        BasePage.wait(2000);
         try {
+            waitElementBy(By.id(saveChangesBtnPersonIdTypes),20);
             BasePage.scrollToElement(By.id(saveChangesBtnPersonIdTypes));
             BasePage.click(By.id(saveChangesBtnPersonIdTypes));
             ExtentReportsSetUp.testingPass(LogPage.SAVE_CHANGES_PASS);

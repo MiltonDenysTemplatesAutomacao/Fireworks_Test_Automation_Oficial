@@ -7,6 +7,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.time.Duration;
 import java.util.List;
 import java.util.Map;
 
@@ -26,16 +27,18 @@ public class BasePage {
     /*
      * Method to check if an element is visible
      */
-    public static boolean checkIfElementIsVisible(By by)throws Exception{
-        boolean display =  DriverBase.getDriver().findElement(by).isDisplayed();
+    public static boolean checkIfElementIsVisible(By by) throws Exception {
+        boolean display = DriverBase.getDriver().findElement(by).isDisplayed();
         return display;
     }
+
     /*
      * Method to clear fields
      */
-    public static void clearField(By by)throws Exception{
+    public static void clearField(By by) throws Exception {
         DriverBase.getDriver().findElement(by).clear();
     }
+
     /*
      * Method to list elements in a list by css and tag
      */
@@ -90,12 +93,8 @@ public class BasePage {
         return DriverBase.getDriver().findElement(by).getText();
     }
 
-    public static String getAtribute(By by,String value) throws Exception {
+    public static String getAtribute(By by, String value) throws Exception {
         return DriverBase.getDriver().findElement(by).getAttribute(value);
-    }
-
-    public String getText(String id) throws Exception {
-        return getText(By.id(id));
     }
 
     /*
@@ -139,17 +138,18 @@ public class BasePage {
     /*
      * Method to wait until a specific element by id appears
      */
-    public static void waitElementById(String id, int time) throws Exception {
-        WebDriverWait wait = new WebDriverWait(DriverBase.getDriver(), time);
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.id(id)));
+    public static void waitElementBy(By by, int time) throws Exception {
+        WebDriverWait wait = new WebDriverWait(DriverBase.getDriver(), Duration.ofSeconds(time));
+        wait.until(ExpectedConditions.visibilityOfElementLocated(by));
     }
 
     public static void waitUntilElementPresence(By by, int time) throws Exception {
-        WebDriverWait wait = new WebDriverWait(DriverBase.getDriver(),time);
+        WebDriverWait wait = new WebDriverWait(DriverBase.getDriver(), Duration.ofSeconds(time));
         wait.until(ExpectedConditions.presenceOfElementLocated(by));
     }
+
     public static void waitUntilElementToBeSelected(By by, int time) throws Exception {
-        WebDriverWait wait = new WebDriverWait(DriverBase.getDriver(),time);
+        WebDriverWait wait = new WebDriverWait(DriverBase.getDriver(), Duration.ofSeconds(time));
         wait.until(ExpectedConditions.elementToBeClickable(by));
     }
 
@@ -161,12 +161,17 @@ public class BasePage {
         }
         return miliseconds;
     }
+
     /*
      * Method to scroll until element is visible
      */
-    public static void scrollToElement(By by)throws Exception{
-            JavascriptExecutor js = (JavascriptExecutor) DriverBase.getDriver();
-            WebElement element = DriverBase.getDriver().findElement(by);
-            js.executeScript("arguments[0].scrollIntoView();",element);
+    public static void scrollToElement(By by) throws Exception {
+        JavascriptExecutor js = (JavascriptExecutor) DriverBase.getDriver();
+        WebElement element = DriverBase.getDriver().findElement(by);
+        js.executeScript("arguments[0].scrollIntoView();", element);
+    }
+
+    public String getText(String id) throws Exception {
+        return getText(By.id(id));
     }
 }
