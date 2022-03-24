@@ -70,6 +70,8 @@ public class LogPage {
     public static final String QUICK_SEARCH_PARTIAL_FAIL = "FAILED to quick search partial %s";
     public static final String NAVIGATE_TO_TASKS_PASS = "I navigate to tasks";
     public static final String NAVIGATE_TO_TASKS_FAIl = "FAILED to navigate to to task";
+    public static final String NAVIGATE_TO_TOOLS_PASS = "I navigate to tools";
+    public static final String NAVIGATE_TO_TOOLS_FAIl = "FAILED to navigate to tools";
     public static final String CREATE_TASK_BUTTON_PASS = "I click on create task button";
     public static final String CREATE_TASK_BUTTON_FAIL = "FAILED to click on create task button";
     public static final String CREATE_TASK_PASS = "I create a task";

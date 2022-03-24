@@ -95,6 +95,18 @@ public class GlobalNavPage extends BasePage {
     public static final String quickAddStaffSaveGoButton = "#quickAddStaffModalSaveGo";
     public static final String quickAddStaffSaveCloseButton = "#quickAddStaffModalSaveClose";
 
+
+    public static void validateTaskInToolMenuIsNotDisplayed(){
+        try {
+            if (checkIfElementIsVisible(By.cssSelector(footerToolsTasksMenuItem))){
+                System.out.println(true);
+            }else{
+                System.out.println(false);
+            }
+        } catch (Exception e) {
+        }
+    }
+
     /*
      * Method to create a Person
      */
@@ -468,6 +480,21 @@ public class GlobalNavPage extends BasePage {
             FailureDelegatePage.handlePageException(errorMessage);
         }
     }
+
+    /*
+     * Method to navigate to tools
+     */
+    public static void navigateToTools() {
+        try {
+            waitUntilElementToBeSelected(By.cssSelector(footerToolsMenu),20);
+            BasePage.click(By.cssSelector(footerToolsMenu));
+            ExtentReportsSetUp.testingPass(LogPage.NAVIGATE_TO_TOOLS_PASS);
+        } catch (Exception e) {
+            FailureDelegatePage.handlePageException(LogPage.NAVIGATE_TO_TOOLS_FAIl);
+        }
+
+    }
+
 
     /*
      * Method to navigate to tasks

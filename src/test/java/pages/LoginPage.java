@@ -21,6 +21,10 @@ public class LoginPage {
     public static final String firestarterPassword = "CkCgb8GEwM!MW3#2T*Kd";
     public static final String firestarterFullName = "Fire Starter";
 
+    public static final String tasksNoAccessUsername = "tasksrestricted@fire.net";
+    public static final String tasksNoAccessPassword = "&RSUubIpfkZAsTNJcK!@UAnp0*";
+    public static final String tasksNoAccessFullName = "Tasks Restricted";
+
 
     /*
      * Method to login and check if the full name is correct
@@ -31,6 +35,7 @@ public class LoginPage {
             BasePage.write(By.cssSelector(usernameField),username);
             BasePage.write(By.cssSelector(passwordField),password);
             BasePage.click(By.cssSelector(loginButton));
+
             if(BasePage.alertMessageByIdContains("alertMessage",fullName)) {
                 loginSucess=true;
             }else {
@@ -47,6 +52,23 @@ public class LoginPage {
     public static void loginAsFirestarter() {
         try {
             if(LoginPage.login(firestarterUsername,firestarterPassword,firestarterFullName)) {
+                ExtentReportsSetUp.testingPass(LogPage.LOGIN_AS_FIRESTARTER_PASS);
+            }else {
+                System.err.println(LogPage.LOGIN_AS_FIRESTARTER_FAIL);
+                ExtentReportsSetUp.testingFail(LogPage.LOGIN_AS_FIRESTARTER_FAIL);
+                Assert.assertFalse(true);
+            }
+        } catch (Exception e) {
+            System.err.println(LogPage.LOGIN_AS_FIRESTARTER_FAIL);
+        }
+    }
+
+    /*
+     * Method to login as a Firestarter user
+     */
+    public static void loginAsTaskNoAccessUser() {
+        try {
+            if(LoginPage.login(tasksNoAccessUsername,tasksNoAccessPassword,firestarterFullName)) {
                 ExtentReportsSetUp.testingPass(LogPage.LOGIN_AS_FIRESTARTER_PASS);
             }else {
                 System.err.println(LogPage.LOGIN_AS_FIRESTARTER_FAIL);
