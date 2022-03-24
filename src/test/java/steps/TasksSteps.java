@@ -3,15 +3,22 @@ package steps;
 import io.cucumber.datatable.DataTable;
 import io.cucumber.java.en.When;
 import pages.TasksPage;
-
 public class TasksSteps {
 
     @When("I click on create task button")
     public static void clickCreateTaskButton( ) {
         TasksPage.clickCreateTaskButton();
     }
+    @When("I click on filter archived status and set {string}")
+    public static void clickFilterArchivedStatus( String status) {
+        TasksPage.clickFilterArchivedStatus(status);
+    }
     @When("I validate if task was deleted correctly")
     public static void validateDeletedTask( ) {
+        TasksPage.validateDeletedTask();
+    }
+    @When("I validate if task is archived sucessfully")
+    public static void validateArchivedTask( ) {
         TasksPage.validateDeletedTask();
     }
     @When("I erase Due Date field")
@@ -46,9 +53,25 @@ public class TasksSteps {
     public static void deleteTask( ) {
         TasksPage.deleteTaskButton();
     }
+    @When("I click on archive task button")
+    public static void archiveTaskButton( ) {
+        TasksPage.archiveTaskButton();
+    }
+    @When("I click on activate task button")
+    public static void activateTaskButton( ) {
+        TasksPage.activateTaskButton();
+    }
+    @When("I validate if archive button is displayed and fields are not disabled")
+    public static void validateTaskIsNotReadOnly( ) {
+        TasksPage.validateTaskIsNotReadOnly();
+    }
+    @When("I validate if the task is read-only")
+    public static void validateTaskReadOnly( ) {
+        TasksPage.validateTaskReadOnly();
+    }
     @When("I click on cancel button on delete task modal")
     public static void clickCancelTaskButtonDeleteModal( ) {
-        TasksPage.cancelDeleteTaskButton();
+        TasksPage.taskDeleteModalCancelDeleteButton();
     }
     @When("I click on yes button on delete task modal")
     public static void taskDeleteModalYesDeleteButton( ) {

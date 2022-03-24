@@ -6,12 +6,16 @@ public class LogPage {
     public static final String SAVE_CHANGES_PASS = "I click on save changes";
     public static final String DELETE_TASK_PASS = "I click on delete task";
     public static final String DELETE_TASK_FAIL = "FAILED while trying to delete task";
+    public static final String ARCHIVE_TASK_FAIL = "FAILED while trying to click on archive task button";
+    public static final String ARCHIVE_TASK_PASS = "I click on archive task button";
+    public static final String ACTIVATE_TASK_PASS = "I click on activate task button";
+    public static final String ACTIVATE_TASK_FAIL = "FAILED while trying to click on activate task button";
     public static final String CANCEL_BUTTON_DELETE_TASK_MODAL_PASS = "I click on cancel button on delete task modal";
     public static final String CANCEL_BUTTON_DELETE_TASK_MODAL_FAIL = "FAILED while trying to click on cancel button on delete task modal";
     public static final String YES_BUTTON_DELETE_TASK_MODAL_PASS = "I click on yes button on delete task modal";
     public static final String YES_BUTTON_DELETE_TASK_MODAL_FAIL = "FAILED while trying to click on yes button on delete task modal";
-    public static final String VALIDATE_DELETED_TASK_PASS = "Validate if task was deleted correctly";
-    public static final String VALIDATE_DELETED_TASK_FAIL = "Fail while trying to validate if task was deleted correctly";
+    public static final String VALIDATE_DELETED_TASK_PASS = "Validate if task is not shown anymore";
+    public static final String VALIDATE_DELETED_TASK_FAIL = "Fail while trying to validate if task is not shown anymore";
     public static final String UPDATE_PHONE_NUMBER_FAIL = "Fail on updatePhoneNumber";
     public static final String UPDATE_PHONE_NUMBER_PASS = "I update phone number";
     public static final String UPDATE_CITIZENSHIP_FAIL = "Fail on updateCitizenshipFail";
@@ -90,6 +94,11 @@ public class LogPage {
     public static final String VALIDATE_DUO_TIME_DISABLED_FAIL = "FAIL while trying to validate if duo time is disabled";
     public static final String ERASE_DUE_DATE_FIELD_PASS = "I erase Due Date field";
     public static final String ERASE_DUE_DATE_FIELD_FAIL = "Fail while trying to erase Due Date field";
+    public static final String VALIDATE_TASK_READ_ONLY_PASS = "I validate if the task is read-only";
+    public static final String VALIDATE_TASK_READ_ONLY_FAIL = "Fail while trying to validate if task is read-only";
+    public static final String VALIDATE_TASK_IS_NOT_READ_ONLY_PASS = "I validate if archive button is displayed and fields are not disabled";
+    public static final String VALIDATE_TASK_IS_NOT_READ_ONLY_FAIL = "Fail while trying to validate if archive button is displayed and fields are not disabled";
+    public static final String FILTER_ARCHIVED_STATUS_FAIL = "Fail while trying to filter archived status";
 
 
 }

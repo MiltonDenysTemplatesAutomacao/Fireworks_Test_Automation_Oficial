@@ -39,6 +39,70 @@ public class TasksPage extends BasePage{
     public static final String taskDeleteModalYesDeleteButton = "modalSubmitButtondeleteTask";
     public static final String taskDeleteModalCancelButton = "modalCancelButtondeleteTask";
     public static final String taskDeleteModalLabel = "deleteTaskModalLabel";
+    public static final String archiveTaskButton = "taskArchiveButton";
+    public static final String activateTaskButton = "taskActivateButton";
+    public static final String clearChangesDisabledButton = "#clearChangesButton[disabled]";
+    public static final String taskSaveChangesDisabledButton = "#taskSaveButton[disabled]";
+    public static final String taskNameDisabledField = "#task_name[disabled]";
+    public static final String taskManagerTableFilterButton = "div.btn-group.columnFilter";
+    public static final String taskManagerTableFilterButtonYes = ".//*[@href='6038']";
+    public static final String taskManagerTableFilterButtonNo = ".//*[@href='6039']";
+
+
+
+    public static void clickFilterArchivedStatus(String status){
+
+        try {
+            BasePage.click(By.cssSelector(taskManagerTableFilterButton));
+
+            switch (status) {
+                case "Yes":
+                    BasePage.click(By.xpath(taskManagerTableFilterButtonYes));
+                    System.out.println(true);
+                    break;
+                case "No":
+                    BasePage.click(By.xpath(taskManagerTableFilterButtonNo));
+                    System.out.println(false);
+                    break;
+            }
+        } catch (Exception e) {
+            FailureDelegatePage.handlePageException(LogPage.FILTER_ARCHIVED_STATUS_FAIL);
+        }
+    }
+
+    /*
+     * Method to validate if task is not read-only
+     */
+    public static void validateTaskIsNotReadOnly(){
+
+        try {
+            if(checkIfElementIsVisible(By.id(taskNameField))&&
+                    checkIfElementIsVisible(By.cssSelector(taskTypeDropdown))&&
+                    checkIfElementIsVisible(By.id(clearChangesButton))&&
+                    checkIfElementIsVisible(By.id(archiveTaskButton))){
+                ExtentReportsSetUp.testingPass(LogPage.VALIDATE_TASK_IS_NOT_READ_ONLY_PASS);
+            }
+        } catch (Exception e) {
+            FailureDelegatePage.handlePageException(LogPage.VALIDATE_TASK_IS_NOT_READ_ONLY_FAIL);
+        }
+    }
+    /*
+     * Method to validate if task is read-only
+     */
+    public static void validateTaskReadOnly(){
+
+        try {
+            if(checkIfElementIsVisible(By.xpath(taskTypeDisabledDropdown))&&
+            checkIfElementIsVisible(By.cssSelector(clearChangesDisabledButton))&&
+            checkIfElementIsVisible(By.cssSelector(taskSaveChangesDisabledButton))&&
+            checkIfElementIsVisible(By.id(activateTaskButton))){
+                ExtentReportsSetUp.testingPass(LogPage.VALIDATE_TASK_READ_ONLY_PASS);
+            }
+        } catch (Exception e) {
+            FailureDelegatePage.handlePageException(LogPage.VALIDATE_TASK_READ_ONLY_FAIL);
+        }
+    }
+
 
     /*
      * Method to click on Yes button on delete task modal
@@ -69,9 +133,32 @@ public class TasksPage extends BasePage{
         }
     }
     /*
+     * Method to click on archive task button
+     */
+    public static void archiveTaskButton(){
+        try {
+            waitUntilElementToBeSelected(By.id(archiveTaskButton),20);
+            BasePage.click(By.id(archiveTaskButton));
+            ExtentReportsSetUp.testingPass(LogPage.ARCHIVE_TASK_PASS);
+        } catch (Exception e) {
+            FailureDelegatePage.handlePageException(LogPage.ARCHIVE_TASK_FAIL);
+        }
+    } /*
+     * Method to click on activate task button
+     */
+    public static void activateTaskButton(){
+        try {
+            waitUntilElementToBeSelected(By.id(activateTaskButton),20);
+            BasePage.click(By.id(activateTaskButton));
+            ExtentReportsSetUp.testingPass(LogPage.ACTIVATE_TASK_PASS);
+        } catch (Exception e) {
+            FailureDelegatePage.handlePageException(LogPage.ACTIVATE_TASK_FAIL);
+        }
+    }
+    /*
      * Method to click on Cancel button on delete task modal
      */
-    public static void cancelDeleteTaskButton(){
+    public static void taskDeleteModalCancelDeleteButton(){
         try {
             waitElementBy(By.id(taskDeleteModalLabel),10);
             BasePage.click(By.id(taskDeleteModalCancelButton));
@@ -169,8 +256,6 @@ public class TasksPage extends BasePage{
             }
             if (mass.get(0).get("DueDate") != null) {
                 Assert.assertTrue(dataTableText.contains(mass.get(0).get("DueDate")));
-            }else{
-                FailureDelegatePage.handlePageException(LogPage.VALIDATE_MANAGER_DATA_TABLE_FAIL);
             }
             ExtentReportsSetUp.testingPass(LogPage.VALIDATE_MANAGER_DATA_TABLE_PASS);
         } catch (Exception e) {
