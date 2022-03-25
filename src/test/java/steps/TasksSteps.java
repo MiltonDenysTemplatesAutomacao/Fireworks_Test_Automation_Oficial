@@ -33,6 +33,10 @@ public class TasksSteps {
     public static void clickSaveChangesButton( ) {
         TasksPage.clickTaskSaveChangesButton();
     }
+    @When("I validate if archive and activate buttons are not displayed")
+    public static void validateArchiveAndActivateButtonsNotDisplayed( ) {
+        TasksPage.validateArchiveAndActivateButtonsNotDisplayed();
+    }
     @When("I create a task")
     public static void updateTask( ) {
         TasksPage.createTask();

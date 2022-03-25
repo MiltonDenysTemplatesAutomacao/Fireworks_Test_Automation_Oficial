@@ -31,6 +31,7 @@ public class BasePage {
         boolean display = DriverBase.getDriver().findElement(by).isDisplayed();
         return display;
     }
+
     /*
      * Method to clear fields
      */

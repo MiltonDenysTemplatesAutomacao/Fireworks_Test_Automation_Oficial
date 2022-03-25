@@ -1,5 +1,5 @@
 #Author: Milton Silva
-#Regression testcase TL-1130: Archive and Activate tasks
+#Regression testcase TL-1142: Tasks Permissions: Restricted checkbox
 
 @TaskRestrictedCheckBox
 Feature: Task Restricted CheckBox

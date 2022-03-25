@@ -94,16 +94,17 @@ public class GlobalNavPage extends BasePage {
     public static final String quickAddStaffPermissionsGroupDropdownList = "#select2-results-1";
     public static final String quickAddStaffSaveGoButton = "#quickAddStaffModalSaveGo";
     public static final String quickAddStaffSaveCloseButton = "#quickAddStaffModalSaveClose";
+    public static final String footerToolsSchedulerMenuItem = "#global_nav_scheduler";
 
 
     public static void validateTaskInToolMenuIsNotDisplayed(){
         try {
-            if (checkIfElementIsVisible(By.cssSelector(footerToolsTasksMenuItem))){
-                System.out.println(true);
-            }else{
-                System.out.println(false);
+            waitUntilElementToBeSelected(By.cssSelector(footerToolsSchedulerMenuItem),20);
+            if (!checkIfElementIsVisible(By.cssSelector(footerToolsTasksMenuItem))){
+                ExtentReportsSetUp.testingPass(LogPage.VALIDATE_IN_TOOL_MENU_NOT_DISPLAYED_PASS);
             }
         } catch (Exception e) {
+            FailureDelegatePage.handlePageException(LogPage.VALIDATE_IN_TOOL_MENU_NOT_DISPLAYED_PASS_FAIL);
         }
     }
 

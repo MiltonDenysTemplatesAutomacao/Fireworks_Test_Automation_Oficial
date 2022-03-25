@@ -48,11 +48,28 @@ public class TasksPage extends BasePage{
     public static final String taskManagerTableFilterButtonYes = ".//*[@href='6038']";
     public static final String taskManagerTableFilterButtonNo = ".//*[@href='6039']";
 
-
-
-    public static void clickFilterArchivedStatus(String status){
-
+    /*
+     * Method to validate if activate and archive button is displayed
+     */
+    public static void validateArchiveAndActivateButtonsNotDisplayed(){
         try {
+            waitUntilElementToBeSelected(By.id(taskNameField),20);
+            waitUntilElementToBeSelected(By.id(taskSaveChangesButton),20);
+            if (!checkIfElementIsVisible(By.id(activateTaskButton))||
+                    !checkIfElementIsVisible(By.id(archiveTaskButton))){
+                ExtentReportsSetUp.testingPass(LogPage.VALIDATE_ARCHIVE_AND_ACTIVATE_BUTTON_NOT_DISPLAYED_PASS);
+            }
+        } catch (Exception e) {
+            FailureDelegatePage.handlePageException(LogPage.VALIDATE_ARCHIVE_AND_ACTIVATE_BUTTON_NOT_DISPLAYED_FAIL);
+        }
+    }
+
+    /*
+     * Method to set a status on archive filter
+     */
+    public static void clickFilterArchivedStatus(String status){
+        try {
+            waitUntilElementToBeSelected(By.cssSelector(taskManagerTableFilterButton),20);
             BasePage.click(By.cssSelector(taskManagerTableFilterButton));
 
             switch (status) {

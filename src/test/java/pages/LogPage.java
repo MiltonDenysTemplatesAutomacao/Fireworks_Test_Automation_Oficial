@@ -101,6 +101,10 @@ public class LogPage {
     public static final String VALIDATE_TASK_IS_NOT_READ_ONLY_PASS = "I validate if archive button is displayed and fields are not disabled";
     public static final String VALIDATE_TASK_IS_NOT_READ_ONLY_FAIL = "Fail while trying to validate if archive button is displayed and fields are not disabled";
     public static final String FILTER_ARCHIVED_STATUS_FAIL = "Fail while trying to filter archived status";
+    public static final String VALIDATE_IN_TOOL_MENU_NOT_DISPLAYED_PASS = "I validate if task is not displayed in tools menu";
+    public static final String VALIDATE_IN_TOOL_MENU_NOT_DISPLAYED_PASS_FAIL = "Fail while trying to validate if task is not displayed in tools menu";
+    public static final String VALIDATE_ARCHIVE_AND_ACTIVATE_BUTTON_NOT_DISPLAYED_PASS = "I validate if archive and activate buttons are not displayed";
+    public static final String VALIDATE_ARCHIVE_AND_ACTIVATE_BUTTON_NOT_DISPLAYED_FAIL = "Fail while trying to validate if archive and activate buttons are not displayed";
 
 
 }
