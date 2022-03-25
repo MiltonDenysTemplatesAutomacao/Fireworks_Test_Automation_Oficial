@@ -4,7 +4,7 @@
   @TaskRequiredFieldsValidation
   Feature: Task Required Fields Validation
 
-  @TaskRequiredFieldsValidationScenario @Persistent
+  @TaskRequiredFieldsValidationScenario
   Scenario: Verify required field validation on task composer
     Given I login as firestarter
     And I navigate to tasks

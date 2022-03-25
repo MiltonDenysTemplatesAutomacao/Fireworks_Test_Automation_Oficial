@@ -49,9 +49,14 @@ public class TasksSteps {
     public static void fillTaskFields(DataTable data) {
         TasksPage.fillTaskFields(data);
     }
+
     @When("I open task {string}")
     public static void openTask(String task) {
         TasksPage.openTask(task);
+    }
+    @When("I validate if delete button is not displayed")
+    public static void validateDeleteButtonIsNotDisplayed() {
+        TasksPage.validateDeleteButtonNotDisplayed();
     }
     @When("I click on delete task button")
     public static void deleteTask( ) {

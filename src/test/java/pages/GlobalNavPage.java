@@ -95,6 +95,24 @@ public class GlobalNavPage extends BasePage {
     public static final String quickAddStaffSaveGoButton = "#quickAddStaffModalSaveGo";
     public static final String quickAddStaffSaveCloseButton = "#quickAddStaffModalSaveClose";
     public static final String footerToolsSchedulerMenuItem = "#global_nav_scheduler";
+    public static final String accountToggle = "global_nav_account_toggle";
+    public static final String logoutButton = "logout_button";
+
+
+
+    public static void logout(){
+        try {
+            waitUntilElementToBeSelected(By.id(accountToggle),20);
+            BasePage.click(By.id(accountToggle));
+            waitUntilElementToBeSelected(By.id(logoutButton),20);
+            BasePage.click(By.id(logoutButton));
+            ExtentReportsSetUp.testingPass(LogPage.LOGOUT_PASS);
+        } catch (Exception e) {
+            FailureDelegatePage.handlePageException(LogPage.LOGOUT_FAIL);
+        }
+
+
+    }
 
 
     public static void validateTaskInToolMenuIsNotDisplayed(){
@@ -102,6 +120,8 @@ public class GlobalNavPage extends BasePage {
             waitUntilElementToBeSelected(By.cssSelector(footerToolsSchedulerMenuItem),20);
             if (!checkIfElementIsVisible(By.cssSelector(footerToolsTasksMenuItem))){
                 ExtentReportsSetUp.testingPass(LogPage.VALIDATE_IN_TOOL_MENU_NOT_DISPLAYED_PASS);
+            }else{
+                FailureDelegatePage.handlePageException(LogPage.VALIDATE_IN_TOOL_MENU_NOT_DISPLAYED_PASS_FAIL);
             }
         } catch (Exception e) {
             FailureDelegatePage.handlePageException(LogPage.VALIDATE_IN_TOOL_MENU_NOT_DISPLAYED_PASS_FAIL);

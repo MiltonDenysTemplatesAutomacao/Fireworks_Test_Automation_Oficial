@@ -105,6 +105,10 @@ public class LogPage {
     public static final String VALIDATE_IN_TOOL_MENU_NOT_DISPLAYED_PASS_FAIL = "Fail while trying to validate if task is not displayed in tools menu";
     public static final String VALIDATE_ARCHIVE_AND_ACTIVATE_BUTTON_NOT_DISPLAYED_PASS = "I validate if archive and activate buttons are not displayed";
     public static final String VALIDATE_ARCHIVE_AND_ACTIVATE_BUTTON_NOT_DISPLAYED_FAIL = "Fail while trying to validate if archive and activate buttons are not displayed";
+    public static final String LOGOUT_PASS = "I log out";
+    public static final String LOGOUT_FAIL = "Fail while trying to log out";
+    public static final String DELETE_BUTTON_NOT_DISPLAYED_PASS = "I validate if delete button is not displayed";
+    public static final String DELETE_BUTTON_NOT_DISPLAYED_FAIL = "Fail while trying to validate if delete button is not displayed";
 
 
 }

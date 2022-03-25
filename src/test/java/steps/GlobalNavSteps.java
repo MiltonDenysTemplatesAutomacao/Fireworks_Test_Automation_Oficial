@@ -17,4 +17,9 @@ public class GlobalNavSteps {
     public static void validateTaskNotDisplayedToolsMenu() {
         GlobalNavPage.validateTaskInToolMenuIsNotDisplayed();
     }
+    @And("I log out")
+    public static void logout() {
+        GlobalNavPage.logout();
+    }
+
 }

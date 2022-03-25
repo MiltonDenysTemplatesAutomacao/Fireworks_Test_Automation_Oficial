@@ -5,7 +5,7 @@
 Feature: Tasks Permissions: Archive Access
 
   @TaskPermissionArchiveAndActivateButtons @Persistent
-  Scenario: Not to see the archive or activate buttons
+  Scenario: Not to see archive or activate buttons
     Given I login as firestarter
     And I navigate to tasks
     And I click on create task button
@@ -13,10 +13,15 @@ Feature: Tasks Permissions: Archive Access
       |Name                     |Type	|
       |Invite to Orientation	|Call	|
     And I click on Save Changes button
+    And I log out
+    And I login as firestarter
+    And I navigate to tasks
+    And I click on filter archived status and set "Yes"
+    And I open task "Name"
     Then I validate if archive and activate buttons are not displayed
 
   @TaskPermissionArchiveAndActivateButtonsAfterArchive @Persistent
-  Scenario: Not to see the archive or activate buttons
+  Scenario: Not to see archive or activate buttons after archive a task
     Given I login as firestarter
     And I navigate to tasks
     And I click on create task button
@@ -24,6 +29,8 @@ Feature: Tasks Permissions: Archive Access
       |Name                       |Type	|
       |Congratulate Honors Grads  |Call	|
     And I click on Save Changes button
+    And I log out
+    And I login as firestarter
     And I navigate to tasks
     And I click on filter archived status and set "Yes"
     And I open task "Name"

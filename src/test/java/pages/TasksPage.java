@@ -49,6 +49,22 @@ public class TasksPage extends BasePage{
     public static final String taskManagerTableFilterButtonNo = ".//*[@href='6039']";
 
     /*
+     * Method to validate if delete button is not displayed
+     */
+    public static void validateDeleteButtonNotDisplayed(){
+        try {
+            waitUntilElementToBeSelected(By.id(taskNameField),20);
+            waitUntilElementToBeSelected(By.id(taskSaveChangesButton),20);
+            if (!checkIfElementIsVisible(By.id(deleteTaskButton))){
+                ExtentReportsSetUp.testingPass(LogPage.DELETE_BUTTON_NOT_DISPLAYED_PASS);
+            }else{
+                FailureDelegatePage.handlePageException(LogPage.DELETE_BUTTON_NOT_DISPLAYED_FAIL);
+            }
+        } catch (Exception e) {
+            FailureDelegatePage.handlePageException(LogPage.DELETE_BUTTON_NOT_DISPLAYED_FAIL);
+        }
+    }
+    /*
      * Method to validate if activate and archive button is displayed
      */
     public static void validateArchiveAndActivateButtonsNotDisplayed(){
@@ -58,6 +74,8 @@ public class TasksPage extends BasePage{
             if (!checkIfElementIsVisible(By.id(activateTaskButton))||
                     !checkIfElementIsVisible(By.id(archiveTaskButton))){
                 ExtentReportsSetUp.testingPass(LogPage.VALIDATE_ARCHIVE_AND_ACTIVATE_BUTTON_NOT_DISPLAYED_PASS);
+            }else{
+                FailureDelegatePage.handlePageException(LogPage.VALIDATE_ARCHIVE_AND_ACTIVATE_BUTTON_NOT_DISPLAYED_FAIL);
             }
         } catch (Exception e) {
             FailureDelegatePage.handlePageException(LogPage.VALIDATE_ARCHIVE_AND_ACTIVATE_BUTTON_NOT_DISPLAYED_FAIL);
@@ -432,6 +450,9 @@ public class TasksPage extends BasePage{
             FailureDelegatePage.handlePageException(LogPage.UPDATE_FIELDS_TASK_FAIL);
         }
     }
+    public static int index(int index){
+        return index;
+    }
     /*
      * Method to update task
      */
@@ -463,8 +484,11 @@ public class TasksPage extends BasePage{
                 BasePage.selectElementsList(assignToDropdownList, "a");
                 clickOnListOfElements(mass.get(0).get("AssignTo"));
             }
+
             if (mass.get(0).get("DueDate") != null) {
+                waitUntilElementToBeSelected(By.id(dueDateField),20);
                 BasePage.write(By.id(dueDateField), mass.get(0).get("DueDate"));
+                BasePage.write(By.id(dueDateField), KeyPage.ENTER);
             }
             if (mass.get(0).get("DueTime") != null) {
                 BasePage.click(By.id(dueTimeField));
@@ -476,6 +500,7 @@ public class TasksPage extends BasePage{
                 clickOnListOfElements(mass.get(0).get("Priority"));
             }
             if (mass.get(0).get("Status") != null) {
+                waitUntilElementToBeSelected(By.cssSelector(statusDropdown),20);
                 BasePage.click(By.cssSelector(statusDropdown));
                 BasePage.selectElementsList(statusDropdownList, "a");
                 clickOnListOfElements(mass.get(0).get("Status"));
