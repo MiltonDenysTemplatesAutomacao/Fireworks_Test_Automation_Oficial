@@ -5,7 +5,7 @@
 Feature: Tasks Permissions: Administrator Access
 
   @TaskPermissionAdministratorAccessCreateTasksScenario @Persistent
-  Scenario: Verify the admin access permission is honored
+  Scenario: Creating tasks for test
     Given I login as firestarter
     And I navigate to tasks
     And I click on create task button
@@ -29,9 +29,27 @@ Feature: Tasks Permissions: Administrator Access
     And I click on Save Changes button
     Then I validate if "Task has been created" message is correct
 
-#keep working on next scenarios to validate using others users
+  @VerifyIfThisUserCanSeeTasksToAnyUser @Persistent
+  Scenario: Verify the this user can see tasks assigned to any user
+    Given I login as firestarter
+    And I navigate to tasks
+    And I search task "Invite to Orientation"
+    When I validate if task "Invite to Orientation" is displayed
+    And I search task "Convert Deposited to Enrolled"
+    When I validate if task "Convert Deposited to Enrolled" is displayed
+    And I search task "Friday Fridge Cleanout"
+    When I validate if task "Friday Fridge Cleanout" is displayed
 
-#
-#  @TaskPermissionAdministratorAccessScenario @Persistent
-#  Scenario: Verify the admin access permission is honored
-#    Given I login as firestarter
+  @VerifyIfThisUserCanSeeOnlyAssingedToThem @Persistent
+  Scenario: Verify the this user can see only see tasks assigned to them
+    Given I login as firestarter
+    And I navigate to tasks
+    And I fill search task field "Friday Fridge Cleanout"
+    When I validate if task is not displayed
+
+  @VerifyIfAssignedToColumIsHiddenForNonAdminUsers @Persistent
+  Scenario: Verify the assigned to column is hidden for non-admin users'
+    Given I login as firestarter
+    And I navigate to tasks
+    When I fill search task field "Friday Fridge Cleanout"
+    Then I validate if Assigned To column is not displayed

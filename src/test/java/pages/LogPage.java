@@ -109,6 +109,10 @@ public class LogPage {
     public static final String LOGOUT_FAIL = "Fail while trying to log out";
     public static final String DELETE_BUTTON_NOT_DISPLAYED_PASS = "I validate if delete button is not displayed";
     public static final String DELETE_BUTTON_NOT_DISPLAYED_FAIL = "Fail while trying to validate if delete button is not displayed";
+    public static final String VALIDATE_TASK_NOT_DISPLAYED_PASS = "I validate if task is not displayed";
+    public static final String VALIDATE_TASK_NOT_DISPLAYED_FAIL = "Fail while trying to validate if task is not displayed";
+    public static final String VALIDATE_ASSIGNED_TO_COLUMN_PASS = "Fail while trying to validate if task is not displayed";
+    public static final String VALIDATE_ASSIGNED_TO_COLUMN_FAIL = "Fail while trying to validate if task is not displayed";
 
 
 }

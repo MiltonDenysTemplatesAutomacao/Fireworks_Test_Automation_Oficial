@@ -47,7 +47,38 @@ public class TasksPage extends BasePage{
     public static final String taskManagerTableFilterButton = "div.btn-group.columnFilter";
     public static final String taskManagerTableFilterButtonYes = ".//*[@href='6038']";
     public static final String taskManagerTableFilterButtonNo = ".//*[@href='6039']";
+    public static final String assignToColumn = "//*[@id='taskManagerTable']/thead/tr/th[4]";
 
+
+    public static void validateAssignedToColumnNotDisplayed(){
+        try {
+            waitUntilElementToBeSelected(By.xpath(assignToColumn),20);
+            if (!checkIfElementIsVisible(By.xpath(assignToColumn))){
+                ExtentReportsSetUp.testingPass(LogPage.VALIDATE_ASSIGNED_TO_COLUMN_PASS);
+            }else{
+                FailureDelegatePage.handlePageException(LogPage.VALIDATE_ASSIGNED_TO_COLUMN_FAIL);
+            }
+        } catch (Exception e) {
+        }
+    }
+
+
+    /*
+     * Method to click on Yes button on delete task modal
+     */
+    public static void validateTaskNotDisplayed(){
+        try {
+            wait(2000);
+            String task = getText(By.cssSelector(taskManagerTableRow1Col0));
+            if(task.equals("No search results to display.")){
+                ExtentReportsSetUp.testingPass(LogPage.VALIDATE_TASK_NOT_DISPLAYED_PASS);
+            }else{
+                FailureDelegatePage.handlePageException(LogPage.VALIDATE_TASK_NOT_DISPLAYED_FAIL);
+            }
+        } catch (Exception e) {
+            FailureDelegatePage.handlePageException(LogPage.VALIDATE_TASK_NOT_DISPLAYED_FAIL);
+        }
+    }
     /*
      * Method to validate if delete button is not displayed
      */
@@ -669,10 +700,47 @@ public class TasksPage extends BasePage{
         }
     }
     /*
+     * Method to search a task
+     */
+    public static void searchTaskManagerByString(String searchedTask){
+        wait(2000);
+        try {
+                BasePage.write(By.cssSelector(taskManagerSearchField), searchedTask);
+                verifyTaskFound(searchedTask);
+                ExtentReportsSetUp.testingPass(LogPage.SEARCH_TASK_PASS);
+        } catch (Exception e) {
+            FailureDelegatePage.handlePageException(LogPage.SEARCH_TASK_FAIL);
+        }
+    }
+    /*
+     * Method to search a task
+     */
+    public static void fillSearchField(String searchedTask){
+        wait(2000);
+        try {
+            BasePage.write(By.cssSelector(taskManagerSearchField), searchedTask);
+            ExtentReportsSetUp.testingPass(LogPage.SEARCH_TASK_PASS);
+        } catch (Exception e) {
+            FailureDelegatePage.handlePageException(LogPage.SEARCH_TASK_FAIL);
+        }
+    }
+    /*
      * Method to verify if searched task is correctly
      */
     public static void verifyTaskFound(String name)throws Exception{
         String text = BasePage.getText(By.cssSelector(taskManagerTableRow1));
         Assert.assertTrue(text.contains(name));
     }
+    /*
+     * Method to verify if searched task is correctly
+     */
+    public static void verifyTaskIsDisplayed(String name){
+        try {
+            String text = BasePage.getText(By.cssSelector(taskManagerTableRow1Col0));
+            ExtentReportsSetUp.testingPass(LogPage.VALIDATE_MANAGER_DATA_TABLE_PASS);
+        } catch (Exception e) {
+            FailureDelegatePage.handlePageException(LogPage.VALIDATE_MANAGER_DATA_TABLE_FAIL);
+        }
+    }
+
 }

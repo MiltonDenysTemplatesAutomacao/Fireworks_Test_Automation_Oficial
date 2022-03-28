@@ -54,9 +54,29 @@ public class TasksSteps {
     public static void openTask(String task) {
         TasksPage.openTask(task);
     }
+    @When("I validate if task {string} is displayed")
+    public static void taskDisplayed(String task) {
+        TasksPage.verifyTaskIsDisplayed(task);
+    }
+    @When("I validate if task is not displayed")
+    public static void taskIsNotDisplayed() {
+        TasksPage.validateTaskNotDisplayed();
+    }
+    @When("I search task {string}")
+    public static void searchTaskString(String task) {
+        TasksPage.searchTaskManagerByString(task);
+    }
+    @When("I fill search task field {string}")
+    public static void fillSearchTaskField(String task) {
+        TasksPage.fillSearchField(task);
+    }
     @When("I validate if delete button is not displayed")
     public static void validateDeleteButtonIsNotDisplayed() {
         TasksPage.validateDeleteButtonNotDisplayed();
+    }
+    @When("I validate if Assigned To column is not displayed")
+    public static void validateAssignedToColumnNotDisplayed() {
+        TasksPage.validateAssignedToColumnNotDisplayed();
     }
     @When("I click on delete task button")
     public static void deleteTask( ) {
