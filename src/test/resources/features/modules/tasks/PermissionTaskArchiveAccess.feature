@@ -6,7 +6,7 @@ Feature: Tasks Permissions: Archive Access
 
   @TaskPermissionArchiveAndActivateButtons @Persistent
   Scenario: Not to see archive or activate buttons
-    Given I login as firestarter
+    Given I login as "firestarterUsername", "firestarterPassword", "firestarterFullName"
     And I navigate to tasks
     And I click on create task button
     When I fill task fields
@@ -14,7 +14,7 @@ Feature: Tasks Permissions: Archive Access
       |Invite to Orientation	|Call	|
     And I click on Save Changes button
     And I log out
-    And I login as firestarter
+    Given I login as "tasksNoAdminNoArchiveUsername", "tasksNoAdminNoArchivePassword", "tasksNoAdminNoArchiveFullName"
     And I navigate to tasks
     And I click on filter archived status and set "Yes"
     And I open task "Name"
@@ -30,7 +30,7 @@ Feature: Tasks Permissions: Archive Access
       |Congratulate Honors Grads  |Call	|
     And I click on Save Changes button
     And I log out
-    And I login as firestarter
+    Given I login as "tasksNoAdminNoArchiveUsername", "tasksNoAdminNoArchivePassword", "tasksNoAdminNoArchiveFullName"
     And I navigate to tasks
     And I click on filter archived status and set "Yes"
     And I open task "Name"

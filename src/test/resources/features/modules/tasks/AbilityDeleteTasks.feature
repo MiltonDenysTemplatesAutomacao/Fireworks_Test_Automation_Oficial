@@ -6,7 +6,7 @@ Feature: Ability to delete tasks
 
   @AbilityDeleteTasksStaff
   Scenario: Verify if it possible to delete a task, cancel on delete task modal and check if the task was deleted
-    Given I login as firestarter
+    Given I login as "firestarterUsername", "firestarterPassword", "firestarterFullName"
     And I navigate to tasks
     And I click on create task button
     When I fill task fields

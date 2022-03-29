@@ -6,7 +6,7 @@
 
   @TaskRequiredFieldsValidationScenario
   Scenario: Verify required field validation on task composer
-    Given I login as firestarter
+    Given I login as "firestarterUsername", "firestarterPassword", "firestarterFullName"
     And I navigate to tasks
     And I click on create task button
     When I click on Save Changes button
@@ -16,7 +16,7 @@
 
   @StaffDuoTimeDisabled
   Scenario: Verify if due time is disabled when due date is not provided
-    Given I login as firestarter
+    Given I login as "firestarterUsername", "firestarterPassword", "firestarterFullName"
     And I navigate to tasks
     And I click on create task button
     When I fill task fields

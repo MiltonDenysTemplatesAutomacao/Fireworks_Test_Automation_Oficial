@@ -14,7 +14,7 @@ Feature: Tasks Permissions: Composer Delete
       |Convert Deposited to Enrolled  |Call	|
     And I click on Save Changes button
     And I log out
-    And I login as firestarter
+    Given I login as "tasksAdminAccessNoDeleteUsername", "tasksAdminAccessNoDeletePassword", "tasksAdminAccessNoDeleteFullName"
     And I navigate to tasks
     And I open task "Name"
     Then I validate if delete button is not displayed

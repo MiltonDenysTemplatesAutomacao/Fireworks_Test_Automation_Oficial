@@ -7,10 +7,6 @@ import io.cucumber.java.en.When;
 import pages.GlobalNavPage;
 import pages.LoginPage;
 public class QuickAddSteps {
-    @Given("I login as firestarter")
-    public void loginAsFirestarter() {
-        LoginPage.loginAsFirestarter();
-    }
 
     @And("I create a person")
     public static void createPerson(DataTable data) {

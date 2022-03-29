@@ -6,7 +6,7 @@ Feature: Tasks Permissions: Administrator Access
 
   @TaskPermissionAdministratorAccessCreateTasksScenario @Persistent
   Scenario: Creating tasks for test
-    Given I login as firestarter
+    Given I login as "firestarterUsername", "firestarterPassword", "firestarterFullName"
     And I navigate to tasks
     And I click on create task button
     When I fill task fields
@@ -31,7 +31,7 @@ Feature: Tasks Permissions: Administrator Access
 
   @VerifyIfThisUserCanSeeTasksToAnyUser @Persistent
   Scenario: Verify the this user can see tasks assigned to any user
-    Given I login as firestarter
+    Given I login as "tasksAdminAccessNoDeleteUsername", "tasksAdminAccessNoDeletePassword", "tasksAdminAccessNoDeleteFullName"
     And I navigate to tasks
     And I search task "Invite to Orientation"
     When I validate if task "Invite to Orientation" is displayed
@@ -42,14 +42,14 @@ Feature: Tasks Permissions: Administrator Access
 
   @VerifyIfThisUserCanSeeOnlyAssingedToThem @Persistent
   Scenario: Verify the this user can see only see tasks assigned to them
-    Given I login as firestarter
+    Given I login as "tasksNoAdminNoArchiveUsername", "tasksNoAdminNoArchivePassword", "tasksNoAdminNoArchiveFullName"
     And I navigate to tasks
     And I fill search task field "Friday Fridge Cleanout"
     When I validate if task is not displayed
 
   @VerifyIfAssignedToColumIsHiddenForNonAdminUsers @Persistent
   Scenario: Verify the assigned to column is hidden for non-admin users'
-    Given I login as firestarter
+    Given I login as "tasksNoAdminNoArchiveUsername", "tasksNoAdminNoArchivePassword", "tasksNoAdminNoArchiveFullName"
     And I navigate to tasks
     When I fill search task field "Friday Fridge Cleanout"
     Then I validate if Assigned To column is not displayed

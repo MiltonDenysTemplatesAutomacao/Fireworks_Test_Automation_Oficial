@@ -55,9 +55,8 @@ public class LogPage {
     public static final String CLICK_QUICK_ADD_ORGANIZATION_SAVE_AND_GO_FAIL = "FAILED to quickAddOrganizationSaveGoButton";
     public static final String CLICK_QUICK_ADD_STAFF_SAVE_AND_GO_PASS = "I quickAddStaffSaveGoButton";
     public static final String CLICK_QUICK_ADD_STAFF_SAVE_AND_GO_FAIL = "FAILED to quickAddStaffSaveGoButton";
-    public static final String LOGIN_FAIL = "FAILED to login";
-    public static final String LOGIN_AS_FIRESTARTER_PASS = "I login as firestarter";
-    public static final String LOGIN_AS_FIRESTARTER_FAIL = "FAILED to login as firestarter";
+    public static final String LOGIN_AS_PASS = "I login as %s";
+    public static final String LOGIN_AS_FAIL = "FAILED to login as %s";
     public static final String OPEN_RECORD_PASS = "I click on a record";
     public static final String OPEN_RECORD_FAIL = "Error while clicking on a record";
     public static final String VALIDATE_IF_OPENED_SUMMARY_PROPERLY_PASS = "I validate if opened corrected summary";

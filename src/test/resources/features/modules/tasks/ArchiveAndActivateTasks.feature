@@ -6,7 +6,7 @@ Feature: Ability to archive and activate tasks
 
   @ArchiveAndActivateTasksStaff
   Scenario: Verify a task can be archived, activate, read-only after archived, not shown in task manager after archived
-    Given I login as firestarter
+    Given I login as "firestarterUsername", "firestarterPassword", "firestarterFullName"
     And I navigate to tasks
     And I click on create task button
     When I fill task fields
