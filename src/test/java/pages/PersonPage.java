@@ -68,12 +68,12 @@ public class PersonPage extends BasePage{
             waitElementBy(By.cssSelector(citizenshipTypeDropdown),20);
             if (mass.get(0).get(citizenshipType) != null) {
                 BasePage.click(By.cssSelector(citizenshipTypeDropdown));
-                BasePage.selectElementsList(citizenshipTypeDropdownList, "a");
+                BasePage.selectElementsList(By.cssSelector(citizenshipTypeDropdownList), "a");
                 clickOnListOfElements(mass.get(0).get(citizenshipType));
             }
             if (mass.get(0).get(countryOfCitizenship) != null) {
                 BasePage.click(By.cssSelector(citizenshipCountryDropdown));
-                BasePage.selectElementsList(citizenshipCountryDropdownList, "a");
+                BasePage.selectElementsList(By.cssSelector(citizenshipCountryDropdownList), "a");
                 clickOnListOfElements(mass.get(0).get(countryOfCitizenship));
             }
             if (mass.get(0).get(ssn) != null) {
@@ -105,12 +105,12 @@ public class PersonPage extends BasePage{
             }
             if (mass.get(0).get(suffix) != null) {
                 BasePage.click(By.cssSelector(suffixDropdown));
-                BasePage.selectElementsList(suffixDropdownList, "a");
+                BasePage.selectElementsList(By.cssSelector(suffixDropdownList), "a");
                 clickOnListOfElements(mass.get(0).get(suffix));
             }
             if (mass.get(0).get(salutation) != null) {
                 BasePage.click(By.cssSelector(salutationDropdown));
-                BasePage.selectElementsList(salutationDropdownList, "a");
+                BasePage.selectElementsList(By.cssSelector(salutationDropdownList), "a");
                 clickOnListOfElements(mass.get(0).get(salutation));
             }
             saveChangesBtnPersonContact();
@@ -128,7 +128,7 @@ public class PersonPage extends BasePage{
             BasePage.scrollToElement(By.xpath(plusButtonExternalId));
             if (mass.get(0).get(type) != null) {
                 BasePage.click(By.cssSelector(typeDropdown));
-                BasePage.selectElementsList(typeDropdownList, "a");
+                BasePage.selectElementsList(By.cssSelector(typeDropdownList), "a");
                 clickOnListOfElements(mass.get(0).get(type));
             }
             if (mass.get(0).get(idNumber) != null) {
@@ -139,7 +139,7 @@ public class PersonPage extends BasePage{
             }
             if (mass.get(0).get(whoAddedId) != null) {
                 BasePage.click(By.cssSelector(whoAddedIdDropdown));
-                BasePage.selectElementsList(whoAddedIdDropdownList, "a");
+                BasePage.selectElementsList(By.cssSelector(whoAddedIdDropdownList), "a");
                 clickOnListOfElements(mass.get(0).get(whoAddedId));
             }
             if (mass.get(0).get(comments) != null) {

@@ -42,9 +42,9 @@ public class BasePage {
     /*
      * Method to list elements in a list by css and tag
      */
-    public static List<WebElement> elementsList(String css, String tag) throws Exception {
+    public static List<WebElement> elementsList(By by, String tag) throws Exception {
 
-        WebElement table = DriverBase.getDriver().findElement(By.cssSelector(css));
+        WebElement table = DriverBase.getDriver().findElement(by);
         List<WebElement> rowsTable = table.findElements(By.tagName(tag));
         return rowsTable;
     }
@@ -52,8 +52,8 @@ public class BasePage {
     /*
      * Method to select an element from a list by css and tag
      */
-    public static void selectElementsList(String css, String tag) throws Exception {
-        listOfElements = elementsList(css, tag);
+    public static void selectElementsList(By by, String tag) throws Exception {
+        listOfElements = elementsList(by, tag);
     }
 
     /*
@@ -169,9 +169,5 @@ public class BasePage {
         JavascriptExecutor js = (JavascriptExecutor) DriverBase.getDriver();
         WebElement element = DriverBase.getDriver().findElement(by);
         js.executeScript("arguments[0].scrollIntoView();", element);
-    }
-
-    public String getText(String id) throws Exception {
-        return getText(By.id(id));
     }
 }

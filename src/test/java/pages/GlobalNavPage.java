@@ -186,7 +186,7 @@ public class GlobalNavPage extends BasePage {
     public static void navigateQuickAddCreatePersonPage() {
         try {
             BasePage.click(By.cssSelector(footerQuickAddMen));
-            waitElementBy(By.cssSelector(footerQuickAddPersonMenuItem),20);
+            wait(1000);
             BasePage.click(By.cssSelector(footerQuickAddPersonMenuItem));
             ExtentReportsSetUp.testingPass(LogPage.NAVIGATE_QUICK_ADD_CREATE_PERSON_PAGE_PASS);
         } catch (Exception e) {
@@ -242,12 +242,12 @@ public class GlobalNavPage extends BasePage {
             }
             if (mass.get(0).get("PhoneType") != null) {
                 BasePage.click(By.cssSelector(quickAddPersonPhoneTypeDropdown));
-                BasePage.selectElementsList(quickAddPersonPhoneTypeDropdownList, "a");
+                BasePage.selectElementsList(By.cssSelector(quickAddPersonPhoneTypeDropdownList), "a");
                 clickOnListOfElements(mass.get(0).get("PhoneType"));
             }
             if (mass.get(0).get("Role1") != null) {
                 BasePage.click(By.cssSelector(quickAddPersonRoleDropdown));
-                BasePage.selectElementsList(quickAddPersonRoleDropdownList, "a");
+                BasePage.selectElementsList(By.cssSelector(quickAddPersonRoleDropdownList), "a");
                 clickOnListOfElements(mass.get(0).get("Role1"));
             }
             if (mass.get(0).get("EmailAddress") != null) {
@@ -255,12 +255,12 @@ public class GlobalNavPage extends BasePage {
             }
             if (mass.get(0).get("EmailType") != null) {
                 BasePage.click(By.cssSelector(quickAddPersonEmailTypeDropdown));
-                BasePage.selectElementsList(quickAddPersonEmailTypeDropdownList, "a");
+                BasePage.selectElementsList(By.cssSelector(quickAddPersonEmailTypeDropdownList), "a");
                 clickOnListOfElements(mass.get(0).get("EmailType"));
             }
             if (mass.get(0).get("EmailOptInMethod") != null) {
                 BasePage.click(By.cssSelector(quickAddPersonOptInMethodDropdown));
-                BasePage.selectElementsList(quickAddPersonOptInMethodDropdownList, "a");
+                BasePage.selectElementsList(By.cssSelector(quickAddPersonOptInMethodDropdownList), "a");
                 clickOnListOfElements(mass.get(0).get("EmailOptInMethod"));
             }
             if (mass.get(0).get("Address1") != null) {
@@ -280,7 +280,7 @@ public class GlobalNavPage extends BasePage {
             }
             if (mass.get(0).get("State") != null) {
                 BasePage.click(By.cssSelector(quickAddPersonStateDropdown));
-                BasePage.selectElementsList(quickAddPersonStateDropdownList, "a");
+                BasePage.selectElementsList(By.cssSelector(quickAddPersonStateDropdownList), "a");
                 clickOnListOfElements(mass.get(0).get("State"));
             }
             if (mass.get(0).get("PostalCode") != null) {
@@ -288,22 +288,22 @@ public class GlobalNavPage extends BasePage {
             }
             if (mass.get(0).get("Country") != null) {
                 BasePage.click(By.cssSelector(quickAddPersonCountryDropdown));
-                BasePage.selectElementsList(quickAddPersonCountryDropdownList, "a");
+                BasePage.selectElementsList(By.cssSelector(quickAddPersonCountryDropdownList), "a");
                 clickOnListOfElements(mass.get(0).get("Country"));
             }
             if (mass.get(0).get("StudentType") != null) {
                 BasePage.click(By.cssSelector(quickAddStudentTypeDropdown));
-                BasePage.selectElementsList(quickAddStudentTypeDropdownList, "a");
+                BasePage.selectElementsList(By.cssSelector(quickAddStudentTypeDropdownList), "a");
                 clickOnListOfElements(mass.get(0).get("StudentType"));
             }
             if (mass.get(0).get("StudentStatusCategory") != null) {
                 BasePage.click(By.cssSelector(quickAddStudentStatusCategoryDropdown));
-                BasePage.selectElementsList(quickAddStudentStatusCategoryDropdownList, "a");
+                BasePage.selectElementsList(By.cssSelector(quickAddStudentStatusCategoryDropdownList), "a");
                 clickOnListOfElements(mass.get(0).get("StudentStatusCategory"));
             }
             if (mass.get(0).get("StudentStatus") != null) {
                 BasePage.click(By.cssSelector(quickAddStudentStatusDropdown));
-                BasePage.selectElementsList(quickAddStudentStatusDropdownList, "a");
+                BasePage.selectElementsList(By.cssSelector(quickAddStudentStatusDropdownList), "a");
                 clickOnListOfElements(mass.get(0).get("StudentStatus"));
             }
             if (mass.get(0).get("StudentStatusDate") != null) {
@@ -311,7 +311,7 @@ public class GlobalNavPage extends BasePage {
             }
             if (mass.get(0).get("EntryTerm") != null) {
                 BasePage.click(By.cssSelector(quickAddStudentStatusEntryTermDropdown));
-                BasePage.selectElementsList(quickAddStudentStatusEntryTermDropdownList, "a");
+                BasePage.selectElementsList(By.cssSelector(quickAddStudentStatusEntryTermDropdownList), "a");
                 clickOnListOfElements(mass.get(0).get("EntryTerm"));
             }
             ExtentReportsSetUp.testingPass(LogPage.QUICK_ADD_PERSON_PASS);
@@ -334,7 +334,7 @@ public class GlobalNavPage extends BasePage {
             }
             if (mass.get(0).get("Role") != null) {
                 BasePage.click(By.cssSelector(quickAddOrgRoleDropdown));
-                BasePage.selectElementsList(quickAddOrgRoleDropdownList, "a");
+                BasePage.selectElementsList(By.cssSelector(quickAddOrgRoleDropdownList), "a");
                 clickOnListOfElements(mass.get(0).get("Role"));
             }
             if (mass.get(0).get("Phone") != null) {
@@ -342,7 +342,7 @@ public class GlobalNavPage extends BasePage {
             }
             if (mass.get(0).get("PhoneType") != null) {
                 BasePage.click(By.cssSelector(quickAddOrgPhoneTypeDropdown));
-                BasePage.selectElementsList(quickAddOrgPhoneTypeDropdownList, "a");
+                BasePage.selectElementsList(By.cssSelector(quickAddOrgPhoneTypeDropdownList), "a");
                 clickOnListOfElements(mass.get(0).get("PhoneType"));
             }
             if (mass.get(0).get("Address1") != null) {
@@ -362,7 +362,7 @@ public class GlobalNavPage extends BasePage {
             }
             if (mass.get(0).get("State") != null) {
                 BasePage.click(By.cssSelector(quickAddOrgStateDropdown));
-                BasePage.selectElementsList(quickAddOrgStateDropdownList, "a");
+                BasePage.selectElementsList(By.cssSelector(quickAddOrgStateDropdownList), "a");
                 clickOnListOfElements(mass.get(0).get("State"));
             }
             if (mass.get(0).get("PostalCode") != null) {
@@ -370,7 +370,7 @@ public class GlobalNavPage extends BasePage {
             }
             if (mass.get(0).get("Country") != null) {
                 BasePage.click(By.cssSelector(quickAddOrgCountryDropdown));
-                BasePage.selectElementsList(quickAddOrgCountryDropdownList, "a");
+                BasePage.selectElementsList(By.cssSelector(quickAddOrgCountryDropdownList), "a");
                 clickOnListOfElements(mass.get(0).get("Country"));
             }
             if (mass.get(0).get("Region") != null) {
@@ -407,7 +407,7 @@ public class GlobalNavPage extends BasePage {
             }
             if (mass.get(0).get("PermissionGroup") != null) {
                 BasePage.click(By.cssSelector(quickAddStaffPermissionsGroupDropdown));
-                BasePage.selectElementsList(quickAddStaffPermissionsGroupDropdownList, "a");
+                BasePage.selectElementsList(By.cssSelector(quickAddStaffPermissionsGroupDropdownList), "a");
                 clickOnListOfElements(mass.get(0).get("PermissionGroup"));
             }
             ExtentReportsSetUp.testingPass(LogPage.QUICK_ADD_STAFF_PASS);
@@ -515,7 +515,6 @@ public class GlobalNavPage extends BasePage {
         }
 
     }
-
 
     /*
      * Method to navigate to tasks

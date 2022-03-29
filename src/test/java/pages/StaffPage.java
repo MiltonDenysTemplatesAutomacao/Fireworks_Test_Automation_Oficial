@@ -35,7 +35,7 @@ public class StaffPage extends BasePage{
             }
             if (mass.get(0).get(phoneType) != null) {
                 BasePage.click(By.id(contactPhoneTypeDropdown));
-                BasePage.selectElementsList(contactPhoneTypeDropdownList, "a");
+                BasePage.selectElementsList(By.cssSelector(contactPhoneTypeDropdownList), "a");
                 clickOnListOfElements(mass.get(0).get(phoneType));
             }
             if (mass.get(0).get(comment) != null) {

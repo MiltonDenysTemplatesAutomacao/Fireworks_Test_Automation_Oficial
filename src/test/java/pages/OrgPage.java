@@ -38,12 +38,12 @@ public class OrgPage extends BasePage{
             }
             if (mass.get(0).get(emailType) != null) {
                 BasePage.click(By.cssSelector(emailTypeDropDown));
-                BasePage.selectElementsList(emailTypeDropDownList, "a");
+                BasePage.selectElementsList(By.cssSelector(emailTypeDropDownList), "a");
                 clickOnListOfElements(mass.get(0).get(emailType));
             }
             if (mass.get(0).get(emailOpt) != null) {
                 BasePage.click(By.cssSelector(emailOptDropDown));
-                BasePage.selectElementsList(emailOptDropDownList, "a");
+                BasePage.selectElementsList(By.cssSelector(emailOptDropDownList), "a");
                 clickOnListOfElements(mass.get(0).get(emailOpt));
             }
             saveChangesBtnOrgContact();
@@ -77,7 +77,7 @@ public class OrgPage extends BasePage{
 
             if (mass.get(0).get(type) != null) {
                 BasePage.click(By.cssSelector(typeDropdown));
-                BasePage.selectElementsList(typeDropdownList, "a");
+                BasePage.selectElementsList(By.cssSelector(typeDropdownList), "a");
                 clickOnListOfElements(mass.get(0).get(type));
             }
             if (mass.get(0).get(idNumber) != null) {
@@ -88,7 +88,7 @@ public class OrgPage extends BasePage{
             }
             if (mass.get(0).get(whoAddedId) != null) {
                 BasePage.click(By.cssSelector(whoAddedIdDropdown));
-                BasePage.selectElementsList(whoAddedIdDropdownList, "a");
+                BasePage.selectElementsList(By.cssSelector(whoAddedIdDropdownList), "a");
                 clickOnListOfElements(mass.get(0).get(whoAddedId));
             }
             if (mass.get(0).get(comments) != null) {

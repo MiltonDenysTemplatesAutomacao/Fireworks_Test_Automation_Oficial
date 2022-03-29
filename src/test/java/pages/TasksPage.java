@@ -441,7 +441,7 @@ public class TasksPage extends BasePage{
             BasePage.scrollToElement(By.id(taskDescriptionField));
             if (mass.get(0).get("Type") != null) {
                 BasePage.click(By.cssSelector(taskTypeDropdown));
-                BasePage.selectElementsList(taskTypeDropdownList, "a");
+                BasePage.selectElementsList(By.cssSelector(taskTypeDropdownList), "a");
                 clickOnListOfElements(mass.get(0).get("Type"));
             }
             if (mass.get(0).get("SmartSearch") != null) {
@@ -453,7 +453,7 @@ public class TasksPage extends BasePage{
                 wait(2000);
                 waitElementBy(By.cssSelector(assignToDropdown),20);
                 BasePage.click(By.cssSelector(assignToDropdown));
-                BasePage.selectElementsList(assignToDropdownList, "a");
+                BasePage.selectElementsList(By.cssSelector(assignToDropdownList), "a");
                 clickOnListOfElements(mass.get(0).get("AssignTo"));
             }
             if (mass.get(0).get("DueDate") != null) {
@@ -465,12 +465,12 @@ public class TasksPage extends BasePage{
             }
             if (mass.get(0).get("Priority") != null) {
                 BasePage.click(By.cssSelector(priorityDropdown));
-                BasePage.selectElementsList(priorityDropdownList, "a");
+                BasePage.selectElementsList(By.cssSelector(priorityDropdownList), "a");
                 clickOnListOfElements(mass.get(0).get("Priority"));
             }
             if (mass.get(0).get("Status") != null) {
                 BasePage.click(By.cssSelector(statusDropdown));
-                BasePage.selectElementsList(statusDropdownList, "a");
+                BasePage.selectElementsList(By.cssSelector(statusDropdownList), "a");
                 clickOnListOfElements(mass.get(0).get("Status"));
             }
             if (mass.get(0).get("Comments") != null) {
@@ -501,7 +501,7 @@ public class TasksPage extends BasePage{
             BasePage.scrollToElement(By.id(taskDescriptionField));
             if (mass.get(0).get("Type") != null) {
                 BasePage.click(By.cssSelector(taskTypeDropdown));
-                BasePage.selectElementsList(taskTypeDropdownList, "a");
+                BasePage.selectElementsList(By.cssSelector(taskTypeDropdownList), "a");
                 clickOnListOfElements(mass.get(0).get("Type"));
             }
             if (mass.get(0).get("SmartSearch") != null) {
@@ -512,7 +512,7 @@ public class TasksPage extends BasePage{
             if (mass.get(0).get("AssignTo") != null) {
                 waitElementBy(By.cssSelector(assignToDropdown),10);
                 BasePage.click(By.cssSelector(assignToDropdown));
-                BasePage.selectElementsList(assignToDropdownList, "a");
+                BasePage.selectElementsList(By.cssSelector(assignToDropdownList), "a");
                 clickOnListOfElements(mass.get(0).get("AssignTo"));
             }
 
@@ -527,13 +527,13 @@ public class TasksPage extends BasePage{
             }
             if (mass.get(0).get("Priority") != null) {
                 BasePage.click(By.cssSelector(priorityDropdown));
-                BasePage.selectElementsList(priorityDropdownList, "a");
+                BasePage.selectElementsList(By.cssSelector(priorityDropdownList), "a");
                 clickOnListOfElements(mass.get(0).get("Priority"));
             }
             if (mass.get(0).get("Status") != null) {
                 waitUntilElementToBeSelected(By.cssSelector(statusDropdown),20);
                 BasePage.click(By.cssSelector(statusDropdown));
-                BasePage.selectElementsList(statusDropdownList, "a");
+                BasePage.selectElementsList(By.cssSelector(statusDropdownList), "a");
                 clickOnListOfElements(mass.get(0).get("Status"));
             }
             if (mass.get(0).get("Comments") != null) {
