@@ -33,6 +33,23 @@ public class BasePage {
     }
 
     /*
+     * Method to check if an element is enabled
+     */
+    public static boolean checkIfElementIsEnabled(By by) throws Exception {
+        boolean display = DriverBase.getDriver().findElement(by).isEnabled();
+        return display;
+    }
+
+    /*
+     * Method to save elements in a list
+     */
+    public static List<WebElement> findElements(By by) throws Exception {
+        List<WebElement> elements = DriverBase.getDriver().findElements(by);
+        return elements;
+
+    }
+
+    /*
      * Method to clear fields
      */
     public static void clearField(By by) throws Exception {

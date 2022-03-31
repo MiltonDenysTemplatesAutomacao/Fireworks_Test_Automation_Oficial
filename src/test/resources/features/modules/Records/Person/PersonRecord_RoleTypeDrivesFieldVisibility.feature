@@ -24,16 +24,15 @@ Feature: Role Type drives panel and field visibility
       |         |           |                   |               |                   |       |            |Birth City            |              |
       |         |           |                   |               |                   |       |            |Birth State           |              |
       |         |           |                   |               |                   |       |            |Social Security Number|              |
+      |         |           |                   |               |                   |       |            |High Score            |              |
       |         |           |                   |               |                   |       |            |Original Geomarket    |              |
       |         |           |                   |               |                   |       |            |Student Flag          |              |
       |         |           |                   |               |                   |       |            |International         |              |
       |         |           |                   |               |                   |       |            |Legacy                |              |
       |         |           |                   |               |                   |       |            |State Resident        |              |
-
-
-
     And I go to Home page
     When I quick search "Firstname"
     And I open a record
     And I navigate to basic
     Then I verify basic fields labels
+    And I validate not displayed fields are correct

@@ -112,6 +112,10 @@ public class LogPage {
     public static final String VALIDATE_TASK_NOT_DISPLAYED_FAIL = "Fail while trying to validate if task is not displayed";
     public static final String VALIDATE_ASSIGNED_TO_COLUMN_PASS = "Fail while trying to validate if task is not displayed";
     public static final String VALIDATE_ASSIGNED_TO_COLUMN_FAIL = "Fail while trying to validate if task is not displayed";
+    public static final String VALIDATE_BASIC_FIELDS_PASS = "I verify basic fields labels";
+    public static final String VALIDATE_BASIC_FIELDS_FAIL = "Fail while trying to verify basic fields labels";
+    public static final String VALIDATE_BASIC_NOT_DISPLAYED_FIELDS_FAIL = "Fail while trying to validate not displayed fields are correct";
+    public static final String VALIDATE_BASIC_NOT_DISPLAYED_FIELDS_PASS = "I validate not displayed fields are correct";
 
 
 }
