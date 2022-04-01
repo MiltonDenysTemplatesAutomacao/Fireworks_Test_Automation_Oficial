@@ -2,6 +2,10 @@ package pages;
 
 import config.extent_reports.ExtentReportsSetUp;
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
+import org.testng.Assert;
+
+import java.util.List;
 
 public class PersonPage extends BasePage{
 
@@ -35,8 +39,39 @@ public class PersonPage extends BasePage{
     private static final String COMMENTS_FIELD = "#entity_external_id_0_id_comments";
     private static final String PLUS_BUTTON_EXTERNAL_ID = "//*[@id='entity_external_id_0_add']";
     private static final String SAVE_CHANGES_BTN_PERSON_ID_TYPES = "saveChangesBtnPersonIdTypes";
+    private static final String HEADER_ROLE_ELEMENT = "#personHeaderRoleButton";
+    private static final String HEADER_STUDENT_TYPE_ELEMENT = "#personHeaderStudentTypeButton";
+    private static final String HEADER_ASSIGNED_STAFF_ELEMENT = "#personHeaderAssignedStaffButton";
 
+    public static void verifyHeaderRole(){
+        String passMessage = String.format(LogPage.VERIFY_HEADER_ROLE_PASS, mass.get(0).get("Role1"));
+        String failMessage = String.format(LogPage.VERIFY_HEADER_ROLE_FAIL, mass.get(0).get("Role1"));
 
+        try {
+            waitUntilElementPresence(By.cssSelector(HEADER_ROLE_ELEMENT),20);
+            List<WebElement> headerRoles;
+            switch (mass.get(0).get("Role1")){
+                case "Student":
+                    String studentType = getText(By.cssSelector(HEADER_STUDENT_TYPE_ELEMENT));
+                    String assignedStaff = getText(By.cssSelector(HEADER_ASSIGNED_STAFF_ELEMENT));
+                    Assert.assertTrue(studentType.contains("Student Type"));
+                    Assert.assertTrue(assignedStaff.contains("Assigned Staff"));
+                    ExtentReportsSetUp.testingPass(passMessage);
+                    break;
+                case "Multiple":
+                    ExtentReportsSetUp.testingPass(passMessage);
+                    break;
+                default:
+                    headerRoles = findElements(By.cssSelector(HEADER_STUDENT_TYPE_ELEMENT));
+                    headerRoles = findElements(By.cssSelector(HEADER_ASSIGNED_STAFF_ELEMENT));
+                    if(headerRoles.isEmpty()){
+                        ExtentReportsSetUp.testingPass(passMessage);
+                    }
+            }
+        } catch (Exception e) {
+            FailureDelegatePage.handlePageException(failMessage);
+        }
+    }
     /*
      * go to Basic tab on records
      */

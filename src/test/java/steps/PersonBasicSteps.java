@@ -13,5 +13,4 @@ public class PersonBasicSteps {
     public static void validateNotDisplayedFields() {
         PersonBasicPage.returnAndValidateElementsNotDisplayed();
     }
-
 }

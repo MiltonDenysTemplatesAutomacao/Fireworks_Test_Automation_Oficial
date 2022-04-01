@@ -116,6 +116,8 @@ public class LogPage {
     public static final String VALIDATE_BASIC_FIELDS_FAIL = "Fail while trying to verify basic fields labels";
     public static final String VALIDATE_BASIC_NOT_DISPLAYED_FIELDS_FAIL = "Fail while trying to validate not displayed fields are correct";
     public static final String VALIDATE_BASIC_NOT_DISPLAYED_FIELDS_PASS = "I validate not displayed fields are correct";
+    public static final String VERIFY_HEADER_ROLE_PASS = "I verify Header Role for %s";
+    public static final String VERIFY_HEADER_ROLE_FAIL = "Fail while trying to verify Header Role for %s";
 
 
 }

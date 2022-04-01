@@ -1,15 +1,11 @@
 package pages.Records;
 
-import com.sun.source.tree.AssertTree;
-import config.DriverBase;
 import config.extent_reports.ExtentReportsSetUp;
-import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import pages.BasePage;
 import pages.FailureDelegatePage;
 import pages.LogPage;
-
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;

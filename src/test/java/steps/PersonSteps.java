@@ -10,6 +10,10 @@ public class PersonSteps {
     public static void navigateToBasic() {
         PersonPage.navigateToBasic();
     }
+    @Then("I verify Header Role")
+    public static void verifyHeaderRole() {
+        PersonPage.verifyHeaderRole();
+    }
     @When("I update {string}, {string} and {string} to update citizenship")
     public static void updateCitizenship(String citizenshipType,String countryOfCitizenship,String ssn) {
         PersonPage.updateCitizenshipValues(citizenshipType,countryOfCitizenship,ssn);
