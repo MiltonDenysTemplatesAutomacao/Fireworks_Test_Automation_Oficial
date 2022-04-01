@@ -1,49 +1,48 @@
 package pages;
 
 import config.extent_reports.ExtentReportsSetUp;
-import org.junit.Assert;
 import org.openqa.selenium.By;
 
 public class OrgPage extends BasePage{
 
-    private static final String emailAddressField = "#entity_email_0_org_email_address";
-    private static final String emailTypeDropDown = "#s2id_entity_email_0_org_email_type";
-    private static final String emailTypeDropDownList = "#select2-drop";
+    private static final String EMAIL_ADDRESS_FIELD = "#entity_email_0_org_email_address";
+    private static final String EMAIL_TYPE_DROP_DOWN = "#s2id_entity_email_0_org_email_type";
+    private static final String EMAIL_TYPE_DROP_DOWN_LIST = "#select2-drop";
 
-    private static final String emailOptDropDown = "#s2id_entity_email_0_org_opt_in_method_id";
-    private static final String emailOptDropDownList = "#select2-drop";
+    private static final String EMAIL_OPT_DROP_DOWN = "#s2id_entity_email_0_org_opt_in_method_id";
+    private static final String EMAIL_OPT_DROP_DOWN_LIST = "#select2-drop";
 
-    private static final String orgBasicSaveChangesButton = "saveChangesBtnOrgContact";
-    private static final String organizationNameField = "#org_name_0_org_name_formal";
+    private static final String ORG_BASIC_SAVE_CHANGES_BUTTON = "saveChangesBtnOrgContact";
+    private static final String ORGANIZATION_NAME_FIELD = "#org_name_0_org_name_formal";
 
-    private static final String typeDropdown = "#select2-chosen-6";
-    private static final String typeDropdownList = "#select2-drop";
-    private static final String idNumberField = "#entity_external_id_0_org_id_number";
-    private static final String idRecordedDateField = "#entity_external_id_0_org_id_date";
-    private static final String whoAddedIdDropdown = "#select2-chosen-7";
-    private static final String whoAddedIdDropdownList = "#select2-drop";
-    private static final String commentsField = "#entity_external_id_0_org_id_comments";
-    private static final String plusButtonExternalId = "//*[@id='entity_external_id_0_add']";
-    private static final String saveChangesBtnOrgIdTypes = "saveChangesBtnOrgIdTypes";
+    private static final String TYPE_DROPDOWN = "#select2-chosen-6";
+    private static final String TYPE_DROPDOWN_LIST = "#select2-drop";
+    private static final String ID_NUMBER_FIELD = "#entity_external_id_0_org_id_number";
+    private static final String ID_RECORDED_DATE_FIELD = "#entity_external_id_0_org_id_date";
+    private static final String WHO_ADDED_ID_DROPDOWN = "#select2-chosen-7";
+    private static final String WHO_ADDED_ID_DROPDOWN_LIST = "#select2-drop";
+    private static final String COMMENTS_FIELD = "#entity_external_id_0_org_id_comments";
+    private static final String PLUS_BUTTON_EXTERNAL_ID = "//*[@id='entity_external_id_0_add']";
+    private static final String SAVE_CHANGES_BTN_ORG_ID_TYPES = "saveChangesBtnOrgIdTypes";
 
     /*
      * to update email address in Contact tab on records
      */
     public static void updateEmailAddress(String emailAddress,String emailType,String emailOpt, String optStatus, String optDate, String emailStatus, String emailContent){
         try {
-            waitElementBy(By.cssSelector(emailAddressField),20);
-            BasePage.scrollToElement(By.cssSelector(organizationNameField));
+            waitElementBy(By.cssSelector(EMAIL_ADDRESS_FIELD),20);
+            BasePage.scrollToElement(By.cssSelector(ORGANIZATION_NAME_FIELD));
             if (mass.get(0).get(emailAddress) != null) {
-                BasePage.write(By.cssSelector(emailAddressField), mass.get(0).get(emailAddress));
+                BasePage.write(By.cssSelector(EMAIL_ADDRESS_FIELD), mass.get(0).get(emailAddress));
             }
             if (mass.get(0).get(emailType) != null) {
-                BasePage.click(By.cssSelector(emailTypeDropDown));
-                BasePage.selectElementsList(By.cssSelector(emailTypeDropDownList), "a");
+                BasePage.click(By.cssSelector(EMAIL_TYPE_DROP_DOWN));
+                BasePage.selectElementsList(By.cssSelector(EMAIL_TYPE_DROP_DOWN_LIST), "a");
                 clickOnListOfElements(mass.get(0).get(emailType));
             }
             if (mass.get(0).get(emailOpt) != null) {
-                BasePage.click(By.cssSelector(emailOptDropDown));
-                BasePage.selectElementsList(By.cssSelector(emailOptDropDownList), "a");
+                BasePage.click(By.cssSelector(EMAIL_OPT_DROP_DOWN));
+                BasePage.selectElementsList(By.cssSelector(EMAIL_OPT_DROP_DOWN_LIST), "a");
                 clickOnListOfElements(mass.get(0).get(emailOpt));
             }
             saveChangesBtnOrgContact();
@@ -59,9 +58,9 @@ public class OrgPage extends BasePage{
      */
     public static void saveChangesBtnOrgContact(){
         try {
-            waitElementBy(By.id(orgBasicSaveChangesButton),20);
-            BasePage.scrollToElement(By.id(orgBasicSaveChangesButton));
-            BasePage.click(By.id(orgBasicSaveChangesButton));
+            waitElementBy(By.id(ORG_BASIC_SAVE_CHANGES_BUTTON),20);
+            BasePage.scrollToElement(By.id(ORG_BASIC_SAVE_CHANGES_BUTTON));
+            BasePage.click(By.id(ORG_BASIC_SAVE_CHANGES_BUTTON));
             ExtentReportsSetUp.testingPass(LogPage.SAVE_CHANGES_PASS);
         } catch (Exception e) {
             FailureDelegatePage.handlePageException(LogPage.SAVE_CHANGES_FAIL);
@@ -72,27 +71,27 @@ public class OrgPage extends BasePage{
      */
     public static void updateExternalIdTypes(String type,String idNumber,String idRecordedDate,String whoAddedId, String comments){
         try {
-            waitElementBy(By.xpath(plusButtonExternalId),20);
-            BasePage.scrollToElement(By.xpath(plusButtonExternalId));
+            waitElementBy(By.xpath(PLUS_BUTTON_EXTERNAL_ID),20);
+            BasePage.scrollToElement(By.xpath(PLUS_BUTTON_EXTERNAL_ID));
 
             if (mass.get(0).get(type) != null) {
-                BasePage.click(By.cssSelector(typeDropdown));
-                BasePage.selectElementsList(By.cssSelector(typeDropdownList), "a");
+                BasePage.click(By.cssSelector(TYPE_DROPDOWN));
+                BasePage.selectElementsList(By.cssSelector(TYPE_DROPDOWN_LIST), "a");
                 clickOnListOfElements(mass.get(0).get(type));
             }
             if (mass.get(0).get(idNumber) != null) {
-                BasePage.write(By.cssSelector(idNumberField), mass.get(0).get(idNumber));
+                BasePage.write(By.cssSelector(ID_NUMBER_FIELD), mass.get(0).get(idNumber));
             }
             if (mass.get(0).get(idRecordedDate) != null) {
-                BasePage.write(By.cssSelector(idRecordedDateField), mass.get(0).get(idRecordedDate));
+                BasePage.write(By.cssSelector(ID_RECORDED_DATE_FIELD), mass.get(0).get(idRecordedDate));
             }
             if (mass.get(0).get(whoAddedId) != null) {
-                BasePage.click(By.cssSelector(whoAddedIdDropdown));
-                BasePage.selectElementsList(By.cssSelector(whoAddedIdDropdownList), "a");
+                BasePage.click(By.cssSelector(WHO_ADDED_ID_DROPDOWN));
+                BasePage.selectElementsList(By.cssSelector(WHO_ADDED_ID_DROPDOWN_LIST), "a");
                 clickOnListOfElements(mass.get(0).get(whoAddedId));
             }
             if (mass.get(0).get(comments) != null) {
-                BasePage.write(By.cssSelector(commentsField), mass.get(0).get(comments));
+                BasePage.write(By.cssSelector(COMMENTS_FIELD), mass.get(0).get(comments));
             }
             saveChangesBtnPersonIdTypes();
             ExtentReportsSetUp.testingPass(LogPage.UPDATE_EXTERNAL_ID_TYPES_PASS);
@@ -107,9 +106,9 @@ public class OrgPage extends BasePage{
      */
     public static void saveChangesBtnPersonIdTypes(){
         try {
-            waitElementBy(By.id(saveChangesBtnOrgIdTypes),20);
-            BasePage.scrollToElement(By.id(saveChangesBtnOrgIdTypes));
-            BasePage.click(By.id(saveChangesBtnOrgIdTypes));
+            waitElementBy(By.id(SAVE_CHANGES_BTN_ORG_ID_TYPES),20);
+            BasePage.scrollToElement(By.id(SAVE_CHANGES_BTN_ORG_ID_TYPES));
+            BasePage.click(By.id(SAVE_CHANGES_BTN_ORG_ID_TYPES));
             ExtentReportsSetUp.testingPass(LogPage.SAVE_CHANGES_PASS);
         } catch (Exception e) {
             FailureDelegatePage.handlePageException(LogPage.SAVE_CHANGES_FAIL);

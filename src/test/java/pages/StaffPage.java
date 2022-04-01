@@ -1,24 +1,23 @@
 package pages;
 
 import config.extent_reports.ExtentReportsSetUp;
-import org.junit.Assert;
 import org.openqa.selenium.By;
 
 public class StaffPage extends BasePage{
-    private static final String recordNavTabContact = "recordNavTab_contact";
-    private static final String contactPhoneNumberField = "entity_phone_0_phone_number";
-    private static final String contactPhoneTypeDropdown = "s2id_entity_phone_0_phone_type";
-    private static final String contactPhoneTypeDropdownList = "#select2-drop";
-    private static final String contactPhoneCommentsField = "entity_phone_0_phone_comments";
-    private static final String staffContactSaveChangesButton = "saveChangesBtnStaffContact";
+    private static final String RECORD_NAV_TAB_CONTACT = "recordNavTab_contact";
+    private static final String CONTACT_PHONE_NUMBER_FIELD = "entity_phone_0_phone_number";
+    private static final String CONTACT_PHONE_TYPE_DROPDOWN = "s2id_entity_phone_0_phone_type";
+    private static final String CONTACT_PHONE_TYPE_DROPDOWN_LIST = "#select2-drop";
+    private static final String CONTACT_PHONE_COMMENTS_FIELD = "entity_phone_0_phone_comments";
+    private static final String STAFF_CONTACT_SAVE_CHANGES_BUTTON = "saveChangesBtnStaffContact";
 
     /*
      * to go to Contact tab on records
      */
     public static void navigateToContact(){
         try {
-            waitElementBy(By.id(recordNavTabContact),20);
-            BasePage.click(By.id(recordNavTabContact));
+            waitElementBy(By.id(RECORD_NAV_TAB_CONTACT),20);
+            BasePage.click(By.id(RECORD_NAV_TAB_CONTACT));
             ExtentReportsSetUp.testingPass(LogPage.NAVIGATE_TO_CONTACT_PASS);
         } catch (Exception e) {
             FailureDelegatePage.handlePageException(LogPage.NAVIGATE_TO_CONTACT_FAIL);
@@ -29,17 +28,17 @@ public class StaffPage extends BasePage{
      */
     public static void updatePhoneNumber(String phone,String phoneType,String comment){
         try {
-            waitElementBy(By.id(contactPhoneNumberField),20);
+            waitElementBy(By.id(CONTACT_PHONE_NUMBER_FIELD),20);
             if (mass.get(0).get(phone) != null) {
-                BasePage.write(By.id(contactPhoneNumberField), mass.get(0).get(phone));
+                BasePage.write(By.id(CONTACT_PHONE_NUMBER_FIELD), mass.get(0).get(phone));
             }
             if (mass.get(0).get(phoneType) != null) {
-                BasePage.click(By.id(contactPhoneTypeDropdown));
-                BasePage.selectElementsList(By.cssSelector(contactPhoneTypeDropdownList), "a");
+                BasePage.click(By.id(CONTACT_PHONE_TYPE_DROPDOWN));
+                BasePage.selectElementsList(By.cssSelector(CONTACT_PHONE_TYPE_DROPDOWN_LIST), "a");
                 clickOnListOfElements(mass.get(0).get(phoneType));
             }
             if (mass.get(0).get(comment) != null) {
-                BasePage.write(By.id(contactPhoneCommentsField), mass.get(0).get(comment));
+                BasePage.write(By.id(CONTACT_PHONE_COMMENTS_FIELD), mass.get(0).get(comment));
             }
             saveChangesBtnStaffContact();
             ExtentReportsSetUp.testingPass(LogPage.UPDATE_PHONE_NUMBER_PASS);
@@ -52,9 +51,9 @@ public class StaffPage extends BasePage{
      */
     public static void saveChangesBtnStaffContact(){
         try {
-            waitElementBy(By.id(staffContactSaveChangesButton),20);
-            BasePage.scrollToElement(By.id(staffContactSaveChangesButton));
-            BasePage.click(By.id(staffContactSaveChangesButton));
+            waitElementBy(By.id(STAFF_CONTACT_SAVE_CHANGES_BUTTON),20);
+            BasePage.scrollToElement(By.id(STAFF_CONTACT_SAVE_CHANGES_BUTTON));
+            BasePage.click(By.id(STAFF_CONTACT_SAVE_CHANGES_BUTTON));
             ExtentReportsSetUp.testingPass(LogPage.SAVE_CHANGES_PASS);
         } catch (Exception e) {
             FailureDelegatePage.handlePageException(LogPage.SAVE_CHANGES_FAIL);
