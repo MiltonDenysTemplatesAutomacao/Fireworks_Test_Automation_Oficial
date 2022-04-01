@@ -1,11 +1,13 @@
 #Author: Milton Silva
+#Regression testcase TL-245: Search by Preferred Name
+#Regression testcase TL-247: Search by Social Security Number
 
 @SearchByPreferredNameAndSSN
 Feature: Search by phone number
 
   @SearchPersonByPreferredNameAndSSN
   Scenario: to Quick Search a person by Preferred Name, partial, with or without dashes, spaces or parenthesis
-    Given I login as firestarter
+    Given I login as "firestarterUsername", "firestarterPassword", "firestarterFullName"
     And I create a person
       |Firstname|Lastname	|Role1	|EmailAddress			|EmailType	|EmailOptInMethod |StudentType|StudentStatus|StudentStatusCategory|StudentStatusDate|EntryTerm|PreferredName        |SSN          |
       |Squire	|Fridell	|Student|sfridell@mcdonalds.com |Personal   |Inquiry          |Freshman   |Accepted     |Accepted             |09/19/2016       |Fall 2017|Honorable Squire Bozo|583-23-9874  |

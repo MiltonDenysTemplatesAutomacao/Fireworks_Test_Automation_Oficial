@@ -5,7 +5,7 @@ Feature: QuickAdd
 
   @0210QuickAdd_CreatePersonOnlyEmailAddressCept
   Scenario: Verify a person record can be created via quick add with only email address
-    Given I login as firestarter
+    Given I login as "firestarterUsername", "firestarterPassword", "firestarterFullName"
     And I navigate to QuickAddCreatePersonPage
     When I quick add a person
       |Firstname|Lastname	|EmailAddress				  |EmailType|EmailOptInMethod	|Role1	|
@@ -15,7 +15,7 @@ Feature: QuickAdd
 
   @0220QuickAdd_CreatePersonOnlyPhoneNumberCept
   Scenario: Verify a person record can be created via quick add with only phone number
-    Given I login as firestarter
+    Given I login as "firestarterUsername", "firestarterPassword", "firestarterFullName"
     And I navigate to QuickAddCreatePersonPage
     When I quick add a person
       |Firstname|Lastname	|Phone		|PhoneType|Role1	|

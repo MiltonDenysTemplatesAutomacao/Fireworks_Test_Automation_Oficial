@@ -5,7 +5,7 @@ import org.junit.Assert;
 import org.openqa.selenium.By;
 
 public class StaffPage extends BasePage{
-    private static final String recordNavTabContact = "recordNavTab_contac";
+    private static final String recordNavTabContact = "recordNavTab_contact";
     private static final String contactPhoneNumberField = "entity_phone_0_phone_number";
     private static final String contactPhoneTypeDropdown = "s2id_entity_phone_0_phone_type";
     private static final String contactPhoneTypeDropdownList = "#select2-drop";
@@ -17,6 +17,7 @@ public class StaffPage extends BasePage{
      */
     public static void navigateToContact(){
         try {
+            waitElementBy(By.id(recordNavTabContact),20);
             BasePage.click(By.id(recordNavTabContact));
             ExtentReportsSetUp.testingPass(LogPage.NAVIGATE_TO_CONTACT_PASS);
         } catch (Exception e) {
@@ -27,8 +28,8 @@ public class StaffPage extends BasePage{
      * to update Phone Number in contact tab on records
      */
     public static void updatePhoneNumber(String phone,String phoneType,String comment){
-        BasePage.wait(3000);
         try {
+            waitElementBy(By.id(contactPhoneNumberField),20);
             if (mass.get(0).get(phone) != null) {
                 BasePage.write(By.id(contactPhoneNumberField), mass.get(0).get(phone));
             }
@@ -50,8 +51,8 @@ public class StaffPage extends BasePage{
      * to save changes in contact tab on records
      */
     public static void saveChangesBtnStaffContact(){
-        BasePage.wait(2000);
         try {
+            waitElementBy(By.id(staffContactSaveChangesButton),20);
             BasePage.scrollToElement(By.id(staffContactSaveChangesButton));
             BasePage.click(By.id(staffContactSaveChangesButton));
             ExtentReportsSetUp.testingPass(LogPage.SAVE_CHANGES_PASS);
