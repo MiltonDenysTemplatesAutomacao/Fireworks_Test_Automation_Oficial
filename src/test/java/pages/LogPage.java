@@ -118,6 +118,10 @@ public class LogPage {
     public static final String VALIDATE_BASIC_NOT_DISPLAYED_FIELDS_PASS = "I validate not displayed fields are correct";
     public static final String VERIFY_HEADER_ROLE_PASS = "I verify Header Role for %s";
     public static final String VERIFY_HEADER_ROLE_FAIL = "Fail while trying to verify Header Role for %s";
+    public static final String VERIFY_STUDENT_TYPE_PASS = "I verify Student Type";
+    public static final String VERIFY_STUDENT_TYPE_FAIL = "Fail while trying to verify Student Type";
+    public static final String VERIFY_RECORD_PANELS_PASS = "I verify the record panels for a student record";
+    public static final String VERIFY_RECORD_PANELS_FAIL = "Fail while trying to verify the record panels for a student record";
 
 
 }

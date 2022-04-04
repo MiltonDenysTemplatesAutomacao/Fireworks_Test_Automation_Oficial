@@ -41,10 +41,27 @@ Feature: Role Type drives panel and field visibility
   Scenario: To verify the record panels for a non student record
     Given I login as "firestarterUsername", "firestarterPassword", "firestarterFullName"
     And I create a person
-      |Firstname        |Lastname	|EmailAddress		|EmailType		|EmailOptInMethod	|Role1	|StudentType|StudentStatusCategory |StudentStatus |StudentStatusDate |EntryTerm|BasicSection|BasicFieldLabel       |CheckboxLabel |
-      |Jingleheimer		|Smith		|jsmithn@rhyme.org	|Personal		|Inquiry			|Student|Freshman   |Accepted              |Accepted      |08/15/2016        |Fall 2017|Birth       |Birth Date            |Deceased      |
+      |Firstname        |Lastname	|EmailAddress		|EmailType		|EmailOptInMethod	|Role1	|StudentType|StudentStatusCategory |StudentStatus |StudentStatusDate |EntryTerm|BasicSection|BasicFieldLabel |CheckboxLabel |Labels                 |
+      |Jingleheimer		|Smith		|jsmithn@rhyme.org	|Personal		|Inquiry			|Student|Freshman   |Accepted              |Accepted      |08/15/2016        |Fall 2017|Birth       |Birth Date      |Deceased      |Summary                |
+      |                 |           |                   |               |                   |       |           |                      |              |                  |         |            |                |              |Actions                |
+      |                 |           |                   |               |                   |       |           |                      |              |                  |         |            |                |              |Basic                  |
+      |                 |           |                   |               |                   |       |           |                      |              |                  |         |            |                |              |Contact                |
+      |                 |           |                   |               |                   |       |           |                      |              |                  |         |            |                |              |Custom Fields          |
+      |                 |           |                   |               |                   |       |           |                      |              |                  |         |            |                |              |Employment             |
+      |                 |           |                   |               |                   |       |           |                      |              |                  |         |            |                |              |ID Types               |
+      |                 |           |                   |               |                   |       |           |                      |              |                  |         |            |                |              |Relationships          |
+      |                 |           |                   |               |                   |       |           |                      |              |                  |         |            |                |              |Interests & Activities |
+      |                 |           |                   |               |                   |       |           |                      |              |                  |         |            |                |              |Applications           |
+      |                 |           |                   |               |                   |       |           |                      |              |                  |         |            |                |              |Education              |
+      |                 |           |                   |               |                   |       |           |                      |              |                  |         |            |                |              |Interviews             |
+      |                 |           |                   |               |                   |       |           |                      |              |                  |         |            |                |              |Student Status         |
+      |                 |           |                   |               |                   |       |           |                      |              |                  |         |            |                |              |Documents              |
     And I go to Home page
     When I quick search "Firstname"
-    Then I validate if result for "Firstname" is correct
+    And I validate if result for "Firstname" is correct
     And I open a record
-    When I verify Header Role
+    Then I verify Header Role
+    And I verify Student Type
+    And I verify the record panels for a student record
+    And I navigate to basic
+    And I verify the Basic fields for a student record

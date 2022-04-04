@@ -5,7 +5,9 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class PersonPage extends BasePage{
 
@@ -42,6 +44,68 @@ public class PersonPage extends BasePage{
     private static final String HEADER_ROLE_ELEMENT = "#personHeaderRoleButton";
     private static final String HEADER_STUDENT_TYPE_ELEMENT = "#personHeaderStudentTypeButton";
     private static final String HEADER_ASSIGNED_STAFF_ELEMENT = "#personHeaderAssignedStaffButton";
+    private static final String SUMMARY_LABEL = "recordNavTab_summary";
+    private static final String ACTIONS_LABEL = "recordNavTab_actions";
+    private static final String BASIC_LABEL = "recordNavTab_basic";
+    private static final String CONTACT_LABEL = "recordNavTab_contact";
+    private static final String CUSTOM_FIELDS_LABEL = "recordNavTab_custom";
+    private static final String EMPLOYMENT_LABEL = "recordNavTab_employment";
+    private static final String ID_TYPES_LABEL = "recordNavTab_summary";
+    private static final String RELATIONSHIP_LABEL = "recordNavTab_summary";
+    private static final String INTERESTS_ACTIVITIES_LABEL = "recordNavTab_summary";
+    private static final String APPLICATIONS_LABEL = "recordNavTab_summary";
+    private static final String EDUCATION_LABEL = "recordNavTab_summary";
+    private static final String INTERVIEWS_LABEL = "recordNavTab_summary";
+    private static final String STUDENT_STATUS_LABEL = "recordNavTab_summary";
+    private static final String DOCUMENTS_LABEL = "recordNavTab_summary";
+
+    public static void verifyStudentBasicFields(){
+
+    }
+    public static void verifyStudentRecordPanels(){
+        try {
+            waitUntilElementPresence(By.cssSelector(HEADER_STUDENT_TYPE_ELEMENT),20);
+            String labelsText = getText(By.xpath(".//*[@class='nav nav-pills nav-stacked stickyNavPanels']"));
+
+            if(labelsText.contains(mass.get(0).get("Labels"))
+                && labelsText.contains(mass.get(1).get("Labels"))
+                && labelsText.contains(mass.get(2).get("Labels"))
+                && labelsText.contains(mass.get(3).get("Labels"))
+                && labelsText.contains(mass.get(4).get("Labels"))
+                && labelsText.contains(mass.get(5).get("Labels"))
+                && labelsText.contains(mass.get(6).get("Labels"))
+                && labelsText.contains(mass.get(7).get("Labels"))
+                && labelsText.contains(mass.get(8).get("Labels"))
+                && labelsText.contains(mass.get(9).get("Labels"))
+                && labelsText.contains(mass.get(10).get("Labels"))
+                && labelsText.contains(mass.get(11).get("Labels"))
+                && labelsText.contains(mass.get(12).get("Labels"))
+                && labelsText.contains(mass.get(13).get("Labels"))){
+                ExtentReportsSetUp.testingPass(LogPage.VERIFY_RECORD_PANELS_PASS);
+            }else{
+                FailureDelegatePage.handlePageException(LogPage.VERIFY_RECORD_PANELS_FAIL);
+            }
+        } catch (Exception e) {
+            FailureDelegatePage.handlePageException(LogPage.VERIFY_RECORD_PANELS_FAIL);
+        }
+
+    }
+    public static void verifyStudentType(){
+        try {
+            waitUntilElementPresence(By.cssSelector(HEADER_STUDENT_TYPE_ELEMENT),20);
+            String studentTypeText = getText(By.cssSelector(HEADER_STUDENT_TYPE_ELEMENT));
+            System.out.println(studentTypeText);
+            if(studentTypeText.contains(mass.get(0).get("StudentType"))){
+                ExtentReportsSetUp.testingPass(LogPage.VERIFY_STUDENT_TYPE_PASS);
+            }else{
+                FailureDelegatePage.handlePageException(LogPage.VERIFY_STUDENT_TYPE_FAIL);
+            }
+        } catch (Exception e) {
+            FailureDelegatePage.handlePageException(LogPage.VERIFY_STUDENT_TYPE_FAIL);
+        }
+
+    }
+
 
     public static void verifyHeaderRole(){
         String passMessage = String.format(LogPage.VERIFY_HEADER_ROLE_PASS, mass.get(0).get("Role1"));

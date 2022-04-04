@@ -18,6 +18,9 @@ public class PersonBasicPage extends BasePage {
     public static final String birthXpath = "//*[@data-field-group-label='Birth']";
     public static final String cultureXpath = "//*[@data-field-group-label='Culture']";
     public static final String contextXpath = "//*[@data-field-group-label='Context']";
+    public static final String citizenshipXpath = "//*[@data-field-group-label='Citizenship']";
+    public static final String recordFlagsXpath = "//*[@data-field-group-label='Record Flags']";
+    public static final String systemGeneratedXpath = "//*[@data-field-group-label='System Generated']";
     public static final String birthDateXpath = "//*[@for='birth_date']";
     public static final String countryOfCitizenshipXpath = "//*[@for='country_of_citizenship']";
     public static final String citizenshipTypeXpath = "//*[@for='citizenship_type']";
@@ -41,6 +44,7 @@ public class PersonBasicPage extends BasePage {
     public static final String stateResidentXpath = "//*[@for='state_resident']";
     public static final String deceasedXpath = "//*[@for='deceased']";
     public static final String veteranXpath = "//*[@for='veteran']";
+    public static final String currentGradeXpath = "//*[@for='current_grade']";
 
     /*
      * section return list
@@ -51,6 +55,9 @@ public class PersonBasicPage extends BasePage {
         basicSection.put("Birth Date", birthDateXpath);
         basicSection.put("Culture", cultureXpath);
         basicSection.put("Context", contextXpath);
+        basicSection.put("Record Flags", recordFlagsXpath);
+        basicSection.put("Citizenship", citizenshipXpath);
+        basicSection.put("System Generated", systemGeneratedXpath);
         basicSection.put("Citizenship Type", citizenshipTypeXpath);
         basicSection.put("Country of Citizenship", countryOfCitizenshipXpath);
         basicSection.put("Ethnicity", ethnicityXpath);
@@ -73,8 +80,86 @@ public class PersonBasicPage extends BasePage {
         basicSection.put("State Resident", stateResidentXpath);
         basicSection.put("Deceased", deceasedXpath);
         basicSection.put("Veteran", veteranXpath);
+        basicSection.put("Current Grade", currentGradeXpath);
         return basicSection.get(section);
     }
+    /*
+     * method to validate student basic fields that is displayed
+     */
+    public static void validateStudentBasicFields(){
+        try {
+            BasePage.waitElementBy(By.cssSelector(basicPanelHeadingElement), 20);
+            //set to variables the text from each element
+            String birthReturn = returnBasicSection("Birth");
+            String birthReturnText = getText(By.xpath(birthReturn));
+            String birthDateReturn = returnBasicSection("Birth Date");
+            String birthDateReturnText = getText(By.xpath(birthDateReturn));
+            String citizenshipTypeReturn = returnBasicSection("Citizenship Type");
+            String citizenshipTypeReturnText = getText(By.xpath(citizenshipTypeReturn));
+            String countryOfCitizenshipReturn = returnBasicSection("Country of Citizenship");
+            String countryOfCitizenshipReturnText = getText(By.xpath(countryOfCitizenshipReturn));
+            String ethnicityReturn = returnBasicSection("Ethnicity");
+            String ethnicityReturnText = getText(By.xpath(ethnicityReturn));
+            String raceReturn = returnBasicSection("Race");
+            String raceReturnText = getText(By.xpath(raceReturn));
+            String genderReturn = returnBasicSection("Gender");
+            String genderReturnText = getText(By.xpath(genderReturn));
+            String maritalStatusReturn = returnBasicSection("Marital Status");
+            String maritalStatusReturnText = getText(By.xpath(maritalStatusReturn));
+            String primaryLanguageReturn = returnBasicSection("Primary Language");
+            String primaryLanguageReturnText = getText(By.xpath(primaryLanguageReturn));
+            String religionReturn = returnBasicSection("Religion");
+            String religionReturnText = getText(By.xpath(religionReturn));
+            String cultureReturn = returnBasicSection("Culture");
+            String cultureReturnText = getText(By.xpath(cultureReturn));
+            String contextReturn = returnBasicSection("Context");
+            String contextReturnText = getText(By.xpath(contextReturn));
+            String timeZoneReturn = returnBasicSection("Time Zone");
+            String timeZoneReturnText = getText(By.xpath(timeZoneReturn));
+            String deceasedReturn = returnBasicSection("Deceased");
+            String deceasedReturnText = getText(By.xpath(deceasedReturn));
+            String veteranReturn = returnBasicSection("Veteran");
+            String veteranReturnText = getText(By.xpath(veteranReturn));
+            String birthCountryReturn = returnBasicSection("Birth Country");
+            String birthCountryReturnText = getText(By.xpath(birthCountryXpath));
+            String birthCityReturn = returnBasicSection("Birth City");
+            String birthCityReturnText = getText(By.xpath(birthCityXpath));
+            String birthStateReturn = returnBasicSection("Birth State");
+            String birthStateReturnText = getText(By.xpath(birthStateXpath));
+            String citizenshipReturn = returnBasicSection("Citizenship");
+            String citizenshipReturnText = getText(By.xpath(citizenshipXpath));
+            String socialSecurityNumberReturn = returnBasicSection("Social Security Number");
+            String socialSecurityNumberReturnText = getText(By.xpath(socialSecurityNumberXpath));
+            String systemGeneratedReturn = returnBasicSection("System Generated");
+            String systemGeneratedReturnText = getText(By.xpath(systemGeneratedXpath));
+            String highScoreReturn = returnBasicSection("High Score");
+            String highScoreReturnText = getText(By.xpath(highScore));
+            String originalGeomarketReturn = returnBasicSection("Original Geomarket");
+            String originalGeomarketReturnText = getText(By.xpath(originalGeomarketXpath));
+            String classOfReturn = returnBasicSection("Class Of");
+            String classOfReturnText = getText(By.xpath(classOfXpath));
+            String currentGradeReturn = returnBasicSection("Current Grade");
+            String currentGradeReturnText = getText(By.xpath(currentGradeXpath));
+            String recordFlagsReturn = returnBasicSection("Record Flags");
+            String recordFlagsReturnText = getText(By.xpath(recordFlagsXpath));
+            String studentFlagReturn = returnBasicSection("Student Flag");
+            String studentFlagReturnText = getText(By.xpath(studentFlagXpath));
+            String internationalReturn = returnBasicSection("International");
+            String internationalReturnText = getText(By.xpath(internationalXpath));
+            String legacyReturn = returnBasicSection("Legacy");
+            String legacyReturnText = getText(By.xpath(legacyXpath));
+            String stateResidentReturn = returnBasicSection("State Resident");
+            String StateResidentReturnText = getText(By.xpath(stateResidentXpath));
+
+            //create ifs and work on datatables
+
+        } catch (Exception e) {
+
+
+        }
+
+    }
+
     /*
      * method to validate basic fields that is displayed
      */

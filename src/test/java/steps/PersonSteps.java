@@ -14,6 +14,15 @@ public class PersonSteps {
     public static void verifyHeaderRole() {
         PersonPage.verifyHeaderRole();
     }
+    @Then("I verify Student Type")
+    public static void verifyStudentType() {
+        PersonPage.verifyStudentType();
+    }
+
+    @Then("I verify the record panels for a student record")
+    public static void verifyStudentRecordPanels() {
+        PersonPage.verifyStudentRecordPanels();
+    }
     @When("I update {string}, {string} and {string} to update citizenship")
     public static void updateCitizenship(String citizenshipType,String countryOfCitizenship,String ssn) {
         PersonPage.updateCitizenshipValues(citizenshipType,countryOfCitizenship,ssn);

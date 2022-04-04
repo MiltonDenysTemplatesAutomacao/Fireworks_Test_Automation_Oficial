@@ -13,4 +13,8 @@ public class PersonBasicSteps {
     public static void validateNotDisplayedFields() {
         PersonBasicPage.returnAndValidateElementsNotDisplayed();
     }
+    @Then("I verify the Basic fields for a student record")
+    public static void verifyStudentBasicFields() {
+        PersonBasicPage.validateStudentBasicFields();
+    }
 }
