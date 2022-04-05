@@ -38,8 +38,8 @@ public class PersonBasicPage extends BasePage {
     public static final String socialSecurityNumberXpath = "//*[@for='social_security_number']";
     public static final String highScore = "//*[@for='high_score']";
     public static final String originalGeomarketXpath = "//*[@for='original_geomarket']";
-    public static final String studentFlagXpath = "//*[@for='student_flag']";
-    public static final String internationalXpath = "//*[@for='international']";
+    public static final String studentFlagXpath = "//*[@for='person_flag']";
+    public static final String internationalXpath = "//*[@for='international_student']";
     public static final String legacyXpath = "//*[@for='legacy']";
     public static final String stateResidentXpath = "//*[@for='state_resident']";
     public static final String deceasedXpath = "//*[@for='deceased']";
@@ -86,7 +86,7 @@ public class PersonBasicPage extends BasePage {
     /*
      * method to validate student basic fields that is displayed
      */
-    public static void validateStudentBasicFields(){
+    public static void validateStudentBasicFields() {
         try {
             BasePage.waitElementBy(By.cssSelector(basicPanelHeadingElement), 20);
             //set to variables the text from each element
@@ -151,20 +151,65 @@ public class PersonBasicPage extends BasePage {
             String stateResidentReturn = returnBasicSection("State Resident");
             String StateResidentReturnText = getText(By.xpath(stateResidentXpath));
 
-            //create ifs and work on datatables
+            //validate Basic Section
+            boolean basicSectionValidation = false;
+            if (birthReturnText.equals(mass.get(0).get("BasicSection"))
+                    && birthReturnText.equals(mass.get(0).get("BasicSection"))
+                    && citizenshipReturnText.equals(mass.get(1).get("BasicSection"))
+                    && cultureReturnText.equals(mass.get(2).get("BasicSection"))
+                    && systemGeneratedReturnText.equals(mass.get(3).get("BasicSection"))
+                    && contextReturnText.equals(mass.get(4).get("BasicSection"))
+                    && recordFlagsReturnText.equals(mass.get(5).get("BasicSection"))) {
+                basicSectionValidation = true;
+            }
+            //validate Basic Field Label
+            boolean basicFieldLabeValidation = false;
+            if (birthDateReturnText.equals(mass.get(0).get("BasicFieldLabel"))
+                    && currentGradeReturnText.equals(mass.get(1).get("BasicFieldLabel"))
+                    && classOfReturnText.equals(mass.get(2).get("BasicFieldLabel"))
+                    && timeZoneReturnText.equals(mass.get(3).get("BasicFieldLabel"))
+                    && originalGeomarketReturnText.equals(mass.get(4).get("BasicFieldLabel"))
+                    && highScoreReturnText.equals(mass.get(5).get("BasicFieldLabel"))
+                    && birthCountryReturnText.equals(mass.get(6).get("BasicFieldLabel"))
+                    && birthCityReturnText.equals(mass.get(7).get("BasicFieldLabel"))
+                    && birthStateReturnText.equals(mass.get(8).get("BasicFieldLabel"))
+                    && citizenshipTypeReturnText.equals(mass.get(9).get("BasicFieldLabel"))
+                    && countryOfCitizenshipReturnText.equals(mass.get(10).get("BasicFieldLabel"))
+                    && socialSecurityNumberReturnText.equals(mass.get(11).get("BasicFieldLabel"))
+                    && ethnicityReturnText.equals(mass.get(12).get("BasicFieldLabel"))
+                    && genderReturnText.equals(mass.get(13).get("BasicFieldLabel"))
+                    && maritalStatusReturnText.equals(mass.get(14).get("BasicFieldLabel"))
+                    && primaryLanguageReturnText.equals(mass.get(15).get("BasicFieldLabel"))
+                    && raceReturnText.equals(mass.get(16).get("BasicFieldLabel"))
+                    && religionReturnText.equals(mass.get(17).get("BasicFieldLabel"))) {
+                basicFieldLabeValidation = true;
+            }
+            //validate Basic Checkbox Label
+            boolean basicCheckboxLabeValidation = false;
+            if (deceasedReturnText.contains(mass.get(0).get("CheckboxLabel"))
+                    && studentFlagReturnText.contains(mass.get(1).get("CheckboxLabel"))
+                    && legacyReturnText.contains(mass.get(2).get("CheckboxLabel"))
+                    && veteranReturnText.contains(mass.get(3).get("CheckboxLabel"))
+                    && internationalReturnText.contains(mass.get(4).get("CheckboxLabel"))
+                    && StateResidentReturnText.contains(mass.get(5).get("CheckboxLabel"))){
+            basicCheckboxLabeValidation = true;
+            }
 
+            //Verify if all validations are true
+            if(basicSectionValidation && basicFieldLabeValidation && basicCheckboxLabeValidation){
+                ExtentReportsSetUp.testingPass(LogPage.VERIFY_STUDENT_BASIC_FIELDS_PASS);
+            }else{
+                FailureDelegatePage.handlePageException(LogPage.VERIFY_STUDENT_BASIC_FIELDS_FAIL);
+            }
         } catch (Exception e) {
-
-
-        }
-
+            FailureDelegatePage.handlePageException(LogPage.VERIFY_STUDENT_BASIC_FIELDS_FAIL);
+    }
     }
 
     /*
      * method to validate basic fields that is displayed
      */
     public static void returnAndValidateTextBasicFieldsLabel() {
-
         try {
             BasePage.waitElementBy(By.cssSelector(basicPanelHeadingElement), 20);
             //set to variables the text from each element
@@ -199,33 +244,35 @@ public class PersonBasicPage extends BasePage {
             String veteranReturn = returnBasicSection("Veteran");
             String veteranReturnText = getText(By.xpath(veteranReturn));
 
-            if(birthReturnText.equals(mass.get(0).get("BasicSection"))
-                && birthDateReturnText.equals(mass.get(0).get("BasicFieldLabel"))
-                && citizenshipTypeReturnText.equals(mass.get(1).get("BasicFieldLabel"))
-                && countryOfCitizenshipReturnText.equals(mass.get(2).get("BasicFieldLabel"))
-                && ethnicityReturnText.equals(mass.get(3).get("BasicFieldLabel"))
-                && raceReturnText.equals(mass.get(4).get("BasicFieldLabel"))
-                && genderReturnText.equals(mass.get(5).get("BasicFieldLabel"))
-                && maritalStatusReturnText.equals(mass.get(6).get("BasicFieldLabel"))
-                && primaryLanguageReturnText.equals(mass.get(7).get("BasicFieldLabel"))
-                && religionReturnText.equals(mass.get(8).get("BasicFieldLabel"))
-                && cultureReturnText.equals(mass.get(1).get("BasicSection"))
-                && contextReturnText.equals(mass.get(2).get("BasicSection"))
-                && timeZoneReturnText.equals(mass.get(9).get("BasicFieldLabel"))
-                && deceasedReturnText.contains(mass.get(0).get("CheckboxLabel"))
-                && veteranReturnText.contains(mass.get(1).get("CheckboxLabel"))){
+            //validate Basic section and Basic fields label
+            if (birthReturnText.equals(mass.get(0).get("BasicSection"))
+                    && birthDateReturnText.equals(mass.get(0).get("BasicFieldLabel"))
+                    && citizenshipTypeReturnText.equals(mass.get(1).get("BasicFieldLabel"))
+                    && countryOfCitizenshipReturnText.equals(mass.get(2).get("BasicFieldLabel"))
+                    && ethnicityReturnText.equals(mass.get(3).get("BasicFieldLabel"))
+                    && raceReturnText.equals(mass.get(4).get("BasicFieldLabel"))
+                    && genderReturnText.equals(mass.get(5).get("BasicFieldLabel"))
+                    && maritalStatusReturnText.equals(mass.get(6).get("BasicFieldLabel"))
+                    && primaryLanguageReturnText.equals(mass.get(7).get("BasicFieldLabel"))
+                    && religionReturnText.equals(mass.get(8).get("BasicFieldLabel"))
+                    && cultureReturnText.equals(mass.get(1).get("BasicSection"))
+                    && contextReturnText.equals(mass.get(2).get("BasicSection"))
+                    && timeZoneReturnText.equals(mass.get(9).get("BasicFieldLabel"))
+                    && deceasedReturnText.contains(mass.get(0).get("CheckboxLabel"))
+                    && veteranReturnText.contains(mass.get(1).get("CheckboxLabel"))) {
                 ExtentReportsSetUp.testingPass(LogPage.VALIDATE_BASIC_FIELDS_PASS);
-            }else{
+            } else {
                 FailureDelegatePage.handlePageException(LogPage.VALIDATE_BASIC_FIELDS_FAIL);
             }
         } catch (Exception e) {
             FailureDelegatePage.handlePageException(LogPage.VALIDATE_BASIC_FIELDS_FAIL);
         }
     }
+
     /*
      * method to get an element if it exists or not
      */
-    public static void returnAndValidateElementsNotDisplayed(){
+    public static void returnAndValidateElementsNotDisplayed() {
         try {
             List<WebElement> basicNotDisplayedListOfElements;
 
@@ -251,14 +298,13 @@ public class PersonBasicPage extends BasePage {
             basicNotDisplayedListOfElements = findElements(By.xpath(legacyReturn));
             basicNotDisplayedListOfElements = findElements(By.xpath(stateResidentReturn));
 
-            if(basicNotDisplayedListOfElements.isEmpty()){
+            if (basicNotDisplayedListOfElements.isEmpty()) {
                 ExtentReportsSetUp.testingPass(LogPage.VALIDATE_BASIC_NOT_DISPLAYED_FIELDS_PASS);
-            }else{
+            } else {
                 FailureDelegatePage.handlePageException(LogPage.VALIDATE_BASIC_NOT_DISPLAYED_FIELDS_FAIL);
             }
         } catch (Exception e) {
             FailureDelegatePage.handlePageException(LogPage.VALIDATE_BASIC_NOT_DISPLAYED_FIELDS_FAIL);
         }
     }
-
 }

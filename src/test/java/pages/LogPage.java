@@ -122,6 +122,8 @@ public class LogPage {
     public static final String VERIFY_STUDENT_TYPE_FAIL = "Fail while trying to verify Student Type";
     public static final String VERIFY_RECORD_PANELS_PASS = "I verify the record panels for a student record";
     public static final String VERIFY_RECORD_PANELS_FAIL = "Fail while trying to verify the record panels for a student record";
+    public static final String VERIFY_STUDENT_BASIC_FIELDS_PASS = "I verify the Basic fields for a student record";
+    public static final String VERIFY_STUDENT_BASIC_FIELDS_FAIL = "Fail while trying to verify the Basic fields for a student record";
 
 
 }
