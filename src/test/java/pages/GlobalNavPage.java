@@ -126,7 +126,6 @@ public class GlobalNavPage extends BasePage {
             FailureDelegatePage.handlePageException(LogPage.VALIDATE_IN_TOOL_MENU_NOT_DISPLAYED_PASS_FAIL);
         }
     }
-
     /*
      * Method to create a Person
      */
@@ -249,6 +248,11 @@ public class GlobalNavPage extends BasePage {
                 BasePage.selectElementsList(By.cssSelector(QUICK_ADD_PERSON_ROLE_DROPDOWN_LIST), "a");
                 clickOnListOfElements(mass.get(0).get("Role1"));
             }
+            if (mass.get(0).get("Role2") != null) {
+                BasePage.click(By.cssSelector(QUICK_ADD_PERSON_ROLE_DROPDOWN));
+                BasePage.selectElementsList(By.cssSelector(QUICK_ADD_PERSON_ROLE_DROPDOWN_LIST), "a");
+                clickOnListOfElements(mass.get(0).get("Role2"));
+            }
             if (mass.get(0).get("EmailAddress") != null) {
                 BasePage.write(By.cssSelector(QUICK_ADD_PERSON_EMAIL_ADDRESS_FIELD), mass.get(0).get("EmailAddress"));
             }
@@ -317,7 +321,6 @@ public class GlobalNavPage extends BasePage {
         } catch (Exception e) {
             FailureDelegatePage.handlePageException(LogPage.QUICK_ADD_PERSON_FAIL);
         }
-
     }
 
     /*

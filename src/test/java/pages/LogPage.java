@@ -61,8 +61,8 @@ public class LogPage {
     public static final String OPEN_RECORD_FAIL = "Error while clicking on a record";
     public static final String VALIDATE_IF_OPENED_SUMMARY_PROPERLY_PASS = "I validate if opened corrected summary";
     public static final String VALIDATE_IF_OPENED_SUMMARY_PROPERLY_FAIL = "Error while validating if opened summary from a record correctly";
-    public static final String ALERT_MESSAGE_FAIL = "FAILED to recieve %s alert message";
-    public static final String ALERT_MESSAGE_PASS = "I received %s alert message";
+    public static final String ALERT_MESSAGE_FAIL = "FAILED to recieve '%s' alert message";
+    public static final String ALERT_MESSAGE_PASS = "I received '%s' alert message";
     public static final String QUICK_SEARCH_ONE_PARAMETER_PASS = "I quick search %s from home page";
     public static final String QUICK_SEARCH_ONE_PARAMETER_FAIL = "FAILED to quick search %s from home page";
     public static final String QUICK_SEARCH_PARTIAL_PASS = "I quick search partial %s";

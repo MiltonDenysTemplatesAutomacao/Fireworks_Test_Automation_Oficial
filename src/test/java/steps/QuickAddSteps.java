@@ -16,7 +16,6 @@ public class QuickAddSteps {
     public static void createOrganization(DataTable data) {
         GlobalNavPage.createOrganization(data);
     }
-
     @And("I create a staff")
     public static void createStaff(DataTable data) {
         GlobalNavPage.createStaff(data);
@@ -49,7 +48,6 @@ public class QuickAddSteps {
     public static void quickAddPerson(DataTable data) {
         GlobalNavPage.quickAddPerson(data);
     }
-
     @When("I quick add an organization")
     public static void quickAddOrganization(DataTable data) {
         GlobalNavPage.quickAddOrganization(data);
