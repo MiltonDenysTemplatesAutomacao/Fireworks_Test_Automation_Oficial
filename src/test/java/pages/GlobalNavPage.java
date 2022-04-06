@@ -305,6 +305,7 @@ public class GlobalNavPage extends BasePage {
                 clickOnListOfElements(mass.get(0).get("StudentStatusCategory"));
             }
             if (mass.get(0).get("StudentStatus") != null) {
+                scrollToElement(By.cssSelector(QUICK_ADD_STUDENT_TYPE_DROPDOWN));
                 BasePage.click(By.cssSelector(QUICK_ADD_STUDENT_STATUS_DROPDOWN));
                 BasePage.selectElementsList(By.cssSelector(QUICK_ADD_STUDENT_STATUS_DROPDOWN_LIST), "a");
                 clickOnListOfElements(mass.get(0).get("StudentStatus"));
