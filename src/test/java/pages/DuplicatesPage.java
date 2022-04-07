@@ -36,10 +36,109 @@ public class DuplicatesPage extends BasePage{
     public static final String FIRST_POSSIBLE_MATCH_COUNTRY = "#table-duplicate-record-0 [data-field-name='address_country']";
     public static final String FIRST_POSSIBLE_MATCH_PHONE = "#table-duplicate-record-0 [data-field-name='phone_number']";
     public static final String FIRST_POSSIBLE_MATCH_DATE_ADDED = "#table-duplicate-record-0 [data-field-name='created_at']";
+    public static final String MERGE_DUPLICATES_BUTTON = "#delete-duplicate-record-0";
+    public static final String MERGE_AND_GO_BUTTON = "mergeRecordsModalSaveGo";
+    public static final String MERGE_AND_CLOSE_BUTTON = "mergeRecordsModalSaveClose";
+    public static final String CANCEL_MERGE_BUTTON = "#modalCancelButtonmergeRecords";
+
+    public static final String PREVIEW_MERGE_MATCH_NAME = "#merge-preview [data-field-name='full_name_with_middle']";
+    public static final String PREVIEW_MERGE_MATCH_PREFERRED_NAME = "#merge-preview [data-field-name='preferred_name']";
+    public static final String PREVIEW_MERGE_MATCH_ROLE = "#merge-preview [data-field-name='person_role_string']";
+    public static final String PREVIEW_MERGE_MATCH_BIRTH_DATE = "#merge-preview [data-field-name='birth_date']";
+    public static final String PREVIEW_MERGE_MATCH_SSN = "#merge-preview [data-field-name='social_security_number']";
+    public static final String PREVIEW_MERGE_MATCH_EMAIL = "#merge-preview [data-field-name='email_address']";
+    public static final String PREVIEW_MERGE_MATCH_ADDRESS1 = "#merge-preview [data-field-name='address_1']";
+    public static final String PREVIEW_MERGE_MATCH_ADDRESS2 = "#merge-preview [data-field-name='address_2']";
+    public static final String PREVIEW_MERGE_MATCH_ADDRESS3 = "#merge-preview [data-field-name='address_3']";
+    public static final String PREVIEW_MERGE_MATCH_CITY = "#merge-preview [data-field-name='address_city']";
+    public static final String PREVIEW_MERGE_MATCH_STATE = "#merge-preview [data-field-name='address_state']";
+    public static final String PREVIEW_MERGE_MATCH_POSTAL_CODE = "#merge-preview [data-field-name='address_postal_code']";
+    public static final String PREVIEW_MERGE_MATCH_COUNTRY = "#merge-preview [data-field-name='address_country']";
+    public static final String PREVIEW_MERGE_MATCH_PHONE = "#merge-preview [data-field-name='phone_number']";
+    public static final String PREVIEW_MERGE_MATCH_DATE_ADDED = "#merge-preview [data-field-name='created_at']";
 
 
+    public static void confirmMergeAndClose(){
+        try {
+            waitUntilElementToBeSelected(By.cssSelector(CANCEL_MERGE_BUTTON),20);
+            scrollToElement(By.cssSelector(PREVIEW_MERGE_MATCH_COUNTRY));
+            waitUntilElementToBeSelected(By.id(MERGE_AND_CLOSE_BUTTON),20);
+            wait(2000);
+            click(By.id(MERGE_AND_CLOSE_BUTTON));
+
+            ExtentReportsSetUp.testingPass(LogPage.CONFIRM_MERGE_AND_CLOSE_PASS);
+        } catch (Exception e) {
+            FailureDelegatePage.handlePageException(LogPage.CONFIRM_MERGE_AND_CLOSE_FAIL);
+        }
+    }
+
+    /*
+     * Method to verify content of the preview record
+     */
+    public static void verifyMergePreview(){
+        try {
+            BasePage.waitElementBy(By.cssSelector(PREVIEW_MERGE_MATCH_NAME), 20);
+
+            String previewRecordNameText = getText(By.cssSelector(PREVIEW_MERGE_MATCH_NAME));
+            String previewRecordPreferredNameText = getText(By.cssSelector(PREVIEW_MERGE_MATCH_PREFERRED_NAME));
+            String previewRecordRoleText = getText(By.cssSelector(PREVIEW_MERGE_MATCH_ROLE));
+            String previewRecordBirthDataText = getText(By.cssSelector(PREVIEW_MERGE_MATCH_BIRTH_DATE));
+            String previewRecordSSNText = getText(By.cssSelector(PREVIEW_MERGE_MATCH_SSN));
+            String previewRecordEmailText = getText(By.cssSelector(PREVIEW_MERGE_MATCH_EMAIL));
+            String previewRecordAddress1Text = getText(By.cssSelector(PREVIEW_MERGE_MATCH_ADDRESS1));
+            String previewRecordAddress2Text = getText(By.cssSelector(PREVIEW_MERGE_MATCH_ADDRESS2));
+            String previewRecordAddress3Text = getText(By.cssSelector(PREVIEW_MERGE_MATCH_ADDRESS3));
+            String previewRecordCityText = getText(By.cssSelector(PREVIEW_MERGE_MATCH_CITY));
+            String previewRecordStateText = getText(By.cssSelector(PREVIEW_MERGE_MATCH_STATE));
+            String previewRecordPostaCodeText = getText(By.cssSelector(PREVIEW_MERGE_MATCH_POSTAL_CODE));
+            String previewRecordCountryText = getText(By.cssSelector(PREVIEW_MERGE_MATCH_COUNTRY));
+            String previewRecordPhoneText = getText(By.cssSelector(PREVIEW_MERGE_MATCH_PHONE));
+            String previewRecordDateAddedText = getText(By.cssSelector(PREVIEW_MERGE_MATCH_DATE_ADDED));
+
+            boolean validateFields = false;
+                if(previewRecordNameText.equals(mass.get(0).get("Fullname"))
+                        && previewRecordRoleText.contains(mass.get(0).get("Role2"))
+                        && previewRecordRoleText.contains(mass.get(0).get("Role1"))
+                        && previewRecordEmailText.equals(mass.get(0).get("EmailAddress"))
+                        && previewRecordAddress1Text.equals(mass.get(0).get("Address1"))
+                        && previewRecordCityText.equals(mass.get(0).get("City"))
+                        && previewRecordStateText.equals(mass.get(0).get("State"))
+                        && previewRecordPostaCodeText.equals(mass.get(0).get("PostalCode"))
+                        && previewRecordCountryText.equals(mass.get(0).get("Country"))
+                        && previewRecordPhoneText.equals(mass.get(0).get("Phone"))){
+                    validateFields=true;
+                }
+                boolean validateEmptyFields = false;
+                if(previewRecordPreferredNameText.isEmpty()
+                        && previewRecordBirthDataText.isEmpty()
+                        && previewRecordSSNText.isEmpty()
+                        && previewRecordAddress2Text.isEmpty()
+                        && previewRecordAddress3Text.isEmpty()
+                        && previewRecordDateAddedText.isEmpty()){
+                    validateEmptyFields=true;
+                }
+                if(validateFields && validateEmptyFields){
+                    ExtentReportsSetUp.testingPass(LogPage.VERIFY_MERGE_PREVIEW_PASS);
+                }else{
+                    FailureDelegatePage.handlePageException(LogPage.VERIFY_MERGE_PREVIEW_FAIL);
+                }
+                } catch (Exception e) {
+
+        }
+
+    }
+    /*
+     * Method to click on merge button
+     */
     public static void mergeDuplicates(){
-
+        try {
+            scrollToElement(By.cssSelector(SUSPENDED_RECORD_POSTAL_CODE));
+            waitUntilElementToBeSelected(By.cssSelector(MERGE_DUPLICATES_BUTTON),20);
+            click(By.cssSelector(MERGE_DUPLICATES_BUTTON));
+            ExtentReportsSetUp.testingPass(LogPage.MERGE_DUPLICATES_PASS);
+        } catch (Exception e) {
+            FailureDelegatePage.handlePageException(LogPage.MERGE_DUPLICATES_FAIL);
+        }
     }
 
     /*

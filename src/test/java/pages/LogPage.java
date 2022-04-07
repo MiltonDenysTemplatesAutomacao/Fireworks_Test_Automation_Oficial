@@ -128,6 +128,12 @@ public class LogPage {
     public static final String VERIFY_CONTENT_OF_SUSPENDED_RECORD_FAIL = "Fail while trying to verify content of the suspended record";
     public static final String VERIFY_CONTENT_OF_FIRST_POSSIBLE_MATCH_PASS = "Fail while trying to verify content of the suspended record";
     public static final String VERIFY_CONTENT_OF_FIRST_POSSIBLE_MATCH_FAIL = "Fail while trying to verify content of the suspended record";
+    public static final String MERGE_DUPLICATES_PASS = "I merge duplicates";
+    public static final String MERGE_DUPLICATES_FAIL = "Fail while trying to merge duplicates";
+    public static final String VERIFY_MERGE_PREVIEW_PASS = "I verify merge preview";
+    public static final String VERIFY_MERGE_PREVIEW_FAIL = "Fail while trying to verify merge preview";
+    public static final String CONFIRM_MERGE_AND_CLOSE_PASS = "I confirm merge and close";
+    public static final String CONFIRM_MERGE_AND_CLOSE_FAIL = "Fail while trying confirm merge and close";
 
 
 }

@@ -19,6 +19,8 @@ Feature: Multiple roles can be assigned
       |Isao     |Takahata   |Isao Takahata  |2iTakahata@japanesedirectors.com |Personal   |Inquiry          |Donor    |       |(904) 725-0002|Home     |141 Green Hill Dr |Buffalo|New York |14215     |United States |           |                     |               |                 |         |
 
       #Then I validate if "A potential duplicate Student record was found while creating this record; it has been placed in the Duplicate Manager for review." message is correct
-    And I verify content of the suspended record
-    And I verify content of the first possible match record
+    #And I verify content of the suspended record
+    #And I verify content of the first possible match record
     And I merge duplicates
+    #And I verify merge preview
+    And I confirm merge and close

@@ -274,7 +274,6 @@ public class PersonBasicPage extends BasePage {
      */
     public static void returnAndValidateElementsNotDisplayed() {
         try {
-            List<WebElement> basicNotDisplayedListOfElements;
 
             //get xpath from each one of the Datatable values that is not supposed to be displayed
             String birthCountryReturn = returnBasicSection("Birth Country");
@@ -288,17 +287,26 @@ public class PersonBasicPage extends BasePage {
             String stateResidentReturn = returnBasicSection("State Resident");
 
             //set to a list if an element exists
-            basicNotDisplayedListOfElements = findElements(By.xpath(birthCountryReturn));
-            basicNotDisplayedListOfElements = findElements(By.xpath(birthCityReturn));
-            basicNotDisplayedListOfElements = findElements(By.xpath(socialSecurityNumberReturn));
-            basicNotDisplayedListOfElements = findElements(By.xpath(highScoreReturn));
-            basicNotDisplayedListOfElements = findElements(By.xpath(originalGeomarketReturn));
-            basicNotDisplayedListOfElements = findElements(By.xpath(studentFlagReturn));
-            basicNotDisplayedListOfElements = findElements(By.xpath(InternationalReturn));
-            basicNotDisplayedListOfElements = findElements(By.xpath(legacyReturn));
-            basicNotDisplayedListOfElements = findElements(By.xpath(stateResidentReturn));
+            List<WebElement> birthCountryElements = findElements(By.xpath(birthCountryReturn));
+            List<WebElement> birthCityElements = findElements(By.xpath(birthCityReturn));
+            List<WebElement> socialSecurityNumberElements = findElements(By.xpath(socialSecurityNumberReturn));
+            List<WebElement> highScoreElements = findElements(By.xpath(highScoreReturn));
+            List<WebElement> originalGeomarketElements = findElements(By.xpath(originalGeomarketReturn));
+            List<WebElement> studentFlagElements = findElements(By.xpath(studentFlagReturn));
+            List<WebElement> InternationalElements = findElements(By.xpath(InternationalReturn));
+            List<WebElement> legacyElements = findElements(By.xpath(legacyReturn));
+            List<WebElement> stateResidentElements = findElements(By.xpath(stateResidentReturn));
 
-            if (basicNotDisplayedListOfElements.isEmpty()) {
+
+            if (birthCountryElements.isEmpty()
+            && birthCityElements.isEmpty()
+            && socialSecurityNumberElements.isEmpty()
+            && highScoreElements.isEmpty()
+            && originalGeomarketElements.isEmpty()
+            && studentFlagElements.isEmpty()
+            && InternationalElements.isEmpty()
+            && legacyElements.isEmpty()
+            && stateResidentElements.isEmpty()) {
                 ExtentReportsSetUp.testingPass(LogPage.VALIDATE_BASIC_NOT_DISPLAYED_FIELDS_PASS);
             } else {
                 FailureDelegatePage.handlePageException(LogPage.VALIDATE_BASIC_NOT_DISPLAYED_FIELDS_FAIL);

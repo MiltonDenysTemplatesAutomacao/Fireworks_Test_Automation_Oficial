@@ -17,5 +17,13 @@ public class DuplicatesSteps {
     public static void mergeDuplicates() {
         DuplicatesPage.mergeDuplicates();
     }
+    @Then("I verify merge preview")
+    public static void verifyMergePreview() {
+        DuplicatesPage.verifyMergePreview();
+    }
+    @Then("I confirm merge and close")
+    public static void confirmMergeAndClose() {
+        DuplicatesPage.confirmMergeAndClose();
+    }
 
 }

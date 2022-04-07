@@ -36,17 +36,14 @@ public class BasePage {
      * Method to check if an element is enabled
      */
     public static boolean checkIfElementIsEnabled(By by) throws Exception {
-        boolean display = DriverBase.getDriver().findElement(by).isEnabled();
-        return display;
+        return DriverBase.getDriver().findElement(by).isEnabled();
     }
 
     /*
      * Method to save elements in a list
      */
     public static List<WebElement> findElements(By by) throws Exception {
-        List<WebElement> elements = DriverBase.getDriver().findElements(by);
-        return elements;
-
+        return DriverBase.getDriver().findElements(by);
     }
 
     /*
@@ -60,10 +57,8 @@ public class BasePage {
      * Method to list elements in a list by css and tag
      */
     public static List<WebElement> elementsList(By by, String tag) throws Exception {
-
         WebElement table = DriverBase.getDriver().findElement(by);
-        List<WebElement> rowsTable = table.findElements(By.tagName(tag));
-        return rowsTable;
+        return table.findElements(By.tagName(tag));
     }
 
     /*
