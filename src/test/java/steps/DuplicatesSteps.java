@@ -25,5 +25,13 @@ public class DuplicatesSteps {
     public static void confirmMergeAndClose() {
         DuplicatesPage.confirmMergeAndClose();
     }
+    @Then("I validate if the record lo longer exists on the duplicates page")
+    public static void verifyIfRecordNoLongerExistsOnDuplicatesPage() {
+        DuplicatesPage.verifyIfRecordNoLongerExistsOnDuplicatesPage();
+    }
+    @Then("I search {string} on duplicate manager")
+    public static void searchDuplicateManager(String parameter) {
+        DuplicatesPage.searchDuplicateManager(parameter);
+    }
 
 }

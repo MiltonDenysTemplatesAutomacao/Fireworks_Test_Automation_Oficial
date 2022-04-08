@@ -5,6 +5,10 @@ import org.openqa.selenium.By;
 
 public class DuplicatesPage extends BasePage{
 
+
+    public static final String DUPLICATE_MANAGER_TABLE = "#duplicateManagerTable";
+    public static final String DUPLICATE_MANAGER_SEARCH_FIELD = "#duplicateManagerTableControlsTableSearch";
+
     public static final String SUSPENDED_RECORD_NAME = "#table-duplicate-record-suspended [data-field-name='full_name_with_middle']";
     public static final String SUSPENDED_RECORD_PREFERRED_NAME = "#table-duplicate-record-suspended [data-field-name='preferred_name']";
     public static final String SUSPENDED_RECORD_ROLE = "#table-duplicate-record-suspended [data-field-name='person_role_string']";
@@ -58,12 +62,37 @@ public class DuplicatesPage extends BasePage{
     public static final String PREVIEW_MERGE_MATCH_DATE_ADDED = "#merge-preview [data-field-name='created_at']";
 
 
+    public static void searchDuplicateManager(String parameter){
+        String passMessage = String.format(LogPage.SEARCH_DUPLICATE_MANAGER_PASS, parameter);
+        String failMessage = String.format(LogPage.SEARCH_DUPLICATE_MANAGER_FAIL, parameter);
+        try {
+            waitElementBy(By.cssSelector(DUPLICATE_MANAGER_TABLE),20);
+            write(By.cssSelector(DUPLICATE_MANAGER_SEARCH_FIELD),mass.get(0).get(parameter));
+            ExtentReportsSetUp.testingPass(passMessage);
+        } catch (Exception e) {
+            FailureDelegatePage.handlePageException(failMessage);
+        }
+    }
+
+
+    public static void verifyIfRecordNoLongerExistsOnDuplicatesPage(){
+        try {
+            waitElementBy(By.cssSelector(DUPLICATE_MANAGER_TABLE),20);
+            if(!DUPLICATE_MANAGER_TABLE.contains(mass.get(0).get("Fullname"))){
+                ExtentReportsSetUp.testingPass(LogPage.VERIFY_IF_RECORD_NO_LONGER_EXISTS_ON_DUPLICATES_PAGE_PASS);
+            }else{
+                FailureDelegatePage.handlePageException(LogPage.VERIFY_IF_RECORD_NO_LONGER_EXISTS_ON_DUPLICATES_PAGE_FAIL);
+            }
+        } catch (Exception e) {
+            FailureDelegatePage.handlePageException(LogPage.VERIFY_IF_RECORD_NO_LONGER_EXISTS_ON_DUPLICATES_PAGE_FAIL);
+        }
+    }
+
     public static void confirmMergeAndClose(){
         try {
             waitUntilElementToBeSelected(By.cssSelector(CANCEL_MERGE_BUTTON),20);
             scrollToElement(By.cssSelector(PREVIEW_MERGE_MATCH_COUNTRY));
             waitUntilElementToBeSelected(By.id(MERGE_AND_CLOSE_BUTTON),20);
-            wait(2000);
             click(By.id(MERGE_AND_CLOSE_BUTTON));
 
             ExtentReportsSetUp.testingPass(LogPage.CONFIRM_MERGE_AND_CLOSE_PASS);

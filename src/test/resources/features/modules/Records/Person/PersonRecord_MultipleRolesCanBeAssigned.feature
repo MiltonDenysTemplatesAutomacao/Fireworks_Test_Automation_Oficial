@@ -22,5 +22,14 @@ Feature: Multiple roles can be assigned
     #And I verify content of the suspended record
     #And I verify content of the first possible match record
     And I merge duplicates
-    #And I verify merge preview
+    And I verify merge preview
     And I confirm merge and close
+    And I navigate to duplicates
+    And I validate if the record lo longer exists on the duplicates page
+    And I search "Lastname" on duplicate manager
+    And I validate if the record lo longer exists on the duplicates page
+    When I navigate to people on records
+    And I open a people record by "Lastname"
+    Then I validate if "Fullname"summary opened properly
+    And I verify Header Role "Multiple"
+

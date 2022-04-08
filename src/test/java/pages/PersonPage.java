@@ -21,7 +21,6 @@ public class PersonPage extends BasePage{
     private static final String SOCIAL_SECURITY_NUMBER_FIELD = "#social_security_number";
     private static final String PERSON_BASIC_SAVE_CHANGES_BUTTON = "saveChangesBtnPersonBasic";
 
-
     private static final String FIRST_NAME_FIELD = "person_name_0_name_first";
     private static final String LAST_NAME_FIELD = "person_name_0_name_last";
     private static final String MIDDLE_NAME_FIELD = "person_name_0_name_middle";
@@ -59,9 +58,36 @@ public class PersonPage extends BasePage{
     private static final String STUDENT_STATUS_LABEL = "recordNavTab_summary";
     private static final String DOCUMENTS_LABEL = "recordNavTab_summary";
 
-    public static void verifyStudentBasicFields(){
+    private static final String PEOPLE_MANAGER_TABLE = "#peopleManagerTable";
+    private static final String PEOPLE_MANAGER_TABLE_SEARCH_FIELD = "#peopleManagerTableControlsTableSearch";
+    private static final String PEOPLE_MANAGER_TABLE_ROW1_COL1_LINK = "#peopleManagerTable_row_0_col_0_link_0";
+
+    public static void openPeopleRecord(String search){
+        searchPeopleManager(search);
+        String passMessage = String.format(LogPage.OPEN_PEOPLE_RECORD_PASS, search);
+        String failMessage = String.format(LogPage.OPEN_PEOPLE_RECORD_FAIL, search);
+        try {
+            waitElementBy(By.cssSelector(PEOPLE_MANAGER_TABLE_ROW1_COL1_LINK),20);
+            click(By.cssSelector(PEOPLE_MANAGER_TABLE_ROW1_COL1_LINK));
+            ExtentReportsSetUp.testingPass(passMessage);
+        } catch (Exception e) {
+            FailureDelegatePage.handlePageException(failMessage);
+        }
+
 
     }
+    public static void searchPeopleManager(String search){
+        String passMessage = String.format(LogPage.SEARCH_PEOPLE_MANAGER_PASS, search);
+        String failMessage = String.format(LogPage.SEARCH_PEOPLE_MANAGER_FAIL, search);
+        try {
+            waitElementBy(By.cssSelector(PEOPLE_MANAGER_TABLE),20);
+            write(By.cssSelector(PEOPLE_MANAGER_TABLE_SEARCH_FIELD),mass.get(0).get(search));
+            ExtentReportsSetUp.testingPass(passMessage);
+        } catch (Exception e) {
+            FailureDelegatePage.handlePageException(failMessage);
+        }
+    }
+
     public static void verifyStudentRecordPanels(){
         try {
             waitUntilElementPresence(By.cssSelector(HEADER_STUDENT_TYPE_ELEMENT),20);
@@ -107,28 +133,30 @@ public class PersonPage extends BasePage{
     }
 
 
-    public static void verifyHeaderRole(){
-        String passMessage = String.format(LogPage.VERIFY_HEADER_ROLE_PASS, mass.get(0).get("Role1"));
-        String failMessage = String.format(LogPage.VERIFY_HEADER_ROLE_FAIL, mass.get(0).get("Role1"));
+    public static void verifyHeaderRole(String headerRole){
+        String passMessage = String.format(LogPage.VERIFY_HEADER_ROLE_PASS, headerRole);
+        String failMessage = String.format(LogPage.VERIFY_HEADER_ROLE_FAIL, headerRole);
 
         try {
             waitUntilElementPresence(By.cssSelector(HEADER_ROLE_ELEMENT),20);
-            List<WebElement> headerRoles;
-            switch (mass.get(0).get("Role1")){
+            switch (headerRole){
                 case "Student":
                     String studentType = getText(By.cssSelector(HEADER_STUDENT_TYPE_ELEMENT));
                     String assignedStaff = getText(By.cssSelector(HEADER_ASSIGNED_STAFF_ELEMENT));
-                    Assert.assertTrue(studentType.contains("Student Type"));
-                    Assert.assertTrue(assignedStaff.contains("Assigned Staff"));
-                    ExtentReportsSetUp.testingPass(passMessage);
+                    if(studentType.contains("Student Type")&& assignedStaff.contains("Assigned Staff")){
+                        ExtentReportsSetUp.testingPass(passMessage);
+                    }
                     break;
                 case "Multiple":
-                    ExtentReportsSetUp.testingPass(passMessage);
+                    String roleElement = getText(By.cssSelector(HEADER_ROLE_ELEMENT));
+                    if(roleElement.contains(headerRole)){
+                        ExtentReportsSetUp.testingPass(passMessage);
+                    }
                     break;
                 default:
-                    headerRoles = findElements(By.cssSelector(HEADER_STUDENT_TYPE_ELEMENT));
-                    headerRoles = findElements(By.cssSelector(HEADER_ASSIGNED_STAFF_ELEMENT));
-                    if(headerRoles.isEmpty()){
+                    List<WebElement> headerStudent = findElements(By.cssSelector(HEADER_STUDENT_TYPE_ELEMENT));
+                    List<WebElement> headerStaff = findElements(By.cssSelector(HEADER_ASSIGNED_STAFF_ELEMENT));
+                    if(headerStudent.isEmpty()&&headerStaff.isEmpty()){
                         ExtentReportsSetUp.testingPass(passMessage);
                     }
             }

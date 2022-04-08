@@ -22,7 +22,6 @@ public class QuickAddSteps {
     }
     @When("I quick search {string}")
     public static void quickSearchOneParameter(String parameter) {
-
         GlobalNavPage.quickSearchOneParameter(parameter);
     }
     @When("I quick search partial {string}")

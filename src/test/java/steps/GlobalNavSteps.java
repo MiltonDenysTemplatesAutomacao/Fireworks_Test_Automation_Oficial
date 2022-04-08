@@ -17,6 +17,14 @@ public class GlobalNavSteps {
     public static void validateTaskNotDisplayedToolsMenu() {
         GlobalNavPage.validateTaskInToolMenuIsNotDisplayed();
     }
+    @And("I navigate to duplicates")
+    public static void navigateDuplicatesPage() {
+        GlobalNavPage.navigateDuplicatesPage();
+    }
+    @And("I navigate to people on records")
+    public static void navigatePeoplePage() {
+        GlobalNavPage.navigatePersonPage();
+    }
     @And("I log out")
     public static void logout() {
         GlobalNavPage.logout();

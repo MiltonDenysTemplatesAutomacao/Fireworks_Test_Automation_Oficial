@@ -134,6 +134,18 @@ public class LogPage {
     public static final String VERIFY_MERGE_PREVIEW_FAIL = "Fail while trying to verify merge preview";
     public static final String CONFIRM_MERGE_AND_CLOSE_PASS = "I confirm merge and close";
     public static final String CONFIRM_MERGE_AND_CLOSE_FAIL = "Fail while trying confirm merge and close";
+    public static final String NAVIGATE_DUPLICATES_PAGE_PASS = "I navigate to duplicates";
+    public static final String NAVIGATE_DUPLICATES_PAGE_FAIL = "Fail while trying to navigate to duplicates";
+    public static final String VERIFY_IF_RECORD_NO_LONGER_EXISTS_ON_DUPLICATES_PAGE_PASS = "I validate if the record lo longer exists on the duplicates page";
+    public static final String VERIFY_IF_RECORD_NO_LONGER_EXISTS_ON_DUPLICATES_PAGE_FAIL = "Fail while trying to validate if the record lo longer exists on the duplicates page";
+    public static final String SEARCH_DUPLICATE_MANAGER_PASS = "I search %s on duplicate manager";
+    public static final String SEARCH_DUPLICATE_MANAGER_FAIL = "Fail while trying to search %s on duplicate manager";
+    public static final String NAVIGATE_PERSON_PAGE_PASS = "I navigate to people on records";
+    public static final String NAVIGATE_PERSON_PAGE_FAIL = "Fail while trying to navigate to people on records";
+    public static final String SEARCH_PEOPLE_MANAGER_PASS = "I search %s on people page manager";
+    public static final String SEARCH_PEOPLE_MANAGER_FAIL = "Fail while trying to search %s on people page manager";
+    public static final String OPEN_PEOPLE_RECORD_PASS = "I open a people record by %s";
+    public static final String OPEN_PEOPLE_RECORD_FAIL = "Fail while trying to open a people record by %s";
 
 
 }
