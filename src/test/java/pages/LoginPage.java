@@ -74,8 +74,8 @@ public class LoginPage {
      * Method to login and check if the full name is correct
      */
     public static void login(String username,String password,String fullName){
-        String errorMessage = String.format(LogPage.LOGIN_AS_PASS, returnFullNameLoginParameter(fullName));
-        String passMessage = String.format(LogPage.LOGIN_AS_FAIL, returnFullNameLoginParameter(fullName));
+        String errorMessage = String.format(LogPage.LOGIN_AS_FAIL, returnFullNameLoginParameter(fullName));
+        String passMessage = String.format(LogPage.LOGIN_AS_PASS, returnFullNameLoginParameter(fullName));
         try {
             BasePage.write(By.cssSelector(USERNAME_FIELD),returnUsernameLoginParameter(username));
             BasePage.write(By.cssSelector(PASSWORD_FIELD),returnPasswordLoginParameter(password));

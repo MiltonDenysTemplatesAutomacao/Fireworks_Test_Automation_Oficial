@@ -143,7 +143,7 @@ public class DuplicatesPage extends BasePage{
                         && previewRecordSSNText.isEmpty()
                         && previewRecordAddress2Text.isEmpty()
                         && previewRecordAddress3Text.isEmpty()
-                        && previewRecordDateAddedText.isEmpty()){
+                       ){
                     validateEmptyFields=true;
                 }
                 if(validateFields && validateEmptyFields){

@@ -14,6 +14,10 @@ public class PersonSteps {
     public static void verifyHeaderRole(String role) {
         PersonPage.verifyHeaderRole(role);
     }
+    @Then("I verify all three roles are selected in the role dropdown")
+    public static void verifyAllthreeRolesAreSelected() {
+        PersonPage.verifyAllthreeRolesAreSelected();
+    }
     @Then("I open a people record by {string}")
     public static void openPeopleRecord(String search) {
         PersonPage.openPeopleRecord(search);

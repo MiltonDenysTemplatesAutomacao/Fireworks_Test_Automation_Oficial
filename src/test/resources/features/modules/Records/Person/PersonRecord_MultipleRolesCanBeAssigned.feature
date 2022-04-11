@@ -32,4 +32,7 @@ Feature: Multiple roles can be assigned
     And I open a people record by "Lastname"
     Then I validate if "Fullname"summary opened properly
     And I verify Header Role "Multiple"
+    And I verify all three roles are selected in the role dropdown
+    And I navigate to contact
+    And I verify email address "0" fields
 
