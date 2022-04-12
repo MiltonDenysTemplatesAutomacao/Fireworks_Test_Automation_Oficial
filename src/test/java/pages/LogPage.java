@@ -148,6 +148,8 @@ public class LogPage {
     public static final String OPEN_PEOPLE_RECORD_FAIL = "Fail while trying to open a people record by %s";
     public static final String VERIFY_ALL_THREE_ROLES_ARE_SELECTED_PASS = "I verify all three roles are selected in the role dropdown";
     public static final String VERIFY_ALL_THREE_ROLES_ARE_SELECTED_FAIL = "Fail while trying to verify all three roles are selected in the role dropdown";
+    public static final String VERIFY_EMAIL_PERSON_PAGE_RECORD_PASS = "I verify email address";
+    public static final String VERIFY_EMAIL_PERSON_PAGE_RECORD_FAIL = "Fail while trying to verify email address";
 
 
 }

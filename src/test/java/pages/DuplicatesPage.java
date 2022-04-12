@@ -143,6 +143,7 @@ public class DuplicatesPage extends BasePage{
                         && previewRecordSSNText.isEmpty()
                         && previewRecordAddress2Text.isEmpty()
                         && previewRecordAddress3Text.isEmpty()
+                        && previewRecordDateAddedText.isEmpty()
                        ){
                     validateEmptyFields=true;
                 }
@@ -275,6 +276,5 @@ public class DuplicatesPage extends BasePage{
         } catch (Exception e) {
             FailureDelegatePage.handlePageException(LogPage.VERIFY_CONTENT_OF_FIRST_POSSIBLE_MATCH_FAIL);
         }
-
     }
 }

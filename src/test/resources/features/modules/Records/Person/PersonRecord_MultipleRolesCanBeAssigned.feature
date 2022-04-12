@@ -7,20 +7,20 @@
 Feature: Multiple roles can be assigned
 
   @MultipleRolesCanBeAssignedScenario
-  Scenario: to verify merging an existing person with an incoming student
+  Scenario: to verify different scenarios in merge
     Given I login as "firestarterUsername", "firestarterPassword", "firestarterFullName"
     And I create a person
      |Firstname|Lastname   |Fullname      |EmailAddress		                |EmailType  |EmailOptInMethod  |Role1	|Phone         |PhoneType|Address1          |City   |State    |PostalCode|Country       |
      |Isao     |Takahata   |Isao Takahata |2iTakahata@japanesedirectors.com |Personal   |Inquiry           |Donor   |(904) 725-0002|Home     |141 Green Hill Dr |Buffalo|New York |14215     |United States |
-    #And I validate if "Person has been created" message is correct
+    And I validate if "Person has been created" message is correct
     And I create a person
       |Firstname|Lastname   |Fullname       |EmailAddress		              |EmailType  |EmailOptInMethod |Role1	  |Role2  |Phone         |PhoneType|Address1          |City   |State    |PostalCode|Country       |StudentType|StudentStatusCategory|StudentStatus  |StudentStatusDate|EntryTerm|
       |Isao     |Takahata   |Isao Takahata  |iTakahata@japanesedirectors.com  |Personal   |Inquiry          |Sibling  |Student|(904) 725-0002|Home     |141 Green Hill Dr |Buffalo|New York |14215     |United States |Freshman   |Inquiry              |Inquiry-Active |01/25/2016       |Fall 2017|
       |Isao     |Takahata   |Isao Takahata  |2iTakahata@japanesedirectors.com |Personal   |Inquiry          |Donor    |       |(904) 725-0002|Home     |141 Green Hill Dr |Buffalo|New York |14215     |United States |           |                     |               |                 |         |
 
-      #Then I validate if "A potential duplicate Student record was found while creating this record; it has been placed in the Duplicate Manager for review." message is correct
-    #And I verify content of the suspended record
-    #And I verify content of the first possible match record
+    Then I validate if "A potential duplicate Student record was found while creating this record; it has been placed in the Duplicate Manager for review." message is correct
+    And I verify content of the suspended record
+    And I verify content of the first possible match record
     And I merge duplicates
     And I verify merge preview
     And I confirm merge and close
@@ -35,4 +35,5 @@ Feature: Multiple roles can be assigned
     And I verify all three roles are selected in the role dropdown
     And I navigate to contact
     And I verify email address "0" fields
+    And I verify email address "1" fields
 

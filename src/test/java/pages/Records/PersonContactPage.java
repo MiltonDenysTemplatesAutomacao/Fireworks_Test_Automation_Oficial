@@ -1,7 +1,10 @@
 package pages.Records;
 
+import config.extent_reports.ExtentReportsSetUp;
 import org.openqa.selenium.By;
 import pages.BasePage;
+import pages.FailureDelegatePage;
+import pages.LogPage;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -58,19 +61,108 @@ public class PersonContactPage extends BasePage {
         return String.format(EMAIL_ADDRESS_FIELD_READ_ONLY,index);
     }
 
-
+    /*
+     * Method to check to verify email person on page records
+     */
     public static void verifyEmailPersonPageRecord(String index){
 
+        boolean emailAddressValidation = false;
+        boolean emailTypeValidation = false;
+        boolean emailOptInMethodValidation = false;
+        boolean emailOptInStatusValidation = false;
+        boolean emailOptInDateValidation = false;
+        boolean emailStatusValidation = false;
+        boolean emailCommentsValidation = false;
+        boolean emailActiveCheckboxLocator = false;
+        boolean emailPrymaryCheckboxLocator = false;
+
         try {
+            scrollToElement(By.cssSelector(emailAddressField(index)));
             int indexInt = Integer.parseInt(index);
             if (mass.get(indexInt).get("EmailAddress") != null) {
-               String emailAddress = getAtribute(By.cssSelector(emailAddressField(index)),"value");
+                String emailAddress = getAtribute(By.cssSelector(emailAddressField(index)),"value");
                if(emailAddress.equals(mass.get(indexInt).get("EmailAddress"))){
-                    boolean emailAddressValidation = true;
+                   emailAddressValidation = true;
                }
+            }else{
+                emailAddressValidation = true;
             }
-        } catch (Exception e) {
+            if (mass.get(indexInt).get("EmailType") != null) {
+                String emailType = getText(By.cssSelector(emailTypeElement(index)));
+                if(emailType.equals(mass.get(indexInt).get("EmailType"))){
+                    emailTypeValidation = true;
+                }
+            }else{
+                emailTypeValidation = true;
+            }
+            if (mass.get(indexInt).get("EmailOptInMethod") != null) {
+                String emailOptInMethod = getText(By.cssSelector(emailOptInMethodElement(index)));
+                if(emailOptInMethod.equals(mass.get(indexInt).get("EmailOptInMethod"))){
+                    emailOptInMethodValidation = true;
+                }
+            }else{
+                emailOptInMethodValidation = true;
+            }
+            if (mass.get(indexInt).get("EmailOptInStatus") != null) {
+                String emailOptInStatus = getText(By.cssSelector(emailOptInStatusElement(index)));
+                if(emailOptInStatus.equals(mass.get(indexInt).get("EmailOptInStatus"))){
+                    emailOptInStatusValidation = true;
+                }
+            }else{
+                emailOptInStatusValidation=true;
+            }
+            if (mass.get(indexInt).get("EmailOptInDate") != null) {
+                String emailOptInDate = getAtribute(By.cssSelector(emailOptInDateField(index)),"value");
+                if(emailOptInDate.equals(mass.get(indexInt).get("EmailOptInDate"))){
+                    emailOptInDateValidation = true;
+                }
+            }else{
+                emailOptInDateValidation = true;
+            }
+            if (mass.get(indexInt).get("EmailStatus") != null) {
+                String emailStatus = getText(By.cssSelector(emailStatusElement(index)));
+                if(emailStatus.equals(mass.get(indexInt).get("EmailStatus"))){
+                    emailStatusValidation = true;
+                }
+            }else{
+                emailStatusValidation = true;
+            }
+            if (mass.get(indexInt).get("EmailComments") != null) {
+                String emailComments = getText(By.cssSelector(emailCommentsField(index)));
+                if(emailComments.equals(mass.get(indexInt).get("EmailComments"))){
+                    emailCommentsValidation = true;
+                }
+            }else{
+                emailCommentsValidation = true;
+            }
+            switch (indexInt){
+                case 0:
+                    emailActiveCheckboxLocator = checkBoxIsActive(By.cssSelector(emailActiveCheckbox(index)));
+                    break;
+                case 1:
+                    emailActiveCheckboxLocator = checkBoxIsActive(By.cssSelector(emailActiveCheckbox(index)));
+                    emailActiveCheckboxLocator = true;
+                    break;
+            }
 
+            switch (indexInt){
+                case 0:
+                    emailPrymaryCheckboxLocator = checkBoxIsActive(By.cssSelector(emailActiveCheckbox(index)));
+                    break;
+                case 1:
+                    emailPrymaryCheckboxLocator = checkBoxIsActive(By.cssSelector(emailActiveCheckbox(index)));
+                    emailPrymaryCheckboxLocator = true;
+                    break;
+            }
+                if(emailAddressValidation && emailTypeValidation && emailOptInMethodValidation
+                && emailOptInStatusValidation && emailOptInDateValidation && emailStatusValidation
+                && emailCommentsValidation && emailActiveCheckboxLocator && emailPrymaryCheckboxLocator){
+                    ExtentReportsSetUp.testingPass(LogPage.VERIFY_EMAIL_PERSON_PAGE_RECORD_PASS);
+                }else{
+                    FailureDelegatePage.handlePageException(LogPage.VERIFY_EMAIL_PERSON_PAGE_RECORD_FAIL);
+                }
+        } catch (Exception e) {
+            FailureDelegatePage.handlePageException(LogPage.VERIFY_EMAIL_PERSON_PAGE_RECORD_FAIL);
         }
     }
 }

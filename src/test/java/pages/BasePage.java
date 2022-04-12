@@ -28,8 +28,19 @@ public class BasePage {
      * Method to check if an element is visible
      */
     public static boolean checkIfElementIsVisible(By by) throws Exception {
-        boolean display = DriverBase.getDriver().findElement(by).isDisplayed();
-        return display;
+        return DriverBase.getDriver().findElement(by).isDisplayed();
+    }
+    /*
+     * Method to check if a checkbox is active
+     */
+    public static boolean checkBoxIsActive(By by) throws Exception {
+        return DriverBase.getDriver().findElement(by).isSelected();
+    }
+    /*
+     * Method to check if a checkbox is not active
+     */
+    public static boolean checkBoxIsNotActive(By by) throws Exception {
+        return DriverBase.getDriver().findElement(by).isSelected();
     }
 
     /*
@@ -108,6 +119,7 @@ public class BasePage {
     public static String getAtribute(By by, String value) throws Exception {
         return DriverBase.getDriver().findElement(by).getAttribute(value);
     }
+
 
     /*
      * Method replace a String
