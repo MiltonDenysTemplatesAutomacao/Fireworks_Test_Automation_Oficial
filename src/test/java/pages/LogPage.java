@@ -28,6 +28,8 @@ public class LogPage {
     public static final String UPDATE_NAME_PASS = "I update CitizenshipValues";
     public static final String NAVIGATE_TO_CONTACT_FAIL = "Error while navigating to contact";
     public static final String NAVIGATE_TO_CONTACT_PASS = "I navigate to contact";
+    public static final String NAVIGATE_TO_STUDENT_STATUS_PASS = "I navigate to student status";
+    public static final String NAVIGATE_TO_STUDENT_STATUS_FAIL = "Fail while navigating to contact";
     public static final String NAVIGATE_TO_BASIC_FAIL = "Error while navigating to basic";
     public static final String NAVIGATE_TO_BASIC_PASS = "I navigate to basic";
     public static final String NAVIGATE_TO_ID_TYPES_FAIL = "Error while navigating to ID Types";
@@ -150,6 +152,8 @@ public class LogPage {
     public static final String VERIFY_ALL_THREE_ROLES_ARE_SELECTED_FAIL = "Fail while trying to verify all three roles are selected in the role dropdown";
     public static final String VERIFY_EMAIL_PERSON_PAGE_RECORD_PASS = "I verify email address";
     public static final String VERIFY_EMAIL_PERSON_PAGE_RECORD_FAIL = "Fail while trying to verify email address";
+    public static final String VERIFY_STUDENT_STATUS_PASS = "I verify student status";
+    public static final String VERIFY_STUDENT_STATUS_FAIL = "Fail while trying to verify student status";
 
 
 }

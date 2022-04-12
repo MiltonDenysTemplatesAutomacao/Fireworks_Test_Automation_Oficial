@@ -6,9 +6,6 @@ import pages.BasePage;
 import pages.FailureDelegatePage;
 import pages.LogPage;
 
-import java.util.HashMap;
-import java.util.Map;
-
 public class PersonContactPage extends BasePage {
 
     private static final String EMAIL_ADDRESS_FIELD = "#entity_email_%s_email_address";
@@ -141,17 +138,26 @@ public class PersonContactPage extends BasePage {
                     break;
                 case 1:
                     emailActiveCheckboxLocator = checkBoxIsActive(By.cssSelector(emailActiveCheckbox(index)));
-                    emailActiveCheckboxLocator = true;
+                    if(!emailActiveCheckboxLocator){
+                        emailActiveCheckboxLocator = true;
+                    }else{
+                        emailActiveCheckboxLocator=false;
+                    }
                     break;
             }
 
             switch (indexInt){
                 case 0:
-                    emailPrymaryCheckboxLocator = checkBoxIsActive(By.cssSelector(emailActiveCheckbox(index)));
+                    emailPrymaryCheckboxLocator = checkBoxIsActive(By.cssSelector(emailPrimaryCheckbox(index)));
                     break;
                 case 1:
-                    emailPrymaryCheckboxLocator = checkBoxIsActive(By.cssSelector(emailActiveCheckbox(index)));
-                    emailPrymaryCheckboxLocator = true;
+
+                    emailPrymaryCheckboxLocator = checkBoxIsActive(By.cssSelector(emailPrimaryCheckbox(index)));
+                    if(!emailPrymaryCheckboxLocator){
+                        emailPrymaryCheckboxLocator = true;
+                    }else{
+                        emailPrymaryCheckboxLocator=false;
+                    }
                     break;
             }
                 if(emailAddressValidation && emailTypeValidation && emailOptInMethodValidation

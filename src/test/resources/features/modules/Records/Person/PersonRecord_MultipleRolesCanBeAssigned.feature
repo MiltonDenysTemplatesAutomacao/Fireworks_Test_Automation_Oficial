@@ -7,7 +7,7 @@
 Feature: Multiple roles can be assigned
 
   @MultipleRolesCanBeAssignedScenario
-  Scenario: to verify different scenarios in merge
+  Scenario: to verify different merge scenarios
     Given I login as "firestarterUsername", "firestarterPassword", "firestarterFullName"
     And I create a person
      |Firstname|Lastname   |Fullname      |EmailAddress		                |EmailType  |EmailOptInMethod  |Role1	|Phone         |PhoneType|Address1          |City   |State    |PostalCode|Country       |
@@ -36,4 +36,8 @@ Feature: Multiple roles can be assigned
     And I navigate to contact
     And I verify email address "0" fields
     And I verify email address "1" fields
+    And I click on student status
+    And I verify student status "0"
+
+
 
