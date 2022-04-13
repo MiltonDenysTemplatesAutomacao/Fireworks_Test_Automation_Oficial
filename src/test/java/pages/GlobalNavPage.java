@@ -6,106 +6,105 @@ import org.openqa.selenium.By;
 
 public class GlobalNavPage extends BasePage {
 
-    public static final String fireWorksIcon = "smallHeaderLogo";
-    public static final String homeQuickSearchField = "#homeBillboardSearch";
-    public static final String homeQuickSearchButton = "#mainSearchSubmitBtn";
+    public static final String FIRE_WORKS_ICON = "smallHeaderLogo";
+    public static final String HOME_QUICK_SEARCH_FIELD = "#homeBillboardSearch";
+    public static final String HOME_QUICK_SEARCH_BUTTON = "#mainSearchSubmitBtn";
 
     /*
      * Footer Css
      */
-    public static final String footerNavElement = "#footerNave";
-    public static final String footerQuickAddMen = "#global_nav_quick_add_toggle";
-    public static final String footerQuickAddPersonMenuItem = "#global_nav_add_person";
-    public static final String footerQuickAddOrganizationMenuItem = "#global_nav_add_org";
-    public static final String footerQuickAddStaffMenuItem = "#global_nav_add_staff";
-    public static final String footerToolsMenu = "#global_nav_tools_toggle";
-    public static final String footerToolsTasksMenuItem = "#global_nav_task";
+    public static final String FOOTER_NAV_ELEMENT = "#footerNave";
+    public static final String FOOTER_QUICK_ADD_MEN = "#global_nav_quick_add_toggle";
+    public static final String FOOTER_QUICK_ADD_PERSON_MENU_ITEM = "#global_nav_add_person";
+    public static final String FOOTER_QUICK_ADD_ORGANIZATION_MENU_ITEM = "#global_nav_add_org";
+    public static final String FOOTER_QUICK_ADD_STAFF_MENU_ITEM = "#global_nav_add_staff";
+    public static final String FOOTER_TOOLS_MENU = "#global_nav_tools_toggle";
+    public static final String FOOTER_TOOLS_TASKS_MENU_ITEM = "#global_nav_task";
 
     /*
      * Quick Add Person Css
      */
-    public static final String quickAddPersonFirstNameField = "#person_name_0_quickAddPersonNameFirst";
-    public static final String quickAddPersonLastNameField = "#person_name_0_quickAddPersonNameLast";
-    public static final String quickAddPersonEmailAddressField = "#entity_email_0_quickAddPersonEmailAddress";
-    public static final String quickAddPersonEmailTypeDropdown = "#entity_email_0_quickAddPersonEmailType_component";
-    public static final String quickAddPersonEmailTypeDropdownList = "#entity_email_0_quickAddPersonEmailType_dropdown_menu";
-    public static final String quickAddPersonPhoneNumberField = "#entity_phone_0_quickAddPersonPhoneNumber";
-    public static final String quickAddPersonPhoneTypeDropdown = "div#entity_phone_0_quickAddPersonPhoneType_component";
-    public static final String quickAddPersonPhoneTypeDropdownList = "#entity_phone_0_quickAddPersonPhoneType_dropdown_menu";
-    public static final String quickAddPersonOptInMethodDropdown = "#entity_email_0_quickAddPersonOptInMethod_toggle";
-    public static final String quickAddPersonOptInMethodDropdownList = "#entity_email_0_quickAddPersonOptInMethod_dropdown_menu";
-    public static final String quickAddPersonAddress1Field = "#entity_address_0_quickAddPersonAddress1";
-    public static final String quickAddPersonAddress2Field = "#entity_address_0_quickAddPersonAddress2";
-    public static final String quickAddPersonAddress3Field = "#entity_address_0_quickAddPersonAddress3";
-    public static final String quickAddPersonAddress4Field = "#entity_address_0_quickAddPersonAddress4";
-    public static final String quickAddPersonCityField = "#entity_address_0_quickAddPersonAddressCity";
-    public static final String quickAddPersonStateDropdown = "div#entity_address_0_quickAddPersonAddressState_component";
-    public static final String quickAddPersonStateDropdownList = "#entity_address_0_quickAddPersonAddressState_dropdown_menu";
-    public static final String quickAddPersonCountryDropdown = "div#entity_address_0_quickAddPersonAddressCountry_component";
-    public static final String quickAddPersonCountryDropdownList = "#entity_address_0_quickAddPersonAddressCountry_dropdown_menu";
-    public static final String quickAddPersonPostalCodeField = "#entity_address_0_quickAddPersonAddressPostalCode";
-    public static final String quickAddPersonRegionField = "#entity_address_0_quickAddPersonAddressRegion";
-    public static final String quickAddPersonRoleDropdown = "div#quickAddPersonPersonRole_component";
-    public static final String quickAddPersonRoleDropdownList = "#quickAddPersonPersonRole_dropdown_menu";
-    public static final String quickAddStudentStatusCategoryDropdown = "div#person_student_status_0_quickAddPersonStudentStatusCategory_component";
-    public static final String quickAddStudentStatusCategoryDropdownList = "#person_student_status_0_quickAddPersonStudentStatusCategory_dropdown_menu";
-    public static final String quickAddStudentStatusDropdown = "div#person_student_status_0_quickAddPersonStudentStatus_component";
-    public static final String quickAddStudentStatusDropdownList = "#person_student_status_0_quickAddPersonStudentStatus_dropdown_menu";
-    public static final String quickAddStudentTypeDropdown = "div#quickAddPersonStudentType_component";
-    public static final String quickAddStudentTypeDropdownList = "#quickAddPersonStudentType_dropdown_menu";
-    public static final String quickAddStudentStatusDateField = "#person_student_status_0_quickAddPersonStudentStatusDate";
-    public static final String quickAddStudentStatusEntryTermDropdown = "div#person_student_status_0_quickAddPersonStatusEntryTerm_component";
-    public static final String quickAddStudentStatusEntryTermDropdownList = "#person_student_status_0_quickAddPersonStatusEntryTerm_dropdown_menu";
-    public static final String quickAddPersonSaveGoButton = "#modalSubmitButtonquickAddPersonSaveGo";
-    public static final String quickAddPersonSaveCloseButton = "#modalSubmitButtonquickAddPersonSaveClose";
+    public static final String QUICK_ADD_PERSON_FIRST_NAME_FIELD = "#person_name_0_quickAddPersonNameFirst";
+    public static final String QUICK_ADD_PERSON_LAST_NAME_FIELD = "#person_name_0_quickAddPersonNameLast";
+    public static final String QUICK_ADD_PERSON_EMAIL_ADDRESS_FIELD = "#entity_email_0_quickAddPersonEmailAddress";
+    public static final String QUICK_ADD_PERSON_EMAIL_TYPE_DROPDOWN = "#entity_email_0_quickAddPersonEmailType_component";
+    public static final String QUICK_ADD_PERSON_EMAIL_TYPE_DROPDOWN_LIST = "#entity_email_0_quickAddPersonEmailType_dropdown_menu";
+    public static final String QUICK_ADD_PERSON_PHONE_NUMBER_FIELD = "#entity_phone_0_quickAddPersonPhoneNumber";
+    public static final String QUICK_ADD_PERSON_PHONE_TYPE_DROPDOWN = "div#entity_phone_0_quickAddPersonPhoneType_component";
+    public static final String QUICK_ADD_PERSON_PHONE_TYPE_DROPDOWN_LIST = "#entity_phone_0_quickAddPersonPhoneType_dropdown_menu";
+    public static final String QUICK_ADD_PERSON_OPT_IN_METHOD_DROPDOWN = "#entity_email_0_quickAddPersonOptInMethod_toggle";
+    public static final String QUICK_ADD_PERSON_OPT_IN_METHOD_DROPDOWN_LIST = "#entity_email_0_quickAddPersonOptInMethod_dropdown_menu";
+    public static final String QUICK_ADD_PERSON_ADDRESS1_FIELD = "#entity_address_0_quickAddPersonAddress1";
+    public static final String QUICK_ADD_PERSON_ADDRESS2_FIELD = "#entity_address_0_quickAddPersonAddress2";
+    public static final String QUICK_ADD_PERSON_ADDRESS3_FIELD = "#entity_address_0_quickAddPersonAddress3";
+    public static final String QUICK_ADD_PERSON_ADDRESS4_FIELD = "#entity_address_0_quickAddPersonAddress4";
+    public static final String QUICK_ADD_PERSON_CITY_FIELD = "#entity_address_0_quickAddPersonAddressCity";
+    public static final String QUICK_ADD_PERSON_STATE_DROPDOWN = "div#entity_address_0_quickAddPersonAddressState_component";
+    public static final String QUICK_ADD_PERSON_STATE_DROPDOWN_LIST = "#entity_address_0_quickAddPersonAddressState_dropdown_menu";
+    public static final String QUICK_ADD_PERSON_COUNTRY_DROPDOWN = "div#entity_address_0_quickAddPersonAddressCountry_component";
+    public static final String QUICK_ADD_PERSON_COUNTRY_DROPDOWN_LIST = "#entity_address_0_quickAddPersonAddressCountry_dropdown_menu";
+    public static final String QUICK_ADD_PERSON_POSTAL_CODE_FIELD = "#entity_address_0_quickAddPersonAddressPostalCode";
+    public static final String QUICK_ADD_PERSON_REGION_FIELD = "#entity_address_0_quickAddPersonAddressRegion";
+    public static final String QUICK_ADD_PERSON_ROLE_DROPDOWN = "div#quickAddPersonPersonRole_component";
+    public static final String QUICK_ADD_PERSON_ROLE_DROPDOWN_LIST = "#quickAddPersonPersonRole_dropdown_menu";
+    public static final String QUICK_ADD_STUDENT_STATUS_CATEGORY_DROPDOWN = "div#person_student_status_0_quickAddPersonStudentStatusCategory_component";
+    public static final String QUICK_ADD_STUDENT_STATUS_CATEGORY_DROPDOWN_LIST = "#person_student_status_0_quickAddPersonStudentStatusCategory_dropdown_menu";
+    public static final String QUICK_ADD_STUDENT_STATUS_DROPDOWN = "div#person_student_status_0_quickAddPersonStudentStatus_component";
+    public static final String QUICK_ADD_STUDENT_STATUS_DROPDOWN_LIST = "#person_student_status_0_quickAddPersonStudentStatus_dropdown_menu";
+    public static final String QUICK_ADD_STUDENT_TYPE_DROPDOWN = "div#quickAddPersonStudentType_component";
+    public static final String QUICK_ADD_STUDENT_TYPE_DROPDOWN_LIST = "#quickAddPersonStudentType_dropdown_menu";
+    public static final String QUICK_ADD_STUDENT_STATUS_DATE_FIELD = "#person_student_status_0_quickAddPersonStudentStatusDate";
+    public static final String QUICK_ADD_STUDENT_STATUS_ENTRY_TERM_DROPDOWN = "div#person_student_status_0_quickAddPersonStatusEntryTerm_component";
+    public static final String QUICK_ADD_STUDENT_STATUS_ENTRY_TERM_DROPDOWN_LIST = "#person_student_status_0_quickAddPersonStatusEntryTerm_dropdown_menu";
+    public static final String QUICK_ADD_PERSON_SAVE_GO_BUTTON = "#modalSubmitButtonquickAddPersonSaveGo";
+    public static final String QUICK_ADD_PERSON_SAVE_CLOSE_BUTTON = "#modalSubmitButtonquickAddPersonSaveClose";
     /*
      * Quick Add Organization Css
      */
-    public static final String quickAddOrgOrganizationNameField = "#org_name_0_quickAddOrganizationOrgName";
-    public static final String quickAddOrgPhoneNumberField = "#entity_phone_0_quickAddOrganizationPhoneNumber";
-    public static final String quickAddOrgRoleDropdown = "#quickAddOrganizationOrgRole_component";
-    public static final String quickAddOrgRoleDropdownList = "#quickAddOrganizationOrgRole_dropdown_menu";
-    public static final String quickAddOrgPhoneTypeDropdown = "#entity_phone_0_quickAddOrganizationPhoneType_component";
-    public static final String quickAddOrgPhoneTypeDropdownList = "#entity_phone_0_quickAddOrganizationPhoneType_dropdown_menu";
-    public static final String quickAddOrgAddress1Field = "#entity_address_0_quickAddOrganizationAddress1";
-    public static final String quickAddOrgAddress2Field = "#entity_address_0_quickAddOrganizationAddress2";
-    public static final String quickAddOrgAddress3Field = "#entity_address_0_quickAddOrganizationAddress3";
-    public static final String quickAddOrgAddress4Field = "#entity_address_0_quickAddOrganizationAddress4";
-    public static final String quickAddOrgCityField = "#entity_address_0_quickAddOrganizationAddressCity";
-    public static final String quickAddOrgStateDropdown = "#entity_address_0_quickAddOrganizationAddressState_component";
-    public static final String quickAddOrgStateDropdownList = "#entity_address_0_quickAddOrganizationAddressState_dropdown_menu";
-    public static final String quickAddOrgRegionField = "#entity_address_0_quickAddOrganizationAddressRegion";
-    public static final String quickAddOrgPostalCodeField = "#entity_address_0_quickAddOrganizationAddressPostalCode";
-    public static final String quickAddOrgCountryDropdown = "#entity_address_0_quickAddOrganizationAddressCountry_component";
-    public static final String quickAddOrgCountryDropdownList = "#entity_address_0_quickAddOrganizationAddressCountry_dropdown_menu";
-    public static final String quickAddOrgSaveGoButton = "#modalSubmitButtonquickAddOrganizationSaveGo";
+    public static final String QUICK_ADD_ORG_ORGANIZATION_NAME_FIELD = "#org_name_0_quickAddOrganizationOrgName";
+    public static final String QUICK_ADD_ORG_PHONE_NUMBER_FIELD = "#entity_phone_0_quickAddOrganizationPhoneNumber";
+    public static final String QUICK_ADD_ORG_ROLE_DROPDOWN = "#quickAddOrganizationOrgRole_component";
+    public static final String QUICK_ADD_ORG_ROLE_DROPDOWN_LIST = "#quickAddOrganizationOrgRole_dropdown_menu";
+    public static final String QUICK_ADD_ORG_PHONE_TYPE_DROPDOWN = "#entity_phone_0_quickAddOrganizationPhoneType_component";
+    public static final String QUICK_ADD_ORG_PHONE_TYPE_DROPDOWN_LIST = "#entity_phone_0_quickAddOrganizationPhoneType_dropdown_menu";
+    public static final String QUICK_ADD_ORG_ADDRESS1_FIELD = "#entity_address_0_quickAddOrganizationAddress1";
+    public static final String QUICK_ADD_ORG_ADDRESS2_FIELD = "#entity_address_0_quickAddOrganizationAddress2";
+    public static final String QUICK_ADD_ORG_ADDRESS3_FIELD = "#entity_address_0_quickAddOrganizationAddress3";
+    public static final String QUICK_ADD_ORG_ADDRESS4_FIELD = "#entity_address_0_quickAddOrganizationAddress4";
+    public static final String QUICK_ADD_ORG_CITY_FIELD = "#entity_address_0_quickAddOrganizationAddressCity";
+    public static final String QUICK_ADD_ORG_STATE_DROPDOWN = "#entity_address_0_quickAddOrganizationAddressState_component";
+    public static final String QUICK_ADD_ORG_STATE_DROPDOWN_LIST = "#entity_address_0_quickAddOrganizationAddressState_dropdown_menu";
+    public static final String QUICK_ADD_ORG_REGION_FIELD = "#entity_address_0_quickAddOrganizationAddressRegion";
+    public static final String QUICK_ADD_ORG_POSTAL_CODE_FIELD = "#entity_address_0_quickAddOrganizationAddressPostalCode";
+    public static final String QUICK_ADD_ORG_COUNTRY_DROPDOWN = "#entity_address_0_quickAddOrganizationAddressCountry_component";
+    public static final String QUICK_ADD_ORG_COUNTRY_DROPDOWN_LIST = "#entity_address_0_quickAddOrganizationAddressCountry_dropdown_menu";
+    public static final String QUICK_ADD_ORG_SAVE_GO_BUTTON = "#modalSubmitButtonquickAddOrganizationSaveGo";
     /*
      * Quick Add Staff Css
      */
-    public static final String quickAddStaffModal = "#quickAddStaffModal";
-    public static final String quickAddStaffModalLabel = "#quickAddStaffModalLabel";
-    public static final String quickAddStaffFirstNameField = "#quickAddStaffNameFirst";
-    public static final String quickAddStaffLastNameField = "#quickAddStaffNameLast";
-    public static final String quickAddStaffEmailAddressField = "#quickAddStaffEmailAddress";
-    public static final String quickAddStaffEmailTypeDropdown = "#s2id_quickAddStaffEmailType.select2-container.form-control.select2 a";
-    public static final String quickAddStaffAccountStartDate = "#quickAddStaffDatetimepickerStart";
-    public static final String quickAddStaffAccountEndDate = "#quickAddStaffDatetimepickerEnd";
-    public static final String quickAddStaffPermissionsGroupDropdown = "#s2id_quickAddStaffPermissionGroup.select2-container.form-control.select2 a";
-    public static final String quickAddStaffPermissionsGroupDropdownList = "#select2-results-1";
-    public static final String quickAddStaffSaveGoButton = "#quickAddStaffModalSaveGo";
-    public static final String quickAddStaffSaveCloseButton = "#quickAddStaffModalSaveClose";
-    public static final String footerToolsSchedulerMenuItem = "#global_nav_scheduler";
-    public static final String accountToggle = "global_nav_account_toggle";
-    public static final String logoutButton = "logout_button";
-
+    public static final String QUICK_ADD_STAFF_MODAL = "#quickAddStaffModal";
+    public static final String QUICK_ADD_STAFF_MODAL_LABEL = "#quickAddStaffModalLabel";
+    public static final String QUICK_ADD_STAFF_FIRST_NAME_FIELD = "#quickAddStaffNameFirst";
+    public static final String QUICK_ADD_STAFF_LAST_NAME_FIELD = "#quickAddStaffNameLast";
+    public static final String QUICK_ADD_STAFF_EMAIL_ADDRESS_FIELD = "#quickAddStaffEmailAddress";
+    public static final String QUICK_ADD_STAFF_EMAIL_TYPE_DROPDOWN = "#s2id_quickAddStaffEmailType.select2-container.form-control.select2 a";
+    public static final String QUICK_ADD_STAFF_ACCOUNT_START_DATE = "#quickAddStaffDatetimepickerStart";
+    public static final String QUICK_ADD_STAFF_ACCOUNT_END_DATE = "#quickAddStaffDatetimepickerEnd";
+    public static final String QUICK_ADD_STAFF_PERMISSIONS_GROUP_DROPDOWN = "#s2id_quickAddStaffPermissionGroup.select2-container.form-control.select2 a";
+    public static final String QUICK_ADD_STAFF_PERMISSIONS_GROUP_DROPDOWN_LIST = "#select2-results-1";
+    public static final String QUICK_ADD_STAFF_SAVE_GO_BUTTON = "#quickAddStaffModalSaveGo";
+    public static final String QUICK_ADD_STAFF_SAVE_CLOSE_BUTTON = "#quickAddStaffModalSaveClose";
+    public static final String FOOTER_TOOLS_SCHEDULER_MENU_ITEM = "#global_nav_scheduler";
+    public static final String ACCOUNT_TOGGLE = "global_nav_account_toggle";
+    public static final String LOGOUT_BUTTON = "logout_button";
 
 
     public static void logout(){
         try {
-            waitUntilElementToBeSelected(By.id(accountToggle),20);
-            BasePage.click(By.id(accountToggle));
-            waitUntilElementToBeSelected(By.id(logoutButton),20);
-            BasePage.click(By.id(logoutButton));
+            waitUntilElementToBeSelected(By.id(ACCOUNT_TOGGLE),20);
+            BasePage.click(By.id(ACCOUNT_TOGGLE));
+            waitUntilElementToBeSelected(By.id(LOGOUT_BUTTON),20);
+            BasePage.click(By.id(LOGOUT_BUTTON));
             ExtentReportsSetUp.testingPass(LogPage.LOGOUT_PASS);
         } catch (Exception e) {
             FailureDelegatePage.handlePageException(LogPage.LOGOUT_FAIL);
@@ -117,8 +116,8 @@ public class GlobalNavPage extends BasePage {
 
     public static void validateTaskInToolMenuIsNotDisplayed(){
         try {
-            waitUntilElementToBeSelected(By.cssSelector(footerToolsSchedulerMenuItem),20);
-            if (!checkIfElementIsVisible(By.cssSelector(footerToolsTasksMenuItem))){
+            waitUntilElementToBeSelected(By.cssSelector(FOOTER_TOOLS_SCHEDULER_MENU_ITEM),20);
+            if (!checkIfElementIsVisible(By.cssSelector(FOOTER_TOOLS_TASKS_MENU_ITEM))){
                 ExtentReportsSetUp.testingPass(LogPage.VALIDATE_IN_TOOL_MENU_NOT_DISPLAYED_PASS);
             }else{
                 FailureDelegatePage.handlePageException(LogPage.VALIDATE_IN_TOOL_MENU_NOT_DISPLAYED_PASS_FAIL);
@@ -173,7 +172,7 @@ public class GlobalNavPage extends BasePage {
      */
     public static void goToHomePage() {
         try {
-            BasePage.click(By.id(fireWorksIcon));
+            BasePage.click(By.id(FIRE_WORKS_ICON));
             ExtentReportsSetUp.testingPass(LogPage.GO_TO_HOME_PAGE_PASS);
         } catch (Exception e) {
             FailureDelegatePage.handlePageException(LogPage.GO_TO_HOME_PAGE_FAIL);
@@ -185,9 +184,9 @@ public class GlobalNavPage extends BasePage {
      */
     public static void navigateQuickAddCreatePersonPage() {
         try {
-            BasePage.click(By.cssSelector(footerQuickAddMen));
-            waitElementBy(By.cssSelector(footerQuickAddPersonMenuItem),20);
-            BasePage.click(By.cssSelector(footerQuickAddPersonMenuItem));
+            BasePage.click(By.cssSelector(FOOTER_QUICK_ADD_MEN));
+            wait(1000);
+            BasePage.click(By.cssSelector(FOOTER_QUICK_ADD_PERSON_MENU_ITEM));
             ExtentReportsSetUp.testingPass(LogPage.NAVIGATE_QUICK_ADD_CREATE_PERSON_PAGE_PASS);
         } catch (Exception e) {
             FailureDelegatePage.handlePageException(LogPage.NAVIGATE_QUICK_ADD_CREATE_PERSON_PAGE_FAIL);
@@ -200,9 +199,9 @@ public class GlobalNavPage extends BasePage {
     public static void navigateQuickAddCreateOrganizationPage() {
         try {
             BasePage.wait(1000);
-            BasePage.click(By.cssSelector(footerQuickAddMen));
+            BasePage.click(By.cssSelector(FOOTER_QUICK_ADD_MEN));
             BasePage.wait(1000);
-            BasePage.click(By.cssSelector(footerQuickAddOrganizationMenuItem));
+            BasePage.click(By.cssSelector(FOOTER_QUICK_ADD_ORGANIZATION_MENU_ITEM));
             ExtentReportsSetUp.testingPass(LogPage.NAVIGATE_QUICK_ADD_CREATE_CREATE_ORGANIZATION_PAGE_PASS);
         } catch (Exception e) {
             FailureDelegatePage.handlePageException(LogPage.NAVIGATE_QUICK_ADD_CREATE_CREATE_ORGANIZATION_PAGE_FAIL);
@@ -215,9 +214,9 @@ public class GlobalNavPage extends BasePage {
     public static void navigateQuickAddCreateStaffPage() {
         try {
             BasePage.wait(1000);
-            BasePage.click(By.cssSelector(footerQuickAddMen));
+            BasePage.click(By.cssSelector(FOOTER_QUICK_ADD_MEN));
             BasePage.wait(1000);
-            BasePage.click(By.cssSelector(footerQuickAddStaffMenuItem));
+            BasePage.click(By.cssSelector(FOOTER_QUICK_ADD_STAFF_MENU_ITEM));
             ExtentReportsSetUp.testingPass(LogPage.NAVIGATE_QUICK_ADD_CREATE_CREATE_STAFF_PAGE_PASS);
         } catch (Exception e) {
             FailureDelegatePage.handlePageException(LogPage.NAVIGATE_QUICK_ADD_CREATE_CREATE_STAFF_PAGE_FAIL);
@@ -232,86 +231,86 @@ public class GlobalNavPage extends BasePage {
         try {
             mass = data.asMaps(String.class, String.class);
             if (mass.get(0).get("Firstname") != null) {
-                BasePage.write(By.cssSelector(quickAddPersonFirstNameField), mass.get(0).get("Firstname"));
+                BasePage.write(By.cssSelector(QUICK_ADD_PERSON_FIRST_NAME_FIELD), mass.get(0).get("Firstname"));
             }
             if (mass.get(0).get("Lastname") != null) {
-                BasePage.write(By.cssSelector(quickAddPersonLastNameField), mass.get(0).get("Lastname"));
+                BasePage.write(By.cssSelector(QUICK_ADD_PERSON_LAST_NAME_FIELD), mass.get(0).get("Lastname"));
             }
             if (mass.get(0).get("Phone") != null) {
-                BasePage.write(By.cssSelector(quickAddPersonPhoneNumberField), mass.get(0).get("Phone"));
+                BasePage.write(By.cssSelector(QUICK_ADD_PERSON_PHONE_NUMBER_FIELD), mass.get(0).get("Phone"));
             }
             if (mass.get(0).get("PhoneType") != null) {
-                BasePage.click(By.cssSelector(quickAddPersonPhoneTypeDropdown));
-                BasePage.selectElementsList(quickAddPersonPhoneTypeDropdownList, "a");
+                BasePage.click(By.cssSelector(QUICK_ADD_PERSON_PHONE_TYPE_DROPDOWN));
+                BasePage.selectElementsList(By.cssSelector(QUICK_ADD_PERSON_PHONE_TYPE_DROPDOWN_LIST), "a");
                 clickOnListOfElements(mass.get(0).get("PhoneType"));
             }
             if (mass.get(0).get("Role1") != null) {
-                BasePage.click(By.cssSelector(quickAddPersonRoleDropdown));
-                BasePage.selectElementsList(quickAddPersonRoleDropdownList, "a");
+                BasePage.click(By.cssSelector(QUICK_ADD_PERSON_ROLE_DROPDOWN));
+                BasePage.selectElementsList(By.cssSelector(QUICK_ADD_PERSON_ROLE_DROPDOWN_LIST), "a");
                 clickOnListOfElements(mass.get(0).get("Role1"));
             }
             if (mass.get(0).get("EmailAddress") != null) {
-                BasePage.write(By.cssSelector(quickAddPersonEmailAddressField), mass.get(0).get("EmailAddress"));
+                BasePage.write(By.cssSelector(QUICK_ADD_PERSON_EMAIL_ADDRESS_FIELD), mass.get(0).get("EmailAddress"));
             }
             if (mass.get(0).get("EmailType") != null) {
-                BasePage.click(By.cssSelector(quickAddPersonEmailTypeDropdown));
-                BasePage.selectElementsList(quickAddPersonEmailTypeDropdownList, "a");
+                BasePage.click(By.cssSelector(QUICK_ADD_PERSON_EMAIL_TYPE_DROPDOWN));
+                BasePage.selectElementsList(By.cssSelector(QUICK_ADD_PERSON_EMAIL_TYPE_DROPDOWN_LIST), "a");
                 clickOnListOfElements(mass.get(0).get("EmailType"));
             }
             if (mass.get(0).get("EmailOptInMethod") != null) {
-                BasePage.click(By.cssSelector(quickAddPersonOptInMethodDropdown));
-                BasePage.selectElementsList(quickAddPersonOptInMethodDropdownList, "a");
+                BasePage.click(By.cssSelector(QUICK_ADD_PERSON_OPT_IN_METHOD_DROPDOWN));
+                BasePage.selectElementsList(By.cssSelector(QUICK_ADD_PERSON_OPT_IN_METHOD_DROPDOWN_LIST), "a");
                 clickOnListOfElements(mass.get(0).get("EmailOptInMethod"));
             }
             if (mass.get(0).get("Address1") != null) {
-                BasePage.write(By.cssSelector(quickAddPersonAddress1Field), mass.get(0).get("Address1"));
+                BasePage.write(By.cssSelector(QUICK_ADD_PERSON_ADDRESS1_FIELD), mass.get(0).get("Address1"));
             }
             if (mass.get(0).get("Address2") != null) {
-                BasePage.write(By.cssSelector(quickAddPersonAddress1Field), mass.get(0).get("Address2"));
+                BasePage.write(By.cssSelector(QUICK_ADD_PERSON_ADDRESS1_FIELD), mass.get(0).get("Address2"));
             }
             if (mass.get(0).get("Address3") != null) {
-                BasePage.write(By.cssSelector(quickAddPersonAddress1Field), mass.get(0).get("Address3"));
+                BasePage.write(By.cssSelector(QUICK_ADD_PERSON_ADDRESS1_FIELD), mass.get(0).get("Address3"));
             }
             if (mass.get(0).get("Address4") != null) {
-                BasePage.write(By.cssSelector(quickAddPersonAddress1Field), mass.get(0).get("Address4"));
+                BasePage.write(By.cssSelector(QUICK_ADD_PERSON_ADDRESS1_FIELD), mass.get(0).get("Address4"));
             }
             if (mass.get(0).get("City") != null) {
-                BasePage.write(By.cssSelector(quickAddPersonCityField), mass.get(0).get("City"));
+                BasePage.write(By.cssSelector(QUICK_ADD_PERSON_CITY_FIELD), mass.get(0).get("City"));
             }
             if (mass.get(0).get("State") != null) {
-                BasePage.click(By.cssSelector(quickAddPersonStateDropdown));
-                BasePage.selectElementsList(quickAddPersonStateDropdownList, "a");
+                BasePage.click(By.cssSelector(QUICK_ADD_PERSON_STATE_DROPDOWN));
+                BasePage.selectElementsList(By.cssSelector(QUICK_ADD_PERSON_STATE_DROPDOWN_LIST), "a");
                 clickOnListOfElements(mass.get(0).get("State"));
             }
             if (mass.get(0).get("PostalCode") != null) {
-                BasePage.write(By.cssSelector(quickAddPersonPostalCodeField), mass.get(0).get("PostalCode"));
+                BasePage.write(By.cssSelector(QUICK_ADD_PERSON_POSTAL_CODE_FIELD), mass.get(0).get("PostalCode"));
             }
             if (mass.get(0).get("Country") != null) {
-                BasePage.click(By.cssSelector(quickAddPersonCountryDropdown));
-                BasePage.selectElementsList(quickAddPersonCountryDropdownList, "a");
+                BasePage.click(By.cssSelector(QUICK_ADD_PERSON_COUNTRY_DROPDOWN));
+                BasePage.selectElementsList(By.cssSelector(QUICK_ADD_PERSON_COUNTRY_DROPDOWN_LIST), "a");
                 clickOnListOfElements(mass.get(0).get("Country"));
             }
             if (mass.get(0).get("StudentType") != null) {
-                BasePage.click(By.cssSelector(quickAddStudentTypeDropdown));
-                BasePage.selectElementsList(quickAddStudentTypeDropdownList, "a");
+                BasePage.click(By.cssSelector(QUICK_ADD_STUDENT_TYPE_DROPDOWN));
+                BasePage.selectElementsList(By.cssSelector(QUICK_ADD_STUDENT_TYPE_DROPDOWN_LIST), "a");
                 clickOnListOfElements(mass.get(0).get("StudentType"));
             }
             if (mass.get(0).get("StudentStatusCategory") != null) {
-                BasePage.click(By.cssSelector(quickAddStudentStatusCategoryDropdown));
-                BasePage.selectElementsList(quickAddStudentStatusCategoryDropdownList, "a");
+                BasePage.click(By.cssSelector(QUICK_ADD_STUDENT_STATUS_CATEGORY_DROPDOWN));
+                BasePage.selectElementsList(By.cssSelector(QUICK_ADD_STUDENT_STATUS_CATEGORY_DROPDOWN_LIST), "a");
                 clickOnListOfElements(mass.get(0).get("StudentStatusCategory"));
             }
             if (mass.get(0).get("StudentStatus") != null) {
-                BasePage.click(By.cssSelector(quickAddStudentStatusDropdown));
-                BasePage.selectElementsList(quickAddStudentStatusDropdownList, "a");
+                BasePage.click(By.cssSelector(QUICK_ADD_STUDENT_STATUS_DROPDOWN));
+                BasePage.selectElementsList(By.cssSelector(QUICK_ADD_STUDENT_STATUS_DROPDOWN_LIST), "a");
                 clickOnListOfElements(mass.get(0).get("StudentStatus"));
             }
             if (mass.get(0).get("StudentStatusDate") != null) {
-                BasePage.write(By.cssSelector(quickAddStudentStatusDateField), mass.get(0).get("StudentStatusDate"));
+                BasePage.write(By.cssSelector(QUICK_ADD_STUDENT_STATUS_DATE_FIELD), mass.get(0).get("StudentStatusDate"));
             }
             if (mass.get(0).get("EntryTerm") != null) {
-                BasePage.click(By.cssSelector(quickAddStudentStatusEntryTermDropdown));
-                BasePage.selectElementsList(quickAddStudentStatusEntryTermDropdownList, "a");
+                BasePage.click(By.cssSelector(QUICK_ADD_STUDENT_STATUS_ENTRY_TERM_DROPDOWN));
+                BasePage.selectElementsList(By.cssSelector(QUICK_ADD_STUDENT_STATUS_ENTRY_TERM_DROPDOWN_LIST), "a");
                 clickOnListOfElements(mass.get(0).get("EntryTerm"));
             }
             ExtentReportsSetUp.testingPass(LogPage.QUICK_ADD_PERSON_PASS);
@@ -330,51 +329,51 @@ public class GlobalNavPage extends BasePage {
         try {
             mass = data.asMaps(String.class, String.class);
             if (mass.get(0).get("Name") != null) {
-                BasePage.write(By.cssSelector(quickAddOrgOrganizationNameField), mass.get(0).get("Name"));
+                BasePage.write(By.cssSelector(QUICK_ADD_ORG_ORGANIZATION_NAME_FIELD), mass.get(0).get("Name"));
             }
             if (mass.get(0).get("Role") != null) {
-                BasePage.click(By.cssSelector(quickAddOrgRoleDropdown));
-                BasePage.selectElementsList(quickAddOrgRoleDropdownList, "a");
+                BasePage.click(By.cssSelector(QUICK_ADD_ORG_ROLE_DROPDOWN));
+                BasePage.selectElementsList(By.cssSelector(QUICK_ADD_ORG_ROLE_DROPDOWN_LIST), "a");
                 clickOnListOfElements(mass.get(0).get("Role"));
             }
             if (mass.get(0).get("Phone") != null) {
-                BasePage.write(By.cssSelector(quickAddOrgPhoneNumberField), mass.get(0).get("Phone"));
+                BasePage.write(By.cssSelector(QUICK_ADD_ORG_PHONE_NUMBER_FIELD), mass.get(0).get("Phone"));
             }
             if (mass.get(0).get("PhoneType") != null) {
-                BasePage.click(By.cssSelector(quickAddOrgPhoneTypeDropdown));
-                BasePage.selectElementsList(quickAddOrgPhoneTypeDropdownList, "a");
+                BasePage.click(By.cssSelector(QUICK_ADD_ORG_PHONE_TYPE_DROPDOWN));
+                BasePage.selectElementsList(By.cssSelector(QUICK_ADD_ORG_PHONE_TYPE_DROPDOWN_LIST), "a");
                 clickOnListOfElements(mass.get(0).get("PhoneType"));
             }
             if (mass.get(0).get("Address1") != null) {
-                BasePage.write(By.cssSelector(quickAddOrgAddress1Field), mass.get(0).get("Address1"));
+                BasePage.write(By.cssSelector(QUICK_ADD_ORG_ADDRESS1_FIELD), mass.get(0).get("Address1"));
             }
             if (mass.get(0).get("Address2") != null) {
-                BasePage.write(By.cssSelector(quickAddOrgAddress2Field), mass.get(0).get("Address2"));
+                BasePage.write(By.cssSelector(QUICK_ADD_ORG_ADDRESS2_FIELD), mass.get(0).get("Address2"));
             }
             if (mass.get(0).get("Address3") != null) {
-                BasePage.write(By.cssSelector(quickAddOrgAddress3Field), mass.get(0).get("Address3"));
+                BasePage.write(By.cssSelector(QUICK_ADD_ORG_ADDRESS3_FIELD), mass.get(0).get("Address3"));
             }
             if (mass.get(0).get("Address4") != null) {
-                BasePage.write(By.cssSelector(quickAddOrgAddress4Field), mass.get(0).get("Address4"));
+                BasePage.write(By.cssSelector(QUICK_ADD_ORG_ADDRESS4_FIELD), mass.get(0).get("Address4"));
             }
             if (mass.get(0).get("City") != null) {
-                BasePage.write(By.cssSelector(quickAddOrgCityField), mass.get(0).get("City"));
+                BasePage.write(By.cssSelector(QUICK_ADD_ORG_CITY_FIELD), mass.get(0).get("City"));
             }
             if (mass.get(0).get("State") != null) {
-                BasePage.click(By.cssSelector(quickAddOrgStateDropdown));
-                BasePage.selectElementsList(quickAddOrgStateDropdownList, "a");
+                BasePage.click(By.cssSelector(QUICK_ADD_ORG_STATE_DROPDOWN));
+                BasePage.selectElementsList(By.cssSelector(QUICK_ADD_ORG_STATE_DROPDOWN_LIST), "a");
                 clickOnListOfElements(mass.get(0).get("State"));
             }
             if (mass.get(0).get("PostalCode") != null) {
-                BasePage.write(By.cssSelector(quickAddOrgPostalCodeField), mass.get(0).get("PostalCode"));
+                BasePage.write(By.cssSelector(QUICK_ADD_ORG_POSTAL_CODE_FIELD), mass.get(0).get("PostalCode"));
             }
             if (mass.get(0).get("Country") != null) {
-                BasePage.click(By.cssSelector(quickAddOrgCountryDropdown));
-                BasePage.selectElementsList(quickAddOrgCountryDropdownList, "a");
+                BasePage.click(By.cssSelector(QUICK_ADD_ORG_COUNTRY_DROPDOWN));
+                BasePage.selectElementsList(By.cssSelector(QUICK_ADD_ORG_COUNTRY_DROPDOWN_LIST), "a");
                 clickOnListOfElements(mass.get(0).get("Country"));
             }
             if (mass.get(0).get("Region") != null) {
-                BasePage.write(By.cssSelector(quickAddOrgRegionField), mass.get(0).get("Region"));
+                BasePage.write(By.cssSelector(QUICK_ADD_ORG_REGION_FIELD), mass.get(0).get("Region"));
             }
             ExtentReportsSetUp.testingPass(LogPage.QUICK_ADD_ORGANIZATION_PASS);
         } catch (Exception e) {
@@ -391,23 +390,23 @@ public class GlobalNavPage extends BasePage {
         try {
             mass = data.asMaps(String.class, String.class);
             if (mass.get(0).get("Firstname") != null) {
-                BasePage.write(By.cssSelector(quickAddStaffFirstNameField), mass.get(0).get("Firstname"));
+                BasePage.write(By.cssSelector(QUICK_ADD_STAFF_FIRST_NAME_FIELD), mass.get(0).get("Firstname"));
             }
             if (mass.get(0).get("Lastname") != null) {
-                BasePage.write(By.cssSelector(quickAddStaffLastNameField), mass.get(0).get("Lastname"));
+                BasePage.write(By.cssSelector(QUICK_ADD_STAFF_LAST_NAME_FIELD), mass.get(0).get("Lastname"));
             }
             if (mass.get(0).get("EmailAddress") != null) {
-                BasePage.write(By.cssSelector(quickAddStaffEmailAddressField), mass.get(0).get("EmailAddress"));
+                BasePage.write(By.cssSelector(QUICK_ADD_STAFF_EMAIL_ADDRESS_FIELD), mass.get(0).get("EmailAddress"));
             }
             if (mass.get(0).get("AccountStartDate") != null) {
-                BasePage.write(By.cssSelector(quickAddStaffAccountStartDate), mass.get(0).get("AccountStartDate"));
+                BasePage.write(By.cssSelector(QUICK_ADD_STAFF_ACCOUNT_START_DATE), mass.get(0).get("AccountStartDate"));
             }
             if (mass.get(0).get("AccountEndDate") != null) {
-                BasePage.write(By.cssSelector(quickAddStaffAccountEndDate), mass.get(0).get("AccountEndDate"));
+                BasePage.write(By.cssSelector(QUICK_ADD_STAFF_ACCOUNT_END_DATE), mass.get(0).get("AccountEndDate"));
             }
             if (mass.get(0).get("PermissionGroup") != null) {
-                BasePage.click(By.cssSelector(quickAddStaffPermissionsGroupDropdown));
-                BasePage.selectElementsList(quickAddStaffPermissionsGroupDropdownList, "a");
+                BasePage.click(By.cssSelector(QUICK_ADD_STAFF_PERMISSIONS_GROUP_DROPDOWN));
+                BasePage.selectElementsList(By.cssSelector(QUICK_ADD_STAFF_PERMISSIONS_GROUP_DROPDOWN_LIST), "a");
                 clickOnListOfElements(mass.get(0).get("PermissionGroup"));
             }
             ExtentReportsSetUp.testingPass(LogPage.QUICK_ADD_STAFF_PASS);
@@ -421,7 +420,7 @@ public class GlobalNavPage extends BasePage {
      */
     public static void quickAddPersonSaveGoButton() {
         try {
-            click(By.cssSelector(quickAddPersonSaveGoButton));
+            click(By.cssSelector(QUICK_ADD_PERSON_SAVE_GO_BUTTON));
             ExtentReportsSetUp.testingPass(LogPage.CLICK_QUICK_ADD_PERSON_SAVE_AND_GO_PASS);
         } catch (Exception e) {
             FailureDelegatePage.handlePageException(LogPage.CLICK_QUICK_ADD_PERSON_SAVE_AND_GO_FAIL);
@@ -433,7 +432,7 @@ public class GlobalNavPage extends BasePage {
      */
     public static void quickAddOrganizationSaveGoButton() {
         try {
-            click(By.cssSelector(quickAddOrgSaveGoButton));
+            click(By.cssSelector(QUICK_ADD_ORG_SAVE_GO_BUTTON));
             ExtentReportsSetUp.testingPass(LogPage.CLICK_QUICK_ADD_ORGANIZATION_SAVE_AND_GO_PASS);
         } catch (Exception e) {
             FailureDelegatePage.handlePageException(LogPage.CLICK_QUICK_ADD_ORGANIZATION_SAVE_AND_GO_FAIL);
@@ -445,7 +444,7 @@ public class GlobalNavPage extends BasePage {
      */
     public static void quickAddStaffSaveGoButton() {
         try {
-            click(By.cssSelector(quickAddStaffSaveGoButton));
+            click(By.cssSelector(QUICK_ADD_STAFF_SAVE_GO_BUTTON));
             ExtentReportsSetUp.testingPass(LogPage.CLICK_QUICK_ADD_STAFF_SAVE_AND_GO_PASS);
         } catch (Exception e) {
             FailureDelegatePage.handlePageException(LogPage.CLICK_QUICK_ADD_STAFF_SAVE_AND_GO_FAIL);
@@ -478,8 +477,8 @@ public class GlobalNavPage extends BasePage {
         String errorMessage = String.format(LogPage.QUICK_SEARCH_ONE_PARAMETER_FAIL, parameter);
         String passMessage = String.format(LogPage.QUICK_SEARCH_ONE_PARAMETER_PASS, parameter);
         try {
-            BasePage.write(By.cssSelector(homeQuickSearchField), mass.get(0).get(parameter));
-            BasePage.click(By.cssSelector(homeQuickSearchButton));
+            BasePage.write(By.cssSelector(HOME_QUICK_SEARCH_FIELD), mass.get(0).get(parameter));
+            BasePage.click(By.cssSelector(HOME_QUICK_SEARCH_BUTTON));
             ExtentReportsSetUp.testingPass(passMessage);
         } catch (Exception e) {
             FailureDelegatePage.handlePageException(errorMessage);
@@ -494,8 +493,8 @@ public class GlobalNavPage extends BasePage {
         String passMessage = String.format(LogPage.QUICK_SEARCH_PARTIAL_PASS, parameter);
         try {
             String data = mass.get(0).get(parameter);
-            BasePage.write(By.cssSelector(homeQuickSearchField), data.substring(0, 5));
-            BasePage.click(By.cssSelector(homeQuickSearchButton));
+            BasePage.write(By.cssSelector(HOME_QUICK_SEARCH_FIELD), data.substring(0, 5));
+            BasePage.click(By.cssSelector(HOME_QUICK_SEARCH_BUTTON));
             ExtentReportsSetUp.testingPass(passMessage);
         } catch (Exception e) {
             FailureDelegatePage.handlePageException(errorMessage);
@@ -507,8 +506,8 @@ public class GlobalNavPage extends BasePage {
      */
     public static void navigateToTools() {
         try {
-            waitUntilElementToBeSelected(By.cssSelector(footerToolsMenu),20);
-            BasePage.click(By.cssSelector(footerToolsMenu));
+            waitUntilElementToBeSelected(By.cssSelector(FOOTER_TOOLS_MENU),20);
+            BasePage.click(By.cssSelector(FOOTER_TOOLS_MENU));
             ExtentReportsSetUp.testingPass(LogPage.NAVIGATE_TO_TOOLS_PASS);
         } catch (Exception e) {
             FailureDelegatePage.handlePageException(LogPage.NAVIGATE_TO_TOOLS_FAIl);
@@ -516,15 +515,14 @@ public class GlobalNavPage extends BasePage {
 
     }
 
-
     /*
      * Method to navigate to tasks
      */
     public static void navigateToTasks() {
         try {
-            BasePage.click(By.cssSelector(footerToolsMenu));
-            waitElementBy(By.cssSelector(footerToolsTasksMenuItem),10);
-            BasePage.click(By.cssSelector(footerToolsTasksMenuItem));
+            BasePage.click(By.cssSelector(FOOTER_TOOLS_MENU));
+            waitElementBy(By.cssSelector(FOOTER_TOOLS_TASKS_MENU_ITEM),10);
+            BasePage.click(By.cssSelector(FOOTER_TOOLS_TASKS_MENU_ITEM));
             ExtentReportsSetUp.testingPass(LogPage.NAVIGATE_TO_TASKS_PASS);
         } catch (Exception e) {
             FailureDelegatePage.handlePageException(LogPage.NAVIGATE_TO_TASKS_FAIl);
