@@ -65,6 +65,8 @@ public class LogPage {
     public static final String VALIDATE_IF_OPENED_SUMMARY_PROPERLY_FAIL = "Error while validating if opened summary from a record correctly";
     public static final String ALERT_MESSAGE_FAIL = "FAILED to recieve '%s' alert message";
     public static final String ALERT_MESSAGE_PASS = "I received '%s' alert message";
+    public static final String VALIDATE_REQUIRED_FIELDS_MESSAGE_PASS = "I validate if '%s' message alert required is correct";
+    public static final String VALIDATE_REQUIRED_FIELDS_MESSAGE_FAIL = "FAILED to I validate if '%s' message alert required is correct";
     public static final String QUICK_SEARCH_ONE_PARAMETER_PASS = "I quick search %s from home page";
     public static final String QUICK_SEARCH_ONE_PARAMETER_FAIL = "FAILED to quick search %s from home page";
     public static final String QUICK_SEARCH_PARTIAL_PASS = "I quick search partial %s";
@@ -154,6 +156,12 @@ public class LogPage {
     public static final String VERIFY_EMAIL_PERSON_PAGE_RECORD_FAIL = "Fail while trying to verify email address";
     public static final String VERIFY_STUDENT_STATUS_PASS = "I verify student status";
     public static final String VERIFY_STUDENT_STATUS_FAIL = "Fail while trying to verify student status";
+    public static final String CLICK_ON_CREATE_RECORD_PASS = "I click on create record";
+    public static final String CLICK_ON_CREATE_RECORD_FAIL = "Fail while trying to click on create record";
+    public static final String CLICK_ON_SAVE_NEW_RECORD_PASS = "I click on save record button";
+    public static final String CLICK_ON_SAVE_NEW_RECORD_FAIL = "Fail while trying to click on save record button";
+    public static final String CLOSE_ALERT_PERSON_MODAL_PASS = "I close alert person modal";
+    public static final String CLOSE_ALERT_PERSON_MODAL_FAIL = "Fail while trying to close alert person modal";
 
 
 }

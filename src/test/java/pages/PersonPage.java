@@ -69,8 +69,30 @@ public class PersonPage extends BasePage{
     private static final String HEADER_ROLE_DROPDOWN_OPTION9 = "div.btn-group.autoSubmit.dropDownSelect.open > ul > li:nth-child(9)";
     private static final String HEADER_ROLE_DROPDOWN_OPTION9_ACTIVE = "div.btn-group.autoSubmit.dropDownSelect.open > ul > li:nth-child(9).active";
 
+    private static final String CREATE_PERSON_BUTTON = "top-controls-create-new-person";
+    private static final String COMPOSER_SAVE_CHANGES_BUTTON = "saveChangesBtnPersonCreate";
 
 
+    public static void clickOnSaveNewRecord(){
+        try {
+            waitUntilElementToBeSelected(By.id(COMPOSER_SAVE_CHANGES_BUTTON),20);
+            scrollToElement(By.id(COMPOSER_SAVE_CHANGES_BUTTON));
+            click(By.id(COMPOSER_SAVE_CHANGES_BUTTON));
+            ExtentReportsSetUp.testingPass(LogPage.CLICK_ON_SAVE_NEW_RECORD_PASS);
+        } catch (Exception e) {
+            FailureDelegatePage.handlePageException(LogPage.CLICK_ON_SAVE_NEW_RECORD_FAIL);
+        }
+    }
+
+    public static void clickOnCreateRecord(){
+        try {
+            waitUntilElementToBeSelected(By.id(CREATE_PERSON_BUTTON),20);
+            click(By.id(CREATE_PERSON_BUTTON));
+            ExtentReportsSetUp.testingPass(LogPage.CLICK_ON_CREATE_RECORD_PASS);
+        } catch (Exception e) {
+            FailureDelegatePage.handlePageException(LogPage.CLICK_ON_CREATE_RECORD_FAIL);
+        }
+    }
     public static void verifyAllthreeRolesAreSelected(){
         try {
             waitElementBy(By.cssSelector(HEADER_ROLE_ELEMENT),20);

@@ -10,6 +10,14 @@ public class PersonSteps {
     public static void navigateToBasic() {
         PersonPage.navigateToBasic();
     }
+    @Then("I click on create record")
+    public static void clickOnCreateRecord() {
+        PersonPage.clickOnCreateRecord();
+    }
+    @Then("I click on save record button")
+    public static void clickOnSaveNewRecord() {
+        PersonPage.clickOnSaveNewRecord();
+    }
     @Then("I verify Header Role {string}")
     public static void verifyHeaderRole(String role) {
         PersonPage.verifyHeaderRole(role);
