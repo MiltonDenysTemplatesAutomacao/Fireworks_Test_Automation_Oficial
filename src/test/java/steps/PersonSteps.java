@@ -1,5 +1,6 @@
 package steps;
 
+import io.cucumber.datatable.DataTable;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import pages.PersonPage;
@@ -13,6 +14,10 @@ public class PersonSteps {
     @Then("I click on create record")
     public static void clickOnCreateRecord() {
         PersonPage.clickOnCreateRecord();
+    }
+    @Then("I update people composer")
+    public static void updatePeopleComposer(DataTable data) {
+        PersonPage.updatePeopleComposer(data);
     }
     @Then("I click on save record button")
     public static void clickOnSaveNewRecord() {

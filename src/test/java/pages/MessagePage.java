@@ -20,7 +20,6 @@ public class MessagePage extends BasePage{
             FailureDelegatePage.handlePageException(LogPage.CLOSE_ALERT_PERSON_MODAL_FAIL);
         }
     }
-
     /*
      * Method to validate alert message
      */

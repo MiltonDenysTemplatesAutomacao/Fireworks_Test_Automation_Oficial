@@ -4,6 +4,8 @@ import config.extent_reports.ExtentReportsSetUp;
 import io.cucumber.datatable.DataTable;
 import org.openqa.selenium.By;
 
+import static pages.PersonPage.COMPOSER_ROLE_DROPDOWN;
+
 public class GlobalNavPage extends BasePage {
 
     public static final String FIRE_WORKS_ICON = "smallHeaderLogo";
@@ -451,6 +453,7 @@ public class GlobalNavPage extends BasePage {
      */
     public static void quickAddPersonSaveGoButton() {
         try {
+            wait(1000);
             click(By.cssSelector(QUICK_ADD_PERSON_SAVE_GO_BUTTON));
             ExtentReportsSetUp.testingPass(LogPage.CLICK_QUICK_ADD_PERSON_SAVE_AND_GO_PASS);
         } catch (Exception e) {

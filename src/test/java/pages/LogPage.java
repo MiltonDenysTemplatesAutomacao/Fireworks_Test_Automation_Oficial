@@ -162,6 +162,8 @@ public class LogPage {
     public static final String CLICK_ON_SAVE_NEW_RECORD_FAIL = "Fail while trying to click on save record button";
     public static final String CLOSE_ALERT_PERSON_MODAL_PASS = "I close alert person modal";
     public static final String CLOSE_ALERT_PERSON_MODAL_FAIL = "Fail while trying to close alert person modal";
+    public static final String UPDATE_PEOPLE_COMPOSER_PASS = "I update people composer";
+    public static final String UPDATE_PEOPLE_COMPOSER_FAIL = "Fail while trying to update people composer";
 
 
 }

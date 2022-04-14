@@ -1,6 +1,7 @@
 package pages;
 
 import config.extent_reports.ExtentReportsSetUp;
+import io.cucumber.datatable.DataTable;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
@@ -71,6 +72,151 @@ public class PersonPage extends BasePage{
 
     private static final String CREATE_PERSON_BUTTON = "top-controls-create-new-person";
     private static final String COMPOSER_SAVE_CHANGES_BUTTON = "saveChangesBtnPersonCreate";
+
+    public static final String COMPOSER_FIRST_NAME_FIELD = "person_name_0_createPersonNameFirst";
+    public static final String COMPOSER_LAST_NAME_FIELD =  "person_name_0_createPersonNameLast";
+    public static final String COMPOSER_EMAIL_ADDRESS_FIELD = "entity_email_0_createPersonEmailAddress";
+    public static final String COMPOSER_EMAIL_TYPE_DROPDOWN = "entity_email_0_createPersonEmailType_component";
+    public static final String COMPOSER_EMAIL_TYPE_DROPDOWN_LIST = "entity_email_0_createPersonEmailType_dropdown_menu";
+    public static final String COMPOSER_EMAIL_OPT_IN_METHOD_DROPDOWN = "entity_email_0_createPersonOptInMethod_component";
+    public static final String COMPOSER_EMAIL_OPT_IN_METHOD_DROPDOWN_LIST = "entity_email_0_createPersonOptInMethod_dropdown_menu";
+    public static final String COMPOSER_PHONE_NUMBER_FIELD = "entity_phone_0_createPersonPhoneNumber";
+    public static final String COMPOSER_PHONE_TYPE_DROPDOWN = "entity_phone_0_createPersonPhoneType_component";
+    public static final String COMPOSER_PHONE_TYPE_DROPDOWN_LIST = "entity_phone_0_createPersonPhoneType_dropdown_menu";
+    public static final String COMPOSER_ADDRESS1_FIELD = "entity_address_0_createPersonAddress1";
+    public static final String COMPOSER_ADDRESS2_FIELD = "entity_address_0_createPersonAddress2";
+    public static final String COMPOSER_ADDRESS3_FIELD = "entity_address_0_createPersonAddress3";
+    public static final String COMPOSER_ADDRESS4_FIELD = "entity_address_0_createPersonAddress4";
+    public static final String COMPOSER_ADDRESS_CITY_FIELD = "entity_address_0_createPersonAddressCity";
+    public static final String COMPOSER_ADDRESS_STATE_DROPDOWN = "entity_address_0_createPersonAddressState_component";
+    public static final String COMPOSER_ADDRESS_STATE_DROPDOWN_LIST = "entity_address_0_createPersonAddressState_dropdown_menu";
+    public static final String COMPOSER_ADDRESS_POSTAL_CODE_FIELD = "entity_address_0_createPersonAddressPostalCode";
+    public static final String COMPOSER_ADDRESS_COUNTRY_DROPDOWN = "entity_address_0_createPersonAddressCountry_component";
+    public static final String COMPOSER_ADDRESS_COUNTRY_DROPDOWN_LIST = "entity_address_0_createPersonAddressCountry_dropdown_menu";
+    public static final String COMPOSER_ADDRESS_REGION_FIELD = "entity_address_0_createPersonAddressRegion";
+    public static final String COMPOSER_ROLE_DROPDOWN = "createPersonPersonRole_component";
+    public static final String COMPOSER_ROLE_DROPDOWN_LIST = "createPersonPersonRole_dropdown_menu";
+    public static final String COMPOSER_STUDENT_TYPE_DROPDOWN = "createPersonStudentType_component";
+    public static final String COMPOSER_STUDENT_TYPE_DROPDOWN_LIST = "createPersonStudentType_dropdown_menu";
+    public static final String COMPOSER_STUDENT_STATUS_CATEGORY_DROPDOWN = "person_student_status_0_createPersonStudentStatusCategory_component";
+    public static final String COMPOSER_STUDENT_STATUS_CATEGORY_DROPDOWN_LIST = "person_student_status_0_createPersonStudentStatusCategory_dropdown_menu";
+    public static final String COMPOSER_STUDENT_STATUS_DROPDOWN = "person_student_status_0_createPersonStudentStatus_component";
+    public static final String COMPOSER_STUDENT_STATUS_DROPDOWN_LIST = "person_student_status_0_createPersonStudentStatus_dropdown_menu";
+    public static final String COMPOSER_STUDENT_STATUS_DATE_FIELD = "person_student_status_0_createPersonStudentStatusDate";
+    public static final String COMPOSER_STUDENT_STATUS_ENTRY_TERM_DROPDOWN = "person_student_status_0_createPersonStatusEntryTerm_component";
+    public static final String COMPOSER_STUDENT_STATUS_ENTRY_TERM_DROPDOWN_LIST = "person_student_status_0_createPersonStatusEntryTerm_dropdown_menu";
+
+
+    public static void updatePeopleComposer(DataTable data){
+        try {
+            mass = data.asMaps(String.class, String.class);
+            if (mass.get(0).get("Firstname") != null) {
+                BasePage.write(By.id(COMPOSER_FIRST_NAME_FIELD), mass.get(0).get("Firstname"));
+            }
+            if (mass.get(0).get("Lastname") != null) {
+                BasePage.write(By.id(COMPOSER_LAST_NAME_FIELD), mass.get(0).get("Lastname"));
+            }
+            if (mass.get(0).get("EmailAddress") != null) {
+                BasePage.write(By.id(COMPOSER_EMAIL_ADDRESS_FIELD), mass.get(0).get("EmailAddress"));
+            }
+            if (mass.get(0).get("EmailType") != null) {
+                BasePage.click(By.id(COMPOSER_EMAIL_TYPE_DROPDOWN));
+                BasePage.selectElementsList(By.id(COMPOSER_EMAIL_TYPE_DROPDOWN_LIST), "a");
+                clickOnListOfElements(mass.get(0).get("EmailType"));
+            }
+            scrollToElement(By.id(COMPOSER_EMAIL_ADDRESS_FIELD));
+            if (mass.get(0).get("EmailOptInMethod") != null) {
+                BasePage.click(By.id(COMPOSER_EMAIL_OPT_IN_METHOD_DROPDOWN));
+                BasePage.selectElementsList(By.id(COMPOSER_EMAIL_OPT_IN_METHOD_DROPDOWN_LIST), "a");
+                clickOnListOfElements(mass.get(0).get("EmailOptInMethod"));
+            }
+            if (mass.get(0).get("Phone") != null) {
+                BasePage.write(By.id(COMPOSER_PHONE_NUMBER_FIELD), mass.get(0).get("Phone"));
+            }
+            if (mass.get(0).get("PhoneType") != null) {
+                BasePage.click(By.id(COMPOSER_PHONE_TYPE_DROPDOWN));
+                BasePage.selectElementsList(By.id(COMPOSER_PHONE_TYPE_DROPDOWN_LIST), "a");
+                clickOnListOfElements(mass.get(0).get("PhoneType"));
+            }
+            scrollToElement(By.id(COMPOSER_PHONE_TYPE_DROPDOWN));
+            if (mass.get(0).get("Address1") != null) {
+                BasePage.write(By.id(COMPOSER_ADDRESS1_FIELD), mass.get(0).get("Address1"));
+            }
+            if (mass.get(0).get("Address2") != null) {
+                BasePage.write(By.id(COMPOSER_ADDRESS2_FIELD), mass.get(0).get("Address2"));
+            }
+            if (mass.get(0).get("Address3") != null) {
+                BasePage.write(By.id(COMPOSER_ADDRESS3_FIELD), mass.get(0).get("Address3"));
+            }
+            if (mass.get(0).get("Address4") != null) {
+                BasePage.write(By.id(COMPOSER_ADDRESS4_FIELD), mass.get(0).get("Address4"));
+            }
+            if (mass.get(0).get("City") != null) {
+                BasePage.write(By.id(COMPOSER_ADDRESS_CITY_FIELD), mass.get(0).get("City"));
+            }
+            if (mass.get(0).get("State") != null) {
+                BasePage.click(By.id(COMPOSER_ADDRESS_STATE_DROPDOWN));
+                BasePage.selectElementsList(By.id(COMPOSER_ADDRESS_STATE_DROPDOWN_LIST), "a");
+                clickOnListOfElements(mass.get(0).get("State"));
+            }
+            if (mass.get(0).get("PostalCode") != null) {
+                BasePage.write(By.id(COMPOSER_ADDRESS_POSTAL_CODE_FIELD), mass.get(0).get("PostalCode"));
+            }
+            if (mass.get(0).get("Country") != null) {
+                BasePage.click(By.id(COMPOSER_ADDRESS_COUNTRY_DROPDOWN));
+                BasePage.selectElementsList(By.id(COMPOSER_ADDRESS_COUNTRY_DROPDOWN_LIST), "a");
+                clickOnListOfElements(mass.get(0).get("Country"));
+            }
+            if (mass.get(0).get("Region") != null) {
+                BasePage.write(By.id(COMPOSER_ADDRESS_REGION_FIELD), mass.get(0).get("Region"));
+            }
+            scrollToElement(By.id(COMPOSER_ADDRESS_CITY_FIELD));
+            if (mass.get(0).get("Role1") != null) {
+                waitElementBy(By.id(COMPOSER_ROLE_DROPDOWN),20);
+                BasePage.click(By.id(COMPOSER_ROLE_DROPDOWN));
+                BasePage.selectElementsList(By.id(COMPOSER_ROLE_DROPDOWN_LIST), "a");
+                clickOnListOfElements(mass.get(0).get("Role1"));
+            }
+            if (mass.get(0).get("Role2") != null) {
+                BasePage.click(By.id(COMPOSER_ROLE_DROPDOWN));
+                BasePage.selectElementsList(By.id(COMPOSER_ROLE_DROPDOWN_LIST), "a");
+                clickOnListOfElements(mass.get(0).get("Role2"));
+            }
+            if (mass.get(0).get("Role3") != null) {
+                BasePage.click(By.id(COMPOSER_ROLE_DROPDOWN));
+                BasePage.selectElementsList(By.id(COMPOSER_ROLE_DROPDOWN_LIST), "a");
+                clickOnListOfElements(mass.get(0).get("Role3"));
+            }
+            if (mass.get(0).get("StudentType") != null) {
+                waitElementBy(By.id(COMPOSER_STUDENT_TYPE_DROPDOWN),20);
+                BasePage.click(By.id(COMPOSER_STUDENT_TYPE_DROPDOWN));
+                BasePage.selectElementsList(By.id(COMPOSER_STUDENT_TYPE_DROPDOWN_LIST), "a");
+                clickOnListOfElements(mass.get(0).get("StudentType"));
+            }
+            if (mass.get(0).get("StudentStatusCategory") != null) {
+                BasePage.click(By.id(COMPOSER_STUDENT_STATUS_CATEGORY_DROPDOWN));
+                BasePage.selectElementsList(By.id(COMPOSER_STUDENT_STATUS_CATEGORY_DROPDOWN_LIST), "a");
+                clickOnListOfElements(mass.get(0).get("StudentStatusCategory"));
+            }
+            if (mass.get(0).get("StudentStatus") != null) {
+                BasePage.click(By.id(COMPOSER_STUDENT_STATUS_DROPDOWN));
+                BasePage.selectElementsList(By.id(COMPOSER_STUDENT_STATUS_DROPDOWN_LIST), "a");
+                clickOnListOfElements(mass.get(0).get("StudentStatus"));
+            }
+            if (mass.get(0).get("StudentStatusDate") != null) {
+                BasePage.write(By.id(COMPOSER_STUDENT_STATUS_DATE_FIELD), mass.get(0).get("StudentStatusDate"));
+            }
+            if (mass.get(0).get("EntryTerm") != null) {
+                waitElementBy(By.id(COMPOSER_STUDENT_STATUS_ENTRY_TERM_DROPDOWN),20);
+                BasePage.click(By.id(COMPOSER_STUDENT_STATUS_ENTRY_TERM_DROPDOWN));
+                BasePage.selectElementsList(By.id(COMPOSER_STUDENT_STATUS_ENTRY_TERM_DROPDOWN_LIST), "a");
+                clickOnListOfElements(mass.get(0).get("EntryTerm"));
+            }
+            ExtentReportsSetUp.testingPass(LogPage.UPDATE_PEOPLE_COMPOSER_PASS);
+        } catch (Exception e) {
+            FailureDelegatePage.handlePageException(LogPage.UPDATE_PEOPLE_COMPOSER_FAIL);
+        }
+    }
 
 
     public static void clickOnSaveNewRecord(){
