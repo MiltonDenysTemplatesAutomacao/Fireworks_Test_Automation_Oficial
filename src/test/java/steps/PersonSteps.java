@@ -11,6 +11,10 @@ public class PersonSteps {
     public static void navigateToBasic() {
         PersonPage.navigateToBasic();
     }
+    @Then("I delete a person")
+    public static void deletePerson() {
+        PersonPage.deletePerson();
+    }
     @Then("I click on create record")
     public static void clickOnCreateRecord() {
         PersonPage.clickOnCreateRecord();
@@ -38,6 +42,14 @@ public class PersonSteps {
     @Then("I search {string} on people page manager")
     public static void searchPeopleManager(String search) {
         PersonPage.searchPeopleManager(search);
+    }
+    @Then("I validate if {string} message on datatable is displayed")
+    public static void validateDatatableMessage(String message) {
+        PersonPage.validateDatatableMessage(message);
+    }
+    @Then("I validate if {string} message on quick search is displayed")
+    public static void validateQuickSearchEmpty(String message) {
+        PersonPage.validateQuickSearchEmpty(message);
     }
     @Then("I verify Student Type")
     public static void verifyStudentType() {

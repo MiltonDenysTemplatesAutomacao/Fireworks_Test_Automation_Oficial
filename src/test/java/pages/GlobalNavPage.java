@@ -500,7 +500,7 @@ public class GlobalNavPage extends BasePage {
                 FailureDelegatePage.handlePageException(errorMessage);
             }
         } catch (Exception e) {
-            System.err.println(errorMessage);
+            FailureDelegatePage.handlePageException(errorMessage);
         }
     }
 

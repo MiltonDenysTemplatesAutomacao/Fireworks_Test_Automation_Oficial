@@ -164,6 +164,12 @@ public class LogPage {
     public static final String CLOSE_ALERT_PERSON_MODAL_FAIL = "Fail while trying to close alert person modal";
     public static final String UPDATE_PEOPLE_COMPOSER_PASS = "I update people composer";
     public static final String UPDATE_PEOPLE_COMPOSER_FAIL = "Fail while trying to update people composer";
+    public static final String DELETE_PERSON_PASS = "I delete a person";
+    public static final String DELETE_PERSON_FAIL = "Fail while trying to delete a person";
+    public static final String VALIDATE_DATATABLE_MESSAGE_PASS = "I validate if %s message on datatable is displayed";
+    public static final String VALIDATE_DATATABLE_MESSAGE_FAIL = "Fail while trying to validate if %s message on datatable is displayed";
+    public static final String VALIDATE_QUICK_SEARCH_EMPTY_PASS = "I validate if %s message on quick search is displayed";
+    public static final String VALIDATE_QUICK_SEARCH_EMPTY_FAIL = "Fail while trying to validate if %s message on quick search is displayed";
 
 
 }

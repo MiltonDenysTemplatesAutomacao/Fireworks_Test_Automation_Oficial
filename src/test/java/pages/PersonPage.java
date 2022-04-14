@@ -106,6 +106,57 @@ public class PersonPage extends BasePage{
     public static final String COMPOSER_STUDENT_STATUS_ENTRY_TERM_DROPDOWN = "person_student_status_0_createPersonStatusEntryTerm_component";
     public static final String COMPOSER_STUDENT_STATUS_ENTRY_TERM_DROPDOWN_LIST = "person_student_status_0_createPersonStatusEntryTerm_dropdown_menu";
 
+    public static final String HEADER_DELETE_BUTTON = "personHeaderDeleteButton";
+    public static final String DELETE_PERSON_CONFIRM_MODAL_LABEL = "deletePersonConfirmModalLabel";
+    public static final String DELETE_PERSON_CONFIRM_SUBMIT_BUTTON = "modalSubmitButtondeletePersonConfirm";
+
+    public static final String DATATABLE_EMPTY = "peopleManagerTable_row_0_col_0";
+    public static final String QUICK_SEARCH_EMPTY = "quickSearchManagerTable_row_0_col_0";
+
+
+    public static void validateQuickSearchEmpty(String message){
+        String errorMessage = String.format(LogPage.VALIDATE_QUICK_SEARCH_EMPTY_FAIL, message);
+        String passMessage = String.format(LogPage.VALIDATE_QUICK_SEARCH_EMPTY_PASS, message);
+        try {
+            wait(2000);
+            String messageQuickSearchEmpty = getText(By.id(QUICK_SEARCH_EMPTY));
+            if(messageQuickSearchEmpty.equals(message)){
+                ExtentReportsSetUp.testingPass(passMessage);
+            }else{
+                FailureDelegatePage.handlePageException(errorMessage);
+            }
+        } catch (Exception e) {
+            FailureDelegatePage.handlePageException(errorMessage);
+        }
+    }
+
+    public static void validateDatatableMessage(String message){
+        String errorMessage = String.format(LogPage.VALIDATE_DATATABLE_MESSAGE_FAIL, message);
+        String passMessage = String.format(LogPage.VALIDATE_DATATABLE_MESSAGE_PASS, message);
+        try {
+            wait(2000);
+            String messageDatatableEmpty = getText(By.id(DATATABLE_EMPTY));
+            if(messageDatatableEmpty.equals(message)){
+                ExtentReportsSetUp.testingPass(passMessage);
+            }else{
+                FailureDelegatePage.handlePageException(errorMessage);
+            }
+        } catch (Exception e) {
+            FailureDelegatePage.handlePageException(errorMessage);
+        }
+    }
+
+    public static void deletePerson(){
+        try {
+            waitUntilElementToBeSelected(By.id(HEADER_DELETE_BUTTON),20);
+            click(By.id(HEADER_DELETE_BUTTON));
+            waitUntilElementToBeSelected(By.id(DELETE_PERSON_CONFIRM_MODAL_LABEL),20);
+            click(By.id(DELETE_PERSON_CONFIRM_SUBMIT_BUTTON));
+            ExtentReportsSetUp.testingPass(LogPage.DELETE_PERSON_PASS);
+        } catch (Exception e) {
+            FailureDelegatePage.handlePageException(LogPage.DELETE_PERSON_FAIL);
+        }
+    }
 
     public static void updatePeopleComposer(DataTable data){
         try {
