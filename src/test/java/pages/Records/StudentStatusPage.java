@@ -40,7 +40,6 @@ public class StudentStatusPage extends BasePage {
         return String.format(STATUS_PRIMARY_CHECKBOX_ELEMENT,index);
     }
 
-
     /*
      * Method to check to verify student status on page records
      */
@@ -58,41 +57,31 @@ public class StudentStatusPage extends BasePage {
             scrollToElement(By.cssSelector(categoryElement(index)));
             if (mass.get(indexInt).get("StudentStatusCategory") != null) {
                 String category = getText(By.cssSelector(categoryElement(index)));
-                if(category.contains(mass.get(indexInt).get("StudentStatusCategory"))){
-                    studentStatusCategoryValidation = true;
-                }
+                studentStatusCategoryValidation = category.contains(mass.get(indexInt).get("StudentStatusCategory"));
             }else{
                 studentStatusCategoryValidation = true;
     }
             if (mass.get(indexInt).get("StudentStatus") != null) {
                 String status = getText(By.cssSelector(statusElement(index)));
-                if(status.contains(mass.get(indexInt).get("StudentStatus"))){
-                    studentStatusValidation = true;
-                }
+                studentStatusValidation = status.contains(mass.get(indexInt).get("StudentStatus"));
             }else{
                 studentStatusValidation = true;
     }
             if (mass.get(indexInt).get("StudentStatusDate") != null) {
                 String studentStatusDate = getAtribute(By.cssSelector(statusDateField(index)),"value");
-                if(studentStatusDate.contains(mass.get(indexInt).get("StudentStatusDate"))){
-                    studentStatusDateValidation = true;
-                }
+                studentStatusDateValidation = studentStatusDate.contains(mass.get(indexInt).get("StudentStatusDate"));
             }else{
                 studentStatusDateValidation = true;
             }
             if (mass.get(indexInt).get("EntryTerm") != null) {
                 String entryTerm = getText(By.cssSelector(entryTermElement(index)));
-                if(entryTerm.contains(mass.get(indexInt).get("EntryTerm"))){
-                    entryTermValidation = true;
-                }
+                entryTermValidation = entryTerm.contains(mass.get(indexInt).get("EntryTerm"));
             }else{
                 entryTermValidation = true;
             }
             if (mass.get(indexInt).get("StudentComments") != null) {
                 String studentComments = getText(By.cssSelector(statusCommentsField(index)));
-                if(studentComments.contains(mass.get(indexInt).get("StudentComments"))){
-                    studentCommentsValidation = true;
-                }
+                studentCommentsValidation = studentComments.contains(mass.get(indexInt).get("StudentComments"));
             }else{
                 studentCommentsValidation = true;
             }
@@ -101,12 +90,7 @@ public class StudentStatusPage extends BasePage {
                     studentActiveCheckboxLocator = checkBoxIsActive(By.cssSelector(statusActiveCheckbox(index)));
                     break;
                 case 1:
-                    studentActiveCheckboxLocator = checkBoxIsActive(By.cssSelector(statusActiveCheckbox(index)));
-                    if(!studentActiveCheckboxLocator){
-                        studentActiveCheckboxLocator = true;
-                    }else{
-                        studentActiveCheckboxLocator=false;
-                    }
+                    studentActiveCheckboxLocator = !checkBoxIsActive(By.cssSelector(statusActiveCheckbox(index)));
                     break;
             }
 
@@ -115,16 +99,15 @@ public class StudentStatusPage extends BasePage {
                     studentPrymaryCheckboxLocator = checkBoxIsActive(By.cssSelector(statusPrimaryCheckbox(index)));
                     break;
                 case 1:
-                    studentPrymaryCheckboxLocator = checkBoxIsActive(By.cssSelector(statusPrimaryCheckbox(index)));
-                    if(!studentPrymaryCheckboxLocator){
-                        studentPrymaryCheckboxLocator = true;
-                    }else{
-                        studentPrymaryCheckboxLocator=false;
-                    }
+                    studentPrymaryCheckboxLocator = !checkBoxIsActive(By.cssSelector(statusPrimaryCheckbox(index)));
                     break;
             }
-            if(studentStatusCategoryValidation && studentStatusValidation && studentStatusDateValidation
-                    && entryTermValidation && studentCommentsValidation && studentActiveCheckboxLocator
+            if(studentStatusCategoryValidation
+                    && studentStatusValidation
+                    && studentStatusDateValidation
+                    && entryTermValidation
+                    && studentCommentsValidation
+                    && studentActiveCheckboxLocator
                     && studentPrymaryCheckboxLocator){
                 ExtentReportsSetUp.testingPass(LogPage.VERIFY_STUDENT_STATUS_PASS);
             }else{

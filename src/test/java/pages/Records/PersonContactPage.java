@@ -78,57 +78,43 @@ public class PersonContactPage extends BasePage {
             int indexInt = Integer.parseInt(index);
             if (mass.get(indexInt).get("EmailAddress") != null) {
                 String emailAddress = getAtribute(By.cssSelector(emailAddressField(index)),"value");
-               if(emailAddress.equals(mass.get(indexInt).get("EmailAddress"))){
-                   emailAddressValidation = true;
-               }
+                emailAddressValidation = emailAddress.equals(mass.get(indexInt).get("EmailAddress"));
             }else{
                 emailAddressValidation = true;
             }
             if (mass.get(indexInt).get("EmailType") != null) {
                 String emailType = getText(By.cssSelector(emailTypeElement(index)));
-                if(emailType.equals(mass.get(indexInt).get("EmailType"))){
-                    emailTypeValidation = true;
-                }
+                emailTypeValidation = emailType.equals(mass.get(indexInt).get("EmailType"));
             }else{
                 emailTypeValidation = true;
             }
             if (mass.get(indexInt).get("EmailOptInMethod") != null) {
                 String emailOptInMethod = getText(By.cssSelector(emailOptInMethodElement(index)));
-                if(emailOptInMethod.equals(mass.get(indexInt).get("EmailOptInMethod"))){
-                    emailOptInMethodValidation = true;
-                }
+                emailOptInMethodValidation = emailOptInMethod.equals(mass.get(indexInt).get("EmailOptInMethod"));
             }else{
                 emailOptInMethodValidation = true;
             }
             if (mass.get(indexInt).get("EmailOptInStatus") != null) {
                 String emailOptInStatus = getText(By.cssSelector(emailOptInStatusElement(index)));
-                if(emailOptInStatus.equals(mass.get(indexInt).get("EmailOptInStatus"))){
-                    emailOptInStatusValidation = true;
-                }
+                emailOptInStatusValidation = emailOptInStatus.equals(mass.get(indexInt).get("EmailOptInStatus"));
             }else{
                 emailOptInStatusValidation=true;
             }
             if (mass.get(indexInt).get("EmailOptInDate") != null) {
                 String emailOptInDate = getAtribute(By.cssSelector(emailOptInDateField(index)),"value");
-                if(emailOptInDate.equals(mass.get(indexInt).get("EmailOptInDate"))){
-                    emailOptInDateValidation = true;
-                }
+                emailOptInDateValidation = emailOptInDate.equals(mass.get(indexInt).get("EmailOptInDate"));
             }else{
                 emailOptInDateValidation = true;
             }
             if (mass.get(indexInt).get("EmailStatus") != null) {
                 String emailStatus = getText(By.cssSelector(emailStatusElement(index)));
-                if(emailStatus.equals(mass.get(indexInt).get("EmailStatus"))){
-                    emailStatusValidation = true;
-                }
+                emailStatusValidation = emailStatus.equals(mass.get(indexInt).get("EmailStatus"));
             }else{
                 emailStatusValidation = true;
             }
             if (mass.get(indexInt).get("EmailComments") != null) {
                 String emailComments = getText(By.cssSelector(emailCommentsField(index)));
-                if(emailComments.equals(mass.get(indexInt).get("EmailComments"))){
-                    emailCommentsValidation = true;
-                }
+                emailCommentsValidation = emailComments.equals(mass.get(indexInt).get("EmailComments"));
             }else{
                 emailCommentsValidation = true;
             }
@@ -137,13 +123,9 @@ public class PersonContactPage extends BasePage {
                     emailActiveCheckboxLocator = checkBoxIsActive(By.cssSelector(emailActiveCheckbox(index)));
                     break;
                 case 1:
-                    emailActiveCheckboxLocator = checkBoxIsActive(By.cssSelector(emailActiveCheckbox(index)));
-                    if(!emailActiveCheckboxLocator){
-                        emailActiveCheckboxLocator = true;
-                    }else{
-                        emailActiveCheckboxLocator=false;
-                    }
+                    emailActiveCheckboxLocator = !checkBoxIsActive(By.cssSelector(emailActiveCheckbox(index)));
                     break;
+                default: throw new IllegalArgumentException("Unhandled index. Update business logic");
             }
 
             switch (indexInt){
@@ -151,18 +133,19 @@ public class PersonContactPage extends BasePage {
                     emailPrymaryCheckboxLocator = checkBoxIsActive(By.cssSelector(emailPrimaryCheckbox(index)));
                     break;
                 case 1:
-
-                    emailPrymaryCheckboxLocator = checkBoxIsActive(By.cssSelector(emailPrimaryCheckbox(index)));
-                    if(!emailPrymaryCheckboxLocator){
-                        emailPrymaryCheckboxLocator = true;
-                    }else{
-                        emailPrymaryCheckboxLocator=false;
-                    }
+                    emailPrymaryCheckboxLocator = !checkBoxIsActive(By.cssSelector(emailPrimaryCheckbox(index)));
                     break;
+                default: throw new IllegalArgumentException("Unhandled index. Update business logic");
             }
-                if(emailAddressValidation && emailTypeValidation && emailOptInMethodValidation
-                && emailOptInStatusValidation && emailOptInDateValidation && emailStatusValidation
-                && emailCommentsValidation && emailActiveCheckboxLocator && emailPrymaryCheckboxLocator){
+                if(emailAddressValidation
+                    && emailTypeValidation
+                    && emailOptInMethodValidation
+                    && emailOptInStatusValidation
+                    && emailOptInDateValidation
+                    && emailStatusValidation
+                    && emailCommentsValidation
+                    && emailActiveCheckboxLocator
+                    && emailPrymaryCheckboxLocator){
                     ExtentReportsSetUp.testingPass(LogPage.VERIFY_EMAIL_PERSON_PAGE_RECORD_PASS);
                 }else{
                     FailureDelegatePage.handlePageException(LogPage.VERIFY_EMAIL_PERSON_PAGE_RECORD_FAIL);
