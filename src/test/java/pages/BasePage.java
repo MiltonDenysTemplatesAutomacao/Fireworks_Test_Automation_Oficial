@@ -28,25 +28,33 @@ public class BasePage {
      * Method to check if an element is visible
      */
     public static boolean checkIfElementIsVisible(By by) throws Exception {
-        boolean display = DriverBase.getDriver().findElement(by).isDisplayed();
-        return display;
+        return DriverBase.getDriver().findElement(by).isDisplayed();
+    }
+    /*
+     * Method to check if a checkbox is active
+     */
+    public static boolean checkBoxIsActive(By by) throws Exception {
+        return DriverBase.getDriver().findElement(by).isSelected();
+    }
+    /*
+     * Method to check if a checkbox is not active
+     */
+    public static boolean checkBoxIsNotActive(By by) throws Exception {
+        return DriverBase.getDriver().findElement(by).isSelected();
     }
 
     /*
      * Method to check if an element is enabled
      */
     public static boolean checkIfElementIsEnabled(By by) throws Exception {
-        boolean display = DriverBase.getDriver().findElement(by).isEnabled();
-        return display;
+        return DriverBase.getDriver().findElement(by).isEnabled();
     }
 
     /*
      * Method to save elements in a list
      */
     public static List<WebElement> findElements(By by) throws Exception {
-        List<WebElement> elements = DriverBase.getDriver().findElements(by);
-        return elements;
-
+        return DriverBase.getDriver().findElements(by);
     }
 
     /*
@@ -60,10 +68,8 @@ public class BasePage {
      * Method to list elements in a list by css and tag
      */
     public static List<WebElement> elementsList(By by, String tag) throws Exception {
-
         WebElement table = DriverBase.getDriver().findElement(by);
-        List<WebElement> rowsTable = table.findElements(By.tagName(tag));
-        return rowsTable;
+        return table.findElements(By.tagName(tag));
     }
 
     /*
@@ -113,6 +119,7 @@ public class BasePage {
     public static String getAtribute(By by, String value) throws Exception {
         return DriverBase.getDriver().findElement(by).getAttribute(value);
     }
+
 
     /*
      * Method replace a String

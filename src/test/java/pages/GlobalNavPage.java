@@ -20,6 +20,10 @@ public class GlobalNavPage extends BasePage {
     public static final String FOOTER_QUICK_ADD_STAFF_MENU_ITEM = "#global_nav_add_staff";
     public static final String FOOTER_TOOLS_MENU = "#global_nav_tools_toggle";
     public static final String FOOTER_TOOLS_TASKS_MENU_ITEM = "#global_nav_task";
+    public static final String FOOTER_RECORDS_MENU = "#global_nav_records_toggle";
+    public static final String FOOTER_RECORDS_DUPLICATES_MENU_ITEM = "#global_nav_duplicate_manager";
+    public static final String FOOTER_RECORDS_PEOPLE_MENU_ITEM = "#global_nav_people";
+
 
     /*
      * Quick Add Person Css
@@ -98,6 +102,29 @@ public class GlobalNavPage extends BasePage {
     public static final String ACCOUNT_TOGGLE = "global_nav_account_toggle";
     public static final String LOGOUT_BUTTON = "logout_button";
 
+    public static void navigatePersonPage(){
+        try {
+            waitElementBy(By.cssSelector(FOOTER_RECORDS_MENU),20);
+            click(By.cssSelector(FOOTER_RECORDS_MENU));
+            wait(2000);
+            click(By.cssSelector(FOOTER_RECORDS_PEOPLE_MENU_ITEM));
+            ExtentReportsSetUp.testingPass(LogPage.NAVIGATE_PERSON_PAGE_PASS);
+        } catch (Exception e) {
+            FailureDelegatePage.handlePageException(LogPage.NAVIGATE_PERSON_PAGE_FAIL);
+        }
+    }
+
+    public static void navigateDuplicatesPage(){
+        try {
+            waitElementBy(By.cssSelector(FOOTER_RECORDS_MENU),20);
+            click(By.cssSelector(FOOTER_RECORDS_MENU));
+            waitElementBy(By.cssSelector(FOOTER_RECORDS_DUPLICATES_MENU_ITEM),20);
+            click(By.cssSelector(FOOTER_RECORDS_DUPLICATES_MENU_ITEM));
+            ExtentReportsSetUp.testingPass(LogPage.NAVIGATE_DUPLICATES_PAGE_PASS);
+        } catch (Exception e) {
+            FailureDelegatePage.handlePageException(LogPage.NAVIGATE_DUPLICATES_PAGE_FAIL);
+        }
+    }
 
     public static void logout(){
         try {
@@ -126,7 +153,6 @@ public class GlobalNavPage extends BasePage {
             FailureDelegatePage.handlePageException(LogPage.VALIDATE_IN_TOOL_MENU_NOT_DISPLAYED_PASS_FAIL);
         }
     }
-
     /*
      * Method to create a Person
      */
@@ -249,6 +275,11 @@ public class GlobalNavPage extends BasePage {
                 BasePage.selectElementsList(By.cssSelector(QUICK_ADD_PERSON_ROLE_DROPDOWN_LIST), "a");
                 clickOnListOfElements(mass.get(0).get("Role1"));
             }
+            if (mass.get(0).get("Role2") != null) {
+                BasePage.click(By.cssSelector(QUICK_ADD_PERSON_ROLE_DROPDOWN));
+                BasePage.selectElementsList(By.cssSelector(QUICK_ADD_PERSON_ROLE_DROPDOWN_LIST), "a");
+                clickOnListOfElements(mass.get(0).get("Role2"));
+            }
             if (mass.get(0).get("EmailAddress") != null) {
                 BasePage.write(By.cssSelector(QUICK_ADD_PERSON_EMAIL_ADDRESS_FIELD), mass.get(0).get("EmailAddress"));
             }
@@ -301,6 +332,7 @@ public class GlobalNavPage extends BasePage {
                 clickOnListOfElements(mass.get(0).get("StudentStatusCategory"));
             }
             if (mass.get(0).get("StudentStatus") != null) {
+                scrollToElement(By.cssSelector(QUICK_ADD_STUDENT_TYPE_DROPDOWN));
                 BasePage.click(By.cssSelector(QUICK_ADD_STUDENT_STATUS_DROPDOWN));
                 BasePage.selectElementsList(By.cssSelector(QUICK_ADD_STUDENT_STATUS_DROPDOWN_LIST), "a");
                 clickOnListOfElements(mass.get(0).get("StudentStatus"));
@@ -317,7 +349,6 @@ public class GlobalNavPage extends BasePage {
         } catch (Exception e) {
             FailureDelegatePage.handlePageException(LogPage.QUICK_ADD_PERSON_FAIL);
         }
-
     }
 
     /*

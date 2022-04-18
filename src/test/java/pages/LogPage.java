@@ -28,6 +28,8 @@ public class LogPage {
     public static final String UPDATE_NAME_PASS = "I update CitizenshipValues";
     public static final String NAVIGATE_TO_CONTACT_FAIL = "Error while navigating to contact";
     public static final String NAVIGATE_TO_CONTACT_PASS = "I navigate to contact";
+    public static final String NAVIGATE_TO_STUDENT_STATUS_PASS = "I navigate to student status";
+    public static final String NAVIGATE_TO_STUDENT_STATUS_FAIL = "Fail while navigating to contact";
     public static final String NAVIGATE_TO_BASIC_FAIL = "Error while navigating to basic";
     public static final String NAVIGATE_TO_BASIC_PASS = "I navigate to basic";
     public static final String NAVIGATE_TO_ID_TYPES_FAIL = "Error while navigating to ID Types";
@@ -61,8 +63,8 @@ public class LogPage {
     public static final String OPEN_RECORD_FAIL = "Error while clicking on a record";
     public static final String VALIDATE_IF_OPENED_SUMMARY_PROPERLY_PASS = "I validate if opened corrected summary";
     public static final String VALIDATE_IF_OPENED_SUMMARY_PROPERLY_FAIL = "Error while validating if opened summary from a record correctly";
-    public static final String ALERT_MESSAGE_FAIL = "FAILED to recieve %s alert message";
-    public static final String ALERT_MESSAGE_PASS = "I received %s alert message";
+    public static final String ALERT_MESSAGE_FAIL = "FAILED to recieve '%s' alert message";
+    public static final String ALERT_MESSAGE_PASS = "I received '%s' alert message";
     public static final String QUICK_SEARCH_ONE_PARAMETER_PASS = "I quick search %s from home page";
     public static final String QUICK_SEARCH_ONE_PARAMETER_FAIL = "FAILED to quick search %s from home page";
     public static final String QUICK_SEARCH_PARTIAL_PASS = "I quick search partial %s";
@@ -124,6 +126,34 @@ public class LogPage {
     public static final String VERIFY_RECORD_PANELS_FAIL = "Fail while trying to verify the record panels for a student record";
     public static final String VERIFY_STUDENT_BASIC_FIELDS_PASS = "I verify the Basic fields for a student record";
     public static final String VERIFY_STUDENT_BASIC_FIELDS_FAIL = "Fail while trying to verify the Basic fields for a student record";
+    public static final String VERIFY_CONTENT_OF_SUSPENDED_RECORD_PASS = "I verify content of the suspended record";
+    public static final String VERIFY_CONTENT_OF_SUSPENDED_RECORD_FAIL = "Fail while trying to verify content of the suspended record";
+    public static final String VERIFY_CONTENT_OF_FIRST_POSSIBLE_MATCH_PASS = "Fail while trying to verify content of the suspended record";
+    public static final String VERIFY_CONTENT_OF_FIRST_POSSIBLE_MATCH_FAIL = "Fail while trying to verify content of the suspended record";
+    public static final String MERGE_DUPLICATES_PASS = "I merge duplicates";
+    public static final String MERGE_DUPLICATES_FAIL = "Fail while trying to merge duplicates";
+    public static final String VERIFY_MERGE_PREVIEW_PASS = "I verify merge preview";
+    public static final String VERIFY_MERGE_PREVIEW_FAIL = "Fail while trying to verify merge preview";
+    public static final String CONFIRM_MERGE_AND_CLOSE_PASS = "I confirm merge and close";
+    public static final String CONFIRM_MERGE_AND_CLOSE_FAIL = "Fail while trying confirm merge and close";
+    public static final String NAVIGATE_DUPLICATES_PAGE_PASS = "I navigate to duplicates";
+    public static final String NAVIGATE_DUPLICATES_PAGE_FAIL = "Fail while trying to navigate to duplicates";
+    public static final String VERIFY_IF_RECORD_NO_LONGER_EXISTS_ON_DUPLICATES_PAGE_PASS = "I validate if the record lo longer exists on the duplicates page";
+    public static final String VERIFY_IF_RECORD_NO_LONGER_EXISTS_ON_DUPLICATES_PAGE_FAIL = "Fail while trying to validate if the record lo longer exists on the duplicates page";
+    public static final String SEARCH_DUPLICATE_MANAGER_PASS = "I search %s on duplicate manager";
+    public static final String SEARCH_DUPLICATE_MANAGER_FAIL = "Fail while trying to search %s on duplicate manager";
+    public static final String NAVIGATE_PERSON_PAGE_PASS = "I navigate to people on records";
+    public static final String NAVIGATE_PERSON_PAGE_FAIL = "Fail while trying to navigate to people on records";
+    public static final String SEARCH_PEOPLE_MANAGER_PASS = "I search %s on people page manager";
+    public static final String SEARCH_PEOPLE_MANAGER_FAIL = "Fail while trying to search %s on people page manager";
+    public static final String OPEN_PEOPLE_RECORD_PASS = "I open a people record by %s";
+    public static final String OPEN_PEOPLE_RECORD_FAIL = "Fail while trying to open a people record by %s";
+    public static final String VERIFY_ALL_THREE_ROLES_ARE_SELECTED_PASS = "I verify all three roles are selected in the role dropdown";
+    public static final String VERIFY_ALL_THREE_ROLES_ARE_SELECTED_FAIL = "Fail while trying to verify all three roles are selected in the role dropdown";
+    public static final String VERIFY_EMAIL_PERSON_PAGE_RECORD_PASS = "I verify email address";
+    public static final String VERIFY_EMAIL_PERSON_PAGE_RECORD_FAIL = "Fail while trying to verify email address";
+    public static final String VERIFY_STUDENT_STATUS_PASS = "I verify student status";
+    public static final String VERIFY_STUDENT_STATUS_FAIL = "Fail while trying to verify student status";
 
 
 }

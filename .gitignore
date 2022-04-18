@@ -37,6 +37,9 @@
 # Miscelaneous #
 output
 failed_scenarios
+test.feature
+TestsSteps.java
+TestPage.java
 
 # Maven #
 #########

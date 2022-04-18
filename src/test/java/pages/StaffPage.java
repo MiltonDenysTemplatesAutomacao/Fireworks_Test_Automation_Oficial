@@ -4,25 +4,12 @@ import config.extent_reports.ExtentReportsSetUp;
 import org.openqa.selenium.By;
 
 public class StaffPage extends BasePage{
-    private static final String RECORD_NAV_TAB_CONTACT = "recordNavTab_contact";
     private static final String CONTACT_PHONE_NUMBER_FIELD = "entity_phone_0_phone_number";
     private static final String CONTACT_PHONE_TYPE_DROPDOWN = "s2id_entity_phone_0_phone_type";
     private static final String CONTACT_PHONE_TYPE_DROPDOWN_LIST = "#select2-drop";
     private static final String CONTACT_PHONE_COMMENTS_FIELD = "entity_phone_0_phone_comments";
     private static final String STAFF_CONTACT_SAVE_CHANGES_BUTTON = "saveChangesBtnStaffContact";
 
-    /*
-     * to go to Contact tab on records
-     */
-    public static void navigateToContact(){
-        try {
-            waitElementBy(By.id(RECORD_NAV_TAB_CONTACT),20);
-            BasePage.click(By.id(RECORD_NAV_TAB_CONTACT));
-            ExtentReportsSetUp.testingPass(LogPage.NAVIGATE_TO_CONTACT_PASS);
-        } catch (Exception e) {
-            FailureDelegatePage.handlePageException(LogPage.NAVIGATE_TO_CONTACT_FAIL);
-        }
-    }
     /*
      * to update Phone Number in contact tab on records
      */

@@ -21,7 +21,6 @@ public class PersonPage extends BasePage{
     private static final String SOCIAL_SECURITY_NUMBER_FIELD = "#social_security_number";
     private static final String PERSON_BASIC_SAVE_CHANGES_BUTTON = "saveChangesBtnPersonBasic";
 
-
     private static final String FIRST_NAME_FIELD = "person_name_0_name_first";
     private static final String LAST_NAME_FIELD = "person_name_0_name_last";
     private static final String MIDDLE_NAME_FIELD = "person_name_0_name_middle";
@@ -59,9 +58,80 @@ public class PersonPage extends BasePage{
     private static final String STUDENT_STATUS_LABEL = "recordNavTab_summary";
     private static final String DOCUMENTS_LABEL = "recordNavTab_summary";
 
-    public static void verifyStudentBasicFields(){
+    private static final String PEOPLE_MANAGER_TABLE = "#peopleManagerTable";
+    private static final String PEOPLE_MANAGER_TABLE_SEARCH_FIELD = "#peopleManagerTableControlsTableSearch";
+    private static final String PEOPLE_MANAGER_TABLE_ROW1_COL1_LINK = "#peopleManagerTable_row_0_col_0_link_0";
+
+    private static final String HEADER_ROLE_DROPDOWN_OPTION3 = "div.btn-group.autoSubmit.dropDownSelect.open > ul > li:nth-child(3)";
+    private static final String HEADER_ROLE_DROPDOWN_OPTION3_ACTIVE = "div.btn-group.autoSubmit.dropDownSelect.open > ul > li:nth-child(3).active";
+    private static final String HEADER_ROLE_DROPDOWN_OPTION8 = "div.btn-group.autoSubmit.dropDownSelect.open > ul > li:nth-child(8)";
+    private static final String HEADER_ROLE_DROPDOWN_OPTION8_ACTIVE = "div.btn-group.autoSubmit.dropDownSelect.open > ul > li:nth-child(8).active";
+    private static final String HEADER_ROLE_DROPDOWN_OPTION9 = "div.btn-group.autoSubmit.dropDownSelect.open > ul > li:nth-child(9)";
+    private static final String HEADER_ROLE_DROPDOWN_OPTION9_ACTIVE = "div.btn-group.autoSubmit.dropDownSelect.open > ul > li:nth-child(9).active";
+
+
+
+    public static void verifyAllthreeRolesAreSelected(){
+        try {
+            waitElementBy(By.cssSelector(HEADER_ROLE_ELEMENT),20);
+            click(By.cssSelector(HEADER_ROLE_ELEMENT));
+
+            String roleDropdown3 = getText(By.cssSelector(HEADER_ROLE_DROPDOWN_OPTION3));
+            String roleDropdown3Active = getText(By.cssSelector(HEADER_ROLE_DROPDOWN_OPTION3_ACTIVE));
+            boolean role1Person2Validation = false;
+            if(roleDropdown3.equals(mass.get(1).get("Role1")) && roleDropdown3Active.equals(mass.get(1).get("Role1"))){
+                role1Person2Validation=true;
+            }
+            String roleDropdown8 = getText(By.cssSelector(HEADER_ROLE_DROPDOWN_OPTION8));
+            String roleDropdown8Active = getText(By.cssSelector(HEADER_ROLE_DROPDOWN_OPTION8_ACTIVE));
+            boolean role1Person1Validation = false;
+            if(roleDropdown8.equals(mass.get(0).get("Role1")) && roleDropdown8Active.equals(mass.get(0).get("Role1"))){
+                role1Person1Validation=true;
+            }
+            String roleDropdown9 = getText(By.cssSelector(HEADER_ROLE_DROPDOWN_OPTION9));
+            String roleDropdown9Active = getText(By.cssSelector(HEADER_ROLE_DROPDOWN_OPTION9_ACTIVE));
+            boolean role2Person1Validation = false;
+            if(roleDropdown9.equals(mass.get(0).get("Role2")) && roleDropdown9Active.equals(mass.get(0).get("Role2"))){
+                role2Person1Validation=true;
+            }
+
+            if(role1Person2Validation && role1Person1Validation && role2Person1Validation){
+                click(By.cssSelector(HEADER_ROLE_ELEMENT));
+                ExtentReportsSetUp.testingPass(LogPage.VERIFY_ALL_THREE_ROLES_ARE_SELECTED_PASS);
+            }else{
+                FailureDelegatePage.handlePageException(LogPage.VERIFY_ALL_THREE_ROLES_ARE_SELECTED_FAIL);
+            }
+        } catch (Exception e) {
+            FailureDelegatePage.handlePageException(LogPage.VERIFY_ALL_THREE_ROLES_ARE_SELECTED_FAIL);
+        }
+    }
+
+    public static void openPeopleRecord(String search){
+        searchPeopleManager(search);
+        String passMessage = String.format(LogPage.OPEN_PEOPLE_RECORD_PASS, search);
+        String failMessage = String.format(LogPage.OPEN_PEOPLE_RECORD_FAIL, search);
+        try {
+            waitElementBy(By.cssSelector(PEOPLE_MANAGER_TABLE_ROW1_COL1_LINK),20);
+            click(By.cssSelector(PEOPLE_MANAGER_TABLE_ROW1_COL1_LINK));
+            ExtentReportsSetUp.testingPass(passMessage);
+        } catch (Exception e) {
+            FailureDelegatePage.handlePageException(failMessage);
+        }
+
 
     }
+    public static void searchPeopleManager(String search){
+        String passMessage = String.format(LogPage.SEARCH_PEOPLE_MANAGER_PASS, search);
+        String failMessage = String.format(LogPage.SEARCH_PEOPLE_MANAGER_FAIL, search);
+        try {
+            waitElementBy(By.cssSelector(PEOPLE_MANAGER_TABLE),20);
+            write(By.cssSelector(PEOPLE_MANAGER_TABLE_SEARCH_FIELD),mass.get(0).get(search));
+            ExtentReportsSetUp.testingPass(passMessage);
+        } catch (Exception e) {
+            FailureDelegatePage.handlePageException(failMessage);
+        }
+    }
+
     public static void verifyStudentRecordPanels(){
         try {
             waitUntilElementPresence(By.cssSelector(HEADER_STUDENT_TYPE_ELEMENT),20);
@@ -107,28 +177,30 @@ public class PersonPage extends BasePage{
     }
 
 
-    public static void verifyHeaderRole(){
-        String passMessage = String.format(LogPage.VERIFY_HEADER_ROLE_PASS, mass.get(0).get("Role1"));
-        String failMessage = String.format(LogPage.VERIFY_HEADER_ROLE_FAIL, mass.get(0).get("Role1"));
+    public static void verifyHeaderRole(String headerRole){
+        String passMessage = String.format(LogPage.VERIFY_HEADER_ROLE_PASS, headerRole);
+        String failMessage = String.format(LogPage.VERIFY_HEADER_ROLE_FAIL, headerRole);
 
         try {
             waitUntilElementPresence(By.cssSelector(HEADER_ROLE_ELEMENT),20);
-            List<WebElement> headerRoles;
-            switch (mass.get(0).get("Role1")){
+            switch (headerRole){
                 case "Student":
                     String studentType = getText(By.cssSelector(HEADER_STUDENT_TYPE_ELEMENT));
                     String assignedStaff = getText(By.cssSelector(HEADER_ASSIGNED_STAFF_ELEMENT));
-                    Assert.assertTrue(studentType.contains("Student Type"));
-                    Assert.assertTrue(assignedStaff.contains("Assigned Staff"));
-                    ExtentReportsSetUp.testingPass(passMessage);
+                    if(studentType.contains("Student Type")&& assignedStaff.contains("Assigned Staff")){
+                        ExtentReportsSetUp.testingPass(passMessage);
+                    }
                     break;
                 case "Multiple":
-                    ExtentReportsSetUp.testingPass(passMessage);
+                    String roleElement = getText(By.cssSelector(HEADER_ROLE_ELEMENT));
+                    if(roleElement.contains(headerRole)){
+                        ExtentReportsSetUp.testingPass(passMessage);
+                    }
                     break;
                 default:
-                    headerRoles = findElements(By.cssSelector(HEADER_STUDENT_TYPE_ELEMENT));
-                    headerRoles = findElements(By.cssSelector(HEADER_ASSIGNED_STAFF_ELEMENT));
-                    if(headerRoles.isEmpty()){
+                    List<WebElement> headerStudent = findElements(By.cssSelector(HEADER_STUDENT_TYPE_ELEMENT));
+                    List<WebElement> headerStaff = findElements(By.cssSelector(HEADER_ASSIGNED_STAFF_ELEMENT));
+                    if(headerStudent.isEmpty()&&headerStaff.isEmpty()){
                         ExtentReportsSetUp.testingPass(passMessage);
                     }
             }
