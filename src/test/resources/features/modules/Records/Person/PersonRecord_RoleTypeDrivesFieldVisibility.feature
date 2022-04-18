@@ -64,7 +64,7 @@ Feature: Role Type drives panel and field visibility
     When I quick search "Firstname"
     And I validate if result for "Firstname" is correct
     And I open a record
-    Then I verify Header Role
+    Then I verify Header Role "Student"
     And I verify Student Type
     And I verify the record panels for a student record
     And I navigate to basic

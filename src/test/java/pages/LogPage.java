@@ -170,6 +170,8 @@ public class LogPage {
     public static final String VALIDATE_DATATABLE_MESSAGE_FAIL = "Fail while trying to validate if %s message on datatable is displayed";
     public static final String VALIDATE_QUICK_SEARCH_EMPTY_PASS = "I validate if %s message on quick search is displayed";
     public static final String VALIDATE_QUICK_SEARCH_EMPTY_FAIL = "Fail while trying to validate if %s message on quick search is displayed";
+    public static final String CLICK_ON_ADD_STUDENT_STATUS_PASS = "I click on add student status";
+    public static final String CLICK_ON_ADD_STUDENT_STATUS_FAIL = "Fail while trying to click on add student status";
 
 
 }

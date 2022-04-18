@@ -10,6 +10,7 @@ public class StudentStatusPage extends BasePage {
 
 
     private static final String CATEGORY_ELEMENT = "#s2id_person_student_status_%s_student_status_category";
+    private static final String STATUS_PLUS_SIGN_ELEMENT = "#person_student_status_%s_add";
     private static final String STATUS_ELEMENT = "#s2id_person_student_status_%s_student_status";
     private static final String STUDENT_STATUS_DATA_FIELD_ELEMENT = "#person_student_status_%s_student_status_date";
     private static final String ENTRY_TERM_ELEMENT = "#s2id_person_student_status_%s_status_entry_term";
@@ -18,6 +19,10 @@ public class StudentStatusPage extends BasePage {
     private static final String STATUS_PRIMARY_CHECKBOX_ELEMENT = "#person_student_status_%s_primary";
 
 
+
+    public static String statusPlusSignElement(String index){
+        return String.format(STATUS_PLUS_SIGN_ELEMENT,index);
+    }
     public static String categoryElement(String index){
         return String.format(CATEGORY_ELEMENT,index);
     }
@@ -39,7 +44,33 @@ public class StudentStatusPage extends BasePage {
     public static String statusPrimaryCheckbox(String index){
         return String.format(STATUS_PRIMARY_CHECKBOX_ELEMENT,index);
     }
+    /*
+     * Method to update student status
+     */
+    public static void updateStudentStatus(String index){
+        try {
+            int indexInt = Integer.parseInt(index);
+            if (mass.get(indexInt).get("Category") != null) {
+                BasePage.click(By.cssSelector(categoryElement(index)));
+                BasePage.selectElementsList(By.cssSelector("//*[@id='select2-drop'"), "a");
+                clickOnListOfElements(mass.get(indexInt).get("Category"));
+            }
+        } catch (Exception e) {
+        }
+    }
 
+    /*
+     * Method to click on student status
+     */
+    public static void clickOnAddStudentStatus(String index){
+        try {
+            waitElementBy(By.cssSelector(statusPlusSignElement(index)),20);
+            BasePage.click(By.cssSelector(statusPlusSignElement(index)));
+            ExtentReportsSetUp.testingPass(LogPage.CLICK_ON_ADD_STUDENT_STATUS_PASS);
+        } catch (Exception e) {
+            FailureDelegatePage.handlePageException(LogPage.CLICK_ON_ADD_STUDENT_STATUS_FAIL);
+        }
+    }
     /*
      * Method to check to verify student status on page records
      */
