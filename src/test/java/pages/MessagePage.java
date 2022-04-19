@@ -8,8 +8,32 @@ public class MessagePage extends BasePage{
     public static final String QUICK_ADD_PERSON_MODAL_VALIDATION_ALERT_MESSAGE = "quickAddPersonModalValidationAlertMessage";
     public static final String QUICK_ADD_PERSON_VALIDATION_ALERT_CLOSE_BUTTON = "quickAddPersonModalValidationAlertMessageAlertMessageClose";
     public static final String CLOSE_ALERT_PERSON_MODAL = ".//*[@class='panel-heading clearfix']";
+    public static final String GENERAL_ALERT_MESSAGE = "#alertMessage";
+    public static final String GENERAL_ALERT_CLOSE_BUTTON = "#generalAlertMessageClose";
 
 
+    /*
+     * Method to close alert if a specific message returns
+     */
+    public static void closeAlertIfReturned(String messageAlert){
+        String errorMessage = String.format(LogPage.CLOSE_ALERT_IF_RETURNED_FAIL, messageAlert);
+        String passMessage = String.format(LogPage.CLOSE_ALERT_IF_RETURNED_PASS, messageAlert);
+
+        try {
+            String messageReturn = getText(By.cssSelector(GENERAL_ALERT_MESSAGE));
+            if(messageReturn.contains(messageAlert)){
+                waitUntilElementToBeSelected(By.cssSelector(GENERAL_ALERT_MESSAGE),20);
+                scrollToElement(By.cssSelector(GENERAL_ALERT_MESSAGE));
+                click(By.cssSelector(GENERAL_ALERT_CLOSE_BUTTON));
+            }
+            ExtentReportsSetUp.testingPass(passMessage);
+        } catch (Exception e) {
+            FailureDelegatePage.handlePageException(errorMessage);
+        }
+    }
+    /*
+     * Method to close alert person modal
+     */
     public static void closeAlertPersonModal(){
         try {
             waitUntilElementToBeSelected(By.id(QUICK_ADD_PERSON_VALIDATION_ALERT_CLOSE_BUTTON),20);

@@ -14,6 +14,10 @@ public class MessageSteps {
     public static void closeAlertPersonModal() {
         MessagePage.closeAlertPersonModal();
     }
+    @When("I close alert if return this message {string}")
+    public static void closeAlertIfReturned(String alert) {
+        MessagePage.closeAlertIfReturned(alert);
+    }
 
 
 }

@@ -172,10 +172,16 @@ public class LogPage {
     public static final String VALIDATE_QUICK_SEARCH_EMPTY_FAIL = "Fail while trying to validate if %s message on quick search is displayed";
     public static final String CLICK_ON_ADD_STUDENT_STATUS_PASS = "I click on add student status";
     public static final String CLICK_ON_ADD_STUDENT_STATUS_FAIL = "Fail while trying to click on add student status";
-    public static final String UPDATE_STUDENT_STATUS_PASS = "I update student status";
-    public static final String UPDATE_STUDENT_STATUS_FAIL = "Fail while trying to update student status";
+    public static final String UPDATE_STUDENT_STATUS_PASS = "I update student status index %s";
+    public static final String UPDATE_STUDENT_STATUS_FAIL = "Fail while trying to update student status index %s";
     public static final String CLICK_SAVE_CHANGES_STUDENT_STATUS_PASS = "I click on Save Changes button in Student Status";
     public static final String CLICK_SAVE_CHANGES_STUDENT_STATUS_FAIL = "Fail while trying to click on Save Changes button in Student Status";
+    public static final String CLICK_STUDENT_STATUS_PRYMARY_CHECKBOX_PASS = "I click on status primary checkbox index %s";
+    public static final String CLICK_STUDENT_STATUS_PRYMARY_CHECKBOX_FAIl = "Fail while trying to click on status primary checkbox index %s";
+    public static final String CLICK_STUDENT_STATUS_ACTIVE_CHECKBOX_PASS = "I click on status active checkbox index %s";
+    public static final String CLICK_STUDENT_STATUS_ACTIVE_CHECKBOX_FAIL = "Fail while trying to click on status active checkbox index %s";
+    public static final String CLOSE_ALERT_IF_RETURNED_PASS = "I close alert if return this message %s";
+    public static final String CLOSE_ALERT_IF_RETURNED_FAIL = "Fail while trying to close alert if return this message %s";
 
 
 }

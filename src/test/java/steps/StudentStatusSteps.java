@@ -21,6 +21,14 @@ public class StudentStatusSteps {
     public static void clickSaveChanges() {
         StudentStatusPage.clickSaveChangesStudentStatus();
     }
+    @Then("I click on status primary checkbox {string}")
+    public static void clickStudentStatusPrymaryCheckbox(String index) {
+        StudentStatusPage.clickStudentStatusPrymaryCheckbox(index);
+    }
+    @Then("I click on status active checkbox {string}")
+    public static void clickStudentStatusActiveCheckbox(String index) {
+        StudentStatusPage.clickStudentStatusActiveCheckbox(index);
+    }
 
 
 
