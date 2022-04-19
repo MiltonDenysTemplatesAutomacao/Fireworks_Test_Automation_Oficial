@@ -17,6 +17,9 @@ public class StudentStatusPage extends BasePage {
     private static final String STUDENT_COMMENTS_ELEMENT = "#person_student_status_%s_student_status_comments";
     private static final String STATUS_ACTIVE_CHECKBOX_ELEMENT = "#person_student_status_%s_active";
     private static final String STATUS_PRIMARY_CHECKBOX_ELEMENT = "#person_student_status_%s_primary";
+    private static final String CHECKBOX_LIST = "#select2-drop";
+    private static final String STUDENT_STATUS_SAVE_CHANGES_BUTTON = "saveChangesBtnPersonStatus";
+    private static final String COUNSELOR_HISTORY_DATE_ASSIGNED_TABLE = "//*[@class='table']";
 
 
 
@@ -51,14 +54,59 @@ public class StudentStatusPage extends BasePage {
         try {
             int indexInt = Integer.parseInt(index);
             if (mass.get(indexInt).get("Category") != null) {
+                scrollToElement(By.cssSelector(statusPlusSignElement(index)));
+                waitUntilElementToBeSelected(By.cssSelector(categoryElement(index)),20);
                 BasePage.click(By.cssSelector(categoryElement(index)));
-                BasePage.selectElementsList(By.cssSelector("//*[@id='select2-drop'"), "a");
+                BasePage.selectElementsList(By.cssSelector(CHECKBOX_LIST), "a");
                 clickOnListOfElements(mass.get(indexInt).get("Category"));
             }
+            if (mass.get(indexInt).get("Status") != null) {
+                waitUntilElementToBeSelected(By.cssSelector(statusElement(index)),20);
+                BasePage.click(By.cssSelector(statusElement(index)));
+                BasePage.selectElementsList(By.cssSelector(CHECKBOX_LIST), "a");
+                clickOnListOfElements(mass.get(indexInt).get("Status"));
+            }
+            if (mass.get(indexInt).get("StatusDate") != null) {
+                waitUntilElementToBeSelected(By.cssSelector(statusDateField(index)),20);
+                BasePage.click(By.cssSelector(statusDateField(index)));
+                BasePage.write(By.cssSelector(statusDateField(index)),mass.get(indexInt).get("StatusDate"));
+            }
+            if (mass.get(indexInt).get("EntryTerm") != null) {
+                waitUntilElementToBeSelected(By.cssSelector(entryTermElement(index)),20);
+                BasePage.click(By.cssSelector(entryTermElement(index)));
+                BasePage.selectElementsList(By.cssSelector(CHECKBOX_LIST), "a");
+                clickOnListOfElements(mass.get(indexInt).get("EntryTerm"));
+            }
+            if (mass.get(indexInt).get("Comments") != null) {
+                waitUntilElementToBeSelected(By.cssSelector(statusCommentsField(index)),20);
+                BasePage.write(By.cssSelector(statusCommentsField(index)),mass.get(indexInt).get("Comments"));
+            }
+            if (mass.get(indexInt).get("Active") != null) {
+                waitUntilElementPresence(By.cssSelector(statusActiveCheckbox(index)),20);
+                BasePage.click(By.cssSelector(statusActiveCheckbox(index)));
+            }
+            if (mass.get(indexInt).get("Primary") != null) {
+                waitUntilElementPresence(By.cssSelector(statusPrimaryCheckbox(index)),20);
+                BasePage.click(By.cssSelector(statusPrimaryCheckbox(index)));
+            }
+            ExtentReportsSetUp.testingPass(LogPage.UPDATE_STUDENT_STATUS_PASS);
         } catch (Exception e) {
+            FailureDelegatePage.handlePageException(LogPage.UPDATE_STUDENT_STATUS_FAIL);
         }
     }
-
+    /*
+     * Method to click on save changes for student status
+     */
+    public static void clickSaveChangesStudentStatus(){
+        try {
+            scrollToElement(By.xpath(COUNSELOR_HISTORY_DATE_ASSIGNED_TABLE));
+            waitUntilElementToBeSelected(By.id(STUDENT_STATUS_SAVE_CHANGES_BUTTON),20);
+            BasePage.click(By.id(STUDENT_STATUS_SAVE_CHANGES_BUTTON));
+            ExtentReportsSetUp.testingPass(LogPage.CLICK_SAVE_CHANGES_STUDENT_STATUS_PASS);
+        } catch (Exception e) {
+            FailureDelegatePage.handlePageException(LogPage.CLICK_SAVE_CHANGES_STUDENT_STATUS_FAIL);
+        }
+    }
     /*
      * Method to click on student status
      */

@@ -17,6 +17,10 @@ public class StudentStatusSteps {
     public static void updateStudentStatus(String index) {
         StudentStatusPage.updateStudentStatus(index);
     }
+    @Then("I click on Save Changes button in Student Status")
+    public static void clickSaveChanges() {
+        StudentStatusPage.clickSaveChangesStudentStatus();
+    }
 
 
 

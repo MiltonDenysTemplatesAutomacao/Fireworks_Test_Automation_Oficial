@@ -19,3 +19,8 @@ Feature: Student Status
     And I click on student status
     And I click on add student status "0"
     And I update student status "1"
+    And I click on Save Changes button in Student Status
+    Then I validate if "The most recent Student Status should be marked Primary" message is correct
+
+
+
