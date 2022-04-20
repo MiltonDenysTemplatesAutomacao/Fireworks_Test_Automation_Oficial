@@ -31,6 +31,10 @@ public class PersonSteps {
     public static void verifyHeaderRole(String role) {
         PersonPage.verifyHeaderRole(role);
     }
+    @Then("I update Header Role {string}")
+    public static void updateHeaderRole(String role) {
+        PersonPage.updateHeaderRole(role);
+    }
     @Then("I verify all three roles are selected in the role dropdown")
     public static void verifyAllthreeRolesAreSelected() {
         PersonPage.verifyAllthreeRolesAreSelected();

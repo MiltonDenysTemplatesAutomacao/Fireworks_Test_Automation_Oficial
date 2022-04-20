@@ -42,6 +42,7 @@ public class PersonPage extends BasePage{
     private static final String PLUS_BUTTON_EXTERNAL_ID = "//*[@id='entity_external_id_0_add']";
     private static final String SAVE_CHANGES_BTN_PERSON_ID_TYPES = "saveChangesBtnPersonIdTypes";
     private static final String HEADER_ROLE_ELEMENT = "#personHeaderRoleButton";
+    private static final String HEADER_ROLE_ELEMENT_LIST = ".//*[@class='btn-group autoSubmit dropDownSelect open']//*[@class='dropdown-menu']";
     private static final String HEADER_STUDENT_TYPE_ELEMENT = "#personHeaderStudentTypeButton";
     private static final String HEADER_ASSIGNED_STAFF_ELEMENT = "#personHeaderAssignedStaffButton";
     private static final String SUMMARY_LABEL = "recordNavTab_summary";
@@ -114,6 +115,21 @@ public class PersonPage extends BasePage{
     public static final String QUICK_SEARCH_EMPTY = "quickSearchManagerTable_row_0_col_0";
 
 
+    public static void updateHeaderRole(String role){
+        String errorMessage = String.format(LogPage.UPDATE_HEADER_ROLE_FAIL, role);
+        String passMessage = String.format(LogPage.UPDATE_HEADER_ROLE_PASS, role);
+        try {
+            click(By.cssSelector(HEADER_ROLE_ELEMENT));
+            BasePage.selectElementsList(By.xpath(HEADER_ROLE_ELEMENT_LIST), "a");
+            clickOnListOfElements(role);
+            ExtentReportsSetUp.testingPass(passMessage);
+        } catch (Exception e) {
+            FailureDelegatePage.handlePageException(errorMessage);
+        }
+    }
+    /*
+     * method to validate quick search empty
+     */
     public static void validateQuickSearchEmpty(String message){
         String errorMessage = String.format(LogPage.VALIDATE_QUICK_SEARCH_EMPTY_FAIL, message);
         String passMessage = String.format(LogPage.VALIDATE_QUICK_SEARCH_EMPTY_PASS, message);
@@ -129,7 +145,9 @@ public class PersonPage extends BasePage{
             FailureDelegatePage.handlePageException(errorMessage);
         }
     }
-
+    /*
+     * method to calidate database message
+     */
     public static void validateDatatableMessage(String message){
         String errorMessage = String.format(LogPage.VALIDATE_DATATABLE_MESSAGE_FAIL, message);
         String passMessage = String.format(LogPage.VALIDATE_DATATABLE_MESSAGE_PASS, message);
@@ -145,7 +163,9 @@ public class PersonPage extends BasePage{
             FailureDelegatePage.handlePageException(errorMessage);
         }
     }
-
+    /*
+     * method to delete a person
+     */
     public static void deletePerson(){
         try {
             waitUntilElementToBeSelected(By.id(HEADER_DELETE_BUTTON),20);
@@ -157,7 +177,9 @@ public class PersonPage extends BasePage{
             FailureDelegatePage.handlePageException(LogPage.DELETE_PERSON_FAIL);
         }
     }
-
+    /*
+     * method to update people composer
+     */
     public static void updatePeopleComposer(DataTable data){
         try {
             mass = data.asMaps(String.class, String.class);
@@ -268,8 +290,9 @@ public class PersonPage extends BasePage{
             FailureDelegatePage.handlePageException(LogPage.UPDATE_PEOPLE_COMPOSER_FAIL);
         }
     }
-
-
+    /*
+     * method to click on save new record
+     */
     public static void clickOnSaveNewRecord(){
         try {
             waitUntilElementToBeSelected(By.id(COMPOSER_SAVE_CHANGES_BUTTON),20);
@@ -280,7 +303,9 @@ public class PersonPage extends BasePage{
             FailureDelegatePage.handlePageException(LogPage.CLICK_ON_SAVE_NEW_RECORD_FAIL);
         }
     }
-
+    /*
+     * method to click on create on record page
+     */
     public static void clickOnCreateRecord(){
         try {
             waitUntilElementToBeSelected(By.id(CREATE_PERSON_BUTTON),20);
@@ -290,6 +315,9 @@ public class PersonPage extends BasePage{
             FailureDelegatePage.handlePageException(LogPage.CLICK_ON_CREATE_RECORD_FAIL);
         }
     }
+    /*
+     * method to validate if all three roles are selected
+     */
     public static void verifyAllthreeRolesAreSelected(){
         try {
             waitElementBy(By.cssSelector(HEADER_ROLE_ELEMENT),20);
@@ -324,7 +352,9 @@ public class PersonPage extends BasePage{
             FailureDelegatePage.handlePageException(LogPage.VERIFY_ALL_THREE_ROLES_ARE_SELECTED_FAIL);
         }
     }
-
+    /*
+     * method to open a people record
+     */
     public static void openPeopleRecord(String search){
         searchPeopleManager(search);
         String passMessage = String.format(LogPage.OPEN_PEOPLE_RECORD_PASS, search);
@@ -339,6 +369,9 @@ public class PersonPage extends BasePage{
 
 
     }
+    /*
+     * method to search people on mangager page
+     */
     public static void searchPeopleManager(String search){
         String passMessage = String.format(LogPage.SEARCH_PEOPLE_MANAGER_PASS, search);
         String failMessage = String.format(LogPage.SEARCH_PEOPLE_MANAGER_FAIL, search);
@@ -350,7 +383,9 @@ public class PersonPage extends BasePage{
             FailureDelegatePage.handlePageException(failMessage);
         }
     }
-
+    /*
+     * verify student Record Panels
+     */
     public static void verifyStudentRecordPanels(){
         try {
             waitUntilElementPresence(By.cssSelector(HEADER_STUDENT_TYPE_ELEMENT),20);
@@ -379,6 +414,9 @@ public class PersonPage extends BasePage{
         }
 
     }
+    /*
+     * verify student type
+     */
     public static void verifyStudentType(){
         try {
             waitUntilElementPresence(By.cssSelector(HEADER_STUDENT_TYPE_ELEMENT),20);
@@ -395,7 +433,9 @@ public class PersonPage extends BasePage{
 
     }
 
-
+    /*
+     * verify header role
+     */
     public static void verifyHeaderRole(String headerRole){
         String passMessage = String.format(LogPage.VERIFY_HEADER_ROLE_PASS, headerRole);
         String failMessage = String.format(LogPage.VERIFY_HEADER_ROLE_FAIL, headerRole);

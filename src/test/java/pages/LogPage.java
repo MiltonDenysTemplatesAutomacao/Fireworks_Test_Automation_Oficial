@@ -182,6 +182,8 @@ public class LogPage {
     public static final String CLICK_STUDENT_STATUS_ACTIVE_CHECKBOX_FAIL = "Fail while trying to click on status active checkbox index %s";
     public static final String CLOSE_ALERT_IF_RETURNED_PASS = "I close alert if return this message %s";
     public static final String CLOSE_ALERT_IF_RETURNED_FAIL = "Fail while trying to close alert if return this message %s";
+    public static final String UPDATE_HEADER_ROLE_PASS = "I update Header Role %s";
+    public static final String UPDATE_HEADER_ROLE_FAIL = "Fail while trying to update Header Role %s";
 
 
 }
