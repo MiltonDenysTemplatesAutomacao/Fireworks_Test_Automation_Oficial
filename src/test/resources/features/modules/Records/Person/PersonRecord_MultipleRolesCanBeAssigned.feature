@@ -37,7 +37,7 @@ Feature: Multiple roles can be assigned
     And I verify email address "0" fields
     And I verify email address "1" fields
     And I click on student status
-    And I verify student status "0"
+    And I verify student status group "0" person 0
 
 
 

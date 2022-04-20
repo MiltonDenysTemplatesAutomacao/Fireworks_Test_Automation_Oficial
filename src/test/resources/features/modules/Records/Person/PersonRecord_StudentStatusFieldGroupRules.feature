@@ -33,6 +33,6 @@ Feature: Student Status
     And I click on Save Changes button in Student Status
     And I close alert if return this message "Person has been updated."
     #scenario: to verify Student Status with older Entry Term is Active and Primary
-    And I verify student status "1"
+    And I verify student status group "0" person 1
     #scenario: to verify Student Status with older Entry Term is Active and Primary
-    And I verify student status "0"
+    And I verify student status group "1" person 0

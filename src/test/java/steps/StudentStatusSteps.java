@@ -5,9 +5,9 @@ import pages.Records.StudentStatusPage;
 
 public class StudentStatusSteps {
 
-    @Then("I verify student status {string}")
-    public static void verifyStudentStatus(String index) {
-        StudentStatusPage.verifyStudentStatus(index);
+    @Then("I verify student status group {string} person {int}")
+    public static void verifyStudentStatus(String studentStatus, int person) {
+        StudentStatusPage.verifyStudentStatus(studentStatus, person);
     }
     @Then("I click on add student status {string}")
     public static void clickAddStudentStatus(String index) {

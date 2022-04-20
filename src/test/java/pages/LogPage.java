@@ -154,8 +154,8 @@ public class LogPage {
     public static final String VERIFY_ALL_THREE_ROLES_ARE_SELECTED_FAIL = "Fail while trying to verify all three roles are selected in the role dropdown";
     public static final String VERIFY_EMAIL_PERSON_PAGE_RECORD_PASS = "I verify email address";
     public static final String VERIFY_EMAIL_PERSON_PAGE_RECORD_FAIL = "Fail while trying to verify email address";
-    public static final String VERIFY_STUDENT_STATUS_PASS = "I verify student status";
-    public static final String VERIFY_STUDENT_STATUS_FAIL = "Fail while trying to verify student status";
+    public static final String VERIFY_STUDENT_STATUS_PASS = "I verify if student status from group %s is related to person %s";
+    public static final String VERIFY_STUDENT_STATUS_FAIL = "Fail while trying to verify if student status from group %s is related to person %s";
     public static final String CLICK_ON_CREATE_RECORD_PASS = "I click on create record";
     public static final String CLICK_ON_CREATE_RECORD_FAIL = "Fail while trying to click on create record";
     public static final String CLICK_ON_SAVE_NEW_RECORD_PASS = "I click on save record button";
