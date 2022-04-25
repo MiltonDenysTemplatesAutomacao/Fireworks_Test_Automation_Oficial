@@ -28,8 +28,10 @@ public class LogPage {
     public static final String UPDATE_NAME_PASS = "I update CitizenshipValues";
     public static final String NAVIGATE_TO_CONTACT_FAIL = "Error while navigating to contact";
     public static final String NAVIGATE_TO_CONTACT_PASS = "I navigate to contact";
+    public static final String NAVIGATE_TO_INTERESTS_ACTIVITIES_PASS = "I navigate to Interests & Activities";
+    public static final String NAVIGATE_TO_INTERESTS_ACTIVITIES_FAIL = "Fail while navigating to Interests & Activities";
     public static final String NAVIGATE_TO_STUDENT_STATUS_PASS = "I navigate to student status";
-    public static final String NAVIGATE_TO_STUDENT_STATUS_FAIL = "Fail while navigate to student status";
+    public static final String NAVIGATE_TO_STUDENT_STATUS_FAIL = "Fail while navigating to student status";
     public static final String NAVIGATE_TO_BASIC_FAIL = "Error while navigating to basic";
     public static final String NAVIGATE_TO_BASIC_PASS = "I navigate to basic";
     public static final String NAVIGATE_TO_ID_TYPES_FAIL = "Error while navigating to ID Types";

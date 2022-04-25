@@ -4,7 +4,7 @@
 @StudentStatusRequiredFields
 Feature: Student Status: Required Fields
 
-  @AddPrimaryStudentStatusField
+  @StudentStatusFieldRequiredValidations
   Scenario: student status required fields
     Given I login as "firestarterUsername", "firestarterPassword", "firestarterFullName"
     #to create a person record so that Student Status will be empty
@@ -18,10 +18,10 @@ Feature: Student Status: Required Fields
       |           |           |                                  |           |                  |               |Deposited            |Active-Deposited |08/18/2018       |Fall 2019|1     |1      |
     Then I validate if "Person has been created" message is correct
     #to add the Student Role so that the Student fields are available
-    And I go to Home page
+    Given I go to Home page
     And I quick search "Firstname"
     And I validate if "Firstname"summary opened properly
-    And I open a record
+    When I open a record
     And I verify Header Role "Trustee/Regent"
     And I update Header Role "Student"
     Then I validate if "Person has been updated." message is correct
@@ -53,4 +53,4 @@ Feature: Student Status: Required Fields
     When I click on Save Changes button in Student Status
     Then I validate if "Person has been updated." message is correct
     #to verify the student status data
-    And I verify student status group "0" person 5
+    Then I verify student status group "0" person 5
