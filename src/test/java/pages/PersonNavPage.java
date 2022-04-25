@@ -22,6 +22,7 @@ public class PersonNavPage extends BasePage{
     }
     public static void navigateToStudentStatus(){
         try {
+            wait(500);
             scrollToElement(By.id(RECORD_NAV_TAB_CONTACT));
             waitElementBy(By.cssSelector(STUDENT_STATUS_TAB),20);
             BasePage.click(By.cssSelector(STUDENT_STATUS_TAB));

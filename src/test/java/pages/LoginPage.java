@@ -80,7 +80,7 @@ public class LoginPage {
             BasePage.write(By.cssSelector(USERNAME_FIELD),returnUsernameLoginParameter(username));
             BasePage.write(By.cssSelector(PASSWORD_FIELD),returnPasswordLoginParameter(password));
             BasePage.click(By.cssSelector(LOGIN_BUTTON));
-            if(BasePage.alertMessageByIdContains("alertMessage",returnFullNameLoginParameter(fullName))) {
+            if(BasePage.alertMessageContains(By.id("alertMessage"),returnFullNameLoginParameter(fullName))) {
                 ExtentReportsSetUp.testingPass(passMessage);
 
             }else {

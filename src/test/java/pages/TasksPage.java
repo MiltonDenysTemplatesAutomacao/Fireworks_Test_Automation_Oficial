@@ -281,7 +281,7 @@ public class TasksPage extends BasePage{
         try {
             waitElementBy(By.id("pageValidationAlertMessageClose"), 10);
             String fullNameReturn = BasePage.getText(By.id("pageAlertMessages"));
-            if (alertMessageByIdContains("pageAlertMessages", alertMessage)) {
+            if (alertMessageContains(By.id("pageAlertMessages"), alertMessage)) {
                 ExtentReportsSetUp.testingPass(passMessage);
             } else {
                 FailureDelegatePage.handlePageException(errorMessage);

@@ -29,7 +29,7 @@ public class LogPage {
     public static final String NAVIGATE_TO_CONTACT_FAIL = "Error while navigating to contact";
     public static final String NAVIGATE_TO_CONTACT_PASS = "I navigate to contact";
     public static final String NAVIGATE_TO_STUDENT_STATUS_PASS = "I navigate to student status";
-    public static final String NAVIGATE_TO_STUDENT_STATUS_FAIL = "Fail while navigating to contact";
+    public static final String NAVIGATE_TO_STUDENT_STATUS_FAIL = "Fail while navigate to student status";
     public static final String NAVIGATE_TO_BASIC_FAIL = "Error while navigating to basic";
     public static final String NAVIGATE_TO_BASIC_PASS = "I navigate to basic";
     public static final String NAVIGATE_TO_ID_TYPES_FAIL = "Error while navigating to ID Types";
@@ -67,6 +67,8 @@ public class LogPage {
     public static final String ALERT_MESSAGE_PASS = "I received '%s' alert message";
     public static final String VALIDATE_REQUIRED_FIELDS_MESSAGE_PASS = "I validate if '%s' message alert required is correct";
     public static final String VALIDATE_REQUIRED_FIELDS_MESSAGE_FAIL = "FAILED to I validate if '%s' message alert required is correct";
+    public static final String VALIDATE_PERSON_RECORD_REQUIRED_FIELDS_MESSAGE_PASS = "I validate if '%s' message required for person record is correct";
+    public static final String VALIDATE_PERSON_RECORD_REQUIRED_FIELDS_MESSAGE_FAIL = "FAILED to I validate if '%s' message required for person record is correct";
     public static final String QUICK_SEARCH_ONE_PARAMETER_PASS = "I quick search %s from home page";
     public static final String QUICK_SEARCH_ONE_PARAMETER_FAIL = "FAILED to quick search %s from home page";
     public static final String QUICK_SEARCH_PARTIAL_PASS = "I quick search partial %s";
@@ -162,6 +164,8 @@ public class LogPage {
     public static final String CLICK_ON_SAVE_NEW_RECORD_FAIL = "Fail while trying to click on save record button";
     public static final String CLOSE_ALERT_PERSON_MODAL_PASS = "I close alert person modal";
     public static final String CLOSE_ALERT_PERSON_MODAL_FAIL = "Fail while trying to close alert person modal";
+    public static final String CLOSE_ALERT_PERSON_RECORD_MODAL_PASS = "I click on close button on modal";
+    public static final String CLOSE_ALERT_PERSON_RECORD_MODAL_FAIL = "Fail while trying click on close button on modal";
     public static final String UPDATE_PEOPLE_COMPOSER_PASS = "I update people composer";
     public static final String UPDATE_PEOPLE_COMPOSER_FAIL = "Fail while trying to update people composer";
     public static final String DELETE_PERSON_PASS = "I delete a person";
@@ -172,8 +176,8 @@ public class LogPage {
     public static final String VALIDATE_QUICK_SEARCH_EMPTY_FAIL = "Fail while trying to validate if %s message on quick search is displayed";
     public static final String CLICK_ON_ADD_STUDENT_STATUS_PASS = "I click on add student status";
     public static final String CLICK_ON_ADD_STUDENT_STATUS_FAIL = "Fail while trying to click on add student status";
-    public static final String UPDATE_STUDENT_STATUS_PASS = "I update student status index %s";
-    public static final String UPDATE_STUDENT_STATUS_FAIL = "Fail while trying to update student status index %s";
+    public static final String UPDATE_STUDENT_STATUS_PASS = "I update student status group %s person %s";
+    public static final String UPDATE_STUDENT_STATUS_FAIL = "Fail while trying update student status group %s person %s";
     public static final String CLICK_SAVE_CHANGES_STUDENT_STATUS_PASS = "I click on Save Changes button in Student Status";
     public static final String CLICK_SAVE_CHANGES_STUDENT_STATUS_FAIL = "Fail while trying to click on Save Changes button in Student Status";
     public static final String CLICK_STUDENT_STATUS_PRYMARY_CHECKBOX_PASS = "I click on status primary checkbox index %s";

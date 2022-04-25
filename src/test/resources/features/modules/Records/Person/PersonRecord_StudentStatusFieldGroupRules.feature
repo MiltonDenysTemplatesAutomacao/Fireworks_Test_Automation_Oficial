@@ -18,7 +18,7 @@ Feature: Student Status
     And I open a record
     And I click on student status
     And I click on add student status "0"
-    And I update student status "1"
+    And I update student status group "1" person 1
     And I click on Save Changes button in Student Status
     #scenario: a validation message is returned that the most recent Student Status should be Primary
     Then I validate if "The most recent Student Status should be marked Primary" message is correct

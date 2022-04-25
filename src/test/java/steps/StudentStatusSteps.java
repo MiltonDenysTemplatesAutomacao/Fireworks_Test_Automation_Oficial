@@ -13,9 +13,10 @@ public class StudentStatusSteps {
     public static void clickAddStudentStatus(String index) {
         StudentStatusPage.clickOnAddStudentStatus(index);
     }
-    @Then("I update student status {string}")
-    public static void updateStudentStatus(String index) {
-        StudentStatusPage.updateStudentStatus(index);
+
+    @Then("I update student status group {string} person {int}")
+    public static void updateStudentStatus(String index, int person) {
+        StudentStatusPage.updateStudentStatus(index,person);
     }
     @Then("I click on Save Changes button in Student Status")
     public static void clickSaveChanges() {

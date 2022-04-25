@@ -136,11 +136,11 @@ public class BasePage {
      ************/
 
     /*
-     * Method to validate if a message contains the correct value by id
+     * Method to validate if a message contains the correct
      */
-    public static boolean alertMessageByIdContains(String id, String message) throws Exception {
+    public static boolean alertMessageContains(By by, String message) throws Exception {
         boolean alertMessage = false;
-        String fullNameReturn = BasePage.getText(By.id(id));
+        String fullNameReturn = BasePage.getText(by);
         if (fullNameReturn.contains(message)) {
             alertMessage = true;
         }
@@ -148,11 +148,11 @@ public class BasePage {
     }
 
     /*
-     * Method to validate if a message is equals to the correct value by id
+     * Method to validate if a message is equals to the correct
      */
-    public static boolean alertMessageByidEquals(String id, String message) throws Exception {
+    public static boolean alertMessageEquals(By by,String id, String message) throws Exception {
         boolean alertMessage = false;
-        String fullNameReturn = BasePage.getText(By.id(id));
+        String fullNameReturn = BasePage.getText(by);
         if (fullNameReturn.equals(message)) {
             alertMessage = true;
         }

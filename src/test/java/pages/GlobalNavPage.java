@@ -4,8 +4,6 @@ import config.extent_reports.ExtentReportsSetUp;
 import io.cucumber.datatable.DataTable;
 import org.openqa.selenium.By;
 
-import static pages.PersonPage.COMPOSER_ROLE_DROPDOWN;
-
 public class GlobalNavPage extends BasePage {
 
     public static final String FIRE_WORKS_ICON = "smallHeaderLogo";
@@ -494,7 +492,7 @@ public class GlobalNavPage extends BasePage {
         String passMessage = String.format(LogPage.ALERT_MESSAGE_PASS, alertMessage);
         try {
             waitElementBy(By.id("alertMessage"), 10);
-            if (alertMessageByIdContains("alertMessage", alertMessage)) {
+            if (alertMessageContains(By.id("alertMessage"), alertMessage)) {
                 ExtentReportsSetUp.testingPass(passMessage);
             } else {
                 FailureDelegatePage.handlePageException(errorMessage);

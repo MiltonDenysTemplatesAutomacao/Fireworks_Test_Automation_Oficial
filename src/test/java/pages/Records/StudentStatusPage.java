@@ -82,45 +82,50 @@ public class StudentStatusPage extends BasePage {
     /*
      * Method to update student status
      */
-    public static void updateStudentStatus(String index){
-        String errorMessage = String.format(LogPage.UPDATE_STUDENT_STATUS_FAIL, index);
-        String passMessage = String.format(LogPage.UPDATE_STUDENT_STATUS_PASS, index);
+    public static void updateStudentStatus(String index, int person){
+        String errorMessage = String.format(LogPage.UPDATE_STUDENT_STATUS_FAIL, index,person);
+        String passMessage = String.format(LogPage.UPDATE_STUDENT_STATUS_PASS, index,person);
 
         try {
-            int indexInt = Integer.parseInt(index);
-            if (mass.get(indexInt).get("StudentStatusCategory") != null) {
+            if (mass.get(person).get("StudentStatusCategory") != null) {
                 scrollToElement(By.cssSelector(statusPlusSignElement(index)));
                 waitUntilElementToBeSelected(By.cssSelector(categoryElement(index)),20);
                 BasePage.click(By.cssSelector(categoryElement(index)));
                 BasePage.selectElementsList(By.cssSelector(CHECKBOX_LIST), "a");
-                clickOnListOfElements(mass.get(indexInt).get("StudentStatusCategory"));
+                clickOnListOfElements(mass.get(person).get("StudentStatusCategory"));
             }
-            if (mass.get(indexInt).get("StudentStatus") != null) {
+            if (mass.get(person).get("StudentStatus") != null) {
+                scrollToElement(By.cssSelector(statusPlusSignElement(index)));
                 waitUntilElementToBeSelected(By.cssSelector(statusElement(index)),20);
                 BasePage.click(By.cssSelector(statusElement(index)));
                 BasePage.selectElementsList(By.cssSelector(CHECKBOX_LIST), "a");
-                clickOnListOfElements(mass.get(indexInt).get("StudentStatus"));
+                clickOnListOfElements(mass.get(person).get("StudentStatus"));
             }
-            if (mass.get(indexInt).get("StudentStatusDate") != null) {
+            if (mass.get(person).get("StudentStatusDate") != null) {
+                scrollToElement(By.cssSelector(statusElement(index)));
                 waitUntilElementToBeSelected(By.cssSelector(statusDateField(index)),20);
                 BasePage.click(By.cssSelector(statusDateField(index)));
-                BasePage.write(By.cssSelector(statusDateField(index)),mass.get(indexInt).get("StudentStatusDate"));
+                BasePage.write(By.cssSelector(statusDateField(index)),mass.get(person).get("StudentStatusDate"));
             }
-            if (mass.get(indexInt).get("EntryTerm") != null) {
+            if (mass.get(person).get("EntryTerm") != null) {
+                scrollToElement(By.cssSelector(statusElement(index)));
                 waitUntilElementToBeSelected(By.cssSelector(entryTermElement(index)),20);
                 BasePage.click(By.cssSelector(entryTermElement(index)));
                 BasePage.selectElementsList(By.cssSelector(CHECKBOX_LIST), "a");
-                clickOnListOfElements(mass.get(indexInt).get("EntryTerm"));
+                clickOnListOfElements(mass.get(person).get("EntryTerm"));
             }
-            if (mass.get(indexInt).get("Comments") != null) {
+            if (mass.get(person).get("Comments") != null) {
+                scrollToElement(By.cssSelector(entryTermElement(index)));
                 waitUntilElementToBeSelected(By.cssSelector(statusCommentsField(index)),20);
-                BasePage.write(By.cssSelector(statusCommentsField(index)),mass.get(indexInt).get("Comments"));
+                BasePage.write(By.cssSelector(statusCommentsField(index)),mass.get(person).get("Comments"));
             }
-            if (mass.get(indexInt).get("Active") != null) {
+            if (mass.get(person).get("Active") != null) {
+                scrollToElement(By.cssSelector(statusPlusSignElement(index)));
                 waitUntilElementPresence(By.cssSelector(statusActiveCheckbox(index)),20);
                 BasePage.click(By.cssSelector(statusActiveCheckbox(index)));
             }
-            if (mass.get(indexInt).get("Primary") != null) {
+            if (mass.get(person).get("Primary") != null) {
+                scrollToElement(By.cssSelector(statusPlusSignElement(index)));
                 waitUntilElementPresence(By.cssSelector(statusPrimaryCheckbox(index)),20);
                 BasePage.click(By.cssSelector(statusPrimaryCheckbox(index)));
             }
@@ -237,8 +242,4 @@ public class StudentStatusPage extends BasePage {
             FailureDelegatePage.handlePageException(errorMessage);
         }
     }
-
-
-
-
 }
