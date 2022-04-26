@@ -5,11 +5,10 @@ import org.openqa.selenium.By;
 import pages.BasePage;
 import pages.FailureDelegatePage;
 import pages.LogPage;
-import pages.MessagePage;
 
 public class StudentStatusPage extends BasePage {
 
-
+    public static final String CHECKBOX_LIST = "#select2-drop";
     private static final String CATEGORY_ELEMENT = "#s2id_person_student_status_%s_student_status_category";
     private static final String STATUS_PLUS_SIGN_ELEMENT = "#person_student_status_%s_add";
     private static final String STATUS_ELEMENT = "#s2id_person_student_status_%s_student_status";
@@ -18,34 +17,32 @@ public class StudentStatusPage extends BasePage {
     private static final String STUDENT_COMMENTS_ELEMENT = "#person_student_status_%s_student_status_comments";
     private static final String STATUS_ACTIVE_CHECKBOX_ELEMENT = "#person_student_status_%s_active";
     private static final String STATUS_PRIMARY_CHECKBOX_ELEMENT = "#person_student_status_%s_primary";
-    private static final String CHECKBOX_LIST = "#select2-drop";
     private static final String STUDENT_STATUS_SAVE_CHANGES_BUTTON = "saveChangesBtnPersonStatus";
     private static final String COUNSELOR_HISTORY_DATE_ASSIGNED_TABLE = "//*[@class='table']";
 
 
-
-    public static String statusPlusSignElement(String index){
+    private static String statusPlusSignElement(String index){
         return String.format(STATUS_PLUS_SIGN_ELEMENT,index);
     }
-    public static String categoryElement(String index){
+    private static String categoryElement(String index){
         return String.format(CATEGORY_ELEMENT,index);
     }
-    public static String statusElement(String index){
+    private static String statusElement(String index){
         return String.format(STATUS_ELEMENT,index);
     }
-    public static String statusDateField(String index){
+    private static String statusDateField(String index){
         return String.format(STUDENT_STATUS_DATA_FIELD_ELEMENT,index);
     }
-    public static String entryTermElement(String index){
+    private static String entryTermElement(String index){
         return String.format(ENTRY_TERM_ELEMENT,index);
     }
-    public static String statusCommentsField(String index){
+    private static String statusCommentsField(String index){
         return String.format(STUDENT_COMMENTS_ELEMENT,index);
     }
-    public static String statusActiveCheckbox(String index){
+    private static String statusActiveCheckbox(String index){
         return String.format(STATUS_ACTIVE_CHECKBOX_ELEMENT,index);
     }
-    public static String statusPrimaryCheckbox(String index){
+    private static String statusPrimaryCheckbox(String index){
         return String.format(STATUS_PRIMARY_CHECKBOX_ELEMENT,index);
     }
     /*

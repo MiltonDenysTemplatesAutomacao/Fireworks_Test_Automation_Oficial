@@ -160,6 +160,10 @@ public class LogPage {
     public static final String VERIFY_EMAIL_PERSON_PAGE_RECORD_FAIL = "Fail while trying to verify email address";
     public static final String VERIFY_STUDENT_STATUS_PASS = "I verify if student status from group %s is related to person %s";
     public static final String VERIFY_STUDENT_STATUS_FAIL = "Fail while trying to verify if student status from group %s is related to person %s";
+    public static final String VERIFY_INTERESTS_PASS = "I verify Interests group %s person %s";
+    public static final String VERIFY_INTERESTS_FAIL = "Fail while trying verify Interests group %s person %s";
+    public static final String VERIFY_ACTIVITIES_PASS = "I verify Activity group %s person %s";
+    public static final String VERIFY_ACTIVITIES_FAIL = "Fail while trying verify Activity group %s person %s";
     public static final String CLICK_ON_CREATE_RECORD_PASS = "I click on create record";
     public static final String CLICK_ON_CREATE_RECORD_FAIL = "Fail while trying to click on create record";
     public static final String CLICK_ON_SAVE_NEW_RECORD_PASS = "I click on save record button";
@@ -180,8 +184,14 @@ public class LogPage {
     public static final String CLICK_ON_ADD_STUDENT_STATUS_FAIL = "Fail while trying to click on add student status";
     public static final String UPDATE_STUDENT_STATUS_PASS = "I update student status group %s person %s";
     public static final String UPDATE_STUDENT_STATUS_FAIL = "Fail while trying update student status group %s person %s";
+    public static final String UPDATE_INTEREST_PASS = "I update Interests group %s person %s";
+    public static final String UPDATE_INTEREST_FAIL = "Fail while trying update Interests group %s person %s";
+    public static final String UPDATE_ACTIVITIES_PASS = "I update Activities group %s person %s";
+    public static final String UPDATE_ACTIVITIES_FAIL = "Fail while trying update Activities group %s person %s";
     public static final String CLICK_SAVE_CHANGES_STUDENT_STATUS_PASS = "I click on Save Changes button in Student Status";
     public static final String CLICK_SAVE_CHANGES_STUDENT_STATUS_FAIL = "Fail while trying to click on Save Changes button in Student Status";
+    public static final String CLICK_SAVE_CHANGES_INTERESTS_ACTIVITIES_PASS = "I click on Save Changes button in Interests & Activities";
+    public static final String CLICK_SAVE_CHANGES_INTERESTS_ACTIVITIES_FAIL = "Fail while trying to click on Save Changes button in Interests & Activities";
     public static final String CLICK_STUDENT_STATUS_PRYMARY_CHECKBOX_PASS = "I click on status primary checkbox index %s";
     public static final String CLICK_STUDENT_STATUS_PRYMARY_CHECKBOX_FAIl = "Fail while trying to click on status primary checkbox index %s";
     public static final String CLICK_STUDENT_STATUS_ACTIVE_CHECKBOX_PASS = "I click on status active checkbox index %s";
