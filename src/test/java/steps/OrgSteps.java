@@ -14,4 +14,14 @@ public class OrgSteps {
     public static void updateExternalIdTypes(String type,String idNumber,String idRecordedDate,String whoAddedId, String comments) {
         OrgPage.updateExternalIdTypes(type,idNumber,idRecordedDate,whoAddedId,comments);
     }
+    @When("I update organization status group {string} person {int}")
+    public static void updateStatusOrg() {
+        OrgPage.updateStatusOrg();
+    }
+    @When("I click on Save Changes button in organization status")
+    public static void organizationStatusSaveChanges() {
+        OrgPage.organizationStatusSaveChanges();
+    }
+
+
 }

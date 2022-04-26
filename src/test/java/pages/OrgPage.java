@@ -26,6 +26,20 @@ public class OrgPage extends BasePage{
     private static final String SAVE_CHANGES_BTN_ORG_ID_TYPES = "saveChangesBtnOrgIdTypes";
 
     /*
+     * to update status organization
+     */
+    public static void updateStatusOrg(){
+
+    }
+
+    /*
+     * click on organization Status SaveChanges button
+     */
+    public static void organizationStatusSaveChanges(){
+
+    }
+
+    /*
      * to update email address in Contact tab on records
      */
     public static void updateEmailAddress(String emailAddress,String emailType,String emailOpt, String optStatus, String optDate, String emailStatus, String emailContent){
