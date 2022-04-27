@@ -183,10 +183,10 @@ public class PersonPage extends BasePage{
     public static void updatePeopleComposer(DataTable data){
         try {
             mass = data.asMaps(String.class, String.class);
-            if (mass.get(0).get("Firstname") != null) {
+            if (mass.get(0).get("FirstName") != null) {
                 BasePage.write(By.id(COMPOSER_FIRST_NAME_FIELD), mass.get(0).get("Firstname"));
             }
-            if (mass.get(0).get("Lastname") != null) {
+            if (mass.get(0).get("LastName") != null) {
                 BasePage.write(By.id(COMPOSER_LAST_NAME_FIELD), mass.get(0).get("Lastname"));
             }
             if (mass.get(0).get("EmailAddress") != null) {

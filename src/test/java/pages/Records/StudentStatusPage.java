@@ -9,48 +9,39 @@ import pages.LogPage;
 public class StudentStatusPage extends BasePage {
 
     public static final String CHECKBOX_LIST = "#select2-drop";
-    private static final String CATEGORY_ELEMENT = "#s2id_person_student_status_%s_student_status_category";
-    private static final String STATUS_PLUS_SIGN_ELEMENT = "#person_student_status_%s_add";
-    private static final String STATUS_ELEMENT = "#s2id_person_student_status_%s_student_status";
-    private static final String STUDENT_STATUS_DATA_FIELD_ELEMENT = "#person_student_status_%s_student_status_date";
-    private static final String ENTRY_TERM_ELEMENT = "#s2id_person_student_status_%s_status_entry_term";
-    private static final String STUDENT_COMMENTS_ELEMENT = "#person_student_status_%s_student_status_comments";
-    private static final String STATUS_ACTIVE_CHECKBOX_ELEMENT = "#person_student_status_%s_active";
-    private static final String STATUS_PRIMARY_CHECKBOX_ELEMENT = "#person_student_status_%s_primary";
     private static final String STUDENT_STATUS_SAVE_CHANGES_BUTTON = "saveChangesBtnPersonStatus";
     private static final String COUNSELOR_HISTORY_DATE_ASSIGNED_TABLE = "//*[@class='table']";
 
-
     private static String statusPlusSignElement(String index){
-        return String.format(STATUS_PLUS_SIGN_ELEMENT,index);
+        return String.format("#person_student_status_%s_add",index);
     }
     private static String categoryElement(String index){
-        return String.format(CATEGORY_ELEMENT,index);
+        return String.format("#s2id_person_student_status_%s_student_status_category",index);
     }
     private static String statusElement(String index){
-        return String.format(STATUS_ELEMENT,index);
+        return String.format("#s2id_person_student_status_%s_student_status",index);
     }
     private static String statusDateField(String index){
-        return String.format(STUDENT_STATUS_DATA_FIELD_ELEMENT,index);
+        return String.format("#person_student_status_%s_student_status_date",index);
     }
     private static String entryTermElement(String index){
-        return String.format(ENTRY_TERM_ELEMENT,index);
+        return String.format("#s2id_person_student_status_%s_status_entry_term",index);
     }
     private static String statusCommentsField(String index){
-        return String.format(STUDENT_COMMENTS_ELEMENT,index);
+        return String.format("#person_student_status_%s_student_status_comments",index);
     }
     private static String statusActiveCheckbox(String index){
-        return String.format(STATUS_ACTIVE_CHECKBOX_ELEMENT,index);
+        return String.format("#person_student_status_%s_active",index);
     }
     private static String statusPrimaryCheckbox(String index){
-        return String.format(STATUS_PRIMARY_CHECKBOX_ELEMENT,index);
+        return String.format("#person_student_status_%s_primary",index);
     }
     /*
      * Method to click on student status primary checkbox using index
      */
-    public static void clickStudentStatusPrymaryCheckbox(String index){
-        String errorMessage = String.format(LogPage.CLICK_STUDENT_STATUS_PRYMARY_CHECKBOX_FAIl, index);
-        String passMessage = String.format(LogPage.CLICK_STUDENT_STATUS_PRYMARY_CHECKBOX_PASS, index);
+    public static void clickStudentStatusPrimaryCheckbox(String index){
+        String errorMessage = String.format(LogPage.CLICK_STUDENT_STATUS_PRIMARY_CHECKBOX_FAIl, index);
+        String passMessage = String.format(LogPage.CLICK_STUDENT_STATUS_PRIMARY_CHECKBOX_PASS, index);
         try {
             scrollToElement(By.cssSelector(statusPlusSignElement(index)));
             waitUntilElementPresence(By.cssSelector(statusPrimaryCheckbox(index)),20);

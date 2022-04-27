@@ -42,19 +42,19 @@ Feature: Search by name
   Scenario: to Quick Search for staff Firstname, LastName, First and Last name and partial name
     Given I login as "firestarterUsername", "firestarterPassword", "firestarterFullName"
     And I create a staff
-      |Firstname	|Lastname	|Fullname			|EmailAddress				|EmailType|AccountStartDate	|AccountEndDate	|PermissionGroup|
+      |FirstName	|LastName	|FullName			|EmailAddress				|EmailType|AccountStartDate	|AccountEndDate	|PermissionGroup|
       |Leandro		|Hamburglar	|Leandro Hamburglar	|hamburglar@McDowells.com	|Personal	|07/10/2015				|07/10/2025			|Administrator	|
     And I go to Home page
-    When I quick search "Firstname"
+    When I quick search "FirstName"
     Then I validate if result for "Firstname" is correct
     And I go to Home page
-    When I quick search "Lastname"
+    When I quick search "LastName"
     Then I validate if result for "Lastname" is correct
     And I go to Home page
-    When I quick search "Fullname"
-    Then I validate if result for "Firstname" is correct
-    Then I validate if result for "Lastname" is correct
+    When I quick search "FullName"
+    Then I validate if result for "FirstName" is correct
+    Then I validate if result for "LastName" is correct
     And I go to Home page
-    When I quick search partial "Firstname"
-    Then I validate if result for "Firstname" is correct
+    When I quick search partial "FirstName"
+    Then I validate if result for "FirstName" is correct
 

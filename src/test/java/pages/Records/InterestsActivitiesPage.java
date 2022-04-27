@@ -8,68 +8,52 @@ import pages.LogPage;
 
 public class InterestsActivitiesPage extends BasePage {
 
-
-    private static final String INTEREST_PLUS_SIGN = "person_interest_%s_add";
-    private static final String ACTIVITIES_PLUS_SIGN = "person_activity_%s_add";
-    private static final String INTEREST_CATEGORY_ELEMENT = "s2id_person_interest_%s_interest_category";
-    private static final String INTEREST_NAME_ELEMENT = "s2id_person_interest_%s_interest";
-    private static final String INTEREST_WHO_ADDED_ELEMENT = "s2id_person_interest_%s_interest_who";
-    private static final String INTEREST_DATE_ADDED_ELEMENT = "person_interest_%s_interest_date";
-    private static final String INTEREST_SOURCE_ELEMENT = "s2id_person_interest_%s_interest_source";
-    private static final String INTEREST_COMMENTS_ELEMENT = "person_interest_%s_interest_comment";
     private static final String INTERESTS_ACTIVITIES_SAVE_CHANGES_BUTTON = "saveChangesBtnPersonInterests";
-    private static final String ACTIVITIES_CATEGORY_ELEMENT = "s2id_person_activity_%s_activity_type";
-    private static final String ACTIVITIES_NAME_ELEMENT = "s2id_person_activity_%s_activity_name";
-    private static final String ACTIVITY_WHO_ADDED_ELEMENT = "s2id_person_activity_%s_activity_who_added";
-    private static final String ACTIVITY_DATE_ADDED_ELEMENT = "person_activity_%s_activity_date_added";
-    private static final String ACTIVITY_SOURCE_ELEMENT = "s2id_person_activity_%s_activity_source";
-    private static final String ACTIVITY_PARTICIPATE_ELEMENT = "s2id_person_activity_%s_activity_participate_college";
-    private static final String ACTIVITY_COMMENTS_ELEMENT = "person_activity_%s_activity_comments";
 
     private static String interestPlusSign(String index) {
-        return String.format(INTEREST_PLUS_SIGN, index);
+        return String.format("person_interest_%s_add", index);
     }
     private static String activitiesPlusSign(String index) {
-        return String.format(ACTIVITIES_PLUS_SIGN, index);
+        return String.format("person_activity_%s_add", index);
     }
     private static String interestCategory(String index) {
-        return String.format(INTEREST_CATEGORY_ELEMENT, index);
+        return String.format("s2id_person_interest_%s_interest_category", index);
     }
     private static String interestName(String index) {
-        return String.format(INTEREST_NAME_ELEMENT, index);
+        return String.format("s2id_person_interest_%s_interest", index);
     }
     private static String interestWhoAdded(String index) {
-        return String.format(INTEREST_WHO_ADDED_ELEMENT, index);
+        return String.format("s2id_person_interest_%s_interest_who", index);
     }
     private static String interestDateAdded(String index) {
-        return String.format(INTEREST_DATE_ADDED_ELEMENT, index);
+        return String.format("person_interest_%s_interest_date", index);
     }
     private static String interestSource(String index) {
-        return String.format(INTEREST_SOURCE_ELEMENT, index);
+        return String.format("s2id_person_interest_%s_interest_source", index);
     }
     private static String interestComments(String index) {
-        return String.format(INTEREST_COMMENTS_ELEMENT, index);
+        return String.format("person_interest_%s_interest_comment", index);
     }
     private static String activityCategory(String index) {
-        return String.format(ACTIVITIES_CATEGORY_ELEMENT, index);
+        return String.format("s2id_person_activity_%s_activity_type", index);
     }
     private static String activityName(String index) {
-        return String.format(ACTIVITIES_NAME_ELEMENT, index);
+        return String.format("s2id_person_activity_%s_activity_name", index);
     }
     private static String activityWhoAdded(String index) {
-        return String.format(ACTIVITY_WHO_ADDED_ELEMENT, index);
+        return String.format("s2id_person_activity_%s_activity_who_added", index);
     }
     private static String activityDateAdded(String index) {
-        return String.format(ACTIVITY_DATE_ADDED_ELEMENT, index);
+        return String.format("person_activity_%s_activity_date_added", index);
     }
     private static String activitiesSource(String index) {
-        return String.format(ACTIVITY_SOURCE_ELEMENT, index);
+        return String.format("s2id_person_activity_%s_activity_source", index);
     }
     private static String activityParticipate(String index) {
-        return String.format(ACTIVITY_PARTICIPATE_ELEMENT, index);
+        return String.format("s2id_person_activity_%s_activity_participate_college", index);
     }
     private static String activityComments(String index) {
-        return String.format(ACTIVITY_COMMENTS_ELEMENT, index);
+        return String.format("person_activity_%s_activity_comments", index);
     }
 
     /*

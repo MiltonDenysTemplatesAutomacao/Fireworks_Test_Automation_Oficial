@@ -10,11 +10,11 @@ Feature: Multiple roles can be assigned
   Scenario: to verify different merge scenarios
     Given I login as "firestarterUsername", "firestarterPassword", "firestarterFullName"
     And I create a person
-     |Firstname|Lastname   |Fullname      |EmailAddress		                |EmailType  |EmailOptInMethod  |Role1	|Phone         |PhoneType|Address1          |City   |State    |PostalCode|Country       |
+     |FirstName|LastName   |FullName      |EmailAddress		                |EmailType  |EmailOptInMethod  |Role1	|Phone         |PhoneType|Address1          |City   |State    |PostalCode|Country       |
      |Isao     |Takahata   |Isao Takahata |2iTakahata@japanesedirectors.com |Personal   |Inquiry           |Donor   |(904) 725-0002|Home     |141 Green Hill Dr |Buffalo|New York |14215     |United States |
     And I validate if "Person has been created" message is correct
     And I create a person
-      |Firstname|Lastname   |Fullname       |EmailAddress		              |EmailType  |EmailOptInMethod |Role1	  |Role2  |Phone         |PhoneType|Address1          |City   |State    |PostalCode|Country       |StudentType|StudentStatusCategory|StudentStatus  |StudentStatusDate|EntryTerm|
+      |FirstName|LastName   |FullName       |EmailAddress		              |EmailType  |EmailOptInMethod |Role1	  |Role2  |Phone         |PhoneType|Address1          |City   |State    |PostalCode|Country       |StudentType|StudentStatusCategory|StudentStatus  |StudentStatusDate|EntryTerm|
       |Isao     |Takahata   |Isao Takahata  |iTakahata@japanesedirectors.com  |Personal   |Inquiry          |Sibling  |Student|(904) 725-0002|Home     |141 Green Hill Dr |Buffalo|New York |14215     |United States |Freshman   |Inquiry              |Inquiry-Active |01/25/2016       |Fall 2017|
       |Isao     |Takahata   |Isao Takahata  |2iTakahata@japanesedirectors.com |Personal   |Inquiry          |Donor    |       |(904) 725-0002|Home     |141 Green Hill Dr |Buffalo|New York |14215     |United States |           |                     |               |                 |         |
 
@@ -26,11 +26,11 @@ Feature: Multiple roles can be assigned
     And I confirm merge and close
     And I navigate to duplicates
     And I validate if the record lo longer exists on the duplicates page
-    And I search "Lastname" on duplicate manager
+    And I search "LastName" on duplicate manager
     And I validate if the record lo longer exists on the duplicates page
     When I navigate to people on records
-    And I open a people record by "Lastname"
-    Then I validate if "Fullname"summary opened properly
+    And I open a people record by "LastName"
+    Then I validate if "FullName"summary opened properly
     And I verify Header Role "Multiple"
     And I verify all three roles are selected in the role dropdown
     And I navigate to contact

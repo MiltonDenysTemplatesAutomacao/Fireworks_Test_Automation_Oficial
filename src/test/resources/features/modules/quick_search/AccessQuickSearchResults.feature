@@ -7,7 +7,7 @@ Feature: Search by name
   Scenario: access quick search results for person
     Given I login as "firestarterUsername", "firestarterPassword", "firestarterFullName"
     And I create a person
-      |Firstname	|Lastname		|Fullname				|Role1	        |Phone			|PhoneType|
+      |FirstName	|LastName		|FullName				|Role1	        |Phone			|PhoneType|
       |Robert		|Brandon		|Robert Brandon	        |Person	        |(720) 839-1218	|Home	  |
     And I go to Home page
     When I quick search "Phone"
@@ -31,10 +31,10 @@ Feature: Search by name
   Scenario: access quick search results for staff
     Given I login as "firestarterUsername", "firestarterPassword", "firestarterFullName"
     And I create a staff
-      |Firstname	|Lastname	|Fullname		|EmailAddress			|EmailType  |AccountStartDate	|AccountEndDate	|PermissionGroup|Phone			|PhoneType|Comment  |
+      |FirstName	|LastName	|FullName		|EmailAddress			|EmailType  |AccountStartDate	|AccountEndDate	|PermissionGroup|Phone			|PhoneType|Comment  |
       |Officer		|BigMac	    |Officer BigMac	|obigmac@mcdonalds.com	|Personal	|07/10/2017			|07/10/2025		|Administrator	|(720) 839-1318 |Business |Comments |
     And I go to Home page
-    When I quick search "Fullname"
+    When I quick search "FullName"
     Then I validate if result for "Officer" is correct
     And I open a record
     And I navigate to contact
