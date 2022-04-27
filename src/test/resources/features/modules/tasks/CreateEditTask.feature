@@ -9,7 +9,7 @@ Feature: Search by phone number
   Scenario: to create a task for staff member
     Given I login as "firestarterUsername", "firestarterPassword", "firestarterFullName"
     And I create a staff
-      |Firstname|Lastname |Fullname		|EmailAddress		|PermissionGroup |Name    |Description    |Type|SmartSearch     |AssignTo   |DueDate    |DueTime  |Priority |Status     |Comments     |
+      |FirstName|LastName |FullName		|EmailAddress		|PermissionGroup |Name    |Description    |Type|SmartSearch     |AssignTo   |DueDate    |DueTime  |Priority |Status     |Comments     |
       |Hugo		|Reyes	  |Hugo Reyes	|hurley@dharma.net	|Administrator	 |Task2200|TaskDescription|Call|2016 Entry Term |Hugo Reyes |11/11/2020 |02:00 PM |Medium   |In Progress|Task Comments|
     And I go to Home page
     And I navigate to tasks
@@ -26,7 +26,7 @@ Feature: Search by phone number
   Scenario: to clear changes and update a task for staff member
     Given I login as "firestarterUsername", "firestarterPassword", "firestarterFullName"
     And I create a staff
-      |Firstname|Lastname |Fullname		|EmailAddress		|PermissionGroup  |PreviousName |Name           |Description      |Type      |AssignTo     |DueDate    |DueTime  |Priority |Status      |Comments     |
+      |FirstName|LastName |FullName		|EmailAddress		|PermissionGroup  |PreviousName |Name           |Description      |Type      |AssignTo     |DueDate    |DueTime  |Priority |Status      |Comments     |
       |Igor		|Schanez  |Igor Schanez	|Igor@Schanez.net	|Administrator	  |Task2200     |RenamedTask2200|EditedDescription|Management|Fire Starter |12/11/2019 |04:00 PM |High     |Complete    |Task edited  |
       |Hugo		|Reyes	  |Hugo Reyes	|hurley@dharma.net	|Administrator	  |Task2200     |Task2200       |TaskDescription  |Call      |Hugo Reyes   |11/11/2020 |02:00 PM |Medium   |In Progress |Task Comments|
     And I go to Home page

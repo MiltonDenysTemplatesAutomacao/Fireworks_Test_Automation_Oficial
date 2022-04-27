@@ -8,7 +8,7 @@ Feature: Role Type drives panel and field visibility
   Scenario: to verify the Basic fields for a non-student record
     Given I login as "firestarterUsername", "firestarterPassword", "firestarterFullName"
     And I create a person
-      |Firstname|Lastname	|EmailAddress		|EmailType		|EmailOptInMethod	|Role1	|BasicSection|BasicFieldLabel       |CheckboxLabel |
+      |FirstName|LastName	|EmailAddress		|EmailType		|EmailOptInMethod	|Role1	|BasicSection|BasicFieldLabel       |CheckboxLabel |
       |John		|Jacob		|jjacob@nursery.org	|Personal		|Inquiry			|Person	|Birth       |Birth Date            |Deceased      |
       |         |           |                   |               |                   |       |Culture     |Citizenship Type      |Veteran       |
       |         |           |                   |               |                   |       |Context     |Country of Citizenship|              |
@@ -31,7 +31,7 @@ Feature: Role Type drives panel and field visibility
       |         |           |                   |               |                   |       |            |Legacy                |              |
       |         |           |                   |               |                   |       |            |State Resident        |              |
     And I go to Home page
-    When I quick search "Firstname"
+    When I quick search "FirstName"
     And I open a record
     And I navigate to basic
     Then I verify basic fields labels
@@ -41,7 +41,7 @@ Feature: Role Type drives panel and field visibility
   Scenario: To verify the record panels and basic fields for a non student record
     Given I login as "firestarterUsername", "firestarterPassword", "firestarterFullName"
     And I create a person
-      |Firstname        |Lastname	|EmailAddress		|EmailType		|EmailOptInMethod	|Role1	|StudentType|StudentStatusCategory |StudentStatus |StudentStatusDate |EntryTerm|BasicSection      |BasicFieldLabel       |CheckboxLabel |Labels                 |
+      |FirstName        |LastName	|EmailAddress		|EmailType		|EmailOptInMethod	|Role1	|StudentType|StudentStatusCategory |StudentStatus |StudentStatusDate |EntryTerm|BasicSection      |BasicFieldLabel       |CheckboxLabel |Labels                 |
       |Jingleheimer		|Smith		|jsmithn@rhyme.org	|Personal		|Inquiry			|Student|Freshman   |Accepted              |Accepted      |08/15/2016        |Fall 2017|Birth             |Birth Date            |Deceased      |Summary                |
       |                 |           |                   |               |                   |       |           |                      |              |                  |         |Citizenship       |Current Grade         |Student Flag  |Actions                |
       |                 |           |                   |               |                   |       |           |                      |              |                  |         |Culture           |Class Of              |Legacy        |Basic                  |
@@ -61,10 +61,10 @@ Feature: Role Type drives panel and field visibility
       |                 |           |                   |               |                   |       |           |                      |              |                  |         |                  |Race                  |              |                       |
       |                 |           |                   |               |                   |       |           |                      |              |                  |         |                  |Religion              |              |                       |
     And I go to Home page
-    When I quick search "Firstname"
-    And I validate if result for "Firstname" is correct
+    When I quick search "FirstName"
+    And I validate if result for "FirstName" is correct
     And I open a record
-    Then I verify Header Role
+    Then I verify Header Role "Student"
     And I verify Student Type
     And I verify the record panels for a student record
     And I navigate to basic

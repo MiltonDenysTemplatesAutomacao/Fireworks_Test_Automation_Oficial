@@ -1,5 +1,6 @@
 package steps;
 
+import io.cucumber.datatable.DataTable;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import pages.PersonPage;
@@ -10,9 +11,29 @@ public class PersonSteps {
     public static void navigateToBasic() {
         PersonPage.navigateToBasic();
     }
+    @Then("I delete a person")
+    public static void deletePerson() {
+        PersonPage.deletePerson();
+    }
+    @Then("I click on create record")
+    public static void clickOnCreateRecord() {
+        PersonPage.clickOnCreateRecord();
+    }
+    @Then("I update people composer")
+    public static void updatePeopleComposer(DataTable data) {
+        PersonPage.updatePeopleComposer(data);
+    }
+    @Then("I click on save record button")
+    public static void clickOnSaveNewRecord() {
+        PersonPage.clickOnSaveNewRecord();
+    }
     @Then("I verify Header Role {string}")
     public static void verifyHeaderRole(String role) {
         PersonPage.verifyHeaderRole(role);
+    }
+    @Then("I update Header Role {string}")
+    public static void updateHeaderRole(String role) {
+        PersonPage.updateHeaderRole(role);
     }
     @Then("I verify all three roles are selected in the role dropdown")
     public static void verifyAllthreeRolesAreSelected() {
@@ -25,6 +46,14 @@ public class PersonSteps {
     @Then("I search {string} on people page manager")
     public static void searchPeopleManager(String search) {
         PersonPage.searchPeopleManager(search);
+    }
+    @Then("I validate if {string} message on datatable is displayed")
+    public static void validateDatatableMessage(String message) {
+        PersonPage.validateDatatableMessage(message);
+    }
+    @Then("I validate if {string} message on quick search is displayed")
+    public static void validateQuickSearchEmpty(String message) {
+        PersonPage.validateQuickSearchEmpty(message);
     }
     @Then("I verify Student Type")
     public static void verifyStudentType() {

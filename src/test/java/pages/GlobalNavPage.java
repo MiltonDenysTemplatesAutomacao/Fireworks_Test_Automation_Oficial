@@ -256,11 +256,11 @@ public class GlobalNavPage extends BasePage {
         BasePage.wait(3000);
         try {
             mass = data.asMaps(String.class, String.class);
-            if (mass.get(0).get("Firstname") != null) {
-                BasePage.write(By.cssSelector(QUICK_ADD_PERSON_FIRST_NAME_FIELD), mass.get(0).get("Firstname"));
+            if (mass.get(0).get("FirstName") != null) {
+                BasePage.write(By.cssSelector(QUICK_ADD_PERSON_FIRST_NAME_FIELD), mass.get(0).get("FirstName"));
             }
-            if (mass.get(0).get("Lastname") != null) {
-                BasePage.write(By.cssSelector(QUICK_ADD_PERSON_LAST_NAME_FIELD), mass.get(0).get("Lastname"));
+            if (mass.get(0).get("LastName") != null) {
+                BasePage.write(By.cssSelector(QUICK_ADD_PERSON_LAST_NAME_FIELD), mass.get(0).get("LastName"));
             }
             if (mass.get(0).get("Phone") != null) {
                 BasePage.write(By.cssSelector(QUICK_ADD_PERSON_PHONE_NUMBER_FIELD), mass.get(0).get("Phone"));
@@ -420,11 +420,11 @@ public class GlobalNavPage extends BasePage {
 
         try {
             mass = data.asMaps(String.class, String.class);
-            if (mass.get(0).get("Firstname") != null) {
-                BasePage.write(By.cssSelector(QUICK_ADD_STAFF_FIRST_NAME_FIELD), mass.get(0).get("Firstname"));
+            if (mass.get(0).get("FirstName") != null) {
+                BasePage.write(By.cssSelector(QUICK_ADD_STAFF_FIRST_NAME_FIELD), mass.get(0).get("FirstName"));
             }
-            if (mass.get(0).get("Lastname") != null) {
-                BasePage.write(By.cssSelector(QUICK_ADD_STAFF_LAST_NAME_FIELD), mass.get(0).get("Lastname"));
+            if (mass.get(0).get("LastName") != null) {
+                BasePage.write(By.cssSelector(QUICK_ADD_STAFF_LAST_NAME_FIELD), mass.get(0).get("LastName"));
             }
             if (mass.get(0).get("EmailAddress") != null) {
                 BasePage.write(By.cssSelector(QUICK_ADD_STAFF_EMAIL_ADDRESS_FIELD), mass.get(0).get("EmailAddress"));
@@ -451,6 +451,7 @@ public class GlobalNavPage extends BasePage {
      */
     public static void quickAddPersonSaveGoButton() {
         try {
+            wait(1000);
             click(By.cssSelector(QUICK_ADD_PERSON_SAVE_GO_BUTTON));
             ExtentReportsSetUp.testingPass(LogPage.CLICK_QUICK_ADD_PERSON_SAVE_AND_GO_PASS);
         } catch (Exception e) {
@@ -491,13 +492,13 @@ public class GlobalNavPage extends BasePage {
         String passMessage = String.format(LogPage.ALERT_MESSAGE_PASS, alertMessage);
         try {
             waitElementBy(By.id("alertMessage"), 10);
-            if (alertMessageByIdContains("alertMessage", alertMessage)) {
+            if (alertMessageContains(By.id("alertMessage"), alertMessage)) {
                 ExtentReportsSetUp.testingPass(passMessage);
             } else {
                 FailureDelegatePage.handlePageException(errorMessage);
             }
         } catch (Exception e) {
-            System.err.println(errorMessage);
+            FailureDelegatePage.handlePageException(errorMessage);
         }
     }
 
