@@ -2,6 +2,7 @@ package pages;
 
 import config.extent_reports.ExtentReportsSetUp;
 import org.openqa.selenium.By;
+import pages.Records.StudentStatusPage;
 
 public class OrgPage extends BasePage{
 
@@ -24,19 +25,61 @@ public class OrgPage extends BasePage{
     private static final String COMMENTS_FIELD = "#entity_external_id_0_org_id_comments";
     private static final String PLUS_BUTTON_EXTERNAL_ID = "//*[@id='entity_external_id_0_add']";
     private static final String SAVE_CHANGES_BTN_ORG_ID_TYPES = "saveChangesBtnOrgIdTypes";
+    private static final String ORG_STATUS_SAVE_CHANGES_BUTTON = "saveChangesBtnOrgStatus";
+
+
+    private static String statusPlusSignElement(String index){
+        return String.format("#org_status_%s_add",index);
+    }
+    private static String orgStatusStatusDropdown(String index){
+        return String.format("#s2id_org_status_%s_org_status_value",index);
+    }
+    private static String orgStatusStatusDate(String index){
+        return String.format("#org_status_%s_org_status_date",index);
+    }
+    private static String orgStatusStatusComments(String index){
+        return String.format("#org_status_%s_org_status_comments",index);
+    }
 
     /*
      * to update status organization
      */
-    public static void updateStatusOrg(){
+    public static void updateStatusOrg(String index, int person){
+        String errorMessage = String.format(LogPage.UPDATE_STATUS_ORG_FAIL, index,person);
+        String passMessage = String.format(LogPage.UPDATE_STATUS_ORG_PASS, index,person);
 
+        try {
+            if (mass.get(person).get("OrgStatus") != null) {
+                scrollToElement(By.cssSelector(statusPlusSignElement(index)));
+                waitUntilElementToBeSelected(By.cssSelector(orgStatusStatusDropdown(index)),20);
+                BasePage.click(By.cssSelector(orgStatusStatusDropdown(index)));
+                BasePage.selectElementsList(By.cssSelector(StudentStatusPage.CHECKBOX_LIST), "a");
+                clickOnListOfElements(mass.get(person).get("OrgStatus"));
+            }
+            if (mass.get(person).get("OrgStatusDate") != null) {
+                scrollToElement(By.cssSelector(statusPlusSignElement(index)));
+                waitUntilElementToBeSelected(By.cssSelector(orgStatusStatusDate(index)),20);
+                BasePage.write(By.cssSelector(orgStatusStatusDate(index)),mass.get(person).get("OrgStatusDate"));
+            }
+            if (mass.get(person).get("OrgStatusComments") != null) {
+                scrollToElement(By.cssSelector(statusPlusSignElement(index)));
+                waitUntilElementToBeSelected(By.cssSelector(orgStatusStatusComments(index)),20);
+                BasePage.write(By.cssSelector(orgStatusStatusComments(index)),mass.get(person).get("OrgStatusComments"));
+            }
+            ExtentReportsSetUp.testingPass(passMessage);
+        } catch (Exception e) {
+            FailureDelegatePage.handlePageException(errorMessage);
+        }
     }
 
-    /*
-     * click on organization Status SaveChanges button
-     */
     public static void organizationStatusSaveChanges(){
-
+        try {
+            waitUntilElementToBeSelected(By.id(ORG_STATUS_SAVE_CHANGES_BUTTON),20);
+            BasePage.click(By.id(ORG_STATUS_SAVE_CHANGES_BUTTON));
+            ExtentReportsSetUp.testingPass(LogPage.ORGANIZATION_STATUS_SAVE_CHANGES_PASS);
+        } catch (Exception e) {
+            FailureDelegatePage.handlePageException(LogPage.ORGANIZATION_STATUS_SAVE_CHANGES_FAIL);
+        }
     }
 
     /*

@@ -30,6 +30,8 @@ public class LogPage {
     public static final String NAVIGATE_TO_CONTACT_PASS = "I navigate to contact";
     public static final String NAVIGATE_TO_INTERESTS_ACTIVITIES_PASS = "I navigate to Interests & Activities";
     public static final String NAVIGATE_TO_INTERESTS_ACTIVITIES_FAIL = "Fail while navigating to Interests & Activities";
+    public static final String NAVIGATE_TO_STATUS_PASS = "I navigate to status organization";
+    public static final String NAVIGATE_TO_STATUS_FAIL = "Fail while navigate to status organization";
     public static final String NAVIGATE_TO_STUDENT_STATUS_PASS = "I navigate to student status";
     public static final String NAVIGATE_TO_STUDENT_STATUS_FAIL = "Fail while navigating to student status";
     public static final String NAVIGATE_TO_BASIC_FAIL = "Error while navigating to basic";
@@ -184,12 +186,16 @@ public class LogPage {
     public static final String CLICK_ON_ADD_STUDENT_STATUS_FAIL = "Fail while trying to click on add student status";
     public static final String UPDATE_STUDENT_STATUS_PASS = "I update student status group %s person %s";
     public static final String UPDATE_STUDENT_STATUS_FAIL = "Fail while trying update student status group %s person %s";
+    public static final String UPDATE_STATUS_ORG_PASS = "I update organization status group %s person %s";
+    public static final String UPDATE_STATUS_ORG_FAIL = "Fail while trying to update organization status group %s person %s";
     public static final String UPDATE_INTEREST_PASS = "I update Interests group %s person %s";
     public static final String UPDATE_INTEREST_FAIL = "Fail while trying update Interests group %s person %s";
     public static final String UPDATE_ACTIVITIES_PASS = "I update Activities group %s person %s";
     public static final String UPDATE_ACTIVITIES_FAIL = "Fail while trying update Activities group %s person %s";
     public static final String CLICK_SAVE_CHANGES_STUDENT_STATUS_PASS = "I click on Save Changes button in Student Status";
     public static final String CLICK_SAVE_CHANGES_STUDENT_STATUS_FAIL = "Fail while trying to click on Save Changes button in Student Status";
+    public static final String ORGANIZATION_STATUS_SAVE_CHANGES_PASS = "I click on Save Changes button in organization status";
+    public static final String ORGANIZATION_STATUS_SAVE_CHANGES_FAIL = "Fail while trying to click on Save Changes button in organization status";
     public static final String CLICK_SAVE_CHANGES_INTERESTS_ACTIVITIES_PASS = "I click on Save Changes button in Interests & Activities";
     public static final String CLICK_SAVE_CHANGES_INTERESTS_ACTIVITIES_FAIL = "Fail while trying to click on Save Changes button in Interests & Activities";
     public static final String CLICK_STUDENT_STATUS_PRIMARY_CHECKBOX_PASS = "I click on status primary checkbox index %s";

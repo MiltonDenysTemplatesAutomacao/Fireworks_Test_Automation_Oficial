@@ -15,8 +15,8 @@ public class OrgSteps {
         OrgPage.updateExternalIdTypes(type,idNumber,idRecordedDate,whoAddedId,comments);
     }
     @When("I update organization status group {string} person {int}")
-    public static void updateStatusOrg() {
-        OrgPage.updateStatusOrg();
+    public static void updateStatusOrg(String index, int person) {
+        OrgPage.updateStatusOrg(index,person);
     }
     @When("I click on Save Changes button in organization status")
     public static void organizationStatusSaveChanges() {

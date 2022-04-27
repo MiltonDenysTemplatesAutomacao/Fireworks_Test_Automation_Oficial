@@ -36,9 +36,7 @@ public class StudentStatusPage extends BasePage {
     private static String statusPrimaryCheckbox(String index){
         return String.format("#person_student_status_%s_primary",index);
     }
-    /*
-     * Method to click on student status primary checkbox using index
-     */
+
     public static void clickStudentStatusPrimaryCheckbox(String index){
         String errorMessage = String.format(LogPage.CLICK_STUDENT_STATUS_PRIMARY_CHECKBOX_FAIl, index);
         String passMessage = String.format(LogPage.CLICK_STUDENT_STATUS_PRIMARY_CHECKBOX_PASS, index);
@@ -67,9 +65,6 @@ public class StudentStatusPage extends BasePage {
         }
     }
 
-    /*
-     * Method to update student status
-     */
     public static void updateStudentStatus(String index, int person){
         String errorMessage = String.format(LogPage.UPDATE_STUDENT_STATUS_FAIL, index,person);
         String passMessage = String.format(LogPage.UPDATE_STUDENT_STATUS_PASS, index,person);
@@ -122,9 +117,7 @@ public class StudentStatusPage extends BasePage {
             FailureDelegatePage.handlePageException(errorMessage);
         }
     }
-    /*
-     * Method to click on save changes for student status
-     */
+
     public static void clickSaveChangesStudentStatus(){
         try {
             scrollToElement(By.xpath(COUNSELOR_HISTORY_DATE_ASSIGNED_TABLE));
@@ -135,9 +128,7 @@ public class StudentStatusPage extends BasePage {
             FailureDelegatePage.handlePageException(LogPage.CLICK_SAVE_CHANGES_STUDENT_STATUS_FAIL);
         }
     }
-    /*
-     * Method to click on student status
-     */
+
     public static void clickOnAddStudentStatus(String index){
         try {
             waitElementBy(By.cssSelector(statusPlusSignElement(index)),20);
