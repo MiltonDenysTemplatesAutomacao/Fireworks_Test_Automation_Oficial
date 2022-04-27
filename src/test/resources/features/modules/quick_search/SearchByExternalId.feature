@@ -8,10 +8,10 @@ Feature: Search by external Id
   Scenario: to Quick Search for a person External Id
     Given I login as "firestarterUsername", "firestarterPassword", "firestarterFullName"
     And I create a person
-      |Firstname	|Lastname	|Fullname	|EmailAddress	|EmailType		|EmailOptInMethod	|Role1	|Type                 |ID Number|Who Added ID   |
+      |FirstName	|LastName	|FullName	|EmailAddress	|EmailType		|EmailOptInMethod	|Role1	|Type                 |ID Number|Who Added ID   |
       |Andre 		|Lamb		|Andre Lamb |andre@lamb.com	|Personal		|Inquiry			|Person	|College Board Search |00199    |Alanis Flatley |
     And I go to Home page
-    When I quick search "Firstname"
+    When I quick search "FirstName"
     And I open a record
     And I navigate to ID Types
     When I update "Type", "ID Number", "", "Who Added ID", and "" to update external ID Types for person

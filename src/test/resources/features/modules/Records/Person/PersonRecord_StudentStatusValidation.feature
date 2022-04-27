@@ -9,7 +9,7 @@ Feature: Student Status: Required Fields
     Given I login as "firestarterUsername", "firestarterPassword", "firestarterFullName"
     #to create a person record so that Student Status will be empty
     And I create a person
-      |Firstname  |Lastname   |EmailAddress                      |EmailType  |EmailOptInMethod  |Role1          |StudentStatusCategory|StudentStatus    |StudentStatusDate|EntryTerm|Active|Primary|
+      |FirstName  |LastName   |EmailAddress                      |EmailType  |EmailOptInMethod  |Role1          |StudentStatusCategory|StudentStatus    |StudentStatusDate|EntryTerm|Active|Primary|
       |David      |Tennant    |PresidentOfTheEarth@doctorwho.net |Business   |Inquiry           |Trustee/Regent |                     |                 |                 |         |      |       |
       |           |           |                                  |           |                  |               |Deposited            |                 |                 |         |      |       |
       |           |           |                                  |           |                  |               |                     |Active-Deposited |                 |         |      |       |
@@ -19,8 +19,8 @@ Feature: Student Status: Required Fields
     Then I validate if "Person has been created" message is correct
     #to add the Student Role so that the Student fields are available
     Given I go to Home page
-    And I quick search "Firstname"
-    And I validate if "Firstname"summary opened properly
+    And I quick search "FirstName"
+    And I validate if "FirstName"summary opened properly
     When I open a record
     And I verify Header Role "Trustee/Regent"
     And I update Header Role "Student"

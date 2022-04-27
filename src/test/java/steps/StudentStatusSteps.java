@@ -24,7 +24,7 @@ public class StudentStatusSteps {
     }
     @Then("I click on status primary checkbox {string}")
     public static void clickStudentStatusPrymaryCheckbox(String index) {
-        StudentStatusPage.clickStudentStatusPrymaryCheckbox(index);
+        StudentStatusPage.clickStudentStatusPrimaryCheckbox(index);
     }
     @Then("I click on status active checkbox {string}")
     public static void clickStudentStatusActiveCheckbox(String index) {

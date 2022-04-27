@@ -192,8 +192,8 @@ public class LogPage {
     public static final String CLICK_SAVE_CHANGES_STUDENT_STATUS_FAIL = "Fail while trying to click on Save Changes button in Student Status";
     public static final String CLICK_SAVE_CHANGES_INTERESTS_ACTIVITIES_PASS = "I click on Save Changes button in Interests & Activities";
     public static final String CLICK_SAVE_CHANGES_INTERESTS_ACTIVITIES_FAIL = "Fail while trying to click on Save Changes button in Interests & Activities";
-    public static final String CLICK_STUDENT_STATUS_PRYMARY_CHECKBOX_PASS = "I click on status primary checkbox index %s";
-    public static final String CLICK_STUDENT_STATUS_PRYMARY_CHECKBOX_FAIl = "Fail while trying to click on status primary checkbox index %s";
+    public static final String CLICK_STUDENT_STATUS_PRIMARY_CHECKBOX_PASS = "I click on status primary checkbox index %s";
+    public static final String CLICK_STUDENT_STATUS_PRIMARY_CHECKBOX_FAIl = "Fail while trying to click on status primary checkbox index %s";
     public static final String CLICK_STUDENT_STATUS_ACTIVE_CHECKBOX_PASS = "I click on status active checkbox index %s";
     public static final String CLICK_STUDENT_STATUS_ACTIVE_CHECKBOX_FAIL = "Fail while trying to click on status active checkbox index %s";
     public static final String CLOSE_ALERT_IF_RETURNED_PASS = "I close alert if return this message %s";

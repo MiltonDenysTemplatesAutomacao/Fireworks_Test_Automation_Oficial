@@ -8,13 +8,13 @@ Feature: Student Status
   Scenario: to add a primary Student Status field group for a previous Entry Term
     Given I login as "firestarterUsername", "firestarterPassword", "firestarterFullName"
     And I create a person
-      |Firstname  |Lastname |EmailAddress      |EmailType  |EmailOptInMethod  |Role1  |StudentType|StudentStatusCategory|StudentStatus    |StudentStatusDate|EntryTerm  |Active|Primary|
+      |FirstName  |LastName |EmailAddress      |EmailType  |EmailOptInMethod  |Role1  |StudentType|StudentStatusCategory|StudentStatus    |StudentStatusDate|EntryTerm  |Active|Primary|
       |Stephen    |Foster   |JFoster@music.com |Personal   |Inquiry           |Student|Freshman   |Inquiry              |Inquiry-Active   |03/11/2017       |Spring 2018|0     |0      |
       |           |         |                  |           |                  |       |           |Accepted             |Accepted-Special |04/03/2017       |Fall 2017  |1     |1      |
     Then I validate if "Person has been created" message is correct
     And I go to Home page
-    When I quick search "Firstname"
-    Then I validate if "Firstname"summary opened properly
+    When I quick search "FirstName"
+    Then I validate if "FirstName"summary opened properly
     And I open a record
     And I click on student status
     And I click on add student status "0"
