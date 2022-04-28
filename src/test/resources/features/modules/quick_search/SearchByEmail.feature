@@ -7,7 +7,7 @@ Feature: Search by phone number
   Scenario: to Quick Search a person by Email, full or partial
     Given I login as "firestarterUsername", "firestarterPassword", "firestarterFullName"
     And I create a person
-        |FirstName|LastName	|EmailAddress	      |EmailType|EmailOptInMethod |Role1	|
+      |FirstName|LastName	|EmailAddress	      |EmailType|EmailOptInMethod |Role1	|
       |John 	|Carter		|johncarter@yahoo.com |Personal	|Inquiry		  |Person	|
     And I go to Home page
     When I quick search "EmailAddress"
@@ -36,7 +36,7 @@ Feature: Search by phone number
   Scenario: to Quick Search a staff member by Email, full or partial
     Given I login as "firestarterUsername", "firestarterPassword", "firestarterFullName"
     And I create a staff
-      |Firstname  |Lastname	|Fullname		|EmailAddress	|EmailType  |AccountStartDate	|AccountEndDate	|PermissionGroup|
+      |FirstName  |LastName	|FullName		|EmailAddress	|EmailType  |AccountStartDate	|AccountEndDate	|PermissionGroup|
       |Levi		  | Ralph	|Levi  Ralph	|levi@ralph.com	|Personal	|07/10/2017			|07/10/2025		|Administrator	|
     And I go to Home page
     When I quick search "EmailAddress"
