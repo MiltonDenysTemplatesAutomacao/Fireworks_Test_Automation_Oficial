@@ -41,13 +41,19 @@ public class OrgPage extends BasePage{
         return String.format("#org_status_%s_org_status_comments",index);
     }
 
-    /*
-     * to update status organization
-     */
+    public static void clickOnAddOrgStatus(String index){
+        try {
+            waitUntilElementToBeSelected(By.cssSelector(statusPlusSignElement(index)),20);
+            BasePage.click(By.cssSelector(statusPlusSignElement(index)));
+            ExtentReportsSetUp.testingPass(LogPage.CLICK_ON_ADD_ORG_STATUS_PASS);
+        } catch (Exception e) {
+            FailureDelegatePage.handlePageException(LogPage.CLICK_ON_ADD_ORG_STATUS_FAIL);
+        }
+    }
+
     public static void updateStatusOrg(String index, int person){
         String errorMessage = String.format(LogPage.UPDATE_STATUS_ORG_FAIL, index,person);
         String passMessage = String.format(LogPage.UPDATE_STATUS_ORG_PASS, index,person);
-
         try {
             if (mass.get(person).get("OrgStatus") != null) {
                 scrollToElement(By.cssSelector(statusPlusSignElement(index)));
@@ -58,12 +64,12 @@ public class OrgPage extends BasePage{
             }
             if (mass.get(person).get("OrgStatusDate") != null) {
                 scrollToElement(By.cssSelector(statusPlusSignElement(index)));
-                waitUntilElementToBeSelected(By.cssSelector(orgStatusStatusDate(index)),20);
+                waitElementBy(By.cssSelector(orgStatusStatusDate(index)),20);
                 BasePage.write(By.cssSelector(orgStatusStatusDate(index)),mass.get(person).get("OrgStatusDate"));
             }
             if (mass.get(person).get("OrgStatusComments") != null) {
                 scrollToElement(By.cssSelector(statusPlusSignElement(index)));
-                waitUntilElementToBeSelected(By.cssSelector(orgStatusStatusComments(index)),20);
+                waitElementBy(By.cssSelector(orgStatusStatusComments(index)),20);
                 BasePage.write(By.cssSelector(orgStatusStatusComments(index)),mass.get(person).get("OrgStatusComments"));
             }
             ExtentReportsSetUp.testingPass(passMessage);

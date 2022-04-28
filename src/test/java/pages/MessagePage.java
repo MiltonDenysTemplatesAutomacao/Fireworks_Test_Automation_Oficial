@@ -81,7 +81,7 @@ public class MessagePage extends BasePage{
     /*
      * Method to validate required messages for person record
      */
-    public static void validatePersonRecordRequiredFieldsMessage(String requiredMessage) {
+    public static void validateRecordRequiredFieldsMessage(String requiredMessage) {
         String errorMessage = String.format(LogPage.VALIDATE_PERSON_RECORD_REQUIRED_FIELDS_MESSAGE_FAIL,requiredMessage);
         String passMessage = String.format(LogPage.VALIDATE_PERSON_RECORD_REQUIRED_FIELDS_MESSAGE_PASS,requiredMessage);
         try {

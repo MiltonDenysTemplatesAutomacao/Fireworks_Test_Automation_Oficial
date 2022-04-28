@@ -22,6 +22,10 @@ public class OrgSteps {
     public static void organizationStatusSaveChanges() {
         OrgPage.organizationStatusSaveChanges();
     }
+    @When("I click on add organization status {string}")
+    public static void clickOnAddOrgStatus(String index) {
+        OrgPage.clickOnAddOrgStatus(index);
+    }
 
 
 }

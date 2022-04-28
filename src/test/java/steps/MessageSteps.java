@@ -16,7 +16,11 @@ public class MessageSteps {
     }
     @When("I validate if {string} message required for person record is correct")
     public static void validateRequiredFieldsMessagePersonRecord(String requiredMessage) {
-        MessagePage.validatePersonRecordRequiredFieldsMessage(requiredMessage);
+        MessagePage.validateRecordRequiredFieldsMessage(requiredMessage);
+    }
+    @When("I validate if {string} message required for organization record is correct")
+    public static void validateRequiredFieldsMessageOrgRecord(String requiredMessage) {
+        MessagePage.validateRecordRequiredFieldsMessage(requiredMessage);
     }
     @When("I close alert person modal")
     public static void closeAlertPersonModal() {

@@ -184,6 +184,8 @@ public class LogPage {
     public static final String VALIDATE_QUICK_SEARCH_EMPTY_FAIL = "Fail while trying to validate if %s message on quick search is displayed";
     public static final String CLICK_ON_ADD_STUDENT_STATUS_PASS = "I click on add student status";
     public static final String CLICK_ON_ADD_STUDENT_STATUS_FAIL = "Fail while trying to click on add student status";
+    public static final String CLICK_ON_ADD_ORG_STATUS_PASS = "I click on add organization status";
+    public static final String CLICK_ON_ADD_ORG_STATUS_FAIL = "Fail while trying to click on add organization status";
     public static final String UPDATE_STUDENT_STATUS_PASS = "I update student status group %s person %s";
     public static final String UPDATE_STUDENT_STATUS_FAIL = "Fail while trying update student status group %s person %s";
     public static final String UPDATE_STATUS_ORG_PASS = "I update organization status group %s person %s";

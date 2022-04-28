@@ -138,9 +138,7 @@ public class StudentStatusPage extends BasePage {
             FailureDelegatePage.handlePageException(LogPage.CLICK_ON_ADD_STUDENT_STATUS_FAIL);
         }
     }
-    /*
-     * Method to check to verify student status on page records
-     */
+
     public static void verifyStudentStatus(String studentStatus, int person){
         boolean studentStatusCategoryValidation = false;
         boolean studentStatusValidation = false;

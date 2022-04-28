@@ -11,7 +11,7 @@ public class OrgNavPage extends BasePage{
     public static void navigateToStatus(){
         try {
             scrollToElement(By.cssSelector(RECORD_ORG_NAV_TAB_CONTACT));
-            waitElementBy(By.cssSelector(RECORD_ORG_NAV_TAB_STATUS),20);
+            waitUntilElementToBeSelected(By.cssSelector(RECORD_ORG_NAV_TAB_STATUS),20);
             BasePage.click(By.cssSelector(RECORD_ORG_NAV_TAB_STATUS));
             ExtentReportsSetUp.testingPass(LogPage.NAVIGATE_TO_STATUS_PASS);
         } catch (Exception e) {
