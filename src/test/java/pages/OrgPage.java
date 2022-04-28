@@ -26,6 +26,11 @@ public class OrgPage extends BasePage{
     private static final String PLUS_BUTTON_EXTERNAL_ID = "//*[@id='entity_external_id_0_add']";
     private static final String SAVE_CHANGES_BTN_ORG_ID_TYPES = "saveChangesBtnOrgIdTypes";
     private static final String ORG_STATUS_SAVE_CHANGES_BUTTON = "saveChangesBtnOrgStatus";
+    private static final String ORG_HEADER_DELETE_BUTTON = "orgHeaderDeleteButton";
+    private static final String DELETE_ORG_MODAL_DELETE_BUTTON = "modalSubmitButtondeleteOrganizationConfirm";
+    private static final String ORGANIZATION_MANAGER_TABLE = "organizationManagerTable";
+    private static final String ORGANIZATION_MANAGER_TABLE_SEARCH_FIELD = "organizationManagerTableControlsTableSearch";
+    public static final String DATATABLE_EMPTY = "organizationManagerTable_row_0_col_0";
 
 
     private static String statusPlusSignElement(String index){
@@ -39,6 +44,48 @@ public class OrgPage extends BasePage{
     }
     private static String orgStatusStatusComments(String index){
         return String.format("#org_status_%s_org_status_comments",index);
+    }
+
+    public static void validateOrganizationDatatableMessage(String message){
+        String errorMessage = String.format(LogPage.VALIDATE_DATATABLE_MESSAGE_FAIL, message);
+        String passMessage = String.format(LogPage.VALIDATE_DATATABLE_MESSAGE_PASS, message);
+        try {
+            wait(2000);
+            String messageDatatableEmpty = getText(By.id(DATATABLE_EMPTY));
+            if(messageDatatableEmpty.equals(message)){
+                ExtentReportsSetUp.testingPass(passMessage);
+            }else{
+                FailureDelegatePage.handlePageException(errorMessage);
+            }
+        } catch (Exception e) {
+            FailureDelegatePage.handlePageException(errorMessage);
+        }
+    }
+
+    public static void searchOrganizationManager(String search){
+        String passMessage = String.format(LogPage.SEARCH_ORGANIZATION_MANAGER_PASS, search);
+        String failMessage = String.format(LogPage.SEARCH_ORGANIZATION_MANAGER_FAIL, search);
+        try {
+            waitElementBy(By.id(ORGANIZATION_MANAGER_TABLE),20);
+            write(By.id(ORGANIZATION_MANAGER_TABLE_SEARCH_FIELD),mass.get(0).get(search));
+            ExtentReportsSetUp.testingPass(passMessage);
+        } catch (Exception e) {
+            FailureDelegatePage.handlePageException(failMessage);
+        }
+    }
+
+    public static void deleteOrganization(){
+        try {
+            waitUntilElementToBeSelected(By.id(ORG_HEADER_DELETE_BUTTON),20);
+            BasePage.click(By.id(ORG_HEADER_DELETE_BUTTON));
+
+            waitUntilElementToBeSelected(By.id(DELETE_ORG_MODAL_DELETE_BUTTON),20);
+            BasePage.click(By.id(DELETE_ORG_MODAL_DELETE_BUTTON));
+
+            ExtentReportsSetUp.testingPass(LogPage.DELETE_ORGANIZATION_PASS);
+        } catch (Exception e) {
+            FailureDelegatePage.handlePageException(LogPage.DELETE_ORGANIZATION_FAIL);
+        }
     }
 
     public static void clickOnAddOrgStatus(String index){

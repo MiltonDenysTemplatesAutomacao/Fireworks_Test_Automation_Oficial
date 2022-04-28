@@ -51,7 +51,7 @@ public class QuickSearchPage extends BasePage{
                 FailureDelegatePage.handlePageException(LogPage.VALIDATE_IF_OPENED_SUMMARY_PROPERLY_FAIL);
             }
         } catch (Exception e) {
-            System.err.println(LogPage.VALIDATE_IF_OPENED_SUMMARY_PROPERLY_FAIL);
+            FailureDelegatePage.handlePageException(LogPage.VALIDATE_IF_OPENED_SUMMARY_PROPERLY_FAIL);
         }
     }
 }

@@ -154,6 +154,8 @@ public class LogPage {
     public static final String NAVIGATE_PERSON_PAGE_FAIL = "Fail while trying to navigate to people on records";
     public static final String SEARCH_PEOPLE_MANAGER_PASS = "I search %s on people page manager";
     public static final String SEARCH_PEOPLE_MANAGER_FAIL = "Fail while trying to search %s on people page manager";
+    public static final String SEARCH_ORGANIZATION_MANAGER_PASS = "I search %s on organization page manager";
+    public static final String SEARCH_ORGANIZATION_MANAGER_FAIL = "Fail while trying to search %s on organization page manager";
     public static final String OPEN_PEOPLE_RECORD_PASS = "I open a people record by %s";
     public static final String OPEN_PEOPLE_RECORD_FAIL = "Fail while trying to open a people record by %s";
     public static final String VERIFY_ALL_THREE_ROLES_ARE_SELECTED_PASS = "I verify all three roles are selected in the role dropdown";
@@ -178,10 +180,10 @@ public class LogPage {
     public static final String UPDATE_PEOPLE_COMPOSER_FAIL = "Fail while trying to update people composer";
     public static final String DELETE_PERSON_PASS = "I delete a person";
     public static final String DELETE_PERSON_FAIL = "Fail while trying to delete a person";
-    public static final String VALIDATE_DATATABLE_MESSAGE_PASS = "I validate if %s message on datatable is displayed";
-    public static final String VALIDATE_DATATABLE_MESSAGE_FAIL = "Fail while trying to validate if %s message on datatable is displayed";
-    public static final String VALIDATE_QUICK_SEARCH_EMPTY_PASS = "I validate if %s message on quick search is displayed";
-    public static final String VALIDATE_QUICK_SEARCH_EMPTY_FAIL = "Fail while trying to validate if %s message on quick search is displayed";
+    public static final String VALIDATE_DATATABLE_MESSAGE_PASS = "I validate if '%s' message on datatable is displayed";
+    public static final String VALIDATE_DATATABLE_MESSAGE_FAIL = "Fail while trying to validate if '%s' message on datatable is displayed";
+    public static final String VALIDATE_QUICK_SEARCH_EMPTY_PASS = "I validate if '%s' message on quick search is displayed";
+    public static final String VALIDATE_QUICK_SEARCH_EMPTY_FAIL = "Fail while trying to validate if '%s' message on quick search is displayed";
     public static final String CLICK_ON_ADD_STUDENT_STATUS_PASS = "I click on add student status";
     public static final String CLICK_ON_ADD_STUDENT_STATUS_FAIL = "Fail while trying to click on add student status";
     public static final String CLICK_ON_ADD_ORG_STATUS_PASS = "I click on add organization status";
@@ -208,6 +210,8 @@ public class LogPage {
     public static final String CLOSE_ALERT_IF_RETURNED_FAIL = "Fail while trying to close alert if return this message %s";
     public static final String UPDATE_HEADER_ROLE_PASS = "I update Header Role %s";
     public static final String UPDATE_HEADER_ROLE_FAIL = "Fail while trying to update Header Role %s";
+    public static final String DELETE_ORGANIZATION_PASS = "I delete an organization";
+    public static final String DELETE_ORGANIZATION_FAIL = "Fail while trying to delete an organization";
 
 
 }

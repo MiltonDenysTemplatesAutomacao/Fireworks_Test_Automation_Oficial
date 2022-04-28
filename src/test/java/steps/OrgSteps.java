@@ -26,6 +26,18 @@ public class OrgSteps {
     public static void clickOnAddOrgStatus(String index) {
         OrgPage.clickOnAddOrgStatus(index);
     }
+    @When("I delete an organization")
+    public static void deleteOrganization() {
+        OrgPage.deleteOrganization();
+    }
+    @When("I search {string} an organization page manager")
+    public static void searchOrganizationManager(String search) {
+        OrgPage.searchOrganizationManager(search);
+    }
+    @When("I validate if {string} message on organization datatable is displayed")
+    public static void validateOrganizationDatatableMessage(String search) {
+        OrgPage.validateOrganizationDatatableMessage(search);
+    }
 
 
 }

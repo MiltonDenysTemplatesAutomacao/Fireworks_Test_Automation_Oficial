@@ -145,9 +145,7 @@ public class PersonPage extends BasePage{
             FailureDelegatePage.handlePageException(errorMessage);
         }
     }
-    /*
-     * method to calidate database message
-     */
+
     public static void validateDatatableMessage(String message){
         String errorMessage = String.format(LogPage.VALIDATE_DATATABLE_MESSAGE_FAIL, message);
         String passMessage = String.format(LogPage.VALIDATE_DATATABLE_MESSAGE_PASS, message);
@@ -163,9 +161,7 @@ public class PersonPage extends BasePage{
             FailureDelegatePage.handlePageException(errorMessage);
         }
     }
-    /*
-     * method to delete a person
-     */
+
     public static void deletePerson(){
         try {
             waitUntilElementToBeSelected(By.id(HEADER_DELETE_BUTTON),20);
@@ -369,9 +365,7 @@ public class PersonPage extends BasePage{
 
 
     }
-    /*
-     * method to search people on mangager page
-     */
+
     public static void searchPeopleManager(String search){
         String passMessage = String.format(LogPage.SEARCH_PEOPLE_MANAGER_PASS, search);
         String failMessage = String.format(LogPage.SEARCH_PEOPLE_MANAGER_FAIL, search);
@@ -383,9 +377,7 @@ public class PersonPage extends BasePage{
             FailureDelegatePage.handlePageException(failMessage);
         }
     }
-    /*
-     * verify student Record Panels
-     */
+
     public static void verifyStudentRecordPanels(){
         try {
             waitUntilElementPresence(By.cssSelector(HEADER_STUDENT_TYPE_ELEMENT),20);
