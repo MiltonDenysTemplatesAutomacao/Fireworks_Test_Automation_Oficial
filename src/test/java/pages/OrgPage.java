@@ -47,8 +47,8 @@ public class OrgPage extends BasePage{
     }
 
     public static void validateOrganizationDatatableMessage(String message){
-        String errorMessage = String.format(LogPage.VALIDATE_DATATABLE_MESSAGE_FAIL, message);
-        String passMessage = String.format(LogPage.VALIDATE_DATATABLE_MESSAGE_PASS, message);
+        String errorMessage = String.format(LogPage.VALIDATE_ORG_REQUIRED_FIELDS_MESSAGE_FAIL, message);
+        String passMessage = String.format(LogPage.VALIDATE_ORG_REQUIRED_FIELDS_MESSAGE_PASS, message);
         try {
             wait(2000);
             String messageDatatableEmpty = getText(By.id(DATATABLE_EMPTY));

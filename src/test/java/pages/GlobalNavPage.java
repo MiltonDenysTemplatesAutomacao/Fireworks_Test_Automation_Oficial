@@ -464,6 +464,7 @@ public class GlobalNavPage extends BasePage {
      */
     public static void quickAddOrganizationSaveGoButton() {
         try {
+            wait(1000);
             click(By.cssSelector(QUICK_ADD_ORG_SAVE_GO_BUTTON));
             ExtentReportsSetUp.testingPass(LogPage.CLICK_QUICK_ADD_ORGANIZATION_SAVE_AND_GO_PASS);
         } catch (Exception e) {
