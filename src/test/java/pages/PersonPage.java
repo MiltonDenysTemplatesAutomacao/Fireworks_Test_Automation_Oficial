@@ -404,16 +404,12 @@ public class PersonPage extends BasePage{
         } catch (Exception e) {
             FailureDelegatePage.handlePageException(LogPage.VERIFY_RECORD_PANELS_FAIL);
         }
-
     }
-    /*
-     * verify student type
-     */
+
     public static void verifyStudentType(){
         try {
             waitUntilElementPresence(By.cssSelector(HEADER_STUDENT_TYPE_ELEMENT),20);
             String studentTypeText = getText(By.cssSelector(HEADER_STUDENT_TYPE_ELEMENT));
-            System.out.println(studentTypeText);
             if(studentTypeText.contains(mass.get(0).get("StudentType"))){
                 ExtentReportsSetUp.testingPass(LogPage.VERIFY_STUDENT_TYPE_PASS);
             }else{
@@ -425,9 +421,6 @@ public class PersonPage extends BasePage{
 
     }
 
-    /*
-     * verify header role
-     */
     public static void verifyHeaderRole(String headerRole){
         String passMessage = String.format(LogPage.VERIFY_HEADER_ROLE_PASS, headerRole);
         String failMessage = String.format(LogPage.VERIFY_HEADER_ROLE_FAIL, headerRole);
@@ -459,9 +452,7 @@ public class PersonPage extends BasePage{
             FailureDelegatePage.handlePageException(failMessage);
         }
     }
-    /*
-     * go to Basic tab on records
-     */
+
     public static void navigateToBasic(){
         try {
             BasePage.click(By.id(RECORD_NAV_TAB_BASIC));

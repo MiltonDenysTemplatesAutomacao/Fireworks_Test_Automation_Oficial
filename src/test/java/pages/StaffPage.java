@@ -9,10 +9,34 @@ public class StaffPage extends BasePage{
     private static final String CONTACT_PHONE_TYPE_DROPDOWN_LIST = "#select2-drop";
     private static final String CONTACT_PHONE_COMMENTS_FIELD = "entity_phone_0_phone_comments";
     private static final String STAFF_CONTACT_SAVE_CHANGES_BUTTON = "saveChangesBtnStaffContact";
+    public static final String STAFF_STATUS_RECORD = "staffHeaderRecordStatusButton";
 
-    /*
-     * to update Phone Number in contact tab on records
-     */
+    public static void verifyHeaderRecordStatus(String status){
+        try {
+            waitUntilElementPresence(By.cssSelector(STAFF_STATUS_RECORD),20);
+            String studentTypeText = getText(By.cssSelector(STAFF_STATUS_RECORD));
+            if(studentTypeText.contains(status)){
+                ExtentReportsSetUp.testingPass(LogPage.VERIFY_HEADER_RECORD_STATUS_PASS);
+            }else{
+                FailureDelegatePage.handlePageException(LogPage.VERIFY_HEADER_RECORD_STATUS_FAIL);
+            }
+        } catch (Exception e) {
+            FailureDelegatePage.handlePageException(LogPage.VERIFY_HEADER_RECORD_STATUS_FAIL);
+        }
+    }
+    public static void verifyHeaderPermissions(String permission){
+        try {
+            waitUntilElementPresence(By.cssSelector(STAFF_STATUS_RECORD),20);
+            String studentTypeText = getText(By.cssSelector(STAFF_STATUS_RECORD));
+            if(studentTypeText.contains(status)){
+                ExtentReportsSetUp.testingPass(LogPage.VERIFY_HEADER_RECORD_STATUS_PASS);
+            }else{
+                FailureDelegatePage.handlePageException(LogPage.VERIFY_HEADER_RECORD_STATUS_FAIL);
+            }
+        } catch (Exception e) {
+            FailureDelegatePage.handlePageException(LogPage.VERIFY_HEADER_RECORD_STATUS_FAIL);
+        }
+    }
     public static void updatePhoneNumber(String phone,String phoneType,String comment){
         try {
             waitElementBy(By.id(CONTACT_PHONE_NUMBER_FIELD),20);

@@ -214,6 +214,8 @@ public class LogPage {
     public static final String UPDATE_HEADER_ROLE_FAIL = "Fail while trying to update Header Role %s";
     public static final String DELETE_ORGANIZATION_PASS = "I delete an organization";
     public static final String DELETE_ORGANIZATION_FAIL = "Fail while trying to delete an organization";
+    public static final String VERIFY_HEADER_RECORD_STATUS_PASS = "I verify Header Record Status %s";
+    public static final String VERIFY_HEADER_RECORD_STATUS_FAIL = "Fail while trying to verify Header Record Status %s";
 
 
 }

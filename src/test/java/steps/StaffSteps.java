@@ -11,4 +11,12 @@ public class StaffSteps {
     public static void updatePhoneNumber(String phone,String phoneType,String comment) {
         StaffPage.updatePhoneNumber(phone,phoneType,comment);
     }
+    @When("I verify Header Record Status {string}")
+    public static void verifyHeaderRecordStatus(String status) {
+        StaffPage.verifyHeaderRecordStatus(status);
+    }
+    @When("I verify Header Permission {string}")
+    public static void verifyHeaderPermissions(String permission) {
+        StaffPage.verifyHeaderPermissions(permission);
+    }
 }
