@@ -9,7 +9,7 @@ Feature: Search by phone number
   Scenario: to Quick Search a person by Phone Number, partial, with or without dashes, spaces or parenthesis
     Given I login as "firestarterUsername", "firestarterPassword", "firestarterFullName"
     And I create a person
-      |Firstname|Lastname	|Phone		 |PhoneType |Role1	|PhoneFormatted|
+      |FirstName|LastName	|Phone		 |PhoneType |Role1	|PhoneFormatted|
       |Stacy	|Rose		|720-839-1384|Home	    |Person	|(720) 839-1384|
     And I go to Home page
     When I quick search "Phone"
@@ -41,11 +41,11 @@ Feature: Search by phone number
   Scenario: to Quick Search a staff by Phone Number, partial, with or without dashes, spaces or parenthesis
     Given I login as "firestarterUsername", "firestarterPassword", "firestarterFullName"
     And I create a staff
-      |Firstname	|Lastname	|Fullname		|EmailAddress		|EmailType  |AccountStartDate	|AccountEndDate	|PermissionGroup|PhoneFormatted	|Phone        |PhoneType|Comment  |
+      |FirstName	|LastName	|Fullname		|EmailAddress		|EmailType  |AccountStartDate	|AccountEndDate	|PermissionGroup|PhoneFormatted	|Phone        |PhoneType|Comment  |
       |Roddy		|Lucky	    |Roddy Lucky	|Lucky@Roddy.com	|Personal	|07/10/2017			|07/10/2025		|Administrator	|(720) 839-4163 |720-839-4163 |Business |Comments |
     And I go to Home page
-    When I quick search "Firstname"
-    Then I validate if result for "Firstname" is correct
+    When I quick search "FirstName"
+    Then I validate if result for "FirstName" is correct
     And I open a record
     And I navigate to contact
     When I update "Phone", "PhoneType" and "Comment" to update phone number
