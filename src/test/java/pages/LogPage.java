@@ -30,6 +30,8 @@ public class LogPage {
     public static final String NAVIGATE_TO_CONTACT_PASS = "I navigate to contact";
     public static final String NAVIGATE_TO_INTERESTS_ACTIVITIES_PASS = "I navigate to Interests & Activities";
     public static final String NAVIGATE_TO_INTERESTS_ACTIVITIES_FAIL = "Fail while navigating to Interests & Activities";
+    public static final String NAVIGATE_TO_STATUS_PASS = "I navigate to status organization";
+    public static final String NAVIGATE_TO_STATUS_FAIL = "Fail while navigate to status organization";
     public static final String NAVIGATE_TO_STUDENT_STATUS_PASS = "I navigate to student status";
     public static final String NAVIGATE_TO_STUDENT_STATUS_FAIL = "Fail while navigating to student status";
     public static final String NAVIGATE_TO_BASIC_FAIL = "Error while navigating to basic";
@@ -69,6 +71,8 @@ public class LogPage {
     public static final String ALERT_MESSAGE_PASS = "I received '%s' alert message";
     public static final String VALIDATE_REQUIRED_FIELDS_MESSAGE_PASS = "I validate if '%s' message alert required is correct";
     public static final String VALIDATE_REQUIRED_FIELDS_MESSAGE_FAIL = "FAILED to I validate if '%s' message alert required is correct";
+    public static final String VALIDATE_ORG_REQUIRED_FIELDS_MESSAGE_PASS = "I validate if '%s' message alert for organization required is correct";
+    public static final String VALIDATE_ORG_REQUIRED_FIELDS_MESSAGE_FAIL = "FAILED to validate if '%s' message alert for organization required is correct";
     public static final String VALIDATE_PERSON_RECORD_REQUIRED_FIELDS_MESSAGE_PASS = "I validate if '%s' message required for person record is correct";
     public static final String VALIDATE_PERSON_RECORD_REQUIRED_FIELDS_MESSAGE_FAIL = "FAILED to I validate if '%s' message required for person record is correct";
     public static final String QUICK_SEARCH_ONE_PARAMETER_PASS = "I quick search %s from home page";
@@ -152,6 +156,8 @@ public class LogPage {
     public static final String NAVIGATE_PERSON_PAGE_FAIL = "Fail while trying to navigate to people on records";
     public static final String SEARCH_PEOPLE_MANAGER_PASS = "I search %s on people page manager";
     public static final String SEARCH_PEOPLE_MANAGER_FAIL = "Fail while trying to search %s on people page manager";
+    public static final String SEARCH_ORGANIZATION_MANAGER_PASS = "I search %s on organization page manager";
+    public static final String SEARCH_ORGANIZATION_MANAGER_FAIL = "Fail while trying to search %s on organization page manager";
     public static final String OPEN_PEOPLE_RECORD_PASS = "I open a people record by %s";
     public static final String OPEN_PEOPLE_RECORD_FAIL = "Fail while trying to open a people record by %s";
     public static final String VERIFY_ALL_THREE_ROLES_ARE_SELECTED_PASS = "I verify all three roles are selected in the role dropdown";
@@ -176,20 +182,26 @@ public class LogPage {
     public static final String UPDATE_PEOPLE_COMPOSER_FAIL = "Fail while trying to update people composer";
     public static final String DELETE_PERSON_PASS = "I delete a person";
     public static final String DELETE_PERSON_FAIL = "Fail while trying to delete a person";
-    public static final String VALIDATE_DATATABLE_MESSAGE_PASS = "I validate if %s message on datatable is displayed";
-    public static final String VALIDATE_DATATABLE_MESSAGE_FAIL = "Fail while trying to validate if %s message on datatable is displayed";
-    public static final String VALIDATE_QUICK_SEARCH_EMPTY_PASS = "I validate if %s message on quick search is displayed";
-    public static final String VALIDATE_QUICK_SEARCH_EMPTY_FAIL = "Fail while trying to validate if %s message on quick search is displayed";
+    public static final String VALIDATE_DATATABLE_MESSAGE_PASS = "I validate if '%s' message on datatable is displayed";
+    public static final String VALIDATE_DATATABLE_MESSAGE_FAIL = "Fail while trying to validate if '%s' message on datatable is displayed";
+    public static final String VALIDATE_QUICK_SEARCH_EMPTY_PASS = "I validate if '%s' message on quick search is displayed";
+    public static final String VALIDATE_QUICK_SEARCH_EMPTY_FAIL = "Fail while trying to validate if '%s' message on quick search is displayed";
     public static final String CLICK_ON_ADD_STUDENT_STATUS_PASS = "I click on add student status";
     public static final String CLICK_ON_ADD_STUDENT_STATUS_FAIL = "Fail while trying to click on add student status";
+    public static final String CLICK_ON_ADD_ORG_STATUS_PASS = "I click on add organization status";
+    public static final String CLICK_ON_ADD_ORG_STATUS_FAIL = "Fail while trying to click on add organization status";
     public static final String UPDATE_STUDENT_STATUS_PASS = "I update student status group %s person %s";
     public static final String UPDATE_STUDENT_STATUS_FAIL = "Fail while trying update student status group %s person %s";
+    public static final String UPDATE_STATUS_ORG_PASS = "I update organization status group %s person %s";
+    public static final String UPDATE_STATUS_ORG_FAIL = "Fail while trying to update organization status group %s person %s";
     public static final String UPDATE_INTEREST_PASS = "I update Interests group %s person %s";
     public static final String UPDATE_INTEREST_FAIL = "Fail while trying update Interests group %s person %s";
     public static final String UPDATE_ACTIVITIES_PASS = "I update Activities group %s person %s";
     public static final String UPDATE_ACTIVITIES_FAIL = "Fail while trying update Activities group %s person %s";
     public static final String CLICK_SAVE_CHANGES_STUDENT_STATUS_PASS = "I click on Save Changes button in Student Status";
     public static final String CLICK_SAVE_CHANGES_STUDENT_STATUS_FAIL = "Fail while trying to click on Save Changes button in Student Status";
+    public static final String ORGANIZATION_STATUS_SAVE_CHANGES_PASS = "I click on Save Changes button in organization status";
+    public static final String ORGANIZATION_STATUS_SAVE_CHANGES_FAIL = "Fail while trying to click on Save Changes button in organization status";
     public static final String CLICK_SAVE_CHANGES_INTERESTS_ACTIVITIES_PASS = "I click on Save Changes button in Interests & Activities";
     public static final String CLICK_SAVE_CHANGES_INTERESTS_ACTIVITIES_FAIL = "Fail while trying to click on Save Changes button in Interests & Activities";
     public static final String CLICK_STUDENT_STATUS_PRIMARY_CHECKBOX_PASS = "I click on status primary checkbox index %s";
@@ -200,6 +212,8 @@ public class LogPage {
     public static final String CLOSE_ALERT_IF_RETURNED_FAIL = "Fail while trying to close alert if return this message %s";
     public static final String UPDATE_HEADER_ROLE_PASS = "I update Header Role %s";
     public static final String UPDATE_HEADER_ROLE_FAIL = "Fail while trying to update Header Role %s";
+    public static final String DELETE_ORGANIZATION_PASS = "I delete an organization";
+    public static final String DELETE_ORGANIZATION_FAIL = "Fail while trying to delete an organization";
 
 
 }

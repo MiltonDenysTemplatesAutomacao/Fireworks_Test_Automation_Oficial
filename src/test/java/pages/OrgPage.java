@@ -2,6 +2,7 @@ package pages;
 
 import config.extent_reports.ExtentReportsSetUp;
 import org.openqa.selenium.By;
+import pages.Records.StudentStatusPage;
 
 public class OrgPage extends BasePage{
 
@@ -24,6 +25,115 @@ public class OrgPage extends BasePage{
     private static final String COMMENTS_FIELD = "#entity_external_id_0_org_id_comments";
     private static final String PLUS_BUTTON_EXTERNAL_ID = "//*[@id='entity_external_id_0_add']";
     private static final String SAVE_CHANGES_BTN_ORG_ID_TYPES = "saveChangesBtnOrgIdTypes";
+    private static final String ORG_STATUS_SAVE_CHANGES_BUTTON = "saveChangesBtnOrgStatus";
+    private static final String ORG_HEADER_DELETE_BUTTON = "orgHeaderDeleteButton";
+    private static final String DELETE_ORG_MODAL_DELETE_BUTTON = "modalSubmitButtondeleteOrganizationConfirm";
+    private static final String ORGANIZATION_MANAGER_TABLE = "organizationManagerTable";
+    private static final String ORGANIZATION_MANAGER_TABLE_SEARCH_FIELD = "organizationManagerTableControlsTableSearch";
+    public static final String DATATABLE_EMPTY = "organizationManagerTable_row_0_col_0";
+
+
+    private static String statusPlusSignElement(String index){
+        return String.format("#org_status_%s_add",index);
+    }
+    private static String orgStatusStatusDropdown(String index){
+        return String.format("#s2id_org_status_%s_org_status_value",index);
+    }
+    private static String orgStatusStatusDate(String index){
+        return String.format("#org_status_%s_org_status_date",index);
+    }
+    private static String orgStatusStatusComments(String index){
+        return String.format("#org_status_%s_org_status_comments",index);
+    }
+
+    public static void validateOrganizationDatatableMessage(String message){
+        String errorMessage = String.format(LogPage.VALIDATE_ORG_REQUIRED_FIELDS_MESSAGE_FAIL, message);
+        String passMessage = String.format(LogPage.VALIDATE_ORG_REQUIRED_FIELDS_MESSAGE_PASS, message);
+        try {
+            wait(2000);
+            String messageDatatableEmpty = getText(By.id(DATATABLE_EMPTY));
+            if(messageDatatableEmpty.equals(message)){
+                ExtentReportsSetUp.testingPass(passMessage);
+            }else{
+                FailureDelegatePage.handlePageException(errorMessage);
+            }
+        } catch (Exception e) {
+            FailureDelegatePage.handlePageException(errorMessage);
+        }
+    }
+
+    public static void searchOrganizationManager(String search){
+        String passMessage = String.format(LogPage.SEARCH_ORGANIZATION_MANAGER_PASS, search);
+        String failMessage = String.format(LogPage.SEARCH_ORGANIZATION_MANAGER_FAIL, search);
+        try {
+            waitElementBy(By.id(ORGANIZATION_MANAGER_TABLE),20);
+            write(By.id(ORGANIZATION_MANAGER_TABLE_SEARCH_FIELD),mass.get(0).get(search));
+            ExtentReportsSetUp.testingPass(passMessage);
+        } catch (Exception e) {
+            FailureDelegatePage.handlePageException(failMessage);
+        }
+    }
+
+    public static void deleteOrganization(){
+        try {
+            waitUntilElementToBeSelected(By.id(ORG_HEADER_DELETE_BUTTON),20);
+            BasePage.click(By.id(ORG_HEADER_DELETE_BUTTON));
+
+            waitUntilElementToBeSelected(By.id(DELETE_ORG_MODAL_DELETE_BUTTON),20);
+            BasePage.click(By.id(DELETE_ORG_MODAL_DELETE_BUTTON));
+
+            ExtentReportsSetUp.testingPass(LogPage.DELETE_ORGANIZATION_PASS);
+        } catch (Exception e) {
+            FailureDelegatePage.handlePageException(LogPage.DELETE_ORGANIZATION_FAIL);
+        }
+    }
+
+    public static void clickOnAddOrgStatus(String index){
+        try {
+            waitUntilElementToBeSelected(By.cssSelector(statusPlusSignElement(index)),20);
+            BasePage.click(By.cssSelector(statusPlusSignElement(index)));
+            ExtentReportsSetUp.testingPass(LogPage.CLICK_ON_ADD_ORG_STATUS_PASS);
+        } catch (Exception e) {
+            FailureDelegatePage.handlePageException(LogPage.CLICK_ON_ADD_ORG_STATUS_FAIL);
+        }
+    }
+
+    public static void updateStatusOrg(String index, int person){
+        String errorMessage = String.format(LogPage.UPDATE_STATUS_ORG_FAIL, index,person);
+        String passMessage = String.format(LogPage.UPDATE_STATUS_ORG_PASS, index,person);
+        try {
+            if (mass.get(person).get("OrgStatus") != null) {
+                scrollToElement(By.cssSelector(statusPlusSignElement(index)));
+                waitUntilElementToBeSelected(By.cssSelector(orgStatusStatusDropdown(index)),20);
+                BasePage.click(By.cssSelector(orgStatusStatusDropdown(index)));
+                BasePage.selectElementsList(By.cssSelector(StudentStatusPage.CHECKBOX_LIST), "a");
+                clickOnListOfElements(mass.get(person).get("OrgStatus"));
+            }
+            if (mass.get(person).get("OrgStatusDate") != null) {
+                scrollToElement(By.cssSelector(statusPlusSignElement(index)));
+                waitElementBy(By.cssSelector(orgStatusStatusDate(index)),20);
+                BasePage.write(By.cssSelector(orgStatusStatusDate(index)),mass.get(person).get("OrgStatusDate"));
+            }
+            if (mass.get(person).get("OrgStatusComments") != null) {
+                scrollToElement(By.cssSelector(statusPlusSignElement(index)));
+                waitElementBy(By.cssSelector(orgStatusStatusComments(index)),20);
+                BasePage.write(By.cssSelector(orgStatusStatusComments(index)),mass.get(person).get("OrgStatusComments"));
+            }
+            ExtentReportsSetUp.testingPass(passMessage);
+        } catch (Exception e) {
+            FailureDelegatePage.handlePageException(errorMessage);
+        }
+    }
+
+    public static void organizationStatusSaveChanges(){
+        try {
+            waitUntilElementToBeSelected(By.id(ORG_STATUS_SAVE_CHANGES_BUTTON),20);
+            BasePage.click(By.id(ORG_STATUS_SAVE_CHANGES_BUTTON));
+            ExtentReportsSetUp.testingPass(LogPage.ORGANIZATION_STATUS_SAVE_CHANGES_PASS);
+        } catch (Exception e) {
+            FailureDelegatePage.handlePageException(LogPage.ORGANIZATION_STATUS_SAVE_CHANGES_FAIL);
+        }
+    }
 
     /*
      * to update email address in Contact tab on records

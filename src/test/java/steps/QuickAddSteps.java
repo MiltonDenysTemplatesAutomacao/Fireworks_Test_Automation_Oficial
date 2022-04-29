@@ -32,17 +32,14 @@ public class QuickAddSteps {
     public static void quickAddCreatePersonPage() {
         GlobalNavPage.navigateQuickAddCreatePersonPage();
     }
-
     @And("I navigate to QuickAddCreateOrganizationPage")
     public static void quickAddCreateOrganizationPage() {
         GlobalNavPage.navigateQuickAddCreateOrganizationPage();
     }
-
     @And("I navigate to QuickAddCreateStaffPage")
     public static void quickAddCreateStaffPage() {
         GlobalNavPage.navigateQuickAddCreateStaffPage();
     }
-
     @When("I quick add a person")
     public static void quickAddPerson(DataTable data) {
         GlobalNavPage.quickAddPerson(data);
@@ -51,27 +48,22 @@ public class QuickAddSteps {
     public static void quickAddOrganization(DataTable data) {
         GlobalNavPage.quickAddOrganization(data);
     }
-
     @When("I quick add a staff")
     public static void quickAddStaff(DataTable data) {
         GlobalNavPage.quickAddStaff(data);
     }
-
     @And("I clickQuickAddPersonSaveAndGo")
     public static void clickQuickAddPersonSaveAndGo() {
         GlobalNavPage.quickAddPersonSaveGoButton();
     }
-
     @And("I clickQuickAddOrganizationSaveAndGo")
     public static void clickQuickAddOrganizationSaveAndGo() {
         GlobalNavPage.quickAddOrganizationSaveGoButton();
     }
-
     @And("I clickQuickAddStaffSaveAndGo")
     public static void clickQuickAddStaffSaveAndGo() {
         GlobalNavPage.quickAddStaffSaveGoButton();
     }
-
     @Then("I validate if {string} message is correct")
     public static void alertMessage(String message) {
         GlobalNavPage.alertMessageAfterAddPerson(message);
@@ -80,5 +72,4 @@ public class QuickAddSteps {
     public static void goToHomePage() {
         GlobalNavPage.goToHomePage();
     }
-
 }

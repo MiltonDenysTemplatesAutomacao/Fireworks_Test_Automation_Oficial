@@ -12,7 +12,6 @@ public class PersonNavSteps {
     public static void navigateToContact() {
         PersonNavPage.navigateToContact();
     }
-
     @Then("I click on student status")
     public static void navigateToStudentStatus() {
         PersonNavPage.navigateToStudentStatus();

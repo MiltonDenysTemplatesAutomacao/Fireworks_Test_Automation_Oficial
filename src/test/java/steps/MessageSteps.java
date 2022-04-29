@@ -5,7 +5,6 @@ import pages.MessagePage;
 
 public class MessageSteps {
 
-
     @When("I click on close button on modal")
     public static void closeAlertPersonRecordModal() {
         MessagePage.closeAlertPersonRecordModal();
@@ -14,9 +13,17 @@ public class MessageSteps {
     public static void validateRequiredFieldsMessage(String requiredMessage) {
         MessagePage.validateRequiredFieldsMessage(requiredMessage);
     }
+    @When("I validate if {string} message alert for organization required is correct")
+    public static void validateOrgRequiredFieldsMessage(String requiredMessage) {
+        MessagePage.validateOrgRequiredFieldsMessage(requiredMessage);
+    }
     @When("I validate if {string} message required for person record is correct")
     public static void validateRequiredFieldsMessagePersonRecord(String requiredMessage) {
-        MessagePage.validatePersonRecordRequiredFieldsMessage(requiredMessage);
+        MessagePage.validateRecordRequiredFieldsMessage(requiredMessage);
+    }
+    @When("I validate if {string} message required for organization record is correct")
+    public static void validateRequiredFieldsMessageOrgRecord(String requiredMessage) {
+        MessagePage.validateRecordRequiredFieldsMessage(requiredMessage);
     }
     @When("I close alert person modal")
     public static void closeAlertPersonModal() {
@@ -26,6 +33,4 @@ public class MessageSteps {
     public static void closeAlertIfReturned(String alert) {
         MessagePage.closeAlertIfReturned(alert);
     }
-
-
 }

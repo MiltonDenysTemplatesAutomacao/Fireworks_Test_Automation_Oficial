@@ -6,6 +6,7 @@ import org.openqa.selenium.By;
 public class MessagePage extends BasePage{
 
     public static final String QUICK_ADD_PERSON_MODAL_VALIDATION_ALERT_MESSAGE = "quickAddPersonModalValidationAlertMessage";
+    public static final String QUICK_ADD_ORGANIZATION_MODAL_VALIDATION_ALERT_MESSAGE = "quickAddOrganizationModalValidationAlertMessage";
     public static final String QUICK_ADD_PERSON_VALIDATION_ALERT_CLOSE_BUTTON = "quickAddPersonModalValidationAlertMessageAlertMessageClose";
     public static final String CLOSE_ALERT_PERSON_MODAL = ".//*[@class='panel-heading clearfix']";
     public static final String GENERAL_ALERT_MESSAGE = "#alertMessage";
@@ -77,11 +78,25 @@ public class MessagePage extends BasePage{
             FailureDelegatePage.handlePageException(errorMessage);
         }
     }
+    public static void validateOrgRequiredFieldsMessage(String requiredMessage) {
+        String errorMessage = String.format(LogPage.VALIDATE_REQUIRED_FIELDS_MESSAGE_FAIL,requiredMessage);
+        String passMessage = String.format(LogPage.VALIDATE_REQUIRED_FIELDS_MESSAGE_PASS,requiredMessage);
+        try {
+            waitElementBy(By.id(QUICK_ADD_ORGANIZATION_MODAL_VALIDATION_ALERT_MESSAGE), 10);
+            if (alertMessageContains(By.id(QUICK_ADD_ORGANIZATION_MODAL_VALIDATION_ALERT_MESSAGE), requiredMessage)) {
+                ExtentReportsSetUp.testingPass(passMessage);
+            } else {
+                FailureDelegatePage.handlePageException(errorMessage);
+            }
+        } catch (Exception e) {
+            FailureDelegatePage.handlePageException(errorMessage);
+        }
+    }
 
     /*
      * Method to validate required messages for person record
      */
-    public static void validatePersonRecordRequiredFieldsMessage(String requiredMessage) {
+    public static void validateRecordRequiredFieldsMessage(String requiredMessage) {
         String errorMessage = String.format(LogPage.VALIDATE_PERSON_RECORD_REQUIRED_FIELDS_MESSAGE_FAIL,requiredMessage);
         String passMessage = String.format(LogPage.VALIDATE_PERSON_RECORD_REQUIRED_FIELDS_MESSAGE_PASS,requiredMessage);
         try {
