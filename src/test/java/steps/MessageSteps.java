@@ -17,6 +17,10 @@ public class MessageSteps {
     public static void validateOrgRequiredFieldsMessage(String requiredMessage) {
         MessagePage.validateOrgRequiredFieldsMessage(requiredMessage);
     }
+    @When("I validate if {string} message alert for staff required is correct")
+    public static void validateStaffRequiredFieldsMessage(String requiredMessage) {
+        MessagePage.validateStaffRequiredFieldsMessage(requiredMessage);
+    }
     @When("I validate if {string} message required for person record is correct")
     public static void validateRequiredFieldsMessagePersonRecord(String requiredMessage) {
         MessagePage.validateRecordRequiredFieldsMessage(requiredMessage);

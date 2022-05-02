@@ -19,4 +19,8 @@ public class StaffSteps {
     public static void verifyHeaderPermissions(String permission) {
         StaffPage.verifyHeaderPermissions(permission);
     }
+    @When("I validate if basic panel element is visible")
+    public static void validateBasicElementIsVisible() {
+        StaffPage.validateBasicElementIsVisible();
+    }
 }
