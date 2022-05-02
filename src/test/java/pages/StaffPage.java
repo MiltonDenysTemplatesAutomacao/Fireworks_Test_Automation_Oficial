@@ -11,30 +11,50 @@ public class StaffPage extends BasePage{
     private static final String STAFF_CONTACT_SAVE_CHANGES_BUTTON = "saveChangesBtnStaffContact";
     public static final String STAFF_STATUS_RECORD = "staffHeaderRecordStatusButton";
 
-    public static void verifyHeaderRecordStatus(String status){
+    public static final String BASIC_PANEL_HEADING_ELEMENT = "#basic span";
+
+    public static void validateBasicElementIsVisible(){
         try {
-            waitUntilElementPresence(By.cssSelector(STAFF_STATUS_RECORD),20);
-            String studentTypeText = getText(By.cssSelector(STAFF_STATUS_RECORD));
-            if(studentTypeText.contains(status)){
-                ExtentReportsSetUp.testingPass(LogPage.VERIFY_HEADER_RECORD_STATUS_PASS);
+            String basicReturn = getText(By.cssSelector(BASIC_PANEL_HEADING_ELEMENT));
+            if(basicReturn.equals("Basic")){
+                ExtentReportsSetUp.testingPass(LogPage.VALIDATE_BASIC_ELEMENT_IS_VISIBLE_PASS);
             }else{
-                FailureDelegatePage.handlePageException(LogPage.VERIFY_HEADER_RECORD_STATUS_FAIL);
+                FailureDelegatePage.handlePageException(LogPage.VALIDATE_BASIC_ELEMENT_IS_VISIBLE_FAIL);
             }
         } catch (Exception e) {
-            FailureDelegatePage.handlePageException(LogPage.VERIFY_HEADER_RECORD_STATUS_FAIL);
+            FailureDelegatePage.handlePageException(LogPage.VALIDATE_BASIC_ELEMENT_IS_VISIBLE_FAIL);
+
+        }
+    }
+
+    public static void verifyHeaderRecordStatus(String status){
+        String passMessage = String.format(LogPage.VERIFY_HEADER_RECORD_STATUS_PASS, status);
+        String failMessage = String.format(LogPage.VERIFY_HEADER_RECORD_STATUS_FAIL, status);
+        try {
+            waitUntilElementPresence(By.id(STAFF_STATUS_RECORD),20);
+            String studentTypeText = getText(By.id(STAFF_STATUS_RECORD));
+            if(studentTypeText.contains(status)){
+                ExtentReportsSetUp.testingPass(passMessage);
+            }else{
+                FailureDelegatePage.handlePageException(failMessage);
+            }
+        } catch (Exception e) {
+            FailureDelegatePage.handlePageException(failMessage);
         }
     }
     public static void verifyHeaderPermissions(String permission){
+        String passMessage = String.format(LogPage.VERIFY_HEADER_PERMISSIONS_PASS, permission);
+        String failMessage = String.format(LogPage.VERIFY_HEADER_PERMISSIONS_FAIL, permission);
         try {
             waitUntilElementPresence(By.cssSelector(STAFF_STATUS_RECORD),20);
             String studentTypeText = getText(By.cssSelector(STAFF_STATUS_RECORD));
-            if(studentTypeText.contains(status)){
-                ExtentReportsSetUp.testingPass(LogPage.VERIFY_HEADER_RECORD_STATUS_PASS);
+            if(studentTypeText.contains(permission)){
+                ExtentReportsSetUp.testingPass(passMessage);
             }else{
-                FailureDelegatePage.handlePageException(LogPage.VERIFY_HEADER_RECORD_STATUS_FAIL);
+                FailureDelegatePage.handlePageException(failMessage);
             }
         } catch (Exception e) {
-            FailureDelegatePage.handlePageException(LogPage.VERIFY_HEADER_RECORD_STATUS_FAIL);
+            FailureDelegatePage.handlePageException(failMessage);
         }
     }
     public static void updatePhoneNumber(String phone,String phoneType,String comment){
