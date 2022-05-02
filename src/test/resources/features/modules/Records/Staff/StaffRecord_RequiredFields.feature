@@ -1,5 +1,6 @@
 #Author: Milton Silva
 #Regression testcase TL-83: Staff Record Required Fields
+#Regression testcase TL-179:Staff Record: Header Displays Account Status & Permission Group
 
 @RequiredFields
 Feature: Staff Record: Required fields
@@ -11,8 +12,8 @@ Feature: Staff Record: Required fields
       |FirstName  |LastName	  |Fullname		        |EmailAddress|
       |           |           |                 	|            |
     Then I validate if "The First Name field is required." message alert for staff required is correct
-    Then I validate if "The Last Name field is required." message alert for staff required is correct
-    Then I validate if "The Email Address field is required." message alert for staff required is correct
+    And I validate if "The Last Name field is required." message alert for staff required is correct
+    And I validate if "The Email Address field is required." message alert for staff required is correct
 
   @ValidateRequiredFieldsReturnPermissionGroupNotSet
   Scenario: a validation message to be returned when the permissions group is not set
@@ -20,8 +21,8 @@ Feature: Staff Record: Required fields
     When I create a staff
       |FirstName  |LastName	  |Fullname		        |EmailAddress                 |
       |Alexander  |Hamilton   |Alexander Hamilton	|AHamilton@foundingpeople.net |
-    Then I validate if "This user hasn't been assigned to a permissions group. You can still create the user, but they won't be able to access the system." message alert for staff required is correct
-    When I quick add a staff
+    When I validate if "This user hasn't been assigned to a permissions group. You can still create the user, but they won't be able to access the system." message alert for staff required is correct
+    And I quick add a staff
       |FirstName  |LastName	  |Fullname		        |EmailAddress                 |PermissionGroup|
       |Alexander  |Hamilton   |Alexander Hamilton	|AHamilton@foundingpeople.net |Administrator  |
     And I clickQuickAddStaffSaveAndGo
