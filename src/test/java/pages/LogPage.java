@@ -73,8 +73,6 @@ public class LogPage {
     public static final String VALIDATE_REQUIRED_FIELDS_MESSAGE_FAIL = "FAILED to I validate if '%s' message alert required is correct";
     public static final String VALIDATE_ORG_REQUIRED_FIELDS_MESSAGE_PASS = "I validate if '%s' message alert for organization required is correct";
     public static final String VALIDATE_ORG_REQUIRED_FIELDS_MESSAGE_FAIL = "FAILED to validate if '%s' message alert for organization required is correct";
-    public static final String VALIDATE_STAFF_REQUIRED_FIELDS_MESSAGE_PASS = "I validate if %s message alert for staff required is correct";
-    public static final String VALIDATE_STAFF_REQUIRED_FIELDS_MESSAGE_FAIL = "FAILED to validate if %s message alert for staff required is correct";
     public static final String VALIDATE_PERSON_RECORD_REQUIRED_FIELDS_MESSAGE_PASS = "I validate if '%s' message required for person record is correct";
     public static final String VALIDATE_PERSON_RECORD_REQUIRED_FIELDS_MESSAGE_FAIL = "FAILED to I validate if '%s' message required for person record is correct";
     public static final String QUICK_SEARCH_ONE_PARAMETER_PASS = "I quick search %s from home page";
@@ -220,7 +218,6 @@ public class LogPage {
     public static final String VERIFY_HEADER_RECORD_STATUS_FAIL = "Fail while trying to verify Header Record Status %s";
     public static final String VERIFY_HEADER_PERMISSIONS_PASS = "I verify Header Permission %s";
     public static final String VERIFY_HEADER_PERMISSIONS_FAIL = "Fail while trying to verify Header Permission %s";
-    public static final String VALIDATE_BASIC_ELEMENT_IS_VISIBLE_PASS = "I validate if basic panel element is visible";
-    public static final String VALIDATE_BASIC_ELEMENT_IS_VISIBLE_FAIL = "Fail while trying to validate if basic panel element is visible";
+
 
 }
