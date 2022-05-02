@@ -12,6 +12,49 @@ public class StaffPage extends BasePage{
     public static final String STAFF_STATUS_RECORD = "staffHeaderRecordStatusButton";
     public static final String BASIC_PANEL_HEADING_ELEMENT = "#basic span";
     public static final String STAFF_PERMISSION_RECORD = ".//*[@class='btn-group autoSubmit dropDownSelect'][2]";
+    public static final String HEADER_STAFF_DELETE_BUTTON = "#deleteStaffButton";
+    public static final String DELETE_STAFF_CONFIRM_SUBMIT_BUTTON = "#modalSubmitButtondeleteStaffConfirm";
+    public static final String STAFF_MANAGER_TABLE_SEARCH_FIELD = "staffManagerTableControlsTableSearch";
+    public static final String VALIDATE_STAFF_MANGER_DATATABLE_MESSAGE = "staffManagerTable_row_0_col_0";
+
+
+    public static void validateStaffMangerDatatableMessage(String message){
+        String errorMessage = String.format(LogPage.VALIDATE_QUICK_SEARCH_EMPTY_FAIL, message);
+        String passMessage = String.format(LogPage.VALIDATE_QUICK_SEARCH_EMPTY_PASS, message);
+        try {
+            wait(2000);
+            String messageQuickSearchEmpty = getText(By.id(VALIDATE_STAFF_MANGER_DATATABLE_MESSAGE));
+            if(messageQuickSearchEmpty.equals(message)){
+                ExtentReportsSetUp.testingPass(passMessage);
+            }else{
+                FailureDelegatePage.handlePageException(errorMessage);
+            }
+        } catch (Exception e) {
+            FailureDelegatePage.handlePageException(errorMessage);
+        }
+    }
+    public static void searchStaffManager(String search){
+        String passMessage = String.format(LogPage.SEARCH_STAFF_MANAGER_PASS, search);
+        String failMessage = String.format(LogPage.SEARCH_STAFF_MANAGER_FAIL, search);
+        try {
+            waitElementBy(By.id(STAFF_MANAGER_TABLE_SEARCH_FIELD),20);
+            write(By.id(STAFF_MANAGER_TABLE_SEARCH_FIELD),mass.get(0).get(search));
+            ExtentReportsSetUp.testingPass(passMessage);
+        } catch (Exception e) {
+            FailureDelegatePage.handlePageException(failMessage);
+        }
+    }
+    public static void deleteStaff(){
+        try {
+            waitElementBy(By.cssSelector(HEADER_STAFF_DELETE_BUTTON),20);
+            BasePage.click(By.cssSelector(HEADER_STAFF_DELETE_BUTTON));
+            waitElementBy(By.cssSelector(DELETE_STAFF_CONFIRM_SUBMIT_BUTTON),20);
+            BasePage.click(By.cssSelector(DELETE_STAFF_CONFIRM_SUBMIT_BUTTON));
+            ExtentReportsSetUp.testingPass(LogPage.DELETE_STAFF_PASS);
+        } catch (Exception e) {
+            FailureDelegatePage.handlePageException(LogPage.DELETE_STAFF_FAIL);
+        }
+    }
 
     public static void validateBasicElementIsVisible(){
         try {

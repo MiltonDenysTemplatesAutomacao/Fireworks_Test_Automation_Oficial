@@ -2,6 +2,7 @@ package steps;
 
 import io.cucumber.java.en.When;
 import pages.MessagePage;
+import pages.StaffPage;
 
 public class MessageSteps {
 
@@ -36,5 +37,9 @@ public class MessageSteps {
     @When("I close alert if return this message {string}")
     public static void closeAlertIfReturned(String alert) {
         MessagePage.closeAlertIfReturned(alert);
+    }
+    @When("I validate if {string} message alert for staff")
+    public static void validateStaffRequiredFields(String message) {
+        MessagePage.validateStaffRequiredFields(message);
     }
 }

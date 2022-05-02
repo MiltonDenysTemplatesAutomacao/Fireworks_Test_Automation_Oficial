@@ -23,4 +23,17 @@ public class StaffSteps {
     public static void validateBasicElementIsVisible() {
         StaffPage.validateBasicElementIsVisible();
     }
+    @When("I delete a staff member")
+    public static void deleteStaff() {
+        StaffPage.deleteStaff();
+    }
+    @When("I search {string} on staff page manager")
+    public static void searchStaffManager(String search) {
+        StaffPage.searchStaffManager(search);
+    }
+    @When("I validate if {string} message on staff datatable is displayed")
+    public static void validateStaffMangerDatatableMessage(String message) {
+        StaffPage.validateStaffMangerDatatableMessage(message);
+    }
+    
 }

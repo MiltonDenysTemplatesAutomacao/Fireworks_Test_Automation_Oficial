@@ -44,8 +44,8 @@ Feature: Search by phone number
       |FirstName	|LastName	|FullName		|EmailAddress		|EmailType  |AccountStartDate	|AccountEndDate	|PermissionGroup|PhoneFormatted	|Phone        |PhoneType|Comment  |
       |Roddy		|Lucky	    |Roddy Lucky	|Lucky@Roddy.com	|Personal	|07/10/2017			|07/10/2025		|Administrator	|(720) 839-4163 |720-839-4163 |Business |Comments |
     And I go to Home page
-    When I quick search "Firstname"
-    Then I validate if result for "Firstname" is correct
+    When I quick search "FirstName"
+    Then I validate if result for "FirstName" is correct
     And I open a record
     And I navigate to contact
     When I update "Phone", "PhoneType" and "Comment" to update phone number

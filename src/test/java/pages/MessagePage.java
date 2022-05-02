@@ -14,8 +14,23 @@ public class MessagePage extends BasePage{
     public static final String REQUIRED_FIELDS_PERSON_RECORD_MODAL = "#pageAlertMessages";
     public static final String VALIDATION_ALERT_CLOSE_BUTTON = "#pageValidationAlertMessageClose";
     public static final String QUICK_ADD_STAFF_MODAL_VALIDATION_ALERT_MESSAGE = "quickAddStaffModalValidationAlertMessage";
+    public static final String QUICK_ADD_STAFF_MODAL_ALERT_MESSAGE = "#quickAddStaffModalAlertMessage";
 
 
+    public static void validateStaffRequiredFields(String requiredMessage) {
+        String errorMessage = String.format(LogPage.VALIDATE_STAFF_REQUIRED_FIELDS_MESSAGE_FAIL,requiredMessage);
+        String passMessage = String.format(LogPage.VALIDATE_STAFF_REQUIRED_FIELDS_MESSAGE_PASS,requiredMessage);
+        try {
+            waitElementBy(By.cssSelector(QUICK_ADD_STAFF_MODAL_ALERT_MESSAGE), 10);
+            if (alertMessageContains(By.cssSelector(QUICK_ADD_STAFF_MODAL_ALERT_MESSAGE), requiredMessage)) {
+                ExtentReportsSetUp.testingPass(passMessage);
+            } else {
+                FailureDelegatePage.handlePageException(errorMessage);
+            }
+        } catch (Exception e) {
+            FailureDelegatePage.handlePageException(errorMessage);
+        }
+    }
     public static void validateStaffRequiredFieldsMessage(String requiredMessage) {
         String errorMessage = String.format(LogPage.VALIDATE_STAFF_REQUIRED_FIELDS_MESSAGE_FAIL,requiredMessage);
         String passMessage = String.format(LogPage.VALIDATE_STAFF_REQUIRED_FIELDS_MESSAGE_PASS,requiredMessage);

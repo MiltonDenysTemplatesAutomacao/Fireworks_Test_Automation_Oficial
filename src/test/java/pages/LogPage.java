@@ -6,6 +6,8 @@ public class LogPage {
     public static final String SAVE_CHANGES_PASS = "I click on save changes";
     public static final String DELETE_TASK_PASS = "I click on delete task";
     public static final String DELETE_TASK_FAIL = "FAILED while trying to delete task";
+    public static final String DELETE_STAFF_PASS = "I delete a staff member";
+    public static final String DELETE_STAFF_FAIL = "FAILED while I delete a staff member";
     public static final String ARCHIVE_TASK_FAIL = "FAILED while trying to click on archive task button";
     public static final String ARCHIVE_TASK_PASS = "I click on archive task button";
     public static final String ACTIVATE_TASK_PASS = "I click on activate task button";
@@ -218,9 +220,10 @@ public class LogPage {
     public static final String VERIFY_HEADER_RECORD_STATUS_FAIL = "Fail while trying to verify Header Record Status %s";
     public static final String VERIFY_HEADER_PERMISSIONS_PASS = "I verify Header Permission %s";
     public static final String VERIFY_HEADER_PERMISSIONS_FAIL = "Fail while trying to verify Header Permission %s";
-    public static final String VALIDATE_STAFF_REQUIRED_FIELDS_MESSAGE_PASS = "I validate if %s message alert for staff required is correct";
-    public static final String VALIDATE_STAFF_REQUIRED_FIELDS_MESSAGE_FAIL = "FAILED to validate if %s message alert for staff required is correct";
+    public static final String VALIDATE_STAFF_REQUIRED_FIELDS_MESSAGE_PASS = "I validate if '%s' message alert for staff required is correct";
+    public static final String VALIDATE_STAFF_REQUIRED_FIELDS_MESSAGE_FAIL = "FAILED to validate if '%s' message alert for staff required is correct";
     public static final String VALIDATE_BASIC_ELEMENT_IS_VISIBLE_PASS = "I validate if basic panel element is visible";
     public static final String VALIDATE_BASIC_ELEMENT_IS_VISIBLE_FAIL = "Fail while trying to validate if basic panel element is visible";
-
+    public static final String SEARCH_STAFF_MANAGER_PASS = "I search %s on staff page manager";
+    public static final String SEARCH_STAFF_MANAGER_FAIL = "Fail while trying to search %s on staff page manager";
 }
