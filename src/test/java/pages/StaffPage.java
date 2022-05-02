@@ -10,8 +10,8 @@ public class StaffPage extends BasePage{
     private static final String CONTACT_PHONE_COMMENTS_FIELD = "entity_phone_0_phone_comments";
     private static final String STAFF_CONTACT_SAVE_CHANGES_BUTTON = "saveChangesBtnStaffContact";
     public static final String STAFF_STATUS_RECORD = "staffHeaderRecordStatusButton";
-
     public static final String BASIC_PANEL_HEADING_ELEMENT = "#basic span";
+    public static final String STAFF_PERMISSION_RECORD = ".//*[@class='btn-group autoSubmit dropDownSelect'][2]";
 
     public static void validateBasicElementIsVisible(){
         try {
@@ -46,8 +46,8 @@ public class StaffPage extends BasePage{
         String passMessage = String.format(LogPage.VERIFY_HEADER_PERMISSIONS_PASS, permission);
         String failMessage = String.format(LogPage.VERIFY_HEADER_PERMISSIONS_FAIL, permission);
         try {
-            waitUntilElementPresence(By.cssSelector(STAFF_STATUS_RECORD),20);
-            String studentTypeText = getText(By.cssSelector(STAFF_STATUS_RECORD));
+            waitUntilElementPresence(By.xpath(STAFF_PERMISSION_RECORD),20);
+            String studentTypeText = getText(By.xpath(STAFF_PERMISSION_RECORD));
             if(studentTypeText.contains(permission)){
                 ExtentReportsSetUp.testingPass(passMessage);
             }else{
