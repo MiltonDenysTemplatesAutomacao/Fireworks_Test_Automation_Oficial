@@ -127,9 +127,7 @@ public class PersonPage extends BasePage{
             FailureDelegatePage.handlePageException(errorMessage);
         }
     }
-    /*
-     * method to validate quick search empty
-     */
+
     public static void validateQuickSearchEmpty(String message){
         String errorMessage = String.format(LogPage.VALIDATE_QUICK_SEARCH_EMPTY_FAIL, message);
         String passMessage = String.format(LogPage.VALIDATE_QUICK_SEARCH_EMPTY_PASS, message);
@@ -173,9 +171,7 @@ public class PersonPage extends BasePage{
             FailureDelegatePage.handlePageException(LogPage.DELETE_PERSON_FAIL);
         }
     }
-    /*
-     * method to update people composer
-     */
+
     public static void updatePeopleComposer(DataTable data){
         try {
             mass = data.asMaps(String.class, String.class);
@@ -286,9 +282,7 @@ public class PersonPage extends BasePage{
             FailureDelegatePage.handlePageException(LogPage.UPDATE_PEOPLE_COMPOSER_FAIL);
         }
     }
-    /*
-     * method to click on save new record
-     */
+
     public static void clickOnSaveNewRecord(){
         try {
             waitUntilElementToBeSelected(By.id(COMPOSER_SAVE_CHANGES_BUTTON),20);
@@ -299,9 +293,7 @@ public class PersonPage extends BasePage{
             FailureDelegatePage.handlePageException(LogPage.CLICK_ON_SAVE_NEW_RECORD_FAIL);
         }
     }
-    /*
-     * method to click on create on record page
-     */
+
     public static void clickOnCreateRecord(){
         try {
             waitUntilElementToBeSelected(By.id(CREATE_PERSON_BUTTON),20);
@@ -311,9 +303,7 @@ public class PersonPage extends BasePage{
             FailureDelegatePage.handlePageException(LogPage.CLICK_ON_CREATE_RECORD_FAIL);
         }
     }
-    /*
-     * method to validate if all three roles are selected
-     */
+
     public static void verifyAllthreeRolesAreSelected(){
         try {
             waitElementBy(By.cssSelector(HEADER_ROLE_ELEMENT),20);
@@ -348,9 +338,7 @@ public class PersonPage extends BasePage{
             FailureDelegatePage.handlePageException(LogPage.VERIFY_ALL_THREE_ROLES_ARE_SELECTED_FAIL);
         }
     }
-    /*
-     * method to open a people record
-     */
+
     public static void openPeopleRecord(String search){
         searchPeopleManager(search);
         String passMessage = String.format(LogPage.OPEN_PEOPLE_RECORD_PASS, search);
@@ -406,9 +394,7 @@ public class PersonPage extends BasePage{
         }
 
     }
-    /*
-     * verify student type
-     */
+
     public static void verifyStudentType(){
         try {
             waitUntilElementPresence(By.cssSelector(HEADER_STUDENT_TYPE_ELEMENT),20);
@@ -425,9 +411,6 @@ public class PersonPage extends BasePage{
 
     }
 
-    /*
-     * verify header role
-     */
     public static void verifyHeaderRole(String headerRole){
         String passMessage = String.format(LogPage.VERIFY_HEADER_ROLE_PASS, headerRole);
         String failMessage = String.format(LogPage.VERIFY_HEADER_ROLE_FAIL, headerRole);
@@ -459,9 +442,7 @@ public class PersonPage extends BasePage{
             FailureDelegatePage.handlePageException(failMessage);
         }
     }
-    /*
-     * go to Basic tab on records
-     */
+
     public static void navigateToBasic(){
         try {
             BasePage.click(By.id(RECORD_NAV_TAB_BASIC));
@@ -470,9 +451,7 @@ public class PersonPage extends BasePage{
             FailureDelegatePage.handlePageException(LogPage.NAVIGATE_TO_BASIC_FAIL);
         }
     }
-    /*
-     * go to Basic tab on records
-     */
+
     public static void navigateToIdTypes(){
         try {
             BasePage.click(By.id(RECORD_NAV_TAB_ID_TYPES));
@@ -481,9 +460,7 @@ public class PersonPage extends BasePage{
             FailureDelegatePage.handlePageException(LogPage.NAVIGATE_TO_ID_TYPES_FAIL);
         }
     }
-    /*
-     * to update Citizenship values in basic tab on records
-     */
+
     public static void updateCitizenshipValues(String citizenshipType,String countryOfCitizenship,String ssn){
         try {
             waitElementBy(By.cssSelector(CITIZENSHIP_TYPE_DROPDOWN),20);
@@ -573,9 +550,7 @@ public class PersonPage extends BasePage{
             FailureDelegatePage.handlePageException(LogPage.UPDATE_EXTERNAL_ID_TYPES_FAIL);
         }
     }
-    /*
-     * to save changes  in Basic tab on records
-     */
+
     public static void saveChangesBtnPersonBasic(){
         try {
             waitElementBy(By.id(PERSON_BASIC_SAVE_CHANGES_BUTTON),20);
@@ -586,9 +561,7 @@ public class PersonPage extends BasePage{
             FailureDelegatePage.handlePageException(LogPage.SAVE_CHANGES_FAIL);
         }
     }
-    /*
-     * to save changes in Contact tab on records
-     */
+
     public static void saveChangesBtnPersonContact(){
         try {
             waitElementBy(By.id(SAVE_CHANGES_BTN_PERSON_CONTACT),20);
@@ -599,9 +572,7 @@ public class PersonPage extends BasePage{
             FailureDelegatePage.handlePageException(LogPage.SAVE_CHANGES_FAIL);
         }
     }
-    /*
-     * to save changes in Id Types tab on records
-     */
+
     public static void saveChangesBtnPersonIdTypes(){
         try {
             waitElementBy(By.id(SAVE_CHANGES_BTN_PERSON_ID_TYPES),20);
