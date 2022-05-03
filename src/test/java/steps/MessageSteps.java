@@ -42,4 +42,8 @@ public class MessageSteps {
     public static void validateStaffRequiredFields(String message) {
         MessagePage.validateStaffRequiredFields(message);
     }
+    @When("I validate if {string} required message is correct")
+    public static void pageAlertMessages(String message) {
+        MessagePage.pageAlertMessages(message);
+    }
 }

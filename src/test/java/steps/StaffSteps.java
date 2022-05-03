@@ -35,5 +35,17 @@ public class StaffSteps {
     public static void validateStaffMangerDatatableMessage(String message) {
         StaffPage.validateStaffMangerDatatableMessage(message);
     }
-    
+    @When("I click on ID Types SaveChanges button")
+    public static void saveChangesBtnStaffIdTypes() {
+        StaffPage.saveChangesBtnStaffIdTypes();
+    }
+    @When("I update Id Types group {string} person {int}")
+    public static void updateIdTypes(String index, int person) {
+        StaffPage.updateIdTypes(index,person);
+    }
+    @When("I validate Id Types group {string} person {int}")
+    public static void validateIdTypes(String index, int person) {
+        StaffPage.validateIdTypes(index,person);
+    }
+
 }

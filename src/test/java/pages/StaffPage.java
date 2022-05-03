@@ -2,6 +2,7 @@ package pages;
 
 import config.extent_reports.ExtentReportsSetUp;
 import org.openqa.selenium.By;
+import pages.Records.StudentStatusPage;
 
 public class StaffPage extends BasePage{
     private static final String CONTACT_PHONE_NUMBER_FIELD = "entity_phone_0_phone_number";
@@ -9,14 +10,152 @@ public class StaffPage extends BasePage{
     private static final String CONTACT_PHONE_TYPE_DROPDOWN_LIST = "#select2-drop";
     private static final String CONTACT_PHONE_COMMENTS_FIELD = "entity_phone_0_phone_comments";
     private static final String STAFF_CONTACT_SAVE_CHANGES_BUTTON = "saveChangesBtnStaffContact";
-    public static final String STAFF_STATUS_RECORD = "staffHeaderRecordStatusButton";
-    public static final String BASIC_PANEL_HEADING_ELEMENT = "#basic span";
-    public static final String STAFF_PERMISSION_RECORD = ".//*[@class='btn-group autoSubmit dropDownSelect'][2]";
-    public static final String HEADER_STAFF_DELETE_BUTTON = "#deleteStaffButton";
-    public static final String DELETE_STAFF_CONFIRM_SUBMIT_BUTTON = "#modalSubmitButtondeleteStaffConfirm";
-    public static final String STAFF_MANAGER_TABLE_SEARCH_FIELD = "staffManagerTableControlsTableSearch";
-    public static final String VALIDATE_STAFF_MANGER_DATATABLE_MESSAGE = "staffManagerTable_row_0_col_0";
+    private static final String STAFF_STATUS_RECORD = "staffHeaderRecordStatusButton";
+    private static final String BASIC_PANEL_HEADING_ELEMENT = "#basic span";
+    private static final String STAFF_PERMISSION_RECORD = ".//*[@class='btn-group autoSubmit dropDownSelect'][2]";
+    private static final String HEADER_STAFF_DELETE_BUTTON = "#deleteStaffButton";
+    private static final String DELETE_STAFF_CONFIRM_SUBMIT_BUTTON = "#modalSubmitButtondeleteStaffConfirm";
+    private static final String STAFF_MANAGER_TABLE_SEARCH_FIELD = "staffManagerTableControlsTableSearch";
+    private static final String VALIDATE_STAFF_MANGER_DATATABLE_MESSAGE = "staffManagerTable_row_0_col_0";
+    private static final String STAFF_ID_TYPES_SAVE_CHANGES_BUTTON = "saveChangesBtnStaffIdTypes";
 
+    private static String statusPlusSignElement(String index){
+        return String.format("#user_external_ids_%s_add",index);
+    }
+    private static String idTypePrimaryCheckbox(String index){
+        return String.format("#user_external_ids_%s_primary",index);
+    }
+    private static String typeDropdown(String index){
+        return String.format("#s2id_user_external_ids_%s_user_id_type_id",index);
+    }
+    private static String idNumber(String index){
+        return String.format("#user_external_ids_%s_user_id_number",index);
+    }
+    private static String idRecordedDate(String index){
+        return String.format("#user_external_ids_%s_user_id_date",index);
+    }
+    private static String whoAddedID(String index){
+        return String.format("#s2id_user_external_ids_%s_user_id_user_added_id",index);
+    }
+    private static String comments(String index){
+        return String.format("#user_external_ids_%s_user_id_comments",index);
+    }
+
+    public static void validateIdTypes(String index, int person){
+
+        String errorMessage = String.format(LogPage.VALIDATE_ID_TYPES_FAIL, index,person);
+        String passMessage = String.format(LogPage.VALIDATE_ID_TYPES_PASS, index,person);
+
+        boolean idTypeValidation = false;
+        boolean idTypePrymaryCheckboxLocator = false;
+        boolean idNumberValidation = false;
+        boolean idRecordedDateValidation = false;
+        boolean commentsValidation = false;
+
+        try {
+
+            scrollToElement(By.cssSelector(statusPlusSignElement(index)));
+            if (mass.get(person).get("IDType") != null) {
+                String idType = getText(By.cssSelector(typeDropdown(index)));
+                idTypeValidation = idType.contains(mass.get(person).get("IDType"));
+            }else{
+                idTypeValidation = true;
+            }
+            if (mass.get(person).get("IDNumber") != null) {
+                String idNumber = getAtribute(By.cssSelector(idNumber(index)),"value");
+                idNumberValidation = idNumber.contains(mass.get(person).get("IDNumber"));
+            }else{
+                idNumberValidation = true;
+            }
+            if (mass.get(person).get("IdRecordedDate") != null) {
+                String idRecordedDate = getAtribute(By.cssSelector(idRecordedDate(index)),"value");
+                idRecordedDateValidation = idRecordedDate.contains(mass.get(person).get("IdRecordedDate"));
+            }else{
+                idRecordedDateValidation = true;
+            }
+            if (mass.get(person).get("Comments") != null) {
+                String comments = getText(By.cssSelector(comments(index)));
+                commentsValidation = comments.contains(mass.get(person).get("Comments"));
+            }else{
+                commentsValidation = true;
+            }
+            switch (mass.get(person).get("Primary")) {
+                case "1":
+                    idTypePrymaryCheckboxLocator = checkBoxIsActive(By.cssSelector(idTypePrimaryCheckbox(index)));
+                    break;
+                case "0":
+                    idTypePrymaryCheckboxLocator = !checkBoxIsActive(By.cssSelector(idTypePrimaryCheckbox(index)));
+                    break;
+                default:
+                    throw new IllegalArgumentException("Unhandled index. Update business logic");
+            }
+                    if(idTypeValidation
+                            && idTypePrymaryCheckboxLocator
+                            && idNumberValidation
+                            && idRecordedDateValidation
+                            && commentsValidation){
+                        ExtentReportsSetUp.testingPass(passMessage);
+                    }else{
+                        FailureDelegatePage.handlePageException(errorMessage);
+                    }
+        } catch (Exception e) {
+            FailureDelegatePage.handlePageException(errorMessage);
+        }
+    }
+
+    public static void updateIdTypes(String index, int person){
+        String errorMessage = String.format(LogPage.UPDATE_ID_TYPES_ORG_FAIL, index,person);
+        String passMessage = String.format(LogPage.UPDATE_ID_TYPES_ORG_PASS, index,person);
+        try {
+            if (mass.get(person).get("IDType") != null) {
+                scrollToElement(By.cssSelector(statusPlusSignElement(index)));
+                waitUntilElementToBeSelected(By.cssSelector(typeDropdown(index)),20);
+                BasePage.click(By.cssSelector(typeDropdown(index)));
+                BasePage.selectElementsList(By.cssSelector(StudentStatusPage.CHECKBOX_LIST), "a");
+                clickOnListOfElements(mass.get(person).get("IDType"));
+            }
+            if (mass.get(person).get("IDNumber") != null) {
+                scrollToElement(By.cssSelector(statusPlusSignElement(index)));
+                waitElementBy(By.cssSelector(idNumber(index)),20);
+                BasePage.write(By.cssSelector(idNumber(index)),mass.get(person).get("IDNumber"));
+            }
+            if (mass.get(person).get("IdRecordedDate") != null) {
+                scrollToElement(By.cssSelector(statusPlusSignElement(index)));
+                waitElementBy(By.cssSelector(idRecordedDate(index)),20);
+                BasePage.write(By.cssSelector(idRecordedDate(index)),mass.get(person).get("IdRecordedDate"));
+            }
+            if (mass.get(person).get("WhoAddedID") != null) {
+                scrollToElement(By.cssSelector(statusPlusSignElement(index)));
+                BasePage.click(By.cssSelector(whoAddedID(index)));
+                BasePage.selectElementsList(By.cssSelector(OrgPage.WHO_ADDED_ID_DROPDOWN_LIST), "a");
+                clickOnListOfElements(mass.get(0).get("WhoAddedID"));
+            }
+            if (mass.get(person).get("Comments") != null) {
+                scrollToElement(By.cssSelector(statusPlusSignElement(index)));
+                waitElementBy(By.cssSelector(comments(index)),20);
+                BasePage.write(By.cssSelector(comments(index)),mass.get(person).get("Comments"));
+            }
+            if (mass.get(person).get("Primary") != null) {
+                scrollToElement(By.cssSelector(statusPlusSignElement(index)));
+                waitUntilElementPresence(By.cssSelector(idTypePrimaryCheckbox(index)),20);
+                BasePage.click(By.cssSelector(idTypePrimaryCheckbox(index)));
+            }
+            ExtentReportsSetUp.testingPass(passMessage);
+        } catch (Exception e) {
+            FailureDelegatePage.handlePageException(errorMessage);
+        }
+    }
+
+    public static void saveChangesBtnStaffIdTypes(){
+        try {
+            waitElementBy(By.id(STAFF_ID_TYPES_SAVE_CHANGES_BUTTON),20);
+            BasePage.scrollToElement(By.id(STAFF_ID_TYPES_SAVE_CHANGES_BUTTON));
+            BasePage.click(By.id(STAFF_ID_TYPES_SAVE_CHANGES_BUTTON));
+            ExtentReportsSetUp.testingPass(LogPage.SAVE_CHANGES_PASS);
+        } catch (Exception e) {
+            FailureDelegatePage.handlePageException(LogPage.SAVE_CHANGES_FAIL);
+        }
+    }
 
     public static void validateStaffMangerDatatableMessage(String message){
         String errorMessage = String.format(LogPage.VALIDATE_QUICK_SEARCH_EMPTY_FAIL, message);

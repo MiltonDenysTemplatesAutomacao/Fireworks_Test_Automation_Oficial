@@ -15,6 +15,23 @@ public class MessagePage extends BasePage{
     public static final String VALIDATION_ALERT_CLOSE_BUTTON = "#pageValidationAlertMessageClose";
     public static final String QUICK_ADD_STAFF_MODAL_VALIDATION_ALERT_MESSAGE = "quickAddStaffModalValidationAlertMessage";
     public static final String QUICK_ADD_STAFF_MODAL_ALERT_MESSAGE = "#quickAddStaffModalAlertMessage";
+    public static final String PAGE_ALERT_MESSAGES = "#pageAlertMessages";
+
+
+    public static void pageAlertMessages(String alertMessage){
+        String errorMessage = String.format(LogPage.ALERT_MESSAGE_FAIL, alertMessage);
+        String passMessage = String.format(LogPage.ALERT_MESSAGE_PASS, alertMessage);
+        try {
+            waitElementBy(By.cssSelector(PAGE_ALERT_MESSAGES), 10);
+            if (alertMessageContains(By.cssSelector(PAGE_ALERT_MESSAGES), alertMessage)) {
+                ExtentReportsSetUp.testingPass(passMessage);
+            } else {
+                FailureDelegatePage.handlePageException(errorMessage);
+            }
+        } catch (Exception e) {
+            FailureDelegatePage.handlePageException(errorMessage);
+        }
+    }
 
 
     public static void validateStaffRequiredFields(String requiredMessage) {

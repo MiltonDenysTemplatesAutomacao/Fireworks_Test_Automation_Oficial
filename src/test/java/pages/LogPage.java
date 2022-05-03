@@ -196,6 +196,8 @@ public class LogPage {
     public static final String UPDATE_STUDENT_STATUS_FAIL = "Fail while trying update student status group %s person %s";
     public static final String UPDATE_STATUS_ORG_PASS = "I update organization status group %s person %s";
     public static final String UPDATE_STATUS_ORG_FAIL = "Fail while trying to update organization status group %s person %s";
+    public static final String UPDATE_ID_TYPES_ORG_PASS = "I update Id Types group %s person %s";
+    public static final String UPDATE_ID_TYPES_ORG_FAIL = "Fail while trying to update Id Types group %s person %s";
     public static final String UPDATE_INTEREST_PASS = "I update Interests group %s person %s";
     public static final String UPDATE_INTEREST_FAIL = "Fail while trying update Interests group %s person %s";
     public static final String UPDATE_ACTIVITIES_PASS = "I update Activities group %s person %s";
@@ -226,4 +228,6 @@ public class LogPage {
     public static final String VALIDATE_BASIC_ELEMENT_IS_VISIBLE_FAIL = "Fail while trying to validate if basic panel element is visible";
     public static final String SEARCH_STAFF_MANAGER_PASS = "I search %s on staff page manager";
     public static final String SEARCH_STAFF_MANAGER_FAIL = "Fail while trying to search %s on staff page manager";
+    public static final String VALIDATE_ID_TYPES_PASS = "I validate Id Types group %s person %s";
+    public static final String VALIDATE_ID_TYPES_FAIL = "Fail while trying to validate Id Types group %s person %s";
 }
