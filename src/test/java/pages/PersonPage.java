@@ -392,14 +392,12 @@ public class PersonPage extends BasePage{
         } catch (Exception e) {
             FailureDelegatePage.handlePageException(LogPage.VERIFY_RECORD_PANELS_FAIL);
         }
-
     }
 
     public static void verifyStudentType(){
         try {
             waitUntilElementPresence(By.cssSelector(HEADER_STUDENT_TYPE_ELEMENT),20);
             String studentTypeText = getText(By.cssSelector(HEADER_STUDENT_TYPE_ELEMENT));
-            System.out.println(studentTypeText);
             if(studentTypeText.contains(mass.get(0).get("StudentType"))){
                 ExtentReportsSetUp.testingPass(LogPage.VERIFY_STUDENT_TYPE_PASS);
             }else{

@@ -1,5 +1,6 @@
 #Author: Milton Silva
 #Regression testcase TL-38: Staff Record: Account Start Date
+#Regression testcase TL-179:Staff Record: Header Displays Account Status & Permission Group
 
 @AccountStartDate
 Feature: Staff Record: Account Start Date

@@ -13,7 +13,7 @@ Feature: Search by name
     When I quick search "Phone"
     Then I validate if result for "Phone" is correct
     And I open a record
-    Then I validate if "Fullname"summary opened properly
+    Then I validate if "FullName"summary opened properly
 
   @AccessQuickSearchOrganizationResults
   Scenario: access quick search results for organization

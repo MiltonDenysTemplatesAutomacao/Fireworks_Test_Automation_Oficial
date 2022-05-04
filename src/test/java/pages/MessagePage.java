@@ -13,11 +13,55 @@ public class MessagePage extends BasePage{
     public static final String GENERAL_ALERT_CLOSE_BUTTON = "#generalAlertMessageClose";
     public static final String REQUIRED_FIELDS_PERSON_RECORD_MODAL = "#pageAlertMessages";
     public static final String VALIDATION_ALERT_CLOSE_BUTTON = "#pageValidationAlertMessageClose";
+    public static final String QUICK_ADD_STAFF_MODAL_VALIDATION_ALERT_MESSAGE = "quickAddStaffModalValidationAlertMessage";
+    public static final String QUICK_ADD_STAFF_MODAL_ALERT_MESSAGE = "#quickAddStaffModalAlertMessage";
+    public static final String PAGE_ALERT_MESSAGES = "#pageAlertMessages";
 
 
-    /*
-     * Method to close alert person modal
-     */
+    public static void pageAlertMessages(String alertMessage){
+        String errorMessage = String.format(LogPage.ALERT_MESSAGE_FAIL, alertMessage);
+        String passMessage = String.format(LogPage.ALERT_MESSAGE_PASS, alertMessage);
+        try {
+            waitElementBy(By.cssSelector(PAGE_ALERT_MESSAGES), 10);
+            if (alertMessageContains(By.cssSelector(PAGE_ALERT_MESSAGES), alertMessage)) {
+                ExtentReportsSetUp.testingPass(passMessage);
+            } else {
+                FailureDelegatePage.handlePageException(errorMessage);
+            }
+        } catch (Exception e) {
+            FailureDelegatePage.handlePageException(errorMessage);
+        }
+    }
+
+
+    public static void validateStaffRequiredFields(String requiredMessage) {
+        String errorMessage = String.format(LogPage.VALIDATE_STAFF_REQUIRED_FIELDS_MESSAGE_FAIL,requiredMessage);
+        String passMessage = String.format(LogPage.VALIDATE_STAFF_REQUIRED_FIELDS_MESSAGE_PASS,requiredMessage);
+        try {
+            waitElementBy(By.cssSelector(QUICK_ADD_STAFF_MODAL_ALERT_MESSAGE), 10);
+            if (alertMessageContains(By.cssSelector(QUICK_ADD_STAFF_MODAL_ALERT_MESSAGE), requiredMessage)) {
+                ExtentReportsSetUp.testingPass(passMessage);
+            } else {
+                FailureDelegatePage.handlePageException(errorMessage);
+            }
+        } catch (Exception e) {
+            FailureDelegatePage.handlePageException(errorMessage);
+        }
+    }
+    public static void validateStaffRequiredFieldsMessage(String requiredMessage) {
+        String errorMessage = String.format(LogPage.VALIDATE_STAFF_REQUIRED_FIELDS_MESSAGE_FAIL,requiredMessage);
+        String passMessage = String.format(LogPage.VALIDATE_STAFF_REQUIRED_FIELDS_MESSAGE_PASS,requiredMessage);
+        try {
+            waitElementBy(By.id(QUICK_ADD_STAFF_MODAL_VALIDATION_ALERT_MESSAGE), 10);
+            if (alertMessageContains(By.id(QUICK_ADD_STAFF_MODAL_VALIDATION_ALERT_MESSAGE), requiredMessage)) {
+                ExtentReportsSetUp.testingPass(passMessage);
+            } else {
+                FailureDelegatePage.handlePageException(errorMessage);
+            }
+        } catch (Exception e) {
+            FailureDelegatePage.handlePageException(errorMessage);
+        }
+    }
     public static void closeAlertPersonRecordModal(){
         try {
             waitUntilElementToBeSelected(By.cssSelector(VALIDATION_ALERT_CLOSE_BUTTON),20);

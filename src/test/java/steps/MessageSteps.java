@@ -2,6 +2,7 @@ package steps;
 
 import io.cucumber.java.en.When;
 import pages.MessagePage;
+import pages.StaffPage;
 
 public class MessageSteps {
 
@@ -25,6 +26,10 @@ public class MessageSteps {
     public static void validateRequiredFieldsMessageOrgRecord(String requiredMessage) {
         MessagePage.validateRecordRequiredFieldsMessage(requiredMessage);
     }
+    @When("I validate if {string} message alert for staff required is correct")
+    public static void validateStaffRequiredFieldsMessage(String requiredMessage) {
+        MessagePage.validateStaffRequiredFieldsMessage(requiredMessage);
+    }
     @When("I close alert person modal")
     public static void closeAlertPersonModal() {
         MessagePage.closeAlertPersonModal();
@@ -32,5 +37,13 @@ public class MessageSteps {
     @When("I close alert if return this message {string}")
     public static void closeAlertIfReturned(String alert) {
         MessagePage.closeAlertIfReturned(alert);
+    }
+    @When("I validate if {string} message alert for staff")
+    public static void validateStaffRequiredFields(String message) {
+        MessagePage.validateStaffRequiredFields(message);
+    }
+    @When("I validate if {string} required message is correct")
+    public static void pageAlertMessages(String message) {
+        MessagePage.pageAlertMessages(message);
     }
 }

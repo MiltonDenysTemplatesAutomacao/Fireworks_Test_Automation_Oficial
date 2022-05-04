@@ -21,7 +21,7 @@ public class OrgPage extends BasePage{
     private static final String ID_NUMBER_FIELD = "#entity_external_id_0_org_id_number";
     private static final String ID_RECORDED_DATE_FIELD = "#entity_external_id_0_org_id_date";
     private static final String WHO_ADDED_ID_DROPDOWN = "#select2-chosen-7";
-    private static final String WHO_ADDED_ID_DROPDOWN_LIST = "#select2-drop";
+    public static final String WHO_ADDED_ID_DROPDOWN_LIST = "#select2-drop";
     private static final String COMMENTS_FIELD = "#entity_external_id_0_org_id_comments";
     private static final String PLUS_BUTTON_EXTERNAL_ID = "//*[@id='entity_external_id_0_add']";
     private static final String SAVE_CHANGES_BTN_ORG_ID_TYPES = "saveChangesBtnOrgIdTypes";
@@ -183,7 +183,6 @@ public class OrgPage extends BasePage{
         try {
             waitElementBy(By.xpath(PLUS_BUTTON_EXTERNAL_ID),20);
             BasePage.scrollToElement(By.xpath(PLUS_BUTTON_EXTERNAL_ID));
-
             if (mass.get(0).get(type) != null) {
                 BasePage.click(By.cssSelector(TYPE_DROPDOWN));
                 BasePage.selectElementsList(By.cssSelector(TYPE_DROPDOWN_LIST), "a");
