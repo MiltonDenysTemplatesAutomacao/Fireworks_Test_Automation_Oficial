@@ -5,14 +5,14 @@ import org.openqa.selenium.By;
 import pages.Records.StudentStatusPage;
 
 public class StaffPage extends BasePage{
+    public static final String STAFF_STATUS_RECORD = "staffHeaderRecordStatusButton";
+    public static final String STAFF_PERMISSION_RECORD = ".//*[@class='btn-group autoSubmit dropDownSelect'][2]";
     private static final String CONTACT_PHONE_NUMBER_FIELD = "entity_phone_0_phone_number";
     private static final String CONTACT_PHONE_TYPE_DROPDOWN = "s2id_entity_phone_0_phone_type";
     private static final String CONTACT_PHONE_TYPE_DROPDOWN_LIST = "#select2-drop";
     private static final String CONTACT_PHONE_COMMENTS_FIELD = "entity_phone_0_phone_comments";
     private static final String STAFF_CONTACT_SAVE_CHANGES_BUTTON = "saveChangesBtnStaffContact";
-    private static final String STAFF_STATUS_RECORD = "staffHeaderRecordStatusButton";
     private static final String BASIC_PANEL_HEADING_ELEMENT = "#basic span";
-    private static final String STAFF_PERMISSION_RECORD = ".//*[@class='btn-group autoSubmit dropDownSelect'][2]";
     private static final String HEADER_STAFF_DELETE_BUTTON = "#deleteStaffButton";
     private static final String DELETE_STAFF_CONFIRM_SUBMIT_BUTTON = "#modalSubmitButtondeleteStaffConfirm";
     private static final String STAFF_MANAGER_TABLE_SEARCH_FIELD = "staffManagerTableControlsTableSearch";
@@ -209,6 +209,7 @@ public class StaffPage extends BasePage{
         }
     }
 
+
     public static void verifyHeaderRecordStatus(String status){
         String passMessage = String.format(LogPage.VERIFY_HEADER_RECORD_STATUS_PASS, status);
         String failMessage = String.format(LogPage.VERIFY_HEADER_RECORD_STATUS_FAIL, status);
@@ -239,6 +240,7 @@ public class StaffPage extends BasePage{
             FailureDelegatePage.handlePageException(failMessage);
         }
     }
+
     public static void updatePhoneNumber(String phone,String phoneType,String comment){
         try {
             waitElementBy(By.id(CONTACT_PHONE_NUMBER_FIELD),20);

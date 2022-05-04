@@ -28,7 +28,7 @@ Feature: Search by phone number
     When I update "EmailAddress", "EmailType", "EmailOptInMethod", "", "", "" and "" to update email address
     And I go to Home page
     When I quick search "EmailAddress"
-    Then I validate if result for "Firstname" is correct
+    Then I validate if result for "Name" is correct
     When I quick search partial "EmailAddress"
     Then I validate if result for "EmailAddress" is correct
 
@@ -36,7 +36,7 @@ Feature: Search by phone number
   Scenario: to Quick Search a staff member by Email, full or partial
     Given I login as "firestarterUsername", "firestarterPassword", "firestarterFullName"
     And I create a staff
-      |FirstName  |LastName	|FullName		|EmailAddress	|EmailType  |AccountStartDate	|AccountEndDate	|PermissionGroup|
+      |FirstName  |LastName	|Fullname		|EmailAddress	|EmailType  |AccountStartDate	|AccountEndDate	|PermissionGroup|
       |Levi		  | Ralph	|Levi  Ralph	|levi@ralph.com	|Personal	|07/10/2017			|07/10/2025		|Administrator	|
     And I go to Home page
     When I quick search "EmailAddress"

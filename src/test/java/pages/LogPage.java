@@ -230,4 +230,5 @@ public class LogPage {
     public static final String SEARCH_STAFF_MANAGER_FAIL = "Fail while trying to search %s on staff page manager";
     public static final String VALIDATE_ID_TYPES_PASS = "I validate Id Types group %s person %s";
     public static final String VALIDATE_ID_TYPES_FAIL = "Fail while trying to validate Id Types group %s person %s";
+
 }
