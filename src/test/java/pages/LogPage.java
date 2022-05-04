@@ -227,8 +227,17 @@ public class LogPage {
     public static final String VALIDATE_BASIC_ELEMENT_IS_VISIBLE_PASS = "I validate if basic panel element is visible";
     public static final String VALIDATE_BASIC_ELEMENT_IS_VISIBLE_FAIL = "Fail while trying to validate if basic panel element is visible";
     public static final String SEARCH_STAFF_MANAGER_PASS = "I search %s on staff page manager";
-    public static final String SEARCH_STAFF_MANAGER_FAIL = "Fail while trying to search %s on staff page manager";
-    public static final String VALIDATE_ID_TYPES_PASS = "I validate Id Types group %s person %s";
-    public static final String VALIDATE_ID_TYPES_FAIL = "Fail while trying to validate Id Types group %s person %s";
-
+    public static final String SEARCH_STAFF_MANAGER_FAIL = "Fail while trying to search '%s' on staff page manager";
+    public static final String VALIDATE_ID_TYPES_PASS = "I validate Id Types group '%s' person '%s'";
+    public static final String VALIDATE_ID_TYPES_FAIL = "Fail while trying to validate Id Types group '%s' person '%s'";
+    public static final String VERIFY_HEADER_ASSIGNED_STAFF_PASS = "I verify Header Assign Staff '%s'";
+    public static final String VERIFY_HEADER_ASSIGNED_STAFF_FAIL = "Fail while trying to verify Header Assign Staff '%s'";
+    public static final String VERIFY_STUDENT_STATUS_LABEL_PASS = "I validate Student Status label '%s'";
+    public static final String VERIFY_STUDENT_STATUS_LABEL_FAIL = "Fail while trying to validate Student Status label '%s'";
+    public static final String VERIFY_ENTRY_TERM_LABEL_PASS = "I validate Entry Term label '%s'";
+    public static final String VERIFY_ENTRY_TERM_LABEL_FAIL = "Fail while trying to validate Entry Term label '%s'";
+    public static final String UPDATE_EXTERNAL_ID_PASS = "I update External Id group %s person %s";
+    public static final String UPDATE_EXTERNAL_ID_FAIL = "Fail while trying to update External Id group %s person %s";
+    public static final String VALIDATE_VISA_NUMBER_PASS = "I validate if Visa number is correct";
+    public static final String VALIDATE_VISA_NUMBER_FAIL = "Fail while trying to validate if Visa number is correct";
 }

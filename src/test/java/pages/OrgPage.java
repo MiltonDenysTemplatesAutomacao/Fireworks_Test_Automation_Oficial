@@ -6,22 +6,20 @@ import pages.Records.StudentStatusPage;
 
 public class OrgPage extends BasePage{
 
+    public static final String DATATABLE_EMPTY = "organizationManagerTable_row_0_col_0";
+    public static final String WHO_ADDED_ID_DROPDOWN_LIST = "#select2-drop";
     private static final String EMAIL_ADDRESS_FIELD = "#entity_email_0_org_email_address";
     private static final String EMAIL_TYPE_DROP_DOWN = "#s2id_entity_email_0_org_email_type";
     private static final String EMAIL_TYPE_DROP_DOWN_LIST = "#select2-drop";
-
     private static final String EMAIL_OPT_DROP_DOWN = "#s2id_entity_email_0_org_opt_in_method_id";
     private static final String EMAIL_OPT_DROP_DOWN_LIST = "#select2-drop";
-
     private static final String ORG_BASIC_SAVE_CHANGES_BUTTON = "saveChangesBtnOrgContact";
     private static final String ORGANIZATION_NAME_FIELD = "#org_name_0_org_name_formal";
-
     private static final String TYPE_DROPDOWN = "#select2-chosen-6";
     private static final String TYPE_DROPDOWN_LIST = "#select2-drop";
     private static final String ID_NUMBER_FIELD = "#entity_external_id_0_org_id_number";
     private static final String ID_RECORDED_DATE_FIELD = "#entity_external_id_0_org_id_date";
     private static final String WHO_ADDED_ID_DROPDOWN = "#select2-chosen-7";
-    public static final String WHO_ADDED_ID_DROPDOWN_LIST = "#select2-drop";
     private static final String COMMENTS_FIELD = "#entity_external_id_0_org_id_comments";
     private static final String PLUS_BUTTON_EXTERNAL_ID = "//*[@id='entity_external_id_0_add']";
     private static final String SAVE_CHANGES_BTN_ORG_ID_TYPES = "saveChangesBtnOrgIdTypes";
@@ -30,7 +28,7 @@ public class OrgPage extends BasePage{
     private static final String DELETE_ORG_MODAL_DELETE_BUTTON = "modalSubmitButtondeleteOrganizationConfirm";
     private static final String ORGANIZATION_MANAGER_TABLE = "organizationManagerTable";
     private static final String ORGANIZATION_MANAGER_TABLE_SEARCH_FIELD = "organizationManagerTableControlsTableSearch";
-    public static final String DATATABLE_EMPTY = "organizationManagerTable_row_0_col_0";
+
 
 
     private static String statusPlusSignElement(String index){
