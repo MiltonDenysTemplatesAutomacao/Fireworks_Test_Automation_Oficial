@@ -14,7 +14,7 @@ Feature: Student Status
     Then I validate if "Person has been created" message is correct
     And I go to Home page
     When I quick search "FirstName"
-    Then I validate if "FirstName"summary opened properly
+    Then I validate if "Stephen"summary opened properly
     And I open a record
     And I click on student status
     And I click on add student status "0"

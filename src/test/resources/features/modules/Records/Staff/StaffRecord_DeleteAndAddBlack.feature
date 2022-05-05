@@ -11,7 +11,7 @@ Feature: Staff Record: Required fields
       |FirstName  |LastName	  |Fullname		    |EmailAddress	            |PermissionGroup|
       |Kenzo	  |Mizoguchi  |Kenzo Mizoguchi	|KMizoguchi@directors.net	|Administrator	|
     And I validate if "Staff member has been created." message is correct
-    And I validate if "Fullname"summary opened properly
+    And I validate if "Kenzo Mizoguchi"summary opened properly
     And I delete a staff member
     Then I validate if "Staff member has been deleted." message is correct
     #the staff record is not found in the staff manager table

@@ -29,8 +29,8 @@ Feature: Multiple roles can be assigned
     And I search "LastName" on duplicate manager
     And I validate if the record lo longer exists on the duplicates page
     When I navigate to people on records
-    And I open a people record by "LastName"
-    Then I validate if "FullName"summary opened properly
+    And I open a people record by "Takahata"
+    Then I validate if "Isao Takahata"summary opened properly
     And I verify Header Role "Multiple"
     And I verify all three roles are selected in the role dropdown
     And I navigate to contact

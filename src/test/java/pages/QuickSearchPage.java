@@ -45,7 +45,7 @@ public class QuickSearchPage extends BasePage{
     public static void validateIfOpenedSummaryProperly(String parameter) {
         try {
             String text = getText(By.id(OBJECT_TITLE_ELEMENT));
-            if (text.contains(mass.get(0).get(parameter))) {
+            if (text.contains(parameter)) {
                 ExtentReportsSetUp.testingPass(LogPage.VALIDATE_IF_OPENED_SUMMARY_PROPERLY_PASS);
             } else {
                 FailureDelegatePage.handlePageException(LogPage.VALIDATE_IF_OPENED_SUMMARY_PROPERLY_FAIL);

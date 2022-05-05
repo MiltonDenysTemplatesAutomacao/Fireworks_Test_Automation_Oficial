@@ -27,7 +27,7 @@ Feature: Staff Record: Required fields
       |Alexander  |Hamilton   |Alexander Hamilton	|AHamilton@foundingpeople.net |Administrator  |
     And I clickQuickAddStaffSaveAndGo
     And I validate if "Staff member has been created. They have been sent a welcome email with a link prompting them to login and create a password. The link in this email will expire in 12 hours." message is correct
-    And I validate if "Fullname"summary opened properly
+    And I validate if "Alexander Hamilton"summary opened properly
     Then I verify Header Record Status "Record Status: Active"
     And I verify Header Permission "Permissions: Administrator"
     And I validate if basic panel element is visible

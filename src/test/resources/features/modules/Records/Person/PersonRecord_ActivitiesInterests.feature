@@ -14,7 +14,7 @@ Feature: Activities and Interests
     #to add an Interest independent of Activities
     Given I go to Home page
     And I quick search "FirstName"
-    And I validate if "FirstName"summary opened properly
+    And I validate if "Frank"summary opened properly
     When I open a record
     And I navigate to Interests & Activities
     And I update Interests group "0" person 0

@@ -4,14 +4,13 @@ import config.extent_reports.ExtentReportsSetUp;
 import io.cucumber.datatable.DataTable;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
-import org.testng.Assert;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 public class PersonPage extends BasePage{
 
+    public static final String SUMMARY_FIELD_DROPDOWN = "s2id_summaryFieldPickerEntityType1";
+    public static final String SUMMARY_FIELD_DROPDOWN_LIST = "#select2-results-2";
     public static final String COMPOSER_FIRST_NAME_FIELD = "person_name_0_createPersonNameFirst";
     public static final String COMPOSER_LAST_NAME_FIELD =  "person_name_0_createPersonNameLast";
     public static final String COMPOSER_EMAIL_ADDRESS_FIELD = "entity_email_0_createPersonEmailAddress";
@@ -108,6 +107,26 @@ public class PersonPage extends BasePage{
     private static final String COMPOSER_SAVE_CHANGES_BUTTON = "saveChangesBtnPersonCreate";
 
 
+
+    public static void verifySummaryData(String summaryData){
+
+    }
+
+    public static void addSummaryField(String summary){
+        String passMessage = String.format(LogPage.ADD_SUMMARY_FIELD_PASS, summary);
+        String failMessage = String.format(LogPage.ADD_SUMMARY_FIELD_FAIL, summary);
+        try {
+            waitUntilElementToBeSelected(By.id(SUMMARY_FIELD_DROPDOWN),20);
+            click(By.id(SUMMARY_FIELD_DROPDOWN));
+            waitElementBy(By.cssSelector(SUMMARY_FIELD_DROPDOWN_LIST),20);
+            BasePage.selectElementsList(By.cssSelector(SUMMARY_FIELD_DROPDOWN_LIST), "a");
+            clickOnListOfElements(summary);
+            wait(500);
+            ExtentReportsSetUp.testingPass(passMessage);
+        } catch (Exception e) {
+            FailureDelegatePage.handlePageException(failMessage);
+        }
+    }
     public static void verifyStudentStatusLabel(String studentStatusLabel){
         String passMessage = String.format(LogPage.VERIFY_STUDENT_STATUS_LABEL_PASS, studentStatusLabel);
         String failMessage = String.format(LogPage.VERIFY_STUDENT_STATUS_LABEL_FAIL, studentStatusLabel);
@@ -380,7 +399,7 @@ public class PersonPage extends BasePage{
         String failMessage = String.format(LogPage.SEARCH_PEOPLE_MANAGER_FAIL, search);
         try {
             waitElementBy(By.cssSelector(PEOPLE_MANAGER_TABLE),20);
-            write(By.cssSelector(PEOPLE_MANAGER_TABLE_SEARCH_FIELD),mass.get(0).get(search));
+            write(By.cssSelector(PEOPLE_MANAGER_TABLE_SEARCH_FIELD),search);
             ExtentReportsSetUp.testingPass(passMessage);
         } catch (Exception e) {
             FailureDelegatePage.handlePageException(failMessage);

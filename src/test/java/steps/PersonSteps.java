@@ -91,4 +91,12 @@ public class PersonSteps {
     public static void navigateToIdTypes() {
         PersonPage.navigateToIdTypes();
     }
+    @Then("I add in summary field {string}")
+    public static void addSummaryField(String summary) {
+        PersonPage.addSummaryField(summary);
+    }
+    @Then("I verify if summary {string} data is correct")
+    public static void verifySummaryData(String summaryData) {
+        PersonPage.verifySummaryData(summaryData);
+    }
 }
