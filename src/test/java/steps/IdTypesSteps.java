@@ -10,8 +10,8 @@ public class IdTypesSteps {
         IdTypesPage.updateExternalId(index,person);
     }
     @When("I click on external ID SaveChanges button")
-    public static void saveChangesBtnStaffIdTypes() {
-        IdTypesPage.saveChangesBtnStaffIdTypes();
+    public static void saveChangesBtnIdTypes() {
+        IdTypesPage.saveChangesBtnIdTypes();
     }
     @When("I validate if Visa number is correct")
     public static void validateVisaNumber() {

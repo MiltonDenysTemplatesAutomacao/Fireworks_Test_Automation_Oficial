@@ -212,16 +212,16 @@ public class LogPage {
     public static final String CLICK_STUDENT_STATUS_PRIMARY_CHECKBOX_FAIl = "Fail while trying to click on status primary checkbox index %s";
     public static final String CLICK_STUDENT_STATUS_ACTIVE_CHECKBOX_PASS = "I click on status active checkbox index %s";
     public static final String CLICK_STUDENT_STATUS_ACTIVE_CHECKBOX_FAIL = "Fail while trying to click on status active checkbox index %s";
-    public static final String CLOSE_ALERT_IF_RETURNED_PASS = "I close alert if return this message %s";
-    public static final String CLOSE_ALERT_IF_RETURNED_FAIL = "Fail while trying to close alert if return this message %s";
-    public static final String UPDATE_HEADER_ROLE_PASS = "I update Header Role %s";
-    public static final String UPDATE_HEADER_ROLE_FAIL = "Fail while trying to update Header Role %s";
+    public static final String CLOSE_ALERT_IF_RETURNED_PASS = "I close alert if return this message '%s'";
+    public static final String CLOSE_ALERT_IF_RETURNED_FAIL = "Fail while trying to close alert if return this message '%s'";
+    public static final String UPDATE_HEADER_ROLE_PASS = "I update Header Role '%s'";
+    public static final String UPDATE_HEADER_ROLE_FAIL = "Fail while trying to update Header Role '%s'";
     public static final String DELETE_ORGANIZATION_PASS = "I delete an organization";
     public static final String DELETE_ORGANIZATION_FAIL = "Fail while trying to delete an organization";
-    public static final String VERIFY_HEADER_RECORD_STATUS_PASS = "I verify Header Record Status %s";
-    public static final String VERIFY_HEADER_RECORD_STATUS_FAIL = "Fail while trying to verify Header Record Status %s";
-    public static final String VERIFY_HEADER_PERMISSIONS_PASS = "I verify Header Permission %s";
-    public static final String VERIFY_HEADER_PERMISSIONS_FAIL = "Fail while trying to verify Header Permission %s";
+    public static final String VERIFY_HEADER_RECORD_STATUS_PASS = "I verify Header Record Status '%s'";
+    public static final String VERIFY_HEADER_RECORD_STATUS_FAIL = "Fail while trying to verify Header Record Status '%s'";
+    public static final String VERIFY_HEADER_PERMISSIONS_PASS = "I verify Header Permission '%s'";
+    public static final String VERIFY_HEADER_PERMISSIONS_FAIL = "Fail while trying to verify Header Permission '%s'";
     public static final String VALIDATE_STAFF_REQUIRED_FIELDS_MESSAGE_PASS = "I validate if '%s' message alert for staff required is correct";
     public static final String VALIDATE_STAFF_REQUIRED_FIELDS_MESSAGE_FAIL = "FAILED to validate if '%s' message alert for staff required is correct";
     public static final String VALIDATE_BASIC_ELEMENT_IS_VISIBLE_PASS = "I validate if basic panel element is visible";
@@ -240,4 +240,8 @@ public class LogPage {
     public static final String UPDATE_EXTERNAL_ID_FAIL = "Fail while trying to update External Id group %s person %s";
     public static final String VALIDATE_VISA_NUMBER_PASS = "I validate if Visa number is correct";
     public static final String VALIDATE_VISA_NUMBER_FAIL = "Fail while trying to validate if Visa number is correct";
+    public static final String VERIFY_RECORD_HEADER_PASS = "I verify the record header for organization";
+    public static final String VERIFY_RECORD_HEADER_FAIL = "Fail while trying to verify the record header for organization";
+    public static final String VERIFY_ORG_ID_PASS = "I validate Org Id label";
+    public static final String VERIFY_ORG_ID_FAIL = "Fail while trying to validate Org Id label";
 }

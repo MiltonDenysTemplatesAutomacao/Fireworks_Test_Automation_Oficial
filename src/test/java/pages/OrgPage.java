@@ -5,7 +5,9 @@ import org.openqa.selenium.By;
 import pages.Records.StudentStatusPage;
 
 public class OrgPage extends BasePage{
-
+    public static final String HEADER_RECORD_STATUS_ELEMENT = "orgHeaderRecordStatusButton";
+    public static final String HEADER_OK_TO_CONTACT_ELEMENT = "personHeaderContactButton";
+    public static final String HEADER_ORG_CATEGORY_ELEMENT = "orgHeaderCategoryButton";
     public static final String DATATABLE_EMPTY = "organizationManagerTable_row_0_col_0";
     public static final String WHO_ADDED_ID_DROPDOWN_LIST = "#select2-drop";
     private static final String EMAIL_ADDRESS_FIELD = "#entity_email_0_org_email_address";
@@ -28,6 +30,7 @@ public class OrgPage extends BasePage{
     private static final String DELETE_ORG_MODAL_DELETE_BUTTON = "modalSubmitButtondeleteOrganizationConfirm";
     private static final String ORGANIZATION_MANAGER_TABLE = "organizationManagerTable";
     private static final String ORGANIZATION_MANAGER_TABLE_SEARCH_FIELD = "organizationManagerTableControlsTableSearch";
+    private static final String HEADER_ORG_ID_DISPLAY = "descriptionObjectOrgIdValue";
 
 
 
@@ -42,6 +45,44 @@ public class OrgPage extends BasePage{
     }
     private static String orgStatusStatusComments(String index){
         return String.format("#org_status_%s_org_status_comments",index);
+    }
+
+
+    public static void verifyOrgId(String orgId){
+        try {
+            scrollToElement(By.id(QuickSearchPage.OBJECT_TITLE_ELEMENT));
+            waitElementBy(By.id(QuickSearchPage.OBJECT_TITLE_ELEMENT),20);
+            String orgIdText = getText(By.id(HEADER_ORG_ID_DISPLAY));
+            if(orgIdText.contains(orgId)){
+                ExtentReportsSetUp.testingPass(LogPage.VERIFY_ORG_ID_PASS);
+            }else{
+                FailureDelegatePage.handlePageException(LogPage.VERIFY_ORG_ID_FAIL);
+            }
+        } catch (Exception e) {
+            FailureDelegatePage.handlePageException(LogPage.VERIFY_ORG_ID_FAIL);
+        }
+    }
+    public static void verifyRecordHeader(String name, String oktoContact, String recordStatus, String orgCategory){
+
+        try {
+            scrollToElement(By.id(QuickSearchPage.OBJECT_TITLE_ELEMENT));
+            waitElementBy(By.id(QuickSearchPage.OBJECT_TITLE_ELEMENT),20);
+            String fullNameText = getText(By.id(QuickSearchPage.OBJECT_TITLE_ELEMENT));
+            String okToContactText = getText(By.id(HEADER_OK_TO_CONTACT_ELEMENT));
+            String recordStatusText = getText(By.id(HEADER_RECORD_STATUS_ELEMENT));
+            String orgCategoryText = getText(By.id(HEADER_ORG_CATEGORY_ELEMENT));
+            if(fullNameText.contains(name)
+                && okToContactText.contains(oktoContact)
+                && recordStatusText.contains(recordStatus)
+                && orgCategoryText.contains(orgCategory)){
+                ExtentReportsSetUp.testingPass(LogPage.VERIFY_RECORD_HEADER_PASS);
+            }else{
+                FailureDelegatePage.handlePageException(LogPage.VERIFY_RECORD_HEADER_FAIL);
+            }
+        } catch (Exception e) {
+            FailureDelegatePage.handlePageException(LogPage.VERIFY_RECORD_HEADER_FAIL);
+        }
+
     }
 
     public static void validateOrganizationDatatableMessage(String message){
