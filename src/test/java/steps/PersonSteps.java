@@ -95,8 +95,12 @@ public class PersonSteps {
     public static void addSummaryField(String summary) {
         PersonPage.addSummaryField(summary);
     }
-    @Then("I verify if summary {string} data is correct")
-    public static void verifySummaryData(String summaryData) {
-        PersonPage.verifySummaryData(summaryData);
+    @Then("I verify if summary field {string} data is correct")
+    public static void verifySummaryData(String summaryField) {
+        PersonPage.verifySummaryData(summaryField);
+    }
+    @Then("I delete summary field {string}")
+    public static void deleteSummaryFields(String summaryField) {
+        PersonPage.deleteSummaryFields(summaryField);
     }
 }

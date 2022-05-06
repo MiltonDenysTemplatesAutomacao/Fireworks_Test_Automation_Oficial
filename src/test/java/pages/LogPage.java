@@ -244,6 +244,10 @@ public class LogPage {
     public static final String VERIFY_RECORD_HEADER_FAIL = "Fail while trying to verify the record header for organization";
     public static final String VERIFY_ORG_ID_PASS = "I validate Org Id label";
     public static final String VERIFY_ORG_ID_FAIL = "Fail while trying to validate Org Id label";
-    public static final String ADD_SUMMARY_FIELD_PASS = "I add in summary field %s";
-    public static final String ADD_SUMMARY_FIELD_FAIL = "Fail while trying to add in summary field %s";
+    public static final String ADD_SUMMARY_FIELD_PASS = "I add in summary field '%s'";
+    public static final String ADD_SUMMARY_FIELD_FAIL = "Fail while trying to add in summary field '%s'";
+    public static final String VERIFY_SUMMARY_DATA_PASS = "I verify if summary '%s' data is correct";
+    public static final String VERIFY_SUMMARY_DATA_FAIL = "Fail while trying verify if summary '%s' data is correct";
+    public static final String DELETE_SUMMARY_FIELDS_PASS = "I delete summary field '%s'";
+    public static final String DELETE_SUMMARY_FIELDS_FAIL = "Fail while trying delete summary field '%s'";
 }

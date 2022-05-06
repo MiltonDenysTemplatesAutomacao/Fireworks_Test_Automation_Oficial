@@ -5,10 +5,22 @@ import io.cucumber.datatable.DataTable;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
+import java.util.HashMap;
 import java.util.List;
 
 public class PersonPage extends BasePage{
-
+    public static final String SUMMARY_DISPLAY_EMAIL_EMAIL_ADDRESS = "//*[@for='summaryPanelField_64']";
+    public static final String SUMMARY_DISPLAY_PERSON_CLASS_OF = "//*[@for='summaryPanelField_427']";
+    public static final String SUMMARY_DISPLAY_PERSON_HIGH_SCORE = "//*[@for='summaryPanelField_406']";
+    public static final String SUMMARY_DISPLAY_PERSON_INITIAL_CATEGORY = "//*[@for='summaryPanelField_592']";
+    public static final String SUMMARY_DISPLAY_PERSON_INITIAL_SOURCE = "//*[@for='summaryPanelField_593']";
+    public static final String SUMMARY_DISPLAY_STUDENT_STATUS_DATE = "//*[@for='summaryPanelField_240']";
+    public static final String SUMMARY_EMAIL_EMAIL_ADDRESS_DELETE_BUTTON = "//*[@id='summaryPanelFieldBlock_64']/div[2]/div/div/button";
+    public static final String SUMMARY_PERSON_CLASS_OF_DELETE_BUTTON = "//*[@id='summaryPanelFieldBlock_427']/div[2]/div/div/button";
+    public static final String SUMMARY_PERSON_HIGH_SCORE_DELETE_BUTTON = "//*[@id='summaryPanelFieldBlock_406']/div[2]/div/div/button";
+    public static final String SUMMARY_PERSON_INITIAL_CATEGORY_DELETE_BUTTON = "//*[@id='summaryPanelFieldBlock_592']/div[2]/div/div/button";
+    public static final String SUMMARY_PERSON_INITIAL_SOURCE_DELETE_BUTTON = "//*[@id='summaryPanelFieldBlock_593']/div[2]/div/div/button";
+    public static final String SUMMARY_STUDENT_STATUS_DATE_DELETE_BUTTON = "//*[@id='summaryPanelFieldBlock_240']/div[2]/div/div/button";
     public static final String SUMMARY_FIELD_DROPDOWN = "s2id_summaryFieldPickerEntityType1";
     public static final String SUMMARY_FIELD_DROPDOWN_LIST = "#select2-results-2";
     public static final String COMPOSER_FIRST_NAME_FIELD = "person_name_0_createPersonNameFirst";
@@ -106,9 +118,57 @@ public class PersonPage extends BasePage{
     private static final String CREATE_PERSON_BUTTON = "top-controls-create-new-person";
     private static final String COMPOSER_SAVE_CHANGES_BUTTON = "saveChangesBtnPersonCreate";
 
+    public static String deleteSummaryList(String summary) {
+        HashMap<String, String> deleteSummaryItem = new HashMap<>();
+        deleteSummaryItem.put("Email Address", SUMMARY_EMAIL_EMAIL_ADDRESS_DELETE_BUTTON);
+        deleteSummaryItem.put("Class Of", SUMMARY_PERSON_CLASS_OF_DELETE_BUTTON);
+        deleteSummaryItem.put("High Score", SUMMARY_PERSON_HIGH_SCORE_DELETE_BUTTON);
+        deleteSummaryItem.put("Initial Category", SUMMARY_PERSON_INITIAL_CATEGORY_DELETE_BUTTON);
+        deleteSummaryItem.put("Initial Source", SUMMARY_PERSON_INITIAL_SOURCE_DELETE_BUTTON);
+        deleteSummaryItem.put("Student Status Date", SUMMARY_STUDENT_STATUS_DATE_DELETE_BUTTON);
+        return deleteSummaryItem.get(summary);
 
+    }
 
+    public static void deleteSummaryFields(String deleteSummaryField){
+        String passMessage = String.format(LogPage.DELETE_SUMMARY_FIELDS_PASS, deleteSummaryField);
+        String failMessage = String.format(LogPage.DELETE_SUMMARY_FIELDS_FAIL, deleteSummaryField);
+        try {
+            scrollToElement(By.id(SUMMARY_LABEL));
+            waitUntilElementToBeSelected(By.xpath(deleteSummaryList(deleteSummaryField)),20);
+            click(By.xpath(deleteSummaryList(deleteSummaryField)));
+            ExtentReportsSetUp.testingPass(passMessage);
+        } catch (Exception e) {
+            FailureDelegatePage.handlePageException(failMessage);
+        }
+    }
+
+    public static String summaryList(String summary){
+        HashMap<String,String> summaryItem = new HashMap<>();
+        summaryItem.put("Email Address",SUMMARY_DISPLAY_EMAIL_EMAIL_ADDRESS);
+        summaryItem.put("Class Of",SUMMARY_DISPLAY_PERSON_CLASS_OF);
+        summaryItem.put("High Score",SUMMARY_DISPLAY_PERSON_HIGH_SCORE);
+        summaryItem.put("Initial Category",SUMMARY_DISPLAY_PERSON_INITIAL_CATEGORY);
+        summaryItem.put("Initial Source",SUMMARY_DISPLAY_PERSON_INITIAL_SOURCE);
+        summaryItem.put("Student Status Date",SUMMARY_DISPLAY_STUDENT_STATUS_DATE);
+        return summaryItem.get(summary);
+
+    }
     public static void verifySummaryData(String summaryData){
+        String passMessage = String.format(LogPage.VERIFY_SUMMARY_DATA_PASS, summaryData);
+        String failMessage = String.format(LogPage.VERIFY_SUMMARY_DATA_FAIL, summaryData);
+
+        try {
+            waitElementBy(By.xpath(summaryList(summaryData)),20);
+            String summaryText = getText(By.xpath(summaryList(summaryData)));
+            if(summaryText.contains(summaryData)){
+                ExtentReportsSetUp.testingPass(passMessage);
+            }else{
+                FailureDelegatePage.handlePageException(failMessage);
+            }
+        } catch (Exception e) {
+            FailureDelegatePage.handlePageException(failMessage);
+        }
 
     }
 
