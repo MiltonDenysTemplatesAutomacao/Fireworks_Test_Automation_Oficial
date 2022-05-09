@@ -1,4 +1,4 @@
-package steps;
+package steps.Records;
 
 import io.cucumber.java.en.Then;
 import pages.Records.PersonContactPage;

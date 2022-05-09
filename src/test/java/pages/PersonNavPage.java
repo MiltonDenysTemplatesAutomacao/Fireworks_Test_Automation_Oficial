@@ -8,10 +8,18 @@ public class PersonNavPage extends BasePage{
     private static final String RECORD_NAV_TAB_CONTACT = "recordNavTab_contact";
     private static final String STUDENT_STATUS_TAB = "#recordNavTab_status";
     private static final String INTERESTS_ACTIVITIES_TAB = "#recordNavTab_activities_interests";
+    private static final String ACTIONS_PANEL_HEADING_ELEMENT = "#recordNavTab_actions";
 
-    /*
-     * to go to Interests & Contacts tab on records
-     */
+    public static void navigateToActions(){
+        try {
+            waitElementBy(By.cssSelector(ACTIONS_PANEL_HEADING_ELEMENT),20);
+            BasePage.click(By.cssSelector(ACTIONS_PANEL_HEADING_ELEMENT));
+            ExtentReportsSetUp.testingPass(LogPage.NAVIGATE_TO_ACTIONS_PASS);
+        } catch (Exception e) {
+            FailureDelegatePage.handlePageException(LogPage.NAVIGATE_TO_ACTIONS_FAIL);
+        }
+    }
+
     public static void navigateToInterestsActivities(){
         try {
             scrollToElement(By.id(RECORD_NAV_TAB_CONTACT));
@@ -23,9 +31,6 @@ public class PersonNavPage extends BasePage{
         }
     }
 
-    /*
-     * to go to Contact tab on records
-     */
     public static void navigateToContact(){
         try {
             waitElementBy(By.id(RECORD_NAV_TAB_CONTACT),20);

@@ -254,4 +254,10 @@ public class LogPage {
     public static final String VERIFY_SUMMARY_DATA_FAIL = "Fail while trying verify if summary '%s' data is correct";
     public static final String DELETE_SUMMARY_FIELDS_PASS = "I delete summary field '%s'";
     public static final String DELETE_SUMMARY_FIELDS_FAIL = "Fail while trying delete summary field '%s'";
+    public static final String NAVIGATE_TO_ACTIONS_PASS = "I navigate to Actions";
+    public static final String NAVIGATE_TO_ACTIONS_FAIL = "Fail while trying to navigate to Actions";
+    public static final String CREATE_ACTION_PASS = "I click on add action button";
+    public static final String CREATE_ACTION_FAIL = "Fail while trying to click on add action button";
+    public static final String UPDATE_ACTION_PASS = "I update action person";
+    public static final String UPDATE_ACTION_FAIL = "Fail while trying to update action person";
 }

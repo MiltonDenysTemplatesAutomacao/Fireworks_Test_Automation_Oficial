@@ -8,6 +8,10 @@ public class PersonNavSteps {
     public static void navigateToInterestsActivities() {
         PersonNavPage.navigateToInterestsActivities();
     }
+    @Then("I navigate to Actions")
+    public static void navigateToActions() {
+        PersonNavPage.navigateToActions();
+    }
     @Then("I navigate to contact")
     public static void navigateToContact() {
         PersonNavPage.navigateToContact();
