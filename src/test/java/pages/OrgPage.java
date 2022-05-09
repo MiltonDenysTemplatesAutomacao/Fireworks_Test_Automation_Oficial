@@ -4,6 +4,8 @@ import config.extent_reports.ExtentReportsSetUp;
 import org.openqa.selenium.By;
 import pages.Records.StudentStatusPage;
 
+import java.util.HashMap;
+
 public class OrgPage extends BasePage{
     public static final String HEADER_RECORD_STATUS_ELEMENT = "orgHeaderRecordStatusButton";
     public static final String HEADER_OK_TO_CONTACT_ELEMENT = "personHeaderContactButton";
@@ -29,9 +31,18 @@ public class OrgPage extends BasePage{
     private static final String ORG_HEADER_DELETE_BUTTON = "orgHeaderDeleteButton";
     private static final String DELETE_ORG_MODAL_DELETE_BUTTON = "modalSubmitButtondeleteOrganizationConfirm";
     private static final String ORGANIZATION_MANAGER_TABLE = "organizationManagerTable";
-    private static final String ORGANIZATION_MANAGER_TABLE_SEARCH_FIELD = "organizationManagerTableControlsTableSearch";
+    private static final String ORGANIZATION_MANAGER_TABLE_SEARCH_FIELD = "#organizationManagerTableControlsTableSearch";
     private static final String HEADER_ORG_ID_DISPLAY = "descriptionObjectOrgIdValue";
-
+    private static final String SUMMARY_FIELD_DROPDOWN = "s2id_summaryFieldPickerEntityType2";
+    private static final String SUMMARY_FIELD_DROPDOWN_LIST = "#select2-results-3";
+    private static final String SUMMARY_DISPLAY_ORG_INFORMAL_NAME = "//*[@for='summaryPanelField_520']";
+    private static final String SUMMARY_DISPLAY_ORG_PHONE_NUMBER = "//*[@for='summaryPanelField_368']";
+    private static final String SUMMARY_DISPLAY_ORG_PHONE_TIME_ZONE = "//*[@for='summaryPanelField_509']";
+    private static final String SUMMARY_DISPLAY_ORG_FIREWORKS_ID = "//*[@for='summaryPanelField_436']";
+    private static final String SUMMARY_DISPLAY_ORG_INFORMAL_NAME_DELETE_BUTTON = "//div[@id='summaryPanelFieldBlock_520']/div[2]/div/div/button";
+    private static final String SUMMARY_DISPLAY_ORG_PHONE_NUMBER_DELETE_BUTTON = "//div[@id='summaryPanelFieldBlock_368']/div[2]/div/div/button";
+    private static final String SUMMARY_DISPLAY_ORG_PHONE_TIME_ZONE_DELETE_BUTTON = "//div[@id='summaryPanelFieldBlock_509']/div[2]/div/div/button";
+    private static final String SUMMARY_DISPLAY_ORG_FIREWORKS_ID_DELETE_BUTTON = "//div[@id='summaryPanelFieldBlock_436']/div[2]/div/div/button";
 
 
     private static String statusPlusSignElement(String index){
@@ -47,6 +58,81 @@ public class OrgPage extends BasePage{
         return String.format("#org_status_%s_org_status_comments",index);
     }
 
+    private static String deleteSummaryList(String summary) {
+        HashMap<String, String> deleteSummaryItem = new HashMap<>();
+        deleteSummaryItem.put("Org Informal Name", SUMMARY_DISPLAY_ORG_INFORMAL_NAME_DELETE_BUTTON);
+        deleteSummaryItem.put("Phone Number", SUMMARY_DISPLAY_ORG_PHONE_NUMBER_DELETE_BUTTON);
+        deleteSummaryItem.put("Time Zone", SUMMARY_DISPLAY_ORG_PHONE_TIME_ZONE_DELETE_BUTTON);
+        deleteSummaryItem.put("Organization Fireworks ID", SUMMARY_DISPLAY_ORG_FIREWORKS_ID_DELETE_BUTTON);
+        return deleteSummaryItem.get(summary);
+    }
+
+    public static void deleteSummaryFields(String deleteSummaryField){
+        String passMessage = String.format(LogPage.DELETE_SUMMARY_FIELDS_PASS, deleteSummaryField);
+        String failMessage = String.format(LogPage.DELETE_SUMMARY_FIELDS_FAIL, deleteSummaryField);
+        try {
+            scrollToElement(By.id(PersonPage.SUMMARY_LABEL));
+            waitUntilElementToBeSelected(By.xpath(deleteSummaryList(deleteSummaryField)),20);
+            click(By.xpath(deleteSummaryList(deleteSummaryField)));
+            ExtentReportsSetUp.testingPass(passMessage);
+        } catch (Exception e) {
+            FailureDelegatePage.handlePageException(failMessage);
+        }
+    }
+
+    public static String summaryList(String summary){
+        HashMap<String,String> summaryItem = new HashMap<>();
+        summaryItem.put("Org Informal Name",SUMMARY_DISPLAY_ORG_INFORMAL_NAME);
+        summaryItem.put("Phone Number",SUMMARY_DISPLAY_ORG_PHONE_NUMBER);
+        summaryItem.put("Time Zone",SUMMARY_DISPLAY_ORG_PHONE_TIME_ZONE);
+        summaryItem.put("Organization Fireworks ID",SUMMARY_DISPLAY_ORG_FIREWORKS_ID);
+        return summaryItem.get(summary);
+    }
+    public static void verifySummaryData(String summaryData){
+        String passMessage = String.format(LogPage.VERIFY_SUMMARY_DATA_PASS, summaryData);
+        String failMessage = String.format(LogPage.VERIFY_SUMMARY_DATA_FAIL, summaryData);
+
+        try {
+            waitElementBy(By.xpath(summaryList(summaryData)),20);
+            String summaryText = getText(By.xpath(summaryList(summaryData)));
+            if(summaryText.contains(summaryData)){
+                ExtentReportsSetUp.testingPass(passMessage);
+            }else{
+                FailureDelegatePage.handlePageException(failMessage);
+            }
+        } catch (Exception e) {
+            FailureDelegatePage.handlePageException(failMessage);
+        }
+
+    }
+
+    public static void addSummaryOrganizationField(String summary){
+        String passMessage = String.format(LogPage.ADD_SUMMARY_FIELD_PASS, summary);
+        String failMessage = String.format(LogPage.ADD_SUMMARY_FIELD_FAIL, summary);
+        try {
+            waitUntilElementToBeSelected(By.id(SUMMARY_FIELD_DROPDOWN),20);
+            click(By.id(SUMMARY_FIELD_DROPDOWN));
+            waitElementBy(By.cssSelector(SUMMARY_FIELD_DROPDOWN_LIST),20);
+            BasePage.selectElementsList(By.cssSelector(SUMMARY_FIELD_DROPDOWN_LIST), "a");
+            clickOnListOfElements(summary);
+            wait(500);
+            ExtentReportsSetUp.testingPass(passMessage);
+        } catch (Exception e) {
+            FailureDelegatePage.handlePageException(failMessage);
+        }
+    }
+    public static void openPeopleRecord(String search){
+        searchOrganizationManager(search);
+        String passMessage = String.format(LogPage.OPEN_ORGANIZATION_RECORD_PASS, search);
+        String failMessage = String.format(LogPage.OPEN_ORGANIZATION_RECORD_FAIL, search);
+        try {
+            waitElementBy(By.cssSelector(ORGANIZATION_MANAGER_TABLE_SEARCH_FIELD),20);
+            click(By.cssSelector(ORGANIZATION_MANAGER_TABLE_SEARCH_FIELD));
+            ExtentReportsSetUp.testingPass(passMessage);
+        } catch (Exception e) {
+            FailureDelegatePage.handlePageException(failMessage);
+        }
+    }
 
     public static void verifyOrgId(String orgId){
         try {
@@ -106,7 +192,7 @@ public class OrgPage extends BasePage{
         String failMessage = String.format(LogPage.SEARCH_ORGANIZATION_MANAGER_FAIL, search);
         try {
             waitElementBy(By.id(ORGANIZATION_MANAGER_TABLE),20);
-            write(By.id(ORGANIZATION_MANAGER_TABLE_SEARCH_FIELD),mass.get(0).get(search));
+            write(By.id(ORGANIZATION_MANAGER_TABLE_SEARCH_FIELD),search);
             ExtentReportsSetUp.testingPass(passMessage);
         } catch (Exception e) {
             FailureDelegatePage.handlePageException(failMessage);

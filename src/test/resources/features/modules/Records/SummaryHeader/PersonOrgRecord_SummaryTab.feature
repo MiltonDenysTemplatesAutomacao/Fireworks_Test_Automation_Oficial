@@ -35,3 +35,26 @@ Feature: Summary Panel Display
     And I delete summary field "Initial Source"
     And I delete summary field "Student Status Date"
 
+  @SummaryPanelDisplayOrganization
+  Scenario: verify fields can be added to the summary panel from an organization record
+    Given I login as "firestarterUsername", "firestarterPassword", "firestarterFullName"
+    And I create an organization
+      |Name					               |Role	    |Address1		    |City	    |State	      |PostalCode |Country	      |
+      |TheTestamentOfDrMabuse High School  |High School |543 Campfire Drive |Phoenix    |Arizona      |85001      |United States  |
+    And I validate if "TheTestamentOfDrMabuse High School"summary opened properly
+    When I add in summary organization field "Org Informal Name"
+    When I add in summary organization field "Phone Number"
+    When I add in summary organization field "Time Zone"
+    When I add in summary organization field "Organization Fireworks ID"
+    #to verify summary data
+    Then I verify if summary organization field "Org Informal Name" data is correct
+    Then I verify if summary organization field "Phone Number" data is correct
+    Then I verify if summary organization field "Organization Fireworks ID" data is correct
+    Then I verify if summary organization field "Time Zone" data is correct
+    #to delete summary tab fields
+    Then I delete summary organization field "Org Informal Name"
+    Then I delete summary organization field "Phone Number"
+    Then I delete summary organization field "Organization Fireworks ID"
+    Then I delete summary organization field "Time Zone"
+
+

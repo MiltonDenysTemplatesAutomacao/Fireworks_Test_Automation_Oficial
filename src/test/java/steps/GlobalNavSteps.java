@@ -1,7 +1,9 @@
 package steps;
 
 import io.cucumber.java.en.And;
+import io.cucumber.java.en.When;
 import pages.GlobalNavPage;
+import pages.OrgPage;
 
 public class GlobalNavSteps {
 
@@ -30,4 +32,8 @@ public class GlobalNavSteps {
         GlobalNavPage.logout();
     }
 
+    @When("I navigate to organization on Records")
+    public static void navigateOrganizationRecords() {
+        GlobalNavPage.navigateOrganizationRecords();
+    }
 }

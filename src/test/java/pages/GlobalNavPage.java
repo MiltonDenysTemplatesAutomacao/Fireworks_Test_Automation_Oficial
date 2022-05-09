@@ -23,6 +23,7 @@ public class GlobalNavPage extends BasePage {
     public static final String FOOTER_RECORDS_MENU = "#global_nav_records_toggle";
     public static final String FOOTER_RECORDS_DUPLICATES_MENU_ITEM = "#global_nav_duplicate_manager";
     public static final String FOOTER_RECORDS_PEOPLE_MENU_ITEM = "#global_nav_people";
+    public static final String FOOTER_RECORDS_ORGANIZATION_MENU_ITEM = "#global_nav_orgs";
 
 
     /*
@@ -114,6 +115,17 @@ public class GlobalNavPage extends BasePage {
         }
     }
 
+    public static void navigateOrganizationRecords(){
+        try {
+            waitElementBy(By.cssSelector(FOOTER_RECORDS_MENU),20);
+            click(By.cssSelector(FOOTER_RECORDS_MENU));
+            wait(2000);
+            click(By.cssSelector(FOOTER_RECORDS_ORGANIZATION_MENU_ITEM));
+            ExtentReportsSetUp.testingPass(LogPage.NAVIGATE_ORGANIZATION_PAGE_PASS);
+        } catch (Exception e) {
+            FailureDelegatePage.handlePageException(LogPage.NAVIGATE_ORGANIZATION_PAGE_FAIL);
+        }
+    }
     public static void navigateDuplicatesPage(){
         try {
             waitElementBy(By.cssSelector(FOOTER_RECORDS_MENU),20);

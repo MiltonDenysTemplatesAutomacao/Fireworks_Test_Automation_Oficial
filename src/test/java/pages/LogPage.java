@@ -156,12 +156,16 @@ public class LogPage {
     public static final String SEARCH_DUPLICATE_MANAGER_FAIL = "Fail while trying to search %s on duplicate manager";
     public static final String NAVIGATE_PERSON_PAGE_PASS = "I navigate to people on records";
     public static final String NAVIGATE_PERSON_PAGE_FAIL = "Fail while trying to navigate to people on records";
+    public static final String NAVIGATE_ORGANIZATION_PAGE_PASS = "I navigate to organization on records";
+    public static final String NAVIGATE_ORGANIZATION_PAGE_FAIL = "Fail while trying to navigate to organization on records";
     public static final String SEARCH_PEOPLE_MANAGER_PASS = "I search %s on people page manager";
     public static final String SEARCH_PEOPLE_MANAGER_FAIL = "Fail while trying to search %s on people page manager";
     public static final String SEARCH_ORGANIZATION_MANAGER_PASS = "I search %s on organization page manager";
     public static final String SEARCH_ORGANIZATION_MANAGER_FAIL = "Fail while trying to search %s on organization page manager";
     public static final String OPEN_PEOPLE_RECORD_PASS = "I open a people record by %s";
     public static final String OPEN_PEOPLE_RECORD_FAIL = "Fail while trying to open a people record by %s";
+    public static final String OPEN_ORGANIZATION_RECORD_PASS = "I open a people record by %s";
+    public static final String OPEN_ORGANIZATION_RECORD_FAIL = "Fail while trying to open a people record by %s";
     public static final String VERIFY_ALL_THREE_ROLES_ARE_SELECTED_PASS = "I verify all three roles are selected in the role dropdown";
     public static final String VERIFY_ALL_THREE_ROLES_ARE_SELECTED_FAIL = "Fail while trying to verify all three roles are selected in the role dropdown";
     public static final String VERIFY_EMAIL_PERSON_PAGE_RECORD_PASS = "I verify email address";

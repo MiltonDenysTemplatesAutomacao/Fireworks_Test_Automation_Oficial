@@ -9,7 +9,8 @@ import java.util.HashMap;
 import java.util.List;
 
 public class PersonPage extends BasePage{
-    public static final String SUMMARY_DISPLAY_EMAIL_EMAIL_ADDRESS = "//*[@for='summaryPanelField_64']";
+    public static final String SUMMARY_LABEL = "recordNavTab_summary";
+    public static final String SUMMARY_DISPLAY_EMAIL_ADDRESS = "//*[@for='summaryPanelField_64']";
     public static final String SUMMARY_DISPLAY_PERSON_CLASS_OF = "//*[@for='summaryPanelField_427']";
     public static final String SUMMARY_DISPLAY_PERSON_HIGH_SCORE = "//*[@for='summaryPanelField_406']";
     public static final String SUMMARY_DISPLAY_PERSON_INITIAL_CATEGORY = "//*[@for='summaryPanelField_592']";
@@ -21,47 +22,47 @@ public class PersonPage extends BasePage{
     public static final String SUMMARY_PERSON_INITIAL_CATEGORY_DELETE_BUTTON = "//*[@id='summaryPanelFieldBlock_592']/div[2]/div/div/button";
     public static final String SUMMARY_PERSON_INITIAL_SOURCE_DELETE_BUTTON = "//*[@id='summaryPanelFieldBlock_593']/div[2]/div/div/button";
     public static final String SUMMARY_STUDENT_STATUS_DATE_DELETE_BUTTON = "//*[@id='summaryPanelFieldBlock_240']/div[2]/div/div/button";
-    public static final String SUMMARY_FIELD_DROPDOWN = "s2id_summaryFieldPickerEntityType1";
-    public static final String SUMMARY_FIELD_DROPDOWN_LIST = "#select2-results-2";
-    public static final String COMPOSER_FIRST_NAME_FIELD = "person_name_0_createPersonNameFirst";
-    public static final String COMPOSER_LAST_NAME_FIELD =  "person_name_0_createPersonNameLast";
-    public static final String COMPOSER_EMAIL_ADDRESS_FIELD = "entity_email_0_createPersonEmailAddress";
-    public static final String COMPOSER_EMAIL_TYPE_DROPDOWN = "entity_email_0_createPersonEmailType_component";
-    public static final String COMPOSER_EMAIL_TYPE_DROPDOWN_LIST = "entity_email_0_createPersonEmailType_dropdown_menu";
-    public static final String COMPOSER_EMAIL_OPT_IN_METHOD_DROPDOWN = "entity_email_0_createPersonOptInMethod_component";
-    public static final String COMPOSER_EMAIL_OPT_IN_METHOD_DROPDOWN_LIST = "entity_email_0_createPersonOptInMethod_dropdown_menu";
-    public static final String COMPOSER_PHONE_NUMBER_FIELD = "entity_phone_0_createPersonPhoneNumber";
-    public static final String COMPOSER_PHONE_TYPE_DROPDOWN = "entity_phone_0_createPersonPhoneType_component";
-    public static final String COMPOSER_PHONE_TYPE_DROPDOWN_LIST = "entity_phone_0_createPersonPhoneType_dropdown_menu";
-    public static final String COMPOSER_ADDRESS1_FIELD = "entity_address_0_createPersonAddress1";
-    public static final String COMPOSER_ADDRESS2_FIELD = "entity_address_0_createPersonAddress2";
-    public static final String COMPOSER_ADDRESS3_FIELD = "entity_address_0_createPersonAddress3";
-    public static final String COMPOSER_ADDRESS4_FIELD = "entity_address_0_createPersonAddress4";
-    public static final String COMPOSER_ADDRESS_CITY_FIELD = "entity_address_0_createPersonAddressCity";
-    public static final String COMPOSER_ADDRESS_STATE_DROPDOWN = "entity_address_0_createPersonAddressState_component";
-    public static final String COMPOSER_ADDRESS_STATE_DROPDOWN_LIST = "entity_address_0_createPersonAddressState_dropdown_menu";
-    public static final String COMPOSER_ADDRESS_POSTAL_CODE_FIELD = "entity_address_0_createPersonAddressPostalCode";
-    public static final String COMPOSER_ADDRESS_COUNTRY_DROPDOWN = "entity_address_0_createPersonAddressCountry_component";
-    public static final String COMPOSER_ADDRESS_COUNTRY_DROPDOWN_LIST = "entity_address_0_createPersonAddressCountry_dropdown_menu";
-    public static final String COMPOSER_ADDRESS_REGION_FIELD = "entity_address_0_createPersonAddressRegion";
-    public static final String COMPOSER_ROLE_DROPDOWN = "createPersonPersonRole_component";
-    public static final String COMPOSER_ROLE_DROPDOWN_LIST = "createPersonPersonRole_dropdown_menu";
-    public static final String COMPOSER_STUDENT_TYPE_DROPDOWN = "createPersonStudentType_component";
-    public static final String COMPOSER_STUDENT_TYPE_DROPDOWN_LIST = "createPersonStudentType_dropdown_menu";
-    public static final String COMPOSER_STUDENT_STATUS_CATEGORY_DROPDOWN = "person_student_status_0_createPersonStudentStatusCategory_component";
-    public static final String COMPOSER_STUDENT_STATUS_CATEGORY_DROPDOWN_LIST = "person_student_status_0_createPersonStudentStatusCategory_dropdown_menu";
-    public static final String COMPOSER_STUDENT_STATUS_DROPDOWN = "person_student_status_0_createPersonStudentStatus_component";
-    public static final String COMPOSER_STUDENT_STATUS_DROPDOWN_LIST = "person_student_status_0_createPersonStudentStatus_dropdown_menu";
-    public static final String COMPOSER_STUDENT_STATUS_DATE_FIELD = "person_student_status_0_createPersonStudentStatusDate";
-    public static final String COMPOSER_STUDENT_STATUS_ENTRY_TERM_DROPDOWN = "person_student_status_0_createPersonStatusEntryTerm_component";
-    public static final String COMPOSER_STUDENT_STATUS_ENTRY_TERM_DROPDOWN_LIST = "person_student_status_0_createPersonStatusEntryTerm_dropdown_menu";
-    public static final String HEADER_DELETE_BUTTON = "personHeaderDeleteButton";
-    public static final String DELETE_PERSON_CONFIRM_MODAL_LABEL = "deletePersonConfirmModalLabel";
-    public static final String DELETE_PERSON_CONFIRM_SUBMIT_BUTTON = "modalSubmitButtondeletePersonConfirm";
-    public static final String DATATABLE_EMPTY = "peopleManagerTable_row_0_col_0";
-    public static final String QUICK_SEARCH_EMPTY = "quickSearchManagerTable_row_0_col_0";
-    public static final String HEADER_STUDENT_STATUS_DISPLAY = "#descriptionObjectStudentStatusLabel";
-    public static final String HEADER_ENTRY_TERM_DISPLAY = "#descriptionObjectEntryTermLabel";
+    private static final String SUMMARY_FIELD_DROPDOWN = "s2id_summaryFieldPickerEntityType1";
+    private static final String SUMMARY_FIELD_DROPDOWN_LIST = "#select2-results-2";
+    private static final String COMPOSER_FIRST_NAME_FIELD = "person_name_0_createPersonNameFirst";
+    private static final String COMPOSER_LAST_NAME_FIELD =  "person_name_0_createPersonNameLast";
+    private static final String COMPOSER_EMAIL_ADDRESS_FIELD = "entity_email_0_createPersonEmailAddress";
+    private static final String COMPOSER_EMAIL_TYPE_DROPDOWN = "entity_email_0_createPersonEmailType_component";
+    private static final String COMPOSER_EMAIL_TYPE_DROPDOWN_LIST = "entity_email_0_createPersonEmailType_dropdown_menu";
+    private static final String COMPOSER_EMAIL_OPT_IN_METHOD_DROPDOWN = "entity_email_0_createPersonOptInMethod_component";
+    private static final String COMPOSER_EMAIL_OPT_IN_METHOD_DROPDOWN_LIST = "entity_email_0_createPersonOptInMethod_dropdown_menu";
+    private static final String COMPOSER_PHONE_NUMBER_FIELD = "entity_phone_0_createPersonPhoneNumber";
+    private static final String COMPOSER_PHONE_TYPE_DROPDOWN = "entity_phone_0_createPersonPhoneType_component";
+    private static final String COMPOSER_PHONE_TYPE_DROPDOWN_LIST = "entity_phone_0_createPersonPhoneType_dropdown_menu";
+    private static final String COMPOSER_ADDRESS1_FIELD = "entity_address_0_createPersonAddress1";
+    private static final String COMPOSER_ADDRESS2_FIELD = "entity_address_0_createPersonAddress2";
+    private static final String COMPOSER_ADDRESS3_FIELD = "entity_address_0_createPersonAddress3";
+    private static final String COMPOSER_ADDRESS4_FIELD = "entity_address_0_createPersonAddress4";
+    private static final String COMPOSER_ADDRESS_CITY_FIELD = "entity_address_0_createPersonAddressCity";
+    private static final String COMPOSER_ADDRESS_STATE_DROPDOWN = "entity_address_0_createPersonAddressState_component";
+    private static final String COMPOSER_ADDRESS_STATE_DROPDOWN_LIST = "entity_address_0_createPersonAddressState_dropdown_menu";
+    private static final String COMPOSER_ADDRESS_POSTAL_CODE_FIELD = "entity_address_0_createPersonAddressPostalCode";
+    private static final String COMPOSER_ADDRESS_COUNTRY_DROPDOWN = "entity_address_0_createPersonAddressCountry_component";
+    private static final String COMPOSER_ADDRESS_COUNTRY_DROPDOWN_LIST = "entity_address_0_createPersonAddressCountry_dropdown_menu";
+    private static final String COMPOSER_ADDRESS_REGION_FIELD = "entity_address_0_createPersonAddressRegion";
+    private static final String COMPOSER_ROLE_DROPDOWN = "createPersonPersonRole_component";
+    private static final String COMPOSER_ROLE_DROPDOWN_LIST = "createPersonPersonRole_dropdown_menu";
+    private static final String COMPOSER_STUDENT_TYPE_DROPDOWN = "createPersonStudentType_component";
+    private static final String COMPOSER_STUDENT_TYPE_DROPDOWN_LIST = "createPersonStudentType_dropdown_menu";
+    private static final String COMPOSER_STUDENT_STATUS_CATEGORY_DROPDOWN = "person_student_status_0_createPersonStudentStatusCategory_component";
+    private static final String COMPOSER_STUDENT_STATUS_CATEGORY_DROPDOWN_LIST = "person_student_status_0_createPersonStudentStatusCategory_dropdown_menu";
+    private static final String COMPOSER_STUDENT_STATUS_DROPDOWN = "person_student_status_0_createPersonStudentStatus_component";
+    private static final String COMPOSER_STUDENT_STATUS_DROPDOWN_LIST = "person_student_status_0_createPersonStudentStatus_dropdown_menu";
+    private static final String COMPOSER_STUDENT_STATUS_DATE_FIELD = "person_student_status_0_createPersonStudentStatusDate";
+    private static final String COMPOSER_STUDENT_STATUS_ENTRY_TERM_DROPDOWN = "person_student_status_0_createPersonStatusEntryTerm_component";
+    private static final String COMPOSER_STUDENT_STATUS_ENTRY_TERM_DROPDOWN_LIST = "person_student_status_0_createPersonStatusEntryTerm_dropdown_menu";
+    private static final String HEADER_DELETE_BUTTON = "personHeaderDeleteButton";
+    private static final String DELETE_PERSON_CONFIRM_MODAL_LABEL = "deletePersonConfirmModalLabel";
+    private static final String DELETE_PERSON_CONFIRM_SUBMIT_BUTTON = "modalSubmitButtondeletePersonConfirm";
+    private static final String DATATABLE_EMPTY = "peopleManagerTable_row_0_col_0";
+    private static final String QUICK_SEARCH_EMPTY = "quickSearchManagerTable_row_0_col_0";
+    private static final String HEADER_STUDENT_STATUS_DISPLAY = "#descriptionObjectStudentStatusLabel";
+    private static final String HEADER_ENTRY_TERM_DISPLAY = "#descriptionObjectEntryTermLabel";
     private static final String RECORD_NAV_TAB_BASIC = "recordNavTab_basic";
     private static final String RECORD_NAV_TAB_ID_TYPES = "recordNavTab_id_types";
     private static final String CITIZENSHIP_TYPE_DROPDOWN = "#s2id_citizenship_type";
@@ -92,7 +93,6 @@ public class PersonPage extends BasePage{
     private static final String HEADER_ROLE_ELEMENT_LIST = ".//*[@class='btn-group autoSubmit dropDownSelect open']//*[@class='dropdown-menu']";
     private static final String HEADER_STUDENT_TYPE_ELEMENT = "#personHeaderStudentTypeButton";
     private static final String HEADER_ASSIGNED_STAFF_ELEMENT = "#personHeaderAssignedStaffButton";
-    private static final String SUMMARY_LABEL = "recordNavTab_summary";
     private static final String ACTIONS_LABEL = "recordNavTab_actions";
     private static final String BASIC_LABEL = "recordNavTab_basic";
     private static final String CONTACT_LABEL = "recordNavTab_contact";
@@ -118,7 +118,7 @@ public class PersonPage extends BasePage{
     private static final String CREATE_PERSON_BUTTON = "top-controls-create-new-person";
     private static final String COMPOSER_SAVE_CHANGES_BUTTON = "saveChangesBtnPersonCreate";
 
-    public static String deleteSummaryList(String summary) {
+    private static String deleteSummaryList(String summary) {
         HashMap<String, String> deleteSummaryItem = new HashMap<>();
         deleteSummaryItem.put("Email Address", SUMMARY_EMAIL_EMAIL_ADDRESS_DELETE_BUTTON);
         deleteSummaryItem.put("Class Of", SUMMARY_PERSON_CLASS_OF_DELETE_BUTTON);
@@ -145,7 +145,7 @@ public class PersonPage extends BasePage{
 
     public static String summaryList(String summary){
         HashMap<String,String> summaryItem = new HashMap<>();
-        summaryItem.put("Email Address",SUMMARY_DISPLAY_EMAIL_EMAIL_ADDRESS);
+        summaryItem.put("Email Address",SUMMARY_DISPLAY_EMAIL_ADDRESS);
         summaryItem.put("Class Of",SUMMARY_DISPLAY_PERSON_CLASS_OF);
         summaryItem.put("High Score",SUMMARY_DISPLAY_PERSON_HIGH_SCORE);
         summaryItem.put("Initial Category",SUMMARY_DISPLAY_PERSON_INITIAL_CATEGORY);
@@ -169,7 +169,6 @@ public class PersonPage extends BasePage{
         } catch (Exception e) {
             FailureDelegatePage.handlePageException(failMessage);
         }
-
     }
 
     public static void addSummaryField(String summary){

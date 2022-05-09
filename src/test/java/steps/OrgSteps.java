@@ -46,4 +46,21 @@ public class OrgSteps {
     public static void verifyOrgId(String orgId) {
         OrgPage.verifyOrgId(orgId);
     }
+    @When("I open an organization record by {string}")
+    public static void navigateOrganizationRecords(String search) {
+        OrgPage.openPeopleRecord(search);
+    }
+    @When("I add in summary organization field {string}")
+    public static void addSummaryOrganizationField(String summary) {
+        OrgPage.addSummaryOrganizationField(summary);
+    }
+    @When("I verify if summary organization field {string} data is correct")
+    public static void verifySummaryData(String summaryField) {
+        OrgPage.verifySummaryData(summaryField);
+    }
+    @When("I delete summary organization field {string}")
+    public static void deleteSummaryFields(String summaryField) {
+        OrgPage.deleteSummaryFields(summaryField);
+    }
+
 }
