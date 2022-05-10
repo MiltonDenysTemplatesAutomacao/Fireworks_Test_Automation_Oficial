@@ -260,10 +260,4 @@ public class LogPage {
     public static final String CREATE_ACTION_FAIL = "Fail while trying to click on add action button";
     public static final String UPDATE_ACTION_PASS = "I update action person";
     public static final String UPDATE_ACTION_FAIL = "Fail while trying to update action person";
-    public static final String VERIFY_ACTION_DATA_TABLE_VALUES_PASS = "I verify action Datatable values";
-    public static final String VERIFY_ACTION_DATA_TABLE_VALUES_FAIL = "Fail while trying verify action Datatable values";
-    public static final String OPEN_ACTION_PASS = "I open an action";
-    public static final String OPEN_ACTION_FAIL = "Fail while trying to open an action";
-    public static final String VERIFY_ACTION_VALUES_PASS = "I verify action values";
-    public static final String VERIFY_ACTION_VALUES_FAIL = "Fail while trying to verify action values";
 }
