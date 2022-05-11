@@ -55,29 +55,26 @@ public class ActionsPage extends BasePage {
         }
     }
     public static boolean verifyActionAttributes(String index)throws Exception{
-        waitElementBy(By.cssSelector(CREATE_ACTION_PANEL_TITLE),20);
-        String staffText = "";
-        String actionDateTimeText = "";
-        String commentsText = "";
         boolean staffValidation = false;
         boolean actionDateTimeValidation = false;
         boolean commentsValidation = false;
+        waitElementBy(By.cssSelector(CREATE_ACTION_PANEL_TITLE),20);
 
         int indexNumber = Integer.parseInt(index);
         if(mass.get(indexNumber).get("Staff") !=null){
-            staffText = getText(By.id(ACTION_STAFF_DROPDOWN));
+            String staffText = getText(By.id(ACTION_STAFF_DROPDOWN));
             staffValidation = staffText.contains(mass.get(indexNumber).get("Staff"));
         }else{
             staffValidation=true;
         }
         if(mass.get(indexNumber).get("ActionDateField") !=null){
-            actionDateTimeText = getAtribute(By.cssSelector(ACTION_DATE_FIELD),"value");
+            String actionDateTimeText = getAtribute(By.cssSelector(ACTION_DATE_FIELD),"value");
             actionDateTimeValidation = actionDateTimeText.contains(mass.get(indexNumber).get("ActionDateField"));
         }else{
             actionDateTimeValidation=true;
         }
         if(mass.get(indexNumber).get("Comments") !=null){
-            commentsText = getAtribute(By.id(ACTION_COMMENTS_FIELD),"value");
+            String commentsText = getAtribute(By.id(ACTION_COMMENTS_FIELD),"value");
             commentsValidation = commentsText.contains(mass.get(indexNumber).get("Comments"));
         }else{
             commentsValidation=true;
@@ -93,38 +90,34 @@ public class ActionsPage extends BasePage {
     }
 
     public static boolean verifyActionDetails(String index)throws Exception{
-        waitElementBy(By.cssSelector(CREATE_ACTION_PANEL_TITLE),20);
 
-        String categoryText = "";
-        String actionText = "";
-        String actionTypeText = "";
-        String actionVisibilityText = "";
         boolean categoryValidation = false;
         boolean actionValidation = false;
         boolean actionTypeValidation = false;
         boolean actionVisibilityValidation = false;
         int indexNumber = Integer.parseInt(index);
+        waitElementBy(By.cssSelector(CREATE_ACTION_PANEL_TITLE),20);
 
         if(mass.get(indexNumber).get("Category") !=null){
-            categoryText = getText(By.id(ACTION_CATEGORY_DROPDOWN));
+            String categoryText = getText(By.id(ACTION_CATEGORY_DROPDOWN));
             categoryValidation = categoryText.contains(mass.get(indexNumber).get("Category"));
         }else{
             categoryValidation=true;
         }
         if(mass.get(indexNumber).get("Action") !=null){
-            actionText = getText(By.id(ACTION_DROPDOWN));
+            String actionText = getText(By.id(ACTION_DROPDOWN));
             actionValidation = actionText.contains(mass.get(indexNumber).get("Action"));
         }else{
             actionValidation=true;
         }
         if(mass.get(indexNumber).get("ActionType") !=null){
-            actionTypeText = getText(By.id(ACTION_TYPE_DISABLED_DROPDOWN));
+            String actionTypeText = getText(By.id(ACTION_TYPE_DISABLED_DROPDOWN));
             actionTypeValidation = actionTypeText.contains(mass.get(indexNumber).get("ActionType"));
         }else{
             actionTypeValidation=true;
         }
         if(mass.get(indexNumber).get("ActionVisibility") !=null){
-            actionVisibilityText = getText(By.id(ACTION_VISIBILITY_DISABLED_DROPDOWN));
+            String actionVisibilityText = getText(By.id(ACTION_VISIBILITY_DISABLED_DROPDOWN));
             actionVisibilityValidation = actionVisibilityText.contains(mass.get(indexNumber).get("ActionVisibility"));
         }else{
             actionVisibilityValidation=true;

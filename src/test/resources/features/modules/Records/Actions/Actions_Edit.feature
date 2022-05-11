@@ -17,16 +17,16 @@ Feature: Actions Edit actions
       |           |             |                       |           |                  |        |           |                      |               |                  |         |Campus Events|Admitted Student Day: Register |Fire Starter |01/05/2015 4:00 PM |01/05/2015|Edited Action Comment |Staff      |Primary          |
       |           |             |                       |           |                  |        |           |                      |               |                  |         |Select       |Select                         |Select       |                   |          |                      |           |                 |
     And I validate if "Person has been created." message is correct
+    #to add an action
     Given I go to Home page
     And I quick search "FirstName"
-    #to add an action
     And I validate if "Roger"summary opened properly
     When I open a record
     And I navigate to Actions
     And I click on add action button
     And I update action person "0"
     Then I click on Save Changes button in Actions
-    Then I validate if "Action has been created." message is correct
+    And I validate if "Action has been created." message is correct
     #to edit the action
     And I verify action Datatable values "Category", "Action", "Staff", "ActionDate" and "Comments" index "0"
     And I navigate to Actions

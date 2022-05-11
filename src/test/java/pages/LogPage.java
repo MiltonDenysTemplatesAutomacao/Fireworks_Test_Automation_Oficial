@@ -268,4 +268,6 @@ public class LogPage {
     public static final String VERIFY_ACTION_VALUES_FAIL = "Fail while trying to verify action values";
     public static final String VERIFY_DEFAULT_ACTION_VALUES_PASS = "I verify default action values";
     public static final String VERIFY_DEFAULT_ACTION_VALUES_FAIL = "Fail while trying to verify default action values";
+    public static final String NAVIGATE_LETTERS_PAGE_PASS = "I navigate to letters page";
+    public static final String NAVIGATE_LETTERS_PAGE_FAIL = "Fail while trying to navigate to letters page";
 }
