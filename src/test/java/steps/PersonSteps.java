@@ -55,9 +55,21 @@ public class PersonSteps {
     public static void validateQuickSearchEmpty(String message) {
         PersonPage.validateQuickSearchEmpty(message);
     }
-    @Then("I verify Student Type")
-    public static void verifyStudentType() {
-        PersonPage.verifyStudentType();
+    @Then("I verify Student Type {string}")
+    public static void verifyStudentType(String studentType) {
+        PersonPage.verifyStudentType(studentType);
+    }
+    @Then("I verify Header Assign Staff {string}")
+    public static void verifyHeaderAssignedStaff(String assignedStaff) {
+        PersonPage.verifyHeaderAssignedStaff(assignedStaff);
+    }
+    @Then("I validate Student Status label {string}")
+    public static void verifyStudentStatusLabel(String studentStatusLabel) {
+        PersonPage.verifyStudentStatusLabel(studentStatusLabel);
+    }
+    @Then("I validate Entry Term label {string}")
+    public static void verifyEntryTermLabel(String entryTerm) {
+        PersonPage.verifyEntryTermLabel(entryTerm);
     }
     @Then("I verify the record panels for a student record")
     public static void verifyStudentRecordPanels() {
@@ -78,5 +90,17 @@ public class PersonSteps {
     @Then("I navigate to ID Types")
     public static void navigateToIdTypes() {
         PersonPage.navigateToIdTypes();
+    }
+    @Then("I add in summary field {string}")
+    public static void addSummaryField(String summary) {
+        PersonPage.addSummaryField(summary);
+    }
+    @Then("I verify if summary field {string} data is correct")
+    public static void verifySummaryData(String summaryField) {
+        PersonPage.verifySummaryData(summaryField);
+    }
+    @Then("I delete summary field {string}")
+    public static void deleteSummaryFields(String summaryField) {
+        PersonPage.deleteSummaryFields(summaryField);
     }
 }

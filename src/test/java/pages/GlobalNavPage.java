@@ -23,6 +23,7 @@ public class GlobalNavPage extends BasePage {
     public static final String FOOTER_RECORDS_MENU = "#global_nav_records_toggle";
     public static final String FOOTER_RECORDS_DUPLICATES_MENU_ITEM = "#global_nav_duplicate_manager";
     public static final String FOOTER_RECORDS_PEOPLE_MENU_ITEM = "#global_nav_people";
+    public static final String FOOTER_RECORDS_ORGANIZATION_MENU_ITEM = "#global_nav_orgs";
 
 
     /*
@@ -114,6 +115,17 @@ public class GlobalNavPage extends BasePage {
         }
     }
 
+    public static void navigateOrganizationRecords(){
+        try {
+            waitElementBy(By.cssSelector(FOOTER_RECORDS_MENU),20);
+            click(By.cssSelector(FOOTER_RECORDS_MENU));
+            wait(2000);
+            click(By.cssSelector(FOOTER_RECORDS_ORGANIZATION_MENU_ITEM));
+            ExtentReportsSetUp.testingPass(LogPage.NAVIGATE_ORGANIZATION_PAGE_PASS);
+        } catch (Exception e) {
+            FailureDelegatePage.handlePageException(LogPage.NAVIGATE_ORGANIZATION_PAGE_FAIL);
+        }
+    }
     public static void navigateDuplicatesPage(){
         try {
             waitElementBy(By.cssSelector(FOOTER_RECORDS_MENU),20);
@@ -257,90 +269,113 @@ public class GlobalNavPage extends BasePage {
         try {
             mass = data.asMaps(String.class, String.class);
             if (mass.get(0).get("FirstName") != null) {
+                waitElementBy(By.cssSelector(QUICK_ADD_PERSON_FIRST_NAME_FIELD),20);
                 BasePage.write(By.cssSelector(QUICK_ADD_PERSON_FIRST_NAME_FIELD), mass.get(0).get("FirstName"));
             }
             if (mass.get(0).get("LastName") != null) {
+                waitElementBy(By.cssSelector(QUICK_ADD_PERSON_LAST_NAME_FIELD),20);
                 BasePage.write(By.cssSelector(QUICK_ADD_PERSON_LAST_NAME_FIELD), mass.get(0).get("LastName"));
             }
             if (mass.get(0).get("Phone") != null) {
+                waitElementBy(By.cssSelector(QUICK_ADD_PERSON_PHONE_NUMBER_FIELD),20);
                 BasePage.write(By.cssSelector(QUICK_ADD_PERSON_PHONE_NUMBER_FIELD), mass.get(0).get("Phone"));
             }
             if (mass.get(0).get("PhoneType") != null) {
+                waitElementBy(By.cssSelector(QUICK_ADD_PERSON_PHONE_TYPE_DROPDOWN),20);
                 BasePage.click(By.cssSelector(QUICK_ADD_PERSON_PHONE_TYPE_DROPDOWN));
                 BasePage.selectElementsList(By.cssSelector(QUICK_ADD_PERSON_PHONE_TYPE_DROPDOWN_LIST), "a");
                 clickOnListOfElements(mass.get(0).get("PhoneType"));
             }
             if (mass.get(0).get("Role1") != null) {
+                waitElementBy(By.cssSelector(QUICK_ADD_PERSON_ROLE_DROPDOWN),20);
                 BasePage.click(By.cssSelector(QUICK_ADD_PERSON_ROLE_DROPDOWN));
                 BasePage.selectElementsList(By.cssSelector(QUICK_ADD_PERSON_ROLE_DROPDOWN_LIST), "a");
                 clickOnListOfElements(mass.get(0).get("Role1"));
             }
             if (mass.get(0).get("Role2") != null) {
+                waitElementBy(By.cssSelector(QUICK_ADD_PERSON_ROLE_DROPDOWN),20);
                 BasePage.click(By.cssSelector(QUICK_ADD_PERSON_ROLE_DROPDOWN));
                 BasePage.selectElementsList(By.cssSelector(QUICK_ADD_PERSON_ROLE_DROPDOWN_LIST), "a");
                 clickOnListOfElements(mass.get(0).get("Role2"));
             }
             if (mass.get(0).get("EmailAddress") != null) {
+                waitElementBy(By.cssSelector(QUICK_ADD_PERSON_EMAIL_ADDRESS_FIELD),20);
                 BasePage.write(By.cssSelector(QUICK_ADD_PERSON_EMAIL_ADDRESS_FIELD), mass.get(0).get("EmailAddress"));
             }
             if (mass.get(0).get("EmailType") != null) {
+                waitElementBy(By.cssSelector(QUICK_ADD_PERSON_EMAIL_TYPE_DROPDOWN),20);
                 BasePage.click(By.cssSelector(QUICK_ADD_PERSON_EMAIL_TYPE_DROPDOWN));
                 BasePage.selectElementsList(By.cssSelector(QUICK_ADD_PERSON_EMAIL_TYPE_DROPDOWN_LIST), "a");
                 clickOnListOfElements(mass.get(0).get("EmailType"));
             }
             if (mass.get(0).get("EmailOptInMethod") != null) {
+                waitElementBy(By.cssSelector(QUICK_ADD_PERSON_OPT_IN_METHOD_DROPDOWN),20);
                 BasePage.click(By.cssSelector(QUICK_ADD_PERSON_OPT_IN_METHOD_DROPDOWN));
                 BasePage.selectElementsList(By.cssSelector(QUICK_ADD_PERSON_OPT_IN_METHOD_DROPDOWN_LIST), "a");
                 clickOnListOfElements(mass.get(0).get("EmailOptInMethod"));
             }
             if (mass.get(0).get("Address1") != null) {
+                waitElementBy(By.cssSelector(QUICK_ADD_PERSON_ADDRESS1_FIELD),20);
                 BasePage.write(By.cssSelector(QUICK_ADD_PERSON_ADDRESS1_FIELD), mass.get(0).get("Address1"));
             }
             if (mass.get(0).get("Address2") != null) {
+                waitElementBy(By.cssSelector(QUICK_ADD_PERSON_ADDRESS1_FIELD),20);
                 BasePage.write(By.cssSelector(QUICK_ADD_PERSON_ADDRESS1_FIELD), mass.get(0).get("Address2"));
             }
             if (mass.get(0).get("Address3") != null) {
+                waitElementBy(By.cssSelector(QUICK_ADD_PERSON_ADDRESS1_FIELD),20);
                 BasePage.write(By.cssSelector(QUICK_ADD_PERSON_ADDRESS1_FIELD), mass.get(0).get("Address3"));
             }
             if (mass.get(0).get("Address4") != null) {
+                waitElementBy(By.cssSelector(QUICK_ADD_PERSON_ADDRESS1_FIELD),20);
                 BasePage.write(By.cssSelector(QUICK_ADD_PERSON_ADDRESS1_FIELD), mass.get(0).get("Address4"));
             }
             if (mass.get(0).get("City") != null) {
+                waitElementBy(By.cssSelector(QUICK_ADD_PERSON_CITY_FIELD),20);
                 BasePage.write(By.cssSelector(QUICK_ADD_PERSON_CITY_FIELD), mass.get(0).get("City"));
             }
             if (mass.get(0).get("State") != null) {
+                waitElementBy(By.cssSelector(QUICK_ADD_PERSON_STATE_DROPDOWN),20);
                 BasePage.click(By.cssSelector(QUICK_ADD_PERSON_STATE_DROPDOWN));
                 BasePage.selectElementsList(By.cssSelector(QUICK_ADD_PERSON_STATE_DROPDOWN_LIST), "a");
                 clickOnListOfElements(mass.get(0).get("State"));
             }
             if (mass.get(0).get("PostalCode") != null) {
+                waitElementBy(By.cssSelector(QUICK_ADD_PERSON_POSTAL_CODE_FIELD),20);
                 BasePage.write(By.cssSelector(QUICK_ADD_PERSON_POSTAL_CODE_FIELD), mass.get(0).get("PostalCode"));
             }
             if (mass.get(0).get("Country") != null) {
+                waitElementBy(By.cssSelector(QUICK_ADD_PERSON_COUNTRY_DROPDOWN),20);
                 BasePage.click(By.cssSelector(QUICK_ADD_PERSON_COUNTRY_DROPDOWN));
                 BasePage.selectElementsList(By.cssSelector(QUICK_ADD_PERSON_COUNTRY_DROPDOWN_LIST), "a");
                 clickOnListOfElements(mass.get(0).get("Country"));
             }
+            wait(2000);
             if (mass.get(0).get("StudentType") != null) {
+                waitElementBy(By.cssSelector(QUICK_ADD_STUDENT_TYPE_DROPDOWN),20);
                 BasePage.click(By.cssSelector(QUICK_ADD_STUDENT_TYPE_DROPDOWN));
                 BasePage.selectElementsList(By.cssSelector(QUICK_ADD_STUDENT_TYPE_DROPDOWN_LIST), "a");
                 clickOnListOfElements(mass.get(0).get("StudentType"));
             }
             if (mass.get(0).get("StudentStatusCategory") != null) {
+                waitElementBy(By.cssSelector(QUICK_ADD_STUDENT_STATUS_CATEGORY_DROPDOWN),20);
                 BasePage.click(By.cssSelector(QUICK_ADD_STUDENT_STATUS_CATEGORY_DROPDOWN));
                 BasePage.selectElementsList(By.cssSelector(QUICK_ADD_STUDENT_STATUS_CATEGORY_DROPDOWN_LIST), "a");
                 clickOnListOfElements(mass.get(0).get("StudentStatusCategory"));
             }
             if (mass.get(0).get("StudentStatus") != null) {
+                waitElementBy(By.cssSelector(QUICK_ADD_STUDENT_TYPE_DROPDOWN),20);
                 scrollToElement(By.cssSelector(QUICK_ADD_STUDENT_TYPE_DROPDOWN));
                 BasePage.click(By.cssSelector(QUICK_ADD_STUDENT_STATUS_DROPDOWN));
                 BasePage.selectElementsList(By.cssSelector(QUICK_ADD_STUDENT_STATUS_DROPDOWN_LIST), "a");
                 clickOnListOfElements(mass.get(0).get("StudentStatus"));
             }
             if (mass.get(0).get("StudentStatusDate") != null) {
+                waitElementBy(By.cssSelector(QUICK_ADD_STUDENT_STATUS_DATE_FIELD),20);
                 BasePage.write(By.cssSelector(QUICK_ADD_STUDENT_STATUS_DATE_FIELD), mass.get(0).get("StudentStatusDate"));
             }
             if (mass.get(0).get("EntryTerm") != null) {
+                waitElementBy(By.cssSelector(QUICK_ADD_STUDENT_STATUS_ENTRY_TERM_DROPDOWN),20);
                 BasePage.click(By.cssSelector(QUICK_ADD_STUDENT_STATUS_ENTRY_TERM_DROPDOWN));
                 BasePage.selectElementsList(By.cssSelector(QUICK_ADD_STUDENT_STATUS_ENTRY_TERM_DROPDOWN_LIST), "a");
                 clickOnListOfElements(mass.get(0).get("EntryTerm"));

@@ -20,7 +20,7 @@ Feature: Student Status: Required Fields
     #to add the Student Role so that the Student fields are available
     Given I go to Home page
     And I quick search "FirstName"
-    And I validate if "FirstName"summary opened properly
+    And I validate if "David"summary opened properly
     When I open a record
     And I verify Header Role "Trustee/Regent"
     And I update Header Role "Student"

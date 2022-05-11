@@ -12,7 +12,7 @@ Feature: Organization: Delete
       |MabuseTheGambler High School   |High School|263 Cardinal Circle|Endicott|New York  |13760      |United States|
     When I validate if "Organization has been created." message is correct
     #to delete the organization
-    And I validate if "Name"summary opened properly
+    And I validate if "MabuseTheGambler High School"summary opened properly
     When I delete an organization
     Then I validate if "Organization has been deleted." message is correct
     #to verify the deleted organization no longer appears in the org page

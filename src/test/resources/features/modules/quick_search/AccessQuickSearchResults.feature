@@ -13,7 +13,7 @@ Feature: Search by name
     When I quick search "Phone"
     Then I validate if result for "Phone" is correct
     And I open a record
-    Then I validate if "FullName"summary opened properly
+    Then I validate if "Robert Brandon"summary opened properly
 
   @AccessQuickSearchOrganizationResults
   Scenario: access quick search results for organization
@@ -25,7 +25,7 @@ Feature: Search by name
     When I quick search "Phone"
     Then I validate if result for "Phone" is correct
     And I open a record
-    Then I validate if "Name"summary opened properly
+    Then I validate if "BigMac Cooking School"summary opened properly
 
   @AccessQuickSearchStaffResults
   Scenario: access quick search results for staff
@@ -44,4 +44,4 @@ Feature: Search by name
     When I quick search "Phone"
     Then I validate if result for "Phone" is correct
     And I open a record
-    Then I validate if "Name"summary opened properly
+    Then I validate if "Officer"summary opened properly
