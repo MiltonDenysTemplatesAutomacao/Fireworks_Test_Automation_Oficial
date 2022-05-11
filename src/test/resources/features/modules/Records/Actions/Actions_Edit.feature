@@ -14,7 +14,8 @@ Feature: Actions Edit actions
     And I create a person
       |FirstName  |LastName     |EmailAddress	        |EmailType  |EmailOptInMethod  |Role1   |StudentType|StudentStatusCategory |StudentStatus  |StudentStatusDate |EntryTerm|Category     |Action                         |Staff        |ActionDateField    |ActionDate|Comments              |ActionType |ActionVisibility |
       |Roger      |Bannister    |RBannister@runners.com |Personal   |Inquiry           |Student | Freshman  |Accepted              |Accepted       |01/15/2016        |Fall 2017|Campus Events|Admitted Student Day: Attend   |Alan Rickman |01/05/2015 4:00 PM |01/05/2015|Original Comment      |Staff      |Primary          |
-      |           |             |                       |           |                  |        |           |                      |               |                  |         |Campus Events|Admitted Student Day: Register |Fire Starter |01/05/2015 4:00 PM |01/05/2015|Edited Action Comment |           |                 |
+      |           |             |                       |           |                  |        |           |                      |               |                  |         |Campus Events|Admitted Student Day: Register |Fire Starter |01/05/2015 4:00 PM |01/05/2015|Edited Action Comment |Staff      |Primary          |
+      |           |             |                       |           |                  |        |           |                      |               |                  |         |Select       |Select                         |Select       |                   |          |                      |           |                 |
     And I validate if "Person has been created." message is correct
     Given I go to Home page
     And I quick search "FirstName"
@@ -39,3 +40,7 @@ Feature: Actions Edit actions
     And I open an action "Admitted Student Day: Register"
     And I verify action values index "1"
     #to verify default values of a new Action after editing an action
+    And I navigate to Actions
+    And I click on add action button
+    And I verify default action values index "2"
+

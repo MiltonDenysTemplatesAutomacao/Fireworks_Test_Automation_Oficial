@@ -8,6 +8,9 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
+import java.time.LocalDateTime;
+import java.time.ZoneId;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.Map;
 
@@ -133,7 +136,17 @@ public class BasePage {
      * Miscellaneous
      *
      * @throws Exception
-     ************/
+     ***********
+     * @return*/
+
+    /*
+     * Method to get current date time from America/New_York
+     */
+    public static String currentDateTime(){
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("MM/dd/yyyy h:mm a");
+        LocalDateTime now = LocalDateTime.now(ZoneId.of("America/New_York"));
+        return dtf.format(now);
+    }
 
     /*
      * Method to validate if a message contains the correct

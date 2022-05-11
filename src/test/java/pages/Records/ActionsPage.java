@@ -23,6 +23,26 @@ public class ActionsPage extends BasePage {
     public static final String CREATE_ACTION_PANEL_TITLE = "div#actions span.panel-title.responsive-pull-left";
     public static final String ACTIONS_MANAGER_SEARCH_FIELD = "actionsSummaryTableControlsTableSearch";
 
+
+    public static void verifyDefaultActionValues(String index){
+        try {
+            if(verifyActionDateField()
+                && verifyActionAttributes(index)
+                && verifyActionDetails(index)){
+                ExtentReportsSetUp.testingPass(LogPage.VERIFY_DEFAULT_ACTION_VALUES_PASS);
+            }else{
+                FailureDelegatePage.handlePageException(LogPage.VERIFY_DEFAULT_ACTION_VALUES_FAIL);
+            }
+        } catch (Exception e) {
+            FailureDelegatePage.handlePageException(LogPage.VERIFY_DEFAULT_ACTION_VALUES_FAIL);
+        }
+    }
+    public static boolean verifyActionDateField()throws Exception{
+        String currentDateTime = currentDateTime();
+        String actionDateTimeText = getAtribute(By.cssSelector(ACTION_DATE_FIELD),"value");
+        return actionDateTimeText.equals(currentDateTime);
+    }
+
     public static void verifyActionValues(String index){
         try {
             if(verifyActionAttributes(index) && verifyActionDetails(index)){
@@ -36,14 +56,36 @@ public class ActionsPage extends BasePage {
     }
     public static boolean verifyActionAttributes(String index)throws Exception{
         waitElementBy(By.cssSelector(CREATE_ACTION_PANEL_TITLE),20);
-        String staffText = getText(By.id(ACTION_STAFF_DROPDOWN));
-        String actionDateTimeText = getAtribute(By.cssSelector(ACTION_DATE_FIELD),"value");
-        String commentsText = getText(By.id(ACTION_COMMENTS_FIELD));
-        int indexNumber = Integer.parseInt(index);
+        String staffText = "";
+        String actionDateTimeText = "";
+        String commentsText = "";
+        boolean staffValidation = false;
+        boolean actionDateTimeValidation = false;
+        boolean commentsValidation = false;
 
-        if(staffText.contains(mass.get(indexNumber).get("Staff"))
-                && actionDateTimeText.contains(mass.get(indexNumber).get("ActionDateField"))
-                && commentsText.contains(mass.get(indexNumber).get("Comments"))){
+        int indexNumber = Integer.parseInt(index);
+        if(mass.get(indexNumber).get("Staff") !=null){
+            staffText = getText(By.id(ACTION_STAFF_DROPDOWN));
+            staffValidation = staffText.contains(mass.get(indexNumber).get("Staff"));
+        }else{
+            staffValidation=true;
+        }
+        if(mass.get(indexNumber).get("ActionDateField") !=null){
+            actionDateTimeText = getAtribute(By.cssSelector(ACTION_DATE_FIELD),"value");
+            actionDateTimeValidation = actionDateTimeText.contains(mass.get(indexNumber).get("ActionDateField"));
+        }else{
+            actionDateTimeValidation=true;
+        }
+        if(mass.get(indexNumber).get("Comments") !=null){
+            commentsText = getAtribute(By.id(ACTION_COMMENTS_FIELD),"value");
+            commentsValidation = commentsText.contains(mass.get(indexNumber).get("Comments"));
+        }else{
+            commentsValidation=true;
+        }
+
+        if(staffValidation
+                && actionDateTimeValidation
+                && commentsValidation){
             return true;
         }else{
             return false;
@@ -52,16 +94,45 @@ public class ActionsPage extends BasePage {
 
     public static boolean verifyActionDetails(String index)throws Exception{
         waitElementBy(By.cssSelector(CREATE_ACTION_PANEL_TITLE),20);
-        String categoryText = getText(By.id(ACTION_CATEGORY_DROPDOWN));
-        String actionText = getText(By.id(ACTION_DROPDOWN));
-        String actionTypeText = getText(By.id(ACTION_TYPE_DISABLED_DROPDOWN));
-        String actionVisibilityText = getText(By.id(ACTION_VISIBILITY_DISABLED_DROPDOWN));
+
+        String categoryText = "";
+        String actionText = "";
+        String actionTypeText = "";
+        String actionVisibilityText = "";
+        boolean categoryValidation = false;
+        boolean actionValidation = false;
+        boolean actionTypeValidation = false;
+        boolean actionVisibilityValidation = false;
         int indexNumber = Integer.parseInt(index);
 
-        if(categoryText.contains(mass.get(indexNumber).get("Category"))
-                && actionText.contains(mass.get(indexNumber).get("Action"))
-                && actionTypeText.contains(mass.get(indexNumber).get("ActionType"))
-                && actionVisibilityText.contains(mass.get(indexNumber).get("ActionVisibility"))){
+        if(mass.get(indexNumber).get("Category") !=null){
+            categoryText = getText(By.id(ACTION_CATEGORY_DROPDOWN));
+            categoryValidation = categoryText.contains(mass.get(indexNumber).get("Category"));
+        }else{
+            categoryValidation=true;
+        }
+        if(mass.get(indexNumber).get("Action") !=null){
+            actionText = getText(By.id(ACTION_DROPDOWN));
+            actionValidation = actionText.contains(mass.get(indexNumber).get("Action"));
+        }else{
+            actionValidation=true;
+        }
+        if(mass.get(indexNumber).get("ActionType") !=null){
+            actionTypeText = getText(By.id(ACTION_TYPE_DISABLED_DROPDOWN));
+            actionTypeValidation = actionTypeText.contains(mass.get(indexNumber).get("ActionType"));
+        }else{
+            actionTypeValidation=true;
+        }
+        if(mass.get(indexNumber).get("ActionVisibility") !=null){
+            actionVisibilityText = getText(By.id(ACTION_VISIBILITY_DISABLED_DROPDOWN));
+            actionVisibilityValidation = actionVisibilityText.contains(mass.get(indexNumber).get("ActionVisibility"));
+        }else{
+            actionVisibilityValidation=true;
+        }
+        if(categoryValidation
+                && actionValidation
+                && actionTypeValidation
+                && actionVisibilityValidation){
             return true;
         }else{
             return false;
