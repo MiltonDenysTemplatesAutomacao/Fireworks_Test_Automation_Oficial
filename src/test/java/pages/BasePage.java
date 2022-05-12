@@ -139,6 +139,14 @@ public class BasePage {
      ***********
      * @return*/
 
+
+    public static void switchToIFrame(String id)throws Exception{
+        DriverBase.getDriver().switchTo().frame(id);
+    }
+    public static void switchToDefaultContent()throws Exception{
+        DriverBase.getDriver().switchTo().defaultContent();
+    }
+
     /*
      * Method to get current date time from America/New_York
      */

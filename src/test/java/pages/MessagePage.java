@@ -86,8 +86,10 @@ public class MessagePage extends BasePage{
                 waitUntilElementToBeSelected(By.cssSelector(GENERAL_ALERT_MESSAGE),20);
                 scrollToElement(By.cssSelector(GENERAL_ALERT_MESSAGE));
                 click(By.cssSelector(GENERAL_ALERT_CLOSE_BUTTON));
+                ExtentReportsSetUp.testingPass(passMessage);
+            }else{
+                FailureDelegatePage.handlePageException(errorMessage);
             }
-            ExtentReportsSetUp.testingPass(passMessage);
         } catch (Exception e) {
             FailureDelegatePage.handlePageException(errorMessage);
         }

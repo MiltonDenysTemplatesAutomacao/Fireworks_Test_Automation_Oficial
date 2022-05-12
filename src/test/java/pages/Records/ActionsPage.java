@@ -166,7 +166,7 @@ public class ActionsPage extends BasePage {
         }
     }
     public static void updateAction(String person){
-        int personNumber = Integer.parseInt(person.toString());
+        int personNumber = Integer.parseInt(person);
         try {
             if (mass.get(personNumber).get("Category") != null) {
                 scrollToElement(By.xpath(DETAILS_LABEL));

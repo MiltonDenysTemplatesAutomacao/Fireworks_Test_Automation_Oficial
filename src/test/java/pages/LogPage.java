@@ -270,4 +270,18 @@ public class LogPage {
     public static final String VERIFY_DEFAULT_ACTION_VALUES_FAIL = "Fail while trying to verify default action values";
     public static final String NAVIGATE_LETTERS_PAGE_PASS = "I navigate to letters page";
     public static final String NAVIGATE_LETTERS_PAGE_FAIL = "Fail while trying to navigate to letters page";
+    public static final String CREATE_TEMPLATE_PASS = "I click on create template button";
+    public static final String CREATE_TEMPLATE_FAIL = "Fail while trying to click on create template button";
+    public static final String NAVIGATE_TO_TEMPLATES_TAB_PASS = "I navigate to template tab";
+    public static final String NAVIGATE_TO_TEMPLATES_TAB_FAIL = "Fail while trying to navigate to template tab";
+    public static final String UPDATE_LETTER_TEMPLATE_PASS = "I update letter template person";
+    public static final String UPDATE_LETTER_TEMPLATE_FAIL = "Fail while trying to update letter template person";
+    public static final String UPDATE_LETTER_PERSON_ACTION_PASS = "I update letter person action";
+    public static final String UPDATE_LETTER_PERSON_ACTION_FAIL = "Fail while trying to update letter person action";
+    public static final String SAVE_TEMPLATE_PASS = "I click on save template button";
+    public static final String SAVE_TEMPLATE_FAIL = "Fail while trying to click on save template button";
+    public static final String CREATE_LETTER_PASS = "I click on create letter button";
+    public static final String CREATE_LETTER_FAIL = "Fail while trying to click on create letter button";
+    public static final String LOAD_TEMPLATE_PASS = "I load Template '%s'";
+    public static final String LOAD_TEMPLATE_FAIL = "Fail while trying to load Template '%s'";
 }

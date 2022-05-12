@@ -114,7 +114,7 @@ public class GlobalNavPage extends BasePage {
             click(By.cssSelector(FOOTER_COMMUNICATIONS_LETTERS_MENU_ITEM));
             ExtentReportsSetUp.testingPass(LogPage.NAVIGATE_LETTERS_PAGE_PASS);
         } catch (Exception e) {
-            FailureDelegatePage.handlePageException(LogPage.NAVIGATE_LETTERS_PAGE_PASS);
+            FailureDelegatePage.handlePageException(LogPage.NAVIGATE_LETTERS_PAGE_FAIL);
         }
     }
 
