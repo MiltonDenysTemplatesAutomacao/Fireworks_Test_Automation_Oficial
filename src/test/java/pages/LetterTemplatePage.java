@@ -17,7 +17,7 @@ public class LetterTemplatePage extends BasePage{
 
     public static void saveTemplate(){
         try {
-            scrollToElement(By.id(LettersPage.ACTION_COMMENTS_FIELD));
+            scrollToElement(By.cssSelector(LettersPage.ACTION_COMMENTS_FIELD));
             waitUntilElementToBeSelected(By.id(SAVE_TEMPLATE_BUTTON),20);
             click(By.id(SAVE_TEMPLATE_BUTTON));
             ExtentReportsSetUp.testingPass(LogPage.SAVE_TEMPLATE_PASS);

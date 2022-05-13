@@ -96,6 +96,7 @@ public class LogPage {
     public static final String VALIDATE_CLEAR_CHANGES_PASS = "I validate if clear changes worked";
     public static final String VALIDATE_CLEAR_CHANGES_FAIL = "FAILED while verifying if clear changes worked";
     public static final String SEARCH_SMART_SEARCH_PICKER_FAIL = "Fail while trying to smart search";
+    public static final String SEARCH_SINGLE_RECIPIENT_PICKER_FAIL = "Fail while trying to search a recipient ";
     public static final String PICK_SMART_SEARCH_FAIL = "Fail while trying to pick a smart search";
     public static final String OPEN_TASK_PASS = "I open task";
     public static final String OPEN_TASK_FAIL = "Fail while trying to open task";
@@ -284,4 +285,10 @@ public class LogPage {
     public static final String CREATE_LETTER_FAIL = "Fail while trying to click on create letter button";
     public static final String LOAD_TEMPLATE_PASS = "I load Template '%s'";
     public static final String LOAD_TEMPLATE_FAIL = "Fail while trying to load Template '%s'";
+    public static final String VERIFY_DRAFT_LETTER_PASS = "I verify draft letter";
+    public static final String VERIFY_DRAFT_LETTER_FAIL = "Fail while trying to verify draft letter";
+    public static final String VERIFY_LETTER_PERSON_ACTION_PASS = "I verify letter person action";
+    public static final String VERIFY_LETTER_PERSON_ACTION_FAIL = "Fail while trying to verify letter person action";
+    public static final String UPDATE_LETTER_DETAILS_PASS = "I update letter details person";
+    public static final String UPDATE_LETTER_DETAILS_FAIL = "Fail while trying to update letter details person";
 }

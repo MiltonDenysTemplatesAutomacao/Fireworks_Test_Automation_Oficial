@@ -24,4 +24,16 @@ public class LettersSteps {
     public static void verifyDraftLetter(String letterName,String search,String letterFormat,String letterContent) {
         LettersPage.verifyDraftLetter(letterName,search,letterFormat,letterContent);
     }
+    @And("I verify letter person action {string}, {string}, {string}, {string}, {string}, {string} and {string}")
+    public static void verifyLetterPersonAction(String category,String action,String actionType,String actionVisibility, String staff, String date,String comments) {
+        LettersPage.verifyLetterPersonAction(category,action,actionType,actionVisibility,staff,date,comments);
+    }
+    @And("I update letter details person {int}")
+    public static void updateLetterDetails(int index) {
+        LettersPage.updateLetterDetails(index);
+    }
+    @And("I update letter recipients person {int}")
+    public static void updateLetterRecipients(int index) {
+        LettersPage.updateLetterRecipients(index);
+    }
 }

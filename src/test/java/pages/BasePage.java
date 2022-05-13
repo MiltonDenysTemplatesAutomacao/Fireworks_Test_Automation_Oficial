@@ -140,6 +140,15 @@ public class BasePage {
      * @return*/
 
 
+    public static boolean verifyIfEquals(By by,String parameter)throws Exception{
+        String text = getText(by);
+        return text.equals(parameter);
+    }
+    public static boolean verifyIfContains(By by,String parameter)throws Exception{
+        String text = getText(by);
+        return text.contains(parameter);
+    }
+
     public static void switchToIFrame(String id)throws Exception{
         DriverBase.getDriver().switchTo().frame(id);
     }
