@@ -34,37 +34,36 @@ public class LetterTemplatePage extends BasePage{
             FailureDelegatePage.handlePageException(LogPage.CREATE_TEMPLATE_FAIL);
         }
     }
-    public static void updateLetterTemplate(String person){
-        int personNumber = Integer.parseInt(person);
+    public static void updateLetterTemplate(int person){
         int updateLetterTemplateDelay = 20;
 
         try {
-            if (mass.get(personNumber).get("TemplateName") != null) {
+            if (mass.get(person).get("TemplateName") != null) {
                 waitElementBy(By.cssSelector(TEMPLATE_NAME_FIELD), updateLetterTemplateDelay);
-                BasePage.write(By.cssSelector(TEMPLATE_NAME_FIELD),mass.get(personNumber).get("TemplateName"));
+                BasePage.write(By.cssSelector(TEMPLATE_NAME_FIELD),mass.get(person).get("TemplateName"));
             }
-            if (mass.get(personNumber).get("TemplateDescription") != null) {
+            if (mass.get(person).get("TemplateDescription") != null) {
                 waitElementBy(By.cssSelector(TEMPLATE_DESCRIPTION_FIELD), updateLetterTemplateDelay);
-                BasePage.write(By.cssSelector(TEMPLATE_DESCRIPTION_FIELD),mass.get(personNumber).get("TemplateDescription"));
+                BasePage.write(By.cssSelector(TEMPLATE_DESCRIPTION_FIELD),mass.get(person).get("TemplateDescription"));
             }
-            if (mass.get(personNumber).get("RecordType") != null) {
+            if (mass.get(person).get("RecordType") != null) {
                 scrollToElement(By.cssSelector(TEMPLATE_DESCRIPTION_FIELD));
                 waitUntilElementToBeSelected(By.cssSelector(TEMPLATE_RECORD_TYPE_DROPDOWN), updateLetterTemplateDelay);
                 BasePage.click(By.cssSelector(TEMPLATE_RECORD_TYPE_DROPDOWN));
                 BasePage.selectElementsList(By.cssSelector(StudentStatusPage.CHECKBOX_LIST), "a");
-                clickOnListOfElements(mass.get(personNumber).get("RecordType"));
+                clickOnListOfElements(mass.get(person).get("RecordType"));
             }
-            if (mass.get(personNumber).get("LetterFormat") != null) {
+            if (mass.get(person).get("LetterFormat") != null) {
                 scrollToElement(By.cssSelector(TEMPLATE_RECORD_TYPE_DROPDOWN));
                 waitUntilElementToBeSelected(By.cssSelector(LETTER_FORMAT_DROPDOWN), updateLetterTemplateDelay);
                 BasePage.click(By.cssSelector(LETTER_FORMAT_DROPDOWN));
                 BasePage.selectElementsList(By.cssSelector(StudentStatusPage.CHECKBOX_LIST), "a");
-                clickOnListOfElements(mass.get(personNumber).get("LetterFormat"));
+                clickOnListOfElements(mass.get(person).get("LetterFormat"));
             }
-            if (mass.get(personNumber).get("LetterContent") != null) {
+            if (mass.get(person).get("LetterContent") != null) {
                 switchToIFrame(LETTER_CONTENT_IFRAME_ELEMENT);
                 waitElementBy(By.id(LETTER_CONTENT_IFRAME_BODY_ELEMENT), updateLetterTemplateDelay);
-                BasePage.write(By.id(LETTER_CONTENT_IFRAME_BODY_ELEMENT),mass.get(personNumber).get("LetterContent"));
+                BasePage.write(By.id(LETTER_CONTENT_IFRAME_BODY_ELEMENT),mass.get(person).get("LetterContent"));
                 switchToDefaultContent();
             }
             ExtentReportsSetUp.testingPass(LogPage.UPDATE_LETTER_TEMPLATE_PASS);

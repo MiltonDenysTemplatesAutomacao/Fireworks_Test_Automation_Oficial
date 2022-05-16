@@ -8,8 +8,8 @@ public class LettersSteps {
     public static void navigateToTemplatesTab() {
         LettersPage.navigateToTemplatesTab();
     }
-    @And("I update letter person action index {string}")
-    public static void updateLetterPersonAction(String index) {
+    @And("I update letter person action index {int}")
+    public static void updateLetterPersonAction(int index) {
         LettersPage.updateLetterPersonAction(index);
     }
     @And("I click on create letter button")
@@ -35,5 +35,17 @@ public class LettersSteps {
     @And("I update letter recipients person {int}")
     public static void updateLetterRecipients(int index) {
         LettersPage.updateLetterRecipients(index);
+    }
+    @And("I verify Letter System Action {string} and {string}")
+    public static void verifyLetterSystemAction(String systemActionsCategory, String systemActionsAction) {
+        LettersPage.verifyLetterSystemAction(systemActionsCategory,systemActionsAction);
+    }
+    @And("I click on create PDF")
+    public static void verifyLetterSystemAction() {
+        LettersPage.createPDF();
+    }
+    @And("I verify recepients modal")
+    public static void verifyRecipientsModal() {
+        LettersPage.verifyRecipientsModal();
     }
 }

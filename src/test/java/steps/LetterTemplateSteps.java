@@ -9,8 +9,8 @@ public class LetterTemplateSteps {
     public static void createPerson() {
         LetterTemplatePage.createTemplate();
     }
-    @And("I update letter template person {string}")
-    public static void updateLetterTemplate(String person) {
+    @And("I update letter template person {int}")
+    public static void updateLetterTemplate(int person) {
         LetterTemplatePage.updateLetterTemplate(person);
     }
     @And("I click on save template button")

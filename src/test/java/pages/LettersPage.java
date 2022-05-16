@@ -12,7 +12,7 @@ public class LettersPage extends BasePage{
     public static final String ACTION_DROPDOWN = "div#s2id_action_id.select2-container.form-control.select2.select2 a.select2-choice";
     public static final String ACTION_DROPDOWN_LIST = "select2-results-24";
     public static final String ACTION_STAFF_DROPDOWN = "div#s2id_action_staff.select2-container.form-control.select2 a.select2-choice";
-    public static final String ACTION_STAFF_DROPDOWN_LIST = "select2-results-25";
+    public static final String ACTION_STAFF_DROPDOWN_LIST = "select2-drop";
     public static final String ACTION_VISIBILITY = "#s2id_action_visibility_id";
     public static final String ACTION_VISIBILITY_LIST = "select2-results-26";
     public static final String ACTION_COMMENTS_FIELD = "#action_comments";
@@ -32,7 +32,42 @@ public class LettersPage extends BasePage{
     public static final String RECORD_PICKER_MODAL_TABLE_ROW1 = "#recordPickerModalTable_row_0";
     public static final String RECORD_PICKER_MODAL_TABLE_ROW1_CHECKBOX = "#recordPickerModalTable_row_0_col_0";
     public static final String RECORD_PICKER_MODAL_CHOOSE_BUTTON = "#modalSubmitButtonrecordPicker";
+    public static final String INCLUDE_LABELS_CHECKBOX = "includeLabelsCheckbox";
+    public static final String SYSTEM_ACTION_ACTION_ELEMENT = "div#s2id_system_action_id.select2-container.select2-container-disabled.form-control.actionIdSelector.childSelect.select2";
+    public static final String LETTER_CREATE_PDF = "#createPDF";
+    public static final String PREVIEW_RECIPIENTS_MODAL = "#previewRecipientsModalLabel";
 
+    public static void verifyRecipientsModal(){
+
+    }
+    public static void createPDF(){
+        try {
+            scrollToElement(By.cssSelector(ACTION_COMMENTS_FIELD));
+            waitElementBy(By.cssSelector(LETTER_CREATE_PDF),20);
+            click(By.cssSelector(LETTER_CREATE_PDF));
+            ExtentReportsSetUp.testingPass(LogPage.CREATE_PDF_PASS);
+        } catch (Exception e) {
+            FailureDelegatePage.handlePageException(LogPage.CREATE_PDF_FAIL);
+        }
+    }
+
+    public static void verifyLetterSystemAction(String systemActionsCategory, String systemActionsAction){
+        String errorMessage = String.format(LogPage.VERIFY_LETTER_SYSTEM_ACTION_FAIL, systemActionsCategory,systemActionsAction);
+        String passMessage = String.format(LogPage.VERIFY_LETTER_SYSTEM_ACTION_PASS, systemActionsCategory,systemActionsAction);
+        try {
+            scrollToElement(By.id(INCLUDE_LABELS_CHECKBOX));
+            waitElementBy(By.cssSelector(SYSTEM_ACTION_CATEGORY_ELEMENT),20);
+            boolean systemActionsCategoryValidation = verifyIfContains(By.cssSelector(SYSTEM_ACTION_CATEGORY_ELEMENT),systemActionsCategory);
+            boolean systemActionsActionValidation = verifyIfContains(By.cssSelector(SYSTEM_ACTION_ACTION_ELEMENT),systemActionsAction);
+            if(systemActionsCategoryValidation && systemActionsActionValidation){
+                ExtentReportsSetUp.testingPass(passMessage);
+            }else{
+                FailureDelegatePage.handlePageException(errorMessage);
+            }
+        } catch (Exception e) {
+            FailureDelegatePage.handlePageException(errorMessage);
+        }
+    }
     public static void searchSingleRecipientPicker (String searchName)throws Exception{
         try {
             waitElementBy(By.cssSelector(RECORD_PICKER_MODAL_SEARCH_FIELD),20);
@@ -62,7 +97,6 @@ public class LettersPage extends BasePage{
     }
 
     public static void updateLetterRecipients(int index){
-
         try {
             if (mass.get(index).get("SmartSearch") != null) {
                 scrollToElement(By.cssSelector(LETTER_NAME_FIELD));
@@ -74,9 +108,9 @@ public class LettersPage extends BasePage{
             if (mass.get(0).get("SingleRecipient") != null) {
                 pickSingleRecipient(mass.get(index).get("SingleRecipient"));
             }
-
+            ExtentReportsSetUp.testingPass(LogPage.UPDATE_LETTER_RECIPIENTS_PASS);
         } catch (Exception e) {
-
+            FailureDelegatePage.handlePageException(LogPage.UPDATE_LETTER_RECIPIENTS_FAIL);
         }
     }
 
@@ -168,45 +202,48 @@ public class LettersPage extends BasePage{
         }
     }
 
-    public static void updateLetterPersonAction(String index){
-        int personNumber = Integer.parseInt(index);
+    public static void updateLetterPersonAction(int index){
         int updateLetterPersonActionDelay = 20;
-
+        wait(2000);
         try {
-            if (mass.get(personNumber).get("Category") != null) {
+            if (mass.get(index).get("Category") != null) {
                 scrollToElement(By.xpath(USER_ACTION_SECTION_LABEL));
                 waitUntilElementToBeSelected(By.cssSelector(ACTION_CATEGORY_DROPDOWN), updateLetterPersonActionDelay);
                 BasePage.click(By.cssSelector(ACTION_CATEGORY_DROPDOWN));
                 BasePage.selectElementsList(By.id(ACTION_CATEGORY_DROPDOWN_LIST), "a");
-                clickOnListOfElements(mass.get(personNumber).get("Category"));
+                clickOnListOfElements(mass.get(index).get("Category"));
             }
-            if (mass.get(personNumber).get("Action") != null) {
+            if (mass.get(index).get("Action") != null) {
                 scrollToElement(By.xpath(USER_ACTION_SECTION_LABEL));
                 waitUntilElementToBeSelected(By.cssSelector(ACTION_DROPDOWN), updateLetterPersonActionDelay);
                 BasePage.click(By.cssSelector(ACTION_DROPDOWN));
                 BasePage.selectElementsList(By.id(ACTION_DROPDOWN_LIST), "a");
-                clickOnListOfElements(mass.get(personNumber).get("Action"));
+                clickOnListOfElements(mass.get(index).get("Action"));
             }
-            if (mass.get(personNumber).get("Staff") != null) {
+            if (mass.get(index).get("Staff") != null) {
                 scrollToElement(By.xpath(USER_ACTION_SECTION_LABEL));
                 waitUntilElementToBeSelected(By.cssSelector(ACTION_STAFF_DROPDOWN), updateLetterPersonActionDelay);
                 BasePage.click(By.cssSelector(ACTION_STAFF_DROPDOWN));
                 BasePage.selectElementsList(By.id(ACTION_STAFF_DROPDOWN_LIST), "a");
-                clickOnListOfElements(mass.get(personNumber).get("Staff"));
+                clickOnListOfElements(mass.get(index).get("Staff"));
             }
-            if (mass.get(personNumber).get("Visibility") != null) {
+            if (mass.get(index).get("Visibility") != null) {
                 scrollToElement(By.xpath(USER_ACTION_SECTION_LABEL));
                 waitUntilElementToBeSelected(By.cssSelector(ACTION_VISIBILITY), updateLetterPersonActionDelay);
                 BasePage.click(By.cssSelector(ACTION_VISIBILITY));
                 BasePage.selectElementsList(By.id(ACTION_VISIBILITY_LIST), "a");
-                clickOnListOfElements(mass.get(personNumber).get("Visibility"));
+                clickOnListOfElements(mass.get(index).get("Visibility"));
             }
-            if (mass.get(personNumber).get("Comments") != null) {
+            if (mass.get(index).get("Comments") != null) {
                 scrollToElement(By.xpath(USER_ACTION_SECTION_LABEL));
                 waitUntilElementToBeSelected(By.cssSelector(ACTION_VISIBILITY), updateLetterPersonActionDelay);
-                BasePage.write(By.cssSelector(ACTION_COMMENTS_FIELD),mass.get(personNumber).get("Comments"));
+                BasePage.write(By.cssSelector(ACTION_COMMENTS_FIELD),mass.get(index).get("Comments"));
             }
-
+            if (mass.get(index).get("ActionDateTime") != null) {
+                scrollToElement(By.xpath(USER_ACTION_SECTION_LABEL));
+                waitUntilElementToBeSelected(By.cssSelector(ACTION_DATE_FIELD), updateLetterPersonActionDelay);
+                BasePage.write(By.cssSelector(ACTION_DATE_FIELD),mass.get(index).get("ActionDateTime"));
+            }
             ExtentReportsSetUp.testingPass(LogPage.UPDATE_LETTER_PERSON_ACTION_PASS);
         } catch (Exception e) {
             FailureDelegatePage.handlePageException(LogPage.UPDATE_LETTER_PERSON_ACTION_FAIL);

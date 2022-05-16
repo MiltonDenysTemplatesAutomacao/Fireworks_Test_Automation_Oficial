@@ -291,4 +291,10 @@ public class LogPage {
     public static final String VERIFY_LETTER_PERSON_ACTION_FAIL = "Fail while trying to verify letter person action";
     public static final String UPDATE_LETTER_DETAILS_PASS = "I update letter details person";
     public static final String UPDATE_LETTER_DETAILS_FAIL = "Fail while trying to update letter details person";
+    public static final String UPDATE_LETTER_RECIPIENTS_PASS = "I update letter recipients";
+    public static final String UPDATE_LETTER_RECIPIENTS_FAIL = "Fail while trying to update letter recipients";
+    public static final String VERIFY_LETTER_SYSTEM_ACTION_PASS = "I verify Letter System Action '%s' and '%s'";
+    public static final String VERIFY_LETTER_SYSTEM_ACTION_FAIL = "Fail while trying to verify Letter System Action '%s' and '%s'";
+    public static final String CREATE_PDF_PASS = "I click on create PDF";
+    public static final String CREATE_PDF_FAIL = "Fail while trying to click on create PDF";
 }
