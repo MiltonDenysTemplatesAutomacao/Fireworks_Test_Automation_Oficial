@@ -297,4 +297,8 @@ public class LogPage {
     public static final String VERIFY_LETTER_SYSTEM_ACTION_FAIL = "Fail while trying to verify Letter System Action '%s' and '%s'";
     public static final String CREATE_PDF_PASS = "I click on create PDF";
     public static final String CREATE_PDF_FAIL = "Fail while trying to click on create PDF";
+    public static final String VERIFY_RECIPIENTS_MODAL_PASS = "I verify recipients modal";
+    public static final String VERIFY_RECIPIENTS_MODAL_FAIL = "Fail while trying verify recipients modal";
+    public static final String CONFIRM_RECIPIENTS_MODAL_PASS = "I confirm recipients modal";
+    public static final String CONFIRM_RECIPIENTS_MODAL_FAIL = "Fail while trying to confirm recipients modal";
 }

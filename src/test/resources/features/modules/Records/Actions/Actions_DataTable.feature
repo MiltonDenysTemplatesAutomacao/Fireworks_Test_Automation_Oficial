@@ -34,4 +34,10 @@ Feature: Actions Edit actions
     And I update letter person action index 1
     And I verify Letter System Action "Letter Event" and "Letter Generated"
     And I click on create PDF
-    And I verify recepients modal
+    And I verify recipients modal
+    And I confirm recipients modal
+    And I validate if "Letter creation queued!" message is correct
+    #to verify the letter was created
+
+
+

@@ -36,8 +36,34 @@ public class LettersPage extends BasePage{
     public static final String SYSTEM_ACTION_ACTION_ELEMENT = "div#s2id_system_action_id.select2-container.select2-container-disabled.form-control.actionIdSelector.childSelect.select2";
     public static final String LETTER_CREATE_PDF = "#createPDF";
     public static final String PREVIEW_RECIPIENTS_MODAL = "#previewRecipientsModalLabel";
+    public static final String PREVIEW_RECIPIENTS_MODAL_MESSAGE = "//*[@id='previewRecipientsModal']/div/div/div[2]/p";
+    public static final String PREVIEW_RECIPIENTS_LETTER_RECIPIENTS = "//h1[text()='Letter Recipients']";
+    public static final String PREVIEW_RECIPIENTS_MODAL_OK_BUTTON = "div.in button.modalConfirm";
 
+    public static void confirmRecipientsModal(){
+        try {
+            waitElementBy(By.cssSelector(PREVIEW_RECIPIENTS_MODAL_OK_BUTTON),20);
+            click(By.cssSelector(PREVIEW_RECIPIENTS_MODAL_OK_BUTTON));
+            ExtentReportsSetUp.testingPass(LogPage.CONFIRM_RECIPIENTS_MODAL_PASS);
+        } catch (Exception e) {
+            FailureDelegatePage.handlePageException(LogPage.CONFIRM_RECIPIENTS_MODAL_FAIL);
+        }
+    }
     public static void verifyRecipientsModal(){
+        try {
+            waitElementBy(By.cssSelector(PREVIEW_RECIPIENTS_MODAL),20);
+            boolean previewRecipientsValidation = verifyIfEquals(By.cssSelector(PREVIEW_RECIPIENTS_MODAL),"Preview Recipients");
+            boolean previewRecipientsModalValidation = verifyIfEquals(By.xpath(PREVIEW_RECIPIENTS_MODAL_MESSAGE),"You are about to create this PDF. This cannot be undone.");
+            boolean previewRecipientsLetterValidation = verifyIfEquals(By.xpath(PREVIEW_RECIPIENTS_LETTER_RECIPIENTS),"Letter Recipients");
+
+            if(previewRecipientsValidation && previewRecipientsModalValidation && previewRecipientsLetterValidation){
+                ExtentReportsSetUp.testingPass(LogPage.VERIFY_RECIPIENTS_MODAL_PASS);
+            }else{
+                FailureDelegatePage.handlePageException(LogPage.VERIFY_RECIPIENTS_MODAL_FAIL);
+            }
+        } catch (Exception e) {
+            FailureDelegatePage.handlePageException(LogPage.VERIFY_RECIPIENTS_MODAL_FAIL);
+        }
 
     }
     public static void createPDF(){

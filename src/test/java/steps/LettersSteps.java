@@ -44,8 +44,12 @@ public class LettersSteps {
     public static void verifyLetterSystemAction() {
         LettersPage.createPDF();
     }
-    @And("I verify recepients modal")
+    @And("I verify recipients modal")
     public static void verifyRecipientsModal() {
         LettersPage.verifyRecipientsModal();
+    }
+    @And("I confirm recipients modal")
+    public static void confirmRecipientsModal() {
+        LettersPage.confirmRecipientsModal();
     }
 }
