@@ -4,6 +4,7 @@ import config.extent_reports.ExtentReportsSetUp;
 import org.openqa.selenium.By;
 import pages.BasePage;
 import pages.FailureDelegatePage;
+import pages.KeyPage;
 import pages.LogPage;
 
 public class ActionsPage extends BasePage {
@@ -146,25 +147,57 @@ public class ActionsPage extends BasePage {
         waitUntilElementToBeSelected(By.id(ACTIONS_MANAGER_SEARCH_FIELD),20);
         write(By.id(ACTIONS_MANAGER_SEARCH_FIELD),action);
     }
-    public static void verifyActionDataTableValues(String category,String action,String staff,String actionDate,String comments,String index){
+    public static void verifyActionDataTableValues(int index){
         try {
-            int indexNumber = Integer.parseInt(index);
-            waitElementBy(By.cssSelector(ACTIONS_MANAGER_TABLE),20);
+            waitElementBy(By.cssSelector(ACTIONS_MANAGER_TABLE), 20);
             String text = getText(By.cssSelector(ACTIONS_MANAGER_TABLE));
-            if (text.contains(mass.get(indexNumber).get(category))
-                    && text.contains(mass.get(indexNumber).get(action))
-                    && text.contains(mass.get(indexNumber).get(staff))
-                    && text.contains(mass.get(indexNumber).get(actionDate))
-                    && text.contains(mass.get(indexNumber).get(comments))
-            ) {
+            boolean categoryValidation = false;
+            boolean actionValidation = false;
+            boolean staffValidation = false;
+            boolean actionDateValidation = false;
+            boolean commentsValidation = false;
+
+            if (mass.get(index).get("Category") != null) {
+                categoryValidation = text.contains(mass.get(index).get("Category"));
+            }else{
+                categoryValidation=true;
+            }
+            if (mass.get(index).get("Action") != null) {
+                actionValidation = text.contains(mass.get(index).get("Action"));
+            }else{
+                actionValidation=true;
+            }
+            if (mass.get(index).get("Staff") != null) {
+                staffValidation = text.contains(mass.get(index).get("Staff"));
+            }else{
+                staffValidation=true;
+            }
+            if (mass.get(index).get("ActionDate") != null) {
+                actionDateValidation = text.contains(mass.get(index).get("ActionDate"));
+            }else{
+                actionDateValidation=true;
+            }
+            if (mass.get(index).get("Category") != null) {
+                commentsValidation = text.contains(mass.get(index).get("Category"));
+            }else{
+                commentsValidation=true;
+            }
+            if(categoryValidation
+                && actionValidation
+                && staffValidation
+                && actionDateValidation
+                && commentsValidation){
                 ExtentReportsSetUp.testingPass(LogPage.VERIFY_ACTION_DATA_TABLE_VALUES_PASS);
-            } else {
+            }else{
                 FailureDelegatePage.handlePageException(LogPage.VERIFY_ACTION_DATA_TABLE_VALUES_FAIL);
             }
         } catch (Exception e) {
             FailureDelegatePage.handlePageException(LogPage.VERIFY_ACTION_DATA_TABLE_VALUES_FAIL);
         }
+
     }
+
+
     public static void updateAction(String person){
         int personNumber = Integer.parseInt(person);
         try {
@@ -192,6 +225,7 @@ public class ActionsPage extends BasePage {
             if (mass.get(personNumber).get("ActionDateField") != null) {
                 scrollToElement(By.xpath(DETAILS_LABEL));
                 waitUntilElementToBeSelected(By.cssSelector(ACTION_DATE_FIELD), 20);
+                KeyPage.erase(By.cssSelector(ACTION_DATE_FIELD));
                 BasePage.write(By.cssSelector(ACTION_DATE_FIELD),mass.get(personNumber).get("ActionDateField"));
             }
             if (mass.get(personNumber).get("Comments") != null) {

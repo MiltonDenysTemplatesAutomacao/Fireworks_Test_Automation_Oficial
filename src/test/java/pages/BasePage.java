@@ -155,7 +155,6 @@ public class BasePage {
     public static void switchToDefaultContent()throws Exception{
         DriverBase.getDriver().switchTo().defaultContent();
     }
-
     /*
      * Method to get current date time from America/New_York
      */

@@ -5,7 +5,7 @@
 #Regression testcase TL-408 (1 of 2): Actions: Data Table
 
 @DataTable
-Feature: Actions Edit actions
+Feature: Actions Data Table
 
   @DataTablePerson
   Scenario: Letter - create from template - system actions

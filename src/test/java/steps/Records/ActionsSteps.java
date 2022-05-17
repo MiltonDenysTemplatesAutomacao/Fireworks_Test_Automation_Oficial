@@ -17,9 +17,9 @@ public class ActionsSteps {
     public static void clickSaveChangesActions() {
         ActionsPage.clickSaveChangesActions();
     }
-    @Then("I verify action Datatable values {string}, {string}, {string}, {string} and {string} index {string}")
-    public static void verifyActionDataTableValues(String category,String action,String staff,String actionDate,String comments,String index) {
-        ActionsPage.verifyActionDataTableValues(category,action,staff,actionDate,comments,index);
+    @Then("I verify action Datatable values index {int}")
+    public static void verifyActionDataTableValues(int index) {
+        ActionsPage.verifyActionDataTableValues(index);
     }
     @Then("I open an action {string}")
     public static void openAction(String action) {
