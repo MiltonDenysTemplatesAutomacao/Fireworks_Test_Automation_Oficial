@@ -23,8 +23,33 @@ public class ActionsPage extends BasePage {
     public static final String ACTIONS_MANAGER_TABLE_ROW1_EDIT_LINK = "actionsSummaryTable_row_0_col_0_link_0";
     public static final String CREATE_ACTION_PANEL_TITLE = "div#actions span.panel-title.responsive-pull-left";
     public static final String ACTIONS_MANAGER_SEARCH_FIELD = "actionsSummaryTableControlsTableSearch";
+    public static final String DELETE_ACTION_BUTTON = "#deleteActionButton";
+    public static final String DELETE_ACTION_YES_DELETE_BUTTON = "#modalSubmitButtondeleteConfirm";
 
-
+    public static void validateActionDeleted(){
+        try {
+            waitElementBy(By.cssSelector(ACTIONS_MANAGER_TABLE),20);
+            String textReturn = getText(By.cssSelector(ACTIONS_MANAGER_TABLE));
+            if (textReturn.contains("No table data available.")){
+                ExtentReportsSetUp.testingPass(LogPage.VALIDATE_ACTION_DELETED_PASS);
+            }else{
+                FailureDelegatePage.handlePageException(LogPage.VALIDATE_ACTION_DELETED_FAIL);
+            }
+        } catch (Exception e) {
+            FailureDelegatePage.handlePageException(LogPage.VALIDATE_ACTION_DELETED_FAIL);
+        }
+    }
+    public static void deleteAction(){
+        try {
+            waitUntilElementToBeSelected(By.cssSelector(DELETE_ACTION_BUTTON),20);
+            click(By.cssSelector(DELETE_ACTION_BUTTON));
+            waitUntilElementToBeSelected(By.cssSelector(DELETE_ACTION_YES_DELETE_BUTTON),20);
+            click(By.cssSelector(DELETE_ACTION_YES_DELETE_BUTTON));
+            ExtentReportsSetUp.testingPass(LogPage.DELETE_ACTION_PASS);
+        } catch (Exception e) {
+            FailureDelegatePage.handlePageException(LogPage.DELETE_ACTION_FAIL);
+        }
+    }
     public static void verifyDefaultActionValues(String index){
         try {
             if(verifyActionDateField()
@@ -246,7 +271,6 @@ public class ActionsPage extends BasePage {
             ExtentReportsSetUp.testingPass(LogPage.SAVE_CHANGES_PASS);
         } catch (Exception e) {
             FailureDelegatePage.handlePageException(LogPage.SAVE_CHANGES_FAIL);
-
         }
     }
     public static void createAction(){

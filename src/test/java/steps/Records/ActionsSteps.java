@@ -33,4 +33,12 @@ public class ActionsSteps {
     public static void verifyDefaultActionValues(String index) {
         ActionsPage.verifyDefaultActionValues(index);
     }
+    @Then("I delete action")
+    public static void deleteAction() {
+        ActionsPage.deleteAction();
+    }
+    @Then("I validate if action were deleted")
+    public static void validateActionDeleted() {
+        ActionsPage.validateActionDeleted();
+    }
 }

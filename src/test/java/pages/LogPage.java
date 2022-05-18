@@ -263,6 +263,8 @@ public class LogPage {
     public static final String UPDATE_ACTION_FAIL = "Fail while trying to update action person";
     public static final String VERIFY_ACTION_DATA_TABLE_VALUES_PASS = "I verify action Datatable values";
     public static final String VERIFY_ACTION_DATA_TABLE_VALUES_FAIL = "Fail while trying verify action Datatable values";
+    public static final String UPDATE_ORG_ACTION_PASS = "I update action organization";
+    public static final String UPDATE_ORG_ACTION_FAIL = "Fail while trying to update action organization";
     public static final String OPEN_ACTION_PASS = "I open an action";
     public static final String OPEN_ACTION_FAIL = "Fail while trying to open an action";
     public static final String VERIFY_ACTION_VALUES_PASS = "I verify action values";
@@ -301,4 +303,10 @@ public class LogPage {
     public static final String VERIFY_RECIPIENTS_MODAL_FAIL = "Fail while trying verify recipients modal";
     public static final String CONFIRM_RECIPIENTS_MODAL_PASS = "I confirm recipients modal";
     public static final String CONFIRM_RECIPIENTS_MODAL_FAIL = "Fail while trying to confirm recipients modal";
+    public static final String DELETE_ACTION_PASS = "I delete action";
+    public static final String DELETE_ACTION_FAIL = "Fail while trying to delete action";
+    public static final String VALIDATE_ACTION_DELETED_PASS = "I validate if action were deleted";
+    public static final String VALIDATE_ACTION_DELETED_FAIL = "Fail while trying to validate if action were deleted";
+    public static final String VERIFY_ORG_ACTION_VALUES_PASS = "I verify action values for organization";
+    public static final String VERIFY_ORG_ACTION_VALUES_FAIL = "Fail while trying to verify action values for organization";
 }

@@ -372,12 +372,13 @@ public class GlobalNavPage extends BasePage {
                 BasePage.click(By.cssSelector(QUICK_ADD_STUDENT_TYPE_DROPDOWN));
                 BasePage.selectElementsList(By.cssSelector(QUICK_ADD_STUDENT_TYPE_DROPDOWN_LIST), "a");
                 clickOnListOfElements(mass.get(0).get("StudentType"));
-                wait(500);
+                wait(1000);
             }
             if (mass.get(0).get("StudentStatusCategory") != null) {
                 waitElementBy(By.cssSelector(QUICK_ADD_STUDENT_STATUS_CATEGORY_DROPDOWN),quickAddPersonDelay);
                 BasePage.click(By.cssSelector(QUICK_ADD_STUDENT_STATUS_CATEGORY_DROPDOWN));
                 BasePage.selectElementsList(By.cssSelector(QUICK_ADD_STUDENT_STATUS_CATEGORY_DROPDOWN_LIST), "a");
+                wait(1000);
                 clickOnListOfElements(mass.get(0).get("StudentStatusCategory"));
                 wait(1000);
             }

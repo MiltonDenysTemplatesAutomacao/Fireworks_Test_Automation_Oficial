@@ -2,6 +2,7 @@ package pages;
 
 import config.extent_reports.ExtentReportsSetUp;
 import org.openqa.selenium.By;
+import pages.Records.ActionsPage;
 import pages.Records.StudentStatusPage;
 
 import java.util.HashMap;
@@ -43,7 +44,19 @@ public class OrgPage extends BasePage{
     private static final String SUMMARY_DISPLAY_ORG_PHONE_NUMBER_DELETE_BUTTON = "//div[@id='summaryPanelFieldBlock_368']/div[2]/div/div/button";
     private static final String SUMMARY_DISPLAY_ORG_PHONE_TIME_ZONE_DELETE_BUTTON = "//div[@id='summaryPanelFieldBlock_509']/div[2]/div/div/button";
     private static final String SUMMARY_DISPLAY_ORG_FIREWORKS_ID_DELETE_BUTTON = "//div[@id='summaryPanelFieldBlock_436']/div[2]/div/div/button";
-
+    private static final String ORG_ACTION_CATEGORY_DROPDOWN = "s2id_org_action_category_id";
+    private static final String ORG_ACTION_DROPDOWN = "s2id_org_action_id";
+    private static final String ORG_ACTION_STAFF_DROPDOWN = "s2id_org_action_staff";
+    private static final String ORG_ACTION_DATE_FIELD = "#org_action_date";
+    private static final String ORG_ACTION_COMMENTS_FIELD = "org_action_comments";
+    private static final String CREATE_ACTION_PANEL_TITLE = "div#actions span.panel-title.responsive-pull-left";
+    private static final String ACTION_STAFF_DROPDOWN = "div#s2id_org_action_staff.select2-container.form-control.select2.required a.select2-choice";
+    private static final String ACTION_DATE_FIELD = "#org_action_date";
+    private static final String ACTION_COMMENTS_FIELD = "#org_action_comments";
+    private static final String ACTION_CATEGORY_DROPDOWN = "div#s2id_org_action_category_id.select2-container.form-control.parentSelect.select2.required a.select2-choice";
+    private static final String ACTION_DROPDOWN = "div#s2id_org_action_id.select2-container.form-control.childSelect.select2.required a.select2-choice";
+    private static final String ACTION_TYPE_DISABLED_DROPDOWN = "div#s2id_org_action_type_id.select2-container.form-control.actionTypeIdSelector.select2.select2-container-disabled a.select2-choice";
+    private static final String ACTION_VISIBILITY_DISABLED_DROPDOWN = "div#s2id_org_action_visibility_id.select2-container.form-control.actionVisibilityIdSelector.select2.select2-container-disabled a.select2-choice";
 
     private static String statusPlusSignElement(String index){
         return String.format("#org_status_%s_add",index);
@@ -58,6 +71,133 @@ public class OrgPage extends BasePage{
         return String.format("#org_status_%s_org_status_comments",index);
     }
 
+    public static void verifyOrgActionValues(int organizationIndex){
+        try {
+            if(verifyActionAttributes(organizationIndex) && verifyActionDetails(organizationIndex)){
+                ExtentReportsSetUp.testingPass(LogPage.VERIFY_ORG_ACTION_VALUES_PASS);
+            }else{
+                FailureDelegatePage.handlePageException(LogPage.VERIFY_ORG_ACTION_VALUES_FAIL);
+            }
+        } catch (Exception e) {
+            FailureDelegatePage.handlePageException(LogPage.VERIFY_ORG_ACTION_VALUES_FAIL);
+        }
+    }
+
+
+    public static boolean verifyActionAttributes(int indexNumber)throws Exception{
+        boolean staffValidation = false;
+        boolean actionDateTimeValidation = false;
+        boolean commentsValidation = false;
+        waitElementBy(By.cssSelector(CREATE_ACTION_PANEL_TITLE),20);
+
+        if(mass.get(indexNumber).get("Staff") !=null){
+            String staffText = getText(By.cssSelector(ACTION_STAFF_DROPDOWN));
+            staffValidation = staffText.contains(mass.get(indexNumber).get("Staff"));
+        }else{
+            staffValidation=true;
+        }
+        if(mass.get(indexNumber).get("ActionDateField") !=null){
+            String actionDateTimeText = getAtribute(By.cssSelector(ACTION_DATE_FIELD),"value");
+            actionDateTimeValidation = actionDateTimeText.contains(mass.get(indexNumber).get("ActionDateField"));
+        }else{
+            actionDateTimeValidation=true;
+        }
+        if(mass.get(indexNumber).get("Comments") !=null){
+            String commentsText = getAtribute(By.id(ACTION_COMMENTS_FIELD),"value");
+            commentsValidation = commentsText.contains(mass.get(indexNumber).get("Comments"));
+        }else{
+            commentsValidation=true;
+        }
+
+        if(staffValidation
+                && actionDateTimeValidation
+                && commentsValidation){
+            return true;
+        }else{
+            return false;
+        }
+    }
+
+    public static boolean verifyActionDetails(int indexNumber)throws Exception{
+
+        boolean categoryValidation = false;
+        boolean actionValidation = false;
+        boolean actionTypeValidation = false;
+        boolean actionVisibilityValidation = false;
+        waitElementBy(By.cssSelector(CREATE_ACTION_PANEL_TITLE),20);
+
+        if(mass.get(indexNumber).get("Category") !=null){
+            String categoryText = getText(By.cssSelector(ACTION_CATEGORY_DROPDOWN));
+            categoryValidation = categoryText.contains(mass.get(indexNumber).get("Category"));
+        }else{
+            categoryValidation=true;
+        }
+        if(mass.get(indexNumber).get("Action") !=null){
+            String actionText = getText(By.cssSelector(ACTION_DROPDOWN));
+            actionValidation = actionText.contains(mass.get(indexNumber).get("Action"));
+        }else{
+            actionValidation=true;
+        }
+        if(mass.get(indexNumber).get("ActionType") !=null){
+            String actionTypeText = getText(By.cssSelector(ACTION_TYPE_DISABLED_DROPDOWN));
+            actionTypeValidation = actionTypeText.contains(mass.get(indexNumber).get("ActionType"));
+        }else{
+            actionTypeValidation=true;
+        }
+        if(mass.get(indexNumber).get("ActionVisibility") !=null){
+            String actionVisibilityText = getText(By.cssSelector(ACTION_VISIBILITY_DISABLED_DROPDOWN));
+            actionVisibilityValidation = actionVisibilityText.contains(mass.get(indexNumber).get("ActionVisibility"));
+        }else{
+            actionVisibilityValidation=true;
+        }
+        if(categoryValidation
+                && actionValidation
+                && actionTypeValidation
+                && actionVisibilityValidation){
+            return true;
+        }else{
+            return false;
+        }
+    }
+    public static void updateOrgAction(int organizationIndex){
+        try {
+            if (mass.get(organizationIndex).get("Category") != null) {
+                scrollToElement(By.xpath(ActionsPage.DETAILS_LABEL));
+                waitUntilElementToBeSelected(By.id(ORG_ACTION_CATEGORY_DROPDOWN), 20);
+                BasePage.click(By.id(ORG_ACTION_CATEGORY_DROPDOWN));
+                BasePage.selectElementsList(By.cssSelector(StudentStatusPage.CHECKBOX_LIST), "a");
+                clickOnListOfElements(mass.get(organizationIndex).get("Category"));
+            }
+            if (mass.get(organizationIndex).get("Action") != null) {
+                scrollToElement(By.xpath(ActionsPage.DETAILS_LABEL));
+                waitUntilElementToBeSelected(By.id(ORG_ACTION_DROPDOWN), 20);
+                BasePage.click(By.id(ORG_ACTION_DROPDOWN));
+                BasePage.selectElementsList(By.cssSelector(StudentStatusPage.CHECKBOX_LIST), "a");
+                clickOnListOfElements(mass.get(organizationIndex).get("Action"));
+            }
+            if (mass.get(organizationIndex).get("Staff") != null) {
+                scrollToElement(By.xpath(ActionsPage.DETAILS_LABEL));
+                waitUntilElementToBeSelected(By.id(ORG_ACTION_STAFF_DROPDOWN), 20);
+                BasePage.click(By.id(ORG_ACTION_STAFF_DROPDOWN));
+                BasePage.selectElementsList(By.cssSelector(StudentStatusPage.CHECKBOX_LIST), "a");
+                clickOnListOfElements(mass.get(organizationIndex).get("Staff"));
+            }
+            if (mass.get(organizationIndex).get("ActionDateField") != null) {
+                scrollToElement(By.xpath(ActionsPage.DETAILS_LABEL));
+                waitUntilElementToBeSelected(By.cssSelector(ORG_ACTION_DATE_FIELD), 20);
+                KeyPage.erase(By.cssSelector(ORG_ACTION_DATE_FIELD));
+                BasePage.write(By.cssSelector(ORG_ACTION_DATE_FIELD),mass.get(organizationIndex).get("ActionDateField"));
+            }
+            if (mass.get(organizationIndex).get("Comments") != null) {
+                scrollToElement(By.xpath(ActionsPage.DETAILS_LABEL));
+                waitUntilElementToBeSelected(By.id(ORG_ACTION_COMMENTS_FIELD), 20);
+                BasePage.write(By.id(ORG_ACTION_COMMENTS_FIELD),mass.get(organizationIndex).get("Comments"));
+            }
+            ExtentReportsSetUp.testingPass(LogPage.UPDATE_ORG_ACTION_PASS);
+        } catch (Exception e) {
+            FailureDelegatePage.handlePageException(LogPage.UPDATE_ORG_ACTION_FAIL);
+        }
+    }
     private static String deleteSummaryList(String summary) {
         HashMap<String, String> deleteSummaryItem = new HashMap<>();
         deleteSummaryItem.put("Org Informal Name", SUMMARY_DISPLAY_ORG_INFORMAL_NAME_DELETE_BUTTON);
