@@ -49,6 +49,10 @@ Feature: Actions Delete Actions
     And I verify action Datatable values index 0
     And I open an action "Organization"
     And I verify action values for organization index 0
+    And I delete action
+    Then I close alert if return this message "Action has been deleted."
+    And I navigate to Actions
+    Then I validate if action were deleted
 
 
 
