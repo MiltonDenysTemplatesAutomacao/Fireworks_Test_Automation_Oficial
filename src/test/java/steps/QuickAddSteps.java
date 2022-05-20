@@ -72,4 +72,8 @@ public class QuickAddSteps {
     public static void goToHomePage() {
         GlobalNavPage.goToHomePage();
     }
+    @And("I navigate to letters page")
+    public static void navigateLettersPage() {
+        GlobalNavPage.navigateLettersPage();
+    }
 }

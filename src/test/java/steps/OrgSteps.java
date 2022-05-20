@@ -62,5 +62,13 @@ public class OrgSteps {
     public static void deleteSummaryFields(String summaryField) {
         OrgPage.deleteSummaryFields(summaryField);
     }
+    @When("I update action organization {int}")
+    public static void deleteSummaryFields(int organizationIndex) {
+        OrgPage.updateOrgAction(organizationIndex);
+    }
+    @When("I verify action values for organization index {int}")
+    public static void verifyOrgActionValues(int organizationIndex) {
+        OrgPage.verifyOrgActionValues(organizationIndex);
+    }
 
 }
