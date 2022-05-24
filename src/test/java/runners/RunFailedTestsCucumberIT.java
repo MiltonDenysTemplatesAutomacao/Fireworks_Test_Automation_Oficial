@@ -1,9 +1,6 @@
 package runners;
 
 import io.cucumber.junit.Cucumber;
-import org.junit.platform.suite.api.*;
-
-import static io.cucumber.junit.platform.engine.Constants.PLUGIN_PROPERTY_NAME;
 import io.cucumber.junit.CucumberOptions;
 import org.junit.runner.RunWith;
 

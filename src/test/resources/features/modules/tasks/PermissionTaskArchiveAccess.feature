@@ -22,7 +22,7 @@ Feature: Tasks Permissions: Archive Access
 
   @TaskPermissionArchiveAndActivateButtonsAfterArchive @Persistent
   Scenario: Not to see archive or activate buttons after archive a task
-    Given I login as firestarter
+    Given I login as "firestarterUsername", "firestarterPassword", "firestarterFullName"
     And I navigate to tasks
     And I click on create task button
     When I fill task fields

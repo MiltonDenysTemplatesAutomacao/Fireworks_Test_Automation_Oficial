@@ -6,7 +6,7 @@ Feature: Tasks Permissions: Composer Delete
 
   @TaskPermissionDeleteButtonAccessScenario @Persistent
   Scenario: Not to see delete button
-    Given I login as firestarter
+    Given I login as "firestarterUsername", "firestarterPassword", "firestarterFullName"
     And I navigate to tasks
     And I click on create task button
     When I fill task fields
@@ -14,7 +14,7 @@ Feature: Tasks Permissions: Composer Delete
       |Convert Deposited to Enrolled  |Call	|
     And I click on Save Changes button
     And I log out
-    Given I login as "tasksAdminAccessNoDeleteUsername", "tasksAdminAccessNoDeletePassword", "tasksAdminAccessNoDeleteFullName"
+    Given I login as "adminUsername", "adminPassword", "adminUserFullName"
     And I navigate to tasks
     And I open task "Name"
     Then I validate if delete button is not displayed
