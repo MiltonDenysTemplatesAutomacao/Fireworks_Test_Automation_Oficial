@@ -3,7 +3,7 @@
 #Regression testcase TL-247: Search by Social Security Number
 
 @SearchByPreferredNameAndSSN
-Feature: Search by phone number
+Feature: Search by preferred
 
   @SearchPersonByPreferredNameAndSSN
   Scenario: to Quick Search a person by Preferred Name, partial, with or without dashes, spaces or parenthesis

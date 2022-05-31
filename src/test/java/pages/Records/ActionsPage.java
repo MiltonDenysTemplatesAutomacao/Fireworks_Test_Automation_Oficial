@@ -231,6 +231,7 @@ public class ActionsPage extends BasePage {
                 waitUntilElementToBeSelected(By.id(ACTION_CATEGORY_DROPDOWN), 20);
                 BasePage.click(By.id(ACTION_CATEGORY_DROPDOWN));
                 BasePage.selectElementsList(By.cssSelector(StudentStatusPage.CHECKBOX_LIST), "a");
+                wait(1000);
                 clickOnListOfElements(mass.get(personNumber).get("Category"));
             }
             if (mass.get(personNumber).get("Action") != null) {
@@ -238,6 +239,7 @@ public class ActionsPage extends BasePage {
                 waitUntilElementToBeSelected(By.id(ACTION_DROPDOWN), 20);
                 BasePage.click(By.id(ACTION_DROPDOWN));
                 BasePage.selectElementsList(By.cssSelector(StudentStatusPage.CHECKBOX_LIST), "a");
+                wait(1000);
                 clickOnListOfElements(mass.get(personNumber).get("Action"));
             }
             if (mass.get(personNumber).get("Staff") != null) {
@@ -245,6 +247,7 @@ public class ActionsPage extends BasePage {
                 waitUntilElementToBeSelected(By.id(ACTION_STAFF_DROPDOWN), 20);
                 BasePage.click(By.id(ACTION_STAFF_DROPDOWN));
                 BasePage.selectElementsList(By.cssSelector(StudentStatusPage.CHECKBOX_LIST), "a");
+                wait(1000);
                 clickOnListOfElements(mass.get(personNumber).get("Staff"));
             }
             if (mass.get(personNumber).get("ActionDateField") != null) {

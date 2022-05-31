@@ -13,7 +13,7 @@ Feature: Delete records are removed
     Then I validate if "Person has been created" message is correct
     And I go to Home page
     And I quick search "FirstName"
-    And I validate if result for "Daniel" is correct
+    And I validate if result for "FirstName" is correct
     And I open a record
     When I delete a person
     Then I validate if "Person has been deleted." message is correct

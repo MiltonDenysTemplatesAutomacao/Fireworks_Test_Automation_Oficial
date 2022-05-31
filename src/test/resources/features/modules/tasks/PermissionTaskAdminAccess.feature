@@ -31,7 +31,7 @@ Feature: Tasks Permissions: Administrator Access
 
   @VerifyIfThisUserCanSeeTasksToAnyUser @Persistent
   Scenario: Verify the this user can see tasks assigned to any user
-    Given I login as "tasksAdminAccessNoDeleteUsername", "tasksAdminAccessNoDeletePassword", "tasksAdminAccessNoDeleteFullName"
+    Given I login as "adminUsername", "adminPassword", "adminUserFullName"
     And I navigate to tasks
     And I search task "Invite to Orientation"
     When I validate if task "Invite to Orientation" is displayed

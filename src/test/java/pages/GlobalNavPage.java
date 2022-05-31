@@ -300,18 +300,21 @@ public class GlobalNavPage extends BasePage {
                 waitElementBy(By.cssSelector(QUICK_ADD_PERSON_PHONE_TYPE_DROPDOWN),quickAddPersonDelay);
                 BasePage.click(By.cssSelector(QUICK_ADD_PERSON_PHONE_TYPE_DROPDOWN));
                 BasePage.selectElementsList(By.cssSelector(QUICK_ADD_PERSON_PHONE_TYPE_DROPDOWN_LIST), "a");
+                wait(1000);
                 clickOnListOfElements(mass.get(0).get("PhoneType"));
             }
             if (mass.get(0).get("Role1") != null) {
                 waitElementBy(By.cssSelector(QUICK_ADD_PERSON_ROLE_DROPDOWN),quickAddPersonDelay);
                 BasePage.click(By.cssSelector(QUICK_ADD_PERSON_ROLE_DROPDOWN));
                 BasePage.selectElementsList(By.cssSelector(QUICK_ADD_PERSON_ROLE_DROPDOWN_LIST), "a");
+                wait(1000);
                 clickOnListOfElements(mass.get(0).get("Role1"));
             }
             if (mass.get(0).get("Role2") != null) {
                 waitElementBy(By.cssSelector(QUICK_ADD_PERSON_ROLE_DROPDOWN),quickAddPersonDelay);
                 BasePage.click(By.cssSelector(QUICK_ADD_PERSON_ROLE_DROPDOWN));
                 BasePage.selectElementsList(By.cssSelector(QUICK_ADD_PERSON_ROLE_DROPDOWN_LIST), "a");
+                wait(1000);
                 clickOnListOfElements(mass.get(0).get("Role2"));
             }
             if (mass.get(0).get("EmailAddress") != null) {
@@ -322,12 +325,14 @@ public class GlobalNavPage extends BasePage {
                 waitElementBy(By.cssSelector(QUICK_ADD_PERSON_EMAIL_TYPE_DROPDOWN),quickAddPersonDelay);
                 BasePage.click(By.cssSelector(QUICK_ADD_PERSON_EMAIL_TYPE_DROPDOWN));
                 BasePage.selectElementsList(By.cssSelector(QUICK_ADD_PERSON_EMAIL_TYPE_DROPDOWN_LIST), "a");
+                wait(1000);
                 clickOnListOfElements(mass.get(0).get("EmailType"));
             }
             if (mass.get(0).get("EmailOptInMethod") != null) {
                 waitElementBy(By.cssSelector(QUICK_ADD_PERSON_OPT_IN_METHOD_DROPDOWN),quickAddPersonDelay);
                 BasePage.click(By.cssSelector(QUICK_ADD_PERSON_OPT_IN_METHOD_DROPDOWN));
                 BasePage.selectElementsList(By.cssSelector(QUICK_ADD_PERSON_OPT_IN_METHOD_DROPDOWN_LIST), "a");
+                wait(1000);
                 clickOnListOfElements(mass.get(0).get("EmailOptInMethod"));
             }
             if (mass.get(0).get("Address1") != null) {
@@ -354,6 +359,7 @@ public class GlobalNavPage extends BasePage {
                 waitElementBy(By.cssSelector(QUICK_ADD_PERSON_STATE_DROPDOWN),quickAddPersonDelay);
                 BasePage.click(By.cssSelector(QUICK_ADD_PERSON_STATE_DROPDOWN));
                 BasePage.selectElementsList(By.cssSelector(QUICK_ADD_PERSON_STATE_DROPDOWN_LIST), "a");
+                wait(1000);
                 clickOnListOfElements(mass.get(0).get("State"));
             }
             if (mass.get(0).get("PostalCode") != null) {
@@ -364,13 +370,16 @@ public class GlobalNavPage extends BasePage {
                 waitElementBy(By.cssSelector(QUICK_ADD_PERSON_COUNTRY_DROPDOWN),quickAddPersonDelay);
                 BasePage.click(By.cssSelector(QUICK_ADD_PERSON_COUNTRY_DROPDOWN));
                 BasePage.selectElementsList(By.cssSelector(QUICK_ADD_PERSON_COUNTRY_DROPDOWN_LIST), "a");
+                wait(1000);
                 clickOnListOfElements(mass.get(0).get("Country"));
             }
             wait(2000);
             if (mass.get(0).get("StudentType") != null) {
+                wait(1000);
                 waitElementBy(By.cssSelector(QUICK_ADD_STUDENT_TYPE_DROPDOWN),quickAddPersonDelay);
                 BasePage.click(By.cssSelector(QUICK_ADD_STUDENT_TYPE_DROPDOWN));
                 BasePage.selectElementsList(By.cssSelector(QUICK_ADD_STUDENT_TYPE_DROPDOWN_LIST), "a");
+                wait(1000);
                 clickOnListOfElements(mass.get(0).get("StudentType"));
                 wait(1000);
             }
@@ -387,6 +396,7 @@ public class GlobalNavPage extends BasePage {
                 scrollToElement(By.cssSelector(QUICK_ADD_STUDENT_TYPE_DROPDOWN));
                 BasePage.click(By.cssSelector(QUICK_ADD_STUDENT_STATUS_DROPDOWN));
                 BasePage.selectElementsList(By.cssSelector(QUICK_ADD_STUDENT_STATUS_DROPDOWN_LIST), "a");
+                wait(500);
                 clickOnListOfElements(mass.get(0).get("StudentStatus"));
                 wait(500);
             }
@@ -396,9 +406,11 @@ public class GlobalNavPage extends BasePage {
                 wait(500);
             }
             if (mass.get(0).get("EntryTerm") != null) {
+                wait(500);
                 waitElementBy(By.cssSelector(QUICK_ADD_STUDENT_STATUS_ENTRY_TERM_DROPDOWN),quickAddPersonDelay);
                 BasePage.click(By.cssSelector(QUICK_ADD_STUDENT_STATUS_ENTRY_TERM_DROPDOWN));
                 BasePage.selectElementsList(By.cssSelector(QUICK_ADD_STUDENT_STATUS_ENTRY_TERM_DROPDOWN_LIST), "a");
+                wait(500);
                 clickOnListOfElements(mass.get(0).get("EntryTerm"));
             }
             ExtentReportsSetUp.testingPass(LogPage.QUICK_ADD_PERSON_PASS);
@@ -411,55 +423,72 @@ public class GlobalNavPage extends BasePage {
      * Method to fill in Add Person fields
      */
     public static void quickAddOrganization(DataTable data) {
-        BasePage.wait(3000);
-
+        wait(3000);
+        int quickAddOrganizationDelay=20;
         try {
             mass = data.asMaps(String.class, String.class);
             if (mass.get(0).get("Name") != null) {
+                waitElementBy(By.cssSelector(QUICK_ADD_ORG_ORGANIZATION_NAME_FIELD),quickAddOrganizationDelay);
                 BasePage.write(By.cssSelector(QUICK_ADD_ORG_ORGANIZATION_NAME_FIELD), mass.get(0).get("Name"));
             }
             if (mass.get(0).get("Role") != null) {
+                waitElementBy(By.cssSelector(QUICK_ADD_ORG_ROLE_DROPDOWN),quickAddOrganizationDelay);
                 BasePage.click(By.cssSelector(QUICK_ADD_ORG_ROLE_DROPDOWN));
                 BasePage.selectElementsList(By.cssSelector(QUICK_ADD_ORG_ROLE_DROPDOWN_LIST), "a");
+                wait(2000);
                 clickOnListOfElements(mass.get(0).get("Role"));
             }
             if (mass.get(0).get("Phone") != null) {
+                waitElementBy(By.cssSelector(QUICK_ADD_ORG_PHONE_NUMBER_FIELD),quickAddOrganizationDelay);
                 BasePage.write(By.cssSelector(QUICK_ADD_ORG_PHONE_NUMBER_FIELD), mass.get(0).get("Phone"));
             }
             if (mass.get(0).get("PhoneType") != null) {
+                waitElementBy(By.cssSelector(QUICK_ADD_ORG_PHONE_TYPE_DROPDOWN),quickAddOrganizationDelay);
                 BasePage.click(By.cssSelector(QUICK_ADD_ORG_PHONE_TYPE_DROPDOWN));
                 BasePage.selectElementsList(By.cssSelector(QUICK_ADD_ORG_PHONE_TYPE_DROPDOWN_LIST), "a");
+                wait(1000);
                 clickOnListOfElements(mass.get(0).get("PhoneType"));
             }
             if (mass.get(0).get("Address1") != null) {
+                waitElementBy(By.cssSelector(QUICK_ADD_ORG_ADDRESS1_FIELD),quickAddOrganizationDelay);
                 BasePage.write(By.cssSelector(QUICK_ADD_ORG_ADDRESS1_FIELD), mass.get(0).get("Address1"));
             }
             if (mass.get(0).get("Address2") != null) {
+                waitElementBy(By.cssSelector(QUICK_ADD_ORG_ADDRESS2_FIELD),quickAddOrganizationDelay);
                 BasePage.write(By.cssSelector(QUICK_ADD_ORG_ADDRESS2_FIELD), mass.get(0).get("Address2"));
             }
             if (mass.get(0).get("Address3") != null) {
+                waitElementBy(By.cssSelector(QUICK_ADD_ORG_ADDRESS3_FIELD),quickAddOrganizationDelay);
                 BasePage.write(By.cssSelector(QUICK_ADD_ORG_ADDRESS3_FIELD), mass.get(0).get("Address3"));
             }
             if (mass.get(0).get("Address4") != null) {
+                waitElementBy(By.cssSelector(QUICK_ADD_ORG_ADDRESS4_FIELD),quickAddOrganizationDelay);
                 BasePage.write(By.cssSelector(QUICK_ADD_ORG_ADDRESS4_FIELD), mass.get(0).get("Address4"));
             }
             if (mass.get(0).get("City") != null) {
+                waitElementBy(By.cssSelector(QUICK_ADD_ORG_CITY_FIELD),quickAddOrganizationDelay);
                 BasePage.write(By.cssSelector(QUICK_ADD_ORG_CITY_FIELD), mass.get(0).get("City"));
             }
             if (mass.get(0).get("State") != null) {
+                waitElementBy(By.cssSelector(QUICK_ADD_ORG_STATE_DROPDOWN),quickAddOrganizationDelay);
                 BasePage.click(By.cssSelector(QUICK_ADD_ORG_STATE_DROPDOWN));
                 BasePage.selectElementsList(By.cssSelector(QUICK_ADD_ORG_STATE_DROPDOWN_LIST), "a");
+                wait(500);
                 clickOnListOfElements(mass.get(0).get("State"));
             }
             if (mass.get(0).get("PostalCode") != null) {
+                waitElementBy(By.cssSelector(QUICK_ADD_ORG_POSTAL_CODE_FIELD),quickAddOrganizationDelay);
                 BasePage.write(By.cssSelector(QUICK_ADD_ORG_POSTAL_CODE_FIELD), mass.get(0).get("PostalCode"));
             }
             if (mass.get(0).get("Country") != null) {
+                waitElementBy(By.cssSelector(QUICK_ADD_ORG_COUNTRY_DROPDOWN),quickAddOrganizationDelay);
                 BasePage.click(By.cssSelector(QUICK_ADD_ORG_COUNTRY_DROPDOWN));
                 BasePage.selectElementsList(By.cssSelector(QUICK_ADD_ORG_COUNTRY_DROPDOWN_LIST), "a");
+                wait(2000);
                 clickOnListOfElements(mass.get(0).get("Country"));
             }
             if (mass.get(0).get("Region") != null) {
+                waitElementBy(By.cssSelector(QUICK_ADD_ORG_REGION_FIELD),quickAddOrganizationDelay);
                 BasePage.write(By.cssSelector(QUICK_ADD_ORG_REGION_FIELD), mass.get(0).get("Region"));
             }
             ExtentReportsSetUp.testingPass(LogPage.QUICK_ADD_ORGANIZATION_PASS);
@@ -520,7 +549,7 @@ public class GlobalNavPage extends BasePage {
      */
     public static void quickAddOrganizationSaveGoButton() {
         try {
-            wait(1000);
+            wait(2000);
             click(By.cssSelector(QUICK_ADD_ORG_SAVE_GO_BUTTON));
             ExtentReportsSetUp.testingPass(LogPage.CLICK_QUICK_ADD_ORGANIZATION_SAVE_AND_GO_PASS);
         } catch (Exception e) {
@@ -547,6 +576,7 @@ public class GlobalNavPage extends BasePage {
     public static void alertMessageAfterAddPerson(String alertMessage) {
         String errorMessage = String.format(LogPage.ALERT_MESSAGE_FAIL, alertMessage);
         String passMessage = String.format(LogPage.ALERT_MESSAGE_PASS, alertMessage);
+        wait(1000);
         try {
             waitElementBy(By.id("alertMessage"), 10);
             if (alertMessageContains(By.id("alertMessage"), alertMessage)) {
@@ -568,6 +598,7 @@ public class GlobalNavPage extends BasePage {
         try {
             BasePage.write(By.cssSelector(HOME_QUICK_SEARCH_FIELD), mass.get(0).get(parameter));
             BasePage.click(By.cssSelector(HOME_QUICK_SEARCH_BUTTON));
+            wait(2000);
             ExtentReportsSetUp.testingPass(passMessage);
         } catch (Exception e) {
             FailureDelegatePage.handlePageException(errorMessage);

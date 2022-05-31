@@ -17,7 +17,7 @@ public class QuickSearchPage extends BasePage{
         try {
             waitElementBy(By.xpath(QUICK_SEARCH_MANAGER_TABLE),20);
             String text = getText(By.xpath(QUICK_SEARCH_MANAGER_TABLE));
-            if (text.contains(parameter)) {
+            if (text.contains(mass.get(0).get(parameter))){
                 ExtentReportsSetUp.testingPass(passMessage);
             } else {
                 FailureDelegatePage.handlePageException(errorMessage);

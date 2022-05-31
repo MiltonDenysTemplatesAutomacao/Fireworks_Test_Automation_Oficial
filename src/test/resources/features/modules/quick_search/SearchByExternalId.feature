@@ -24,7 +24,7 @@ Feature: Search by external Id
     Given I login as "firestarterUsername", "firestarterPassword", "firestarterFullName"
     And I create an organization
       |Name					  |Role		  |Phone		|PhoneType  |Address1			|Address2	|City	|State	|PostalCode |Country		|Type  |ID Number|Who Added ID   |
-      |Abraham Drawing School |High School|888-411-1689	|Business	|210 Sixth Avenue	|33rd Floor	|Denver|Colorado|80220		|United States	|CEEB  |46858    |Alanis Flatley |
+      |Abraham Drawing School |High School|888-411-1689	|Business	|210 Sixth Avenue	|33rd Floor	|Denver |Colorado|80220		|United States	|CEEB  |46858    |Alanis Flatley |
     And I go to Home page
     When I quick search "Name"
     And I open a record

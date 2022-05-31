@@ -41,6 +41,15 @@ public class StaffPage extends BasePage{
         return String.format("#user_external_ids_%s_user_id_comments",index);
     }
 
+    public static void navigateToIdTypesStaffManager(){
+        try {
+            waitUntilElementToBeSelected(By.id(PersonPage.RECORD_NAV_TAB_ID_TYPES),20);
+            BasePage.click(By.id(PersonPage.RECORD_NAV_TAB_ID_TYPES));
+            ExtentReportsSetUp.testingPass(LogPage.NAVIGATE_TO_ID_TYPES_PASS);
+        } catch (Exception e) {
+            FailureDelegatePage.handlePageException(LogPage.SAVE_CHANGES_FAIL);
+        }
+    }
     public static void validateIdTypes(String index, int person){
 
         String errorMessage = String.format(LogPage.VALIDATE_ID_TYPES_FAIL, index,person);
@@ -178,6 +187,7 @@ public class StaffPage extends BasePage{
         try {
             waitElementBy(By.id(STAFF_MANAGER_TABLE_SEARCH_FIELD),20);
             write(By.id(STAFF_MANAGER_TABLE_SEARCH_FIELD),mass.get(0).get(search));
+            wait(2000);
             ExtentReportsSetUp.testingPass(passMessage);
         } catch (Exception e) {
             FailureDelegatePage.handlePageException(failMessage);

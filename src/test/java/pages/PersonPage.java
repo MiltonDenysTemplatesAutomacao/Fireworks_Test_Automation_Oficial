@@ -22,6 +22,7 @@ public class PersonPage extends BasePage{
     public static final String SUMMARY_PERSON_INITIAL_CATEGORY_DELETE_BUTTON = "//*[@id='summaryPanelFieldBlock_592']/div[2]/div/div/button";
     public static final String SUMMARY_PERSON_INITIAL_SOURCE_DELETE_BUTTON = "//*[@id='summaryPanelFieldBlock_593']/div[2]/div/div/button";
     public static final String SUMMARY_STUDENT_STATUS_DATE_DELETE_BUTTON = "//*[@id='summaryPanelFieldBlock_240']/div[2]/div/div/button";
+    public static final String RECORD_NAV_TAB_ID_TYPES = "recordNavTab_id_types";
     private static final String SUMMARY_FIELD_DROPDOWN = "s2id_summaryFieldPickerEntityType1";
     private static final String SUMMARY_FIELD_DROPDOWN_LIST = "#select2-results-2";
     private static final String COMPOSER_FIRST_NAME_FIELD = "person_name_0_createPersonNameFirst";
@@ -64,7 +65,6 @@ public class PersonPage extends BasePage{
     private static final String HEADER_STUDENT_STATUS_DISPLAY = "#descriptionObjectStudentStatusLabel";
     private static final String HEADER_ENTRY_TERM_DISPLAY = "#descriptionObjectEntryTermLabel";
     private static final String RECORD_NAV_TAB_BASIC = "recordNavTab_basic";
-    private static final String RECORD_NAV_TAB_ID_TYPES = "recordNavTab_id_types";
     private static final String CITIZENSHIP_TYPE_DROPDOWN = "#s2id_citizenship_type";
     private static final String CITIZENSHIP_TYPE_DROPDOWN_LIST = "#select2-results-21";
     private static final String CITIZENSHIP_COUNTRY_DROPDOWN = "#s2id_country_of_citizenship";
@@ -233,8 +233,9 @@ public class PersonPage extends BasePage{
         String errorMessage = String.format(LogPage.VALIDATE_QUICK_SEARCH_EMPTY_FAIL, message);
         String passMessage = String.format(LogPage.VALIDATE_QUICK_SEARCH_EMPTY_PASS, message);
         try {
-            wait(2000);
+            waitElementBy(By.id(QUICK_SEARCH_EMPTY),20);
             String messageQuickSearchEmpty = getText(By.id(QUICK_SEARCH_EMPTY));
+            wait(3000);
             if(messageQuickSearchEmpty.equals(message)){
                 ExtentReportsSetUp.testingPass(passMessage);
             }else{
@@ -274,66 +275,88 @@ public class PersonPage extends BasePage{
     }
 
     public static void updatePeopleComposer(DataTable data){
+        int updatePeopleComposerDelay = 0;
         try {
             mass = data.asMaps(String.class, String.class);
             if (mass.get(0).get("FirstName") != null) {
-                BasePage.write(By.id(COMPOSER_FIRST_NAME_FIELD), mass.get(0).get("Firstname"));
+                waitElementBy(By.id(COMPOSER_FIRST_NAME_FIELD),updatePeopleComposerDelay);
+                BasePage.write(By.id(COMPOSER_FIRST_NAME_FIELD), mass.get(0).get("FirstName"));
             }
             if (mass.get(0).get("LastName") != null) {
-                BasePage.write(By.id(COMPOSER_LAST_NAME_FIELD), mass.get(0).get("Lastname"));
+                waitElementBy(By.id(COMPOSER_LAST_NAME_FIELD),updatePeopleComposerDelay);
+                BasePage.write(By.id(COMPOSER_LAST_NAME_FIELD), mass.get(0).get("LastName"));
             }
             if (mass.get(0).get("EmailAddress") != null) {
+                waitElementBy(By.id(COMPOSER_EMAIL_ADDRESS_FIELD),updatePeopleComposerDelay);
                 BasePage.write(By.id(COMPOSER_EMAIL_ADDRESS_FIELD), mass.get(0).get("EmailAddress"));
             }
             if (mass.get(0).get("EmailType") != null) {
+                waitElementBy(By.id(COMPOSER_EMAIL_TYPE_DROPDOWN),updatePeopleComposerDelay);
                 BasePage.click(By.id(COMPOSER_EMAIL_TYPE_DROPDOWN));
                 BasePage.selectElementsList(By.id(COMPOSER_EMAIL_TYPE_DROPDOWN_LIST), "a");
+                wait(1000);
                 clickOnListOfElements(mass.get(0).get("EmailType"));
             }
             scrollToElement(By.id(COMPOSER_EMAIL_ADDRESS_FIELD));
             if (mass.get(0).get("EmailOptInMethod") != null) {
+                waitElementBy(By.id(COMPOSER_EMAIL_OPT_IN_METHOD_DROPDOWN),updatePeopleComposerDelay);
                 BasePage.click(By.id(COMPOSER_EMAIL_OPT_IN_METHOD_DROPDOWN));
                 BasePage.selectElementsList(By.id(COMPOSER_EMAIL_OPT_IN_METHOD_DROPDOWN_LIST), "a");
+                wait(2000);
                 clickOnListOfElements(mass.get(0).get("EmailOptInMethod"));
             }
             if (mass.get(0).get("Phone") != null) {
+                waitElementBy(By.id(COMPOSER_PHONE_NUMBER_FIELD),updatePeopleComposerDelay);
                 BasePage.write(By.id(COMPOSER_PHONE_NUMBER_FIELD), mass.get(0).get("Phone"));
             }
             if (mass.get(0).get("PhoneType") != null) {
+                waitElementBy(By.id(COMPOSER_PHONE_TYPE_DROPDOWN),updatePeopleComposerDelay);
                 BasePage.click(By.id(COMPOSER_PHONE_TYPE_DROPDOWN));
                 BasePage.selectElementsList(By.id(COMPOSER_PHONE_TYPE_DROPDOWN_LIST), "a");
+                wait(2000);
                 clickOnListOfElements(mass.get(0).get("PhoneType"));
             }
             scrollToElement(By.id(COMPOSER_PHONE_TYPE_DROPDOWN));
             if (mass.get(0).get("Address1") != null) {
+                waitElementBy(By.id(COMPOSER_ADDRESS1_FIELD),updatePeopleComposerDelay);
                 BasePage.write(By.id(COMPOSER_ADDRESS1_FIELD), mass.get(0).get("Address1"));
             }
             if (mass.get(0).get("Address2") != null) {
+                waitElementBy(By.id(COMPOSER_ADDRESS2_FIELD),updatePeopleComposerDelay);
                 BasePage.write(By.id(COMPOSER_ADDRESS2_FIELD), mass.get(0).get("Address2"));
             }
             if (mass.get(0).get("Address3") != null) {
+                waitElementBy(By.id(COMPOSER_ADDRESS3_FIELD),updatePeopleComposerDelay);
                 BasePage.write(By.id(COMPOSER_ADDRESS3_FIELD), mass.get(0).get("Address3"));
             }
             if (mass.get(0).get("Address4") != null) {
+                waitElementBy(By.id(COMPOSER_ADDRESS4_FIELD),updatePeopleComposerDelay);
                 BasePage.write(By.id(COMPOSER_ADDRESS4_FIELD), mass.get(0).get("Address4"));
             }
             if (mass.get(0).get("City") != null) {
+                waitElementBy(By.id(COMPOSER_ADDRESS_CITY_FIELD),updatePeopleComposerDelay);
                 BasePage.write(By.id(COMPOSER_ADDRESS_CITY_FIELD), mass.get(0).get("City"));
             }
             if (mass.get(0).get("State") != null) {
+                waitElementBy(By.id(COMPOSER_ADDRESS_STATE_DROPDOWN),updatePeopleComposerDelay);
                 BasePage.click(By.id(COMPOSER_ADDRESS_STATE_DROPDOWN));
                 BasePage.selectElementsList(By.id(COMPOSER_ADDRESS_STATE_DROPDOWN_LIST), "a");
+                wait(2000);
                 clickOnListOfElements(mass.get(0).get("State"));
             }
             if (mass.get(0).get("PostalCode") != null) {
+                waitElementBy(By.id(COMPOSER_ADDRESS_POSTAL_CODE_FIELD),updatePeopleComposerDelay);
                 BasePage.write(By.id(COMPOSER_ADDRESS_POSTAL_CODE_FIELD), mass.get(0).get("PostalCode"));
             }
             if (mass.get(0).get("Country") != null) {
+                waitElementBy(By.id(COMPOSER_ADDRESS_COUNTRY_DROPDOWN),updatePeopleComposerDelay);
                 BasePage.click(By.id(COMPOSER_ADDRESS_COUNTRY_DROPDOWN));
                 BasePage.selectElementsList(By.id(COMPOSER_ADDRESS_COUNTRY_DROPDOWN_LIST), "a");
+                wait(2000);
                 clickOnListOfElements(mass.get(0).get("Country"));
             }
             if (mass.get(0).get("Region") != null) {
+                waitElementBy(By.id(COMPOSER_ADDRESS_REGION_FIELD),updatePeopleComposerDelay);
                 BasePage.write(By.id(COMPOSER_ADDRESS_REGION_FIELD), mass.get(0).get("Region"));
             }
             scrollToElement(By.id(COMPOSER_ADDRESS_CITY_FIELD));
@@ -341,41 +364,53 @@ public class PersonPage extends BasePage{
                 waitElementBy(By.id(COMPOSER_ROLE_DROPDOWN),20);
                 BasePage.click(By.id(COMPOSER_ROLE_DROPDOWN));
                 BasePage.selectElementsList(By.id(COMPOSER_ROLE_DROPDOWN_LIST), "a");
+                wait(2000);
                 clickOnListOfElements(mass.get(0).get("Role1"));
             }
             if (mass.get(0).get("Role2") != null) {
+                waitElementBy(By.id(COMPOSER_ROLE_DROPDOWN),20);
                 BasePage.click(By.id(COMPOSER_ROLE_DROPDOWN));
                 BasePage.selectElementsList(By.id(COMPOSER_ROLE_DROPDOWN_LIST), "a");
+                wait(2000);
                 clickOnListOfElements(mass.get(0).get("Role2"));
             }
             if (mass.get(0).get("Role3") != null) {
+                waitElementBy(By.id(COMPOSER_ROLE_DROPDOWN),20);
                 BasePage.click(By.id(COMPOSER_ROLE_DROPDOWN));
                 BasePage.selectElementsList(By.id(COMPOSER_ROLE_DROPDOWN_LIST), "a");
+                wait(2000);
                 clickOnListOfElements(mass.get(0).get("Role3"));
             }
             if (mass.get(0).get("StudentType") != null) {
                 waitElementBy(By.id(COMPOSER_STUDENT_TYPE_DROPDOWN),20);
                 BasePage.click(By.id(COMPOSER_STUDENT_TYPE_DROPDOWN));
                 BasePage.selectElementsList(By.id(COMPOSER_STUDENT_TYPE_DROPDOWN_LIST), "a");
+                wait(2000);
                 clickOnListOfElements(mass.get(0).get("StudentType"));
             }
             if (mass.get(0).get("StudentStatusCategory") != null) {
+                waitElementBy(By.id(COMPOSER_STUDENT_STATUS_CATEGORY_DROPDOWN),20);
                 BasePage.click(By.id(COMPOSER_STUDENT_STATUS_CATEGORY_DROPDOWN));
                 BasePage.selectElementsList(By.id(COMPOSER_STUDENT_STATUS_CATEGORY_DROPDOWN_LIST), "a");
+                wait(2000);
                 clickOnListOfElements(mass.get(0).get("StudentStatusCategory"));
             }
             if (mass.get(0).get("StudentStatus") != null) {
+                waitElementBy(By.id(COMPOSER_STUDENT_STATUS_DROPDOWN),20);
                 BasePage.click(By.id(COMPOSER_STUDENT_STATUS_DROPDOWN));
                 BasePage.selectElementsList(By.id(COMPOSER_STUDENT_STATUS_DROPDOWN_LIST), "a");
+                wait(2000);
                 clickOnListOfElements(mass.get(0).get("StudentStatus"));
             }
             if (mass.get(0).get("StudentStatusDate") != null) {
+                waitElementBy(By.id(COMPOSER_STUDENT_STATUS_DATE_FIELD),20);
                 BasePage.write(By.id(COMPOSER_STUDENT_STATUS_DATE_FIELD), mass.get(0).get("StudentStatusDate"));
             }
             if (mass.get(0).get("EntryTerm") != null) {
                 waitElementBy(By.id(COMPOSER_STUDENT_STATUS_ENTRY_TERM_DROPDOWN),20);
                 BasePage.click(By.id(COMPOSER_STUDENT_STATUS_ENTRY_TERM_DROPDOWN));
                 BasePage.selectElementsList(By.id(COMPOSER_STUDENT_STATUS_ENTRY_TERM_DROPDOWN_LIST), "a");
+                wait(2000);
                 clickOnListOfElements(mass.get(0).get("EntryTerm"));
             }
             ExtentReportsSetUp.testingPass(LogPage.UPDATE_PEOPLE_COMPOSER_PASS);
@@ -565,6 +600,7 @@ public class PersonPage extends BasePage{
     }
 
     public static void navigateToIdTypes(){
+        wait(1000);
         try {
             scrollToElement(By.id(SUMMARY_LABEL));
             waitUntilElementToBeSelected(By.id(RECORD_NAV_TAB_ID_TYPES),20);

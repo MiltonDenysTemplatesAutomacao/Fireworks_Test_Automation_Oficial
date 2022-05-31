@@ -14,10 +14,10 @@ public class OrgPage extends BasePage{
     public static final String DATATABLE_EMPTY = "organizationManagerTable_row_0_col_0";
     public static final String WHO_ADDED_ID_DROPDOWN_LIST = "#select2-drop";
     private static final String EMAIL_ADDRESS_FIELD = "#entity_email_0_org_email_address";
-    private static final String EMAIL_TYPE_DROP_DOWN = "#s2id_entity_email_0_org_email_type";
-    private static final String EMAIL_TYPE_DROP_DOWN_LIST = "#select2-drop";
-    private static final String EMAIL_OPT_DROP_DOWN = "#s2id_entity_email_0_org_opt_in_method_id";
-    private static final String EMAIL_OPT_DROP_DOWN_LIST = "#select2-drop";
+    private static final String EMAIL_TYPE_DROP_DOWN = "#entity_email_0_org_email_type_toggle";
+    private static final String EMAIL_TYPE_DROP_DOWN_LIST = "#entity_email_0_org_email_type_dropdown_menu";
+    private static final String EMAIL_OPT_DROP_DOWN = "#entity_email_0_org_opt_in_method_id_toggle";
+    private static final String EMAIL_OPT_DROP_DOWN_LIST = "#entity_email_0_org_opt_in_method_id_dropdown_menu";
     private static final String ORG_BASIC_SAVE_CHANGES_BUTTON = "saveChangesBtnOrgContact";
     private static final String ORGANIZATION_NAME_FIELD = "#org_name_0_org_name_formal";
     private static final String TYPE_DROPDOWN = "#select2-chosen-6";
@@ -166,6 +166,7 @@ public class OrgPage extends BasePage{
                 waitUntilElementToBeSelected(By.id(ORG_ACTION_CATEGORY_DROPDOWN), 20);
                 BasePage.click(By.id(ORG_ACTION_CATEGORY_DROPDOWN));
                 BasePage.selectElementsList(By.cssSelector(StudentStatusPage.CHECKBOX_LIST), "a");
+                wait(1000);
                 clickOnListOfElements(mass.get(organizationIndex).get("Category"));
             }
             if (mass.get(organizationIndex).get("Action") != null) {
@@ -173,6 +174,7 @@ public class OrgPage extends BasePage{
                 waitUntilElementToBeSelected(By.id(ORG_ACTION_DROPDOWN), 20);
                 BasePage.click(By.id(ORG_ACTION_DROPDOWN));
                 BasePage.selectElementsList(By.cssSelector(StudentStatusPage.CHECKBOX_LIST), "a");
+                wait(1000);
                 clickOnListOfElements(mass.get(organizationIndex).get("Action"));
             }
             if (mass.get(organizationIndex).get("Staff") != null) {
@@ -180,6 +182,7 @@ public class OrgPage extends BasePage{
                 waitUntilElementToBeSelected(By.id(ORG_ACTION_STAFF_DROPDOWN), 20);
                 BasePage.click(By.id(ORG_ACTION_STAFF_DROPDOWN));
                 BasePage.selectElementsList(By.cssSelector(StudentStatusPage.CHECKBOX_LIST), "a");
+                wait(1000);
                 clickOnListOfElements(mass.get(organizationIndex).get("Staff"));
             }
             if (mass.get(organizationIndex).get("ActionDateField") != null) {
@@ -254,6 +257,7 @@ public class OrgPage extends BasePage{
             click(By.id(SUMMARY_FIELD_DROPDOWN));
             waitElementBy(By.cssSelector(SUMMARY_FIELD_DROPDOWN_LIST),20);
             BasePage.selectElementsList(By.cssSelector(SUMMARY_FIELD_DROPDOWN_LIST), "a");
+            wait(1000);
             clickOnListOfElements(summary);
             wait(500);
             ExtentReportsSetUp.testingPass(passMessage);
@@ -332,7 +336,7 @@ public class OrgPage extends BasePage{
         String failMessage = String.format(LogPage.SEARCH_ORGANIZATION_MANAGER_FAIL, search);
         try {
             waitElementBy(By.id(ORGANIZATION_MANAGER_TABLE),20);
-            write(By.id(ORGANIZATION_MANAGER_TABLE_SEARCH_FIELD),search);
+            write(By.cssSelector(ORGANIZATION_MANAGER_TABLE_SEARCH_FIELD),search);
             ExtentReportsSetUp.testingPass(passMessage);
         } catch (Exception e) {
             FailureDelegatePage.handlePageException(failMessage);
@@ -404,18 +408,22 @@ public class OrgPage extends BasePage{
      * to update email address in Contact tab on records
      */
     public static void updateEmailAddress(String emailAddress,String emailType,String emailOpt, String optStatus, String optDate, String emailStatus, String emailContent){
+        int updateEmailAddressDelay = 20;
         try {
-            waitElementBy(By.cssSelector(EMAIL_ADDRESS_FIELD),20);
+            waitElementBy(By.cssSelector(EMAIL_ADDRESS_FIELD),updateEmailAddressDelay);
             BasePage.scrollToElement(By.cssSelector(ORGANIZATION_NAME_FIELD));
             if (mass.get(0).get(emailAddress) != null) {
+                waitElementBy(By.cssSelector(EMAIL_ADDRESS_FIELD),updateEmailAddressDelay);
                 BasePage.write(By.cssSelector(EMAIL_ADDRESS_FIELD), mass.get(0).get(emailAddress));
             }
             if (mass.get(0).get(emailType) != null) {
+                waitElementBy(By.cssSelector(EMAIL_TYPE_DROP_DOWN),updateEmailAddressDelay);
                 BasePage.click(By.cssSelector(EMAIL_TYPE_DROP_DOWN));
                 BasePage.selectElementsList(By.cssSelector(EMAIL_TYPE_DROP_DOWN_LIST), "a");
                 clickOnListOfElements(mass.get(0).get(emailType));
             }
             if (mass.get(0).get(emailOpt) != null) {
+                waitElementBy(By.cssSelector(EMAIL_OPT_DROP_DOWN),updateEmailAddressDelay);
                 BasePage.click(By.cssSelector(EMAIL_OPT_DROP_DOWN));
                 BasePage.selectElementsList(By.cssSelector(EMAIL_OPT_DROP_DOWN_LIST), "a");
                 clickOnListOfElements(mass.get(0).get(emailOpt));

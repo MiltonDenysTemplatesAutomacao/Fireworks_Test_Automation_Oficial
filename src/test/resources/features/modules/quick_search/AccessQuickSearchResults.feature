@@ -35,7 +35,7 @@ Feature: Search by name
       |Officer		|BigMac	    |Officer BigMac	|obigmac@mcdonalds.com	|Personal	|07/10/2017			|07/10/2025		|Administrator	|(720) 839-1318 |Business |Comments |
     And I go to Home page
     When I quick search "FullName"
-    Then I validate if result for "Officer" is correct
+    Then I validate if result for "FirstName" is correct
     And I open a record
     And I navigate to contact
     When I update "Phone", "PhoneType" and "Comment" to update phone number

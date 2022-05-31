@@ -16,5 +16,5 @@ Feature: Organization: Delete
     When I delete an organization
     Then I validate if "Organization has been deleted." message is correct
     #to verify the deleted organization no longer appears in the org page
-    And I search "Name" an organization page manager
+    And I search "MabuseTheGambler High School" an organization page manager
     And I validate if "No search results to display." message on organization datatable is displayed

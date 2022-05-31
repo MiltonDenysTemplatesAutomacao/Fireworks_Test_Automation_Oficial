@@ -1,6 +1,7 @@
 package steps;
 
 
+import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import pages.StaffPage;
 
@@ -29,6 +30,10 @@ public class StaffSteps {
     @When("I search {string} on staff page manager")
     public static void searchStaffManager(String search) {
         StaffPage.searchStaffManager(search);
+    }
+    @Then("I navigate to ID Types on staff manager page")
+    public static void navigateToIdTypesStaffManager() {
+        StaffPage.navigateToIdTypesStaffManager();
     }
     @When("I validate if {string} message on staff datatable is displayed")
     public static void validateStaffMangerDatatableMessage(String message) {

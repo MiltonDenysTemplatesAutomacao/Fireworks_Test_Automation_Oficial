@@ -75,6 +75,7 @@ public class StudentStatusPage extends BasePage {
                 waitUntilElementToBeSelected(By.cssSelector(categoryElement(index)),20);
                 BasePage.click(By.cssSelector(categoryElement(index)));
                 BasePage.selectElementsList(By.cssSelector(CHECKBOX_LIST), "a");
+                wait(2000);
                 clickOnListOfElements(mass.get(person).get("StudentStatusCategory"));
             }
             if (mass.get(person).get("StudentStatus") != null) {
@@ -82,6 +83,7 @@ public class StudentStatusPage extends BasePage {
                 waitUntilElementToBeSelected(By.cssSelector(statusElement(index)),20);
                 BasePage.click(By.cssSelector(statusElement(index)));
                 BasePage.selectElementsList(By.cssSelector(CHECKBOX_LIST), "a");
+                wait(2000);
                 clickOnListOfElements(mass.get(person).get("StudentStatus"));
             }
             if (mass.get(person).get("StudentStatusDate") != null) {
@@ -95,6 +97,7 @@ public class StudentStatusPage extends BasePage {
                 waitUntilElementToBeSelected(By.cssSelector(entryTermElement(index)),20);
                 BasePage.click(By.cssSelector(entryTermElement(index)));
                 BasePage.selectElementsList(By.cssSelector(CHECKBOX_LIST), "a");
+                wait(2000);
                 clickOnListOfElements(mass.get(person).get("EntryTerm"));
             }
             if (mass.get(person).get("Comments") != null) {
