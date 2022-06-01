@@ -36,4 +36,12 @@ public class GlobalNavSteps {
     public static void navigateOrganizationRecords() {
         GlobalNavPage.navigateOrganizationRecords();
     }
+    @When("I navigate to smart search page")
+    public static void navigateSmartSearchPage() {
+        GlobalNavPage.navigateSmartSearchPage();
+    }
+    @When("I navigate to email manager page")
+    public static void navigateEmailManagerPage() {
+        GlobalNavPage.navigateEmailManagerPage();
+    }
 }

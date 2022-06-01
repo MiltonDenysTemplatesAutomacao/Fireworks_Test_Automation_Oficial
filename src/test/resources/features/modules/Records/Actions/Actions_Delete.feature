@@ -2,7 +2,6 @@
 #Regression testcase TL-780 (1 of 2): Actions: Delete actions
 #Regression testcase TL-780 (2 of 2): Actions: Delete actions
 
-
 @ActionsDelete
 Feature: Actions Delete Actions
 

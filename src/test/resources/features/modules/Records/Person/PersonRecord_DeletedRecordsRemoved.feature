@@ -17,7 +17,7 @@ Feature: Delete records are removed
     And I open a record
     When I delete a person
     Then I validate if "Person has been deleted." message is correct
-    And I search "Lastname" on people page manager
+    And I search "Boone" on people page manager
     And I validate if "No search results to display." message on datatable is displayed
     And I go to Home page
     And I quick search "LastName"

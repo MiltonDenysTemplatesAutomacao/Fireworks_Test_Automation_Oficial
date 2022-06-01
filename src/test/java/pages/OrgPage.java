@@ -13,6 +13,7 @@ public class OrgPage extends BasePage{
     public static final String HEADER_ORG_CATEGORY_ELEMENT = "orgHeaderCategoryButton";
     public static final String DATATABLE_EMPTY = "organizationManagerTable_row_0_col_0";
     public static final String WHO_ADDED_ID_DROPDOWN_LIST = "#select2-drop";
+    public static final String ORG_ACTION_COMMENTS_FIELD = "org_action_comments";
     private static final String EMAIL_ADDRESS_FIELD = "#entity_email_0_org_email_address";
     private static final String EMAIL_TYPE_DROP_DOWN = "#entity_email_0_org_email_type_toggle";
     private static final String EMAIL_TYPE_DROP_DOWN_LIST = "#entity_email_0_org_email_type_dropdown_menu";
@@ -48,7 +49,6 @@ public class OrgPage extends BasePage{
     private static final String ORG_ACTION_DROPDOWN = "s2id_org_action_id";
     private static final String ORG_ACTION_STAFF_DROPDOWN = "s2id_org_action_staff";
     private static final String ORG_ACTION_DATE_FIELD = "#org_action_date";
-    private static final String ORG_ACTION_COMMENTS_FIELD = "org_action_comments";
     private static final String CREATE_ACTION_PANEL_TITLE = "div#actions span.panel-title.responsive-pull-left";
     private static final String ACTION_STAFF_DROPDOWN = "div#s2id_org_action_staff.select2-container.form-control.select2.required a.select2-choice";
     private static final String ACTION_DATE_FIELD = "#org_action_date";
@@ -108,14 +108,7 @@ public class OrgPage extends BasePage{
         }else{
             commentsValidation=true;
         }
-
-        if(staffValidation
-                && actionDateTimeValidation
-                && commentsValidation){
-            return true;
-        }else{
-            return false;
-        }
+        return staffValidation && actionDateTimeValidation && commentsValidation;
     }
 
     public static boolean verifyActionDetails(int indexNumber)throws Exception{
@@ -150,14 +143,7 @@ public class OrgPage extends BasePage{
         }else{
             actionVisibilityValidation=true;
         }
-        if(categoryValidation
-                && actionValidation
-                && actionTypeValidation
-                && actionVisibilityValidation){
-            return true;
-        }else{
-            return false;
-        }
+        return categoryValidation && actionValidation && actionTypeValidation && actionVisibilityValidation;
     }
     public static void updateOrgAction(int organizationIndex){
         try {
@@ -246,7 +232,6 @@ public class OrgPage extends BasePage{
         } catch (Exception e) {
             FailureDelegatePage.handlePageException(failMessage);
         }
-
     }
 
     public static void addSummaryOrganizationField(String summary){

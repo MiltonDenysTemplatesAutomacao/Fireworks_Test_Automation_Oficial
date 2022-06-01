@@ -204,7 +204,8 @@ public class DuplicatesPage extends BasePage{
                 && suspendedRecordStateText.equals(mass.get(0).get("State"))
                 && suspendedRecordPostaCodeText.equals(mass.get(0).get("PostalCode"))
                 && suspendedRecordCountryText.equals(mass.get(0).get("Country"))
-                && suspendedRecordPhoneText.equals(mass.get(0).get("Phone"))){
+                && suspendedRecordPhoneText.equals(mass.get(0).get("Phone"))
+                && suspendedRecordDateAddedText.equals(mass.get(0).get("StudentStatusDate"))){
                 validateFields=true;
                 }
             boolean validateEmptyFields = false;
@@ -212,8 +213,7 @@ public class DuplicatesPage extends BasePage{
             && suspendedRecordBirthDataText.isEmpty()
             && suspendedRecordSSNText.isEmpty()
             && suspendedRecordAddress2Text.isEmpty()
-            && suspendedRecordAddress3Text.isEmpty()
-            && suspendedRecordDateAddedText.isEmpty()){
+            && suspendedRecordAddress3Text.isEmpty()){
                 validateEmptyFields=true;
             }
             if(validateFields && validateEmptyFields){

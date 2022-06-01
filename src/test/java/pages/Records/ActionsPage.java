@@ -2,10 +2,13 @@ package pages.Records;
 
 import config.extent_reports.ExtentReportsSetUp;
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
 import pages.BasePage;
 import pages.FailureDelegatePage;
 import pages.KeyPage;
 import pages.LogPage;
+
+import java.util.List;
 
 public class ActionsPage extends BasePage {
 
@@ -25,6 +28,76 @@ public class ActionsPage extends BasePage {
     public static final String ACTIONS_MANAGER_SEARCH_FIELD = "actionsSummaryTableControlsTableSearch";
     public static final String DELETE_ACTION_BUTTON = "#deleteActionButton";
     public static final String DELETE_ACTION_YES_DELETE_BUTTON = "#modalSubmitButtondeleteConfirm";
+    public static final String DELETE_ACTION_DISABLED_BUTTON = "#deleteActionButton[disabled]";
+    public static final String DELETE_ACTION_CONFIRM_MODAL_LABEL = "#deleteConfirmModalLabel";
+    public static final String DELETE_ACTION_CANCEL_BUTTON = "#modalCancelButtondeleteConfirm";
+
+    public static void validateDeleteModalIsNotVisible(){
+        try {
+            wait(2000);
+            if(!checkIfElementIsVisible(By.cssSelector(DELETE_ACTION_CONFIRM_MODAL_LABEL))){
+                ExtentReportsSetUp.testingPass(LogPage.VALIDATE_DELETE_MODAL_IS_NOT_VISIBLE_PASS);
+            }else{
+                FailureDelegatePage.handlePageException(LogPage.VALIDATE_DELETE_MODAL_IS_NOT_VISIBLE_FAIL);
+            }
+        } catch (Exception e) {
+            FailureDelegatePage.handlePageException(LogPage.VALIDATE_DELETE_MODAL_IS_NOT_VISIBLE_FAIL);
+        }
+    }
+    public static void clickCancelButtonOnDeleteModal(){
+        try {
+            waitUntilElementToBeSelected(By.cssSelector(DELETE_ACTION_CANCEL_BUTTON),20);
+            click(By.cssSelector(DELETE_ACTION_CANCEL_BUTTON));
+            ExtentReportsSetUp.testingPass(LogPage.CLICK_CANCEL_BUTTON_ON_DELETE_MODAL_PASS);
+        } catch (Exception e) {
+            FailureDelegatePage.handlePageException(LogPage.CLICK_CANCEL_BUTTON_ON_DELETE_MODAL_FAIL);
+        }
+    }
+    public static void validateDeleteModalIsVisible(){
+        try {
+            waitElementBy(By.cssSelector(DELETE_ACTION_CONFIRM_MODAL_LABEL),20);
+            if(checkIfElementIsVisible(By.cssSelector(DELETE_ACTION_CONFIRM_MODAL_LABEL))){
+                ExtentReportsSetUp.testingPass(LogPage.VALIDATE_DELETE_MODAL_IS_VISIBLE_PASS);
+            }else{
+                FailureDelegatePage.handlePageException(LogPage.VALIDATE_DELETE_MODAL_IS_VISIBLE_FAIL);
+            }
+        } catch (Exception e) {
+            FailureDelegatePage.handlePageException(LogPage.VALIDATE_DELETE_MODAL_IS_VISIBLE_FAIL);
+        }
+    }
+    public static void clickDeleteButton(){
+        try {
+            waitUntilElementToBeSelected(By.cssSelector(DELETE_ACTION_BUTTON),20);
+            click(By.cssSelector(DELETE_ACTION_BUTTON));
+            ExtentReportsSetUp.testingPass(LogPage.CLICK_DELETE_BUTTON_PASS);
+        } catch (Exception e) {
+            FailureDelegatePage.handlePageException(LogPage.CLICK_DELETE_BUTTON_FAIL);
+        }
+    }
+
+    public static void validateDisabledDeleteButtonIsNotVisible(){
+        try {
+            List<WebElement> element = getElement(By.cssSelector(DELETE_ACTION_DISABLED_BUTTON));
+            if(element.size()==0){
+                ExtentReportsSetUp.testingPass(LogPage.VALIDATE_DISABLED_DELETE_BUTTON_IS_NOT_VISIBLE_PASS);
+            }else{
+                FailureDelegatePage.handlePageException(LogPage.VALIDATE_DISABLED_DELETE_BUTTON_IS_NOT_VISIBLE_FAIL);
+            }
+        } catch (Exception e) {
+            FailureDelegatePage.handlePageException(LogPage.VALIDATE_DISABLED_DELETE_BUTTON_IS_NOT_VISIBLE_FAIL);
+        }
+    }
+    public static void validateDeleteButtonIsVisible(){
+        try {
+            if(checkIfElementIsVisible(By.cssSelector(DELETE_ACTION_BUTTON))){
+                ExtentReportsSetUp.testingPass(LogPage.VALIDATE_DELETE_BUTTON_IS_VISIBLE_PASS);
+            }else{
+                FailureDelegatePage.handlePageException(LogPage.VALIDATE_DELETE_BUTTON_IS_VISIBLE_FAIL);
+            }
+        } catch (Exception e) {
+            FailureDelegatePage.handlePageException(LogPage.VALIDATE_DELETE_BUTTON_IS_VISIBLE_FAIL);
+        }
+    }
 
     public static void validateActionDeleted(){
         try {
@@ -105,14 +178,7 @@ public class ActionsPage extends BasePage {
         }else{
             commentsValidation=true;
         }
-
-        if(staffValidation
-                && actionDateTimeValidation
-                && commentsValidation){
-            return true;
-        }else{
-            return false;
-        }
+        return staffValidation && actionDateTimeValidation && commentsValidation;
     }
 
     public static boolean verifyActionDetails(String index)throws Exception{
@@ -148,14 +214,7 @@ public class ActionsPage extends BasePage {
         }else{
             actionVisibilityValidation=true;
         }
-        if(categoryValidation
-                && actionValidation
-                && actionTypeValidation
-                && actionVisibilityValidation){
-            return true;
-        }else{
-            return false;
-        }
+        return categoryValidation && actionValidation && actionTypeValidation && actionVisibilityValidation;
     }
     public static void openAction(String action){
         try {

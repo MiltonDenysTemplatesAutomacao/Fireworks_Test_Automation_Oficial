@@ -33,6 +33,9 @@ public class BasePage {
     public static boolean checkIfElementIsVisible(By by) throws Exception {
         return DriverBase.getDriver().findElement(by).isDisplayed();
     }
+    public static List<WebElement> getElement(By by) throws Exception {
+        return DriverBase.getDriver().findElements(by);
+    }
     /*
      * Method to check if a checkbox is active
      */

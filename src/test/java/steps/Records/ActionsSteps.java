@@ -41,4 +41,28 @@ public class ActionsSteps {
     public static void validateActionDeleted() {
         ActionsPage.validateActionDeleted();
     }
+    @Then("I validate if delete button in action is visible")
+    public static void validateDeleteButtonIsVisible() {
+        ActionsPage.validateDeleteButtonIsVisible();
+    }
+    @Then("I validate if disable delete button is not visible")
+    public static void validateDisabledDeleteButtonIsNotVisible() {
+        ActionsPage.validateDisabledDeleteButtonIsNotVisible();
+    }
+    @Then("I click on delete button in action")
+    public static void clickDeleteButton() {
+        ActionsPage.clickDeleteButton();
+    }
+    @Then("I validate if delete modal is visible")
+    public static void validateDeleteModalIsVisible() {
+        ActionsPage.validateDeleteModalIsVisible();
+    }
+    @Then("I click on cancel button on delete action modal")
+    public static void clickCancelButtonOnDeleteModal() {
+        ActionsPage.clickCancelButtonOnDeleteModal();
+    }
+    @Then("I validate if delete modal is not visible")
+    public static void validateDeleteModalIsNotVisible() {
+        ActionsPage.validateDeleteModalIsNotVisible();
+    }
 }

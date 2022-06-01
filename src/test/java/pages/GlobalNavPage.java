@@ -104,7 +104,31 @@ public class GlobalNavPage extends BasePage {
     public static final String FOOTER_TOOLS_SCHEDULER_MENU_ITEM = "#global_nav_scheduler";
     public static final String ACCOUNT_TOGGLE = "global_nav_account_toggle";
     public static final String LOGOUT_BUTTON = "logout_button";
+    public static final String FOOTER_TOOLS_SMART_SEARCH_MENU_ITEM = "#global_nav_search_manager";
+    public static final String FOOTER_COMMUNICATIONS_EMAIL_MENU_ITEM = "#global_nav_direct_mail";
 
+    public static void navigateEmailManagerPage(){
+        try {
+            waitUntilElementToBeSelected(By.cssSelector(FOOTER_COMMUNICATIONS_MENU),20);
+            click(By.cssSelector(FOOTER_COMMUNICATIONS_MENU));
+            wait(2000);
+            click(By.cssSelector(FOOTER_COMMUNICATIONS_EMAIL_MENU_ITEM));
+            ExtentReportsSetUp.testingPass(LogPage.NAVIGATE_EMAIL_MANAGER_PAGE_PASS);
+        } catch (Exception e) {
+            FailureDelegatePage.handlePageException(LogPage.NAVIGATE_EMAIL_MANAGER_PAGE_FAIL);
+        }
+    }
+    public static void navigateSmartSearchPage(){
+        try {
+            waitUntilElementToBeSelected(By.cssSelector(FOOTER_TOOLS_MENU),20);
+            click(By.cssSelector(FOOTER_TOOLS_MENU));
+            wait(2000);
+            click(By.cssSelector(FOOTER_TOOLS_SMART_SEARCH_MENU_ITEM));
+            ExtentReportsSetUp.testingPass(LogPage.NAVIGATE_SMART_SEARCH_PAGE_PASS);
+        } catch (Exception e) {
+            FailureDelegatePage.handlePageException(LogPage.NAVIGATE_SMART_SEARCH_PAGE_FAIL);
+        }
+    }
 
     public static void navigateLettersPage(){
         try {
