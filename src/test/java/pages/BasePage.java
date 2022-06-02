@@ -7,6 +7,9 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.awt.*;
+import java.awt.datatransfer.StringSelection;
+import java.awt.event.KeyEvent;
 import java.time.Duration;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
@@ -142,7 +145,20 @@ public class BasePage {
      ***********
      * @return*/
 
+    public static void attachFile()throws Exception{
+        Robot robot = new Robot();
+        robot.keyPress(KeyEvent.VK_CONTROL);
+        robot.keyPress(KeyEvent.VK_V);
+        robot.keyRelease(KeyEvent.VK_V);
+        robot.keyRelease(KeyEvent.VK_CONTROL);
+        robot.keyPress(KeyEvent.VK_ENTER);
+        robot.keyRelease(KeyEvent.VK_ENTER);
+    }
 
+    public static void copyToTheClipboard(String fileToSave){
+        StringSelection ss = new StringSelection(fileToSave);
+        Toolkit.getDefaultToolkit().getSystemClipboard().setContents(ss, null);
+    }
     public static boolean verifyIfEquals(By by,String parameter)throws Exception{
         String text = getText(by);
         return text.equals(parameter);
@@ -225,5 +241,18 @@ public class BasePage {
         JavascriptExecutor js = (JavascriptExecutor) DriverBase.getDriver();
         WebElement element = DriverBase.getDriver().findElement(by);
         js.executeScript("arguments[0].scrollIntoView();", element);
+    }
+    public static void scrollTo(String pixels) throws Exception {
+        JavascriptExecutor js = (JavascriptExecutor) DriverBase.getDriver();
+        js.executeScript("window.scrollBy(0,"+pixels+")", "");
+    }
+
+    public static void scrollToTheBottom() throws Exception {
+        JavascriptExecutor js = (JavascriptExecutor) DriverBase.getDriver();
+        js.executeScript("window.scrollTo(0, document.body.scrollHeight);");
+    }
+    public static void scrollToTheTop() throws Exception {
+        JavascriptExecutor js = (JavascriptExecutor) DriverBase.getDriver();
+        js.executeScript("window.scrollTo(0, -document.body.scrollHeight);");
     }
 }

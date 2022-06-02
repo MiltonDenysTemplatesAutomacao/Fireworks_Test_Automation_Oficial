@@ -39,9 +39,16 @@ Feature: Exact match auto-merge on rule 5: IDType-ID-LastName,Email recipients c
     Given I login as "firestarterUsername", "firestarterPassword", "firestarterFullName"
     And I navigate to email manager page
     And I click on create a new email button and select type "Marketing"
-    And I update Email Start Tab "", "Actions NotShared 6100", "", "Search for Test6100", ""
+    When I update Email Start Tab "", "Actions NotShared 6100", "", "Search for Test6100", ""
     And I click on save and continue on Marketing Email Composer
     And I update Email Headers Tab "", "firestarter@fire-engine-red.com", "", "Subject Actions NotShared 6100", "", ""
     And I click on save and continue on Marketing Email Composer
-    And I update Email Content Tab "", ""
-
+    And I update Email Content Tab "Body content Actions NotShared 6100", "teste"
+    And I click on save and continue on Marketing Email Composer
+    And I close alert if return this message "Email has been updated."
+    And I click on finish tab
+    And I update Email Finish Tab "Campus Events", "Admitted Student Day: Register", "Fire Starter", "01/20/2020", "OriginalComments"
+    And I send email
+    And I confirm EmailSend
+    And I validate if "Email has been queued." message is correct
+    #to wait until the email is sent

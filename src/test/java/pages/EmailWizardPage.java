@@ -2,6 +2,7 @@ package pages;
 
 import config.extent_reports.ExtentReportsSetUp;
 import org.openqa.selenium.By;
+import pages.Records.StudentStatusPage;
 
 public class EmailWizardPage extends BasePage{
 
@@ -22,18 +23,155 @@ public class EmailWizardPage extends BasePage{
     public static final String SINGLE_RECIPIENT_PICKER_MODAL_FIRST_ROW_ELEMENT = "#emailAddressPickerModalTable_row_0";
     public static final String SINGLE_RECIPIENT_PICKER_MODAL_CHOOSE_BUTTON = "#modalSubmitButtonemailAddressPicker";
     public static final String SAVE_AND_CONTINUE_BUTTON = "//button[text()='Save & Continue']";
+    public static final String SENDER_NAME_FIELD = "#sender_name";
+    public static final String SENDER_EMAIL_FIELD = "#sender_email_address";
+    public static final String REPLY_TO_EMAIL_FIELD = "#reply_to_address";
+    public static final String SUBJECT_FIELD = "#subject";
+    public static final String PREHEADERS_FIELD = "#preheaders";
+    public static final String FILTER_BY_EMAIL_TYPE = "#s2id_email-types-filter-dropdown";
+    public static final String PREVIEW_RECIPIENTS_BUTTON = "#previewRecipients";
+    public static final String ADD_ATTACHMENTS_DROPZONE_BUTTON = "#addAttachmentsDropzoneButton";
+    public static final String CHOOSE_HTML_LAYOUT = "#htmlLayoutPickerButton";
+    public static final String HTML_CONTENT_IFRAME_ELEMENT = "contentHtml_ifr";
+    public static final String HTML_CONTENT_IFRAME_BODY_ELEMENT = "body#tinymce";
+    public static final String CONTENT_PLAIN_TEXT_FIELD = "contentText";
+    public static final String EMAIL_FINISH_TAB = "#timeline-step-actions";
+    public static final String ACTION_CATEGORY_DROPDOWN = "#select2-chosen-22";
+    public static final String ACTION_DROPDOWN = "#select2-chosen-23";
+    public static final String ACTION_STAFF_DROPDOWN = "#select2-chosen-26";
+    public static final String ACTION_DATE_FIELD = "#action_date";
+    public static final String ACTION_COMMENTS_FIELD = "#action_comments";
 
-    public static void updateEmailContentTab(){
+    public static void updateEmailFinishTab(String category, String action, String staff, String actionDateTime, String comments){
+        try {
+            if (category != ""){
+                scrollTo("300");
+                waitElementBy(By.cssSelector(ACTION_CATEGORY_DROPDOWN),20);
+                BasePage.click(By.cssSelector(ACTION_CATEGORY_DROPDOWN));
+                BasePage.selectElementsList(By.cssSelector(StudentStatusPage.CHECKBOX_LIST), "a");
+                clickOnListOfElements(category);
+            }
+            if (action != ""){
+                waitElementBy(By.cssSelector(ACTION_DROPDOWN),20);
+                BasePage.click(By.cssSelector(ACTION_DROPDOWN));
+                BasePage.selectElementsList(By.cssSelector(StudentStatusPage.CHECKBOX_LIST), "a");
+                clickOnListOfElements(action);
+            }
+            if (staff != ""){
+                waitElementBy(By.cssSelector(ACTION_STAFF_DROPDOWN),20);
+                BasePage.click(By.cssSelector(ACTION_STAFF_DROPDOWN));
+                BasePage.selectElementsList(By.cssSelector(StudentStatusPage.CHECKBOX_LIST), "a");
+                clickOnListOfElements(staff);
+            }
+            if (actionDateTime != ""){
+                waitElementBy(By.cssSelector(ACTION_DATE_FIELD),20);
+                write(By.cssSelector(ACTION_DATE_FIELD),actionDateTime);
+            }
+            if (comments != ""){
+                waitElementBy(By.cssSelector(ACTION_COMMENTS_FIELD),20);
+                write(By.cssSelector(ACTION_COMMENTS_FIELD),comments);
+            }
+            ExtentReportsSetUp.testingPass(LogPage.UPDATE_EMAIL_FINISH_TAB_PASS);
+        } catch (Exception e) {
+            FailureDelegatePage.handlePageException(LogPage.UPDATE_EMAIL_FINISH_TAB_FAIL);
+        }
+    }
 
+    public static void clickFinishTab(){
+        try {
+            scrollToTheTop();
+            waitElementBy(By.cssSelector(EMAIL_FINISH_TAB),20);
+            click(By.cssSelector(EMAIL_FINISH_TAB));
+            ExtentReportsSetUp.testingPass(LogPage.UPDATE_EMAIL_CONTENT_TAB_PASS);
+        } catch (Exception e) {
+            FailureDelegatePage.handlePageException(LogPage.ADD_EMAIL_ATTACHMENT_FAIL);
+        }
+
+    }
+    public static void addEmailAttachment(String attachment){
+        try {
+            waitElementBy(By.cssSelector(PREHEADERS_FIELD),20);
+            scrollToElement(By.cssSelector(PREHEADERS_FIELD));
+            waitElementBy(By.cssSelector(ADD_ATTACHMENTS_DROPZONE_BUTTON),20);
+            click(By.cssSelector(ADD_ATTACHMENTS_DROPZONE_BUTTON));
+            copyToTheClipboard(attachment);
+            attachFile();
+
+        } catch (Exception e) {
+            FailureDelegatePage.handlePageException(LogPage.ADD_EMAIL_ATTACHMENT_FAIL);
+        }
+
+    }
+    public static void fillBodyWithHTML(String bodyHTML){
+        try {
+            switchToIFrame(HTML_CONTENT_IFRAME_ELEMENT);
+            waitElementBy(By.cssSelector(HTML_CONTENT_IFRAME_BODY_ELEMENT), 20);
+            BasePage.write(By.cssSelector(HTML_CONTENT_IFRAME_BODY_ELEMENT),bodyHTML);
+            switchToDefaultContent();
+        } catch (Exception e) {
+            FailureDelegatePage.handlePageException(LogPage.FILL_BODY_WITH_HTML_FAIL);
+        }
+    }
+    public static void updateEmailContentTab(String bodyHTML, String bodyText){
+        int updateEmailContentTabDelay = 20;
+        try {
+            waitElementBy(By.cssSelector(CHOOSE_HTML_LAYOUT),updateEmailContentTabDelay);
+            if (bodyHTML != ""){
+                fillBodyWithHTML(bodyHTML);
+            }
+            if (bodyText != ""){
+                scrollTo("450");
+                waitElementBy(By.id(CONTENT_PLAIN_TEXT_FIELD),20);
+                write(By.id(CONTENT_PLAIN_TEXT_FIELD),bodyText);
+            }
+            ExtentReportsSetUp.testingPass(LogPage.UPDATE_EMAIL_CONTENT_TAB_PASS);
+        } catch (Exception e) {
+            FailureDelegatePage.handlePageException(LogPage.UPDATE_EMAIL_CONTENT_TAB_FAIL);
+        }
     }
 
     public static void updateEmailHeadersTab(String senderName,String senderEmail,String replyToEmail,String subject,String preheaders,String attachment){
-
+        int updateEmailHeadersTabDelay = 20;
+        try {
+            waitElementBy(By.cssSelector(SENDER_NAME_FIELD),updateEmailHeadersTabDelay);
+            if (senderName != ""){
+                waitElementBy(By.cssSelector(SENDER_NAME_FIELD),updateEmailHeadersTabDelay);
+                write(By.cssSelector(SENDER_NAME_FIELD),senderName);
+            }
+            if (senderEmail != ""){
+                scrollToElement(By.cssSelector(SENDER_NAME_FIELD));
+                waitElementBy(By.cssSelector(SENDER_EMAIL_FIELD),updateEmailHeadersTabDelay);
+                write(By.cssSelector(SENDER_EMAIL_FIELD),senderEmail);
+            }
+            if (replyToEmail != ""){
+                scrollToElement(By.cssSelector(SENDER_EMAIL_FIELD));
+                waitElementBy(By.cssSelector(REPLY_TO_EMAIL_FIELD),updateEmailHeadersTabDelay);
+                write(By.cssSelector(REPLY_TO_EMAIL_FIELD),replyToEmail);
+            }
+            if (subject != ""){
+                scrollToElement(By.cssSelector(REPLY_TO_EMAIL_FIELD));
+                waitElementBy(By.cssSelector(SUBJECT_FIELD),updateEmailHeadersTabDelay);
+                write(By.cssSelector(SUBJECT_FIELD),subject);
+            }
+            if (preheaders != ""){
+                scrollToElement(By.cssSelector(SUBJECT_FIELD));
+                waitElementBy(By.cssSelector(PREHEADERS_FIELD),updateEmailHeadersTabDelay);
+                write(By.cssSelector(PREHEADERS_FIELD),preheaders);
+            }
+            if (attachment != ""){
+                addEmailAttachment(attachment);
+            }
+            ExtentReportsSetUp.testingPass(LogPage.UPDATE_EMAIL_HEADERS_TAB_PASS);
+        } catch (Exception e) {
+            FailureDelegatePage.handlePageException(LogPage.UPDATE_EMAIL_HEADERS_TAB_FAIL);
+        }
     }
 
     public static void clickSaveAndContinue(){
         try {
-            scrollToElement(By.cssSelector(SINGLE_RECIPIENT_PICKER_BUTTON));
+            wait(1000);
+            scrollToTheBottom();
+            wait(5000);
             waitUntilElementToBeSelected(By.xpath(SAVE_AND_CONTINUE_BUTTON),20);
             click(By.xpath(SAVE_AND_CONTINUE_BUTTON));
             ExtentReportsSetUp.testingPass(LogPage.CLICK_SAVE_AND_CONTINUE_PASS);

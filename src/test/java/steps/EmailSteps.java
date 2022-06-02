@@ -9,4 +9,12 @@ public class EmailSteps {
     public static void createNewEmail(String type) {
         EmailPage.createNewEmail(type);
     }
+    @When("I send email")
+    public static void sendEmail() {
+        EmailPage.sendEmail();
+    }
+    @When("I confirm EmailSend")
+    public static void confirmEmailSend() {
+        EmailPage.confirmEmailSend();
+    }
 }

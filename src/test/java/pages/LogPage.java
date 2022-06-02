@@ -349,4 +349,16 @@ public class LogPage {
     public static final String PICK_SINGLE_RECIPIENT_SMART_SEARCH_FAIL = "Fail while trying to pick a single recipient";
     public static final String CLICK_SAVE_AND_CONTINUE_PASS = "I click on save and continue";
     public static final String CLICK_SAVE_AND_CONTINUE_FAIL = "Fail while trying to click on save and continue";
+    public static final String UPDATE_EMAIL_HEADERS_TAB_PASS = "I update Email Headers Tab";
+    public static final String UPDATE_EMAIL_HEADERS_TAB_FAIL = "Fail while trying to update Email Headers Tab";
+    public static final String ADD_EMAIL_ATTACHMENT_FAIL = "Fail while trying to add an attachment";
+    public static final String UPDATE_EMAIL_CONTENT_TAB_PASS = "I update Email Content Tab";
+    public static final String UPDATE_EMAIL_CONTENT_TAB_FAIL = "Fail while trying to update Email Content Tab";
+    public static final String FILL_BODY_WITH_HTML_FAIL = "Fail while trying to fill body with html";
+    public static final String UPDATE_EMAIL_FINISH_TAB_PASS = "I update Email Finish Tab";
+    public static final String UPDATE_EMAIL_FINISH_TAB_FAIL = "Fail while trying to update Email Finish Tab";
+    public static final String SEND_EMAIL_PASS = "I send email";
+    public static final String SEND_EMAIL_FAIL = "Fail while trying to send email";
+    public static final String CONFIRM_EMAIL_SEND_PASS = "I confirm EmailSend";
+    public static final String CONFIRM_EMAIL_SEND_FAIL = "Fail while trying to confirm EmailSend";
 }

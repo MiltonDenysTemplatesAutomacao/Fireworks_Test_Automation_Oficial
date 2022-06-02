@@ -17,7 +17,15 @@ public class EmailWizardSteps {
         EmailWizardPage.updateEmailHeadersTab(senderName,senderEmail,replyToEmail,subject,preheaders,attachment);
     }
     @When("I update Email Content Tab {string}, {string}")
+    public static void updateEmailContentTab(String bodyHTML, String bodyText) {
+        EmailWizardPage.updateEmailContentTab(bodyHTML,bodyText);
+    }
+    @When("I click on finish tab")
     public static void updateEmailContentTab() {
-        EmailWizardPage.updateEmailContentTab();
+        EmailWizardPage.clickFinishTab();
+    }
+    @When("I update Email Finish Tab {string}, {string}, {string}, {string}, {string}")
+    public static void updateEmailFinishTab(String category, String action, String staff, String actionDateTime, String comments) {
+        EmailWizardPage.updateEmailFinishTab(category,action,staff,actionDateTime,comments);
     }
 }
