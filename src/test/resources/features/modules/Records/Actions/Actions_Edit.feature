@@ -28,7 +28,7 @@ Feature: Actions Edit actions
     Then I click on Save Changes button in Actions
     And I validate if "Action has been created." message is correct
     #to edit the action
-    And I verify action Datatable values index 0
+    And I verify action Datatable values index "0", values "", "", "", "", ""
     And I navigate to Actions
     And I open an action "Campus Events"
     And I verify action values index "0"

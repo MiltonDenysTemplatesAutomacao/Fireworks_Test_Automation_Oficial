@@ -494,6 +494,7 @@ public class PersonPage extends BasePage{
         try {
             waitElementBy(By.cssSelector(PEOPLE_MANAGER_TABLE),20);
             write(By.cssSelector(PEOPLE_MANAGER_TABLE_SEARCH_FIELD),search);
+            wait(2000);
             ExtentReportsSetUp.testingPass(passMessage);
         } catch (Exception e) {
             FailureDelegatePage.handlePageException(failMessage);

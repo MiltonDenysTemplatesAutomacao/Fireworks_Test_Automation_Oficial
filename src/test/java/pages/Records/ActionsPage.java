@@ -231,7 +231,11 @@ public class ActionsPage extends BasePage {
         waitUntilElementToBeSelected(By.id(ACTIONS_MANAGER_SEARCH_FIELD),20);
         write(By.id(ACTIONS_MANAGER_SEARCH_FIELD),action);
     }
-    public static void verifyActionDataTableValues(int index){
+    /*
+     * for this method if there is any value for index on step the values will come from datatable case there is no value for index
+     * the value will come from step
+     */
+    public static void verifyActionDataTableValues(String index,String category, String action, String staff, String actionDate, String comments){
         try {
             waitElementBy(By.cssSelector(ACTIONS_MANAGER_TABLE), 20);
             String text = getText(By.cssSelector(ACTIONS_MANAGER_TABLE));
@@ -241,31 +245,63 @@ public class ActionsPage extends BasePage {
             boolean actionDateValidation = false;
             boolean commentsValidation = false;
 
-            if (mass.get(index).get("Category") != null) {
-                categoryValidation = text.contains(mass.get(index).get("Category"));
-            }else{
-                categoryValidation=true;
+            if(index!=""){
+                int indexNumber = Integer.parseInt(index);
+
+                if (mass.get(indexNumber).get("Category") != null) {
+                    categoryValidation = text.contains(mass.get(indexNumber).get("Category"));
+                }else{
+                    categoryValidation=true;
+                }
+                if (mass.get(indexNumber).get("Action") != null) {
+                    actionValidation = text.contains(mass.get(indexNumber).get("Action"));
+                }else{
+                    actionValidation=true;
+                }
+                if (mass.get(indexNumber).get("Staff") != null) {
+                    staffValidation = text.contains(mass.get(indexNumber).get("Staff"));
+                }else{
+                    staffValidation=true;
+                }
+                if (mass.get(indexNumber).get("ActionDate") != null) {
+                    actionDateValidation = text.contains(mass.get(indexNumber).get("ActionDate"));
+                }else{
+                    actionDateValidation=true;
+                }
+                if (mass.get(indexNumber).get("Comments") != null) {
+                    commentsValidation = text.contains(mass.get(indexNumber).get("Comments"));
+                }else{
+                    commentsValidation=true;
+                }
             }
-            if (mass.get(index).get("Action") != null) {
-                actionValidation = text.contains(mass.get(index).get("Action"));
-            }else{
-                actionValidation=true;
+            if(index==""){
+                if (category != "") {
+                    categoryValidation = text.contains(category);
+                }else{
+                    categoryValidation=true;
+                }
+                if (action != "") {
+                    actionValidation = text.contains(action);
+                }else{
+                    actionValidation=true;
+                }
+                if (staff != "") {
+                    staffValidation = text.contains(staff);
+                }else{
+                    staffValidation=true;
+                }
+                if (actionDate != "") {
+                    actionDateValidation = text.contains(actionDate);
+                }else{
+                    actionDateValidation=true;
+                }
+                if (comments != "") {
+                    commentsValidation = text.contains(comments);
+                }else{
+                    commentsValidation=true;
+                }
             }
-            if (mass.get(index).get("Staff") != null) {
-                staffValidation = text.contains(mass.get(index).get("Staff"));
-            }else{
-                staffValidation=true;
-            }
-            if (mass.get(index).get("ActionDate") != null) {
-                actionDateValidation = text.contains(mass.get(index).get("ActionDate"));
-            }else{
-                actionDateValidation=true;
-            }
-            if (mass.get(index).get("Category") != null) {
-                commentsValidation = text.contains(mass.get(index).get("Category"));
-            }else{
-                commentsValidation=true;
-            }
+
             if(categoryValidation
                 && actionValidation
                 && staffValidation

@@ -17,4 +17,8 @@ public class EmailSteps {
     public static void confirmEmailSend() {
         EmailPage.confirmEmailSend();
     }
+    @When("I wait until email sent {string}")
+    public static void waitUntilEmailSent(String emailName) {
+        EmailPage.waitUntilEmailSent(emailName);
+    }
 }

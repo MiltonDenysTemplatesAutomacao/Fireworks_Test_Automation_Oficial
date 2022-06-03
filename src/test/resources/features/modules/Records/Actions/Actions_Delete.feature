@@ -22,7 +22,7 @@ Feature: Actions Delete Actions
     Then I click on Save Changes button in Actions
     And I validate if "Action has been created." message is correct
     #to delete the action
-    And I verify action Datatable values index 0
+    And I verify action Datatable values index "0", values "", "", "", "", ""
     And I open an action "Campus Events"
     And I verify action values index "0"
     And I delete action
@@ -45,7 +45,7 @@ Feature: Actions Delete Actions
     Then I click on Save Changes button in Actions
     And I validate if "Action has been created." message is correct
     #to delete the action
-    And I verify action Datatable values index 0
+    And I verify action Datatable values index "0", values "", "", "", "", ""
     And I open an action "Organization"
     And I verify action values for organization index 0
     And I delete action

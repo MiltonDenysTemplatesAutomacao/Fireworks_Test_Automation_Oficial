@@ -361,4 +361,6 @@ public class LogPage {
     public static final String SEND_EMAIL_FAIL = "Fail while trying to send email";
     public static final String CONFIRM_EMAIL_SEND_PASS = "I confirm EmailSend";
     public static final String CONFIRM_EMAIL_SEND_FAIL = "Fail while trying to confirm EmailSend";
+    public static final String WAIT_UNTIL_EMAIL_SENT_PASS = "I wait until email sent";
+    public static final String WAIT_UNTIL_EMAIL_SENT_FAIL = "Fail while trying to wait until email sent";
 }

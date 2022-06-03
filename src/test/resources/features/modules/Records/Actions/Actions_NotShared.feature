@@ -15,7 +15,7 @@ Feature: Exact match auto-merge on rule 5: IDType-ID-LastName,Email recipients c
     And I validate if "Person has been created." message is correct
     When I create a person
       |FirstName  |LastName     |EmailAddress             |EmailType|EmailOptInMethod |Role1 |Category     |Action                         |Staff        |ActionDateTime     |ActionDateField|Type                 |ID Number|Who Added ID   |
-      |Margaret   |Rutherford   |MRutherford@actors.ne    |Personal |Inquiry          |Person|Campus Events|Admitted Student Day: Register |Fire Starter |11/30/2017 8:00 AM |11/30/2017     |College Board Search |6100     |Fire Starter   |
+      |Margaret   |Rutherford   |MRutherford@actors.net   |Personal |Inquiry          |Person|Campus Events|Admitted Student Day: Register |Fire Starter |11/30/2017 8:00 AM |11/30/2017     |College Board Search |6100     |Fire Starter   |
     And I close alert if return this message "Person has been created."
     And I validate if "Margaret"summary opened properly
     And I navigate to ID Types
@@ -50,5 +50,15 @@ Feature: Exact match auto-merge on rule 5: IDType-ID-LastName,Email recipients c
     And I update Email Finish Tab "Campus Events", "Admitted Student Day: Register", "Fire Starter", "01/20/2020", "OriginalComments"
     And I send email
     And I confirm EmailSend
-    And I validate if "Email has been queued." message is correct
+    Then I validate if "Email has been queued." message is correct
     #to wait until the email is sent
+    And I wait until email sent "Actions NotShared 6100"
+
+  @VerifyEditUserEmailPerson2
+  Scenario: to verify then edit the user email action for person2
+    Given I login as "firestarterUsername", "firestarterPassword", "firestarterFullName"
+    When I navigate to people on records
+    And I open a people record by "MRutherford@actors.net"
+    And I validate if "Margaret"summary opened properly
+    And I navigate to Actions
+    And I verify action Datatable values index "", values "Email Event", "Email Sent", "Fire Starter", "", ""
