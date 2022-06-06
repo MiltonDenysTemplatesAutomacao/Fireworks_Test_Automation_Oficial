@@ -103,4 +103,28 @@ public class PersonSteps {
     public static void deleteSummaryFields(String summaryField) {
         PersonPage.deleteSummaryFields(summaryField);
     }
+    @Then("I update birth values {string}, {string}, {string}, {string}")
+    public static void updateBirthValues(String date,String country,String city,String state) {
+        PersonPage.updateBirthValues(date,country,city,state);
+    }
+    @Then("I update culture values {string}, {string}, {string}, {string}, {string}, {string}")
+    public static void updateCultureValues(String ethnicity,String race,String gender,String maritalStatus,String primaryLanguage, String religion) {
+        PersonPage.updateCultureValues(ethnicity,race,gender,maritalStatus,primaryLanguage,religion);
+    }
+    @Then("I click on save changes on basic")
+    public static void saveChangesBtnPersonBasic() {
+        PersonPage.saveChangesBtnPersonBasic();
+    }
+    @Then("I update initial Source values {string}, {string}")
+    public static void updateInitialSourceValues(String categoryText, String sourceText){
+        PersonPage.updateInitialSourceValues(categoryText,sourceText);
+    }
+    @Then("I update context values {string}, {string}, {string}")
+    public static void updateContextValues(String timeZone, String classOf,String currentGrade){
+        PersonPage.updateContextValues(timeZone,classOf,currentGrade);
+    }
+    @Then("I update record flags {string}, {string}, {string}, {string}, {string}, {string}, {string}")
+    public static void updateStudentRecordFlagValues(String deceased,String studentFlag,String firstGeneration,String internationalStudent,String legacy,String stateResident,String veteran){
+        PersonPage.updateStudentRecordFlagValues(deceased,studentFlag,firstGeneration,internationalStudent,legacy,stateResident,veteran);
+    }
 }

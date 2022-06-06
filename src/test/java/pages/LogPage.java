@@ -363,4 +363,14 @@ public class LogPage {
     public static final String CONFIRM_EMAIL_SEND_FAIL = "Fail while trying to confirm EmailSend";
     public static final String WAIT_UNTIL_EMAIL_SENT_PASS = "I wait until email sent";
     public static final String WAIT_UNTIL_EMAIL_SENT_FAIL = "Fail while trying to wait until email sent";
+    public static final String UPDATE_BIRTH_VALUES_PASS = "I update birth values";
+    public static final String UPDATE_BIRTH_VALUES_FAIL = "Fail while trying to update birth values";
+    public static final String UPDATE_CULTURE_VALUES_PASS = "I update culture values";
+    public static final String UPDATE_CULTURE_VALUES_FAIL = "Fail while trying to update culture values";
+    public static final String UPDATE_INITIAL_SOURCE_VALUES_PASS = "I update initial Source values";
+    public static final String UPDATE_INITIAL_SOURCE_VALUES_FAIL = "Fail while trying to update initial Source values";
+    public static final String UPDATE_CONTEXT_VALUES_PASS = "I update context values";
+    public static final String UPDATE_CONTEXT_VALUES_FAIL = "Fail while trying to update context values";
+    public static final String UPDATE_STUDENT_RECORD_FLAG_VALUES_PASS = "I update record flags";
+    public static final String UPDATE_STUDENT_RECORD_FLAG_VALUES_FAIL = "Fail while trying to update record flags";
 }

@@ -4,6 +4,7 @@ import config.extent_reports.ExtentReportsSetUp;
 import io.cucumber.datatable.DataTable;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
+import pages.Records.StudentStatusPage;
 
 import java.util.HashMap;
 import java.util.List;
@@ -117,7 +118,201 @@ public class PersonPage extends BasePage{
     private static final String HEADER_ROLE_DROPDOWN_OPTION9_ACTIVE = "div.btn-group.autoSubmit.dropDownSelect.open > ul > li:nth-child(9).active";
     private static final String CREATE_PERSON_BUTTON = "top-controls-create-new-person";
     private static final String COMPOSER_SAVE_CHANGES_BUTTON = "saveChangesBtnPersonCreate";
+    private static final String BIRTH_DATE = "#birth_date";
+    private static final String BIRTH_CITY_FIELD = "#birth_city";
+    private static final String BIRTH_COUNTRY_DROPDOWN = "div#s2id_birth_country.select2-container.form-control.select2 a.select2-choice";
+    private static final String BIRTH_STATE_DROPDOWN = "div#s2id_birth_state.select2-container.form-control.select2 a.select2-choice";
+    private static final String ETHNICITY_DROPDOWN = "div#s2id_ethnicity.select2-container.form-control.select2 a.select2-choice";
+    private static final String RACE_DROPDOWN = "//div[@id='s2id_race']/ul/li/input";
+    private static final String GENDER_DROPDOWN = "div#s2id_gender.select2-container.form-control.select2 a.select2-choice";
+    private static final String MARITAL_STATUS_DROPDOWN = "div#s2id_marital_status.select2-container.form-control.select2 a.select2-choice";
+    private static final String PRIMARY_LANGUAGE_DROPDOWN = "div#s2id_primary_language.select2-container.form-control.select2 a.select2-choice";
+    private static final String RELIGION_DROPDOWN = "div#s2id_religion.select2-container.form-control.select2 a.select2-choice";
+    private static final String INITIAL_CATEGORY_DROPDOWN = "div#s2id_person_initial_category.select2-container.form-control.select2 a.select2-choice";
+    private static final String INITIAL_SOURCE_DROPDOWN = "div#s2id_person_initial_source.select2-container.form-control.select2 a.select2-choice";
+    private static final String TIME_ZONE_DROPDOWN = "div#s2id_time_zone.select2-container.form-control.select2 a.select2-choice";
+    private static final String CLASS_OF_DROPDOWN = "div#s2id_class_of.select2-container.form-control.select2 a.select2-choice";
+    private static final String CURRENT_GRADE_DROPDOWN = "div#s2id_current_grade.form-control.select2 a.select2-choice";
+    private static final String DECEASED_CHECKBOX = "#deceased";
+    private static final String FIRST_GENERATION_CHECKBOX = "#first_generation";
+    private static final String STUDENT_FLAG_CHECKBOX = "#person_flag";
+    private static final String INTERNATIONAL_STUDENT_CHECKBOX = "#international_student";
+    private static final String LEGACY_CHECKBOX = "#legacy";
+    private static final String STATE_RESIDENT_CHECKBOX = "#state_resident";
+    private static final String VETERAN_CHECKBOX = "#veteran";
 
+
+    public static void updateStudentRecordFlagValues(String deceased,String studentFlag,String firstGeneration,String internationalStudent,String legacy,String stateResident,String veteran){
+        int updateStudentRecordFlagValuesDelay = 20;
+        try {
+            if(deceased!=""){
+                scrollToElement(By.cssSelector(CURRENT_GRADE_DROPDOWN));
+                click(By.cssSelector(DECEASED_CHECKBOX));
+            }
+            if(firstGeneration!=""){
+                click(By.cssSelector(FIRST_GENERATION_CHECKBOX));
+            }
+            if(studentFlag!=""){
+                click(By.cssSelector(STUDENT_FLAG_CHECKBOX));
+            }
+            if(internationalStudent!=""){
+                click(By.cssSelector(INTERNATIONAL_STUDENT_CHECKBOX));
+            }
+            if(legacy!=""){
+                click(By.cssSelector(LEGACY_CHECKBOX));
+            }
+            if(stateResident!=""){
+                click(By.cssSelector(STATE_RESIDENT_CHECKBOX));
+            }
+            if(veteran!=""){
+                click(By.cssSelector(VETERAN_CHECKBOX));
+            }
+            ExtentReportsSetUp.testingPass(LogPage.UPDATE_STUDENT_RECORD_FLAG_VALUES_PASS);
+        } catch (Exception e) {
+            FailureDelegatePage.handlePageException(LogPage.UPDATE_STUDENT_RECORD_FLAG_VALUES_FAIL);
+        }
+    }
+    public static void updateContextValues(String timeZone, String classOf,String currentGrade){
+        int updateContextValuesDelay = 20;
+        try {
+            if(timeZone!=""){
+                scrollToElement(By.cssSelector(INITIAL_CATEGORY_DROPDOWN));
+                waitElementBy(By.cssSelector(TIME_ZONE_DROPDOWN),updateContextValuesDelay);
+                BasePage.click(By.cssSelector(TIME_ZONE_DROPDOWN));
+                BasePage.selectElementsList(By.cssSelector(StudentStatusPage.CHECKBOX_LIST), "a");
+                wait(1000);
+                clickOnListOfElements(timeZone);
+            }
+            if(classOf!=""){
+                waitElementBy(By.cssSelector(CLASS_OF_DROPDOWN),updateContextValuesDelay);
+                BasePage.click(By.cssSelector(CLASS_OF_DROPDOWN));
+                BasePage.selectElementsList(By.cssSelector(StudentStatusPage.CHECKBOX_LIST), "a");
+                wait(1000);
+                clickOnListOfElements(classOf);
+            }
+            if(currentGrade!=""){
+                waitElementBy(By.cssSelector(CURRENT_GRADE_DROPDOWN),updateContextValuesDelay);
+                BasePage.click(By.cssSelector(CURRENT_GRADE_DROPDOWN));
+                BasePage.selectElementsList(By.cssSelector(StudentStatusPage.CHECKBOX_LIST), "a");
+                wait(1000);
+                clickOnListOfElements(currentGrade);
+            }
+            ExtentReportsSetUp.testingPass(LogPage.UPDATE_CONTEXT_VALUES_PASS);
+        } catch (Exception e) {
+            FailureDelegatePage.handlePageException(LogPage.UPDATE_CONTEXT_VALUES_FAIL);
+        }
+
+    }
+    public static void updateInitialSourceValues(String categoryText, String sourceText){
+        try {
+            if(categoryText != ""){
+                scrollToElement(By.cssSelector(PRIMARY_LANGUAGE_DROPDOWN));
+                waitElementBy(By.cssSelector(INITIAL_CATEGORY_DROPDOWN),20);
+                BasePage.click(By.cssSelector(INITIAL_CATEGORY_DROPDOWN));
+                BasePage.selectElementsList(By.cssSelector(StudentStatusPage.CHECKBOX_LIST), "a");
+                wait(1000);
+                clickOnListOfElements(categoryText);
+            }
+            if(sourceText != ""){
+                waitElementBy(By.cssSelector(INITIAL_SOURCE_DROPDOWN),20);
+                BasePage.click(By.cssSelector(INITIAL_SOURCE_DROPDOWN));
+                BasePage.selectElementsList(By.cssSelector(StudentStatusPage.CHECKBOX_LIST), "a");
+                wait(1000);
+                clickOnListOfElements(sourceText);
+            }
+            ExtentReportsSetUp.testingPass(LogPage.UPDATE_INITIAL_SOURCE_VALUES_PASS);
+        } catch (Exception e) {
+            FailureDelegatePage.handlePageException(LogPage.UPDATE_INITIAL_SOURCE_VALUES_FAIL);
+        }
+    }
+    public static void updateCultureValues(String ethnicity,String race,String gender,String maritalStatus,String primaryLanguage, String religion){
+        int updateCultureValuesDelay=20;
+
+        try {
+            if (ethnicity != ""){
+                scrollToElement(By.cssSelector(BIRTH_STATE_DROPDOWN));
+                waitElementBy(By.cssSelector(ETHNICITY_DROPDOWN),updateCultureValuesDelay);
+                BasePage.click(By.cssSelector(ETHNICITY_DROPDOWN));
+                BasePage.selectElementsList(By.cssSelector(StudentStatusPage.CHECKBOX_LIST), "a");
+                wait(1000);
+                clickOnListOfElements(ethnicity);
+            }
+            if (race != ""){
+                waitElementBy(By.xpath(RACE_DROPDOWN),updateCultureValuesDelay);
+                BasePage.click(By.xpath(RACE_DROPDOWN));
+                BasePage.selectElementsList(By.cssSelector(StudentStatusPage.CHECKBOX_LIST), "a");
+                wait(1000);
+                clickOnListOfElements(race);
+            }
+            if (gender != ""){
+                waitElementBy(By.cssSelector(GENDER_DROPDOWN),updateCultureValuesDelay);
+                BasePage.click(By.cssSelector(GENDER_DROPDOWN));
+                BasePage.selectElementsList(By.cssSelector(StudentStatusPage.CHECKBOX_LIST), "a");
+                wait(1000);
+                clickOnListOfElements(gender);
+            }
+            if (maritalStatus != ""){
+                waitElementBy(By.cssSelector(MARITAL_STATUS_DROPDOWN),updateCultureValuesDelay);
+                BasePage.click(By.cssSelector(MARITAL_STATUS_DROPDOWN));
+                BasePage.selectElementsList(By.cssSelector(StudentStatusPage.CHECKBOX_LIST), "a");
+                wait(1000);
+                clickOnListOfElements(maritalStatus);
+            }
+            if (primaryLanguage != ""){
+                scrollToElement(By.cssSelector(ETHNICITY_DROPDOWN));
+                waitElementBy(By.cssSelector(PRIMARY_LANGUAGE_DROPDOWN),updateCultureValuesDelay);
+                BasePage.click(By.cssSelector(PRIMARY_LANGUAGE_DROPDOWN));
+                BasePage.selectElementsList(By.cssSelector(StudentStatusPage.CHECKBOX_LIST), "a");
+                wait(1000);
+                clickOnListOfElements(primaryLanguage);
+            }
+            if (religion != ""){
+                waitElementBy(By.cssSelector(RELIGION_DROPDOWN),updateCultureValuesDelay);
+                BasePage.click(By.cssSelector(RELIGION_DROPDOWN));
+                BasePage.selectElementsList(By.cssSelector(StudentStatusPage.CHECKBOX_LIST), "a");
+                wait(1000);
+                clickOnListOfElements(religion);
+            }
+            ExtentReportsSetUp.testingPass(LogPage.UPDATE_CULTURE_VALUES_PASS);
+        } catch (Exception e) {
+            FailureDelegatePage.handlePageException(LogPage.UPDATE_CULTURE_VALUES_FAIL);
+
+        }
+    }
+    public static void updateBirthValues(String date,String country,String city,String state){
+
+        int updateBirthValuesDelay=20;
+        try {
+            if(date!=""){
+                waitElementBy(By.cssSelector(BIRTH_DATE),updateBirthValuesDelay);
+                write(By.cssSelector(BIRTH_DATE),date);
+            }
+            if(country!=""){
+                waitElementBy(By.cssSelector(BIRTH_COUNTRY_DROPDOWN),updateBirthValuesDelay);
+                BasePage.click(By.cssSelector(BIRTH_COUNTRY_DROPDOWN));
+                BasePage.selectElementsList(By.cssSelector(StudentStatusPage.CHECKBOX_LIST), "a");
+                wait(1000);
+                clickOnListOfElements(country);
+            }
+            if(city!=""){
+                waitElementBy(By.cssSelector(BIRTH_CITY_FIELD),updateBirthValuesDelay);
+                write(By.cssSelector(BIRTH_CITY_FIELD),city);
+            }
+            if(state!=""){
+                waitElementBy(By.cssSelector(BIRTH_STATE_DROPDOWN),updateBirthValuesDelay);
+                BasePage.click(By.cssSelector(BIRTH_STATE_DROPDOWN));
+                BasePage.selectElementsList(By.cssSelector(StudentStatusPage.CHECKBOX_LIST), "a");
+                wait(1000);
+                clickOnListOfElements(state);
+            }
+            ExtentReportsSetUp.testingPass(LogPage.UPDATE_BIRTH_VALUES_PASS);
+
+        } catch (Exception e) {
+            FailureDelegatePage.handlePageException(LogPage.UPDATE_BIRTH_VALUES_FAIL);
+        }
+
+
+    }
     private static String deleteSummaryList(String summary) {
         HashMap<String, String> deleteSummaryItem = new HashMap<>();
         deleteSummaryItem.put("Email Address", SUMMARY_EMAIL_EMAIL_ADDRESS_DELETE_BUTTON);
@@ -494,7 +689,7 @@ public class PersonPage extends BasePage{
         try {
             waitElementBy(By.cssSelector(PEOPLE_MANAGER_TABLE),20);
             write(By.cssSelector(PEOPLE_MANAGER_TABLE_SEARCH_FIELD),search);
-            wait(2000);
+            wait(5000);
             ExtentReportsSetUp.testingPass(passMessage);
         } catch (Exception e) {
             FailureDelegatePage.handlePageException(failMessage);
@@ -615,20 +810,20 @@ public class PersonPage extends BasePage{
     public static void updateCitizenshipValues(String citizenshipType,String countryOfCitizenship,String ssn){
         try {
             waitElementBy(By.cssSelector(CITIZENSHIP_TYPE_DROPDOWN),20);
-            if (mass.get(0).get(citizenshipType) != null) {
+            if (citizenshipType != "") {
+                scrollToElement(By.cssSelector(BIRTH_CITY_FIELD));
                 BasePage.click(By.cssSelector(CITIZENSHIP_TYPE_DROPDOWN));
                 BasePage.selectElementsList(By.cssSelector(CITIZENSHIP_TYPE_DROPDOWN_LIST), "a");
-                clickOnListOfElements(mass.get(0).get(citizenshipType));
+                clickOnListOfElements(citizenshipType);
             }
-            if (mass.get(0).get(countryOfCitizenship) != null) {
+            if (countryOfCitizenship != "") {
                 BasePage.click(By.cssSelector(CITIZENSHIP_COUNTRY_DROPDOWN));
                 BasePage.selectElementsList(By.cssSelector(CITIZENSHIP_COUNTRY_DROPDOWN_LIST), "a");
-                clickOnListOfElements(mass.get(0).get(countryOfCitizenship));
+                clickOnListOfElements(countryOfCitizenship);
             }
-            if (mass.get(0).get(ssn) != null) {
-                BasePage.write(By.cssSelector(SOCIAL_SECURITY_NUMBER_FIELD), mass.get(0).get(ssn));
+            if (ssn != "") {
+                BasePage.write(By.cssSelector(SOCIAL_SECURITY_NUMBER_FIELD), ssn);
             }
-            saveChangesBtnPersonBasic();
             ExtentReportsSetUp.testingPass(LogPage.UPDATE_CITIZENSHIP_PASS);
         } catch (Exception e) {
             FailureDelegatePage.handlePageException(LogPage.UPDATE_CITIZENSHIP_FAIL);

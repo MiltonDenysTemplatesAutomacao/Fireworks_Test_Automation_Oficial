@@ -16,7 +16,8 @@ Feature: Search by preferred
     Then I validate if result for "FirstName" is correct
     And I open a record
     And I navigate to basic
-    When I update "", "" and "SSN" to update citizenship
+    When I update "", "" and "583-23-9874" to update citizenship
+    And I click on save changes on basic
     And I navigate to contact
     When I update "", "", "", "PreferredName", "" and "" to update name
     And I go to Home page
