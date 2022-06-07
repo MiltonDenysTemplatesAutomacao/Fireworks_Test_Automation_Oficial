@@ -116,8 +116,8 @@ public class PersonSteps {
         PersonPage.saveChangesBtnPersonBasic();
     }
     @Then("I update initial Source values {string}, {string}")
-    public static void updateInitialSourceValues(String categoryText, String sourceText){
-        PersonPage.updateInitialSourceValues(categoryText,sourceText);
+    public static void updateInitialSourceValues(String initialCategory, String sourceText){
+        PersonPage.updateInitialSourceValues(initialCategory,sourceText);
     }
     @Then("I update context values {string}, {string}, {string}")
     public static void updateContextValues(String timeZone, String classOf,String currentGrade){
@@ -127,4 +127,30 @@ public class PersonSteps {
     public static void updateStudentRecordFlagValues(String deceased,String studentFlag,String firstGeneration,String internationalStudent,String legacy,String stateResident,String veteran){
         PersonPage.updateStudentRecordFlagValues(deceased,studentFlag,firstGeneration,internationalStudent,legacy,stateResident,veteran);
     }
+    @Then("I verify birth values {string}, {string}, {string}, {string}")
+    public static void verifyBirthValues(String date,String country,String city,String state){
+        PersonPage.verifyBirthValues(date,country,city,state);
+    }
+    @When("I verify citizenship values {string}, {string} and {string}")
+    public static void verifyCitizenship(String citizenshipType,String countryOfCitizenship,String ssn) {
+        PersonPage.verifyCitizenship(citizenshipType,countryOfCitizenship,ssn);
+    }
+    @Then("I verify culture values {string}, {string}, {string}, {string}, {string}, {string}")
+    public static void verifyCultureValues(String ethnicity,String race,String gender,String maritalStatus,String primaryLanguage, String religion) {
+        PersonPage.verifyCultureValues(ethnicity,race,gender,maritalStatus,primaryLanguage,religion);
+    }
+    @Then("I verify initial Source values {string}, {string}")
+    public static void verifyInitialSourceValues(String initialCategory, String initialSource){
+        PersonPage.verifyInitialSourceValues(initialCategory,initialSource);
+    }
+    @Then("I verify context values {string}, {string}, {string}")
+    public static void verifyInitialSourceValues(String timeZone, String classOf,String currentGrade){
+        PersonPage.verifyContextValues(timeZone,classOf,currentGrade);
+    }
+    @Then("I verify record flags {string}, {string}, {string}, {string}, {string}, {string}, {string}")
+    public static void verifyRecordFlags(String deceased,String studentFlag,String firstGeneration,String internationalStudent,String legacy,String stateResident,String veteran){
+        PersonPage.verifyRecordFlags(deceased,studentFlag,firstGeneration,internationalStudent,legacy,stateResident,veteran);
+    }
+
+
 }

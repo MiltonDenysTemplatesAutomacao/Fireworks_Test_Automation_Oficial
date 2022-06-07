@@ -373,4 +373,14 @@ public class LogPage {
     public static final String UPDATE_CONTEXT_VALUES_FAIL = "Fail while trying to update context values";
     public static final String UPDATE_STUDENT_RECORD_FLAG_VALUES_PASS = "I update record flags";
     public static final String UPDATE_STUDENT_RECORD_FLAG_VALUES_FAIL = "Fail while trying to update record flags";
+    public static final String VERIFY_BIRTH_VALUES_PASS = "I verify birth values";
+    public static final String VERIFY_BIRTH_VALUES_FAIL = "Fail while trying to verify birth values";
+    public static final String VERIFY_CITIZENSHIP_PASS = "I verify citizenship values";
+    public static final String VERIFY_CITIZENSHIP_FAIL = "Fail while trying to verify citizenship values";
+    public static final String VERIFY_CULTURE_VALUES_PASS = "I verify culture values";
+    public static final String VERIFY_CULTURE_VALUES_FAIL = "Fail while trying to verify culture values";
+    public static final String VERIFY_INITIAL_SOURCE_VALUES_PASS = "I verify initial Source values";
+    public static final String VERIFY_INITIAL_SOURCE_VALUES_FAIL = "Fail while trying to verify initial Source values";
+    public static final String VERIFY_CONTEXT_VALUES_PASS = "I verify context values";
+    public static final String VERIFY_CONTEXT_VALUES_FAIL = "Fail while trying to verify context values";
 }
