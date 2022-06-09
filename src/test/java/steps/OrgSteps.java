@@ -70,5 +70,26 @@ public class OrgSteps {
     public static void verifyOrgActionValues(int organizationIndex) {
         OrgPage.verifyOrgActionValues(organizationIndex);
     }
+    @When("I update basic identification values {string}, {string}, {string}, {string}")
+    public static void updateBasicIdentificationValues(String role,String orgType,String website,String primaryContact) {
+        OrgPage.updateBasicIdentificationValues(role,orgType,website,primaryContact);
+    }
+    @When("I update basic context values {string}, {string}")
+    public static void updateBasicContextValues(String orgTimeZone,String assignedCounselor) {
+        OrgPage.updateBasicContextValues(orgTimeZone,assignedCounselor);
+    }
+    @When("I click on Save Changes in Basic for organization")
+    public static void basicSaveChangesButtonForOrganization() {
+        OrgPage.basicSaveChangesButtonForOrganization();
+    }
+    @When("I verify basic identification values {string}, {string}, {string}, {string}")
+    public static void verifyBasicIdentificationValues(String role,String orgType,String website,String primaryContact) {
+        OrgPage.verifyBasicIdentificationValues(role,orgType,website,primaryContact);
+    }
+    @When("I verify basic context values {string}, {string}")
+    public static void verifyBasicContextValues(String orgTimeZone,String assignedCounselor) {
+        OrgPage.verifyBasicContextValues(orgTimeZone,assignedCounselor);
+    }
+
 
 }

@@ -9,8 +9,22 @@ public class ClearChangesPage extends BasePage{
 
     public static final String CLEAR_CHANGES_BUTTON = "#clearChangesButton";
     public static final String MODAL_CLEAR_CHANGES_CONFIRMATION_LABEL = "#clearChangesConfirmationModalLabel";
+    public static final String MODAL_CLEAR_CHANGES_CONFIRMATION_BUTTON = "#modalSubmitButtonclearChangesConfirmation";
 
-    public static void clickClearChanges(String parameter){
+    public static void clearChangesBasic(){
+        try {
+            scrollToTheBottom();
+            waitUntilElementToBeSelected(By.cssSelector(CLEAR_CHANGES_BUTTON),20);
+            click(By.cssSelector(CLEAR_CHANGES_BUTTON));
+            waitUntilElementToBeSelected(By.cssSelector(MODAL_CLEAR_CHANGES_CONFIRMATION_LABEL),20);
+            click(By.cssSelector(MODAL_CLEAR_CHANGES_CONFIRMATION_BUTTON));
+            wait(1000);
+            ExtentReportsSetUp.testingPass(LogPage.CLICK_CLEAR_CHANGES_PASS);
+        } catch (Exception e) {
+            FailureDelegatePage.handlePageException(LogPage.CLICK_CLEAR_CHANGES_FAIL);
+        }
+    }
+    public static void clickClearChangesActions(String parameter){
         try {
             switch (parameter){
                 case "Person":

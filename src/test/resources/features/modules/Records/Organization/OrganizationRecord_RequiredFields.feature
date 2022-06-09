@@ -5,7 +5,7 @@
 Feature: Organization: Required fields
 
   @OrganizationRequiredFieldsAlertMessages
-  Scenario: to click Save with no data entered and verify alert messages
+  Scenario: Record - Organization - to click Save with no data entered and verify alert messages
     Given I login as "firestarterUsername", "firestarterPassword", "firestarterFullName"
     When I navigate to QuickAddCreateOrganizationPage
     And I clickQuickAddOrganizationSaveAndGo
@@ -18,7 +18,7 @@ Feature: Organization: Required fields
 
 
   @OrganizationRequiredFieldsScenarios
-  Scenario: to create a high school without adding a phone number
+  Scenario: Record - Organization - to create a high school without adding a phone number
     Given I login as "firestarterUsername", "firestarterPassword", "firestarterFullName"
     When I create an organization
       |Name					            |Role		  |Address1			|City	    |State	  |PostalCode |Country	    |

@@ -5,7 +5,7 @@
 Feature: Actions Required Fields
 
   @ActionsRequiredFieldsPerson
-  Scenario: verify fields can be added to the summary panel from an organization record
+  Scenario: Record - Actions - verify fields can be added to the summary panel from an organization record
     Given I login as "firestarterUsername", "firestarterPassword", "firestarterFullName"
     And I create a person
       |FirstName	|LastName |EmailAddress	      |EmailType  |EmailOptInMethod  |Role1   |StudentType|StudentStatusCategory |StudentStatus  |StudentStatusDate|EntryTerm|ActionDateField |Staff        |Category      |Action                      |

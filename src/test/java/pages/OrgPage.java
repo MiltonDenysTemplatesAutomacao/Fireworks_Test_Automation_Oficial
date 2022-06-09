@@ -57,6 +57,16 @@ public class OrgPage extends BasePage{
     private static final String ACTION_DROPDOWN = "div#s2id_org_action_id.select2-container.form-control.childSelect.select2.required a.select2-choice";
     private static final String ACTION_TYPE_DISABLED_DROPDOWN = "div#s2id_org_action_type_id.select2-container.form-control.actionTypeIdSelector.select2.select2-container-disabled a.select2-choice";
     private static final String ACTION_VISIBILITY_DISABLED_DROPDOWN = "div#s2id_org_action_visibility_id.select2-container.form-control.actionVisibilityIdSelector.select2.select2-container-disabled a.select2-choice";
+    private static final String BASIC_ORG_ROLE_DROPDOWN = "div#s2id_org_role.select2-container.form-control.select2.required a.select2-choice";
+    private static final String BASIC_ORG_TYPE_DROPDOWN = "div#s2id_org_type.select2-container.form-control.select2 a.select2-choice";
+    private static final String BASIC_ORG_WEBSITE_FIELD = "#org_website";
+    private static final String BASIC_PRIMARY_CONTACT_PICK_BUTTON = "#recordPickerTrigger_0";
+    private static final String PERSON_PICKER_MODAL_SEARCH_FIELD = "#personPickerModalTableControlsTableSearch";
+    private static final String PERSON_PICKER_MODAL_ROW1_LAST_NAME = "#personPickerModalTable_row_0_col_1_link_0";
+    private static final String PERSON_PICKER_MODAL_ROW1_CHECKBOX = "#personPickerModalTable_row_0_col_0 div.checkbox.checkbox-primary-color input.rowSelectCheckbox";
+    private static final String BASIC_ORG_TIME_ZONE_DROPDOWN = "div#s2id_org_time_zone.select2-container.form-control.select2 a.select2-choice";
+    private static final String BASIC_ORG_ASSIGNED_COUNSELOR_DROPDOWN = "div#s2id_org_assigned_counselor.select2-container.form-control.select2 a.select2-choice";
+    private static final String BASIC_SAVE_CHANGES_BUTTON_FOR_ORGANIZATION = "saveChangesBtnOrgBasic";
 
     private static String statusPlusSignElement(String index){
         return String.format("#org_status_%s_add",index);
@@ -71,6 +81,161 @@ public class OrgPage extends BasePage{
         return String.format("#org_status_%s_org_status_comments",index);
     }
 
+    public static void verifyBasicContextValues(String orgTimeZone,String assignedCounselor){
+        try {
+            int verifyBasicIdentificationValuesDelay = 20;
+            boolean orgTimeZoneValidation = false;
+            boolean assignedCounselorValidation = false;
+            scrollToElement(By.cssSelector(BASIC_ORG_WEBSITE_FIELD));
+            String orgTimeZoneText = getText(By.cssSelector(BASIC_ORG_TIME_ZONE_DROPDOWN));
+            String assignedCounselorText = getText(By.cssSelector(BASIC_ORG_ASSIGNED_COUNSELOR_DROPDOWN));
+
+            if(orgTimeZone!=""){
+                waitElementBy(By.cssSelector(BASIC_ORG_ROLE_DROPDOWN),verifyBasicIdentificationValuesDelay);
+                orgTimeZoneValidation = orgTimeZoneText.equals(orgTimeZone);
+            }else{
+                orgTimeZoneValidation=true;
+            }
+            if(assignedCounselor!=""){
+                waitElementBy(By.cssSelector(BASIC_ORG_ASSIGNED_COUNSELOR_DROPDOWN),verifyBasicIdentificationValuesDelay);
+                assignedCounselorValidation = assignedCounselorText.equals(assignedCounselor);
+            }else{
+                assignedCounselorValidation=true;
+            }
+            if(orgTimeZoneValidation && assignedCounselorValidation){
+                ExtentReportsSetUp.testingPass(LogPage.VERIFY_BASIC_CONTEXT_VALUES_PASS);
+            }else{
+                FailureDelegatePage.handlePageException(LogPage.VERIFY_BASIC_CONTEXT_VALUES_PASS);
+            }
+        } catch (Exception e) {
+            FailureDelegatePage.handlePageException(LogPage.VERIFY_BASIC_CONTEXT_VALUES_FAIL);
+        }
+    }
+    public static void verifyBasicIdentificationValues(String role,String orgType,String website,String primaryContact){
+        try {
+            int verifyBasicIdentificationValuesDelay = 20;
+            boolean roleValidation = false;
+            boolean orgTypeValidation = false;
+            boolean websiteValidation = false;
+            boolean primaryContactValidation = false;
+
+            String roleText = getText(By.cssSelector(BASIC_ORG_ROLE_DROPDOWN));
+            String orgTypeText = getText(By.cssSelector(BASIC_ORG_TYPE_DROPDOWN));
+            String websiteText = getAtribute(By.cssSelector(BASIC_ORG_WEBSITE_FIELD),"value");
+            String primaryContactText = getText(By.cssSelector(BASIC_PRIMARY_CONTACT_PICK_BUTTON));
+
+            if(role!=""){
+                waitElementBy(By.cssSelector(BASIC_ORG_ROLE_DROPDOWN),verifyBasicIdentificationValuesDelay);
+                roleValidation = roleText.equals(role);
+            }else{
+                roleValidation=true;
+            }
+            if(orgType!=""){
+                waitElementBy(By.cssSelector(BASIC_ORG_TYPE_DROPDOWN),verifyBasicIdentificationValuesDelay);
+                orgTypeValidation = orgTypeText.equals(orgType);
+            }else{
+                orgTypeValidation=true;
+            }
+            if(website!=""){
+                waitElementBy(By.cssSelector(BASIC_ORG_WEBSITE_FIELD),verifyBasicIdentificationValuesDelay);
+                websiteValidation = websiteText.equals(website);
+            }else{
+                websiteValidation=true;
+            }
+            if(primaryContact!=""){
+                waitElementBy(By.cssSelector(BASIC_PRIMARY_CONTACT_PICK_BUTTON),verifyBasicIdentificationValuesDelay);
+                primaryContactValidation = primaryContactText.equals(primaryContact);
+            }else{
+                primaryContactValidation=true;
+            }
+            if(roleValidation && orgTypeValidation && websiteValidation && primaryContactValidation){
+                ExtentReportsSetUp.testingPass(LogPage.VERIFY_BASIC_IDENTIFICATION_VALUES_PASS);
+            }else{
+                FailureDelegatePage.handlePageException(LogPage.VERIFY_BASIC_IDENTIFICATION_VALUES_FAIL);
+            }
+        } catch (Exception e) {
+            FailureDelegatePage.handlePageException(LogPage.VERIFY_BASIC_IDENTIFICATION_VALUES_FAIL);
+        }
+    }
+    public static void basicSaveChangesButtonForOrganization(){
+        try {
+            waitElementBy(By.id(BASIC_SAVE_CHANGES_BUTTON_FOR_ORGANIZATION),20);
+            scrollToTheBottom();
+            BasePage.click(By.id(BASIC_SAVE_CHANGES_BUTTON_FOR_ORGANIZATION));
+            ExtentReportsSetUp.testingPass(LogPage.SAVE_CHANGES_PASS);
+        } catch (Exception e) {
+            FailureDelegatePage.handlePageException(LogPage.SAVE_CHANGES_FAIL);
+        }
+    }
+    public static void updateBasicContextValues(String orgTimeZone,String assignedCounselor){
+        try {
+            if(orgTimeZone!=""){
+                scrollToElement(By.cssSelector(BASIC_ORG_WEBSITE_FIELD));
+                waitElementBy(By.cssSelector(BASIC_ORG_TIME_ZONE_DROPDOWN),20);
+                BasePage.click(By.cssSelector(BASIC_ORG_TIME_ZONE_DROPDOWN));
+                BasePage.selectElementsList(By.cssSelector(StudentStatusPage.CHECKBOX_LIST), "a");
+                wait(1000);
+                clickOnListOfElements(orgTimeZone);
+            }
+            if(assignedCounselor!=""){
+                waitElementBy(By.cssSelector(BASIC_ORG_ASSIGNED_COUNSELOR_DROPDOWN),20);
+                BasePage.click(By.cssSelector(BASIC_ORG_ASSIGNED_COUNSELOR_DROPDOWN));
+                BasePage.selectElementsList(By.cssSelector(StudentStatusPage.CHECKBOX_LIST), "a");
+                wait(1000);
+                clickOnListOfElements(assignedCounselor);
+            }
+            ExtentReportsSetUp.testingPass(LogPage.UPDATE_BASIC_CONTEXT_VALUES_PASS);
+        } catch (Exception e) {
+            FailureDelegatePage.handlePageException(LogPage.UPDATE_BASIC_CONTEXT_VALUES_FAIL);
+        }
+    }
+    public static void updateBasicIdentificationValues(String role,String orgType,String website,String primaryContact){
+        int updateBasicIdentificationValuesDelay=20;
+        try {
+            if(role!=""){
+                waitElementBy(By.cssSelector(BASIC_ORG_ROLE_DROPDOWN),updateBasicIdentificationValuesDelay);
+                BasePage.click(By.cssSelector(BASIC_ORG_ROLE_DROPDOWN));
+                BasePage.selectElementsList(By.cssSelector(StudentStatusPage.CHECKBOX_LIST), "a");
+                wait(1000);
+                clickOnListOfElements(role);
+            }
+            if(orgType!=""){
+                waitElementBy(By.cssSelector(BASIC_ORG_TYPE_DROPDOWN),updateBasicIdentificationValuesDelay);
+                BasePage.click(By.cssSelector(BASIC_ORG_TYPE_DROPDOWN));
+                BasePage.selectElementsList(By.cssSelector(StudentStatusPage.CHECKBOX_LIST), "a");
+                wait(1000);
+                clickOnListOfElements(orgType);
+            }
+            if(website!=""){
+                waitElementBy(By.cssSelector(BASIC_ORG_WEBSITE_FIELD),updateBasicIdentificationValuesDelay);
+                write(By.cssSelector(BASIC_ORG_WEBSITE_FIELD),website);
+            }
+            if(primaryContact!=""){
+                waitElementBy(By.cssSelector(BASIC_PRIMARY_CONTACT_PICK_BUTTON),updateBasicIdentificationValuesDelay);
+                click(By.cssSelector(BASIC_PRIMARY_CONTACT_PICK_BUTTON));
+                searchForPrimaryContact(primaryContact);
+            }
+            ExtentReportsSetUp.testingPass(LogPage.UPDATE_BASIC_IDENTIFICATION_VALUES_PASS);
+        } catch (Exception e) {
+            FailureDelegatePage.handlePageException(LogPage.UPDATE_BASIC_IDENTIFICATION_VALUES_FAIL);
+        }
+    }
+    public static void searchForPrimaryContact(String contactLastName){
+        try {
+            waitElementBy(By.cssSelector(PERSON_PICKER_MODAL_SEARCH_FIELD),20);
+            write(By.cssSelector(PERSON_PICKER_MODAL_SEARCH_FIELD),contactLastName);
+            waitElementBy(By.cssSelector(PERSON_PICKER_MODAL_ROW1_LAST_NAME),20);
+            String contactLastNameText = getText(By.cssSelector(PERSON_PICKER_MODAL_ROW1_LAST_NAME));
+            if(contactLastNameText.equals(contactLastName)){
+                waitElementBy(By.cssSelector(PERSON_PICKER_MODAL_ROW1_CHECKBOX),20);
+                click(By.cssSelector(PERSON_PICKER_MODAL_ROW1_CHECKBOX));
+            }else{
+                FailureDelegatePage.handlePageException(LogPage.SEARCH_FOR_PRIMARY_CONTACT_FAIL);
+            }
+        } catch (Exception e) {
+            FailureDelegatePage.handlePageException(LogPage.SEARCH_FOR_PRIMARY_CONTACT_FAIL);
+        }
+    }
     public static void verifyOrgActionValues(int organizationIndex){
         try {
             if(verifyActionAttributes(organizationIndex) && verifyActionDetails(organizationIndex)){

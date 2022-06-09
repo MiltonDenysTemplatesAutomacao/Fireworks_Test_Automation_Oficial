@@ -5,7 +5,7 @@
 Feature: Activities and Interests
 
   @ActivitiesInterestsScenarios
-  Scenario: verify activities and interests can be added to a student record
+  Scenario: Record - Person - verify activities and interests can be added to a student record
     Given I login as "firestarterUsername", "firestarterPassword", "firestarterFullName"
     And I create a person
       |FirstName  |LastName   |EmailAddress        |EmailType  |EmailOptInMethod  |Role1          |StudentType|StudentStatusCategory|StudentStatus    |StudentStatusDate|EntryTerm|InterestCategory|InterestName|InterestWhoAdded|InterestDateAdded|InterestSource|InterestComments|ActivityCategory|ActivityName|ActivityWhoAdded|ActivityDateAdded|ActivitySource|ActivityComments|ActivityParticipate|

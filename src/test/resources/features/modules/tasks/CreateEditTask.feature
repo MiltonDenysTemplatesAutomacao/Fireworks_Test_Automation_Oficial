@@ -6,7 +6,7 @@
 Feature: Search by phone number
 
   @CreateTaskStaff
-  Scenario: to create a task for staff member
+  Scenario: Tasks - to create a task for staff member
     Given I login as "firestarterUsername", "firestarterPassword", "firestarterFullName"
     And I create a staff
       |FirstName|LastName |FullName		|EmailAddress		|PermissionGroup |Name    |Description    |Type|SmartSearch     |AssignTo   |DueDate    |DueTime  |Priority |Status     |Comments     |
@@ -23,7 +23,7 @@ Feature: Search by phone number
     Then I validate if manager table shows the task created
 
   @UpdateTaskStaff
-  Scenario: to clear changes and update a task for staff member
+  Scenario: Tasks - to clear changes and update a task for staff member
     Given I login as "firestarterUsername", "firestarterPassword", "firestarterFullName"
     And I create a staff
       |FirstName|LastName |FullName		|EmailAddress		|PermissionGroup  |PreviousName |Name           |Description      |Type      |AssignTo     |DueDate    |DueTime  |Priority |Status      |Comments     |

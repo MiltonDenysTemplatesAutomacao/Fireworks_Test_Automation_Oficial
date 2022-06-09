@@ -5,7 +5,7 @@
 Feature: Student Status
 
   @StudentStatusScenarios
-  Scenario: to add a primary Student Status field group for a previous Entry Term
+  Scenario: Record - Person - to add a primary Student Status field group for a previous Entry Term
     Given I login as "firestarterUsername", "firestarterPassword", "firestarterFullName"
     And I create a person
       |FirstName  |LastName |EmailAddress      |EmailType  |EmailOptInMethod  |Role1  |StudentType|StudentStatusCategory|StudentStatus    |StudentStatusDate|EntryTerm  |Active|Primary|

@@ -6,7 +6,7 @@
 Feature: Summary Panel Display
 
   @SummaryPanelDisplayPerson
-  Scenario: verify fields can be added to the summary panel from an organization record
+  Scenario: Record - SummaryHeader - verify fields can be added to the summary panel from an organization record
     Given I login as "firestarterUsername", "firestarterPassword", "firestarterFullName"
     And I create a person
       |FirstName	|LastName		|EmailAddress	     |EmailType  |EmailOptInMethod  |Role1   |StudentType|StudentStatusCategory|StudentStatus    |StudentStatusDate|EntryTerm|
@@ -36,7 +36,7 @@ Feature: Summary Panel Display
     And I delete summary field "Student Status Date"
 
   @SummaryPanelDisplayOrganization
-  Scenario: verify fields can be added to the summary panel from an organization record
+  Scenario: Record - SummaryHeader - verify fields can be added to the summary panel from an organization record
     Given I login as "firestarterUsername", "firestarterPassword", "firestarterFullName"
     And I create an organization
       |Name					               |Role	    |Address1		    |City	    |State	      |PostalCode |Country	      |

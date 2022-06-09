@@ -5,7 +5,7 @@
 Feature: Tasks Permissions: Composer Delete
 
   @TaskPermissionDeleteButtonAccessScenario @Persistent
-  Scenario: Not to see delete button
+  Scenario: Tasks - Not to see delete button
     Given I login as "firestarterUsername", "firestarterPassword", "firestarterFullName"
     And I navigate to tasks
     And I click on create task button

@@ -5,7 +5,7 @@
 Feature: Basic: Student data can be added
 
   @BasicStudentDataCanBeAddedScenario
-  Scenario: verify data can be added to the basic panel of a student record
+  Scenario: Record - Basic - verify data can be added to the basic panel of a student record
     Given I login as "firestarterUsername", "firestarterPassword", "firestarterFullName"
     When I create a person
       |FirstName  |LastName  |EmailAddress       |EmailType|EmailOptInMethod |Role1   |StudentType|StudentStatusCategory|StudentStatus|StudentStatusDate|EntryTerm  |
@@ -29,5 +29,5 @@ Feature: Basic: Student data can be added
     And I verify culture values "Hispanic / Latino", "Asian", "Female", "Single", "Russian", "Pagan"
     And I verify initial Source values "Campus Events", "Admitted Student Day: Attend"
     And I verify context values "(GMT-08:00) Alaska", "2016", "10"
-    And I verify record flags "Deceased", "Student Flag", "FirstGeneration", "InternationalStudent", "legacy", "StateResident", ""
+    And I verify record flags "Deceased", "Student Flag", "FirstGeneration", "InternationalStudent", "Legacy", "StateResident", ""
 

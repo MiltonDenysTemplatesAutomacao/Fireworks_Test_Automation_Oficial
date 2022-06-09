@@ -4,7 +4,7 @@
 Feature: Search by name
 
   @SearchPersonFirstNameRecord
-  Scenario: to Quick Search for person Firstname, Lastname, First and Last name and partial name
+  Scenario: Quick Search - to Quick Search for person Firstname, Lastname, First and Last name and partial name
     Given I login as "firestarterUsername", "firestarterPassword", "firestarterFullName"
     And I create a person
       |FirstName	|LastName	|FullName	    |EmailAddress			|EmailType		|EmailOptInMethod	|Role1	|Phone			|PhoneType|Address1					|City		|State		|Country			|PostalCode	|
@@ -25,7 +25,7 @@ Feature: Search by name
 
 
   @SearchOrganizationNameRecord
-  Scenario: to Quick Search for Organization name and partial name
+  Scenario: Quick Search - to Quick Search for Organization name and partial name
     Given I login as "firestarterUsername", "firestarterPassword", "firestarterFullName"
     And I create an organization
       |Name						|Role		|Phone			|PhoneType  |Address1				|Address2		|City	 |State		|PostalCode|Country				|
@@ -39,7 +39,7 @@ Feature: Search by name
 
 
   @SearchStaffFirstNameRecord
-  Scenario: to Quick Search for staff Firstname, LastName, First and Last name and partial name
+  Scenario: Quick Search - to Quick Search for staff Firstname, LastName, First and Last name and partial name
     Given I login as "firestarterUsername", "firestarterPassword", "firestarterFullName"
     And I create a staff
       |FirstName	|LastName	|FullName			|EmailAddress				|EmailType|AccountStartDate	|AccountEndDate	|PermissionGroup|

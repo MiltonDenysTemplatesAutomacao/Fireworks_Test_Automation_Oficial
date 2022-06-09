@@ -5,7 +5,7 @@
 Feature: Staff Record: Required fields
 
   @DeleteStaffAndValidate
-  Scenario: verify staff record can be deleted and re-added
+  Scenario: Record - Staff - verify staff record can be deleted and re-added
     Given I login as "firestarterUsername", "firestarterPassword", "firestarterFullName"
     When I create a staff
       |FirstName  |LastName	  |Fullname		    |EmailAddress	            |PermissionGroup|

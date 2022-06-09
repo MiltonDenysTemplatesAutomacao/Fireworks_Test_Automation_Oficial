@@ -5,7 +5,7 @@
   Feature: Task Required Fields Validation
 
   @TaskRequiredFieldsValidationScenario
-  Scenario: Verify required field validation on task composer
+  Scenario: Tasks - Verify required field validation on task composer
     Given I login as "firestarterUsername", "firestarterPassword", "firestarterFullName"
     And I navigate to tasks
     And I click on create task button
@@ -15,7 +15,7 @@
     And I validate if duo time is disabled
 
   @StaffDuoTimeDisabled
-  Scenario: Verify if due time is disabled when due date is not provided
+  Scenario: Tasks - Verify if due time is disabled when due date is not provided
     Given I login as "firestarterUsername", "firestarterPassword", "firestarterFullName"
     And I navigate to tasks
     And I click on create task button

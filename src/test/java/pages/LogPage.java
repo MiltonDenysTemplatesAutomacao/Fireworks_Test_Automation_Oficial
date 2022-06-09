@@ -383,4 +383,13 @@ public class LogPage {
     public static final String VERIFY_INITIAL_SOURCE_VALUES_FAIL = "Fail while trying to verify initial Source values";
     public static final String VERIFY_CONTEXT_VALUES_PASS = "I verify context values";
     public static final String VERIFY_CONTEXT_VALUES_FAIL = "Fail while trying to verify context values";
+    public static final String UPDATE_BASIC_IDENTIFICATION_VALUES_PASS = "I update basic identification values";
+    public static final String UPDATE_BASIC_IDENTIFICATION_VALUES_FAIL = "Fail while trying to update basic identification values";
+    public static final String SEARCH_FOR_PRIMARY_CONTACT_FAIL = "Fail while trying to search a primary contact";
+    public static final String UPDATE_BASIC_CONTEXT_VALUES_PASS = "I update basic context values";
+    public static final String UPDATE_BASIC_CONTEXT_VALUES_FAIL = "Fail while trying to update basic context values";
+    public static final String VERIFY_BASIC_IDENTIFICATION_VALUES_PASS = "I verify basic identification values";
+    public static final String VERIFY_BASIC_IDENTIFICATION_VALUES_FAIL = "Fail while trying to verify basic identification values";
+    public static final String VERIFY_BASIC_CONTEXT_VALUES_PASS = "I verify basic context values";
+    public static final String VERIFY_BASIC_CONTEXT_VALUES_FAIL = "Fail while trying to verify basic context values";
 }

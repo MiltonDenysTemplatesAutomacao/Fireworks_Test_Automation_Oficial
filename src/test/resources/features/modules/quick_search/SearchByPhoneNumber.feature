@@ -6,7 +6,7 @@
 Feature: Search by phone number
 
   @SearchPersonPhoneNumber
-  Scenario: to Quick Search a person by Phone Number, partial, with or without dashes, spaces or parenthesis
+  Scenario: Quick Search - to Quick Search a person by Phone Number, partial, with or without dashes, spaces or parenthesis
     Given I login as "firestarterUsername", "firestarterPassword", "firestarterFullName"
     And I create a person
       |FirstName|LastName	|Phone		 |PhoneType |Role1	|PhoneFormatted|
@@ -22,7 +22,7 @@ Feature: Search by phone number
     Then I validate if result for "PhoneFormatted" is correct
 
   @SearchOrganizationPhoneNumber
-  Scenario: to Quick Search an organization by Phone Number, partial, with or without dashes, spaces or parenthesis
+  Scenario: Quick Search - to Quick Search an organization by Phone Number, partial, with or without dashes, spaces or parenthesis
     Given I login as "firestarterUsername", "firestarterPassword", "firestarterFullName"
     And I create an organization
       |Name					  |Role		  |Phone		|Role1	|PhoneFormatted|PhoneType   |Address1			|Address2	|City   |State		|PostalCode |Country		|
@@ -38,7 +38,7 @@ Feature: Search by phone number
     Then I validate if result for "PhoneFormatted" is correct
 
   @SearchStaffPhoneNumber
-  Scenario: to Quick Search a staff by Phone Number, partial, with or without dashes, spaces or parenthesis
+  Scenario: Quick Search - to Quick Search a staff by Phone Number, partial, with or without dashes, spaces or parenthesis
     Given I login as "firestarterUsername", "firestarterPassword", "firestarterFullName"
     And I create a staff
       |FirstName	|LastName	|Fullname		|EmailAddress		|EmailType  |AccountStartDate	|AccountEndDate	|PermissionGroup|PhoneFormatted	|Phone        |PhoneType|Comment  |

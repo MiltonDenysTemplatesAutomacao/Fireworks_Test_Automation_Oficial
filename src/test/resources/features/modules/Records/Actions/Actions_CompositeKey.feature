@@ -7,7 +7,7 @@
 Feature: Actions: Duplicates cannot be added
 
   @ActionsDuplicatesCannotBeAddedPerson
-  Scenario: verify duplicate actions can not be added to a person record
+  Scenario: Record - Actions - verify duplicate actions can not be added to a person record
     Given I login as "firestarterUsername", "firestarterPassword", "firestarterFullName"
     When I create a person
       |FirstName    |LastName     |EmailAddress              |EmailType|EmailOptInMethod |Role1 |Category     |Action                         |Staff        |ActionDateTime     |ActionDateField|
@@ -26,7 +26,7 @@ Feature: Actions: Duplicates cannot be added
     And I click on clear changes on actions for "Person"
 
   @ActionsDuplicatesCannotBeAddedOrganization
-  Scenario: verify duplicate actions can not be added to an organization record
+  Scenario: Record - Actions - verify duplicate actions can not be added to an organization record
     Given I login as "firestarterUsername", "firestarterPassword", "firestarterFullName"
     And I create an organization
       |Name					                 |Role        |Address1		            |City	       |State	     |PostalCode |Country	     |Category     |Action  |Staff         |ActionDateTime     |ActionDateField|

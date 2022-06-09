@@ -5,7 +5,7 @@
 Feature: Tasks Permissions: Archive Access
 
   @TaskPermissionArchiveAndActivateButtons @Persistent
-  Scenario: Not to see archive or activate buttons
+  Scenario: Tasks - Not to see archive or activate buttons
     Given I login as "firestarterUsername", "firestarterPassword", "firestarterFullName"
     And I navigate to tasks
     And I click on create task button
@@ -21,7 +21,7 @@ Feature: Tasks Permissions: Archive Access
     Then I validate if archive and activate buttons are not displayed
 
   @TaskPermissionArchiveAndActivateButtonsAfterArchive @Persistent
-  Scenario: Not to see archive or activate buttons after archive a task
+  Scenario: Tasks - Not to see archive or activate buttons after archive a task
     Given I login as "firestarterUsername", "firestarterPassword", "firestarterFullName"
     And I navigate to tasks
     And I click on create task button

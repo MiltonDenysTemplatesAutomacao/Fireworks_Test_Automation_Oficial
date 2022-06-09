@@ -5,7 +5,7 @@
 Feature: Display Fields
 
   @DisplayFieldsPerson
-  Scenario: verify display only fields for a student can be set and updated
+  Scenario: Record - SummaryHeader - verify display only fields for a student can be set and updated
     Given I login as "firestarterUsername", "firestarterPassword", "firestarterFullName"
     And I create a person
       |FirstName  |LastName   |EmailAddress           |EmailType  |EmailOptInMethod  |Role1   |StudentStatusCategory|StudentStatus    |StudentStatusDate|EntryTerm  |Active|Primary |IDType |IDNumber |WhoAddedID   |
@@ -50,7 +50,7 @@ Feature: Display Fields
     Then I validate if Visa number is correct
 
   @DisplayFieldsOrganization
-  Scenario: verify display fields for an organization can be set and updated
+  Scenario: Record - SummaryHeader - verify display fields for an organization can be set and updated
     Given I login as "firestarterUsername", "firestarterPassword", "firestarterFullName"
     When I create a staff
       |FirstName  |LastName	  |Fullname		|EmailAddress       |PermissionGroup|

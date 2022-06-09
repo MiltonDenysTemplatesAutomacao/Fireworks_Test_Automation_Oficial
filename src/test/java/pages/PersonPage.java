@@ -165,18 +165,69 @@ public class PersonPage extends BasePage{
                     deceasedValidation = !checkBoxIsActive(By.cssSelector(DECEASED_CHECKBOX));
                     break;
             }
+            switch (studentFlag){
+                case "Student Flag":
+                    studentFlagValidation = checkBoxIsActive(By.cssSelector(STUDENT_FLAG_CHECKBOX));
+                    break;
+                case "":
+                    studentFlagValidation = !checkBoxIsActive(By.cssSelector(STUDENT_FLAG_CHECKBOX));
+                    break;
+            }
+            switch (firstGeneration){
+                case "FirstGeneration":
+                    firstGenerationValidation = checkBoxIsActive(By.cssSelector(FIRST_GENERATION_CHECKBOX));
+                    break;
+                case "":
+                    firstGenerationValidation = !checkBoxIsActive(By.cssSelector(FIRST_GENERATION_CHECKBOX));
+                    break;
+            }
+            switch (internationalStudent){
+                case "InternationalStudent":
+                    internationalStudentValidation = checkBoxIsActive(By.cssSelector(INTERNATIONAL_STUDENT_CHECKBOX));
+                    break;
+                case "":
+                    internationalStudentValidation = !checkBoxIsActive(By.cssSelector(INTERNATIONAL_STUDENT_CHECKBOX));
+                    break;
+            }
+            switch (legacy){
+                case "Legacy":
+                    legacyValidation = checkBoxIsActive(By.cssSelector(LEGACY_CHECKBOX));
+                    break;
+                case "":
+                    legacyValidation = !checkBoxIsActive(By.cssSelector(LEGACY_CHECKBOX));
+                    break;
+            }
+            switch (stateResident){
+                case "StateResident":
+                    stateResidentValidation = checkBoxIsActive(By.cssSelector(STATE_RESIDENT_CHECKBOX));
+                    break;
+                case "":
+                    stateResidentValidation = !checkBoxIsActive(By.cssSelector(STATE_RESIDENT_CHECKBOX));
+                    break;
+            }
+            switch (veteran){
+                case "Veteran":
+                    veteranValidation = checkBoxIsActive(By.cssSelector(VETERAN_CHECKBOX));
+                    break;
+                case "":
+                    veteranValidation = !checkBoxIsActive(By.cssSelector(VETERAN_CHECKBOX));
+                    break;
+            }
+            if(deceasedValidation
+                && studentFlagValidation
+                && firstGenerationValidation
+                && internationalStudentValidation
+                && legacyValidation
+                && stateResidentValidation
+                && veteranValidation){
+                ExtentReportsSetUp.testingPass(LogPage.VERIFY_CONTEXT_VALUES_PASS);
 
-            studentFlagValidation = checkBoxIsActive(By.cssSelector(STUDENT_FLAG_CHECKBOX));
-            firstGenerationValidation = checkBoxIsActive(By.cssSelector(FIRST_GENERATION_CHECKBOX));
-            internationalStudentValidation = checkBoxIsActive(By.cssSelector(INTERNATIONAL_STUDENT_CHECKBOX));
-            legacyValidation = checkBoxIsActive(By.cssSelector(LEGACY_CHECKBOX));
-            stateResidentValidation = checkBoxIsActive(By.cssSelector(STATE_RESIDENT_CHECKBOX));
-            veteranValidation = checkBoxIsActive(By.cssSelector(VETERAN_CHECKBOX));
-
+            }else{
+                FailureDelegatePage.handlePageException(LogPage.VERIFY_CONTEXT_VALUES_FAIL);
+            }
         } catch (Exception e) {
-
+            FailureDelegatePage.handlePageException(LogPage.VERIFY_CONTEXT_VALUES_FAIL);
         }
-
     }
 
 
@@ -377,7 +428,7 @@ public class PersonPage extends BasePage{
             boolean cityValidation = false;
             boolean stateValidation = false;
 
-            String dateText = getText(By.cssSelector(BIRTH_DATE));
+            String dateText = getAtribute(By.cssSelector(BIRTH_DATE),"value");
             String countryText = getText(By.cssSelector(BIRTH_COUNTRY_DROPDOWN));
             String cityText = getAtribute(By.cssSelector(BIRTH_CITY_FIELD),"value");
             String stateText = getText(By.cssSelector(BIRTH_STATE_DROPDOWN));

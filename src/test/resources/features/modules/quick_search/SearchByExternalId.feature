@@ -5,7 +5,7 @@
 Feature: Search by external Id
 
   @SearchPersonIdRecord
-  Scenario: to Quick Search for a person External Id
+  Scenario: Quick Search - to Quick Search for a person External Id
     Given I login as "firestarterUsername", "firestarterPassword", "firestarterFullName"
     And I create a person
       |FirstName	|LastName	|FullName	|EmailAddress	|EmailType		|EmailOptInMethod	|Role1	|Type                 |ID Number|Who Added ID     |
@@ -20,7 +20,7 @@ Feature: Search by external Id
     Then I validate if result for "ID Number" is correct
 
   @SearchOrganizationIdRecord
-  Scenario: to Quick Search for an organization External Id
+  Scenario: Quick Search - to Quick Search for an organization External Id
     Given I login as "firestarterUsername", "firestarterPassword", "firestarterFullName"
     And I create an organization
       |Name					  |Role		  |Phone		|PhoneType  |Address1			|Address2	|City	|State	|PostalCode |Country		|Type  |ID Number|Who Added ID     |

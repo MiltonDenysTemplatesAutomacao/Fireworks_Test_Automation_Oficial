@@ -6,7 +6,7 @@
 Feature: Actions Delete Actions
 
   @ActionsDeletePerson
-  Scenario: verify an action can be deleted from a person record
+  Scenario: Record - Actions - verify an action can be deleted from a person record
     Given I login as "firestarterUsername", "firestarterPassword", "firestarterFullName"
     When I create a person
       |FirstName  |LastName     |EmailAddress           |EmailType|EmailOptInMethod |Role1  |StudentType|StudentStatusCategory|StudentStatus|StudentStatusDate|EntryTerm|Category     |Action                         |Staff        |ActionDateTime     |ActionDateField|
@@ -32,7 +32,7 @@ Feature: Actions Delete Actions
 
 
   @ActionsDeleteOrganization
-  Scenario: verify an action can be deleted from an organization record
+  Scenario: Record - Actions - verify an action can be deleted from an organization record
     Given I login as "firestarterUsername", "firestarterPassword", "firestarterFullName"
     And I create an organization
       |Name					  |Role	       |Address1		         |City	        |State	      |PostalCode |Country	      |Category     |Action  |Staff         |ActionDateTime     |ActionDateField|

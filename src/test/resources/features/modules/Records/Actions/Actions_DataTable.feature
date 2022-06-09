@@ -8,7 +8,7 @@
 Feature: Actions Data Table
 
   @DataTablePerson
-  Scenario: Letter - create from template - system actions
+  Scenario: Record - Actions - Letter - create from template - system actions
     Given I login as "firestarterUsername", "firestarterPassword", "firestarterFullName"
     When I create a person
       |FirstName  |LastName     |Address1           |City       |State      |PostalCode|Country       |Role1  |StudentType|StudentStatusCategory|StudentStatus    |StudentStatusDate|EntryTerm|TemplateName             |TemplateDescription                  |RecordType|LetterName              |LetterFormat                   |LetterContent                        |Category       |Action                       |Comments                                 |SmartSearch|SingleRecipient  |Staff        |ActionDateTime|

@@ -4,7 +4,7 @@
 @SearchByEmail
 Feature: Search by Email
   @SearchPersonByEmail
-  Scenario: to Quick Search a person by Email, full or partial
+  Scenario: Quick Search - to Quick Search a person by Email, full or partial
     Given I login as "firestarterUsername", "firestarterPassword", "firestarterFullName"
     And I create a person
       |FirstName|LastName	|EmailAddress	      |EmailType|EmailOptInMethod |Role1	|
@@ -16,7 +16,7 @@ Feature: Search by Email
     Then I validate if result for "EmailAddress" is correct
 
   @SearchOrganizationByEmail
-  Scenario: to Quick Search an organization by Email, full or partial
+  Scenario: Quick Search - to Quick Search an organization by Email, full or partial
     Given I login as "firestarterUsername", "firestarterPassword", "firestarterFullName"
     And I create an organization
       |Name					  |Role		  |Phone		|PhoneType  |Address1			|Address2	|City  |State	|PostalCode|Country			|EmailAddress	         |EmailType   |EmailOptInMethod |OptInStatus|
@@ -33,7 +33,7 @@ Feature: Search by Email
     Then I validate if result for "EmailAddress" is correct
 
   @SearchStaffByEmail
-  Scenario: to Quick Search a staff member by Email, full or partial
+  Scenario: Quick Search - to Quick Search a staff member by Email, full or partial
     Given I login as "firestarterUsername", "firestarterPassword", "firestarterFullName"
     And I create a staff
       |FirstName  |LastName	|Fullname		|EmailAddress	|EmailType  |AccountStartDate	|AccountEndDate	|PermissionGroup|

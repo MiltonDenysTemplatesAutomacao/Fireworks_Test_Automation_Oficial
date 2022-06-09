@@ -5,7 +5,7 @@
 Feature: Actions Edit actions
 
   @ActionsEditPerson
-  Scenario: verify that editing an action shows the proper values in the edit modal window
+  Scenario: Record - Actions - verify that editing an action shows the proper values in the edit modal window
     Given I login as "firestarterUsername", "firestarterPassword", "firestarterFullName"
     When I create a staff
       |FirstName  |LastName	  |Fullname		    |EmailAddress	            |EmailType	|PermissionGroup|

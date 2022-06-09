@@ -5,7 +5,7 @@
 Feature: Role Type drives panel and field visibility
 
   @VerifyBasicFieldsNonStudentRecord
-  Scenario: to verify the Basic fields for a non-student record
+  Scenario: Record - Person - to verify the Basic fields for a non-student record
     Given I login as "firestarterUsername", "firestarterPassword", "firestarterFullName"
     And I create a person
       |FirstName|LastName	|EmailAddress		|EmailType		|EmailOptInMethod	|Role1	|BasicSection|BasicFieldLabel       |CheckboxLabel |
@@ -38,7 +38,7 @@ Feature: Role Type drives panel and field visibility
     And I validate not displayed fields are correct
 
   @VerifyRecordPanelsNonStudentRecord
-  Scenario: To verify the record panels and basic fields for a non student record
+  Scenario: Record - Person - To verify the record panels and basic fields for a non student record
     Given I login as "firestarterUsername", "firestarterPassword", "firestarterFullName"
     And I create a person
       |FirstName        |LastName	|EmailAddress		|EmailType		|EmailOptInMethod	|Role1	|StudentType|StudentStatusCategory |StudentStatus |StudentStatusDate |EntryTerm|BasicSection      |BasicFieldLabel       |CheckboxLabel |Labels                 |

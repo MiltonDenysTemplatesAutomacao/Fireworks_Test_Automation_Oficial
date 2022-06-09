@@ -6,7 +6,7 @@
 Feature: Actions Delete Actions
 
   @ActionsDeleteCanBeDeletedByNonFerAdminUsersPerson
-  Scenario: verify user actions can be deleted by non FER Admin users
+  Scenario: Record - Actions - verify user actions can be deleted by non FER Admin users
     Given I login as "firestarterUsername", "firestarterPassword", "firestarterFullName"
     When I create a person
       |FirstName  |LastName     |EmailAddress           |EmailType|EmailOptInMethod |Role1 |Category     |Action                         |Staff        |ActionDateTime     |ActionDateField|
@@ -31,7 +31,7 @@ Feature: Actions Delete Actions
     And I validate if delete modal is not visible
 
   @ActionsDeleteCanBeDeletedByNonFerAdminUsersOrganization
-  Scenario: the Delete Action button is enabled on a Organization record
+  Scenario: Record - Actions - the Delete Action button is enabled on a Organization record
     Given I login as "firestarterUsername", "firestarterPassword", "firestarterFullName"
     And I create an organization
       |Name					  |Role	       |Address1		         |City	        |State	      |PostalCode |Country	      |Category     |Action  |Staff         |ActionDateTime     |ActionDateField|

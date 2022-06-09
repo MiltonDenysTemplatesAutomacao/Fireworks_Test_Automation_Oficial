@@ -4,7 +4,7 @@
 Feature: Search by name
 
   @AccessQuickSearchPersonResults
-  Scenario: access quick search results for person
+  Scenario: Quick Search - access quick search results for person
     Given I login as "firestarterUsername", "firestarterPassword", "firestarterFullName"
     And I create a person
       |FirstName	|LastName		|FullName				|Role1	        |Phone			|PhoneType|
@@ -16,7 +16,7 @@ Feature: Search by name
     Then I validate if "Robert Brandon"summary opened properly
 
   @AccessQuickSearchOrganizationResults
-  Scenario: access quick search results for organization
+  Scenario: Quick Search - access quick search results for organization
     Given I login as "firestarterUsername", "firestarterPassword", "firestarterFullName"
     And I create an organization
       |Name				    |Role		|Phone			|PhoneType  |Address1			|Address2	|City   |State		|PostalCode |Country		|
@@ -28,7 +28,7 @@ Feature: Search by name
     Then I validate if "BigMac Cooking School"summary opened properly
 
   @AccessQuickSearchStaffResults
-  Scenario: access quick search results for staff
+  Scenario: Quick Search - access quick search results for staff
     Given I login as "firestarterUsername", "firestarterPassword", "firestarterFullName"
     And I create a staff
       |FirstName	|LastName	|FullName		|EmailAddress			|EmailType  |AccountStartDate	|AccountEndDate	|PermissionGroup|Phone			|PhoneType|Comment  |

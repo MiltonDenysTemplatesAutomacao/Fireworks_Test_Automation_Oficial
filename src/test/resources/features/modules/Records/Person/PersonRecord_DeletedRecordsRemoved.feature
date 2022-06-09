@@ -5,7 +5,7 @@
 Feature: Delete records are removed
 
   @CreateDeleteNewPerson
-  Scenario: verify I can create and delete a new person, to verify record is not returned in People Manager and to verify record is not returned in Quick Search
+  Scenario: Record - Person - verify I can create and delete a new person, to verify record is not returned in People Manager and to verify record is not returned in Quick Search
     Given I login as "firestarterUsername", "firestarterPassword", "firestarterFullName"
     And I create a person
       |FirstName|LastName|EmailAddress    |EmailType  |EmailOptInMethod  |Role1	    |

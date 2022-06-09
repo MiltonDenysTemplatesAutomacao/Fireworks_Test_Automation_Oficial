@@ -5,7 +5,7 @@
 Feature: Staff Record: ID Types
 
   @IdTypesScenarios
-  Scenario: verify ID types required fields are correct and can be added to staff
+  Scenario: Record - Staff - verify ID types required fields are correct and can be added to staff
     Given I login as "firestarterUsername", "firestarterPassword", "firestarterFullName"
     When I create a staff
       |FirstName  |LastName	  |Fullname		        |EmailAddress           |AccountStartDate |PermissionGroup |IDType      |IDNumber |WhoAddedID   |IdRecordedDate |Comments                   |Primary|

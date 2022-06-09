@@ -6,7 +6,7 @@
 Feature: Search by preferred
 
   @SearchPersonByPreferredNameAndSSN
-  Scenario: to Quick Search a person by Preferred Name, partial, with or without dashes, spaces or parenthesis
+  Scenario: Quick Search - to Quick Search a person by Preferred Name, partial, with or without dashes, spaces or parenthesis
     Given I login as "firestarterUsername", "firestarterPassword", "firestarterFullName"
     And I create a person
       |FirstName|LastName	|Role1	|EmailAddress			|EmailType	|EmailOptInMethod |StudentType|StudentStatus|StudentStatusCategory|StudentStatusDate|EntryTerm|PreferredName        |SSN          |
