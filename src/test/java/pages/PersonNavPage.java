@@ -33,6 +33,7 @@ public class PersonNavPage extends BasePage{
 
     public static void navigateToContact(){
         try {
+            scrollToTheTop();
             waitElementBy(By.id(RECORD_NAV_TAB_CONTACT),20);
             BasePage.click(By.id(RECORD_NAV_TAB_CONTACT));
             ExtentReportsSetUp.testingPass(LogPage.NAVIGATE_TO_CONTACT_PASS);

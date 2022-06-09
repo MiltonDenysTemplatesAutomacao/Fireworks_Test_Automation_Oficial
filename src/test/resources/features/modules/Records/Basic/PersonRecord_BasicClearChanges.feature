@@ -5,7 +5,7 @@
 Feature: Basic: Student data can be added
 
   @BasicClearChangesScenario
-  Scenario: Record - Basic - verify data can be added to the basic panel of a student record
+  Scenario: Record - Basic - verify clear changes removes unsaved data from the Basic tab
     Given I login as "firestarterUsername", "firestarterPassword", "firestarterFullName"
     When I create a person
       |FirstName  |LastName  |EmailAddress           |EmailType|EmailOptInMethod |Role1   |StudentType|StudentStatusCategory|StudentStatus|StudentStatusDate|EntryTerm  |

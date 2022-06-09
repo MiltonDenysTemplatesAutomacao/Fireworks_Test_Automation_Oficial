@@ -392,4 +392,8 @@ public class LogPage {
     public static final String VERIFY_BASIC_IDENTIFICATION_VALUES_FAIL = "Fail while trying to verify basic identification values";
     public static final String VERIFY_BASIC_CONTEXT_VALUES_PASS = "I verify basic context values";
     public static final String VERIFY_BASIC_CONTEXT_VALUES_FAIL = "Fail while trying to verify basic context values";
+    public static final String ADD_PHONE_PASS = "I add phone";
+    public static final String ADD_PHONE_FAIL = "Fail while trying to add phone";
+    public static final String CREATE_PHONE_FOR_PERSON_PASS = "I update phone number in contact for person";
+    public static final String CREATE_PHONE_FOR_PERSON_FAIL = "Fail while trying to update phone number in contact for person";
 }

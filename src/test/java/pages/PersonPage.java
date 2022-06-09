@@ -4,6 +4,7 @@ import config.extent_reports.ExtentReportsSetUp;
 import io.cucumber.datatable.DataTable;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
+import pages.Records.PersonContactPhonePage;
 import pages.Records.StudentStatusPage;
 
 import java.util.HashMap;
@@ -142,6 +143,79 @@ public class PersonPage extends BasePage{
     private static final String VETERAN_CHECKBOX = "#veteran";
     private static final String RACE_FIELD = "//*[@id='s2id_race']/ul";
 
+    public static String emailComments(String index){
+        return String.format("#entity_email_%s_email_comments",index);
+    }
+    private static String phoneNumberField(String index){
+        return String.format("#entity_phone_%s_phone_number",index);
+    }
+    private static String phoneTypeElement(String index){
+        return String.format("#entity_phone_%s_phone_type_component",index);
+    }
+    private static String phoneDropDown(String index){
+        return String.format("#entity_phone_%s_phone_type_dropdown_menu",index);
+    }
+
+
+
+    private static String phoneStatusElement(String index){
+        return String.format("#entity_phone_%s_phone_status_component",index);
+    }
+    private static String phoneTimeZoneElement(String index){
+        return String.format("#entity_phone_%s_phone_time_zone_component",index);
+    }
+    private static String phoneOptInMethodElement(String index){
+        return String.format("#entity_phone_%s_phone_number",index);
+    }
+    private static String phoneOptInStatusElement(String index){
+        return String.format("#entity_phone_%s_text_messaging_opt_in_status_component",index);
+    }
+    private static String phoneCommentsField(String index){
+        return String.format("#entity_phone_%s_phone_comments",index);
+    }
+    private static String phoneActiveCheckbox(String index){
+        return String.format("#entity_phone_%s_active",index);
+    }
+    private static String phonePrimaryCheckbox(String index){
+        return String.format("#entity_phone_%s_primary",index);
+    }
+
+    public static void createPhoneForPerson(String phoneNumber, String phoneType,String phoneStatus,String phoneOptInMethod, String phoneOptInStatus, String phoneComments, String active,String primary,String group){
+        int createPhoneForPersonDelay = 20;
+        try {
+            if(phoneNumber!=""){
+                scrollToElement(By.cssSelector(PersonContactPhonePage.phonePlusSignElement(group)));
+                waitElementBy(By.cssSelector(phoneNumberField(group)),createPhoneForPersonDelay);
+                write(By.cssSelector(phoneNumberField(group)), phoneNumber);
+            }
+            if(phoneType!=""){
+                BasePage.click(By.cssSelector(phoneTypeElement(group)));
+                BasePage.selectElementsList(By.cssSelector(phoneDropDown(group)), "a");
+                clickOnListOfElements(phoneType);
+            }
+            if(phoneStatus!=""){
+
+            }
+            if(phoneOptInMethod!=""){
+
+            }
+            if(phoneOptInStatus!=""){
+
+            }
+            if(phoneComments!=""){
+
+            }
+            if(active!=""){
+
+            }
+            if(primary!=""){
+
+            }
+            ExtentReportsSetUp.testingPass(LogPage.CREATE_PHONE_FOR_PERSON_PASS);
+        } catch (Exception e) {
+            FailureDelegatePage.handlePageException(LogPage.CREATE_PHONE_FOR_PERSON_FAIL);
+        }
+    }
     public static void verifyRecordFlags(String deceased,String studentFlag,String firstGeneration,String internationalStudent,String legacy,String stateResident,String veteran){
 
         try {

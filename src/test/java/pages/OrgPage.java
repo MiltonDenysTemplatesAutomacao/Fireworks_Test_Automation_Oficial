@@ -14,10 +14,10 @@ public class OrgPage extends BasePage{
     public static final String DATATABLE_EMPTY = "organizationManagerTable_row_0_col_0";
     public static final String WHO_ADDED_ID_DROPDOWN_LIST = "#select2-drop";
     public static final String ORG_ACTION_COMMENTS_FIELD = "org_action_comments";
+    public static final String EMAIL_OPT_DROP_DOWN = "#entity_email_0_org_opt_in_method_id_toggle";
     private static final String EMAIL_ADDRESS_FIELD = "#entity_email_0_org_email_address";
     private static final String EMAIL_TYPE_DROP_DOWN = "#entity_email_0_org_email_type_toggle";
     private static final String EMAIL_TYPE_DROP_DOWN_LIST = "#entity_email_0_org_email_type_dropdown_menu";
-    private static final String EMAIL_OPT_DROP_DOWN = "#entity_email_0_org_opt_in_method_id_toggle";
     private static final String EMAIL_OPT_DROP_DOWN_LIST = "#entity_email_0_org_opt_in_method_id_dropdown_menu";
     private static final String ORG_BASIC_SAVE_CHANGES_BUTTON = "saveChangesBtnOrgContact";
     private static final String ORGANIZATION_NAME_FIELD = "#org_name_0_org_name_formal";
