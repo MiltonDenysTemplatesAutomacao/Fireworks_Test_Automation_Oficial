@@ -151,9 +151,4 @@ public class PersonSteps {
     public static void verifyRecordFlags(String deceased,String studentFlag,String firstGeneration,String internationalStudent,String legacy,String stateResident,String veteran){
         PersonPage.verifyRecordFlags(deceased,studentFlag,firstGeneration,internationalStudent,legacy,stateResident,veteran);
     }
-    @Then("I update phone number in contact for person {string}, {string}, {string}, {string}, {string}, {string}, {string}, {string} field group {string}")
-    public static void createPhoneForPerson(String phoneNumber, String phoneType,String phoneStatus,String phoneOptInMethod, String phoneOptInStatus, String phoneComments, String active,String primary,String group){
-        PersonPage.createPhoneForPerson(phoneNumber,phoneType,phoneStatus,phoneOptInMethod,phoneOptInStatus,phoneComments,active,primary,group);
-    }
-
 }

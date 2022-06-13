@@ -396,4 +396,8 @@ public class LogPage {
     public static final String ADD_PHONE_FAIL = "Fail while trying to add phone";
     public static final String CREATE_PHONE_FOR_PERSON_PASS = "I update phone number in contact for person";
     public static final String CREATE_PHONE_FOR_PERSON_FAIL = "Fail while trying to update phone number in contact for person";
+    public static final String VERIFY_PHONE_PASS = "I verify phone number on contact for person";
+    public static final String VERIFY_PHONE_FAIL = "Fail while trying to verify phone number on contact for person group '%s'";
+    public static final String CREATE_ADDRESS_PASS = "I create address on contact for person";
+    public static final String CREATE_ADDRESS_FAIL = "Fail while trying to create address on contact for person";
 }

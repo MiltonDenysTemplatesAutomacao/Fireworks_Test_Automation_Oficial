@@ -104,6 +104,7 @@ public class EmailPage extends BasePage{
                 case "Non-Marketing":
                     click(By.id(EMAIL_TYPE_NON_MARKETING));
                     break;
+                default: throw new IllegalArgumentException("Unhandled index. Update business logic");
             }
             ExtentReportsSetUp.testingPass(LogPage.CREATE_NEW_EMAIL_PASS);
         } catch (Exception e) {
