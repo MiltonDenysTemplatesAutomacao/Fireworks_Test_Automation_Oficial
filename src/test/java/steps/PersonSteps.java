@@ -75,10 +75,6 @@ public class PersonSteps {
     public static void verifyStudentRecordPanels() {
         PersonPage.verifyStudentRecordPanels();
     }
-    @When("I update {string}, {string} and {string} to update citizenship")
-    public static void updateCitizenship(String citizenshipType,String countryOfCitizenship,String ssn) {
-        PersonPage.updateCitizenshipValues(citizenshipType,countryOfCitizenship,ssn);
-    }
     @When("I update {string}, {string}, {string}, {string}, {string} and {string} to update name")
     public static void updateName(String firstName,String lastName,String middleName,String preferredName, String suffix, String salutation) {
         PersonPage.updateNameValues(firstName,lastName,middleName,preferredName,suffix,salutation);
@@ -103,52 +99,5 @@ public class PersonSteps {
     public static void deleteSummaryFields(String summaryField) {
         PersonPage.deleteSummaryFields(summaryField);
     }
-    @Then("I update birth values {string}, {string}, {string}, {string}")
-    public static void updateBirthValues(String date,String country,String city,String state) {
-        PersonPage.updateBirthValues(date,country,city,state);
-    }
-    @Then("I update culture values {string}, {string}, {string}, {string}, {string}, {string}")
-    public static void updateCultureValues(String ethnicity,String race,String gender,String maritalStatus,String primaryLanguage, String religion) {
-        PersonPage.updateCultureValues(ethnicity,race,gender,maritalStatus,primaryLanguage,religion);
-    }
-    @Then("I click on save changes on basic")
-    public static void saveChangesBtnPersonBasic() {
-        PersonPage.saveChangesBtnPersonBasic();
-    }
-    @Then("I update initial Source values {string}, {string}")
-    public static void updateInitialSourceValues(String initialCategory, String sourceText){
-        PersonPage.updateInitialSourceValues(initialCategory,sourceText);
-    }
-    @Then("I update context values {string}, {string}, {string}")
-    public static void updateContextValues(String timeZone, String classOf,String currentGrade){
-        PersonPage.updateContextValues(timeZone,classOf,currentGrade);
-    }
-    @Then("I update record flags {string}, {string}, {string}, {string}, {string}, {string}, {string}")
-    public static void updateStudentRecordFlagValues(String deceased,String studentFlag,String firstGeneration,String internationalStudent,String legacy,String stateResident,String veteran){
-        PersonPage.updateStudentRecordFlagValues(deceased,studentFlag,firstGeneration,internationalStudent,legacy,stateResident,veteran);
-    }
-    @Then("I verify birth values {string}, {string}, {string}, {string}")
-    public static void verifyBirthValues(String date,String country,String city,String state){
-        PersonPage.verifyBirthValues(date,country,city,state);
-    }
-    @When("I verify citizenship values {string}, {string} and {string}")
-    public static void verifyCitizenship(String citizenshipType,String countryOfCitizenship,String ssn) {
-        PersonPage.verifyCitizenship(citizenshipType,countryOfCitizenship,ssn);
-    }
-    @Then("I verify culture values {string}, {string}, {string}, {string}, {string}, {string}")
-    public static void verifyCultureValues(String ethnicity,String race,String gender,String maritalStatus,String primaryLanguage, String religion) {
-        PersonPage.verifyCultureValues(ethnicity,race,gender,maritalStatus,primaryLanguage,religion);
-    }
-    @Then("I verify initial Source values {string}, {string}")
-    public static void verifyInitialSourceValues(String initialCategory, String initialSource){
-        PersonPage.verifyInitialSourceValues(initialCategory,initialSource);
-    }
-    @Then("I verify context values {string}, {string}, {string}")
-    public static void verifyInitialSourceValues(String timeZone, String classOf,String currentGrade){
-        PersonPage.verifyContextValues(timeZone,classOf,currentGrade);
-    }
-    @Then("I verify record flags {string}, {string}, {string}, {string}, {string}, {string}, {string}")
-    public static void verifyRecordFlags(String deceased,String studentFlag,String firstGeneration,String internationalStudent,String legacy,String stateResident,String veteran){
-        PersonPage.verifyRecordFlags(deceased,studentFlag,firstGeneration,internationalStudent,legacy,stateResident,veteran);
-    }
+
 }

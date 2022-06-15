@@ -20,7 +20,7 @@ Feature: Basic: Time Zone
     And I update context values "(GMT-08:00) Alaska", "", ""
     And I click on save changes on basic
     And I validate if "Person has been updated." message is correct
-    And I verify context values "(GMT-08:00) Alaska", "", ""
+    And I verify context values "", "(GMT-08:00) Alaska", "", ""
     #to add a 2nd phone
     And I navigate to contact
     And I add phone "0"
@@ -34,7 +34,7 @@ Feature: Basic: Time Zone
     And I update context values "(GMT-07:00) Pacific Time (US & Canada)", "", ""
     And I click on save changes on basic
     And I close alert if return this message "Person has been updated."
-    And I verify context values "(GMT-07:00) Pacific Time (US & Canada)", "", ""
+    And I verify context values "", "(GMT-07:00) Pacific Time (US & Canada)", "", ""
     #to click Save from the Contact tab and verify the phone time zones were updated
     And I navigate to contact
     And I click on save changes in contact for person
@@ -46,5 +46,8 @@ Feature: Basic: Time Zone
     And I click on save changes in contact for person
     And I close alert if return this message "Person has been updated."
     #to verify the phone time zones were updated and the basic time zone was updated
-
+    And I verify phone number on contact for person "", "", "", "(GMT-05:00) Central Time (US & Canada)", "", "", "", "", "", "", group "0"
+    And I verify phone number on contact for person "", "", "", "(GMT-05:00) Central Time (US & Canada)", "", "", "", "", "", "", group "1"
+    And I navigate to basic
+    And I verify context values "OK02", "(GMT-05:00) Central Time (US & Canada)", "", ""
 

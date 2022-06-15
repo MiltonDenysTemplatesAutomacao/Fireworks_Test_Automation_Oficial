@@ -12,6 +12,7 @@ public class PersonNavPage extends BasePage{
 
     public static void navigateToActions(){
         try {
+            scrollToTheTop();
             waitElementBy(By.cssSelector(ACTIONS_PANEL_HEADING_ELEMENT),20);
             BasePage.click(By.cssSelector(ACTIONS_PANEL_HEADING_ELEMENT));
             ExtentReportsSetUp.testingPass(LogPage.NAVIGATE_TO_ACTIONS_PASS);

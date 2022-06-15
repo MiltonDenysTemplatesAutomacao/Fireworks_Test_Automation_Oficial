@@ -28,6 +28,6 @@ Feature: Basic: Student data can be added
     And I verify citizenship values "United States Citizen", "United States" and "588-23-9874"
     And I verify culture values "Hispanic / Latino", "Asian", "Female", "Single", "Russian", "Pagan"
     And I verify initial Source values "Campus Events", "Admitted Student Day: Attend"
-    And I verify context values "(GMT-08:00) Alaska", "2016", "10"
+    And I verify context values "", "(GMT-08:00) Alaska", "2016", "10"
     And I verify record flags "Deceased", "Student Flag", "FirstGeneration", "InternationalStudent", "Legacy", "StateResident", ""
 
