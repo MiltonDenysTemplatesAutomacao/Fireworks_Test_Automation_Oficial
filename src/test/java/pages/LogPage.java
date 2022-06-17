@@ -169,8 +169,8 @@ public class LogPage {
     public static final String OPEN_ORGANIZATION_RECORD_FAIL = "Fail while trying to open a people record by %s";
     public static final String VERIFY_ALL_THREE_ROLES_ARE_SELECTED_PASS = "I verify all three roles are selected in the role dropdown";
     public static final String VERIFY_ALL_THREE_ROLES_ARE_SELECTED_FAIL = "Fail while trying to verify all three roles are selected in the role dropdown";
-    public static final String VERIFY_EMAIL_PERSON_PAGE_RECORD_PASS = "I verify email address";
-    public static final String VERIFY_EMAIL_PERSON_PAGE_RECORD_FAIL = "Fail while trying to verify email address";
+    public static final String VERIFY_EMAIL_PERSON_PAGE_RECORD_PASS = "I verify email address group '%s'";
+    public static final String VERIFY_EMAIL_PERSON_PAGE_RECORD_FAIL = "Fail while trying to verify email address group '%s'";
     public static final String VERIFY_STUDENT_STATUS_PASS = "I verify if student status from group %s is related to person %s";
     public static final String VERIFY_STUDENT_STATUS_FAIL = "Fail while trying to verify if student status from group %s is related to person %s";
     public static final String VERIFY_INTERESTS_PASS = "I verify Interests group %s person %s";
@@ -400,4 +400,10 @@ public class LogPage {
     public static final String VERIFY_PHONE_FAIL = "Fail while trying to verify phone number on contact for person group '%s'";
     public static final String CREATE_ADDRESS_PASS = "I create address on contact for person";
     public static final String CREATE_ADDRESS_FAIL = "Fail while trying to create address on contact for person";
+    public static final String VERIFY_NAME_PASS = "I verify name on contact for person group '%s'";
+    public static final String VERIFY_NAME_FAIL = "Fail while trying to verify name on contact for person group '%s'";
+    public static final String ADD_EMAIL_PASS = "I add a new email on contact for person";
+    public static final String ADD_EMAIL_FAIL = "Fail while trying to add a new email on contact for person";
+    public static final String CREATE_EMAIL_PASS = "I update email on contact for person group '%s'";
+    public static final String CREATE_EMAIL_FAIL = "Fail while trying to I update email on contact for person group '%s'";
 }

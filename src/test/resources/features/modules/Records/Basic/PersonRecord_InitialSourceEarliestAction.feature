@@ -45,7 +45,7 @@ Feature: Basic: Initial Source should reflect the earliest non-system Action
     When I create a person
       |FirstName  |LastName |Phone      |PhoneType|Role1   |StudentType  |StudentStatusCategory |StudentStatus    |StudentStatusDate|EntryTerm   |Category      |Action                         |Staff        |ActionDateTime     |ActionDateField|
       |Daisy      |Arujo    |8605363700 |Business |Student |Non-degree   |Inquiry               |Inquiry-Inactive |08/21/2019       |Spring 2020 |Campus Events |Admitted Student Day: Attend   |Fire Starter |08/01/2017 6:00 PM |08/01/2017     |
-    #And I validate if "Person has been created." message is correct
+    And I validate if "Person has been created." message is correct
     #to add the earliest action
     And I go to Home page
     When I quick search "FirstName"
