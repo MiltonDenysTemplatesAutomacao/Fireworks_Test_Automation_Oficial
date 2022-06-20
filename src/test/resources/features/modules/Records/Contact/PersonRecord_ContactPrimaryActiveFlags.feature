@@ -35,6 +35,14 @@ Feature: Exact match auto-merge on rule 5: IDType-ID-LastName,Email recipients c
     And I add a new email on contact for person group "0"
     And I update email on contact for person "JHooker2@music.com", "School", "", "Inquiry", "", "", "1", "" and group "1"
     And I click on save changes in contact for person
-    And I validate if "Person has been updated." message is correct
+    And I close alert if return this message "Person has been updated."
     And I verify email address "0" fields
     And I verify email address "1" fields
+    #to add a 2nd phone marked active and primary
+    And I add phone "0"
+    When I update phone number in contact for person "(478) 623-1285", "Mobile", "", "", "", "", "1", "1" field group "1"
+    And I click on save changes in contact for person
+    And I validate if "Person has been updated." message is correct
+    And I verify phone number on contact for person "(478) 623-1285", "Mobile", "", "", "", "", "", "", "1", "1", group "0"
+    And I verify phone number on contact for person "(718) 846-9156", "Home", "", "", "", "", "", "", "", "0", group "1"
+

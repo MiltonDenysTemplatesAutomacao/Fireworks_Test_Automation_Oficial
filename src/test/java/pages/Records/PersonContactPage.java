@@ -49,6 +49,7 @@ public class PersonContactPage extends BasePage {
         return String.format("#entity_phone_%s_primary",index);
     }
 
+
     public static void verifyPhone(String phoneNumber, String phoneType,String phoneStatus, String timeZone, String phoneOptInMethod, String phoneOptInStatus, String optInStatusDate, String phoneComments, String active,String primary,String group){
         boolean phoneNumberValidation = false;
         boolean phoneTypeValidation = false;
@@ -123,10 +124,10 @@ public class PersonContactPage extends BasePage {
             if(primary!=""){
                 switch (primary){
                     case "1":
-                        primaryCheckboxValidation = checkBoxIsActive(By.cssSelector(phoneActiveCheckbox(group)));
+                        primaryCheckboxValidation = checkBoxIsActive(By.cssSelector(phonePrimaryCheckbox(group)));
                         break;
                     case "0":
-                        primaryCheckboxValidation = !checkBoxIsActive(By.cssSelector(phoneActiveCheckbox(group)));
+                        primaryCheckboxValidation = !checkBoxIsActive(By.cssSelector(phonePrimaryCheckbox(group)));
                         break;
                     default: throw new IllegalArgumentException("Primary Checkbox not verified");
                 }
@@ -203,12 +204,10 @@ public class PersonContactPage extends BasePage {
             }
             if(active!=""){
                 scrollToElement(By.cssSelector(PersonContactPhonePage.phonePlusSignElement(group)));
-                waitElementBy(By.cssSelector(phoneActiveCheckbox(group)),createPhoneForPersonDelay);
                 click(By.cssSelector(phoneActiveCheckbox(group)));
             }
             if(primary!=""){
                 scrollToElement(By.cssSelector(PersonContactPhonePage.phonePlusSignElement(group)));
-                waitElementBy(By.cssSelector(phonePrimaryCheckbox(group)),createPhoneForPersonDelay);
                 click(By.cssSelector(phonePrimaryCheckbox(group)));
             }
             ExtentReportsSetUp.testingPass(LogPage.CREATE_PHONE_FOR_PERSON_PASS);
