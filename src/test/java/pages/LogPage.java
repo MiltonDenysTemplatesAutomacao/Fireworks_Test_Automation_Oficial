@@ -410,4 +410,10 @@ public class LogPage {
     public static final String CREATE_EMAIL_ORG_FAIL = "Fail while trying to update email on contact for organization group '%s'";
     public static final String SEE_IN_SOURCE_MESSAGE_PASS = "Fail while trying to validate in source message '%s'";
     public static final String SEE_IN_SOURCE_MESSAGE_FAIL = "Fail while trying to validate in source message '%s'";
+    public static final String ADD_NAME_PASS = "I add a name group";
+    public static final String ADD_NAME_FAIL = "Fail while trying to add a name group";
+    public static final String ADD_ADDRESS_PASS = "I add address";
+    public static final String ADD_ADDRESS_FAIL = "Fail while trying to add address";
+    public static final String VERIFY_VALIDATION_MESSAGE_PASS = "I verify validation message '%s'";
+    public static final String VERIFY_VALIDATION_MESSAGE_FAIL = "Fail while trying to verify validation message '%s'";
 }

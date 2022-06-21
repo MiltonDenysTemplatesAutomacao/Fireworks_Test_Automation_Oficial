@@ -50,5 +50,11 @@ public class MessageSteps {
     public static void seeInSource(String message) {
         MessagePage.seeInSourceMessage(message);
     }
+    @When("I verify validation message {string}")
+    public static void verifyValidationMessage(String message) {
+        MessagePage.verifyValidationMessage(message);
+    }
+
+
 
 }

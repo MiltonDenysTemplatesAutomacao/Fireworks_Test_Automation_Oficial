@@ -18,6 +18,7 @@ Feature: Search by preferred
     And I navigate to basic
     When I update "", "" and "583-23-9874" to update citizenship
     And I click on save changes on basic
+    And I close alert if return this message "Person has been updated."
     And I navigate to contact
     When I update "", "", "", "PreferredName", "" and "" to update name
     And I go to Home page

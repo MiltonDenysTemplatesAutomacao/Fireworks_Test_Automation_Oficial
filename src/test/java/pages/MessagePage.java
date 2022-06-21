@@ -16,7 +16,24 @@ public class MessagePage extends BasePage{
     public static final String QUICK_ADD_STAFF_MODAL_VALIDATION_ALERT_MESSAGE = "quickAddStaffModalValidationAlertMessage";
     public static final String QUICK_ADD_STAFF_MODAL_ALERT_MESSAGE = "#quickAddStaffModalAlertMessage";
     public static final String PAGE_ALERT_MESSAGES = "#pageAlertMessages";
+    public static final String VALIDATION_ALERT_MESSAGE = "div.pageValidationAlertMessage.alert.alert-danger.alert-dismissible";
 
+
+    public static void verifyValidationMessage(String message){
+        String errorMessage = String.format(LogPage.VERIFY_VALIDATION_MESSAGE_FAIL, message);
+        String passMessage = String.format(LogPage.VERIFY_VALIDATION_MESSAGE_PASS, message);
+        try {
+            String verifyValidationMessage = getText(By.cssSelector(VALIDATION_ALERT_MESSAGE));
+            waitElementBy(By.cssSelector(VALIDATION_ALERT_MESSAGE), 10);
+            if (verifyValidationMessage.contains(message)) {
+                ExtentReportsSetUp.testingPass(passMessage);
+            } else {
+                FailureDelegatePage.handlePageException(errorMessage);
+            }
+        } catch (Exception e) {
+            FailureDelegatePage.handlePageException(errorMessage);
+        }
+    }
 
     public static void seeInSourceMessage(String message){
         String errorMessage = String.format(LogPage.SEE_IN_SOURCE_MESSAGE_FAIL, message);

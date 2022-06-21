@@ -70,6 +70,18 @@ public class PersonContactAddressPage extends BasePage{
         return String.format("#entity_address_%s_primary",index);
     }
 
+    public static void addAddress(String group){
+        try {
+            scrollToElement(By.cssSelector(emailAddressAddButton(group)));
+            scrollTo("-100");
+            waitUntilElementToBeSelected(By.cssSelector(emailAddressAddButton(group)),20);
+            click(By.cssSelector(emailAddressAddButton(group)));
+            ExtentReportsSetUp.testingPass(LogPage.ADD_ADDRESS_PASS);
+        } catch (Exception e) {
+            FailureDelegatePage.handlePageException(LogPage.ADD_ADDRESS_FAIL);
+        }
+    }
+
     public static void createAddress(String address1,String address2,String address3,String address4,String city,String state,String region,String country,String postalCode,String addressType,String educationNeighborhood,String addressComments,String active,String primary, String group){
         int createAddressDelay = 20;
         try {
@@ -154,12 +166,10 @@ public class PersonContactAddressPage extends BasePage{
             }
             if(active!=""){
                 scrollToElement(By.cssSelector(emailAddressAddButton(group)));
-                waitElementBy(By.cssSelector(addressActiveCheckbox(group)),createAddressDelay);
                 click(By.cssSelector(addressActiveCheckbox(group)));
             }
             if(primary!=""){
                 scrollToElement(By.cssSelector(emailAddressAddButton(group)));
-                waitElementBy(By.cssSelector(addressPrimaryCheckbox(group)),createAddressDelay);
                 click(By.cssSelector(addressPrimaryCheckbox(group)));
             }
             ExtentReportsSetUp.testingPass(LogPage.CREATE_ADDRESS_PASS);
@@ -167,5 +177,4 @@ public class PersonContactAddressPage extends BasePage{
             FailureDelegatePage.handlePageException(LogPage.CREATE_ADDRESS_FAIL);
         }
     }
-
 }
