@@ -2,9 +2,12 @@ package pages.Records;
 
 import config.extent_reports.ExtentReportsSetUp;
 import org.openqa.selenium.By;
-import pages.*;
+import pages.BasePage;
+import pages.FailureDelegatePage;
+import pages.LogPage;
 
-public class PersonContactPhonePage extends BasePage{
+
+public class PersonContactPhonePage extends BasePage {
     public static String phonePlusSignElement(String index){
         return String.format("#entity_phone_%s_add",index);
     }

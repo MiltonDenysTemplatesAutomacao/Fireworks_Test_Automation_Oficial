@@ -18,6 +18,19 @@ public class MessagePage extends BasePage{
     public static final String PAGE_ALERT_MESSAGES = "#pageAlertMessages";
 
 
+    public static void seeInSourceMessage(String message){
+        String errorMessage = String.format(LogPage.SEE_IN_SOURCE_MESSAGE_FAIL, message);
+        String passMessage = String.format(LogPage.SEE_IN_SOURCE_MESSAGE_PASS, message);
+        try {
+            if(seeInSource(message)){
+                ExtentReportsSetUp.testingPass(passMessage);
+            }else{
+                FailureDelegatePage.handlePageException(errorMessage);
+            }
+        } catch (Exception e) {
+            FailureDelegatePage.handlePageException(errorMessage);
+        }
+    }
     public static void pageAlertMessages(String alertMessage){
         String errorMessage = String.format(LogPage.ALERT_MESSAGE_FAIL, alertMessage);
         String passMessage = String.format(LogPage.ALERT_MESSAGE_PASS, alertMessage);

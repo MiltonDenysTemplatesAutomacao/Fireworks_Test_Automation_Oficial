@@ -46,4 +46,9 @@ public class MessageSteps {
     public static void pageAlertMessages(String message) {
         MessagePage.pageAlertMessages(message);
     }
+    @When("I validate in source message {string}")
+    public static void seeInSource(String message) {
+        MessagePage.seeInSourceMessage(message);
+    }
+
 }

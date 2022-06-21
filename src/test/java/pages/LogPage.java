@@ -405,5 +405,9 @@ public class LogPage {
     public static final String ADD_EMAIL_PASS = "I add a new email on contact for person";
     public static final String ADD_EMAIL_FAIL = "Fail while trying to add a new email on contact for person";
     public static final String CREATE_EMAIL_PASS = "I update email on contact for person group '%s'";
-    public static final String CREATE_EMAIL_FAIL = "Fail while trying to I update email on contact for person group '%s'";
+    public static final String CREATE_EMAIL_FAIL = "Fail while trying to update email on contact for person group '%s'";
+    public static final String CREATE_EMAIL_ORG_PASS = "I update email on contact for organization group '%s'";
+    public static final String CREATE_EMAIL_ORG_FAIL = "Fail while trying to update email on contact for organization group '%s'";
+    public static final String SEE_IN_SOURCE_MESSAGE_PASS = "Fail while trying to validate in source message '%s'";
+    public static final String SEE_IN_SOURCE_MESSAGE_FAIL = "Fail while trying to validate in source message '%s'";
 }

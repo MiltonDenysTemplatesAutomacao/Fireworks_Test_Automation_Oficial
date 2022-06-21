@@ -90,6 +90,10 @@ public class OrgSteps {
     public static void verifyBasicContextValues(String orgTimeZone,String assignedCounselor) {
         OrgPage.verifyBasicContextValues(orgTimeZone,assignedCounselor);
     }
+    @When("I click on save changes in contact for organization")
+    public static void saveChangesBtnOrgContact( ) {
+        OrgPage.saveChangesBtnOrgContact();
+    }
 
 
 }

@@ -53,6 +53,13 @@ public class BasePage {
     }
 
     /*
+     * Checks that the current page contains the given string in its raw source code.
+     */
+    public static boolean seeInSource(String message)throws Exception{
+        return DriverBase.getDriver().getPageSource().contains(message);
+    }
+
+    /*
      * Method to check if an element is enabled
      */
     public static boolean checkIfElementIsEnabled(By by) throws Exception {

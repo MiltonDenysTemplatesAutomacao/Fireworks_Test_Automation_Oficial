@@ -133,7 +133,6 @@ public class PersonContactEmailPage extends BasePage {
             ExtentReportsSetUp.testingPass(passMessage);
         } catch (Exception e) {
             FailureDelegatePage.handlePageException(failMessage);
-
         }
     }
 
