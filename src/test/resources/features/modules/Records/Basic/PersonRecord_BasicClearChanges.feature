@@ -27,7 +27,7 @@ Feature: Basic: Student data can be added
     And I verify initial Source values "Campus Events", "Admitted Student Day: Attend"
     And I verify context values "", "(GMT-06:00) Mountain Time (US & Canada)", "2016", "10"
     And I verify record flags "Deceased", "Student Flag", "FirstGeneration", "InternationalStudent", "Legacy", "StateResident", "Veteran"
-    And I click on clear changes on Basic
+    And I click on clear changes
     And I verify birth values "", "Select", "", "Select"
     And I verify citizenship values "Select", "Select" and ""
     And I verify culture values "Select", "", "Select", "Select", "Select", "Select"

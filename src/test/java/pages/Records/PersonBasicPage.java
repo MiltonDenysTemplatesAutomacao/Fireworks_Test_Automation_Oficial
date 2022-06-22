@@ -715,6 +715,7 @@ public class PersonBasicPage extends BasePage {
                 String stateResidentReturn = returnBasicSection("State Resident");
                 String StateResidentReturnText = getText(By.xpath(stateResidentReturn));
 
+                wait(1000);
                 //validate Basic Section
                 boolean basicSectionValidation = false;
                 if (birthReturnText.equals(mass.get(0).get("BasicSection"))
@@ -726,6 +727,7 @@ public class PersonBasicPage extends BasePage {
                         && recordFlagsReturnText.equals(mass.get(5).get("BasicSection"))) {
                     basicSectionValidation = true;
                 }
+                wait(1000);
                 //validate Basic Field Label
                 boolean basicFieldLabeValidation = false;
                 if (birthDateReturnText.equals(mass.get(0).get("BasicFieldLabel"))
@@ -748,6 +750,7 @@ public class PersonBasicPage extends BasePage {
                         && religionReturnText.equals(mass.get(17).get("BasicFieldLabel"))) {
                     basicFieldLabeValidation = true;
                 }
+                wait(1000);
                 //validate Basic Checkbox Label
                 boolean basicCheckboxLabeValidation = false;
                 if (deceasedReturnText.contains(mass.get(0).get("CheckboxLabel"))
@@ -758,7 +761,7 @@ public class PersonBasicPage extends BasePage {
                         && StateResidentReturnText.contains(mass.get(5).get("CheckboxLabel"))) {
                     basicCheckboxLabeValidation = true;
                 }
-
+                wait(1000);
                 //Verify if all validations are true
                 if (basicSectionValidation && basicFieldLabeValidation && basicCheckboxLabeValidation) {
                     ExtentReportsSetUp.testingPass(LogPage.VERIFY_STUDENT_BASIC_FIELDS_PASS);

@@ -54,7 +54,4 @@ public class MessageSteps {
     public static void verifyValidationMessage(String message) {
         MessagePage.verifyValidationMessage(message);
     }
-
-
-
 }

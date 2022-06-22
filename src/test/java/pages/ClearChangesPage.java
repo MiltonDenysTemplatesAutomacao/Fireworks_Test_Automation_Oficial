@@ -11,7 +11,7 @@ public class ClearChangesPage extends BasePage{
     public static final String MODAL_CLEAR_CHANGES_CONFIRMATION_LABEL = "#clearChangesConfirmationModalLabel";
     public static final String MODAL_CLEAR_CHANGES_CONFIRMATION_BUTTON = "#modalSubmitButtonclearChangesConfirmation";
 
-    public static void clearChangesBasic(){
+    public static void clearChanges(){
         try {
             scrollToTheBottom();
             waitUntilElementToBeSelected(By.cssSelector(CLEAR_CHANGES_BUTTON),20);

@@ -97,6 +97,7 @@ public class MessagePage extends BasePage{
             waitUntilElementToBeSelected(By.cssSelector(VALIDATION_ALERT_CLOSE_BUTTON),20);
             scrollToElement(By.cssSelector(VALIDATION_ALERT_CLOSE_BUTTON));
             click(By.cssSelector(VALIDATION_ALERT_CLOSE_BUTTON));
+            wait(1000);
             ExtentReportsSetUp.testingPass(LogPage.CLOSE_ALERT_PERSON_RECORD_MODAL_PASS);
         } catch (Exception e) {
             FailureDelegatePage.handlePageException(LogPage.CLOSE_ALERT_PERSON_RECORD_MODAL_FAIL);

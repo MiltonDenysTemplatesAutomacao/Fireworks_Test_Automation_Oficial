@@ -70,6 +70,123 @@ public class PersonContactEmailPage extends BasePage {
         return String.format("#entity_email_%s_opt_in_status_dropdown_menu",index);
     }
 
+    public static void verifyEmailPersonPageRecordParametersSteps(String emailAddress,String emailType,String emailStatus,String emailOptInMethod,String emailOptInStatus,String emailOptInDate, String emailComments,String active,String primary,String group){
+        boolean emailAddressValidation = false;
+        boolean emailTypeValidation = false;
+        boolean emailOptInMethodValidation = false;
+        boolean emailOptInStatusValidation = false;
+        boolean emailOptInDateValidation = false;
+        boolean emailStatusValidation = false;
+        boolean emailCommentsValidation = false;
+        boolean emailActiveCheckboxLocator = false;
+        boolean emailPrymaryCheckboxLocator = false;
+
+        String passMessage = String.format(LogPage.VERIFY_EMAIL_PERSON_PAGE_RECORD_PASS,group);
+        String failMessage = String.format(LogPage.VERIFY_EMAIL_PERSON_PAGE_RECORD_FAIL,group);
+
+        try {
+            scrollToElement(By.cssSelector(emailPlusSignElement(group)));
+            if (emailAddress != "") {
+                String emailAddressText = getAtribute(By.cssSelector(emailAddressField(group)),"value");
+                emailAddressValidation = emailAddress.equals(emailAddressText);
+            }else{
+                emailAddressValidation = true;
+            }
+            if (emailType != "") {
+                String emailTypeText = getText(By.cssSelector(emailTypeElement(group)));
+                emailTypeValidation = emailType.equals(emailTypeText);
+            }else{
+                emailTypeValidation = true;
+            }
+            if (emailOptInMethod != "") {
+                String emailOptInMethodText = getText(By.cssSelector(emailOptInMethodElement(group)));
+                emailOptInMethodValidation = emailOptInMethod.equals(emailOptInMethodText);
+            }else{
+                emailOptInMethodValidation = true;
+            }
+            if (emailOptInStatus != "") {
+                String emailOptInStatusText = getText(By.cssSelector(emailOptInStatusElement(group)));
+                emailOptInStatusValidation = emailOptInStatus.equals(emailOptInStatusText);
+            }else{
+                emailOptInStatusValidation=true;
+            }
+            if (emailOptInDate != "") {
+                String emailOptInDateText = getAtribute(By.cssSelector(emailOptInDateField(group)),"value");
+                emailOptInDateValidation = emailOptInDate.equals(emailOptInDateText);
+            }else{
+                emailOptInDateValidation = true;
+            }
+            if (emailStatus != "") {
+                String emailStatusText = getText(By.cssSelector(emailStatusElement(group)));
+                emailStatusValidation = emailStatus.equals(emailStatusText);
+            }else{
+                emailStatusValidation = true;
+            }
+            if (emailComments != "") {
+                String emailCommentsText = getText(By.cssSelector(emailCommentsField(group)));
+                emailCommentsValidation = emailComments.equals(emailCommentsText);
+            }else{
+                emailCommentsValidation = true;
+            }
+
+            if(active != ""){
+                switch (active){
+                    case "1":
+                        emailActiveCheckboxLocator = checkBoxIsActive(By.cssSelector(emailActiveCheckbox(group)));
+                        break;
+                    case "0":
+                        emailActiveCheckboxLocator = !checkBoxIsActive(By.cssSelector(emailActiveCheckbox(group)));
+                        break;
+                    default: throw new IllegalArgumentException("Unhandled index. Update business logic");
+                }
+            }else{
+                emailActiveCheckboxLocator=true;
+            }
+
+            if(primary != ""){
+                switch (primary){
+                    case "1":
+                        emailPrymaryCheckboxLocator = checkBoxIsActive(By.cssSelector(emailPrimaryCheckbox(group)));
+                        break;
+                    case "0":
+                        emailPrymaryCheckboxLocator = !checkBoxIsActive(By.cssSelector(emailPrimaryCheckbox(group)));
+                        break;
+                    default: throw new IllegalArgumentException("Unhandled index. Update business logic");
+                }
+            }else{
+                emailPrymaryCheckboxLocator=true;
+            }
+
+            if(emailAddressValidation
+                    && emailTypeValidation
+                    && emailOptInMethodValidation
+                    && emailOptInStatusValidation
+                    && emailOptInDateValidation
+                    && emailStatusValidation
+                    && emailCommentsValidation
+                    && emailActiveCheckboxLocator
+                    && emailPrymaryCheckboxLocator){
+                ExtentReportsSetUp.testingPass(passMessage);
+            }else{
+                FailureDelegatePage.handlePageException(failMessage);
+            }
+        } catch (Exception e) {
+            FailureDelegatePage.handlePageException(failMessage);
+        }
+    }
+
+
+    public static void verifyReadOnlyEmail(String group){
+        try {
+            if(checkIfElementIsVisible(By.xpath(emailAddressFieldReadOnly(group)))){
+                ExtentReportsSetUp.testingPass(LogPage.VERIFY_READ_ONLY_EMAIL_PASS);
+            }else{
+                FailureDelegatePage.handlePageException(LogPage.VERIFY_READ_ONLY_EMAIL_PASS);
+            }
+        } catch (Exception e) {
+            FailureDelegatePage.handlePageException(LogPage.VERIFY_STUDENT_BASIC_FIELDS_FAIL);
+        }
+    }
 
     public static void createEmail(String emailAddress,String emailType,String emailStatus,String emailOptInMethod,String emailOptInStatus,String emailComments,String active,String primary,String group){
         String passMessage = String.format(LogPage.CREATE_EMAIL_PASS,group);
