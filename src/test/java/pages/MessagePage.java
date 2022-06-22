@@ -110,7 +110,6 @@ public class MessagePage extends BasePage{
     public static void closeAlertIfReturned(String messageAlert){
         String errorMessage = String.format(LogPage.CLOSE_ALERT_IF_RETURNED_FAIL, messageAlert);
         String passMessage = String.format(LogPage.CLOSE_ALERT_IF_RETURNED_PASS, messageAlert);
-
         try {
             String messageReturn = getText(By.cssSelector(GENERAL_ALERT_MESSAGE));
             if(messageReturn.contains(messageAlert)){

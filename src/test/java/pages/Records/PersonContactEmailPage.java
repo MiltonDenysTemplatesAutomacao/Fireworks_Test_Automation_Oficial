@@ -181,10 +181,10 @@ public class PersonContactEmailPage extends BasePage {
             if(checkIfElementIsVisible(By.xpath(emailAddressFieldReadOnly(group)))){
                 ExtentReportsSetUp.testingPass(LogPage.VERIFY_READ_ONLY_EMAIL_PASS);
             }else{
-                FailureDelegatePage.handlePageException(LogPage.VERIFY_READ_ONLY_EMAIL_PASS);
+                FailureDelegatePage.handlePageException(LogPage.VERIFY_READ_ONLY_EMAIL_FAIL);
             }
         } catch (Exception e) {
-            FailureDelegatePage.handlePageException(LogPage.VERIFY_STUDENT_BASIC_FIELDS_FAIL);
+            FailureDelegatePage.handlePageException(LogPage.VERIFY_READ_ONLY_EMAIL_FAIL);
         }
     }
 
