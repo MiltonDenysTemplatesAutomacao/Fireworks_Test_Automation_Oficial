@@ -202,7 +202,7 @@ public class TasksPage extends BasePage{
      * Method to click on archive task button
      */
     public static void archiveTaskButton(){
-        wait(1000);
+        wait(2000);
         try {
             waitUntilElementToBeSelected(By.id(ARCHIVE_TASK_BUTTON),20);
             BasePage.click(By.id(ARCHIVE_TASK_BUTTON));

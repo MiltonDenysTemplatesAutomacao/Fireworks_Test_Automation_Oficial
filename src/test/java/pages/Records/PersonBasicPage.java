@@ -841,7 +841,7 @@ public class PersonBasicPage extends BasePage {
          */
         public static void returnAndValidateElementsNotDisplayed () {
             try {
-
+                wait(500);
                 //get xpath from each one of the Datatable values that is not supposed to be displayed
                 String birthCountryReturn = returnBasicSection("Birth Country");
                 String birthCityReturn = returnBasicSection("Birth City");
@@ -852,6 +852,7 @@ public class PersonBasicPage extends BasePage {
                 String InternationalReturn = returnBasicSection("International");
                 String legacyReturn = returnBasicSection("Legacy");
                 String stateResidentReturn = returnBasicSection("State Resident");
+                wait(500);
 
                 //set to a list if an element exists
                 List<WebElement> birthCountryElements = findElements(By.xpath(birthCountryReturn));
@@ -864,6 +865,7 @@ public class PersonBasicPage extends BasePage {
                 List<WebElement> legacyElements = findElements(By.xpath(legacyReturn));
                 List<WebElement> stateResidentElements = findElements(By.xpath(stateResidentReturn));
 
+                wait(500);
 
                 if (birthCountryElements.isEmpty()
                         && birthCityElements.isEmpty()

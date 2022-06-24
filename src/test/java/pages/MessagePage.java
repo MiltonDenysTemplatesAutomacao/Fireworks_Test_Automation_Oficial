@@ -22,6 +22,7 @@ public class MessagePage extends BasePage{
     public static void verifyValidationMessage(String message){
         String errorMessage = String.format(LogPage.VERIFY_VALIDATION_MESSAGE_FAIL, message);
         String passMessage = String.format(LogPage.VERIFY_VALIDATION_MESSAGE_PASS, message);
+        wait(500);
         try {
             String verifyValidationMessage = getText(By.cssSelector(VALIDATION_ALERT_MESSAGE));
             waitElementBy(By.cssSelector(VALIDATION_ALERT_MESSAGE), 10);
@@ -110,6 +111,7 @@ public class MessagePage extends BasePage{
     public static void closeAlertIfReturned(String messageAlert){
         String errorMessage = String.format(LogPage.CLOSE_ALERT_IF_RETURNED_FAIL, messageAlert);
         String passMessage = String.format(LogPage.CLOSE_ALERT_IF_RETURNED_PASS, messageAlert);
+        wait(500);
         try {
             String messageReturn = getText(By.cssSelector(GENERAL_ALERT_MESSAGE));
             if(messageReturn.contains(messageAlert)){
