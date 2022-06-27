@@ -25,7 +25,7 @@ public class OrgContactEmailPage extends BasePage {
     }
 
     private static String emailStatusElement(String index){
-        return String.format("#entity_email_%s_org_email_status",index);
+        return String.format("#entity_email_%s_org_email_status_toggle",index);
     }
     private static String emailCommentsField(String index){
         return String.format("#entity_email_%s_org_email_comments",index);
