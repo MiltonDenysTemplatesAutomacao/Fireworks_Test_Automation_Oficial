@@ -125,7 +125,7 @@ public class ActionsPage extends BasePage {
     }
     public static void verifyDefaultActionValues(String index){
         try {
-            if(verifyActionDateField()
+            if(verifyDateField(By.cssSelector(ACTION_DATE_FIELD))
                 && verifyActionAttributes(index)
                 && verifyActionDetails(index)){
                 ExtentReportsSetUp.testingPass(LogPage.VERIFY_DEFAULT_ACTION_VALUES_PASS);
@@ -135,11 +135,6 @@ public class ActionsPage extends BasePage {
         } catch (Exception e) {
             FailureDelegatePage.handlePageException(LogPage.VERIFY_DEFAULT_ACTION_VALUES_FAIL);
         }
-    }
-    public static boolean verifyActionDateField()throws Exception{
-        String currentDateTime = currentDateTime();
-        String actionDateTimeText = getAtribute(By.cssSelector(ACTION_DATE_FIELD),"value");
-        return actionDateTimeText.equals(currentDateTime);
     }
 
     public static void verifyActionValues(String index){

@@ -6,6 +6,7 @@ import pages.BasePage;
 import pages.FailureDelegatePage;
 import pages.LogPage;
 
+
 public class PersonContactEmailPage extends BasePage {
     private static final String EMAIL_ADDRESS_FIELD = "#entity_email_%s_email_address";
     private static final String EMAIL_TYPE_ELEMENT = "#entity_email_%s_email_type_component";
@@ -111,8 +112,7 @@ public class PersonContactEmailPage extends BasePage {
                 emailOptInStatusValidation=true;
             }
             if (emailOptInDate != "") {
-                String emailOptInDateText = getAtribute(By.cssSelector(emailOptInDateField(group)),"value");
-                emailOptInDateValidation = emailOptInDate.equals(emailOptInDateText);
+                emailOptInDateValidation = verifyDateFieldWithoutHour(By.cssSelector(emailOptInDateField(group)));
             }else{
                 emailOptInDateValidation = true;
             }

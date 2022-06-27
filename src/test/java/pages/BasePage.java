@@ -189,7 +189,22 @@ public class BasePage {
         LocalDateTime now = LocalDateTime.now(ZoneId.of("America/New_York"));
         return dtf.format(now);
     }
+    public static String currentDateTimeWithoutHour(){
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("MM/dd/yyyy");
+        LocalDateTime now = LocalDateTime.now(ZoneId.of("America/New_York"));
+        return dtf.format(now);
+    }
 
+    public static boolean verifyDateField(By by)throws Exception{
+        String currentDateTime = currentDateTime();
+        String dateTimeText = getAtribute(by,"value");
+        return dateTimeText.equals(currentDateTime);
+    }
+    public static boolean verifyDateFieldWithoutHour(By by)throws Exception{
+        String currentDateTime = currentDateTimeWithoutHour();
+        String dateTimeText = getAtribute(by,"value");
+        return dateTimeText.equals(currentDateTime);
+    }
     /*
      * Method to validate if a message contains the correct
      */
