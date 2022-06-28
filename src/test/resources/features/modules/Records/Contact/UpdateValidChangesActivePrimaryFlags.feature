@@ -1,6 +1,7 @@
 #Author: Milton Silva
 #Regression testcase TL-924 (1 of 4): Email Status: Update to Valid changes Active Primary flags
 #Regression testcase TL-924 (2 of 4): Email Status: Update to Valid changes Active Primary flags
+#Regression testcase TL-924 (3 of 4): Email Status: Update to Valid changes Active Primary flags
 #Regression testcase TL-924 (4 of 4): Email Status: Update to Valid changes Active Primary flags
 
 
@@ -78,3 +79,40 @@ Feature: Update to Valid changes Active Primary flags
     And I click on create a new email on contact for organization "", "", "Bounce", "", "", "", "", "" group "0"
     And I click on save changes in contact for organization
     And I close alert if return this message "Organization has been updated."
+    And I verify email address for organization "RooseveltJr@school.net", "School", "", "Inquiry", "", "", "", "0", "0" group "0"
+    #to update status to valid and verify primary and active are now checked
+    And I click on create a new email on contact for organization "", "", "Valid", "", "", "", "", "" group "0"
+    And I click on save changes in contact for organization
+    And I close alert if return this message "Organization has been updated."
+    And I verify email address for organization "RooseveltJr@school.net", "School", "", "Inquiry", "", "", "", "1", "1" group "0"
+
+  @UpdateValidChangesActivePrimaryFlagsScenario4
+  Scenario: Record - Organization - Setting secondary email address status to valid makes email active
+    Given I login as "firestarterUsername", "firestarterPassword", "firestarterFullName"
+    And I create an organization
+      |Name				     |Role		 |Address1		    |City	           |State |PostalCode |Country	    |
+      |Trinity High School   |High School|12425 Granger Road|Garfield Heights  |Ohio  |44125      |United States|
+    Then I validate if "Organization has been created." message is correct
+    #to add two email addresses and mark the second one active
+    And I validate if "Trinity High School"summary opened properly
+    And I navigate to contact
+    And I click on create a new email on contact for organization "Trinity@school.net", "School", "", "Inquiry", "", "Email1", "1", "1" group "0"
+    And I add a new email on contact for organization group "0"
+    And I click on create a new email on contact for organization "Trinity2@school.net", "Business", "", "Inquiry", "", "Email2", "1", "" group "1"
+    And I click on save changes in contact for organization
+    And I close alert if return this message "Organization has been updated."
+    #to verify email addresses then update the second email address to bounced
+    And I verify email address for organization "Trinity@school.net", "School", "", "Inquiry", "", "", "Email1", "1", "1" group "0"
+    And I verify email address for organization "Trinity2@school.net", "Business", "", "Inquiry", "", "", "Email2", "1", "0" group "1"
+    And I click on create a new email on contact for organization "", "", "Bounce", "", "", "", "", "" group "1"
+    And I click on save changes in contact for organization
+    And I close alert if return this message "Organization has been updated."
+    #to verify the second email address is not active then update the second email address to valid
+    And I verify email address for organization "Trinity@school.net", "School", "", "Inquiry", "", "", "Email1", "1", "1" group "0"
+    And I verify email address for organization "Trinity2@school.net", "Business", "", "Inquiry", "", "", "Email2", "0", "" group "1"
+    And I click on create a new email on contact for organization "", "", "Valid", "", "", "", "", "" group "1"
+    And I click on save changes in contact for organization
+    And I close alert if return this message "Organization has been updated."
+    #to verify the second email address is now active
+    And I verify email address for organization "Trinity@school.net", "School", "", "Inquiry", "", "", "Email1", "1", "1" group "0"
+    And I verify email address for organization "Trinity2@school.net", "Business", "", "Inquiry", "", "", "Email2", "1", "" group "1"

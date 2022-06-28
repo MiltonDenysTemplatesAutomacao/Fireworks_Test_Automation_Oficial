@@ -105,7 +105,7 @@ public class OrgContactEmailPage extends BasePage {
                 emailStatusValidation = true;
             }
             if (emailComments != "") {
-                String emailCommentsText = getText(By.cssSelector(emailCommentsField(group)));
+                String emailCommentsText = getAtribute(By.cssSelector(emailCommentsField(group)),"value");
                 emailCommentsValidation = emailComments.equals(emailCommentsText);
             }else{
                 emailCommentsValidation = true;
