@@ -8,7 +8,7 @@
 @UpdateValidChangesActivePrimaryFlags
 Feature: Update to Valid changes Active Primary flags
 
-  @UpdateValidChangesActivePrimaryFlagsScenario1
+  @UpdateValidChangesActivePrimaryFlagsScenario1 @Done
   Scenario: Record Person - Contact - verify that setting the only email address status as valid makes email active and primary
     Given I login as "firestarterUsername", "firestarterPassword", "firestarterFullName"
     When I create a person
@@ -31,7 +31,7 @@ Feature: Update to Valid changes Active Primary flags
     And I close alert if return this message "Person has been updated."
     And I update email on contact for person "", "", "Valid", "", "", "", "1", "1" and group "0"
 
-  @UpdateValidChangesActivePrimaryFlagsScenario2
+  @UpdateValidChangesActivePrimaryFlagsScenario2 @Done
   Scenario: Record Person - Contact - Setting secondary email address status to valid makes email active
     Given I login as "firestarterUsername", "firestarterPassword", "firestarterFullName"
     When I create a person
@@ -61,7 +61,7 @@ Feature: Update to Valid changes Active Primary flags
     And I verify email address "ABadalamenti2@music.com", "School", "", "Inquiry", "", "", "", "1", "" group "1"
 
 
-  @UpdateValidChangesActivePrimaryFlagsScenario3
+  @UpdateValidChangesActivePrimaryFlagsScenario3 @Done
   Scenario: Record - Organization - Setting only email address status to valid makes email active and primary
     Given I login as "firestarterUsername", "firestarterPassword", "firestarterFullName"
     And I create an organization
@@ -86,7 +86,7 @@ Feature: Update to Valid changes Active Primary flags
     And I close alert if return this message "Organization has been updated."
     And I verify email address for organization "RooseveltJr@school.net", "School", "", "Inquiry", "", "", "", "1", "1" group "0"
 
-  @UpdateValidChangesActivePrimaryFlagsScenario4
+  @UpdateValidChangesActivePrimaryFlagsScenario4 @Done
   Scenario: Record - Organization - Setting secondary email address status to valid makes email active
     Given I login as "firestarterUsername", "firestarterPassword", "firestarterFullName"
     And I create an organization

@@ -4,7 +4,7 @@
 @RequiredFieldsPerson
 Feature: Required Fields for person record
 
-  @RequiredFieldsViaComposer
+  @RequiredFieldsViaComposer @Done
   Scenario: Record - Person - person record required fields via composer and quick add
     Given I login as "firestarterUsername", "firestarterPassword", "firestarterFullName"
     When I navigate to people on records
@@ -21,7 +21,7 @@ Feature: Required Fields for person record
     And I click on save record button
     Then I validate if "Person has been created" message is correct
 
-  @RequiredFieldsQuickAddPerson
+  @RequiredFieldsQuickAddPerson @Done
   Scenario: Record - Person - validate required fields for quick add person
     Given I login as "firestarterUsername", "firestarterPassword", "firestarterFullName"
     And I navigate to QuickAddCreatePersonPage

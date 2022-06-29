@@ -4,7 +4,7 @@
 @BasicTimeZone
 Feature: Basic: Time Zone
 
-  @BasicTimeZoneScenario
+  @BasicTimeZoneScenario @Fix
   Scenario: Record - Basic - verify the setting and updating of a student record time zone
     Given I login as "firestarterUsername", "firestarterPassword", "firestarterFullName"
     When I create a person

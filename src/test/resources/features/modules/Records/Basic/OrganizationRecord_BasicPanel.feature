@@ -4,7 +4,7 @@
 @BasicOrganizationDataCanBeAdded
 Feature: Basic: Organization data can be added
 
-  @BasicOrganizationDataCanBeAddedScenario
+  @BasicOrganizationDataCanBeAddedScenario @Done
   Scenario: Record - Basic - verify data can be added to the basic panel of a student record
     Given I login as "firestarterUsername", "firestarterPassword", "firestarterFullName"
     And I create an organization

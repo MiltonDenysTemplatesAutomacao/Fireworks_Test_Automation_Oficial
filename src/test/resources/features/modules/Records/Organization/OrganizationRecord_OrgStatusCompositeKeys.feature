@@ -4,7 +4,7 @@
 @OrganizationStatusCompositeKeys
 Feature: Organization Status: Composite keys
 
-  @OrganizationStatusCompositeKeysScenarios
+  @OrganizationStatusCompositeKeysScenarios @Done
   Scenario: Record - Organization - verify Org status composite keys are respected
     Given I login as "firestarterUsername", "firestarterPassword", "firestarterFullName"
     And I create an organization

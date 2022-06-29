@@ -7,7 +7,7 @@
 @DataTable
 Feature: Actions Data Table
 
-  @DataTablePerson
+  @DataTablePerson @Fix
   Scenario: Record - Actions - Letter - create from template - system actions
     Given I login as "firestarterUsername", "firestarterPassword", "firestarterFullName"
     When I create a person

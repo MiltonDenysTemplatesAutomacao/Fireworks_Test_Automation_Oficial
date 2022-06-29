@@ -3,7 +3,7 @@
 
 @SearchByEmail
 Feature: Search by Email
-  @SearchPersonByEmail
+  @SearchPersonByEmail @Fix
   Scenario: Quick Search - to Quick Search a person by Email, full or partial
     Given I login as "firestarterUsername", "firestarterPassword", "firestarterFullName"
     And I create a person
@@ -15,7 +15,7 @@ Feature: Search by Email
     When I quick search partial "EmailAddress"
     Then I validate if result for "EmailAddress" is correct
 
-  @SearchOrganizationByEmail
+  @SearchOrganizationByEmail @Fix
   Scenario: Quick Search - to Quick Search an organization by Email, full or partial
     Given I login as "firestarterUsername", "firestarterPassword", "firestarterFullName"
     And I create an organization
@@ -32,7 +32,7 @@ Feature: Search by Email
     When I quick search partial "EmailAddress"
     Then I validate if result for "EmailAddress" is correct
 
-  @SearchStaffByEmail
+  @SearchStaffByEmail @Fix
   Scenario: Quick Search - to Quick Search a staff member by Email, full or partial
     Given I login as "firestarterUsername", "firestarterPassword", "firestarterFullName"
     And I create a staff

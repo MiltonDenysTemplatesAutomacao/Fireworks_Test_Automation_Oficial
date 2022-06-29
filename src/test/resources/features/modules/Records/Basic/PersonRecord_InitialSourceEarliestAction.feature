@@ -5,7 +5,7 @@
 @InitialSourceEarliestAction
 Feature: Basic: Initial Source should reflect the earliest non-system Action
 
-  @InitialSourceEarliestActionScenario1
+  @InitialSourceEarliestActionScenario1 @Fix
   Scenario: Record - Basic - verify the initial source values display the earliest action
     Given I login as "firestarterUsername", "firestarterPassword", "firestarterFullName"
     When I create a person
@@ -39,7 +39,7 @@ Feature: Basic: Initial Source should reflect the earliest non-system Action
     And I click on save changes on basic
     And I validate if "Person has been updated." message is correct
 
-  @InitialSourceEarliestActionScenario2
+  @InitialSourceEarliestActionScenario2 @Fix
   Scenario: Record - Basic - to add another record to be merged
     Given I login as "firestarterUsername", "firestarterPassword", "firestarterFullName"
     When I create a person

@@ -6,7 +6,7 @@
 @ActionsAreNotShared
 Feature: Exact match auto-merge on rule 5: IDType-ID-LastName,Email recipients can be merged,Actions are not shared
 
-  @ActionsAreNotSharedPerson
+  @ActionsAreNotSharedPerson @Done
   Scenario: Record - Actions - actions are not shared between records therefore email recipients can be merged
     Given I login as "firestarterUsername", "firestarterPassword", "firestarterFullName"
     When I create a person
@@ -34,7 +34,7 @@ Feature: Exact match auto-merge on rule 5: IDType-ID-LastName,Email recipients c
     And I click on save this search button
     And I close alert if return this message "Smart Search has been created."
 
-  @SentEmailAction
+  @SentEmailAction @Done
   Scenario: Record - Actions - to send an email with a user action
     Given I login as "firestarterUsername", "firestarterPassword", "firestarterFullName"
     And I navigate to email manager page
@@ -54,7 +54,7 @@ Feature: Exact match auto-merge on rule 5: IDType-ID-LastName,Email recipients c
     #to wait until the email is sent
     And I wait until email sent "Actions NotShared 6100"
 
-  @VerifyEditUserEmailPerson2
+  @VerifyEditUserEmailPerson2 @Fix
   Scenario: Record - Actions - to verify then edit the user email action for person2
     Given I login as "firestarterUsername", "firestarterPassword", "firestarterFullName"
     When I navigate to people on records

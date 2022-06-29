@@ -4,7 +4,7 @@
 @OrganizationDelete
 Feature: Organization: Delete
 
-  @OrganizationDeleteScenarios
+  @OrganizationDeleteScenarios @Done
   Scenario: Record - Organization - verify that an org record can be deleted
     Given I login as "firestarterUsername", "firestarterPassword", "firestarterFullName"
     And I create an organization

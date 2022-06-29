@@ -4,7 +4,7 @@
 @TaskPermissionAdministratorAccess
 Feature: Tasks Permissions: Administrator Access
 
-  @TaskPermissionAdministratorAccessCreateTasksScenario @Persistent
+  @TaskPermissionAdministratorAccessCreateTasksScenario @Persistent @Done
   Scenario: Tasks - Creating tasks for test
     Given I login as "firestarterUsername", "firestarterPassword", "firestarterFullName"
     And I navigate to tasks
@@ -29,7 +29,7 @@ Feature: Tasks Permissions: Administrator Access
     And I click on Save Changes button
     Then I validate if "Task has been created" message is correct
 
-  @VerifyIfThisUserCanSeeTasksToAnyUser @Persistent
+  @VerifyIfThisUserCanSeeTasksToAnyUser @Persistent @Fix
   Scenario: Tasks - Verify the this user can see tasks assigned to any user
     Given I login as "adminUsername", "adminPassword", "adminUserFullName"
     And I navigate to tasks
@@ -40,14 +40,14 @@ Feature: Tasks Permissions: Administrator Access
     And I search task "Friday Fridge Cleanout"
     When I validate if task "Friday Fridge Cleanout" is displayed
 
-  @VerifyIfThisUserCanSeeOnlyAssingedToThem @Persistent
+  @VerifyIfThisUserCanSeeOnlyAssingedToThem @Persistent @Fix
   Scenario: Tasks - Verify the this user can see only see tasks assigned to them
     Given I login as "tasksNoAdminNoArchiveUsername", "tasksNoAdminNoArchivePassword", "tasksNoAdminNoArchiveFullName"
     And I navigate to tasks
     And I fill search task field "Friday Fridge Cleanout"
     When I validate if task is not displayed
 
-  @VerifyIfAssignedToColumIsHiddenForNonAdminUsers @Persistent
+  @VerifyIfAssignedToColumIsHiddenForNonAdminUsers @Persistent @Fix
   Scenario: Tasks - Verify the assigned to column is hidden for non-admin users'
     Given I login as "tasksNoAdminNoArchiveUsername", "tasksNoAdminNoArchivePassword", "tasksNoAdminNoArchiveFullName"
     And I navigate to tasks

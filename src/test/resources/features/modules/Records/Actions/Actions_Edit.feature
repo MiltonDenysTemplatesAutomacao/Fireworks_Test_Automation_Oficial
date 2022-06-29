@@ -4,7 +4,7 @@
 @ActionsEdit
 Feature: Actions Edit actions
 
-  @ActionsEditPerson
+  @ActionsEditPerson @Done
   Scenario: Record - Actions - verify that editing an action shows the proper values in the edit modal window
     Given I login as "firestarterUsername", "firestarterPassword", "firestarterFullName"
     When I create a staff

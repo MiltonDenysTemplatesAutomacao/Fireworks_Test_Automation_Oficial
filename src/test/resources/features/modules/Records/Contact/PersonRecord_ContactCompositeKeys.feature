@@ -2,9 +2,9 @@
 #Regression testcase TL-279: Contact field groups: Composite Keys
 
 @VerifyCompositeKeysAreHonoredInContactGroup
-Feature: verify I cannot delete unsubscribed email records
+Feature: Contact field groups: Composite Keys
 
-  @VerifyCompositeKeysAreHonoredInContactGroupScenarios
+  @VerifyCompositeKeysAreHonoredInContactGroupScenarios @Done
   Scenario: Record - Contact - verify Composite Keys are honored in Contact group
     Given I login as "firestarterUsername", "firestarterPassword", "firestarterFullName"
     When I create a person

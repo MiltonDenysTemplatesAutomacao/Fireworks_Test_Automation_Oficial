@@ -4,7 +4,7 @@
 @BasicClearChanges
 Feature: Basic: Student data can be added
 
-  @BasicClearChangesScenario
+  @BasicClearChangesScenario @Done
   Scenario: Record - Basic - verify clear changes removes unsaved data from the Basic tab
     Given I login as "firestarterUsername", "firestarterPassword", "firestarterFullName"
     When I create a person

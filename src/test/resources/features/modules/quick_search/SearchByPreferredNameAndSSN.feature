@@ -5,7 +5,7 @@
 @SearchByPreferredNameAndSSN
 Feature: Search by preferred
 
-  @SearchPersonByPreferredNameAndSSN
+  @SearchPersonByPreferredNameAndSSN @Done
   Scenario: Quick Search - to Quick Search a person by Preferred Name, partial, with or without dashes, spaces or parenthesis
     Given I login as "firestarterUsername", "firestarterPassword", "firestarterFullName"
     And I create a person

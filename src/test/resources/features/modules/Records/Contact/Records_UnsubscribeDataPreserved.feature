@@ -2,9 +2,9 @@
 #Regression testcase TL-985: Unsubscribed Data is preserved
 
 @UnsubscribedDataIsPreserved
-Feature: verify I cannot delete unsubscribed email records
+Feature: Unsubscribed Data is preserved
 
-  @UnsubscribedDataIsPreservedPerson
+  @UnsubscribedDataIsPreservedPerson @Done
   Scenario: Record - Contact - verify that active and primary indicators are correct in Contact
     Given I login as "firestarterUsername", "firestarterPassword", "firestarterFullName"
     When I create a person
@@ -25,7 +25,7 @@ Feature: verify I cannot delete unsubscribed email records
     Then I validate in source message "This email address must be kept to preserve unsubscribe data"
 
 
-  @UnsubscribedDataIsPreservedOrganization
+  @UnsubscribedDataIsPreservedOrganization @Done
   Scenario: Record - Basic - verify data can be added to the basic panel of a student record
     Given I login as "firestarterUsername", "firestarterPassword", "firestarterFullName"
     And I create an organization

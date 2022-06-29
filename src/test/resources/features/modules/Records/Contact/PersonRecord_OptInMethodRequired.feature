@@ -3,9 +3,9 @@
 #Regression testcase TL-550 (2 of 2): Email Address: Opt-In Method field
 
 @EmailAddressOptInMethodField
-Feature: verify I cannot delete unsubscribed email records
+Feature: Email Address: Opt-In Method field
 
-  @EmailAddressOptInMethodFieldPerson
+  @EmailAddressOptInMethodFieldPerson @Done
   Scenario: Record Person - Contact - verify the opt in method is required for person records
     Given I login as "firestarterUsername", "firestarterPassword", "firestarterFullName"
     When I create a person
@@ -49,7 +49,7 @@ Feature: verify I cannot delete unsubscribed email records
     And I verify email address "WNelson2@music.com", "School", "", "Inquiry", "", "", "", "0", "0" group "1"
 
 
-  @EmailAddressOptInMethodFieldOrganization
+  @EmailAddressOptInMethodFieldOrganization @Done
   Scenario: Record Organization - Contact - verify the opt in method is required for organization records
     Given I login as "firestarterUsername", "firestarterPassword", "firestarterFullName"
     And I create an organization

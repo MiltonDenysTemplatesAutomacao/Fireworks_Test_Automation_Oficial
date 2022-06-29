@@ -1,5 +1,6 @@
 package pages.Records;
 
+import bean.AddressBean;
 import config.extent_reports.ExtentReportsSetUp;
 import org.openqa.selenium.By;
 import pages.BasePage;
@@ -82,93 +83,94 @@ public class PersonContactAddressPage extends BasePage{
         }
     }
 
-    public static void createAddress(String address1,String address2,String address3,String address4,String city,String state,String region,String country,String postalCode,String addressType,String educationNeighborhood,String addressComments,String active,String primary, String group){
+    public static void createAddress(AddressBean address, String group){
         int createAddressDelay = 20;
+
         try {
-            if(address1!=""){
+            if(address.getAddress1()!=""){
                 scrollToElement(By.cssSelector(emailAddressAddButton(group)));
                 waitElementBy(By.cssSelector(address1Field(group)),createAddressDelay);
-                write(By.cssSelector(address1Field(group)),address1);
+                write(By.cssSelector(address1Field(group)),address.getAddress1());
 
             }
-            if(address2!=""){
+            if(address.getAddress2()!=""){
                 scrollToElement(By.cssSelector(emailAddressAddButton(group)));
                 waitElementBy(By.cssSelector(address2Field(group)),createAddressDelay);
-                write(By.cssSelector(address1Field(group)),address2);
+                write(By.cssSelector(address1Field(group)),address.getAddress2());
             }
-            if(address3!=""){
+            if(address.getAddress3()!=""){
                 scrollToElement(By.cssSelector(emailAddressAddButton(group)));
                 waitElementBy(By.cssSelector(address1Field(group)),createAddressDelay);
-                write(By.cssSelector(address3Field(group)),address3);
+                write(By.cssSelector(address3Field(group)),address.getAddress3());
             }
-            if(address4!=""){
+            if(address.getAddress4()!=""){
                 scrollToElement(By.cssSelector(emailAddressAddButton(group)));
                 waitElementBy(By.cssSelector(address4Field(group)),createAddressDelay);
-                write(By.cssSelector(address1Field(group)),address4);
+                write(By.cssSelector(address1Field(group)),address.getAddress4());
             }
-            if(city!=""){
+            if(address.getCity()!=""){
                 scrollToElement(By.cssSelector(emailAddressAddButton(group)));
                 waitElementBy(By.cssSelector(addressCityField(group)),createAddressDelay);
-                write(By.cssSelector(addressCityField(group)),city);
+                write(By.cssSelector(addressCityField(group)),address.getCity());
             }
-            if(state!=""){
+            if(address.getState()!=""){
                 scrollToElement(By.cssSelector(addressCityField(group)));
                 waitElementBy(By.cssSelector(addressStateElement(group)),createAddressDelay);
                 BasePage.click(By.cssSelector(addressStateElement(group)));
                 waitElementBy(By.cssSelector(addressStateElementList(group)),createAddressDelay);
-                write(By.cssSelector(addressStateSearch(group)),state);
+                write(By.cssSelector(addressStateSearch(group)),address.getState());
                 wait(1000);
                 BasePage.selectElementsList(By.cssSelector(addressStateElementList(group)), "a");
-                clickOnListOfElements(state);
+                clickOnListOfElements(address.getState());
                 wait(1000);
             }
-            if(region!=""){
+            if(address.getRegion()!=""){
                 scrollToElement(By.cssSelector(emailAddressAddButton(group)));
                 waitElementBy(By.cssSelector(addressRegionField(group)),createAddressDelay);
-                write(By.cssSelector(addressRegionField(group)),region);
+                write(By.cssSelector(addressRegionField(group)),address.getRegion());
             }
-            if(country!=""){
+            if(address.getCountry()!=""){
                 scrollToElement(By.cssSelector(addressCityField(group)));
                 waitElementBy(By.cssSelector(addressCountryElement(group)),createAddressDelay);
                 BasePage.click(By.cssSelector(addressCountryElement(group)));
                 wait(1000);
                 BasePage.selectElementsList(By.cssSelector(addressCountryElementList(group)), "a");
-                clickOnListOfElements(country);
+                clickOnListOfElements(address.getCountry());
                 wait(1000);
             }
-            if(postalCode!=""){
+            if(address.getPostalCode()!=""){
                 scrollToElement(By.cssSelector(emailAddressAddButton(group)));
                 waitElementBy(By.cssSelector(addressPostalCodeField(group)),createAddressDelay);
-                write(By.cssSelector(addressPostalCodeField(group)),postalCode);
+                write(By.cssSelector(addressPostalCodeField(group)),address.getPostalCode());
             }
-            if(addressType!=""){
+            if(address.getAddressType()!=""){
                 scrollToElement(By.cssSelector(addressStateElement(group)));
                 waitElementBy(By.cssSelector(addressTypeElement(group)),createAddressDelay);
                 BasePage.click(By.cssSelector(addressTypeElement(group)));
                 wait(1000);
                 BasePage.selectElementsList(By.cssSelector(addressTypeElementList(group)), "a");
-                clickOnListOfElements(addressType);
+                clickOnListOfElements(address.getAddressType());
                 wait(1000);
             }
-            if(educationNeighborhood!=""){
+            if(address.getEducationNeighborhood()!=""){
                 scrollToElement(By.cssSelector(addressStateElement(group)));
                 waitElementBy(By.cssSelector(addressNeighborhoodElement(group)),createAddressDelay);
                 BasePage.click(By.cssSelector(addressNeighborhoodElement(group)));
                 waitElementBy(By.cssSelector(addressNeighborhoodElementList(group)),createAddressDelay);
                 BasePage.selectElementsList(By.cssSelector(addressNeighborhoodElementList(group)), "a");
-                clickOnListOfElements(educationNeighborhood);
+                clickOnListOfElements(address.getEducationNeighborhood());
                 wait(1000);
             }
-            if(addressComments!=""){
+            if(address.getAddressComments()!=""){
                 scrollToElement(By.cssSelector(addressCommentsField(group)));
                 waitElementBy(By.cssSelector(addressCommentsField(group)),createAddressDelay);
-                write(By.cssSelector(addressCommentsField(group)),addressComments);
+                write(By.cssSelector(addressCommentsField(group)),address.getAddressComments());
             }
-            if(active!=""){
+            if(address.getActive()!=""){
                 scrollToElement(By.cssSelector(emailAddressAddButton(group)));
                 click(By.cssSelector(addressActiveCheckbox(group)));
             }
-            if(primary!=""){
+            if(address.getPrimary()!=""){
                 scrollToElement(By.cssSelector(emailAddressAddButton(group)));
                 click(By.cssSelector(addressPrimaryCheckbox(group)));
             }

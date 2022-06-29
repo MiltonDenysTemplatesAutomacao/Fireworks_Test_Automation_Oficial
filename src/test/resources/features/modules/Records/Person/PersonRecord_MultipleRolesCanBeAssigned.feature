@@ -6,7 +6,7 @@
 @MultipleRolesCanBeAssigned
 Feature: Multiple roles can be assigned
 
-  @MultipleRolesCanBeAssignedScenario
+  @MultipleRolesCanBeAssignedScenario @Fix
   Scenario: Record - Person - to verify different merge scenarios
     Given I login as "firestarterUsername", "firestarterPassword", "firestarterFullName"
     And I create a person

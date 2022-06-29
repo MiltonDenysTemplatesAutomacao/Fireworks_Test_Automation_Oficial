@@ -5,7 +5,7 @@
 @SummaryPanelDisplay
 Feature: Summary Panel Display
 
-  @SummaryPanelDisplayPerson
+  @SummaryPanelDisplayPerson @Done
   Scenario: Record - SummaryHeader - verify fields can be added to the summary panel from an organization record
     Given I login as "firestarterUsername", "firestarterPassword", "firestarterFullName"
     And I create a person
@@ -35,7 +35,7 @@ Feature: Summary Panel Display
     And I delete summary field "Initial Source"
     And I delete summary field "Student Status Date"
 
-  @SummaryPanelDisplayOrganization
+  @SummaryPanelDisplayOrganization @Done
   Scenario: Record - SummaryHeader - verify fields can be added to the summary panel from an organization record
     Given I login as "firestarterUsername", "firestarterPassword", "firestarterFullName"
     And I create an organization

@@ -4,7 +4,7 @@
 @ActionsRequiredFields
 Feature: Actions Required Fields
 
-  @ActionsRequiredFieldsPerson
+  @ActionsRequiredFieldsPerson @Done
   Scenario: Record - Actions - verify fields can be added to the summary panel from an organization record
     Given I login as "firestarterUsername", "firestarterPassword", "firestarterFullName"
     And I create a person

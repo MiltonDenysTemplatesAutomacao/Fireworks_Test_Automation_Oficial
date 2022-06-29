@@ -4,7 +4,7 @@
 @TaskRestrictedCheckBox
 Feature: Task Restricted CheckBox
 
-  @TaskRestrictedCheckBoxScenario @Persistent
+  @TaskRestrictedCheckBoxScenario @Persistent @Fix
   Scenario: Tasks - verify this permissions group can not access tasks
     Given I login as "tasksNoAccessUsername", "tasksNoAccessPassword", "tasksNoAccessFullName"
     When I navigate to tools

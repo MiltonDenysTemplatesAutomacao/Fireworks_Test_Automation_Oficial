@@ -6,7 +6,7 @@
 @ActionsDuplicatesCannotBeAdded
 Feature: Actions: Duplicates cannot be added
 
-  @ActionsDuplicatesCannotBeAddedPerson
+  @ActionsDuplicatesCannotBeAddedPerson @Done
   Scenario: Record - Actions - verify duplicate actions can not be added to a person record
     Given I login as "firestarterUsername", "firestarterPassword", "firestarterFullName"
     When I create a person
@@ -25,7 +25,7 @@ Feature: Actions: Duplicates cannot be added
     And I validate if "Duplicate actions with an identical time and date cannot be saved. Please try again." message is correct
     And I click on clear changes on actions for "Person"
 
-  @ActionsDuplicatesCannotBeAddedOrganization
+  @ActionsDuplicatesCannotBeAddedOrganization @Done
   Scenario: Record - Actions - verify duplicate actions can not be added to an organization record
     Given I login as "firestarterUsername", "firestarterPassword", "firestarterFullName"
     And I create an organization

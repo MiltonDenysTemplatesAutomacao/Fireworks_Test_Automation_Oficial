@@ -4,7 +4,7 @@
 @StudentStatusRequiredFields
 Feature: Student Status: Required Fields
 
-  @StudentStatusFieldRequiredValidations
+  @StudentStatusFieldRequiredValidations @Done
   Scenario: Record - Person - student status required fields
     Given I login as "firestarterUsername", "firestarterPassword", "firestarterFullName"
     #to create a person record so that Student Status will be empty
@@ -51,6 +51,6 @@ Feature: Student Status: Required Fields
     And I click on close button on modal
     And I update student status group "0" person 4
     When I click on Save Changes button in Student Status
-    Then I validate if "Person has been updated." message is correct
+    And I close alert if return this message "Person has been updated."
     #to verify the student status data
     Then I verify student status group "0" person 5

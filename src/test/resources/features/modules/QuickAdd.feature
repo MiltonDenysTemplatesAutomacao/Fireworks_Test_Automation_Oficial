@@ -3,7 +3,7 @@
 @QuickAdd
 Feature: QuickAdd
 
-  @0210QuickAdd_CreatePersonOnlyEmailAddressCept
+  @0210QuickAdd_CreatePersonOnlyEmailAddressCept @Done
   Scenario: Verify a person record can be created via quick add with only email address
     Given I login as "firestarterUsername", "firestarterPassword", "firestarterFullName"
     And I navigate to QuickAddCreatePersonPage
@@ -13,7 +13,7 @@ Feature: QuickAdd
     And I clickQuickAddPersonSaveAndGo
     Then I validate if "Person has been created" message is correct
 
-  @0220QuickAdd_CreatePersonOnlyPhoneNumberCept
+  @0220QuickAdd_CreatePersonOnlyPhoneNumberCept @Done
   Scenario: Verify a person record can be created via quick add with only phone number
     Given I login as "firestarterUsername", "firestarterPassword", "firestarterFullName"
     And I navigate to QuickAddCreatePersonPage

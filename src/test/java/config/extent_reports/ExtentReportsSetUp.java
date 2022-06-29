@@ -80,7 +80,6 @@ public class ExtentReportsSetUp {
             test.fail(message, MediaEntityBuilder.createScreenCaptureFromPath(imgNumber + ".png").build());
             imgNumber++;
         } catch (Exception e) {
-
         }
     }
 

@@ -4,9 +4,9 @@
 #Regression testcase TL-1005 (1 of 2): Phone Opt-In Status is not required
 
 @ContactPrimaryActiveFlags
-Feature: Exact match auto-merge on rule 5: IDType-ID-LastName,Email recipients can be merged,Actions are not shared
+Feature: Contact Active and Primary flags
 
-  @ContactPrimaryActiveFlagsScenario
+  @ContactPrimaryActiveFlagsScenario @Done
   Scenario: Record - Contact - verify that active and primary indicators are correct in Contact
     Given I login as "firestarterUsername", "firestarterPassword", "firestarterFullName"
     When I create a person

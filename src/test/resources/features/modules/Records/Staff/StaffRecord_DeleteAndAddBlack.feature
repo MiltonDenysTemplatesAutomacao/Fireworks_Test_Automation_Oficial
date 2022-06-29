@@ -4,7 +4,7 @@
 @DeleteReAdd
 Feature: Staff Record: Required fields
 
-  @DeleteStaffAndValidate
+  @DeleteStaffAndValidate @Done
   Scenario: Record - Staff - verify staff record can be deleted and re-added
     Given I login as "firestarterUsername", "firestarterPassword", "firestarterFullName"
     When I create a staff
@@ -22,7 +22,7 @@ Feature: Staff Record: Required fields
     When I quick search "LastName"
     And I validate if "No search results to display." message on quick search is displayed
 
-  @StaffRecordsCanBeAddedAgain
+  @StaffRecordsCanBeAddedAgain @Done
   Scenario: the staff record can be added again
     Given I login as "firestarterUsername", "firestarterPassword", "firestarterFullName"
     When I create a staff
@@ -30,7 +30,7 @@ Feature: Staff Record: Required fields
       |Kenzo	  |Mizoguchi  |Kenzo Mizoguchi	|KMizoguchi@directors.net	|Administrator	|
     And I validate if "Staff member has been created." message is correct
 
-  @StaffRecordsCannotBeDuplicated
+  @StaffRecordsCannotBeDuplicated @Done
   Scenario: the staff record cannot be duplicated
     Given I login as "firestarterUsername", "firestarterPassword", "firestarterFullName"
     When I create a staff

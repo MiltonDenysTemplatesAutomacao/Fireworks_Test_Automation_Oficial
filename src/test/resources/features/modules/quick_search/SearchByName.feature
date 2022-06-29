@@ -3,7 +3,7 @@
 @SearchByName
 Feature: Search by name
 
-  @SearchPersonFirstNameRecord
+  @SearchPersonFirstNameRecord @Done
   Scenario: Quick Search - to Quick Search for person Firstname, Lastname, First and Last name and partial name
     Given I login as "firestarterUsername", "firestarterPassword", "firestarterFullName"
     And I create a person
@@ -24,7 +24,7 @@ Feature: Search by name
     Then I validate if result for "FirstName" is correct
 
 
-  @SearchOrganizationNameRecord
+  @SearchOrganizationNameRecord @Done
   Scenario: Quick Search - to Quick Search for Organization name and partial name
     Given I login as "firestarterUsername", "firestarterPassword", "firestarterFullName"
     And I create an organization
@@ -38,7 +38,7 @@ Feature: Search by name
     Then I validate if result for "Name" is correct
 
 
-  @SearchStaffFirstNameRecord
+  @SearchStaffFirstNameRecord @Done
   Scenario: Quick Search - to Quick Search for staff Firstname, LastName, First and Last name and partial name
     Given I login as "firestarterUsername", "firestarterPassword", "firestarterFullName"
     And I create a staff

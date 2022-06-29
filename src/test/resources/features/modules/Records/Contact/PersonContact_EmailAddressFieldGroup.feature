@@ -2,9 +2,9 @@
 #Regression testcase TL-698: Email Address field group validation
 
 @EmailAddressFieldGroupValidation
-Feature: verify I cannot delete unsubscribed email records
+Feature: Email Address field group validation
 
-  @EmailAddressFieldGroupValidationScenarios
+  @EmailAddressFieldGroupValidationScenarios @Done
   Scenario: Record - Contact - verify the Contact email address group is validated correctly
     Given I login as "firestarterUsername", "firestarterPassword", "firestarterFullName"
     When I create a person

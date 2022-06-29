@@ -4,7 +4,7 @@
 @TaskPermissionDeleteButtonAccess
 Feature: Tasks Permissions: Composer Delete
 
-  @TaskPermissionDeleteButtonAccessScenario @Persistent
+  @TaskPermissionDeleteButtonAccessScenario @Persistent @Fix
   Scenario: Tasks - Not to see delete button
     Given I login as "firestarterUsername", "firestarterPassword", "firestarterFullName"
     And I navigate to tasks
