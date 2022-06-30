@@ -1,5 +1,6 @@
 package pages.Records;
 
+import bean.ContactPhoneBean;
 import config.extent_reports.ExtentReportsSetUp;
 import org.openqa.selenium.By;
 import pages.BasePage;
@@ -63,61 +64,61 @@ public class PersonContactPhonePage extends BasePage {
             FailureDelegatePage.handlePageException(LogPage.ADD_PHONE_FAIL);
         }
     }
-    public static void createPhoneForPerson(String phoneNumber, String phoneType,String phoneStatus,String phoneOptInMethod,String phoneOptInStatus, String phoneComments, String active,String primary,String group){
+    public static void createPhoneForPerson(ContactPhoneBean phone, String group){
         int createPhoneForPersonDelay = 20;
 
         try {
-            if(phoneNumber!=""){
+            if(phone.getPhoneNumber()!=""){
                 scrollToElement(By.cssSelector(PersonContactPhonePage.phonePlusSignElement(group)));
                 waitElementBy(By.cssSelector(phoneNumberField(group)),createPhoneForPersonDelay);
-                write(By.cssSelector(phoneNumberField(group)), phoneNumber);
+                write(By.cssSelector(phoneNumberField(group)), phone.getPhoneNumber());
             }
-            if(phoneType!=""){
+            if(phone.getPhoneType()!=""){
                 scrollToElement(By.cssSelector(PersonContactPhonePage.phonePlusSignElement(group)));
                 waitElementBy(By.cssSelector(phoneTypeElement(group)),createPhoneForPersonDelay);
                 BasePage.click(By.cssSelector(phoneTypeElement(group)));
                 wait(1000);
                 BasePage.selectElementsList(By.cssSelector(phoneTypeElementList(group)), "a");
-                clickOnListOfElements(phoneType);
+                clickOnListOfElements(phone.getPhoneType());
                 wait(1000);
             }
-            if(phoneStatus!=""){
+            if(phone.getPhoneStatus()!=""){
                 scrollToElement(By.cssSelector(PersonContactPhonePage.phonePlusSignElement(group)));
                 waitElementBy(By.cssSelector(phoneStatusElement(group)),createPhoneForPersonDelay);
                 BasePage.click(By.cssSelector(phoneStatusElement(group)));
                 waitElementBy(By.cssSelector(phoneStatusElementList(group)),createPhoneForPersonDelay);
                 BasePage.selectElementsList(By.cssSelector(phoneStatusElementList(group)), "a");
-                clickOnListOfElements(phoneStatus);
+                clickOnListOfElements(phone.getPhoneStatus());
                 wait(1000);
             }
-            if(phoneOptInMethod!=""){
+            if(phone.getPhoneOptInMethod()!=""){
                 scrollToElement(By.cssSelector(PersonContactPhonePage.phonePlusSignElement(group)));
                 waitElementBy(By.cssSelector(phoneOptInMethodElement(group)),createPhoneForPersonDelay);
                 BasePage.click(By.cssSelector(phoneOptInMethodElement(group)));
                 waitElementBy(By.cssSelector(phoneOptInMethodElementList(group)),createPhoneForPersonDelay);
                 BasePage.selectElementsList(By.cssSelector(phoneOptInMethodElementList(group)), "a");
-                clickOnListOfElements(phoneOptInMethod);
+                clickOnListOfElements(phone.getPhoneOptInMethod());
                 wait(1000);
             }
-            if(phoneOptInStatus!=""){
+            if(phone.getPhoneOptInStatus()!=""){
                 scrollToElement(By.cssSelector(PersonContactPhonePage.phonePlusSignElement(group)));
                 waitElementBy(By.cssSelector(phoneOptInStatusElement(group)),createPhoneForPersonDelay);
                 BasePage.click(By.cssSelector(phoneOptInStatusElement(group)));
                 waitElementBy(By.cssSelector(phoneOptInStatusElementList(group)),createPhoneForPersonDelay);
                 BasePage.selectElementsList(By.cssSelector(phoneOptInStatusElementList(group)), "a");
-                clickOnListOfElements(phoneOptInStatus);
+                clickOnListOfElements(phone.getPhoneOptInStatus());
                 wait(1000);
             }
-            if(phoneComments!=""){
+            if(phone.getPhoneComments()!=""){
                 scrollToElement(By.cssSelector(PersonContactPhonePage.phonePlusSignElement(group)));
                 waitElementBy(By.cssSelector(phoneCommentsField(group)),createPhoneForPersonDelay);
-                write(By.cssSelector(phoneCommentsField(group)), phoneComments);
+                write(By.cssSelector(phoneCommentsField(group)), phone.getPhoneComments());
             }
-            if(active!=""){
+            if(phone.getActive()!=""){
                 scrollToElement(By.cssSelector(PersonContactPhonePage.phonePlusSignElement(group)));
                 click(By.cssSelector(phoneActiveCheckbox(group)));
             }
-            if(primary!=""){
+            if(phone.getPrimary()!=""){
                 scrollToElement(By.cssSelector(PersonContactPhonePage.phonePlusSignElement(group)));
                 click(By.cssSelector(phonePrimaryCheckbox(group)));
             }
@@ -126,7 +127,7 @@ public class PersonContactPhonePage extends BasePage {
             FailureDelegatePage.handlePageException(LogPage.CREATE_PHONE_FOR_PERSON_FAIL);
         }
     }
-    public static void verifyPhone(String phoneNumber, String phoneType,String phoneStatus, String timeZone, String phoneOptInMethod, String phoneOptInStatus, String optInStatusDate, String phoneComments, String active,String primary,String group){
+    public static void verifyPhone(ContactPhoneBean phone,String group){
         boolean phoneNumberValidation = false;
         boolean phoneTypeValidation = false;
         boolean timeZoneValidation = false;
@@ -142,50 +143,50 @@ public class PersonContactPhonePage extends BasePage {
         try {
             scrollToElement(By.cssSelector(PersonContactPhonePage.phonePlusSignElement(group)));
 
-            if(phoneNumber!=""){
+            if(phone.getPhoneNumber()!=""){
                 String phoneNumberText = getAtribute(By.cssSelector(phoneNumberField(group)),"value");
-                phoneNumberValidation = phoneNumber.equals(phoneNumberText);
+                phoneNumberValidation = phone.getPhoneNumber().equals(phoneNumberText);
             }else{
                 phoneNumberValidation=true;
             }
-            if(phoneType!=""){
+            if(phone.getPhoneType()!=""){
                 String phoneTypeText = getText(By.cssSelector(phoneTypeElement(group)));
-                phoneTypeValidation = phoneType.equals(phoneTypeText);
+                phoneTypeValidation = phone.getPhoneType().equals(phoneTypeText);
             }else{
                 phoneTypeValidation=true;
             }
-            if(phoneStatus!=""){
+            if(phone.getPhoneStatus()!=""){
                 String phoneStatusText = getText(By.cssSelector(phoneStatusElement(group)));
-                phoneStatusValidation = timeZone.equals(phoneStatusText);
+                phoneStatusValidation = phone.getPhoneStatus().equals(phoneStatusText);
             }else{
                 phoneStatusValidation=true;
             }
-            if(timeZone!=""){
+            if(phone.getPhoneTimeZone()!=""){
                 String timeZoneText = getText(By.cssSelector(phoneTimeZoneElement(group)));
-                timeZoneValidation = timeZone.equals(timeZoneText);
+                timeZoneValidation = phone.getPhoneTimeZone().equals(timeZoneText);
             }else{
                 timeZoneValidation=true;
             }
-            if(phoneOptInMethod!=""){
+            if(phone.getPhoneOptInMethod()!=""){
                 String phoneOptInMethodText = getText(By.cssSelector(phoneOptInMethodElement(group)));
-                phoneOptInMethodValidation = phoneOptInMethod.equals(phoneOptInMethodText);
+                phoneOptInMethodValidation = phone.getPhoneOptInMethod().equals(phoneOptInMethodText);
             }else{
                 phoneOptInMethodValidation=true;
             }
-            if(phoneOptInStatus!=""){
+            if(phone.getPhoneOptInStatus()!=""){
                 String phoneOptInStatusText = getText(By.cssSelector(phoneOptInStatusElement(group)));
-                phoneOptInStatusValidation = phoneOptInStatus.equals(phoneOptInStatusText);
+                phoneOptInStatusValidation = phone.getPhoneOptInStatus().equals(phoneOptInStatusText);
             }else{
                 phoneOptInStatusValidation=true;
             }
-            if(phoneComments!=""){
+            if(phone.getPhoneComments()!=""){
                 String phoneCommentsText = getAtribute(By.cssSelector(phoneCommentsField(group)),"value");
-                phoneCommentsValidation = phoneOptInStatus.equals(phoneCommentsText);
+                phoneCommentsValidation = phone.getPhoneComments().equals(phoneCommentsText);
             }else{
                 phoneCommentsValidation=true;
             }
-            if(active!=""){
-                switch (active){
+            if(phone.getActive()!=""){
+                switch (phone.getActive()){
                     case "1":
                         activeCheckboxValidation = checkBoxIsActive(By.cssSelector(phoneActiveCheckbox(group)));
                         break;
@@ -197,8 +198,8 @@ public class PersonContactPhonePage extends BasePage {
             }else{
                 activeCheckboxValidation=true;
             }
-            if(primary!=""){
-                switch (primary){
+            if(phone.getPrimary()!=""){
+                switch (phone.getPrimary()){
                     case "1":
                         primaryCheckboxValidation = checkBoxIsActive(By.cssSelector(phonePrimaryCheckbox(group)));
                         break;

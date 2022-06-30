@@ -1,6 +1,6 @@
 package bean;
 
-public class AddressBean {
+public class ContactAddressBean {
     public String address1;
     public String address2;
     public String address3;
@@ -16,10 +16,10 @@ public class AddressBean {
     public String active;
     public String primary;
 
-    public AddressBean() {
+    public ContactAddressBean() {
     }
 
-    public AddressBean(String address1, String address2, String address3, String address4, String city, String state, String region, String country, String postalCode, String addressType, String educationNeighborhood, String addressComments, String active, String primary) {
+    public ContactAddressBean(String address1, String address2, String address3, String address4, String city, String state, String region, String country, String postalCode, String addressType, String educationNeighborhood, String addressComments, String active, String primary) {
         this.address1 = address1;
         this.address2 = address2;
         this.address3 = address3;

@@ -1,6 +1,6 @@
 package pages.Records;
 
-import bean.AddressBean;
+import bean.ContactAddressBean;
 import config.extent_reports.ExtentReportsSetUp;
 import org.openqa.selenium.By;
 import pages.BasePage;
@@ -83,7 +83,7 @@ public class PersonContactAddressPage extends BasePage{
         }
     }
 
-    public static void createAddress(AddressBean address, String group){
+    public static void createAddress(ContactAddressBean address, String group){
         int createAddressDelay = 20;
 
         try {
