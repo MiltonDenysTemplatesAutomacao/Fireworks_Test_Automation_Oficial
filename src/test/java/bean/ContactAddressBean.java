@@ -6,10 +6,12 @@ public class ContactAddressBean {
     public String address3;
     public String address4;
     public String city;
+    public String county;
     public String state;
     public String region;
     public String country;
     public String postalCode;
+    public String geomarket;
     public String addressType;
     public String educationNeighborhood;
     public String addressComments;
@@ -19,16 +21,18 @@ public class ContactAddressBean {
     public ContactAddressBean() {
     }
 
-    public ContactAddressBean(String address1, String address2, String address3, String address4, String city, String state, String region, String country, String postalCode, String addressType, String educationNeighborhood, String addressComments, String active, String primary) {
+    public ContactAddressBean(String address1, String address2, String address3, String address4, String city, String county, String state, String region, String country, String postalCode, String geomarket, String addressType, String educationNeighborhood, String addressComments, String active, String primary) {
         this.address1 = address1;
         this.address2 = address2;
         this.address3 = address3;
         this.address4 = address4;
         this.city = city;
+        this.county = county;
         this.state = state;
         this.region = region;
         this.country = country;
         this.postalCode = postalCode;
+        this.geomarket = geomarket;
         this.addressType = addressType;
         this.educationNeighborhood = educationNeighborhood;
         this.addressComments = addressComments;
@@ -76,6 +80,14 @@ public class ContactAddressBean {
         this.city = city;
     }
 
+    public String getCounty() {
+        return county;
+    }
+
+    public void setCounty(String county) {
+        this.county = county;
+    }
+
     public String getState() {
         return state;
     }
@@ -106,6 +118,14 @@ public class ContactAddressBean {
 
     public void setPostalCode(String postalCode) {
         this.postalCode = postalCode;
+    }
+
+    public String getGeomarket() {
+        return geomarket;
+    }
+
+    public void setGeomarket(String geomarket) {
+        this.geomarket = geomarket;
     }
 
     public String getAddressType() {
@@ -147,6 +167,4 @@ public class ContactAddressBean {
     public void setPrimary(String primary) {
         this.primary = primary;
     }
-
-
 }

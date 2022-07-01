@@ -420,4 +420,6 @@ public class LogPage {
     public static final String VERIFY_READ_ONLY_EMAIL_FAIL = "Fail while trying to verify read only email";
     public static final String SELECT_QUICK_ADD_EMAIL_OPT_IN_PASS = "I add an opt-in method '%s'";
     public static final String SELECT_QUICK_ADD_EMAIL_OPT_IN_FAIL = "Fail while trying to add an opt-in method '%s'";
+    public static final String VERIFY_ADDRESS_PASS = "I verify address on contact por person group '%s'";
+    public static final String VERIFY_ADDRESS_FAIL = "Fail while trying to verify address on contact por person group '%s'";
 }

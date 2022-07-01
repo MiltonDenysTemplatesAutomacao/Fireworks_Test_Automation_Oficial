@@ -218,8 +218,10 @@ public class PersonPage extends BasePage{
         String errorMessage = String.format(LogPage.UPDATE_HEADER_ROLE_FAIL, role);
         String passMessage = String.format(LogPage.UPDATE_HEADER_ROLE_PASS, role);
         try {
+            waitUntilElementToBeSelected(By.cssSelector(HEADER_ROLE_ELEMENT),20);
             click(By.cssSelector(HEADER_ROLE_ELEMENT));
             BasePage.selectElementsList(By.xpath(HEADER_ROLE_ELEMENT_LIST), "a");
+            wait(1000);
             clickOnListOfElements(role);
             ExtentReportsSetUp.testingPass(passMessage);
         } catch (Exception e) {

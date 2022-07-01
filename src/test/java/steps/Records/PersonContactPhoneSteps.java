@@ -31,9 +31,10 @@ public class PersonContactPhoneSteps {
         contactPhone.phoneStatus = phoneStatus;
         contactPhone.phoneOptInMethod = phoneOptInMethod;
         contactPhone.phoneOptInStatus = phoneOptInStatus;
+        contactPhone.phoneOptInStatusDate=optInStatusDate;
         contactPhone.phoneTimeZone = timeZone;
         contactPhone.phoneComments = phoneComments;
-        contactPhone.active = phoneNumber;
+        contactPhone.active = active;
         contactPhone.primary = primary;
         PersonContactPhonePage.verifyPhone(contactPhone,group);
     }
