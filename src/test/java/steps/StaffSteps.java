@@ -1,8 +1,10 @@
 package steps;
 
 
+import bean.ContactAddressBean;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import pages.Records.PersonContactAddressPage;
 import pages.StaffPage;
 
 public class StaffSteps {
@@ -51,5 +53,22 @@ public class StaffSteps {
     public static void validateIdTypes(String index, int person) {
         StaffPage.validateIdTypes(index,person);
     }
-
+    @Then("I create address on contact for staff {string}, {string}, {string}, {string}, {string}, {string}, {string}, {string}, {string}, {string}, {string}, {string}, {string}, group {string}")
+    public void createAddress(String address1,String address2,String address3,String address4,String city,String state,String region,String country,String postalCode,String addressType, String addressComments,String active,String primary,String group){
+        ContactAddressBean contactAddress = new ContactAddressBean();
+        contactAddress.address1 = address1;
+        contactAddress.address2 = address2;
+        contactAddress.address3 = address3;
+        contactAddress.address4 = address4;
+        contactAddress.city = city;
+        contactAddress.state = state;
+        contactAddress.region = region;
+        contactAddress.country = country;
+        contactAddress.postalCode = postalCode;
+        contactAddress.addressType = addressType;
+        contactAddress.addressComments = addressComments;
+        contactAddress.active = active;
+        contactAddress.primary = primary;
+        StaffPage.createContactStaffAddress(contactAddress,group);
+    }
 }

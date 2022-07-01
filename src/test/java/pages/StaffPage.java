@@ -1,5 +1,6 @@
 package pages;
 
+import bean.ContactAddressBean;
 import config.extent_reports.ExtentReportsSetUp;
 import org.openqa.selenium.By;
 import pages.Records.StudentStatusPage;
@@ -18,6 +19,9 @@ public class StaffPage extends BasePage{
     private static final String STAFF_MANAGER_TABLE_SEARCH_FIELD = "staffManagerTableControlsTableSearch";
     private static final String VALIDATE_STAFF_MANGER_DATATABLE_MESSAGE = "staffManagerTable_row_0_col_0";
     private static final String STAFF_ID_TYPES_SAVE_CHANGES_BUTTON = "saveChangesBtnStaffIdTypes";
+    private static final String CONTACT_STATE_DROPDOWN_LIST = "select2-results-10";
+    private static final String CONTACT_COUNTRY_DROPDOWN_LIST = "select2-results-11";
+    private static final String CONTACT_ADDRESS_FIELD_DROPDOWN_LIST = "select2-results-12";
 
     private static String statusPlusSignElement(String index){
         return String.format("#user_external_ids_%s_add",index);
@@ -40,7 +44,124 @@ public class StaffPage extends BasePage{
     private static String comments(String index){
         return String.format("#user_external_ids_%s_user_id_comments",index);
     }
+    private static String contactAddress1Field(String index){
+        return String.format("#entity_address_%s_address_1",index);
+    }
+    private static String contactAddress2Field(String index){
+        return String.format("#2entity_address_%s_address_2",index);
+    }
+    private static String contactAddress3Field(String index){
+        return String.format("#entity_address_%s_address_3",index);
+    }
+    private static String contactAddress4Field(String index){
+        return String.format("#entity_address_%s_address_4",index);
+    }
+    private static String contactCityField(String index){
+        return String.format("#entity_address_%s_address_city",index);
+    }
+    private static String contactStateDropdown(String index){
+        return String.format("#entity_address_%s_address_state",index);
+    }
+    private static String contactRegionField(String index){
+        return String.format("#entity_address_%s_address_region",index);
+    }
+    private static String contactCountryDropdown(String index){
+        return String.format("#entity_address_%s_address_country",index);
+    }
+    private static String contactPostalCodeField(String index){
+        return String.format("#entity_address_%s_address_postal_code",index);
+    }
+    private static String contactAddressTypeDropdown(String index){
+        return String.format("#entity_address_%s_address_type",index);
+    }
+    private static String contactAddressCommentsField(String index){
+        return String.format("#entity_address_%s_address_comments",index);
+    }
 
+
+    public static void createContactStaffAddress(ContactAddressBean address,String group){
+
+        int createContactStaffAddressDelay = 0;
+
+        try {
+            if(address.getAddress1()!=""){
+                scrollToElement(By.cssSelector(contactAddress1Field(group)));
+                waitElementBy(By.cssSelector(contactAddress1Field(group)),createContactStaffAddressDelay);
+                write(By.cssSelector(contactAddress1Field(group)),address.getAddress1());
+            }
+            if(address.getAddress2()!=""){
+                scrollToElement(By.cssSelector(contactAddress2Field(group)));
+                waitElementBy(By.cssSelector(contactAddress2Field(group)),createContactStaffAddressDelay);
+                write(By.cssSelector(contactAddress2Field(group)),address.getAddress2());
+            }
+            if(address.getAddress3()!=""){
+                scrollToElement(By.cssSelector(contactAddress3Field(group)));
+                waitElementBy(By.cssSelector(contactAddress3Field(group)),createContactStaffAddressDelay);
+                write(By.cssSelector(contactAddress3Field(group)),address.getAddress3());
+            }
+            if(address.getAddress4()!=""){
+                scrollToElement(By.cssSelector(contactAddress4Field(group)));
+                waitElementBy(By.cssSelector(contactAddress4Field(group)),createContactStaffAddressDelay);
+                write(By.cssSelector(contactAddress4Field(group)),address.getAddress4());
+            }
+            if(address.getCity()!=""){
+                scrollToElement(By.cssSelector(contactCityField(group)));
+                waitElementBy(By.cssSelector(contactCityField(group)),createContactStaffAddressDelay);
+                write(By.cssSelector(contactCityField(group)),address.getCity());
+            }
+
+            if(address.getState()!=""){
+                scrollToElement(By.cssSelector(contactAddress4Field(group)));
+                waitElementBy(By.cssSelector(contactStateDropdown(group)),createContactStaffAddressDelay);
+                BasePage.click(By.cssSelector(contactStateDropdown(group)));
+                waitElementBy(By.cssSelector(CONTACT_STATE_DROPDOWN_LIST),createContactStaffAddressDelay);
+                write(By.cssSelector(contactStateDropdown(group)),address.getState());
+                wait(1000);
+                BasePage.selectElementsList(By.cssSelector(CONTACT_STATE_DROPDOWN_LIST), "a");
+                clickOnListOfElements(address.getState());
+                wait(1000);
+            }
+            if(address.getRegion()!=""){
+                scrollToElement(By.cssSelector(contactCityField(group)));
+                waitElementBy(By.cssSelector(contactRegionField(group)),createContactStaffAddressDelay);
+                write(By.cssSelector(contactRegionField(group)),address.getRegion());
+            }
+            if(address.getCountry()!=""){
+                scrollToElement(By.cssSelector(contactAddress4Field(group)));
+                waitElementBy(By.cssSelector(contactCountryDropdown(group)),createContactStaffAddressDelay);
+                BasePage.click(By.cssSelector(contactCountryDropdown(group)));
+                waitElementBy(By.cssSelector(CONTACT_COUNTRY_DROPDOWN_LIST),createContactStaffAddressDelay);
+                write(By.cssSelector(contactCountryDropdown(group)),address.getCountry());
+                wait(1000);
+                BasePage.selectElementsList(By.cssSelector(CONTACT_COUNTRY_DROPDOWN_LIST), "a");
+                clickOnListOfElements(address.getCountry());
+                wait(1000);
+            }
+            if(address.getPostalCode()!=""){
+                scrollToElement(By.cssSelector(contactPostalCodeField(group)));
+                waitElementBy(By.cssSelector(contactPostalCodeField(group)),createContactStaffAddressDelay);
+                write(By.cssSelector(contactPostalCodeField(group)),address.getPostalCode());
+            }
+            if(address.getAddressType()!=""){
+                scrollToElement(By.cssSelector(contactAddress4Field(group)));
+                waitElementBy(By.cssSelector(contactAddressTypeDropdown(group)),createContactStaffAddressDelay);
+                BasePage.click(By.cssSelector(contactAddressTypeDropdown(group)));
+                waitElementBy(By.cssSelector(CONTACT_ADDRESS_FIELD_DROPDOWN_LIST),createContactStaffAddressDelay);
+                write(By.cssSelector(contactCountryDropdown(group)),address.getAddressType());
+                wait(1000);
+                BasePage.selectElementsList(By.cssSelector(CONTACT_ADDRESS_FIELD_DROPDOWN_LIST), "a");
+                clickOnListOfElements(address.getAddressType());
+                wait(1000);
+            }
+            if(address.getAddressComments()!=""){
+                scrollToElement(By.cssSelector(contactPostalCodeField(group)));
+                waitElementBy(By.cssSelector(contactAddressCommentsField(group)),createContactStaffAddressDelay);
+                write(By.cssSelector(contactAddressCommentsField(group)),address.getAddressComments());
+            }
+        } catch (Exception e) {
+
+        }
+    }
     public static void navigateToIdTypesStaffManager(){
         try {
             waitUntilElementToBeSelected(By.id(PersonPage.RECORD_NAV_TAB_ID_TYPES),20);
