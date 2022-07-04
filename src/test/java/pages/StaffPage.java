@@ -1,6 +1,7 @@
 package pages;
 
 import bean.ContactAddressBean;
+import bean.ContactPhoneBean;
 import config.extent_reports.ExtentReportsSetUp;
 import org.openqa.selenium.By;
 import pages.Records.StudentStatusPage;
@@ -19,9 +20,11 @@ public class StaffPage extends BasePage{
     private static final String STAFF_MANAGER_TABLE_SEARCH_FIELD = "staffManagerTableControlsTableSearch";
     private static final String VALIDATE_STAFF_MANGER_DATATABLE_MESSAGE = "staffManagerTable_row_0_col_0";
     private static final String STAFF_ID_TYPES_SAVE_CHANGES_BUTTON = "saveChangesBtnStaffIdTypes";
-    private static final String CONTACT_STATE_DROPDOWN_LIST = "select2-results-10";
-    private static final String CONTACT_COUNTRY_DROPDOWN_LIST = "select2-results-11";
-    private static final String CONTACT_ADDRESS_FIELD_DROPDOWN_LIST = "select2-results-12";
+    private static final String CONTACT_STATE_DROPDOWN_LIST = "#select2-results-10";
+    private static final String CONTACT_COUNTRY_DROPDOWN_LIST = "#select2-results-11";
+    private static final String CONTACT_ADDRESS_FIELD_DROPDOWN_LIST = "#select2-results-12";
+    private static final String COUNTRY_SEARCH_FIELD = "#s2id_autogen11_search";
+    private static final String STATE_SEARCH_FIELD = "#s2id_autogen10_search";
 
     private static String statusPlusSignElement(String index){
         return String.format("#user_external_ids_%s_add",index);
@@ -60,106 +63,149 @@ public class StaffPage extends BasePage{
         return String.format("#entity_address_%s_address_city",index);
     }
     private static String contactStateDropdown(String index){
-        return String.format("#entity_address_%s_address_state",index);
+        return String.format("#s2id_entity_address_%s_address_state",index);
     }
     private static String contactRegionField(String index){
         return String.format("#entity_address_%s_address_region",index);
     }
     private static String contactCountryDropdown(String index){
-        return String.format("#entity_address_%s_address_country",index);
+        return String.format("#s2id_entity_address_%s_address_country",index);
     }
     private static String contactPostalCodeField(String index){
         return String.format("#entity_address_%s_address_postal_code",index);
     }
     private static String contactAddressTypeDropdown(String index){
-        return String.format("#entity_address_%s_address_type",index);
+        return String.format("#s2id_entity_address_%s_address_type",index);
     }
     private static String contactAddressCommentsField(String index){
         return String.format("#entity_address_%s_address_comments",index);
     }
 
+    public static void verifyStaffPhoneNumber(ContactPhoneBean phone){
+        boolean phoneNumberValidation = false;
+        boolean phoneTypeValidation = false;
+        boolean commentsValidation = false;
 
+        try {
+            if(phone.getPhoneNumber()!=""){
+                scrollToElement(By.id(CONTACT_PHONE_NUMBER_FIELD));
+                scrollTo("-150");
+                String phoneNumberText = getAtribute(By.id(CONTACT_PHONE_NUMBER_FIELD),"value");
+                phoneNumberValidation = phoneNumberText.contains(phone.getPhoneNumber());
+            }else{
+                phoneNumberValidation=true;
+            }
+            if(phone.getPhoneType()!=""){
+                scrollToElement(By.id(CONTACT_PHONE_NUMBER_FIELD));
+                scrollTo("-150");
+                String phoneTypeText = getText(By.id(CONTACT_PHONE_TYPE_DROPDOWN));
+                phoneTypeValidation = phoneTypeText.contains(phone.getPhoneType());
+            }else{
+                phoneTypeValidation=true;
+            }
+            if(phone.getPhoneComments()!=""){
+                scrollToElement(By.id(CONTACT_PHONE_NUMBER_FIELD));
+                scrollTo("-150");
+                String commentText = getAtribute(By.id(CONTACT_PHONE_NUMBER_FIELD),"value");
+                commentsValidation = commentText.contains(phone.getPhoneComments());
+            }else{
+                commentsValidation=true;
+            }
+            if(phoneNumberValidation && phoneTypeValidation && commentsValidation
+                ){
+                ExtentReportsSetUp.testingPass(LogPage.VERIFY_STAFF_PHONE_NUMBER_PASS);
+            }else{
+                FailureDelegatePage.handlePageException(LogPage.VERIFY_STAFF_PHONE_NUMBER_FAIL);
+            }
+        } catch (Exception e) {
+            FailureDelegatePage.handlePageException(LogPage.VERIFY_STAFF_PHONE_NUMBER_FAIL);
+        }
+    }
     public static void createContactStaffAddress(ContactAddressBean address,String group){
 
         int createContactStaffAddressDelay = 0;
-
+        String passMessage = String.format(LogPage.CREATE_CONTACT_STAFF_ADDRESS_PASS,group);
+        String failMessage = String.format(LogPage.CREATE_CONTACT_STAFF_ADDRESS_FAIL,group);
         try {
             if(address.getAddress1()!=""){
                 scrollToElement(By.cssSelector(contactAddress1Field(group)));
+                scrollTo("-150");
                 waitElementBy(By.cssSelector(contactAddress1Field(group)),createContactStaffAddressDelay);
                 write(By.cssSelector(contactAddress1Field(group)),address.getAddress1());
             }
             if(address.getAddress2()!=""){
                 scrollToElement(By.cssSelector(contactAddress2Field(group)));
+                scrollTo("-150");
                 waitElementBy(By.cssSelector(contactAddress2Field(group)),createContactStaffAddressDelay);
                 write(By.cssSelector(contactAddress2Field(group)),address.getAddress2());
             }
             if(address.getAddress3()!=""){
-                scrollToElement(By.cssSelector(contactAddress3Field(group)));
+                scrollToElement(By.cssSelector(contactAddress1Field(group)));
+                scrollTo("-150");
                 waitElementBy(By.cssSelector(contactAddress3Field(group)),createContactStaffAddressDelay);
                 write(By.cssSelector(contactAddress3Field(group)),address.getAddress3());
             }
             if(address.getAddress4()!=""){
-                scrollToElement(By.cssSelector(contactAddress4Field(group)));
+                scrollToElement(By.cssSelector(contactAddress1Field(group)));
+                scrollTo("-150");
                 waitElementBy(By.cssSelector(contactAddress4Field(group)),createContactStaffAddressDelay);
                 write(By.cssSelector(contactAddress4Field(group)),address.getAddress4());
             }
             if(address.getCity()!=""){
-                scrollToElement(By.cssSelector(contactCityField(group)));
+                scrollToElement(By.cssSelector(contactAddress1Field(group)));
                 waitElementBy(By.cssSelector(contactCityField(group)),createContactStaffAddressDelay);
                 write(By.cssSelector(contactCityField(group)),address.getCity());
             }
 
             if(address.getState()!=""){
-                scrollToElement(By.cssSelector(contactAddress4Field(group)));
+                scrollToElement(By.cssSelector(contactAddress1Field(group)));
                 waitElementBy(By.cssSelector(contactStateDropdown(group)),createContactStaffAddressDelay);
                 BasePage.click(By.cssSelector(contactStateDropdown(group)));
                 waitElementBy(By.cssSelector(CONTACT_STATE_DROPDOWN_LIST),createContactStaffAddressDelay);
-                write(By.cssSelector(contactStateDropdown(group)),address.getState());
+                write(By.cssSelector(STATE_SEARCH_FIELD),address.getState());
                 wait(1000);
                 BasePage.selectElementsList(By.cssSelector(CONTACT_STATE_DROPDOWN_LIST), "a");
                 clickOnListOfElements(address.getState());
                 wait(1000);
             }
             if(address.getRegion()!=""){
-                scrollToElement(By.cssSelector(contactCityField(group)));
+                scrollToElement(By.cssSelector(contactAddress1Field(group)));
                 waitElementBy(By.cssSelector(contactRegionField(group)),createContactStaffAddressDelay);
                 write(By.cssSelector(contactRegionField(group)),address.getRegion());
             }
             if(address.getCountry()!=""){
-                scrollToElement(By.cssSelector(contactAddress4Field(group)));
+                scrollToElement(By.cssSelector(contactAddress1Field(group)));
                 waitElementBy(By.cssSelector(contactCountryDropdown(group)),createContactStaffAddressDelay);
                 BasePage.click(By.cssSelector(contactCountryDropdown(group)));
                 waitElementBy(By.cssSelector(CONTACT_COUNTRY_DROPDOWN_LIST),createContactStaffAddressDelay);
-                write(By.cssSelector(contactCountryDropdown(group)),address.getCountry());
+                write(By.cssSelector(COUNTRY_SEARCH_FIELD),address.getCountry());
                 wait(1000);
                 BasePage.selectElementsList(By.cssSelector(CONTACT_COUNTRY_DROPDOWN_LIST), "a");
                 clickOnListOfElements(address.getCountry());
                 wait(1000);
             }
             if(address.getPostalCode()!=""){
-                scrollToElement(By.cssSelector(contactPostalCodeField(group)));
+                scrollToElement(By.cssSelector(contactAddress1Field(group)));
                 waitElementBy(By.cssSelector(contactPostalCodeField(group)),createContactStaffAddressDelay);
                 write(By.cssSelector(contactPostalCodeField(group)),address.getPostalCode());
             }
             if(address.getAddressType()!=""){
-                scrollToElement(By.cssSelector(contactAddress4Field(group)));
+                scrollToElement(By.cssSelector(contactAddress1Field(group)));
                 waitElementBy(By.cssSelector(contactAddressTypeDropdown(group)),createContactStaffAddressDelay);
                 BasePage.click(By.cssSelector(contactAddressTypeDropdown(group)));
                 waitElementBy(By.cssSelector(CONTACT_ADDRESS_FIELD_DROPDOWN_LIST),createContactStaffAddressDelay);
-                write(By.cssSelector(contactCountryDropdown(group)),address.getAddressType());
-                wait(1000);
                 BasePage.selectElementsList(By.cssSelector(CONTACT_ADDRESS_FIELD_DROPDOWN_LIST), "a");
                 clickOnListOfElements(address.getAddressType());
                 wait(1000);
             }
             if(address.getAddressComments()!=""){
-                scrollToElement(By.cssSelector(contactPostalCodeField(group)));
+                scrollToElement(By.cssSelector(contactAddress1Field(group)));
                 waitElementBy(By.cssSelector(contactAddressCommentsField(group)),createContactStaffAddressDelay);
                 write(By.cssSelector(contactAddressCommentsField(group)),address.getAddressComments());
             }
+            ExtentReportsSetUp.testingPass(passMessage);
         } catch (Exception e) {
-
+            FailureDelegatePage.handlePageException(failMessage);
         }
     }
     public static void navigateToIdTypesStaffManager(){
@@ -372,21 +418,20 @@ public class StaffPage extends BasePage{
         }
     }
 
-    public static void updatePhoneNumber(String phone,String phoneType,String comment){
+    public static void updatePhoneNumber(ContactPhoneBean phone){
         try {
             waitElementBy(By.id(CONTACT_PHONE_NUMBER_FIELD),20);
-            if (mass.get(0).get(phone) != null) {
-                BasePage.write(By.id(CONTACT_PHONE_NUMBER_FIELD), mass.get(0).get(phone));
+            if (phone.getPhoneNumber() !="") {
+                BasePage.write(By.id(CONTACT_PHONE_NUMBER_FIELD), phone.getPhoneNumber());
             }
-            if (mass.get(0).get(phoneType) != null) {
+            if (phone.getPhoneType() !="") {
                 BasePage.click(By.id(CONTACT_PHONE_TYPE_DROPDOWN));
                 BasePage.selectElementsList(By.cssSelector(CONTACT_PHONE_TYPE_DROPDOWN_LIST), "a");
-                clickOnListOfElements(mass.get(0).get(phoneType));
+                clickOnListOfElements(phone.getPhoneType());
             }
-            if (mass.get(0).get(comment) != null) {
-                BasePage.write(By.id(CONTACT_PHONE_COMMENTS_FIELD), mass.get(0).get(comment));
+            if (phone.getPhoneComments() !="") {
+                BasePage.write(By.id(CONTACT_PHONE_COMMENTS_FIELD), phone.getPhoneComments());
             }
-            saveChangesBtnStaffContact();
             ExtentReportsSetUp.testingPass(LogPage.UPDATE_PHONE_NUMBER_PASS);
         } catch (Exception e) {
             FailureDelegatePage.handlePageException(LogPage.UPDATE_PHONE_NUMBER_FAIL);

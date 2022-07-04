@@ -2,6 +2,7 @@ package steps;
 
 
 import bean.ContactAddressBean;
+import bean.ContactPhoneBean;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import pages.Records.PersonContactAddressPage;
@@ -9,10 +10,23 @@ import pages.StaffPage;
 
 public class StaffSteps {
 
-    @When("I update {string}, {string} and {string} to update phone number")
-    public static void updatePhoneNumber(String phone,String phoneType,String comment) {
-        StaffPage.updatePhoneNumber(phone,phoneType,comment);
+    @When("I update phone number in contact for staff {string}, {string}, {string}")
+    public static void updatePhoneNumber(String phoneNumber, String phoneType, String comment) {
+        ContactPhoneBean contactPhoneBean = new ContactPhoneBean();
+        contactPhoneBean.phoneNumber = phoneNumber;
+        contactPhoneBean.phoneType = phoneType;
+        contactPhoneBean.phoneComments = comment;
+        StaffPage.updatePhoneNumber(contactPhoneBean);
     }
+    @When("I verify phone number on contact for staff {string}, {string}, {string}")
+    public static void verifyPhoneNumber(String phoneNumber, String phoneType, String comment) {
+        ContactPhoneBean contactPhoneBean = new ContactPhoneBean();
+        contactPhoneBean.phoneNumber = phoneNumber;
+        contactPhoneBean.phoneType = phoneType;
+        contactPhoneBean.phoneComments = comment;
+        StaffPage.verifyStaffPhoneNumber(contactPhoneBean);
+    }
+
     @When("I verify Header Record Status {string}")
     public static void verifyHeaderRecordStatus(String status) {
         StaffPage.verifyHeaderRecordStatus(status);
@@ -53,6 +67,13 @@ public class StaffSteps {
     public static void validateIdTypes(String index, int person) {
         StaffPage.validateIdTypes(index,person);
     }
+    @When("I click on save changes in contact for staff")
+        public static void saveChangesBtnStaffContact() {
+            StaffPage.saveChangesBtnStaffContact();
+        }
+
+
+
     @Then("I create address on contact for staff {string}, {string}, {string}, {string}, {string}, {string}, {string}, {string}, {string}, {string}, {string}, {string}, {string}, group {string}")
     public void createAddress(String address1,String address2,String address3,String address4,String city,String state,String region,String country,String postalCode,String addressType, String addressComments,String active,String primary,String group){
         ContactAddressBean contactAddress = new ContactAddressBean();

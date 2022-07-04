@@ -778,6 +778,7 @@ public class PersonBasicPage extends BasePage {
          */
         public static void returnAndValidateTextBasicFieldsLabel () {
             try {
+                wait(1000);
                 BasePage.waitElementBy(By.cssSelector(BASIC_PANEL_HEADING_ELEMENT), 20);
                 //set to variables the text from each element
                 String birthReturn = returnBasicSection("Birth");
@@ -811,6 +812,7 @@ public class PersonBasicPage extends BasePage {
                 String veteranReturn = returnBasicSection("Veteran");
                 String veteranReturnText = getText(By.xpath(veteranReturn));
 
+                wait(1000);
                 //validate Basic section and Basic fields label
                 if (birthReturnText.equals(mass.get(0).get("BasicSection"))
                         && birthDateReturnText.equals(mass.get(0).get("BasicFieldLabel"))

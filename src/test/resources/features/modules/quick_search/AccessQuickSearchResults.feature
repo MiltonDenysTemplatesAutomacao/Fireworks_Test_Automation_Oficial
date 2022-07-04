@@ -31,14 +31,15 @@ Feature: Search by name
   Scenario: Quick Search - access quick search results for staff
     Given I login as "firestarterUsername", "firestarterPassword", "firestarterFullName"
     And I create a staff
-      |FirstName	|LastName	|FullName		|EmailAddress			|EmailType  |AccountStartDate	|AccountEndDate	|PermissionGroup|Phone			|PhoneType|Comment  |
-      |Officer		|BigMac	    |Officer BigMac	|obigmac@mcdonalds.com	|Personal	|07/10/2017			|07/10/2025		|Administrator	|(720) 839-1318 |Business |Comments |
+      |FirstName	|LastName	|FullName		|EmailAddress			|EmailType  |AccountStartDate	|AccountEndDate	|PermissionGroup|Phone          |
+      |Officer		|BigMac	    |Officer BigMac	|obigmac@mcdonalds.com	|Personal	|07/10/2017			|07/10/2025		|Administrator	|(720) 839-1318 |
     And I go to Home page
     When I quick search "FullName"
     Then I validate if result for "FirstName" is correct
     And I open a record
     And I navigate to contact
-    When I update "Phone", "PhoneType" and "Comment" to update phone number
+    And I update phone number in contact for staff "(720) 839-1318", "Business", "Comments"
+    And I click on save changes in contact for staff
     Then I validate if "Staff member has been updated" message is correct
     And I go to Home page
     When I quick search "Phone"

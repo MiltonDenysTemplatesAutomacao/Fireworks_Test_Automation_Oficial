@@ -424,4 +424,8 @@ public class LogPage {
     public static final String VERIFY_ADDRESS_FAIL = "Fail while trying to verify address on contact por person group '%s'";
     public static final String VERIFY_PHONE_CONTACT_ORG_PASS = "I verify phone number on contact for organization group '%s'";
     public static final String VERIFY_PHONE_CONTACT_ORG_FAIL = "Fail while trying to verify phone number on contact for organization group '%s'";
+    public static final String CREATE_CONTACT_STAFF_ADDRESS_PASS = "I create address on contact for staff group '%s'";
+    public static final String CREATE_CONTACT_STAFF_ADDRESS_FAIL = "Fail while trying to create address on contact for staff group '%s''";
+    public static final String VERIFY_STAFF_PHONE_NUMBER_PASS = "I verify phone number on contact for staff";
+    public static final String VERIFY_STAFF_PHONE_NUMBER_FAIL = "Fail while trying to verify phone number on contact for staff";
 }

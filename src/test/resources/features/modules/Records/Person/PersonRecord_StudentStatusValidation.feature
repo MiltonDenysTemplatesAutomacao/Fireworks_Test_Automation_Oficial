@@ -24,7 +24,7 @@ Feature: Student Status: Required Fields
     When I open a record
     And I verify Header Role "Trustee/Regent"
     And I update Header Role "Student"
-    Then I validate if "Person has been updated." message is correct
+    Then I close alert if return this message "Person has been updated."
     #clicking Save on the empty Student Status tab will return expected required field validation
     Given I click on student status
     When I click on Save Changes button in Student Status
