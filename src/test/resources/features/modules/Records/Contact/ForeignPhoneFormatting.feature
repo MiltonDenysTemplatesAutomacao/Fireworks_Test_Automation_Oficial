@@ -33,7 +33,7 @@ And I verify phone number on contact for organization "+7 495 690-51-31", "Busin
     Then I verify phone number on contact for staff "+7 495 690-51-3", "Home", ""
 
   @PhoneNumberFormattingScenarioStaff2 @Done
-  Scenario: Record - Staff - verify a foreign country phone number displays properly in Staff Contact
+  Scenario: Record - Staff - verify a staff phone number is formatted as expected
     Given I login as "firestarterUsername", "firestarterPassword", "firestarterFullName"
     And I create a staff
       |FirstName  |LastName	|Fullname 		|EmailAddress	        |EmailType  |PermissionGroup|
