@@ -397,6 +397,10 @@ public class GlobalNavPage extends BasePage {
                 wait(1000);
                 clickOnListOfElements(mass.get(0).get("Country"));
             }
+            if (mass.get(0).get("Region") != null) {
+                waitElementBy(By.cssSelector(QUICK_ADD_PERSON_REGION_FIELD),quickAddPersonDelay);
+                BasePage.write(By.cssSelector(QUICK_ADD_PERSON_REGION_FIELD), mass.get(0).get("Region"));
+            }
             wait(2000);
             if (mass.get(0).get("StudentType") != null) {
                 wait(1000);
