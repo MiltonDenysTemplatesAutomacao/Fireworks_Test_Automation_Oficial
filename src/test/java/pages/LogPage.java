@@ -428,4 +428,6 @@ public class LogPage {
     public static final String CREATE_CONTACT_STAFF_ADDRESS_FAIL = "Fail while trying to create address on contact for staff group '%s''";
     public static final String VERIFY_STAFF_PHONE_NUMBER_PASS = "I verify phone number on contact for staff";
     public static final String VERIFY_STAFF_PHONE_NUMBER_FAIL = "Fail while trying to verify phone number on contact for staff";
+    public static final String VERIFY_PHONE_READ_ONLY_PASS = "I verify phone read only group '%s'";
+    public static final String VERIFY_PHONE_READ_ONLY_FAIL = "Fail while trying to verify phone read only group '%s'";
 }

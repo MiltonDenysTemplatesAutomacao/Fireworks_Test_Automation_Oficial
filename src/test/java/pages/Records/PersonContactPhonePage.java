@@ -52,6 +52,27 @@ public class PersonContactPhonePage extends BasePage {
     private static String phonePrimaryCheckbox(String index){
         return String.format("#entity_phone_%s_primary",index);
     }
+    private static String phoneNumberFieldReadOnly(String index){
+        return String.format("//input[@id='entity_phone_%s_phone_number'][@readonly='readonly']",index);
+    }
+
+
+    public static void verifyPhoneReadOnly(String index){
+        String passMessage = String.format(LogPage.VERIFY_PHONE_READ_ONLY_PASS,index);
+        String failMessage = String.format(LogPage.VERIFY_PHONE_READ_ONLY_FAIL,index);
+
+        try {
+            boolean phoneReadOnlValidation = checkIfElementIsVisible(By.xpath(phoneNumberFieldReadOnly(index)));
+
+            if(phoneReadOnlValidation){
+                ExtentReportsSetUp.testingPass(passMessage);
+            }else{
+                FailureDelegatePage.handlePageException(failMessage);
+            }
+        } catch (Exception e) {
+            FailureDelegatePage.handlePageException(failMessage);
+        }
+    }
 
     public static void addPhone(String index){
         try {

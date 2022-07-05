@@ -17,3 +17,4 @@ Feature: Invalid Area Code Not Formatted
     And I validate if "JDonald"summary opened properly
     And I navigate to contact
     And I verify phone number on contact for person "(011)439-4697", "Home", "", "", "", "", "", "", "1", "1", group "0"
+    And I verify phone read only group "0"

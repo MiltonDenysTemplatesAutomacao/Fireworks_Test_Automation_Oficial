@@ -10,6 +10,10 @@ public class PersonContactPhoneSteps {
     public static void addPhone(String index) {
         PersonContactPhonePage.addPhone(index);
     }
+    @Then("I verify phone read only group {string}")
+    public static void verifyPhoneReadOnly(String index) {
+        PersonContactPhonePage.verifyPhoneReadOnly(index);
+    }
     @Then("I update phone number in contact for person {string}, {string}, {string}, {string}, {string}, {string}, {string}, {string} field group {string}")
     public static void createPhoneForPerson(String phoneNumber, String phoneType,String phoneStatus, String phoneOptInMethod, String phoneOptInStatus, String phoneComments, String active,String primary,String group){
         ContactPhoneBean contactPhone = new ContactPhoneBean();
