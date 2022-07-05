@@ -430,4 +430,6 @@ public class LogPage {
     public static final String VERIFY_STAFF_PHONE_NUMBER_FAIL = "Fail while trying to verify phone number on contact for staff";
     public static final String VERIFY_PHONE_READ_ONLY_PASS = "I verify phone read only group '%s'";
     public static final String VERIFY_PHONE_READ_ONLY_FAIL = "Fail while trying to verify phone read only group '%s'";
+    public static final String NAVIGATE_TO_EDUCATION_PASS = "I navigate to Education";
+    public static final String NAVIGATE_TO_EDUCATION_FAIL = "Fail while trying to navigate to Education";
 }
