@@ -16,8 +16,6 @@ import org.openqa.selenium.remote.RemoteWebDriver;
 public class Hooks extends DriverBase {
     private RemoteWebDriver driver;
 
-
-
     @BeforeAll
     public static void initAll(){
         ExtentReportsSetUp.initializeReport();
@@ -35,9 +33,7 @@ public class Hooks extends DriverBase {
 
     @After
     public void finish() {
-
         closeDriverObjects();
-
     }
     @AfterAll
     public static void finishAll(){

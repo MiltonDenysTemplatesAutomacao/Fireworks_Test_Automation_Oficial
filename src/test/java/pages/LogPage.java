@@ -346,7 +346,9 @@ public class LogPage {
     public static final String UPDATE_EMAIL_START_TAB_FAIL = "Fail while trying to update email start tab";
     public static final String PICK_EMAIL_WIZARD_SMART_SEARCH_FAIL = "Fail while trying to pick an email wizard";
     public static final String EMAIL_WIZARD_SMART_SEARCH_PICKER = "Fail while trying to search an existent smart search for your email to target";
+    public static final String SEARCH_OPEN_SCHOOL_PICKER_FAIL = "Fail while trying to search an existent school";
     public static final String PICK_SINGLE_RECIPIENT_SMART_SEARCH_FAIL = "Fail while trying to pick a single recipient";
+    public static final String OPEN_SCHOOL_PICKER_FAIL = "Fail while trying to pick a single school";
     public static final String CLICK_SAVE_AND_CONTINUE_PASS = "I click on save and continue";
     public static final String CLICK_SAVE_AND_CONTINUE_FAIL = "Fail while trying to click on save and continue";
     public static final String UPDATE_EMAIL_HEADERS_TAB_PASS = "I update Email Headers Tab";
@@ -432,4 +434,8 @@ public class LogPage {
     public static final String VERIFY_PHONE_READ_ONLY_FAIL = "Fail while trying to verify phone read only group '%s'";
     public static final String NAVIGATE_TO_EDUCATION_PASS = "I navigate to Education";
     public static final String NAVIGATE_TO_EDUCATION_FAIL = "Fail while trying to navigate to Education";
+    public static final String VERIFY_SCHOOL_PASS = "I update school in education for person group '%s'";
+    public static final String VERIFY_SCHOOL_FAIL = "Fail while trying to update school in education for person group '%s'";
+    public static final String UPDATE_SCHOOL_PASS = "I update school in education for person group '%s'";
+    public static final String UPDATE_SCHOOL_FAIL = "Fail while trying to update school in education for person group '%s'";
 }

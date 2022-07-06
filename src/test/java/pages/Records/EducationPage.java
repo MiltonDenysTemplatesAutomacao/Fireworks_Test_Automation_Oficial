@@ -11,6 +11,7 @@ import pages.LogPage;
 public class EducationPage extends BasePage {
 
     private static final String EDUCATION_TAB = "#recordNavTab_education";
+    private static final String EDUCATION_SAVE_CHANGES_BUTTON = "#saveChangesBtnPersonEducation";
 
 
     public static void navigateToEducation(){
@@ -19,6 +20,17 @@ public class EducationPage extends BasePage {
             scrollTo("-150");
             waitUntilElementToBeSelected(By.cssSelector(EDUCATION_TAB),20);
             BasePage.click(By.cssSelector(EDUCATION_TAB));
+            ExtentReportsSetUp.testingPass(LogPage.NAVIGATE_TO_EDUCATION_PASS);
+        } catch (Exception e) {
+            FailureDelegatePage.handlePageException(LogPage.NAVIGATE_TO_EDUCATION_FAIL);
+        }
+    }
+    public static void clickSaveChanges(){
+        try {
+            scrollToElement(By.cssSelector(EDUCATION_SAVE_CHANGES_BUTTON));
+            scrollTo("-150");
+            waitUntilElementToBeSelected(By.cssSelector(EDUCATION_SAVE_CHANGES_BUTTON),20);
+            BasePage.click(By.cssSelector(EDUCATION_SAVE_CHANGES_BUTTON));
             ExtentReportsSetUp.testingPass(LogPage.NAVIGATE_TO_EDUCATION_PASS);
         } catch (Exception e) {
             FailureDelegatePage.handlePageException(LogPage.NAVIGATE_TO_EDUCATION_FAIL);

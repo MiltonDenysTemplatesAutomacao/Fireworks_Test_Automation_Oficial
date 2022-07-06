@@ -9,6 +9,10 @@ public class EducationSteps {
     public static void navigateToEducation() {
         EducationPage.navigateToEducation();
     }
+    @And("I click on save changes in Education for person")
+    public static void clickSaveChanges() {
+        EducationPage.clickSaveChanges();
+    }
 
 
 }
