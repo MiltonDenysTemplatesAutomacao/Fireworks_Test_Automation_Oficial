@@ -434,8 +434,8 @@ public class LogPage {
     public static final String VERIFY_PHONE_READ_ONLY_FAIL = "Fail while trying to verify phone read only group '%s'";
     public static final String NAVIGATE_TO_EDUCATION_PASS = "I navigate to Education";
     public static final String NAVIGATE_TO_EDUCATION_FAIL = "Fail while trying to navigate to Education";
-    public static final String VERIFY_SCHOOL_PASS = "I update school in education for person group '%s'";
-    public static final String VERIFY_SCHOOL_FAIL = "Fail while trying to update school in education for person group '%s'";
+    public static final String VERIFY_SCHOOL_PASS = "I verify school in education for person group '%s'";
+    public static final String VERIFY_SCHOOL_FAIL = "Fail while trying to verify school in education for person group '%s'";
     public static final String UPDATE_SCHOOL_PASS = "I update school in education for person group '%s'";
     public static final String UPDATE_SCHOOL_FAIL = "Fail while trying to update school in education for person group '%s'";
 }

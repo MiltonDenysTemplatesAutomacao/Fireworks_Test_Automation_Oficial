@@ -13,6 +13,7 @@ public class SchoolPage extends BasePage{
     private static final String SCHOOL_PICKER_MODAL_TABLE_ROW1 = "#schoolPickerModalTable_row_0";
     private static final String SCHOOL_PICKER_MODAL_TABLE_ROW1_CHECKBOX = "//table[@id='schoolPickerModalTable']/tbody/tr/th/div/input";
     private static final String SCHOOL_PICKER_MODAL_CHOOSE_BUTTON = "#modalSubmitButtonschoolPicker";
+    private static final String SCHOOL_STATE_LIST = "#select2-chosen-91";
 
     private static String schoolPlusSign(String index){
         return String.format("#person_school_%s_add",index);
@@ -135,19 +136,44 @@ public class SchoolPage extends BasePage{
         String failMessage = String.format(LogPage.UPDATE_SCHOOL_FAIL,group);
         try {
             if(educationSchoolBean.getSchool()!=""){
+                scrollToElement(By.cssSelector(schoolPlusSign(group)));
                 openSchoolPicker(educationSchoolBean.getSchool(),group);
             }
             if(educationSchoolBean.getSchoolCEEB()!=""){
+                scrollToElement(By.cssSelector(schoolPlusSign(group)));
+                waitElementBy(By.cssSelector(schoolCEEB(group)),updateSchoolDelay);
+                write(By.cssSelector(schoolCEEB(group)),educationSchoolBean.getSchoolCEEB());
+
             }
             if(educationSchoolBean.getSchoolCity()!=""){
+                scrollToElement(By.cssSelector(schoolPlusSign(group)));
+                waitElementBy(By.cssSelector(schoolCity(group)),updateSchoolDelay);
+                write(By.cssSelector(schoolCity(group)),educationSchoolBean.getSchoolCity());
+
             }
             if(educationSchoolBean.getSchoolState()!=""){
+                scrollToElement(By.cssSelector(schoolPlusSign(group)));
+                waitElementBy(By.cssSelector(schoolState(group)),updateSchoolDelay);
+                BasePage.click(By.cssSelector(schoolState(group)));
+                wait(1000);
+                BasePage.selectElementsList(By.cssSelector(SCHOOL_STATE_LIST), "a");
+                wait(500);
+                clickOnListOfElements(educationSchoolBean.getSchoolState());
             }
             if(educationSchoolBean.getSchoolComments()!=""){
+                scrollToElement(By.cssSelector(schoolPlusSign(group)));
+                waitElementBy(By.cssSelector(schoolComments(group)),updateSchoolDelay);
+                write(By.cssSelector(schoolComments(group)),educationSchoolBean.getSchoolComments());
             }
             if(educationSchoolBean.getActive()!=""){
+                scrollToElement(By.cssSelector(schoolPlusSign(group)));
+                waitElementBy(By.cssSelector(schoolActiveCheckbox(group)),updateSchoolDelay);
+                click(By.cssSelector(schoolActiveCheckbox(group)));
             }
             if(educationSchoolBean.getPrimary()!=""){
+                scrollToElement(By.cssSelector(schoolPlusSign(group)));
+                waitElementBy(By.cssSelector(schoolPrimaryCheckbox(group)),updateSchoolDelay);
+                click(By.cssSelector(schoolPrimaryCheckbox(group)));
             }
             ExtentReportsSetUp.testingPass(passMessage);
         } catch (Exception e) {
