@@ -31,7 +31,7 @@ Feature: Role Type drives panel and field visibility
       |         |           |                   |               |                   |       |            |Legacy                |              |
       |         |           |                   |               |                   |       |            |State Resident        |              |
     And I go to Home page
-    When I quick search "FirstName"
+    When I quick search "LastName"
     And I open a record
     And I navigate to basic
     Then I verify basic fields labels

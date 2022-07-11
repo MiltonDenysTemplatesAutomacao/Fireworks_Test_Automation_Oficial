@@ -221,7 +221,6 @@ public class PersonPage extends BasePage{
             waitUntilElementToBeSelected(By.cssSelector(HEADER_ROLE_ELEMENT),20);
             click(By.cssSelector(HEADER_ROLE_ELEMENT));
             BasePage.selectElementsList(By.xpath(HEADER_ROLE_ELEMENT_LIST), "a");
-            wait(1000);
             clickOnListOfElements(role);
             ExtentReportsSetUp.testingPass(passMessage);
         } catch (Exception e) {

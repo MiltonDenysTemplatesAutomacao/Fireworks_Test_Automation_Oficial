@@ -438,4 +438,20 @@ public class LogPage {
     public static final String VERIFY_SCHOOL_FAIL = "Fail while trying to verify school in education for person group '%s'";
     public static final String UPDATE_SCHOOL_PASS = "I update school in education for person group '%s'";
     public static final String UPDATE_SCHOOL_FAIL = "Fail while trying to update school in education for person group '%s'";
+    public static final String ADD_SCHOOL_PASS = "I add school '%s'";
+    public static final String ADD_SCHOOL_FAIL = "Fail while trying to add school '%s'";
+    public static final String NAVIGATE_TO_RELATIONSHIPS_PASS = "I navigate to Relationship";
+    public static final String NAVIGATE_TO_RELATIONSHIPS_FAIL = "Fail while trying to navigate to Relationship";
+    public static final String OPEN_RELATIONSHIP_TABLE_FAIL = "Fail while trying to open a relationship '%s'";
+    public static final String OPEN_RELATIONSHIP_TABLE_PASS = "I open a relationship '%s'";
+    public static final String SEARCH_RELATIONSHIP_TABLE_FAIL = "Fail while trying to search a relationship '%s'";
+    public static final String SEARCH_RELATIONSHIP_TABLE_PASS = "I search a relationship '%s'";
+    public static final String VERIFY_RELATIONSHIP_VALUES_PASS = "I verify relationship values";
+    public static final String VERIFY_RELATIONSHIP_VALUES_FAIL = "Fail while trying to verify relationship values";
+    public static final String VERIFY_RELATIONSHIP_READ_ONLY_PASS = "I validate relationship readonly";
+    public static final String VERIFY_RELATIONSHIP_READ_ONLY_FAIL = "Fail while trying to validate relationship readonly";
+    public static final String DELETE_SCHOOL_PASS = "I delete a school {string}";
+    public static final String DELETE_SCHOOL_FAIL = "Fail while trying to delete a school {string}";
+    public static final String VERIFY_RELATIONSHIP_TEXT_RESULTS_PASS = "I verify relationships results message is correct '%s'";
+    public static final String VERIFY_RELATIONSHIP_TEXT_RESULTS_FAIL = "Fail while trying to verify relationships results message is correct '%s'";
 }

@@ -19,8 +19,8 @@ Feature: Student Status: Required Fields
     Then I validate if "Person has been created" message is correct
     #to add the Student Role so that the Student fields are available
     Given I go to Home page
-    And I quick search "FirstName"
-    And I validate if "David"summary opened properly
+    And I quick search "LastName"
+    And I validate if "Tennant"summary opened properly
     When I open a record
     And I verify Header Role "Trustee/Regent"
     And I update Header Role "Student"

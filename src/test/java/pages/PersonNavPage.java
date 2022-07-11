@@ -9,7 +9,20 @@ public class PersonNavPage extends BasePage{
     private static final String STUDENT_STATUS_TAB = "#recordNavTab_status";
     private static final String INTERESTS_ACTIVITIES_TAB = "#recordNavTab_activities_interests";
     private static final String ACTIONS_PANEL_HEADING_ELEMENT = "#recordNavTab_actions";
+    private static final String RELATIONSHIPS_TAB = "#recordNavTab_relationships";
 
+    public static void navigateToRelationships(){
+        try {
+            scrollToElement(By.cssSelector(RELATIONSHIPS_TAB));
+            scrollTo("-150");
+            waitElementBy(By.cssSelector(RELATIONSHIPS_TAB),20);
+            BasePage.click(By.cssSelector(RELATIONSHIPS_TAB));
+            ExtentReportsSetUp.testingPass(LogPage.NAVIGATE_TO_RELATIONSHIPS_PASS);
+        } catch (Exception e) {
+            FailureDelegatePage.handlePageException(LogPage.NAVIGATE_TO_RELATIONSHIPS_FAIL);
+        }
+
+    }
     public static void navigateToActions(){
         try {
             scrollToTheTop();

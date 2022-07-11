@@ -42,6 +42,37 @@ public class SchoolPage extends BasePage{
     private static String schoolPrimaryCheckbox(String index){
         return String.format("#person_school_%s_primary",index);
     }
+    private static String schoolRemoveButton(String index){
+        return String.format("#person_school_%s_remove",index);
+    }
+
+    public static void deleteSchool(String index){
+        String passMessage = String.format(LogPage.DELETE_SCHOOL_PASS,index);
+        String failMessage = String.format(LogPage.DELETE_SCHOOL_FAIL,index);
+        try {
+            waitUntilElementToBeSelected(By.cssSelector(schoolRemoveButton(index)),20);
+            scrollToElement(By.cssSelector(schoolRemoveButton(index)));
+            scrollTo("-150");
+            click(By.cssSelector(schoolRemoveButton(index)));
+            wait(2000);
+            ExtentReportsSetUp.testingPass(passMessage);
+        } catch (Exception e) {
+            FailureDelegatePage.handlePageException(failMessage);
+        }
+    }
+    public static void addSchool(String group){
+        String passMessage = String.format(LogPage.ADD_SCHOOL_PASS,group);
+        String failMessage = String.format(LogPage.ADD_SCHOOL_FAIL,group);
+        try {
+            scrollToElement(By.cssSelector(schoolPlusSign(group)));
+            scrollTo("-100");
+            waitUntilElementToBeSelected(By.cssSelector(schoolPlusSign(group)),20);
+            click(By.cssSelector(schoolPlusSign(group)));
+            ExtentReportsSetUp.testingPass(passMessage);
+        } catch (Exception e) {
+            FailureDelegatePage.handlePageException(failMessage);
+        }
+    }
 
     public static void verifySchool(EducationSchoolBean educationSchoolBean, String group){
         boolean schoolValidation = false;
@@ -196,6 +227,7 @@ public class SchoolPage extends BasePage{
         try {
             waitElementBy(By.cssSelector(SCHOOL_PICKER_SEARCH_FIELD),20);
             write(By.cssSelector(SCHOOL_PICKER_SEARCH_FIELD),schoolPicker);
+            wait(2000);
             String schoolPickerText = getText(By.cssSelector(SCHOOL_PICKER_MODAL_TABLE_ROW1));
             if(!schoolPickerText.contains("No table data available.")){
                 click(By.xpath(SCHOOL_PICKER_MODAL_TABLE_ROW1_CHECKBOX));

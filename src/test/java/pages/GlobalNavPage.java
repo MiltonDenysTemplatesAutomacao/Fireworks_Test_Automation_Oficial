@@ -604,7 +604,7 @@ public class GlobalNavPage extends BasePage {
     public static void alertMessageAfterAddPerson(String alertMessage) {
         String errorMessage = String.format(LogPage.ALERT_MESSAGE_FAIL, alertMessage);
         String passMessage = String.format(LogPage.ALERT_MESSAGE_PASS, alertMessage);
-        wait(1000);
+        wait(500);
         try {
             waitElementBy(By.id("alertMessage"), 10);
             if (alertMessageContains(By.id("alertMessage"), alertMessage)) {

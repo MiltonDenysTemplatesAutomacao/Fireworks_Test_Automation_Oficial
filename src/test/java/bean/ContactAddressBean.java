@@ -1,22 +1,22 @@
 package bean;
 
 public class ContactAddressBean {
-    public String address1;
-    public String address2;
-    public String address3;
-    public String address4;
-    public String city;
-    public String county;
-    public String state;
-    public String region;
-    public String country;
-    public String postalCode;
-    public String geomarket;
-    public String addressType;
-    public String educationNeighborhood;
-    public String addressComments;
-    public String active;
-    public String primary;
+    private String address1;
+    private String address2;
+    private String address3;
+    private String address4;
+    private String city;
+    private String county;
+    private String state;
+    private String region;
+    private String country;
+    private String postalCode;
+    private String geomarket;
+    private String addressType;
+    private String educationNeighborhood;
+    private String addressComments;
+    private String active;
+    private String primary;
 
     public ContactAddressBean() {
     }

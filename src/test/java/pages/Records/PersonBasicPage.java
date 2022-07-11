@@ -778,7 +778,7 @@ public class PersonBasicPage extends BasePage {
          */
         public static void returnAndValidateTextBasicFieldsLabel () {
             try {
-                wait(1000);
+                wait(2000);
                 BasePage.waitElementBy(By.cssSelector(BASIC_PANEL_HEADING_ELEMENT), 20);
                 //set to variables the text from each element
                 String birthReturn = returnBasicSection("Birth");
@@ -812,7 +812,7 @@ public class PersonBasicPage extends BasePage {
                 String veteranReturn = returnBasicSection("Veteran");
                 String veteranReturnText = getText(By.xpath(veteranReturn));
 
-                wait(1000);
+                wait(2000);
                 //validate Basic section and Basic fields label
                 if (birthReturnText.equals(mass.get(0).get("BasicSection"))
                         && birthDateReturnText.equals(mass.get(0).get("BasicFieldLabel"))
@@ -843,7 +843,6 @@ public class PersonBasicPage extends BasePage {
          */
         public static void returnAndValidateElementsNotDisplayed () {
             try {
-                wait(1000);
                 //get xpath from each one of the Datatable values that is not supposed to be displayed
                 String birthCountryReturn = returnBasicSection("Birth Country");
                 String birthCityReturn = returnBasicSection("Birth City");
@@ -854,7 +853,6 @@ public class PersonBasicPage extends BasePage {
                 String InternationalReturn = returnBasicSection("International");
                 String legacyReturn = returnBasicSection("Legacy");
                 String stateResidentReturn = returnBasicSection("State Resident");
-                wait(1000);
 
                 //set to a list if an element exists
                 List<WebElement> birthCountryElements = findElements(By.xpath(birthCountryReturn));
@@ -867,7 +865,6 @@ public class PersonBasicPage extends BasePage {
                 List<WebElement> legacyElements = findElements(By.xpath(legacyReturn));
                 List<WebElement> stateResidentElements = findElements(By.xpath(stateResidentReturn));
 
-                wait(1000);
 
                 if (birthCountryElements.isEmpty()
                         && birthCityElements.isEmpty()

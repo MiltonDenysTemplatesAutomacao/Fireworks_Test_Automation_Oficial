@@ -43,6 +43,6 @@ And I verify phone number on contact for organization "+7 495 690-51-31", "Busin
     And I navigate to contact
     And I update phone number in contact for staff "9047219-202", "Home", ""
     And I click on save changes in contact for staff
-    And I validate if "Staff member has been created. They have been sent a welcome email with a link prompting them to login and create a password. The link in this email will expire in 12 hours." message is correct
+    And I validate if "Staff member has been updated." message is correct
     Then I verify phone number on contact for staff "(904) 721-9202", "Home", ""
 

@@ -20,6 +20,10 @@ public class PersonNavSteps {
     public static void navigateToStudentStatus() {
         PersonNavPage.navigateToStudentStatus();
     }
+    @Then("I navigate to Relationship")
+    public static void navigateToRelationships() {
+        PersonNavPage.navigateToRelationships();
+    }
 
 
 }

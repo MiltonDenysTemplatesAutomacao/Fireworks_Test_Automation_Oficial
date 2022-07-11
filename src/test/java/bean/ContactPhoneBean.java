@@ -2,16 +2,16 @@ package bean;
 
 public class ContactPhoneBean {
 
-    public String phoneNumber;
-    public String phoneType;
-    public String phoneStatus;
-    public String phoneTimeZone;
-    public String phoneOptInMethod;
-    public String phoneOptInStatus;
-    public String phoneOptInStatusDate;
-    public String phoneComments;
-    public String active;
-    public String primary;
+    private String phoneNumber;
+    private String phoneType;
+    private String phoneStatus;
+    private String phoneTimeZone;
+    private String phoneOptInMethod;
+    private String phoneOptInStatus;
+    private String phoneOptInStatusDate;
+    private String phoneComments;
+    private String active;
+    private String primary;
 
     public ContactPhoneBean() {
     }

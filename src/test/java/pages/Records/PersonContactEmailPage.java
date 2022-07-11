@@ -83,47 +83,56 @@ public class PersonContactEmailPage extends BasePage {
         boolean emailActiveCheckboxLocator = false;
         boolean emailPrymaryCheckboxLocator = false;
 
+        int verifyEmailPersonPageRecordParametersStepsDelay = 20;
+
         String passMessage = String.format(LogPage.VERIFY_EMAIL_PERSON_PAGE_RECORD_PASS,group);
         String failMessage = String.format(LogPage.VERIFY_EMAIL_PERSON_PAGE_RECORD_FAIL,group);
 
         try {
             scrollToElement(By.cssSelector(emailPlusSignElement(group)));
             if (email.getEmailAddress() != "") {
+                waitElementBy(By.cssSelector(emailAddressField(group)),verifyEmailPersonPageRecordParametersStepsDelay);
                 String emailAddressText = getAtribute(By.cssSelector(emailAddressField(group)),"value");
                 emailAddressValidation = email.getEmailAddress().equals(emailAddressText);
             }else{
                 emailAddressValidation = true;
             }
             if (email.getEmailType() != "") {
+                waitElementBy(By.cssSelector(emailTypeElement(group)),verifyEmailPersonPageRecordParametersStepsDelay);
                 String emailTypeText = getText(By.cssSelector(emailTypeElement(group)));
                 emailTypeValidation = email.getEmailType().equals(emailTypeText);
             }else{
                 emailTypeValidation = true;
             }
             if (email.getEmailOptInMethod() != "") {
+                waitElementBy(By.cssSelector(emailOptInMethodElement(group)),verifyEmailPersonPageRecordParametersStepsDelay);
                 String emailOptInMethodText = getText(By.cssSelector(emailOptInMethodElement(group)));
                 emailOptInMethodValidation = email.getEmailOptInMethod().equals(emailOptInMethodText);
             }else{
                 emailOptInMethodValidation = true;
             }
             if (email.getEmailOptInStatus() != "") {
+                waitElementBy(By.cssSelector(emailOptInStatusElement(group)),verifyEmailPersonPageRecordParametersStepsDelay);
                 String emailOptInStatusText = getText(By.cssSelector(emailOptInStatusElement(group)));
                 emailOptInStatusValidation = email.getEmailOptInStatus().equals(emailOptInStatusText);
             }else{
                 emailOptInStatusValidation=true;
             }
             if (email.getEmailOptInDate() != "") {
+                waitElementBy(By.cssSelector(emailOptInDateField(group)),verifyEmailPersonPageRecordParametersStepsDelay);
                 emailOptInDateValidation = verifyDateFieldWithoutHour(By.cssSelector(emailOptInDateField(group)));
             }else{
                 emailOptInDateValidation = true;
             }
             if (email.getEmailOptInStatus() != "") {
+                waitElementBy(By.cssSelector(emailStatusElement(group)),verifyEmailPersonPageRecordParametersStepsDelay);
                 String emailStatusText = getText(By.cssSelector(emailStatusElement(group)));
                 emailStatusValidation = email.getEmailOptInStatus().equals(emailStatusText);
             }else{
                 emailStatusValidation = true;
             }
             if (email.getEmailComments() != "") {
+                waitElementBy(By.cssSelector(emailCommentsField(group)),verifyEmailPersonPageRecordParametersStepsDelay);
                 String emailCommentsText = getText(By.cssSelector(emailCommentsField(group)));
                 emailCommentsValidation = email.getEmailComments().equals(emailCommentsText);
             }else{

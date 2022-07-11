@@ -256,7 +256,7 @@ public class PersonContactAddressPage extends BasePage{
             if(address.getAddress2()!=""){
                 scrollToElement(By.cssSelector(emailAddressAddButton(group)));
                 waitElementBy(By.cssSelector(address2Field(group)),createAddressDelay);
-                write(By.cssSelector(address1Field(group)),address.getAddress2());
+                write(By.cssSelector(address2Field(group)),address.getAddress2());
             }
             if(address.getAddress3()!=""){
                 scrollToElement(By.cssSelector(emailAddressAddButton(group)));
@@ -266,7 +266,7 @@ public class PersonContactAddressPage extends BasePage{
             if(address.getAddress4()!=""){
                 scrollToElement(By.cssSelector(emailAddressAddButton(group)));
                 waitElementBy(By.cssSelector(address4Field(group)),createAddressDelay);
-                write(By.cssSelector(address1Field(group)),address.getAddress4());
+                write(By.cssSelector(address4Field(group)),address.getAddress4());
             }
             if(address.getCity()!=""){
                 scrollToElement(By.cssSelector(emailAddressAddButton(group)));

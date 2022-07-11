@@ -1,14 +1,14 @@
 package bean;
 
 public class ContactNameBean {
-    public String firstName;
-    public String lastName;
-    public String middleName;
-    public String preferredName;
-    public String suffix;
-    public String salutation;
-    public String active;
-    public String primary;
+    private String firstName;
+    private String lastName;
+    private String middleName;
+    private String preferredName;
+    private String suffix;
+    private String salutation;
+    private String active;
+    private String primary;
 
     public ContactNameBean() {
     }

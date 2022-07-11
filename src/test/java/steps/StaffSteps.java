@@ -13,17 +13,17 @@ public class StaffSteps {
     @When("I update phone number in contact for staff {string}, {string}, {string}")
     public static void updatePhoneNumber(String phoneNumber, String phoneType, String comment) {
         ContactPhoneBean contactPhoneBean = new ContactPhoneBean();
-        contactPhoneBean.phoneNumber = phoneNumber;
-        contactPhoneBean.phoneType = phoneType;
-        contactPhoneBean.phoneComments = comment;
+        contactPhoneBean.setPhoneNumber(phoneNumber); ;
+        contactPhoneBean.setPhoneType(phoneType);
+        contactPhoneBean.setPhoneComments(comment);
         StaffPage.updatePhoneNumber(contactPhoneBean);
     }
     @When("I verify phone number on contact for staff {string}, {string}, {string}")
     public static void verifyPhoneNumber(String phoneNumber, String phoneType, String comment) {
         ContactPhoneBean contactPhoneBean = new ContactPhoneBean();
-        contactPhoneBean.phoneNumber = phoneNumber;
-        contactPhoneBean.phoneType = phoneType;
-        contactPhoneBean.phoneComments = comment;
+        contactPhoneBean.setPhoneNumber(phoneNumber); ;
+        contactPhoneBean.setPhoneType(phoneType);
+        contactPhoneBean.setPhoneComments(comment);
         StaffPage.verifyStaffPhoneNumber(contactPhoneBean);
     }
 
@@ -71,25 +71,22 @@ public class StaffSteps {
         public static void saveChangesBtnStaffContact() {
             StaffPage.saveChangesBtnStaffContact();
         }
-
-
-
     @Then("I create address on contact for staff {string}, {string}, {string}, {string}, {string}, {string}, {string}, {string}, {string}, {string}, {string}, {string}, {string}, group {string}")
     public void createAddress(String address1,String address2,String address3,String address4,String city,String state,String region,String country,String postalCode,String addressType, String addressComments,String active,String primary,String group){
         ContactAddressBean contactAddress = new ContactAddressBean();
-        contactAddress.address1 = address1;
-        contactAddress.address2 = address2;
-        contactAddress.address3 = address3;
-        contactAddress.address4 = address4;
-        contactAddress.city = city;
-        contactAddress.state = state;
-        contactAddress.region = region;
-        contactAddress.country = country;
-        contactAddress.postalCode = postalCode;
-        contactAddress.addressType = addressType;
-        contactAddress.addressComments = addressComments;
-        contactAddress.active = active;
-        contactAddress.primary = primary;
+        contactAddress.setAddress1(address1);
+        contactAddress.setAddress2(address2);
+        contactAddress.setAddress3(address3);
+        contactAddress.setAddress4(address4);
+        contactAddress.setCity(city);
+        contactAddress.setState(state);
+        contactAddress.setRegion(region);
+        contactAddress.setCountry(country);
+        contactAddress.setPostalCode(postalCode);
+        contactAddress.setAddressType(addressType);
+        contactAddress.setAddressComments(addressComments);
+        contactAddress.setActive(active);
+        contactAddress.setPrimary(primary);
         StaffPage.createContactStaffAddress(contactAddress,group);
     }
 }

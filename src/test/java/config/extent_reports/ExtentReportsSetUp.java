@@ -74,12 +74,13 @@ public class ExtentReportsSetUp {
     /*
      * Method to fail a test, send a message and take a screenshot
      */
-    public static void testingFail(String message) {
+    public static void testingFail(String message){
         try {
             fullPageScreenShoot();
             test.fail(message, MediaEntityBuilder.createScreenCaptureFromPath(imgNumber + ".png").build());
             imgNumber++;
         } catch (Exception e) {
+            System.err.println("Error while trying to take a screenshot");
         }
     }
 

@@ -14,7 +14,7 @@ Feature: Ability to archive and activate tasks
       |ArchiveActivate2230	|Management	|
     And I click on Save Changes button
     And I click on archive task button
-    And I validate if "Task has been archived" message is correct
+    And I close alert if return this message "Task has been archived"
     And I validate if the task is read-only
     And I navigate to tasks
     And I search a task "Name"

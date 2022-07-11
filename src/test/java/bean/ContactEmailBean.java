@@ -1,15 +1,15 @@
 package bean;
 
 public class ContactEmailBean {
-    public String emailAddress;
-    public String emailType;
-    public String emailOptInMethod;
-    public String emailOptInStatus;
-    public String emailOptInDate;
-    public String emailStatus;
-    public String emailComments;
-    public String active;
-    public String primary;
+    private String emailAddress;
+    private String emailType;
+    private String emailOptInMethod;
+    private String emailOptInStatus;
+    private String emailOptInDate;
+    private String emailStatus;
+    private String emailComments;
+    private String active;
+    private String primary;
 
     public ContactEmailBean() {
     }

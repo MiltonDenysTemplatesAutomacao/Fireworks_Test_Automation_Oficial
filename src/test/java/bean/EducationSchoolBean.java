@@ -2,13 +2,13 @@ package bean;
 
 public class EducationSchoolBean {
 
-    public String school;
-    public String schoolCEEB;
-    public String schoolCity;
-    public String schoolState;
-    public String schoolComments;
-    public String active;
-    public String primary;
+    private String school;
+    private String schoolCEEB;
+    private String schoolCity;
+    private String schoolState;
+    private String schoolComments;
+    private String active;
+    private String primary;
 
     public EducationSchoolBean() {
     }
