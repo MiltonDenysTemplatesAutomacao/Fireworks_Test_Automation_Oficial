@@ -460,4 +460,6 @@ public class LogPage {
     public static final String CLICK_CHOOSE_BUTTON_FAIL = "Fail while trying to click on choose button on school picker modal";
     public static final String CLICK_SAVE_CHANGES_EDUCATION_PASS = "I click on save changes in Education for person";
     public static final String CLICK_SAVE_CHANGES_EDUCATION_FAIL = "Fail while trying to click on save changes in Education for person";
+    public static final String CREATE_TRANSCRIPT_PASS = "I update transcript group '%s'";
+    public static final String CREATE_TRANSCRIPT_FAIL = "Fail while trying to update transcript group '%s'";
 }

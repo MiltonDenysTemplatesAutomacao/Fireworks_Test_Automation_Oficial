@@ -32,7 +32,7 @@ public class EducationPage extends BasePage {
             BasePage.click(By.cssSelector(EDUCATION_SAVE_CHANGES_BUTTON));
             ExtentReportsSetUp.testingPass(LogPage.CLICK_SAVE_CHANGES_EDUCATION_PASS);
         } catch (Exception e) {
-            FailureDelegatePage.handlePageException(LogPage.CLICK_SAVE_CHANGES_EDUCATION_PASS);
+            FailureDelegatePage.handlePageException(LogPage.CLICK_SAVE_CHANGES_EDUCATION_FAIL);
         }
     }
 }
