@@ -454,4 +454,10 @@ public class LogPage {
     public static final String DELETE_SCHOOL_FAIL = "Fail while trying to delete a school '%s'";
     public static final String VERIFY_RELATIONSHIP_TEXT_RESULTS_PASS = "I verify relationships results message is correct '%s'";
     public static final String VERIFY_RELATIONSHIP_TEXT_RESULTS_FAIL = "Fail while trying to verify relationships results message is correct '%s'";
+    public static final String SEARCH_PICKER_SCHOOL_PASS = "I search a school picker '%s' group '%s'";
+    public static final String SEARCH_PICKER_SCHOOL_FAIL = "Fail while trying to search a school picker '%s' group '%s'";
+    public static final String CLICK_CHOOSE_BUTTON_PASS = "I click on choose button on school picker modal";
+    public static final String CLICK_CHOOSE_BUTTON_FAIL = "Fail while trying to click on choose button on school picker modal";
+    public static final String CLICK_SAVE_CHANGES_EDUCATION_PASS = "I click on save changes in Education for person";
+    public static final String CLICK_SAVE_CHANGES_EDUCATION_FAIL = "Fail while trying to click on save changes in Education for person";
 }

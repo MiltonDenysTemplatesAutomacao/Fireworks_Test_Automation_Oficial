@@ -27,13 +27,12 @@ public class EducationPage extends BasePage {
     }
     public static void clickSaveChanges(){
         try {
-            scrollToElement(By.cssSelector(EDUCATION_SAVE_CHANGES_BUTTON));
-            scrollTo("-150");
-            waitUntilElementToBeSelected(By.cssSelector(EDUCATION_SAVE_CHANGES_BUTTON),20);
+            scrollToTheBottom();
+            wait(1000);
             BasePage.click(By.cssSelector(EDUCATION_SAVE_CHANGES_BUTTON));
-            ExtentReportsSetUp.testingPass(LogPage.NAVIGATE_TO_EDUCATION_PASS);
+            ExtentReportsSetUp.testingPass(LogPage.CLICK_SAVE_CHANGES_EDUCATION_PASS);
         } catch (Exception e) {
-            FailureDelegatePage.handlePageException(LogPage.NAVIGATE_TO_EDUCATION_FAIL);
+            FailureDelegatePage.handlePageException(LogPage.CLICK_SAVE_CHANGES_EDUCATION_PASS);
         }
     }
 }

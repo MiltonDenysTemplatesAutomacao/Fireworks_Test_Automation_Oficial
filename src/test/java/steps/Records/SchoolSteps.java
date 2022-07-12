@@ -35,9 +35,17 @@ public class SchoolSteps {
     public static void addSchool(String group) {
         SchoolPage.addSchool(group);
     }
+    @And("I search a school picker {string} group {string}")
+    public static void searchPickerSchool(String school, String group) {
+        SchoolPage.searchPickerSchool(school,group);
+    }
     @And("I delete a school {string}")
     public static void deleteSchool(String index) {
         SchoolPage.deleteSchool(index);
+    }
+    @And("I click on choose button on school picker modal")
+    public static void clickChooseButton() {
+        SchoolPage.clickChooseButton();
     }
 
 

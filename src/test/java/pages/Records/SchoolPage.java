@@ -46,6 +46,31 @@ public class SchoolPage extends BasePage{
         return String.format("#person_school_%s_remove",index);
     }
 
+    public static void clickChooseButton(){
+        try {
+            waitUntilElementToBeSelected(By.cssSelector(SCHOOL_PICKER_MODAL_CHOOSE_BUTTON),20);
+            click(By.cssSelector(SCHOOL_PICKER_MODAL_CHOOSE_BUTTON));
+            ExtentReportsSetUp.testingPass(LogPage.CLICK_CHOOSE_BUTTON_PASS);
+        } catch (Exception e) {
+            FailureDelegatePage.handlePageException(LogPage.CLICK_CHOOSE_BUTTON_FAIL);
+        }
+    }
+    public static void searchPickerSchool(String school, String group){
+        String passMessage = String.format(LogPage.SEARCH_PICKER_SCHOOL_PASS,school,group);
+        String failMessage = String.format(LogPage.SEARCH_PICKER_SCHOOL_FAIL,school,group);
+
+        try {
+            scrollToElement(By.cssSelector(schoolPlusSign(group)));
+            waitUntilElementToBeSelected(By.cssSelector(pickerTriggerElement(group)),20);
+            click(By.cssSelector(pickerTriggerElement(group)));
+            waitElementBy(By.cssSelector(SCHOOL_PICKER_SEARCH_FIELD),20);
+            write(By.cssSelector(SCHOOL_PICKER_SEARCH_FIELD),school);
+            wait(2000);
+            ExtentReportsSetUp.testingPass(passMessage);
+        } catch (Exception e) {
+            FailureDelegatePage.handlePageException(failMessage);
+        }
+    }
     public static void deleteSchool(String index){
         String passMessage = String.format(LogPage.DELETE_SCHOOL_PASS,index);
         String failMessage = String.format(LogPage.DELETE_SCHOOL_FAIL,index);
