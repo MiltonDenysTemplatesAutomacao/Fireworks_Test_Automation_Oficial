@@ -130,6 +130,7 @@ public class RelationshipPage extends BasePage {
         try {
             waitElementBy(By.cssSelector(RELATIONSHIP_MANAGER_SEARCH_FIELD),20);
             write(By.cssSelector(RELATIONSHIP_MANAGER_SEARCH_FIELD),relationship);
+            wait(2000);
             ExtentReportsSetUp.testingPass(passMessage);
         } catch (Exception e) {
             FailureDelegatePage.handlePageException(failMessage);

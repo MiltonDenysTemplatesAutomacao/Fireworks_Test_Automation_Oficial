@@ -3,7 +3,7 @@
 #Regression testcase TL-705: Education: School: Linked relationship
 
 @SchoolRelationshipsLinkedRelationship
-Feature: Phone Number Formatting
+Feature: School Relationships
 
   @SchoolRelationshipsLinkedRelationshipScenario @Done
   Scenario: Record - Education_School-Transcript-Scores - verify behavior of linked school relationship between education and relationship panels

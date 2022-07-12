@@ -206,6 +206,7 @@ public class TasksPage extends BasePage{
         try {
             waitUntilElementToBeSelected(By.id(ARCHIVE_TASK_BUTTON),20);
             BasePage.click(By.id(ARCHIVE_TASK_BUTTON));
+            wait(1000);
             ExtentReportsSetUp.testingPass(LogPage.ARCHIVE_TASK_PASS);
         } catch (Exception e) {
             FailureDelegatePage.handlePageException(LogPage.ARCHIVE_TASK_FAIL);
