@@ -185,7 +185,7 @@ public class OrgContactEmailPage extends BasePage {
                 BasePage.click(By.cssSelector(emailTypeElement(group)));
                 wait(1000);
                 BasePage.selectElementsList(By.cssSelector(emailTypeElementList(group)), "a");
-                wait(500);
+                wait(1000);
                 clickOnListOfElements(email.getEmailType());
             }
             if(email.getEmailStatus()!=""){

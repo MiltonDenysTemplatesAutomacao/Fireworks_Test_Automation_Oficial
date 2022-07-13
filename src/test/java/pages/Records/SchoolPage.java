@@ -135,7 +135,7 @@ public class SchoolPage extends BasePage{
             }
             if (educationSchoolBean.getSchoolState() != "") {
                 scrollToElement(By.cssSelector(schoolPlusSign(group)));
-                String schoolStateText = getAtribute(By.cssSelector(schoolState(group)), "value");
+                String schoolStateText = getText(By.cssSelector(schoolState(group)));
                 schoolStateValidation = schoolStateText.contains(educationSchoolBean.getSchoolState());
             } else {
                 schoolStateValidation = true;
@@ -157,6 +157,8 @@ public class SchoolPage extends BasePage{
                         break;
                     default: throw new IllegalArgumentException("Active Checkbox not verified");
                 }
+            }else{
+                activeValidation = true;
             }
             if(educationSchoolBean.getPrimary()!=""){
                 switch (educationSchoolBean.getPrimary()){
@@ -168,6 +170,8 @@ public class SchoolPage extends BasePage{
                         break;
                     default: throw new IllegalArgumentException("Active Checkbox not verified");
                 }
+            }else{
+                primaryValidation = true;
             }
             if(schoolValidation
                     && schoolCEEBValidation

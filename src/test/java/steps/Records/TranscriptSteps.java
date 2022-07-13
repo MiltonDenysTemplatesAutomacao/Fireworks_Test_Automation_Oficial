@@ -10,5 +10,9 @@ public class TranscriptSteps {
     public static void updateSchool(String person,String group) {
         TranscriptPage.createTranscript(person,group);
     }
+    @And("I verify transcript person {string} group {string}")
+    public static void verifyTranscript(String person,String group) {
+        TranscriptPage.verifyTranscript(person,group);
+    }
 
 }

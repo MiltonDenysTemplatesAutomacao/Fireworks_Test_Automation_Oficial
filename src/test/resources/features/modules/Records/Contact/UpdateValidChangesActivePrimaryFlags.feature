@@ -62,7 +62,7 @@ Feature: Update to Valid changes Active Primary flags
 
 
   @UpdateValidChangesActivePrimaryFlagsScenario3 @Done
-  Scenario: Record - Organization - Setting only email address status to valid makes email active and primary
+  Scenario: Record Organization Contact - Setting only email address status to valid makes email active and primary
     Given I login as "firestarterUsername", "firestarterPassword", "firestarterFullName"
     And I create an organization
       |Name					          |Role		  |Address1		      |City	    |State	    |PostalCode |Country	  |
@@ -87,7 +87,7 @@ Feature: Update to Valid changes Active Primary flags
     And I verify email address for organization "RooseveltJr@school.net", "School", "", "Inquiry", "", "", "", "1", "1" group "0"
 
   @UpdateValidChangesActivePrimaryFlagsScenario4 @Done
-  Scenario: Record - Organization - Setting secondary email address status to valid makes email active
+  Scenario: Record Organization - Contact - Setting secondary email address status to valid makes email active
     Given I login as "firestarterUsername", "firestarterPassword", "firestarterFullName"
     And I create an organization
       |Name				     |Role		 |Address1		    |City	           |State |PostalCode |Country	    |
