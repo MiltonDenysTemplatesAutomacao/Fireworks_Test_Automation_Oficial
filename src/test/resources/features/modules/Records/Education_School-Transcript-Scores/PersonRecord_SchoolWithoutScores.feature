@@ -7,7 +7,7 @@ Feature: School Without Scores
 
   @SchoolWithoutScores @Done
   Scenario: Record - Education_School-Transcript-Scores - verify scores are not required to add a school and transcript to a student record
-    #to create a high school for the transcrip
+    #to create a high school for the transcript
     Given I login as "firestarterUsername", "firestarterPassword", "firestarterFullName"
     And I create an organization
       |Name				      |Role		   |Address1	     |City	  |State    |PostalCode |Country	      |Phone        |PhoneType|
