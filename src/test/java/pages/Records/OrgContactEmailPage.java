@@ -203,7 +203,7 @@ public class OrgContactEmailPage extends BasePage {
                 BasePage.click(By.cssSelector(emailOptInMethodElement(group)));
                 wait(1000);
                 BasePage.selectElementsList(By.cssSelector(selectEmailOptInMethodList(group)), "a");
-                wait(500);
+                wait(1000);
                 clickOnListOfElements(email.getEmailOptInMethod());
             }
             if(email.getEmailOptInStatus()!=""){
@@ -212,7 +212,7 @@ public class OrgContactEmailPage extends BasePage {
                 BasePage.click(By.cssSelector(emailOptInStatusElement(group)));
                 wait(1000);
                 BasePage.selectElementsList(By.cssSelector(emailOptInStatusElementList(group)), "a");
-                wait(500);
+                wait(1000);
                 clickOnListOfElements(email.getEmailOptInStatus());
             }
             if(email.getEmailComments()!=""){

@@ -37,6 +37,30 @@ public class TranscriptPage extends BasePage {
     private static String transcriptOfficialTranscriptElement(String index){
         return String.format("#s2id_person_school_0_person_school_transcript_%s_transcript_official",index);
     }
+    private static String transcriptMajorElement(String index){
+        return String.format("#s2id_person_school_0_person_school_transcript_%s_transcript_major_program",index);
+    }
+    private static String transcriptDegreeElement(String index){
+        return String.format("#s2id_person_school_0_person_school_transcript_%s_transcript_degree",index);
+    }
+    private static String transcriptDegreeLevelElement(String index){
+        return String.format("#s2id_person_school_0_person_school_transcript_%s_transcript_degree_level",index);
+    }
+    private static String transcriptDegreeEarnedElement(String index){
+        return String.format("#s2id_person_school_0_person_school_transcript_%s_transcript_degree_earned",index);
+    }
+    private static String transcriptDegreeDateField(String index){
+        return String.format("#person_school_0_person_school_transcript_%s_transcript_degree_date",index);
+    }
+    private static String transcriptMinorElement(String index){
+        return String.format("#s2id_person_school_0_person_school_transcript_%s_transcript_minor",index);
+    }
+    private static String transcriptConcentrationElement(String index){
+        return String.format("#s2id_person_school_0_person_school_transcript_%s_transcript_concentration",index);
+    }
+    private static String transcriptCreditHoursField(String index){
+        return String.format("#person_school_0_person_school_transcript_%s_transcript_credit_hours",index);
+    }
     private static String transcriptGpaField(String index){
         return String.format("#person_school_0_person_school_transcript_%s_transcript_gpa",index);
     }
@@ -74,6 +98,49 @@ public class TranscriptPage extends BasePage {
         return String.format("#person_school_0_person_school_transcript_%s_transcript_class_rank",index);
     }
 
+    public static void addTranscript(String index){
+        String passMessage = String.format(LogPage.ADD_TRANSCRIPT_PASS,index);
+        String failMessage = String.format(LogPage.ADD_TRANSCRIPT_FAIL,index);
+        try {
+            scrollToElement(By.cssSelector(transcriptPlusSign(index)));
+            scrollTo("-150");
+            click(By.cssSelector(transcriptPlusSign(index)));
+            ExtentReportsSetUp.testingPass(passMessage);
+        } catch (Exception e) {
+            FailureDelegatePage.handlePageException(failMessage);
+        }
+    }
+    public static void verifyNoPostSecondaryFieldsAreVisible(String group){
+        String passMessage = String.format(LogPage.VERIFY_NO_POST_SECONDARY_FIELDS_ARE_VISIBLE_PASS,group);
+        String failMessage = String.format(LogPage.VERIFY_NO_POST_SECONDARY_FIELDS_ARE_VISIBLE_FAIL,group);
+
+        try {
+            scrollToElement(By.cssSelector(transcriptPlusSign(group)));
+            boolean transcriptMajorValidation = !checkIfElementIsVisible(By.cssSelector(transcriptMajorElement(group)));
+            boolean transcriptDegreeValidation = !checkIfElementIsVisible(By.cssSelector(transcriptDegreeElement(group)));
+            boolean transcriptDegreeLevelValidation = !checkIfElementIsVisible(By.cssSelector(transcriptDegreeLevelElement(group)));
+            boolean transcriptDegreeEarnedValidation = !checkIfElementIsVisible(By.cssSelector(transcriptDegreeEarnedElement(group)));
+            boolean transcriptDegreeDateFieldValidation = !checkIfElementIsVisible(By.cssSelector(transcriptDegreeDateField(group)));
+            boolean transcriptMinorValidation = !checkIfElementIsVisible(By.cssSelector(transcriptMinorElement(group)));
+            boolean transcriptConcentrationValidation = !checkIfElementIsVisible(By.cssSelector(transcriptConcentrationElement(group)));
+            boolean transcriptCreditHoursFieldValidation = !checkIfElementIsVisible(By.cssSelector(transcriptCreditHoursField(group)));
+
+            if(transcriptMajorValidation
+            && transcriptDegreeValidation
+            && transcriptDegreeLevelValidation
+            && transcriptDegreeEarnedValidation
+            && transcriptDegreeDateFieldValidation
+            && transcriptMinorValidation
+            && transcriptConcentrationValidation
+            && transcriptCreditHoursFieldValidation){
+                ExtentReportsSetUp.testingPass(passMessage);
+            }else{
+                FailureDelegatePage.handlePageException(failMessage);
+            }
+        } catch (Exception e) {
+            FailureDelegatePage.handlePageException(failMessage);
+        }
+    }
     public static void verifyTranscript(String person,String group){
         int personIndex = Integer.parseInt(person);
         TranscriptBean transcriptBean = new TranscriptBean();
