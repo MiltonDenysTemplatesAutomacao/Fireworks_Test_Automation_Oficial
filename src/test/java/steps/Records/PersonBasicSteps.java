@@ -71,4 +71,8 @@ public class PersonBasicSteps {
     public static void updateCitizenship(String citizenshipType,String countryOfCitizenship,String ssn) {
         PersonBasicPage.updateCitizenshipValues(citizenshipType,countryOfCitizenship,ssn);
     }
+    @When("I verify system generated values {string}, {string}")
+    public static void verifySystemGeneratedValues(String fireworksID,String highScore) {
+        PersonBasicPage.verifySystemGeneratedValues(fireworksID,highScore);
+    }
 }

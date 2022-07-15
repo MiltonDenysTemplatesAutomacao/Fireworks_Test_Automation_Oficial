@@ -75,7 +75,39 @@ public class PersonBasicPage extends BasePage {
     private static final String CITIZENSHIP_COUNTRY_DROPDOWN_LIST = "#select2-results-22";
     private static final String SOCIAL_SECURITY_NUMBER_FIELD = "#social_security_number";
     private static final String PERSON_BASIC_SAVE_CHANGES_BUTTON = "saveChangesBtnPersonBasic";
+    private static final String FIREWORKS_ID = "#person_hashid";
+    private static final String HIGH_SCORE_FIELD = "#high_score";
 
+    public static void verifySystemGeneratedValues(String fireworksID,String highScore){
+        boolean fireworksIDValidation = false;
+        boolean highScoreValidation = false;
+
+        try {
+            if(fireworksID!=""){
+                scrollToElement(By.cssSelector(FIREWORKS_ID));
+                scrollTo("-150");
+                String fireworksIDText = getText(By.cssSelector(FIREWORKS_ID));
+                fireworksIDValidation = fireworksIDText.contains(fireworksID);
+            }else{
+                fireworksIDValidation=true;
+            }
+            if(highScore!=""){
+                scrollToElement(By.cssSelector(HIGH_SCORE_FIELD));
+                scrollTo("-150");
+                String highScoreText = getAtribute(By.cssSelector(HIGH_SCORE_FIELD),"value");
+                highScoreValidation = highScoreText.contains(highScore);
+            }else{
+                highScoreValidation=true;
+            }
+            if(fireworksIDValidation && highScoreValidation){
+                ExtentReportsSetUp.testingPass(LogPage.VERIFY_SYSTEM_GENERATED_VALUES_PASS);
+            }else{
+                FailureDelegatePage.handlePageException(LogPage.VERIFY_SYSTEM_GENERATED_VALUES_FAIL);
+            }
+        } catch (Exception e) {
+            FailureDelegatePage.handlePageException(LogPage.VERIFY_SYSTEM_GENERATED_VALUES_FAIL);
+        }
+    }
     public static void updateCitizenshipValues(String citizenshipType,String countryOfCitizenship,String ssn){
         try {
             waitElementBy(By.cssSelector(CITIZENSHIP_TYPE_DROPDOWN),20);

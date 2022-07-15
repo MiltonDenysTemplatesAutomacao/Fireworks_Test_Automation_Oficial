@@ -470,4 +470,11 @@ public class LogPage {
     public static final String ADD_TRANSCRIPT_FAIL = "Fail while trying to add a transcript group '%s'";
     public static final String UPDATE_SCORE_PASS = "I update score on Education for person group '%s'";
     public static final String UPDATE_SCORE_FAIL = "Fail while trying to update score on Education for person group '%s'";
+    public static final String UPDATE_COMPONENT_SCORE_FAIL = "Fail while trying to update components score on Education for person group '%s'";
+    public static final String VERIFY_SCORE_PASS = "I verify score on Education person group '%s'";
+    public static final String VERIFY_SCORE_FAIL = "Fail while trying to verify score on Education person group '%s'";
+    public static final String VERIFY_SYSTEM_GENERATED_VALUES_PASS = "I verify system generated values";
+    public static final String VERIFY_SYSTEM_GENERATED_VALUES_FAIL = "Fail while trying to verify system generated values";
+    public static final String ADD_SCORE_PASS = "I add score '%s'";
+    public static final String ADD_SCORE_FAIL = "Fail while trying to add score '%s'";
 }
