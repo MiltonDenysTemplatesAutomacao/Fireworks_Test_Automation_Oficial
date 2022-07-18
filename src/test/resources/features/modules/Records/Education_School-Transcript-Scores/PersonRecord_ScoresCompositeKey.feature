@@ -20,3 +20,4 @@ Feature: School Without Scores
     And I update score on Education for person "SAT (R2016)", "1220", "11/11/2012", "Self-Reported", "", "620", "600", "", "", "" group "1"
     And I click on save changes in Education for person
     And I verify validation message "Score Type must be different."
+
