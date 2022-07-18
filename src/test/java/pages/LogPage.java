@@ -479,4 +479,6 @@ public class LogPage {
     public static final String VERIFY_SYSTEM_GENERATED_VALUES_FAIL = "Fail while trying to verify system generated values";
     public static final String ADD_SCORE_PASS = "I add score '%s'";
     public static final String ADD_SCORE_FAIL = "Fail while trying to add score '%s'";
+    public static final String REFRESH_PAGE_PASS = "I refresh the page";
+    public static final String REFRESH_PAGE_FAIL = "Fail while trying refresh the page";
 }

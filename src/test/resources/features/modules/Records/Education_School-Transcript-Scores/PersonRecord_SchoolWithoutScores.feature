@@ -18,7 +18,6 @@ Feature: School Without Scores
       |FirstName  |LastName     |EmailAddress           |EmailType|EmailOptInMethod |Role1   |StudentType|StudentStatusCategory |StudentStatus  |StudentStatusDate|EntryTerm|TranscriptType |TranscriptDate|GraduationDate|DiplomaReceived|OfficialTranscript|GPA       |GPARecalculated  |Scale|TranscriptComments                         |SelfReported|ClassRank|ClassSize|GED|Weighted|Percentile|RankUnavailable|RankWeighted|
       |Gabriel    |Batistuta    |gbatistuta@futbol.net  |Personal |Inquiry          |Student |Freshman   |Accepted              |Accepted       |01/16/2016       |Fall 2017|Final          |11/11/2016    |06/01/2015    |No             |Yes               |10000.00  |4.0              |2    |This is a High School Transcript comment1  |No          |3        |750      |No |Yes     |98.97     |No             |Yes         |
       |Gabriel    |Batistuta    |gbatistuta@futbol.net  |Personal |Inquiry          |Student |Freshman   |Accepted              |Accepted       |01/16/2016       |Fall 2017|Final          |11/11/2016    |06/01/2015    |No             |Yes               |9999.999  |00               |2    |This is a High School Transcript comment1  |No          |3        |750      |No |Yes     |98.97     |No             |Yes         |
-
     Then I validate if "Person has been created." message is correct
     #to add a high school and transcript
     And I navigate to people on records

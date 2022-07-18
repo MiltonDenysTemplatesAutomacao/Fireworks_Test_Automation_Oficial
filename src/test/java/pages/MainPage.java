@@ -22,6 +22,4 @@ public class MainPage extends BasePage{
             FailureDelegatePage.handlePageException(errorMessage);
         }
     }
-
-
 }

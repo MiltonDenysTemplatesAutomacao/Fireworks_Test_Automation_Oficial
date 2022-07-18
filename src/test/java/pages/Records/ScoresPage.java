@@ -14,8 +14,8 @@ public class ScoresPage extends BasePage {
     private static String scorePlusSign(String index){
         return String.format("#person_score_%s_add",index);
     }
-    private static String scoreComponentPlusSign(String index){
-        return String.format("#person_score_0_person_score_component_%s_add",index);
+    private static String scoreComponentPlusSign(String group,String index){
+        return String.format("#person_score_%s_person_score_component_%s_add",group,index);
     }
     private static String scoreTypeElement(String index){
         return String.format("#s2id_person_score_%s_score_type",index);
@@ -35,11 +35,11 @@ public class ScoresPage extends BasePage {
     private static String scoreCommentsField(String index){
         return String.format("#person_score_%s_score_comments",index);
     }
-    private static String componentElement(String index){
-        return String.format("#s2id_person_score_0_person_score_component_%s_score_component",index);
+    private static String componentElement(String group,String index){
+        return String.format("#s2id_person_score_%s_person_score_component_%s_score_component",group,index);
     }
-    private static String componentScoreField(String index){
-        return String.format("#person_score_0_person_score_component_%s_score_component_score",index);
+    private static String componentScoreField(String group,String index){
+        return String.format("#person_score_%s_person_score_component_%s_score_component_score",group,index);
     }
 
     public static void addScore(String group){
@@ -122,87 +122,71 @@ public class ScoresPage extends BasePage {
                 commentsValidation=true;
             }
             if(scoreBean.getComponent1()!=""){
-                scrollToElement(By.cssSelector(scoreComponentPlusSign(group)));
-                String component1Text = getText(By.cssSelector(componentElement(group)));
+                scrollToElement(By.cssSelector(scoreComponentPlusSign(group,"0")));
+                String component1Text = getText(By.cssSelector(componentElement(group,"0")));
                 component1Validation = component1Text.contains(scoreBean.getComponent1());
             }else{
                 component1Validation=true;
             }
             if(scoreBean.getComponent1Score()!=""){
-                scrollToElement(By.cssSelector(scoreComponentPlusSign(group)));
-                String componentScore1Text = getAtribute(By.cssSelector(componentScoreField(group)),"value");
+                scrollToElement(By.cssSelector(scoreComponentPlusSign(group,"0")));
+                String componentScore1Text = getAtribute(By.cssSelector(componentScoreField(group,"0")),"value");
                 componentScore1Validation = componentScore1Text.contains(scoreBean.getComponent1Score());
             }else{
                 componentScore1Validation=true;
             }
             if(scoreBean.getComponent2()!=""){
-                groupPlusOne = Integer.parseInt(group) + Integer.parseInt("1");
-                groupSum = String.valueOf(groupPlusOne);
-                scrollToElement(By.cssSelector(scoreComponentPlusSign(groupSum)));
-                String component2Text = getText(By.cssSelector(componentElement(groupSum)));
+                scrollToElement(By.cssSelector(scoreComponentPlusSign(group,"1")));
+                String component2Text = getText(By.cssSelector(componentElement(group,"1")));
                 component2Validation = component2Text.contains(scoreBean.getComponent2());
             }else{
                 component2Validation=true;
             }
             if(scoreBean.getComponent2Score()!=""){
-                groupPlusOne = Integer.parseInt(group) + Integer.parseInt("1");
-                groupSum = String.valueOf(groupPlusOne);
-                scrollToElement(By.cssSelector(scoreComponentPlusSign(groupSum)));
-                String componentScore2Text = getAtribute(By.cssSelector(componentScoreField(groupSum)),"value");
+                scrollToElement(By.cssSelector(scoreComponentPlusSign(group,"1")));
+                String componentScore2Text = getAtribute(By.cssSelector(componentScoreField(group,"1")),"value");
                 componentScore2Validation = componentScore2Text.contains(scoreBean.getComponent2Score());
             }else{
                 componentScore2Validation=true;
             }
             if(scoreBean.getComponent3()!=""){
-                groupPlusOne = Integer.parseInt(group) + Integer.parseInt("2");
-                groupSum = String.valueOf(groupPlusOne);
-                scrollToElement(By.cssSelector(scoreComponentPlusSign(groupSum)));
-                String component3Text = getText(By.cssSelector(componentElement(groupSum)));
+                scrollToElement(By.cssSelector(scoreComponentPlusSign(group,"2")));
+                String component3Text = getText(By.cssSelector(componentElement(group,"2")));
                 component3Validation = component3Text.contains(scoreBean.getComponent3());
             }else{
                 component3Validation=true;
             }
             if(scoreBean.getComponent3Score()!=""){
-                groupPlusOne = Integer.parseInt(group) + Integer.parseInt("2");
-                groupSum = String.valueOf(groupPlusOne);
-                scrollToElement(By.cssSelector(scoreComponentPlusSign(groupSum)));
-                String componentScore3Text = getAtribute(By.cssSelector(componentScoreField(groupSum)),"value");
+                scrollToElement(By.cssSelector(scoreComponentPlusSign(group,"2")));
+                String componentScore3Text = getAtribute(By.cssSelector(componentScoreField(group,"2")),"value");
                 componentScore3Validation = componentScore3Text.contains(scoreBean.getComponent3Score());
             }else{
                 componentScore3Validation=true;
             }
             if(scoreBean.getComponent4()!=""){
-                groupPlusOne = Integer.parseInt(group) + Integer.parseInt("3");
-                groupSum = String.valueOf(groupPlusOne);
-                scrollToElement(By.cssSelector(scoreComponentPlusSign(groupSum)));
-                String component4Text = getText(By.cssSelector(componentElement(groupSum)));
+                scrollToElement(By.cssSelector(scoreComponentPlusSign(group,"3")));
+                String component4Text = getText(By.cssSelector(componentElement(group,"3")));
                 component4Validation = component4Text.contains(scoreBean.getComponent4());
             }else{
                 component4Validation=true;
             }
             if(scoreBean.getComponent4Score()!=""){
-                groupPlusOne = Integer.parseInt(group) + Integer.parseInt("3");
-                groupSum = String.valueOf(groupPlusOne);
-                scrollToElement(By.cssSelector(scoreComponentPlusSign(groupSum)));
-                String componentScore4Text = getAtribute(By.cssSelector(componentScoreField(groupSum)),"value");
+                scrollToElement(By.cssSelector(scoreComponentPlusSign(group,"3")));
+                String componentScore4Text = getAtribute(By.cssSelector(componentScoreField(group,"3")),"value");
                 componentScore4Validation = componentScore4Text.contains(scoreBean.getComponent4Score());
             }else{
                 componentScore4Validation=true;
             }
             if(scoreBean.getComponent5()!=""){
-                groupPlusOne = Integer.parseInt(group) + Integer.parseInt("4");
-                groupSum = String.valueOf(groupPlusOne);
-                scrollToElement(By.cssSelector(scoreComponentPlusSign(groupSum)));
-                String component5Text = getText(By.cssSelector(componentElement(groupSum)));
+                scrollToElement(By.cssSelector(scoreComponentPlusSign(group,"4")));
+                String component5Text = getText(By.cssSelector(componentElement(group,"4")));
                 component5Validation = component5Text.contains(scoreBean.getComponent5());
             }else{
                 component5Validation=true;
             }
             if(scoreBean.getComponent5Score()!=""){
-                groupPlusOne = Integer.parseInt(group) + Integer.parseInt("4");
-                groupSum = String.valueOf(groupPlusOne);
-                scrollToElement(By.cssSelector(scoreComponentPlusSign(groupSum)));
-                String componentScore5Text = getAtribute(By.cssSelector(componentScoreField(groupSum)),"value");
+                scrollToElement(By.cssSelector(scoreComponentPlusSign(group,"4")));
+                String componentScore5Text = getAtribute(By.cssSelector(componentScoreField(group,"4")),"value");
                 componentScore5Validation = componentScore5Text.contains(scoreBean.getComponent5Score());
             }else{
                 componentScore5Validation=true;
@@ -235,52 +219,37 @@ public class ScoresPage extends BasePage {
     public static void updateComponentScore(ScoreBean scoreBean,String group){
         int updateComponentScoreDelay=20;
         String failMessage = String.format(LogPage.UPDATE_COMPONENT_SCORE_FAIL,group);
-        int groupPlusOne;
-        String groupSum;
 
         try {
             if(scoreBean.getComponent1Score()!=""){
-                waitElementBy(By.cssSelector(componentScoreField(group)),updateComponentScoreDelay);
-                scrollToElement(By.cssSelector(componentScoreField(group)));
+                waitElementBy(By.cssSelector(componentScoreField(group,"0")),updateComponentScoreDelay);
+                scrollToElement(By.cssSelector(componentScoreField(group,"0")));
                 scrollTo("-150");
-                write(By.cssSelector(componentScoreField(group)),scoreBean.getComponent1Score());
+                write(By.cssSelector(componentScoreField(group,"0")),scoreBean.getComponent1Score());
             }
             if(scoreBean.getComponent2Score()!=""){
-                groupPlusOne =  Integer.parseInt(group) + Integer.parseInt("1");
-                groupSum = String.valueOf(groupPlusOne);
-                scrollToElement(By.cssSelector(componentScoreField(groupSum)));
-                scrollTo("-150");
-                waitElementBy(By.cssSelector(componentScoreField(groupSum)),updateComponentScoreDelay);
-                write(By.cssSelector(componentScoreField(groupSum)),scoreBean.getComponent2Score());
+                scrollToElement(By.cssSelector(scoreComponentPlusSign(group,"1")));
+                waitElementBy(By.cssSelector(componentScoreField(group,"1")),updateComponentScoreDelay);
+                write(By.cssSelector(componentScoreField(group,"1")),scoreBean.getComponent2Score());
             }
             if(scoreBean.getComponent3Score()!=""){
-                groupPlusOne =  Integer.parseInt(group) + Integer.parseInt("2");
-                groupSum = String.valueOf(groupPlusOne);
-                scrollToElement(By.cssSelector(componentScoreField(groupSum)));
-                scrollTo("-150");
-                waitElementBy(By.cssSelector(componentScoreField(groupSum)),updateComponentScoreDelay);
-                write(By.cssSelector(componentScoreField(groupSum)),scoreBean.getComponent3Score());
+                scrollToElement(By.cssSelector(scoreComponentPlusSign(group,"2")));
+                waitElementBy(By.cssSelector(componentScoreField(group,"2")),updateComponentScoreDelay);
+                write(By.cssSelector(componentScoreField(group,"2")),scoreBean.getComponent3Score());
             }
             if(scoreBean.getComponent4Score()!=""){
-                groupPlusOne =  Integer.parseInt(group) + Integer.parseInt("3");
-                groupSum = String.valueOf(groupPlusOne);
-                scrollToElement(By.cssSelector(componentScoreField(groupSum)));
-                scrollTo("-150");
-                waitElementBy(By.cssSelector(componentScoreField(groupSum)),updateComponentScoreDelay);
-                write(By.cssSelector(componentScoreField(groupSum)),scoreBean.getComponent4Score());
+                scrollToElement(By.cssSelector(scoreComponentPlusSign(group,"3")));
+                waitElementBy(By.cssSelector(componentScoreField(group,"3")),updateComponentScoreDelay);
+                write(By.cssSelector(componentScoreField(group,"3")),scoreBean.getComponent4Score());
             }
             if(scoreBean.getComponent5Score()!=""){
-                groupPlusOne =  Integer.parseInt(group) + Integer.parseInt("4");
-                groupSum = String.valueOf(groupPlusOne);
-                scrollToElement(By.cssSelector(componentScoreField(groupSum)));
-                scrollTo("-150");
-                waitElementBy(By.cssSelector(componentScoreField(groupSum)),updateComponentScoreDelay);
-                write(By.cssSelector(componentScoreField(groupSum)),scoreBean.getComponent4Score());
+                scrollToElement(By.cssSelector(scoreComponentPlusSign(group,"4")));
+                waitElementBy(By.cssSelector(componentScoreField(group,"4")),updateComponentScoreDelay);
+                write(By.cssSelector(componentScoreField(group,"4")),scoreBean.getComponent4Score());
             }
         } catch (Exception e) {
             FailureDelegatePage.handlePageException(failMessage);
         }
-
     }
     public static void updateScore(ScoreBean scoreBean,String group){
         int updateScoreDelay=20;

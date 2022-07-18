@@ -1,6 +1,7 @@
 package pages;
 
 import config.DriverBase;
+import config.extent_reports.ExtentReportsSetUp;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
@@ -30,6 +31,14 @@ public class BasePage {
 //        DriverBase.getDriver().get(dotenv.get("APP_URL"));
 //
 //    }
+    public static void refreshPage(){
+        try {
+            DriverBase.getDriver().navigate().refresh();
+            ExtentReportsSetUp.testingPass(LogPage.REFRESH_PAGE_PASS);
+        } catch (Exception e) {
+            FailureDelegatePage.handlePageException(LogPage.REFRESH_PAGE_FAIL);
+        }
+    }
     /*
      * Method to check if an element is visible
      */
