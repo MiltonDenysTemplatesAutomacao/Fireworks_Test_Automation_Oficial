@@ -54,4 +54,8 @@ public class MessageSteps {
     public static void verifyValidationMessage(String message) {
         MessagePage.verifyValidationMessage(message);
     }
+    @When("I verify if I do not see validation message {string}")
+    public static void verifyDoNotSeeValidationMessage(String message) {
+        MessagePage.verifyDoNotSeeValidationMessage(message);
+    }
 }

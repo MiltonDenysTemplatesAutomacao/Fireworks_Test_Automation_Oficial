@@ -52,14 +52,20 @@ Feature: School Without Scores
     When I create a person
       |FirstName   |LastName   |EmailAddress            |EmailType|EmailOptInMethod |Role1   |StudentType|StudentStatusCategory |StudentStatus  |StudentStatusDate|EntryTerm|TranscriptType |TranscriptDate|OfficialTranscript |
       |Danny       |Devito     |dannydevito@actors.net  |Personal |Inquiry          |Student |Freshman   |Accepted              |Accepted       |01/15/2016       |Fall 2017|7th Semester   |11/11/2016    |Yes                |
+      |Danny       |Devito     |dannydevito@actors.net  |Personal |Inquiry          |Student |Freshman   |Accepted              |Accepted       |01/15/2016       |Fall 2017|7th Semester   |11/11/2016    |Yes                |
     #Then I validate if "Person has been created." message is correct
     And I navigate to people on records
     And I open a people record by "Danny"
     And I validate if "Danny"summary opened properly
     And I navigate to Education
+    And I update school in education for person "Barrows-Jones", "", "", "", "", "", "" group "0"
     When I update transcript person "0" group "0"
+    And I add a transcript "0"
+    When I update transcript person "0" group "1"
     And I click on save changes in Education for person
     And I verify validation message "School: Transcript 2: Transcript Type must be different."
-#    And I verify validation message "School: Transcript 2: Date must be different."
-#    And I verify validation message "School: Transcript 2: Official Transcript must be different."
-
+    And I verify validation message "School: Transcript 2: Date must be different."
+    And I verify validation message "School: Transcript 2: Official Transcript must be different."
+    And I verify if I do not see validation message "School: Transcript 2: Major or Program of Study must be different."
+    And I verify if I do not see validation message "School: Transcript 2: Degree must be different."
+    And I click on clear changes

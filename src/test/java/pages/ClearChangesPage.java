@@ -13,7 +13,8 @@ public class ClearChangesPage extends BasePage{
 
     public static void clearChanges(){
         try {
-            scrollToTheBottom();
+            scrollToElement(By.cssSelector(CLEAR_CHANGES_BUTTON));
+            scrollTo("-150");
             waitUntilElementToBeSelected(By.cssSelector(CLEAR_CHANGES_BUTTON),20);
             click(By.cssSelector(CLEAR_CHANGES_BUTTON));
             waitUntilElementToBeSelected(By.cssSelector(MODAL_CLEAR_CHANGES_CONFIRMATION_LABEL),20);

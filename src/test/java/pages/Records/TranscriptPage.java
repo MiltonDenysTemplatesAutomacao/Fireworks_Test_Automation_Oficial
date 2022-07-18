@@ -102,8 +102,10 @@ public class TranscriptPage extends BasePage {
         String passMessage = String.format(LogPage.ADD_TRANSCRIPT_PASS,index);
         String failMessage = String.format(LogPage.ADD_TRANSCRIPT_FAIL,index);
         try {
+            waitUntilElementToBeSelected(By.cssSelector(transcriptPlusSign(index)),20);
             scrollToElement(By.cssSelector(transcriptPlusSign(index)));
             scrollTo("-150");
+            wait(1000);
             click(By.cssSelector(transcriptPlusSign(index)));
             ExtentReportsSetUp.testingPass(passMessage);
         } catch (Exception e) {

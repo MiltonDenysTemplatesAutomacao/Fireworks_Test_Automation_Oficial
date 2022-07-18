@@ -418,6 +418,8 @@ public class LogPage {
     public static final String ADD_ADDRESS_FAIL = "Fail while trying to add address";
     public static final String VERIFY_VALIDATION_MESSAGE_PASS = "I verify validation message '%s'";
     public static final String VERIFY_VALIDATION_MESSAGE_FAIL = "Fail while trying to verify validation message '%s'";
+    public static final String VERIFY_DO_NOT_SEE_VALIDATION_MESSAGE_PASS = "I verify I do not see validation message '%s'";
+    public static final String VERIFY_DO_NOT_SEE_VALIDATION_MESSAGE_FAIL = "Fail while trying to verify I do not see validation message '%s'";
     public static final String VERIFY_READ_ONLY_EMAIL_PASS = " verify read only email";
     public static final String VERIFY_READ_ONLY_EMAIL_FAIL = "Fail while trying to verify read only email";
     public static final String SELECT_QUICK_ADD_EMAIL_OPT_IN_PASS = "I add an opt-in method '%s'";
