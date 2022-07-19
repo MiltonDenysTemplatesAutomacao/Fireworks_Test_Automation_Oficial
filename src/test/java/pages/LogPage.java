@@ -481,4 +481,8 @@ public class LogPage {
     public static final String ADD_SCORE_FAIL = "Fail while trying to add score '%s'";
     public static final String REFRESH_PAGE_PASS = "I refresh the page";
     public static final String REFRESH_PAGE_FAIL = "Fail while trying refresh the page";
+    public static final String NAVIGATE_ADMIN_PANEL_PAGE_PASS = "I navigate to Admin Panel Page";
+    public static final String NAVIGATE_ADMIN_PANEL_PAGE_FAIL = "Fail while trying to navigate to Admin Panel Page";
+    public static final String UPDATE_REQUIRED_SCHOOL_NAME_PASS = "I update required school name";
+    public static final String UPDATE_REQUIRED_SCHOOL_NAME_FAIL = "Fail while trying to update required school name";
 }

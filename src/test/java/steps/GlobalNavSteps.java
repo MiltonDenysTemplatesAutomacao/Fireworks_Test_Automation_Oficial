@@ -44,4 +44,8 @@ public class GlobalNavSteps {
     public static void navigateEmailManagerPage() {
         GlobalNavPage.navigateEmailManagerPage();
     }
+    @When("I navigate to Admin Panel Page")
+    public static void navigateAdminPanelPage() {
+        GlobalNavPage.navigateAdminPanelPage();
+    }
 }

@@ -106,7 +106,21 @@ public class GlobalNavPage extends BasePage {
     public static final String LOGOUT_BUTTON = "logout_button";
     public static final String FOOTER_TOOLS_SMART_SEARCH_MENU_ITEM = "#global_nav_search_manager";
     public static final String FOOTER_COMMUNICATIONS_EMAIL_MENU_ITEM = "#global_nav_direct_mail";
+    public static final String FOOTER_SETTINGS_MENU = "#global_nav_settings_toggle";
+    public static final String FOOTER_SETTINGS_ADMIN_PANEL_MENU_ITEM = "#global_nav_crm_admin";
 
+    public static void navigateAdminPanelPage(){
+        try {
+            waitUntilElementToBeSelected(By.cssSelector(FOOTER_SETTINGS_MENU),20);
+            click(By.cssSelector(FOOTER_SETTINGS_MENU));
+            wait(2000);
+            click(By.cssSelector(FOOTER_SETTINGS_ADMIN_PANEL_MENU_ITEM));
+            ExtentReportsSetUp.testingPass(LogPage.NAVIGATE_ADMIN_PANEL_PAGE_PASS);
+        } catch (Exception e) {
+            FailureDelegatePage.handlePageException(LogPage.NAVIGATE_ADMIN_PANEL_PAGE_FAIL);
+        }
+
+    }
     public static void navigateEmailManagerPage(){
         try {
             waitUntilElementToBeSelected(By.cssSelector(FOOTER_COMMUNICATIONS_MENU),20);

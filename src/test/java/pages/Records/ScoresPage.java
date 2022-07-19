@@ -59,8 +59,6 @@ public class ScoresPage extends BasePage {
 
         String passMessage = String.format(LogPage.VERIFY_SCORE_PASS,group);
         String failMessage = String.format(LogPage.VERIFY_SCORE_FAIL,group);
-        int groupPlusOne;
-        String groupSum;
         boolean scoreTypeValidation = false;
         boolean scoreValidation = false;
         boolean scoreDateValidation = false;
@@ -121,6 +119,7 @@ public class ScoresPage extends BasePage {
             }else{
                 commentsValidation=true;
             }
+            wait(500);
             if(scoreBean.getComponent1()!=""){
                 scrollToElement(By.cssSelector(scoreComponentPlusSign(group,"0")));
                 String component1Text = getText(By.cssSelector(componentElement(group,"0")));
@@ -219,7 +218,6 @@ public class ScoresPage extends BasePage {
     public static void updateComponentScore(ScoreBean scoreBean,String group){
         int updateComponentScoreDelay=20;
         String failMessage = String.format(LogPage.UPDATE_COMPONENT_SCORE_FAIL,group);
-
         try {
             if(scoreBean.getComponent1Score()!=""){
                 waitElementBy(By.cssSelector(componentScoreField(group,"0")),updateComponentScoreDelay);
