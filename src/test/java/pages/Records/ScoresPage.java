@@ -119,8 +119,8 @@ public class ScoresPage extends BasePage {
             }else{
                 commentsValidation=true;
             }
-            wait(1000);
             if(scoreBean.getComponent1()!=""){
+                wait(1000);
                 scrollToElement(By.cssSelector(scoreComponentPlusSign(group,"0")));
                 waitElementBy(By.cssSelector(componentElement(group,"0")),20);
                 String component1Text = getText(By.cssSelector(componentElement(group,"0")));
@@ -136,8 +136,8 @@ public class ScoresPage extends BasePage {
             }else{
                 componentScore1Validation=true;
             }
-            wait(1000);
             if(scoreBean.getComponent2()!=""){
+                wait(1000);
                 scrollToElement(By.cssSelector(scoreComponentPlusSign(group,"1")));
                 waitElementBy(By.cssSelector(componentElement(group,"1")),20);
                 String component2Text = getText(By.cssSelector(componentElement(group,"1")));
@@ -153,8 +153,8 @@ public class ScoresPage extends BasePage {
             }else{
                 componentScore2Validation=true;
             }
-            wait(1000);
             if(scoreBean.getComponent3()!=""){
+                wait(1000);
                 scrollToElement(By.cssSelector(scoreComponentPlusSign(group,"2")));
                 String component3Text = getText(By.cssSelector(componentElement(group,"2")));
                 component3Validation = component3Text.contains(scoreBean.getComponent3());
@@ -168,8 +168,8 @@ public class ScoresPage extends BasePage {
             }else{
                 componentScore3Validation=true;
             }
-            wait(1000);
             if(scoreBean.getComponent4()!=""){
+                wait(1000);
                 scrollToElement(By.cssSelector(scoreComponentPlusSign(group,"3")));
                 String component4Text = getText(By.cssSelector(componentElement(group,"3")));
                 component4Validation = component4Text.contains(scoreBean.getComponent4());
@@ -183,8 +183,8 @@ public class ScoresPage extends BasePage {
             }else{
                 componentScore4Validation=true;
             }
-            wait(1000);
             if(scoreBean.getComponent5()!=""){
+                wait(1000);
                 scrollToElement(By.cssSelector(scoreComponentPlusSign(group,"4")));
                 String component5Text = getText(By.cssSelector(componentElement(group,"4")));
                 component5Validation = component5Text.contains(scoreBean.getComponent5());
@@ -214,6 +214,163 @@ public class ScoresPage extends BasePage {
             && componentScore3Validation
             && componentScore4Validation
             && componentScore5Validation){
+                ExtentReportsSetUp.testingPass(passMessage);
+            }else{
+                FailureDelegatePage.handlePageException(failMessage);
+            }
+        } catch (Exception e) {
+            FailureDelegatePage.handlePageException(failMessage);
+        }
+    }
+    public static void verifyComponents(ScoreBean scoreBean,String group){
+
+        String passMessage = String.format(LogPage.VERIFY_COMPONENTS_PASS,group);
+        String failMessage = String.format(LogPage.VERIFY_COMPONENTS_FAIL,group);
+        boolean component1Validation = false;
+        boolean component2Validation = false;
+        boolean component3Validation = false;
+        boolean component4Validation = false;
+        boolean component5Validation = false;
+        boolean component6Validation = false;
+        boolean component7Validation = false;
+        boolean component8Validation = false;
+        boolean component9Validation = false;
+        boolean component10Validation = false;
+        boolean component11Validation = false;
+        boolean component12Validation = false;
+        boolean component13Validation = false;
+        boolean component14Validation = false;
+
+        try {
+            if(scoreBean.getComponent1()!=""){
+                wait(1000);
+                scrollToElement(By.cssSelector(scoreComponentPlusSign(group,"0")));
+                waitElementBy(By.cssSelector(componentElement(group,"0")),20);
+                String component1Text = getText(By.cssSelector(componentElement(group,"0")));
+                component1Validation = component1Text.contains(scoreBean.getComponent1());
+            }else{
+                component1Validation=true;
+            }
+            if(scoreBean.getComponent2()!=""){
+                wait(1000);
+                scrollToElement(By.cssSelector(scoreComponentPlusSign(group,"1")));
+                waitElementBy(By.cssSelector(componentElement(group,"1")),20);
+                String component2Text = getText(By.cssSelector(componentElement(group,"1")));
+                component2Validation = component2Text.contains(scoreBean.getComponent2());
+            }else{
+                component2Validation=true;
+            }
+            if(scoreBean.getComponent3()!=""){
+                wait(1000);
+                scrollToElement(By.cssSelector(scoreComponentPlusSign(group,"2")));
+                String component3Text = getText(By.cssSelector(componentElement(group,"2")));
+                component3Validation = component3Text.contains(scoreBean.getComponent3());
+            }else{
+                component3Validation=true;
+            }
+            if(scoreBean.getComponent4()!=""){
+                wait(1000);
+                scrollToElement(By.cssSelector(scoreComponentPlusSign(group,"3")));
+                String component4Text = getText(By.cssSelector(componentElement(group,"3")));
+                component4Validation = component4Text.contains(scoreBean.getComponent4());
+            }else{
+                component4Validation=true;
+            }
+            if(scoreBean.getComponent5()!=""){
+                wait(1000);
+                scrollToElement(By.cssSelector(scoreComponentPlusSign(group,"4")));
+                String component5Text = getText(By.cssSelector(componentElement(group,"4")));
+                component5Validation = component5Text.contains(scoreBean.getComponent5());
+            }else{
+                component5Validation=true;
+            }
+            if(scoreBean.getComponent6()!=""){
+                wait(1000);
+                scrollToElement(By.cssSelector(scoreComponentPlusSign(group,"5")));
+                String component6Text = getText(By.cssSelector(componentElement(group,"5")));
+                component6Validation = component6Text.contains(scoreBean.getComponent6());
+            }else{
+                component6Validation=true;
+            }
+            if(scoreBean.getComponent7()!=""){
+                wait(1000);
+                scrollToElement(By.cssSelector(scoreComponentPlusSign(group,"6")));
+                String component7Text = getText(By.cssSelector(componentElement(group,"6")));
+                component7Validation = component7Text.contains(scoreBean.getComponent7());
+            }else{
+                component7Validation=true;
+            }
+            if(scoreBean.getComponent8()!=""){
+                wait(1000);
+                scrollToElement(By.cssSelector(scoreComponentPlusSign(group,"7")));
+                String component8Text = getText(By.cssSelector(componentElement(group,"7")));
+                component8Validation = component8Text.contains(scoreBean.getComponent8());
+            }else{
+                component8Validation=true;
+            }
+            if(scoreBean.getComponent9()!=""){
+                wait(1000);
+                scrollToElement(By.cssSelector(scoreComponentPlusSign(group,"8")));
+                String component9Text = getText(By.cssSelector(componentElement(group,"8")));
+                component9Validation = component9Text.contains(scoreBean.getComponent9());
+            }else{
+                component9Validation=true;
+            }
+            if(scoreBean.getComponent10()!=""){
+                wait(1000);
+                scrollToElement(By.cssSelector(scoreComponentPlusSign(group,"9")));
+                String component10Text = getText(By.cssSelector(componentElement(group,"9")));
+                component10Validation = component10Text.contains(scoreBean.getComponent10());
+            }else{
+                component10Validation=true;
+            }
+            if(scoreBean.getComponent11()!=""){
+                wait(1000);
+                scrollToElement(By.cssSelector(scoreComponentPlusSign(group,"10")));
+                String component11Text = getText(By.cssSelector(componentElement(group,"10")));
+                component11Validation = component11Text.contains(scoreBean.getComponent11());
+            }else{
+                component11Validation=true;
+            }
+            if(scoreBean.getComponent12()!=""){
+                wait(1000);
+                scrollToElement(By.cssSelector(scoreComponentPlusSign(group,"11")));
+                String component12Text = getText(By.cssSelector(componentElement(group,"11")));
+                component12Validation = component12Text.contains(scoreBean.getComponent12());
+            }else{
+                component12Validation=true;
+            }
+            if(scoreBean.getComponent13()!=""){
+                wait(1000);
+                scrollToElement(By.cssSelector(scoreComponentPlusSign(group,"12")));
+                String component13Text = getText(By.cssSelector(componentElement(group,"12")));
+                component13Validation = component13Text.contains(scoreBean.getComponent13());
+            }else{
+                component13Validation=true;
+            }
+            if(scoreBean.getComponent14()!=""){
+                wait(1000);
+                scrollToElement(By.cssSelector(scoreComponentPlusSign(group,"13")));
+                String component14Text = getText(By.cssSelector(componentElement(group,"13")));
+                component14Validation = component14Text.contains(scoreBean.getComponent14());
+            }else{
+                component14Validation=true;
+            }
+
+            if(component1Validation
+                    && component2Validation
+                    && component3Validation
+                    && component4Validation
+                    && component5Validation
+                    && component6Validation
+                    && component7Validation
+                    && component8Validation
+                    && component9Validation
+                    && component10Validation
+                    && component11Validation
+                    && component12Validation
+                    && component13Validation
+                    && component14Validation){
                 ExtentReportsSetUp.testingPass(passMessage);
             }else{
                 FailureDelegatePage.handlePageException(failMessage);

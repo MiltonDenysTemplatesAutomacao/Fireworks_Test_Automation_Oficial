@@ -47,4 +47,23 @@ public class ScoresSteps {
         scoreBean.setComponent5Score(componentScore5);
         ScoresPage.verifyScore(scoreBean,group);
     }
+    @And("I verify components on Education for person {string}, {string}, {string}, {string}, {string}, {string}, {string}, {string}, {string}, {string}, {string}, {string}, {string}, {string}, group {string}")
+    public static void verifyComponents(String component1, String component2, String component3, String component4, String component5, String component6,String component7,String component8,String component9,String component10,String component11,String component12,String component13,String component14, String group) {
+        ScoreBean scoreBean = new ScoreBean();
+        scoreBean.setComponent1(component1);
+        scoreBean.setComponent2(component2);
+        scoreBean.setComponent3(component3);
+        scoreBean.setComponent4(component4);
+        scoreBean.setComponent5(component5);
+        scoreBean.setComponent6(component6);
+        scoreBean.setComponent7(component7);
+        scoreBean.setComponent8(component8);
+        scoreBean.setComponent9(component9);
+        scoreBean.setComponent10(component10);
+        scoreBean.setComponent11(component11);
+        scoreBean.setComponent12(component12);
+        scoreBean.setComponent13(component13);
+        scoreBean.setComponent14(component14);
+        ScoresPage.verifyComponents(scoreBean,group);
+    }
 }
