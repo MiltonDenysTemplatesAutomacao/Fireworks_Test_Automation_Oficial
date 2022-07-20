@@ -485,4 +485,10 @@ public class LogPage {
     public static final String NAVIGATE_ADMIN_PANEL_PAGE_FAIL = "Fail while trying to navigate to Admin Panel Page";
     public static final String UPDATE_REQUIRED_SCHOOL_NAME_PASS = "I update required school name";
     public static final String UPDATE_REQUIRED_SCHOOL_NAME_FAIL = "Fail while trying to update required school name";
+    public static final String UPDATE_HIGH_SCORE_DISPLAY_PASS = "I update High Score Display";
+    public static final String UPDATE_HIGH_SCORE_DISPLAY_FAIL = "Fail while trying to update High Score Display";
+    public static final String UPDATE_SAT_R2016_HIGH_SCORE_PASS = "I update SAT(R2016)High Score";
+    public static final String UPDATE_SAT_R2016_HIGH_SCORE_FAIL = "Fail while trying to update SAT(R2016)High Score";
+    public static final String SAVE_CHANGES_BASIC_ADMIN_PANEL_PASS = "I click on save changes for Admin Panel on basic tab";
+    public static final String SAVE_CHANGES_BASIC_ADMIN_PANEL_FAIL = "Fail while trying to click on save changes for Admin Panel on basic tab";
 }

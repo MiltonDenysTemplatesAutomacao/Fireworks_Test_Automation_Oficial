@@ -119,9 +119,10 @@ public class ScoresPage extends BasePage {
             }else{
                 commentsValidation=true;
             }
-            wait(500);
+            wait(1000);
             if(scoreBean.getComponent1()!=""){
                 scrollToElement(By.cssSelector(scoreComponentPlusSign(group,"0")));
+                waitElementBy(By.cssSelector(componentElement(group,"0")),20);
                 String component1Text = getText(By.cssSelector(componentElement(group,"0")));
                 component1Validation = component1Text.contains(scoreBean.getComponent1());
             }else{
@@ -129,13 +130,16 @@ public class ScoresPage extends BasePage {
             }
             if(scoreBean.getComponent1Score()!=""){
                 scrollToElement(By.cssSelector(scoreComponentPlusSign(group,"0")));
+                waitElementBy(By.cssSelector(componentElement(group,"0")),20);
                 String componentScore1Text = getAtribute(By.cssSelector(componentScoreField(group,"0")),"value");
                 componentScore1Validation = componentScore1Text.contains(scoreBean.getComponent1Score());
             }else{
                 componentScore1Validation=true;
             }
+            wait(1000);
             if(scoreBean.getComponent2()!=""){
                 scrollToElement(By.cssSelector(scoreComponentPlusSign(group,"1")));
+                waitElementBy(By.cssSelector(componentElement(group,"1")),20);
                 String component2Text = getText(By.cssSelector(componentElement(group,"1")));
                 component2Validation = component2Text.contains(scoreBean.getComponent2());
             }else{
@@ -143,11 +147,13 @@ public class ScoresPage extends BasePage {
             }
             if(scoreBean.getComponent2Score()!=""){
                 scrollToElement(By.cssSelector(scoreComponentPlusSign(group,"1")));
+                waitElementBy(By.cssSelector(componentElement(group,"1")),20);
                 String componentScore2Text = getAtribute(By.cssSelector(componentScoreField(group,"1")),"value");
                 componentScore2Validation = componentScore2Text.contains(scoreBean.getComponent2Score());
             }else{
                 componentScore2Validation=true;
             }
+            wait(1000);
             if(scoreBean.getComponent3()!=""){
                 scrollToElement(By.cssSelector(scoreComponentPlusSign(group,"2")));
                 String component3Text = getText(By.cssSelector(componentElement(group,"2")));
@@ -162,6 +168,7 @@ public class ScoresPage extends BasePage {
             }else{
                 componentScore3Validation=true;
             }
+            wait(1000);
             if(scoreBean.getComponent4()!=""){
                 scrollToElement(By.cssSelector(scoreComponentPlusSign(group,"3")));
                 String component4Text = getText(By.cssSelector(componentElement(group,"3")));
@@ -176,6 +183,7 @@ public class ScoresPage extends BasePage {
             }else{
                 componentScore4Validation=true;
             }
+            wait(1000);
             if(scoreBean.getComponent5()!=""){
                 scrollToElement(By.cssSelector(scoreComponentPlusSign(group,"4")));
                 String component5Text = getText(By.cssSelector(componentElement(group,"4")));
