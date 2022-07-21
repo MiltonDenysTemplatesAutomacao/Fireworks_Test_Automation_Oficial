@@ -468,6 +468,8 @@ public class LogPage {
     public static final String VERIFY_TRANSCRIPT_FAIL = "Fail while trying to verify transcript person '%s' group '%s'";
     public static final String VERIFY_NO_POST_SECONDARY_FIELDS_ARE_VISIBLE_PASS = "I verify if there is no post secondary fields visible group '%s'";
     public static final String VERIFY_NO_POST_SECONDARY_FIELDS_ARE_VISIBLE_FAIL = "Fail while trying to verify if there is no post secondary fields visible group '%s'";
+    public static final String VERIFY_NO_HIGH_SCHOOL_FIELDS_ARE_VISIBLE_PASS = "I verify if there is no high school fields visible group '%s'";
+    public static final String VERIFY_NO_HIGH_SCHOOL_FIELDS_ARE_VISIBLE_FAIL = "Fail while trying to verify if there is no high school fields visible group '%s'";
     public static final String ADD_TRANSCRIPT_PASS = "I add a transcript group '%s'";
     public static final String ADD_TRANSCRIPT_FAIL = "Fail while trying to add a transcript group '%s'";
     public static final String UPDATE_SCORE_PASS = "I update score on Education for person group '%s'";

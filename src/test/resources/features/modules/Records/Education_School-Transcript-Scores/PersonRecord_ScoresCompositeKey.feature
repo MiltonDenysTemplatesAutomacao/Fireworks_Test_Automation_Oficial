@@ -16,6 +16,9 @@ Feature: School Without Scores
     And I open a people record by "King"
     And I validate if "King"summary opened properly
     And I navigate to Education
+    And I update score on Education for person "SAT (R2016)", "1220", "11/11/2012", "Self-Reported", "", "620", "600", "", "", "" group "0"
+    And I click on save changes in Education for person
+    And I close alert if return this message "Person has been updated."
     And I add score "0"
     And I update score on Education for person "SAT (R2016)", "1220", "11/11/2012", "Self-Reported", "", "620", "600", "", "", "" group "1"
     And I click on save changes in Education for person

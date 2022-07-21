@@ -112,6 +112,39 @@ public class TranscriptPage extends BasePage {
             FailureDelegatePage.handlePageException(failMessage);
         }
     }
+    public static void verifyNoHighSchoolFieldsAreVisible(String group){
+        String passMessage = String.format(LogPage.VERIFY_NO_POST_SECONDARY_FIELDS_ARE_VISIBLE_PASS,group);
+        String failMessage = String.format(LogPage.VERIFY_NO_POST_SECONDARY_FIELDS_ARE_VISIBLE_FAIL,group);
+
+        try {
+            scrollToElement(By.cssSelector(transcriptPlusSign(group)));
+            boolean classRankValidation = !checkIfElementIsVisible(By.cssSelector(transcriptClassRankField(group)));
+            boolean classSizeValidation = !checkIfElementIsVisible(By.cssSelector(transcriptClassSizeField(group)));
+            boolean weightedValidation = !checkIfElementIsVisible(By.cssSelector(transcriptWeightedElement(group)));
+            boolean percentileValidation = !checkIfElementIsVisible(By.cssSelector(transcriptPercentileField(group)));
+            boolean rankUnavailableValidation = !checkIfElementIsVisible(By.cssSelector(transcriptRankUnavailableElement(group)));
+            boolean rankWeightedValidation = !checkIfElementIsVisible(By.cssSelector(transcriptRankWeightedElement(group)));
+            boolean gedValidation = !checkIfElementIsVisible(By.cssSelector(transcriptGEDElement(group)));
+
+            if(classRankValidation
+                    && classSizeValidation
+                    && weightedValidation
+                    && percentileValidation
+                    && rankUnavailableValidation
+                    && rankWeightedValidation
+                    && gedValidation
+                    ){
+                ExtentReportsSetUp.testingPass(passMessage);
+            }else{
+                FailureDelegatePage.handlePageException(failMessage);
+            }
+        } catch (Exception e) {
+            FailureDelegatePage.handlePageException(failMessage);
+        }
+    }
+    /**
+     * This method will verify fields unique to Colleges are not visible
+     */
     public static void verifyNoPostSecondaryFieldsAreVisible(String group){
         String passMessage = String.format(LogPage.VERIFY_NO_POST_SECONDARY_FIELDS_ARE_VISIBLE_PASS,group);
         String failMessage = String.format(LogPage.VERIFY_NO_POST_SECONDARY_FIELDS_ARE_VISIBLE_FAIL,group);
@@ -330,6 +363,13 @@ public class TranscriptPage extends BasePage {
         transcriptBean.setGraduationDate(mass.get(personIndex).get("GraduationDate"));
         transcriptBean.setDiplomaReceived(mass.get(personIndex).get("DiplomaReceived"));
         transcriptBean.setOfficialTranscript(mass.get(personIndex).get("OfficialTranscript"));
+        transcriptBean.setMajor(mass.get(personIndex).get("Major"));
+        transcriptBean.setDegree(mass.get(personIndex).get("Degree"));
+        transcriptBean.setDegreeLevel(mass.get(personIndex).get("DegreeLevel"));
+        transcriptBean.setDegreeEarned(mass.get(personIndex).get("DegreeEarned"));
+        transcriptBean.setDegreeDate(mass.get(personIndex).get("DegreeDate"));
+        transcriptBean.setMinor(mass.get(personIndex).get("Minor"));
+        transcriptBean.setCreditHours(mass.get(personIndex).get("CreditHours"));
         transcriptBean.setGpa(mass.get(personIndex).get("GPA"));
         transcriptBean.setGed(mass.get(personIndex).get("GED"));
         transcriptBean.setGpaRecalculated(mass.get(personIndex).get("GPARecalculated"));
@@ -362,6 +402,18 @@ public class TranscriptPage extends BasePage {
                 BasePage.write(By.cssSelector(transcriptDateField(group)), transcriptBean.getTranscriptDate());
                 KeyPage.pressKey(By.cssSelector(transcriptDateField(group)),"Enter");
             }
+            if(transcriptBean.getStartDate()!=null){
+                waitElementBy(By.cssSelector(transcriptStartDateField(group)),updateTranscriptDelay);
+                KeyPage.erase(By.cssSelector(transcriptStartDateField(group)));
+                BasePage.write(By.cssSelector(transcriptStartDateField(group)), transcriptBean.getStartDate());
+                KeyPage.pressKey(By.cssSelector(transcriptStartDateField(group)),"Enter");
+            }
+            if(transcriptBean.getEndDate()!=null){
+                waitElementBy(By.cssSelector(transcriptEndDateField(group)),updateTranscriptDelay);
+                KeyPage.erase(By.cssSelector(transcriptEndDateField(group)));
+                BasePage.write(By.cssSelector(transcriptEndDateField(group)), transcriptBean.getEndDate());
+                KeyPage.pressKey(By.cssSelector(transcriptEndDateField(group)),"Enter");
+            }
             if(transcriptBean.getGraduationDate()!=null){
                 waitElementBy(By.cssSelector(transcriptGraduationDateField(group)),updateTranscriptDelay);
                 KeyPage.erase(By.cssSelector(transcriptGraduationDateField(group)));
@@ -391,6 +443,62 @@ public class TranscriptPage extends BasePage {
                 BasePage.selectElementsList(By.cssSelector(SELECT_DROP), "a");
                 wait(1000);
                 clickOnListOfElements(transcriptBean.getOfficialTranscript());
+            }
+            if(transcriptBean.getMajor()!=null){
+                waitElementBy(By.cssSelector(transcriptMajorElement(group)),updateTranscriptDelay);
+                BasePage.click(By.cssSelector(transcriptMajorElement(group)));
+                waitElementBy(By.cssSelector(SELECT_DROP),updateTranscriptDelay);
+                BasePage.selectElementsList(By.cssSelector(SELECT_DROP), "a");
+                wait(1000);
+                clickOnListOfElements(transcriptBean.getMajor());
+            }
+            if(transcriptBean.getDegree()!=null){
+                waitElementBy(By.cssSelector(transcriptDegreeElement(group)),updateTranscriptDelay);
+                BasePage.click(By.cssSelector(transcriptDegreeElement(group)));
+                waitElementBy(By.cssSelector(SELECT_DROP),updateTranscriptDelay);
+                BasePage.selectElementsList(By.cssSelector(SELECT_DROP), "a");
+                wait(1000);
+                clickOnListOfElements(transcriptBean.getDegree());
+            }
+            if(transcriptBean.getDegreeLevel()!=null){
+                waitElementBy(By.cssSelector(transcriptDegreeLevelElement(group)),updateTranscriptDelay);
+                BasePage.click(By.cssSelector(transcriptDegreeLevelElement(group)));
+                waitElementBy(By.cssSelector(SELECT_DROP),updateTranscriptDelay);
+                BasePage.selectElementsList(By.cssSelector(SELECT_DROP), "a");
+                wait(1000);
+                clickOnListOfElements(transcriptBean.getDegreeLevel());
+            }
+            if(transcriptBean.getDegreeEarned()!=null){
+                waitElementBy(By.cssSelector(transcriptDegreeEarnedElement(group)),updateTranscriptDelay);
+                BasePage.click(By.cssSelector(transcriptDegreeEarnedElement(group)));
+                waitElementBy(By.cssSelector(SELECT_DROP),updateTranscriptDelay);
+                BasePage.selectElementsList(By.cssSelector(SELECT_DROP), "a");
+                wait(1000);
+                clickOnListOfElements(transcriptBean.getDegreeEarned());
+            }
+            if(transcriptBean.getDegreeDate()!=null){
+                waitElementBy(By.cssSelector(transcriptDegreeDateField(group)),updateTranscriptDelay);
+                BasePage.write(By.cssSelector(transcriptDegreeDateField(group)), transcriptBean.getDegreeDate());
+            }
+            if(transcriptBean.getMinor()!=null){
+                waitElementBy(By.cssSelector(transcriptMinorElement(group)),updateTranscriptDelay);
+                BasePage.click(By.cssSelector(transcriptMinorElement(group)));
+                waitElementBy(By.cssSelector(SELECT_DROP),updateTranscriptDelay);
+                BasePage.selectElementsList(By.cssSelector(SELECT_DROP), "a");
+                wait(1000);
+                clickOnListOfElements(transcriptBean.getMinor());
+            }
+            if(transcriptBean.getConcentration()!=null){
+                waitElementBy(By.cssSelector(transcriptConcentrationElement(group)),updateTranscriptDelay);
+                BasePage.click(By.cssSelector(transcriptConcentrationElement(group)));
+                waitElementBy(By.cssSelector(SELECT_DROP),updateTranscriptDelay);
+                BasePage.selectElementsList(By.cssSelector(SELECT_DROP), "a");
+                wait(1000);
+                clickOnListOfElements(transcriptBean.getConcentration());
+            }
+            if(transcriptBean.getCreditHours()!=null){
+                waitElementBy(By.cssSelector(transcriptCreditHoursField(group)),updateTranscriptDelay);
+                BasePage.write(By.cssSelector(transcriptCreditHoursField(group)), transcriptBean.getCreditHours());
             }
             if(transcriptBean.getClassRank()!=null){
                 waitElementBy(By.cssSelector(transcriptClassRankField(group)),updateTranscriptDelay);
@@ -443,6 +551,8 @@ public class TranscriptPage extends BasePage {
                 clickOnListOfElements(transcriptBean.getRankWeighted());
             }
             if(transcriptBean.getSelfReported()!=null){
+                scrollToElement(By.cssSelector(transcriptSelfReportedElement(group)));
+                scrollTo("-150");
                 waitElementBy(By.cssSelector(transcriptSelfReportedElement(group)),updateTranscriptDelay);
                 BasePage.click(By.cssSelector(transcriptSelfReportedElement(group)));
                 waitElementBy(By.cssSelector(SELECT_DROP),updateTranscriptDelay);

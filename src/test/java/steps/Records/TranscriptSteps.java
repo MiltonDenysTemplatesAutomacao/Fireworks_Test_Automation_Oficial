@@ -22,5 +22,9 @@ public class TranscriptSteps {
     public static void verifyTranscript(String person,String group) {
         TranscriptPage.verifyTranscript(person,group);
     }
+    @And("I verify if there is no high school fields visible group {string}")
+    public static void verifyNoHighSchoolFieldsAreVisible(String group) {
+        TranscriptPage.verifyNoHighSchoolFieldsAreVisible(group);
+    }
 
 }

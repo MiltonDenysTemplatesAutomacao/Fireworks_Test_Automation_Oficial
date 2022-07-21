@@ -129,6 +129,7 @@ public class ScoresPage extends BasePage {
                 component1Validation=true;
             }
             if(scoreBean.getComponent1Score()!=""){
+                wait(1000);
                 scrollToElement(By.cssSelector(scoreComponentPlusSign(group,"0")));
                 waitElementBy(By.cssSelector(componentElement(group,"0")),20);
                 String componentScore1Text = getAtribute(By.cssSelector(componentScoreField(group,"0")),"value");
@@ -146,6 +147,7 @@ public class ScoresPage extends BasePage {
                 component2Validation=true;
             }
             if(scoreBean.getComponent2Score()!=""){
+                wait(1000);
                 scrollToElement(By.cssSelector(scoreComponentPlusSign(group,"1")));
                 waitElementBy(By.cssSelector(componentElement(group,"1")),20);
                 String componentScore2Text = getAtribute(By.cssSelector(componentScoreField(group,"1")),"value");
@@ -162,6 +164,7 @@ public class ScoresPage extends BasePage {
                 component3Validation=true;
             }
             if(scoreBean.getComponent3Score()!=""){
+                wait(1000);
                 scrollToElement(By.cssSelector(scoreComponentPlusSign(group,"2")));
                 String componentScore3Text = getAtribute(By.cssSelector(componentScoreField(group,"2")),"value");
                 componentScore3Validation = componentScore3Text.contains(scoreBean.getComponent3Score());
@@ -177,6 +180,7 @@ public class ScoresPage extends BasePage {
                 component4Validation=true;
             }
             if(scoreBean.getComponent4Score()!=""){
+                wait(1000);
                 scrollToElement(By.cssSelector(scoreComponentPlusSign(group,"3")));
                 String componentScore4Text = getAtribute(By.cssSelector(componentScoreField(group,"3")),"value");
                 componentScore4Validation = componentScore4Text.contains(scoreBean.getComponent4Score());
@@ -192,6 +196,7 @@ public class ScoresPage extends BasePage {
                 component5Validation=true;
             }
             if(scoreBean.getComponent5Score()!=""){
+                wait(1000);
                 scrollToElement(By.cssSelector(scoreComponentPlusSign(group,"4")));
                 String componentScore5Text = getAtribute(By.cssSelector(componentScoreField(group,"4")),"value");
                 componentScore5Validation = componentScore5Text.contains(scoreBean.getComponent5Score());

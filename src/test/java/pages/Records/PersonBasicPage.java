@@ -84,6 +84,7 @@ public class PersonBasicPage extends BasePage {
 
         try {
             if(fireworksID!=""){
+                waitElementBy(By.cssSelector(FIREWORKS_ID),10);
                 scrollToElement(By.cssSelector(FIREWORKS_ID));
                 scrollTo("-150");
                 String fireworksIDText = getText(By.cssSelector(FIREWORKS_ID));
@@ -92,6 +93,7 @@ public class PersonBasicPage extends BasePage {
                 fireworksIDValidation=true;
             }
             if(highScore!=""){
+                waitElementBy(By.cssSelector(HIGH_SCORE_FIELD),10);
                 scrollToElement(By.cssSelector(HIGH_SCORE_FIELD));
                 scrollTo("-150");
                 String highScoreText = getAtribute(By.cssSelector(HIGH_SCORE_FIELD),"value");
@@ -885,7 +887,7 @@ public class PersonBasicPage extends BasePage {
                 String InternationalReturn = returnBasicSection("International");
                 String legacyReturn = returnBasicSection("Legacy");
                 String stateResidentReturn = returnBasicSection("State Resident");
-
+                wait(1000);
                 //set to a list if an element exists
                 List<WebElement> birthCountryElements = findElements(By.xpath(birthCountryReturn));
                 List<WebElement> birthCityElements = findElements(By.xpath(birthCityReturn));
@@ -896,8 +898,7 @@ public class PersonBasicPage extends BasePage {
                 List<WebElement> InternationalElements = findElements(By.xpath(InternationalReturn));
                 List<WebElement> legacyElements = findElements(By.xpath(legacyReturn));
                 List<WebElement> stateResidentElements = findElements(By.xpath(stateResidentReturn));
-
-
+                wait(1000);
                 if (birthCountryElements.isEmpty()
                         && birthCityElements.isEmpty()
                         && socialSecurityNumberElements.isEmpty()
