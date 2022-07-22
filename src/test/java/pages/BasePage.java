@@ -115,7 +115,18 @@ public class BasePage {
                 break;
             }
         }
-
+    }
+    /*
+     * Method click on an element that contains text from a list by css and tag
+     */
+    public static void clickOnListOfElementsContains(String value) throws Exception {
+        for (int i = 0; i < listOfElements.size(); i++) {
+            if (listOfElements.get(i).getText().contains(value)) {
+                System.out.println(listOfElements.get(i).getText());
+                listOfElements.get(i).click();
+                break;
+            }
+        }
     }
 
     /********* write ************/
