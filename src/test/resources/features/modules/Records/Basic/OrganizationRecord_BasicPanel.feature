@@ -5,7 +5,7 @@
 Feature: Basic: Organization data can be added
 
   @BasicOrganizationDataCanBeAddedScenario @Done
-  Scenario: Record - Basic - verify data can be added to the basic panel of a student record
+  Scenario: Record - Basic - verify data can be added to the basic panel of a organization record
     Given I login as "firestarterUsername", "firestarterPassword", "firestarterFullName"
     And I create an organization
       |Name					      |Role		  |Address1			|City        |State     |PostalCode |Country      |Phone        |PhoneType|

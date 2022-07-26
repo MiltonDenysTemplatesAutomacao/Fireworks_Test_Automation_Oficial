@@ -446,8 +446,12 @@ public class LogPage {
     public static final String NAVIGATE_TO_RELATIONSHIPS_FAIL = "Fail while trying to navigate to Relationship";
     public static final String OPEN_RELATIONSHIP_TABLE_FAIL = "Fail while trying to open a relationship '%s'";
     public static final String OPEN_RELATIONSHIP_TABLE_PASS = "I open a relationship '%s'";
+    public static final String OPEN_ORG_RELATIONSHIP_TABLE_FAIL = "Fail while trying to open an organization relationship '%s'";
+    public static final String OPEN_ORG_RELATIONSHIP_TABLE_PASS = "I open an organization relationship '%s'";
     public static final String SEARCH_RELATIONSHIP_TABLE_FAIL = "Fail while trying to search a relationship '%s'";
     public static final String SEARCH_RELATIONSHIP_TABLE_PASS = "I search a relationship '%s'";
+    public static final String SEARCH_ORG_RELATIONSHIP_TABLE_FAIL = "Fail while trying to search an organization relationship '%s'";
+    public static final String SEARCH_ORG_RELATIONSHIP_TABLE_PASS = "I search an organization relationship '%s'";
     public static final String VERIFY_RELATIONSHIP_VALUES_PASS = "I verify relationship values";
     public static final String VERIFY_RELATIONSHIP_VALUES_FAIL = "Fail while trying to verify relationship values";
     public static final String VERIFY_RELATIONSHIP_READ_ONLY_PASS = "I validate relationship readonly";

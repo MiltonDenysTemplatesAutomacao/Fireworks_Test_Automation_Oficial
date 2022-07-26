@@ -11,7 +11,7 @@ public class OrgPage extends BasePage{
     public static final String HEADER_RECORD_STATUS_ELEMENT = "orgHeaderRecordStatusButton";
     public static final String HEADER_OK_TO_CONTACT_ELEMENT = "personHeaderContactButton";
     public static final String HEADER_ORG_CATEGORY_ELEMENT = "orgHeaderCategoryButton";
-    public static final String DATATABLE_EMPTY = "organizationManagerTable_row_0_col_0";
+    public static final String DATATABLE_EMPTY = "#organizationManagerTable_row_0_col_0";
     public static final String WHO_ADDED_ID_DROPDOWN_LIST = "#select2-drop";
     public static final String ORG_ACTION_COMMENTS_FIELD = "org_action_comments";
     public static final String EMAIL_OPT_DROP_DOWN = "#entity_email_0_org_opt_in_method_id_toggle";
@@ -420,8 +420,8 @@ public class OrgPage extends BasePage{
         String passMessage = String.format(LogPage.OPEN_ORGANIZATION_RECORD_PASS, search);
         String failMessage = String.format(LogPage.OPEN_ORGANIZATION_RECORD_FAIL, search);
         try {
-            waitElementBy(By.cssSelector(ORGANIZATION_MANAGER_TABLE_SEARCH_FIELD),20);
-            click(By.cssSelector(ORGANIZATION_MANAGER_TABLE_SEARCH_FIELD));
+            waitElementBy(By.cssSelector(DATATABLE_EMPTY),20);
+            click(By.cssSelector(DATATABLE_EMPTY));
             ExtentReportsSetUp.testingPass(passMessage);
         } catch (Exception e) {
             FailureDelegatePage.handlePageException(failMessage);
@@ -470,7 +470,7 @@ public class OrgPage extends BasePage{
         String passMessage = String.format(LogPage.VALIDATE_ORG_REQUIRED_FIELDS_MESSAGE_PASS, message);
         try {
             wait(2000);
-            String messageDatatableEmpty = getText(By.id(DATATABLE_EMPTY));
+            String messageDatatableEmpty = getText(By.cssSelector(DATATABLE_EMPTY));
             if(messageDatatableEmpty.equals(message)){
                 ExtentReportsSetUp.testingPass(passMessage);
             }else{

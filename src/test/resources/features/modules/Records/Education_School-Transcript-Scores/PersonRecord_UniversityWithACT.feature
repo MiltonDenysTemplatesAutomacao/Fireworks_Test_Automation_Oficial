@@ -7,7 +7,7 @@
 Feature: University with ACT
 
   @UniversityWithACTScenarios @Done
-  Scenario: Record - Education_School-Transcript-Scores - verify a university and act score can be added to a student record
+  Scenario: Record - Education_School-Transcript-Scores - Calculated Fields- verify a university and act score can be added to a student record
     Given I login as "firestarterUsername", "firestarterPassword", "firestarterFullName"
     #to create a university
     And I create an organization

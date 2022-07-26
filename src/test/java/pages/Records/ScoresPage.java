@@ -390,31 +390,31 @@ public class ScoresPage extends BasePage {
         String failMessage = String.format(LogPage.UPDATE_COMPONENT_SCORE_FAIL,group);
         try {
             if(scoreBean.getComponent1Score()!=""){
-                wait(1000);
+                wait(2000);
                 scrollToElement(By.cssSelector(componentScoreField(group,"0")));
                 scrollTo("-150");
                 write(By.cssSelector(componentScoreField(group,"0")),scoreBean.getComponent1Score());
             }
             if(scoreBean.getComponent2Score()!=""){
-                wait(1000);
+                wait(2000);
                 scrollToElement(By.cssSelector(scoreComponentPlusSign(group,"1")));
                 waitElementBy(By.cssSelector(componentScoreField(group,"1")),updateComponentScoreDelay);
                 write(By.cssSelector(componentScoreField(group,"1")),scoreBean.getComponent2Score());
             }
             if(scoreBean.getComponent3Score()!=""){
-                wait(1000);
+                wait(2000);
                 scrollToElement(By.cssSelector(scoreComponentPlusSign(group,"2")));
                 waitElementBy(By.cssSelector(componentScoreField(group,"2")),updateComponentScoreDelay);
                 write(By.cssSelector(componentScoreField(group,"2")),scoreBean.getComponent3Score());
             }
             if(scoreBean.getComponent4Score()!=""){
-                wait(1000);
+                wait(2000);
                 scrollToElement(By.cssSelector(scoreComponentPlusSign(group,"3")));
                 waitElementBy(By.cssSelector(componentScoreField(group,"3")),updateComponentScoreDelay);
                 write(By.cssSelector(componentScoreField(group,"3")),scoreBean.getComponent4Score());
             }
             if(scoreBean.getComponent5Score()!=""){
-                wait(1000);
+                wait(2000);
                 scrollToElement(By.cssSelector(scoreComponentPlusSign(group,"4")));
                 waitElementBy(By.cssSelector(componentScoreField(group,"4")),updateComponentScoreDelay);
                 write(By.cssSelector(componentScoreField(group,"4")),scoreBean.getComponent5Score());
@@ -444,7 +444,9 @@ public class ScoresPage extends BasePage {
             if(scoreBean.getScoreDate()!=""){
                 waitElementBy(By.cssSelector(scoreDateField(group)),updateScoreDelay);
                 KeyPage.erase(By.cssSelector(scoreDateField(group)));
+                wait(500);
                 write(By.cssSelector(scoreDateField(group)),scoreBean.getScoreDate());
+                wait(500);
                 KeyPage.pressKey(By.cssSelector(scoreDateField(group)),"Enter");
             }
             if(scoreBean.getSource()!=""){

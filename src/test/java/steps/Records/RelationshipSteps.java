@@ -10,6 +10,10 @@ public class RelationshipSteps {
     public static void openRelationship(String relationship) {
         RelationshipPage.openRelationship(relationship);
     }
+    @Then("I open an organization relationship {string}")
+    public static void openOrgRelationship(String relationship) {
+        RelationshipPage.openOrgRelationship(relationship);
+    }
     @Then("I validate relationship readonly")
     public static void verifyRelationshipReadOnly() {
         RelationshipPage.verifyRelationshipReadOnly();

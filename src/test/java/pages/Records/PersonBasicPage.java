@@ -87,6 +87,7 @@ public class PersonBasicPage extends BasePage {
                 waitElementBy(By.cssSelector(FIREWORKS_ID),10);
                 scrollToElement(By.cssSelector(FIREWORKS_ID));
                 scrollTo("-150");
+                wait(500);
                 String fireworksIDText = getText(By.cssSelector(FIREWORKS_ID));
                 fireworksIDValidation = fireworksIDText.contains(fireworksID);
             }else{
@@ -96,6 +97,7 @@ public class PersonBasicPage extends BasePage {
                 waitElementBy(By.cssSelector(HIGH_SCORE_FIELD),10);
                 scrollToElement(By.cssSelector(HIGH_SCORE_FIELD));
                 scrollTo("-150");
+                wait(500);
                 String highScoreText = getAtribute(By.cssSelector(HIGH_SCORE_FIELD),"value");
                 highScoreValidation = highScoreText.contains(highScore);
             }else{
