@@ -4,7 +4,7 @@
 @UpdateValidChangesAllMatchingEmails
 Feature: Update to Valid changes all matching emails
 
-  @UpdateValidChangesAllMatchingEmailsScenarios @Done
+  @UpdateValidChangesAllMatchingEmailsScenarios @Done @Contact
   Scenario: Record Person - Contact - updating a bounced email address to valid updates matching emails
     Given I login as "firestarterUsername", "firestarterPassword", "firestarterFullName"
     When I create a person

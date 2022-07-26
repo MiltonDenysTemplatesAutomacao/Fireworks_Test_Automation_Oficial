@@ -4,7 +4,7 @@
 @OrganizationRequiredFields
 Feature: Organization: Required fields
 
-  @OrganizationRequiredFieldsAlertMessages @Done
+  @OrganizationRequiredFieldsAlertMessages @Done @Organization
   Scenario: Record - Organization - to click Save with no data entered and verify alert messages
     Given I login as "firestarterUsername", "firestarterPassword", "firestarterFullName"
     When I navigate to QuickAddCreateOrganizationPage
@@ -17,7 +17,7 @@ Feature: Organization: Required fields
     And I validate if "The Country field is required." message alert for organization required is correct
 
 
-  @OrganizationRequiredFieldsScenarios @Done
+  @OrganizationRequiredFieldsScenarios @Done @Organization
   Scenario: Record - Organization - to create a high school without adding a phone number
     Given I login as "firestarterUsername", "firestarterPassword", "firestarterFullName"
     When I create an organization

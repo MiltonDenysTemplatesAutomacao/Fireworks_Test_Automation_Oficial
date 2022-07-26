@@ -4,7 +4,7 @@
 @EducationScoreComponents
 Feature: Education Scores: Add Multiple
 
-  @EducationScoreComponentsScenario @Done
+  @EducationScoreComponentsScenario @Done @Education
   Scenario: Record - Education Scores - verify multiple test scores and updating high score settings
     Given I login as "firestarterUsername", "firestarterPassword", "firestarterFullName"
     When I create a person

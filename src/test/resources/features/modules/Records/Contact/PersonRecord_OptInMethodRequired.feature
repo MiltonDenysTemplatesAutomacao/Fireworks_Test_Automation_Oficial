@@ -5,7 +5,7 @@
 @EmailAddressOptInMethodField
 Feature: Email Address: Opt-In Method field
 
-  @EmailAddressOptInMethodFieldPerson @Done
+  @EmailAddressOptInMethodFieldPerson @Done @Contact
   Scenario: Record Person - Contact - verify the opt in method is required for person records
     Given I login as "firestarterUsername", "firestarterPassword", "firestarterFullName"
     When I create a person
@@ -49,7 +49,7 @@ Feature: Email Address: Opt-In Method field
     And I verify email address "WNelson2@music.com", "School", "", "Inquiry", "", "", "", "0", "0" group "1"
 
 
-  @EmailAddressOptInMethodFieldOrganization @Done
+  @EmailAddressOptInMethodFieldOrganization @Done @Contact
   Scenario: Record Organization - Contact - verify the opt in method is required for organization records
     Given I login as "firestarterUsername", "firestarterPassword", "firestarterFullName"
     And I create an organization

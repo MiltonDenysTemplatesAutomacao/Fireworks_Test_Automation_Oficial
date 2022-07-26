@@ -4,7 +4,7 @@
   @TaskRequiredFieldsValidation
   Feature: Task Required Fields Validation
 
-  @TaskRequiredFieldsValidationScenario @Done
+  @TaskRequiredFieldsValidationScenario @Done @Tasks
   Scenario: Tasks - Verify required field validation on task composer
     Given I login as "firestarterUsername", "firestarterPassword", "firestarterFullName"
     And I navigate to tasks
@@ -14,7 +14,7 @@
     And I validate if "The Type field is required" validation alert message is correct
     And I validate if duo time is disabled
 
-  @StaffDuoTimeDisabled @Done
+  @StaffDuoTimeDisabled @Done @Tasks
   Scenario: Tasks - Verify if due time is disabled when due date is not provided
     Given I login as "firestarterUsername", "firestarterPassword", "firestarterFullName"
     And I navigate to tasks

@@ -5,7 +5,7 @@
 @SchoolRelationshipsLinkedRelationship
 Feature: School Without Scores
 
-  @SchoolWithoutScores @Done
+  @SchoolWithoutScores @Done @Education
   Scenario: Record - Education_School-Transcript-Scores - verify scores are not required to add a school and transcript to a student record
     #to create a high school for the transcript
     Given I login as "firestarterUsername", "firestarterPassword", "firestarterFullName"

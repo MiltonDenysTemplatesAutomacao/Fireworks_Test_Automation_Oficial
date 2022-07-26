@@ -4,7 +4,7 @@
 @DisplayFields
 Feature: Display Fields
 
-  @DisplayFieldsPerson @Done
+  @DisplayFieldsPerson @Done @SummaryHeader
   Scenario: Record - SummaryHeader - verify display only fields for a student can be set and updated
     Given I login as "firestarterUsername", "firestarterPassword", "firestarterFullName"
     And I create a person
@@ -49,7 +49,7 @@ Feature: Display Fields
     And I close alert if return this message "Person has been updated."
     Then I validate if Visa number is correct
 
-  @DisplayFieldsOrganization @Done
+  @DisplayFieldsOrganization @Done @SummaryHeader
   Scenario: Record - SummaryHeader - verify display fields for an organization can be set and updated
     Given I login as "firestarterUsername", "firestarterPassword", "firestarterFullName"
     When I create a staff

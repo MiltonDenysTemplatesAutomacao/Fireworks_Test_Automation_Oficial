@@ -3,7 +3,7 @@
 @EducationScoresRequiredFields
 Feature: Education Scores Required Fields
 
-  @EducationScoresRequiredFieldsScenario @Done
+  @EducationScoresRequiredFieldsScenario @Done @Education
   Scenario: Record - Education Scores - verify test required scores required fields
     Given I login as "firestarterUsername", "firestarterPassword", "firestarterFullName"
     When I create a person

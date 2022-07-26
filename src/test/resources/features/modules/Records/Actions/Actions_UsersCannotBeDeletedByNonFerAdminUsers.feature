@@ -5,7 +5,7 @@
 @ActionsDeleteCanBeDeletedByNonFerAdminUsers
 Feature: Actions Delete Actions
 
-  @ActionsDeleteCanBeDeletedByNonFerAdminUsersPerson @Done
+  @ActionsDeleteCanBeDeletedByNonFerAdminUsersPerson @Done @Actions
   Scenario: Record - Actions - verify user actions can be deleted by non FER Admin users
     Given I login as "firestarterUsername", "firestarterPassword", "firestarterFullName"
     When I create a person
@@ -30,7 +30,7 @@ Feature: Actions Delete Actions
     And I click on cancel button on delete action modal
     And I validate if delete modal is not visible
 
-  @ActionsDeleteCanBeDeletedByNonFerAdminUsersOrganization @Done
+  @ActionsDeleteCanBeDeletedByNonFerAdminUsersOrganization @Done @Actions
   Scenario: Record - Actions - the Delete Action button is enabled on a Organization record
     Given I login as "firestarterUsername", "firestarterPassword", "firestarterFullName"
     And I create an organization

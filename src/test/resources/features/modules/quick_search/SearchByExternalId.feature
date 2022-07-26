@@ -4,7 +4,7 @@
 @SearchById
 Feature: Search by external Id
 
-  @SearchPersonIdRecord @Fix
+  @SearchPersonIdRecord @Fix @QuickSearch
   Scenario: Quick Search - to Quick Search for a person External Id
     Given I login as "firestarterUsername", "firestarterPassword", "firestarterFullName"
     And I create a person
@@ -19,7 +19,7 @@ Feature: Search by external Id
     When I quick search "ID Number"
     Then I validate if result for "ID Number" is correct
 
-  @SearchOrganizationIdRecord @Fix
+  @SearchOrganizationIdRecord @Fix @QuickSearch
   Scenario: Quick Search - to Quick Search for an organization External Id
     Given I login as "firestarterUsername", "firestarterPassword", "firestarterFullName"
     And I create an organization

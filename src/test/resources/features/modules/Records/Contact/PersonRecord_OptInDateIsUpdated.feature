@@ -4,7 +4,7 @@
 @OptInStatusAndDate
 Feature: Email Address: Opt-In Status and Date
 
-  @OptInStatusAndDatePerson @Done
+  @OptInStatusAndDatePerson @Done @Contact
   Scenario: Record Person - Contact - verify the email opt-in date is updated during opt-in status changes
     Given I login as "firestarterUsername", "firestarterPassword", "firestarterFullName"
     When I create a person

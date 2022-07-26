@@ -3,7 +3,7 @@
 @AccessQuickSearchResults
 Feature: Search by name
 
-  @AccessQuickSearchPersonResults @Done
+  @AccessQuickSearchPersonResults @Done @QuickSearch
   Scenario: Quick Search - access quick search results for person
     Given I login as "firestarterUsername", "firestarterPassword", "firestarterFullName"
     And I create a person
@@ -15,7 +15,7 @@ Feature: Search by name
     And I open a record
     Then I validate if "Robert Brandon"summary opened properly
 
-  @AccessQuickSearchOrganizationResults @Done
+  @AccessQuickSearchOrganizationResults @Done @QuickSearch
   Scenario: Quick Search - access quick search results for organization
     Given I login as "firestarterUsername", "firestarterPassword", "firestarterFullName"
     And I create an organization
@@ -27,7 +27,7 @@ Feature: Search by name
     And I open a record
     Then I validate if "BigMac Cooking School"summary opened properly
 
-  @AccessQuickSearchStaffResults @Done
+  @AccessQuickSearchStaffResults @Done @QuickSearch
   Scenario: Quick Search - access quick search results for staff
     Given I login as "firestarterUsername", "firestarterPassword", "firestarterFullName"
     And I create a staff

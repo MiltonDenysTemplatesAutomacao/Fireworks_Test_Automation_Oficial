@@ -5,7 +5,7 @@
 @SchoolRelationshipsLinkedRelationship
 Feature: School Relationships
 
-  @SchoolRelationshipsLinkedRelationshipScenario @Done
+  @SchoolRelationshipsLinkedRelationshipScenario @Done @Education
   Scenario: Record - Education_School-Transcript-Scores - verify behavior of linked school relationship between education and relationship panels
     Given I login as "firestarterUsername", "firestarterPassword", "firestarterFullName"
     And I create an organization

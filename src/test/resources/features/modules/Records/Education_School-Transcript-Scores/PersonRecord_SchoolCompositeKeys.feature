@@ -4,7 +4,7 @@
 @EducationSchoolNoDuplicate
 Feature: Education: School: No duplicate
 
-  @EducationSchoolNoDuplicate @Done
+  @EducationSchoolNoDuplicate @Done @Education
   Scenario: Record - Education_School-Transcript-Scores - verify a duplicate high school can not be added to an education panel for a student
     Given I login as "firestarterUsername", "firestarterPassword", "firestarterFullName"
     When I create a person

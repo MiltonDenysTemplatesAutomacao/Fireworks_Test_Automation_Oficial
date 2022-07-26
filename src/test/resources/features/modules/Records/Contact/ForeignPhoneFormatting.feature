@@ -4,7 +4,7 @@
 @PhoneNumberFormatting
 Feature: Phone Number Formatting
 
-@PhoneNumberFormattingScenarioOrganization @Done
+@PhoneNumberFormattingScenarioOrganization @Done @Contact
 Scenario: Record - Organization - Setting secondary email address status to valid makes email active
 Given I login as "firestarterUsername", "firestarterPassword", "firestarterFullName"
 And I create an organization
@@ -15,7 +15,7 @@ And I validate if "DeadSouls High School"summary opened properly
 And I navigate to contact
 And I verify phone number on contact for organization "+7 495 690-51-31", "Business", "", "", "", "1", "1", group "0"
 
-  @PhoneNumberFormattingScenarioStaff @Done
+  @PhoneNumberFormattingScenarioStaff @Done @Contact
   Scenario: Record - Staff - verify a foreign country phone number displays properly in Staff Contact
     Given I login as "firestarterUsername", "firestarterPassword", "firestarterFullName"
     And I create a staff
@@ -32,7 +32,7 @@ And I verify phone number on contact for organization "+7 495 690-51-31", "Busin
     And I close alert if return this message "Staff member has been updated."
     Then I verify phone number on contact for staff "+7 495 690-51-3", "Home", ""
 
-  @PhoneNumberFormattingScenarioStaff2 @Done
+  @PhoneNumberFormattingScenarioStaff2 @Done @Contact
   Scenario: Record - Staff - verify a staff phone number is formatted as expected
     Given I login as "firestarterUsername", "firestarterPassword", "firestarterFullName"
     And I create a staff

@@ -5,7 +5,7 @@
 @AccountStartDate
 Feature: Staff Record: Account Start Date
 
-  @AccountStartDateScenarios @Done
+  @AccountStartDateScenarios @Done @Staff
   Scenario: Record - Staff - verify staff member with future start date is not active
     Given I login as "firestarterUsername", "firestarterPassword", "firestarterFullName"
     When I create a staff

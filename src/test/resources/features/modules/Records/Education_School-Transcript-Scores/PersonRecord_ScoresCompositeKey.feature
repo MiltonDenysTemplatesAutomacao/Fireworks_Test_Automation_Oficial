@@ -5,7 +5,7 @@
 @EducationScoresCompositeKeys
 Feature: School Without Scores
 
-  @EducationScoresCompositeKeysScenarios @Done
+  @EducationScoresCompositeKeysScenarios @Done @Education
   Scenario: Record - Education_School-Transcript-Scores - verify test scores composite keys
     Given I login as "firestarterUsername", "firestarterPassword", "firestarterFullName"
     When I create a person

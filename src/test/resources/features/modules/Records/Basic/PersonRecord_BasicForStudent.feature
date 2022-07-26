@@ -4,7 +4,7 @@
 @BasicStudentDataCanBeAdded
 Feature: Basic: Student data can be added
 
-  @BasicStudentDataCanBeAddedScenario @Done
+  @BasicStudentDataCanBeAddedScenario @Done @Basic
   Scenario: Record - Basic - verify data can be added to the basic panel of a student record
     Given I login as "firestarterUsername", "firestarterPassword", "firestarterFullName"
     When I create a person

@@ -5,7 +5,7 @@
 @ActionsDelete
 Feature: Actions Delete Actions
 
-  @ActionsDeletePerson @Done
+  @ActionsDeletePerson @Done @Actions
   Scenario: Record - Actions - verify an action can be deleted from a person record
     Given I login as "firestarterUsername", "firestarterPassword", "firestarterFullName"
     When I create a person
@@ -31,7 +31,7 @@ Feature: Actions Delete Actions
     Then I validate if action were deleted
 
 
-  @ActionsDeleteOrganization @Done
+  @ActionsDeleteOrganization @Done @Actions
   Scenario: Record - Actions - verify an action can be deleted from an organization record
     Given I login as "firestarterUsername", "firestarterPassword", "firestarterFullName"
     And I create an organization

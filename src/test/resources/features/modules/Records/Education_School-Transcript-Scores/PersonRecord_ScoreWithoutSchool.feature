@@ -5,7 +5,7 @@
 @EducationScoresSchoolNotRequired
 Feature: Education Scores: School not required
 
-  @EducationScoresSchoolNotRequiredScenario @Done
+  @EducationScoresSchoolNotRequiredScenario @Done @Education
   Scenario: Record - Education Scores - verify test scores can be added to a student record without a school
     Given I login as "firestarterUsername", "firestarterPassword", "firestarterFullName"
     When I create a person

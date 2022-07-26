@@ -4,7 +4,7 @@
 @ForeignPersonRecords
 Feature: Invalid Area Code Not Formatted
 
-  @ForeignPersonRecordsScenario @Done
+  @ForeignPersonRecordsScenario @Done @Contact
   Scenario: Record - Contact - Foreign country and region are saved
     Given I login as "firestarterUsername", "firestarterPassword", "firestarterFullName"
     When I create a person

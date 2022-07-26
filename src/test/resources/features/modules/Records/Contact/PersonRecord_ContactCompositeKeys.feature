@@ -4,7 +4,7 @@
 @VerifyCompositeKeysAreHonoredInContactGroup
 Feature: Contact field groups: Composite Keys
 
-  @VerifyCompositeKeysAreHonoredInContactGroupScenarios @Done
+  @VerifyCompositeKeysAreHonoredInContactGroupScenarios @Done @Contact
   Scenario: Record - Contact - verify Composite Keys are honored in Contact group
     Given I login as "firestarterUsername", "firestarterPassword", "firestarterFullName"
     When I create a person

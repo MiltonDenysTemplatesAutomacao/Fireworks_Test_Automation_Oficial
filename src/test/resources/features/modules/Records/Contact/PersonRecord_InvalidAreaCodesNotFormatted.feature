@@ -4,7 +4,7 @@
 @InvalidAreaCodeNotFormatted
 Feature: Invalid Area Code Not Formatted
 
-  @InvalidAreaCodeNotFormatted @Done
+  @InvalidAreaCodeNotFormatted @Done @Contact
   Scenario: Record - Contact - phone number with invalid area code is not formatted
     Given I login as "firestarterUsername", "firestarterPassword", "firestarterFullName"
     When I create a person

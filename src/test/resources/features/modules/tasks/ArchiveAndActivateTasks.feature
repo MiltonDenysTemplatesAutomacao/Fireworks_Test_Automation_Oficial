@@ -4,7 +4,7 @@
 @ArchiveAndActivateTasks
 Feature: Ability to archive and activate tasks
 
-  @ArchiveAndActivateTasksStaff @Done
+  @ArchiveAndActivateTasksStaff @Done @Tasks
   Scenario: Tasks - Verify a task can be archived, activate, read-only after archived, not shown in task manager after archived
     Given I login as "firestarterUsername", "firestarterPassword", "firestarterFullName"
     And I navigate to tasks

@@ -4,7 +4,7 @@
 @TimeZoneUpdatedBasedPrimaryAddress
 Feature: Time Zone: Updated based on Primary Address
 
-  @TimeZoneUpdatedBasedPrimaryAddressScenarios @Done
+  @TimeZoneUpdatedBasedPrimaryAddressScenarios @Done @Contact
   Scenario: Record - Contact - Phone time zone - multiple physical addresses
     Given I login as "firestarterUsername", "firestarterPassword", "firestarterFullName"
     When I create a person

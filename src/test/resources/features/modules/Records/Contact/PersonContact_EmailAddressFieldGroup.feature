@@ -4,7 +4,7 @@
 @EmailAddressFieldGroupValidation
 Feature: Email Address field group validation
 
-  @EmailAddressFieldGroupValidationScenarios @Done
+  @EmailAddressFieldGroupValidationScenarios @Done @Contact
   Scenario: Record - Contact - verify the Contact email address group is validated correctly
     Given I login as "firestarterUsername", "firestarterPassword", "firestarterFullName"
     When I create a person

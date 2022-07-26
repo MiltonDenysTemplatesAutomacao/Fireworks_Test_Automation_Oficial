@@ -4,7 +4,7 @@
 @AbilityDeleteTasks
 Feature: Ability to delete tasks
 
-  @AbilityDeleteTasksStaff @Done
+  @AbilityDeleteTasksStaff @Done @Tasks
   Scenario: Tasks - Verify if it possible to delete a task, cancel on delete task modal and check if the task was deleted
     Given I login as "firestarterUsername", "firestarterPassword", "firestarterFullName"
     And I navigate to tasks

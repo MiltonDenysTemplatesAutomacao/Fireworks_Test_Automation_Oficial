@@ -6,7 +6,7 @@
 @ContactPrimaryActiveFlags
 Feature: Contact Active and Primary flags
 
-  @ContactPrimaryActiveFlagsScenario @Done
+  @ContactPrimaryActiveFlagsScenario @Done @Contact
   Scenario: Record - Contact - verify that active and primary indicators are correct in Contact
     Given I login as "firestarterUsername", "firestarterPassword", "firestarterFullName"
     When I create a person

@@ -5,7 +5,7 @@
 @AddUniversityRelationship
 Feature: Add University Relationship
 
-  @AddUniversityRelationshipScenarios @Done
+  @AddUniversityRelationshipScenarios @Done @Education
   Scenario: Record - Education_School-Transcript-Scores - verify a university to student relationship can be created from education panel
     Given I login as "firestarterUsername", "firestarterPassword", "firestarterFullName"
     And I create an organization

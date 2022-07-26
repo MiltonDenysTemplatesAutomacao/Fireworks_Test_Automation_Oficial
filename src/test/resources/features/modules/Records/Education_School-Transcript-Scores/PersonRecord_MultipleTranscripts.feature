@@ -7,7 +7,7 @@
 @MultiplesTranscripts
 Feature: School Without Scores
 
-  @MultiplesTranscriptsScenarios @Done
+  @MultiplesTranscriptsScenarios @Done @Education
   Scenario: Record - Education_School-Transcript-Scores - verify a student record can have two transcripts for one school and a test score
     #to create a school for the transcript
     Given I login as "firestarterUsername", "firestarterPassword", "firestarterFullName"

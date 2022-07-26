@@ -4,7 +4,7 @@
 @UnsubscribedDataIsPreserved
 Feature: Unsubscribed Data is preserved
 
-  @UnsubscribedDataIsPreservedPerson @Done
+  @UnsubscribedDataIsPreservedPerson @Done @Contact
   Scenario: Record - Contact - verify that active and primary indicators are correct in Contact
     Given I login as "firestarterUsername", "firestarterPassword", "firestarterFullName"
     When I create a person
@@ -25,7 +25,7 @@ Feature: Unsubscribed Data is preserved
     Then I validate in source message "This email address must be kept to preserve unsubscribe data"
 
 
-  @UnsubscribedDataIsPreservedOrganization @Done
+  @UnsubscribedDataIsPreservedOrganization @Done @Contact
   Scenario: Record - Basic - verify data can be added to the basic panel of a student record
     Given I login as "firestarterUsername", "firestarterPassword", "firestarterFullName"
     And I create an organization

@@ -4,7 +4,7 @@
 @TaskPermissionAdministratorAccess
 Feature: Tasks Permissions: Administrator Access
 
-  @TaskPermissionAdministratorAccessCreateTasksScenario @Persistent @Done
+  @TaskPermissionAdministratorAccessCreateTasksScenario @Persistent @Done @Tasks
   Scenario: Tasks - Creating tasks for test
     Given I login as "firestarterUsername", "firestarterPassword", "firestarterFullName"
     And I navigate to tasks

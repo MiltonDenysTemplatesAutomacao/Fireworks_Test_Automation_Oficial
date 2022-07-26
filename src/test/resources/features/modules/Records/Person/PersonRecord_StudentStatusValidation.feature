@@ -4,7 +4,7 @@
 @StudentStatusRequiredFields
 Feature: Student Status: Required Fields
 
-  @StudentStatusFieldRequiredValidations @Done
+  @StudentStatusFieldRequiredValidations @Done @Person
   Scenario: Record - Person - student status required fields
     Given I login as "firestarterUsername", "firestarterPassword", "firestarterFullName"
     #to create a person record so that Student Status will be empty

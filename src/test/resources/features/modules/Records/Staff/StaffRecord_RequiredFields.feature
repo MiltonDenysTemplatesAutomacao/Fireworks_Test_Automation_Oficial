@@ -5,7 +5,7 @@
 @RequiredFields
 Feature: Staff Record: Required fields
 
-  @ValidateRequiredFieldsReturnQuickAdd @Done
+  @ValidateRequiredFieldsReturnQuickAdd @Done @Staff
   Scenario: Record - Staff - correct validation messages to be returned from the quick add staff form
     Given I login as "firestarterUsername", "firestarterPassword", "firestarterFullName"
     When I create a staff
@@ -15,7 +15,7 @@ Feature: Staff Record: Required fields
     And I validate if "The Last Name field is required." message alert for staff required is correct
     And I validate if "The Email Address field is required." message alert for staff required is correct
 
-  @ValidateRequiredFieldsReturnPermissionGroupNotSet @Done
+  @ValidateRequiredFieldsReturnPermissionGroupNotSet @Done @Staff
   Scenario: Record - Staff - a validation message to be returned when the permissions group is not set
     Given I login as "firestarterUsername", "firestarterPassword", "firestarterFullName"
     When I create a staff
