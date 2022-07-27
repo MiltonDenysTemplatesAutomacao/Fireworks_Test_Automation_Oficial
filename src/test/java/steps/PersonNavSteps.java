@@ -24,6 +24,10 @@ public class PersonNavSteps {
     public static void navigateToRelationships() {
         PersonNavPage.navigateToRelationships();
     }
+    @Then("I navigate to Applications")
+    public static void navigateToApplications() {
+        PersonNavPage.navigateToApplications();
+    }
 
 
 }

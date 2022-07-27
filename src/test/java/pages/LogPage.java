@@ -444,6 +444,8 @@ public class LogPage {
     public static final String ADD_SCHOOL_FAIL = "Fail while trying to add school '%s'";
     public static final String NAVIGATE_TO_RELATIONSHIPS_PASS = "I navigate to Relationship";
     public static final String NAVIGATE_TO_RELATIONSHIPS_FAIL = "Fail while trying to navigate to Relationship";
+    public static final String NAVIGATE_TO_APPLICATIONS_PASS = "I navigate to Applications";
+    public static final String NAVIGATE_TO_APPLICATIONS_FAIL = "Fail while trying to navigate to Applications";
     public static final String OPEN_RELATIONSHIP_TABLE_FAIL = "Fail while trying to open a relationship '%s'";
     public static final String OPEN_RELATIONSHIP_TABLE_PASS = "I open a relationship '%s'";
     public static final String OPEN_ORG_RELATIONSHIP_TABLE_FAIL = "Fail while trying to open an organization relationship '%s'";
@@ -499,4 +501,10 @@ public class LogPage {
     public static final String UPDATE_SAT_R2016_HIGH_SCORE_FAIL = "Fail while trying to update SAT(R2016)High Score";
     public static final String SAVE_CHANGES_BASIC_ADMIN_PANEL_PASS = "I click on save changes for Admin Panel on basic tab";
     public static final String SAVE_CHANGES_BASIC_ADMIN_PANEL_FAIL = "Fail while trying to click on save changes for Admin Panel on basic tab";
+    public static final String UPDATE_APPLICATION_PASS = "I update application group '%s'";
+    public static final String UPDATE_APPLICATION_FAIL = "Fail while trying to I update application group '%s'";
+    public static final String CLICK_SAVE_CHANGES_APPLICATION_PASS = "I click on save changes on Application";
+    public static final String CLICK_SAVE_CHANGES_APPLICATION_FAIL = "Fail while trying to click on save changes on Application";
+    public static final String ADD_APPLICATION_PASS = "I add application '%s'";
+    public static final String ADD_APPLICATION_FAIL = "Fail while trying to add application '%s'";
 }
