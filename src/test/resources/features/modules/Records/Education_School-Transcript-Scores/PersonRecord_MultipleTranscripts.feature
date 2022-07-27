@@ -5,7 +5,7 @@
 #Regression testcase TL-1082: Enter value into GPA field manually
 
 @MultiplesTranscripts
-Feature: School Without Scores
+Feature: Multiples Transcripts
 
   @MultiplesTranscriptsScenarios @Done @Education
   Scenario: Record - Education_School-Transcript-Scores - verify a student record can have two transcripts for one school and a test score

@@ -87,7 +87,6 @@ public class PersonBasicPage extends BasePage {
                 waitElementBy(By.cssSelector(FIREWORKS_ID),10);
                 scrollToElement(By.cssSelector(FIREWORKS_ID));
                 scrollTo("-150");
-                wait(500);
                 String fireworksIDText = getText(By.cssSelector(FIREWORKS_ID));
                 fireworksIDValidation = fireworksIDText.contains(fireworksID);
             }else{
@@ -97,7 +96,6 @@ public class PersonBasicPage extends BasePage {
                 waitElementBy(By.cssSelector(HIGH_SCORE_FIELD),10);
                 scrollToElement(By.cssSelector(HIGH_SCORE_FIELD));
                 scrollTo("-150");
-                wait(500);
                 String highScoreText = getAtribute(By.cssSelector(HIGH_SCORE_FIELD),"value");
                 highScoreValidation = highScoreText.contains(highScore);
             }else{
@@ -814,7 +812,7 @@ public class PersonBasicPage extends BasePage {
          */
         public static void returnAndValidateTextBasicFieldsLabel () {
             try {
-                wait(2000);
+                wait(4000);
                 BasePage.waitElementBy(By.cssSelector(BASIC_PANEL_HEADING_ELEMENT), 20);
                 //set to variables the text from each element
                 String birthReturn = returnBasicSection("Birth");
@@ -848,7 +846,7 @@ public class PersonBasicPage extends BasePage {
                 String veteranReturn = returnBasicSection("Veteran");
                 String veteranReturnText = getText(By.xpath(veteranReturn));
 
-                wait(2000);
+                wait(4000);
                 //validate Basic section and Basic fields label
                 if (birthReturnText.equals(mass.get(0).get("BasicSection"))
                         && birthDateReturnText.equals(mass.get(0).get("BasicFieldLabel"))
@@ -879,6 +877,7 @@ public class PersonBasicPage extends BasePage {
          */
         public static void returnAndValidateElementsNotDisplayed () {
             try {
+                wait(3000);
                 //get xpath from each one of the Datatable values that is not supposed to be displayed
                 String birthCountryReturn = returnBasicSection("Birth Country");
                 String birthCityReturn = returnBasicSection("Birth City");
@@ -889,7 +888,7 @@ public class PersonBasicPage extends BasePage {
                 String InternationalReturn = returnBasicSection("International");
                 String legacyReturn = returnBasicSection("Legacy");
                 String stateResidentReturn = returnBasicSection("State Resident");
-                wait(1000);
+                wait(2000);
                 //set to a list if an element exists
                 List<WebElement> birthCountryElements = findElements(By.xpath(birthCountryReturn));
                 List<WebElement> birthCityElements = findElements(By.xpath(birthCityReturn));
@@ -900,7 +899,7 @@ public class PersonBasicPage extends BasePage {
                 List<WebElement> InternationalElements = findElements(By.xpath(InternationalReturn));
                 List<WebElement> legacyElements = findElements(By.xpath(legacyReturn));
                 List<WebElement> stateResidentElements = findElements(By.xpath(stateResidentReturn));
-                wait(1000);
+                wait(2000);
                 if (birthCountryElements.isEmpty()
                         && birthCityElements.isEmpty()
                         && socialSecurityNumberElements.isEmpty()

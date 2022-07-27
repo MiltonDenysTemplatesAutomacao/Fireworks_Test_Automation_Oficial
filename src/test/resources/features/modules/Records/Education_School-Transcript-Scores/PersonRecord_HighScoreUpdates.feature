@@ -60,3 +60,8 @@ Feature: Education Scores: Add Multiple
     And I validate if "Michael"summary opened properly
     And I navigate to basic
     And I verify system generated values "", "1600"
+    #recover values from Admin Panel page for nexts scenarios
+    And I navigate to Admin Panel Page
+    And I update SAT R2016 High Score "Best Sitting"
+    And I update High Score Display "ACT"
+    And I click on save changes for Admin Panel on basic tab

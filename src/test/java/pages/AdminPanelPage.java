@@ -17,6 +17,7 @@ public class AdminPanelPage extends BasePage{
             waitUntilElementToBeSelected(By.cssSelector(BASIC_SAVE_CHANGES_BUTTON),20);
             scrollToTheBottom();
             click(By.cssSelector(BASIC_SAVE_CHANGES_BUTTON));
+            wait(3000);
             ExtentReportsSetUp.testingPass(LogPage.SAVE_CHANGES_BASIC_ADMIN_PANEL_PASS);
         } catch (Exception e) {
             FailureDelegatePage.handlePageException(LogPage.SAVE_CHANGES_BASIC_ADMIN_PANEL_FAIL);

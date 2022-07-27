@@ -38,7 +38,7 @@ public class MessagePage extends BasePage{
     public static void verifyValidationMessage(String message){
         String errorMessage = String.format(LogPage.VERIFY_VALIDATION_MESSAGE_FAIL, message);
         String passMessage = String.format(LogPage.VERIFY_VALIDATION_MESSAGE_PASS, message);
-        wait(500);
+        wait(1000);
         try {
             String verifyValidationMessage = getText(By.cssSelector(VALIDATION_ALERT_MESSAGE));
             waitElementBy(By.cssSelector(VALIDATION_ALERT_MESSAGE), 10);
