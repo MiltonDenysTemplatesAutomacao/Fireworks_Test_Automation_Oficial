@@ -503,8 +503,12 @@ public class LogPage {
     public static final String SAVE_CHANGES_BASIC_ADMIN_PANEL_FAIL = "Fail while trying to click on save changes for Admin Panel on basic tab";
     public static final String UPDATE_APPLICATION_PASS = "I update application group '%s'";
     public static final String UPDATE_APPLICATION_FAIL = "Fail while trying to I update application group '%s'";
+    public static final String VERIFY_APPLICATION_PASS = "I verify application group '%s'";
+    public static final String VERIFY_APPLICATION_FAIL = "Fail while trying to I verify application group '%s'";
     public static final String CLICK_SAVE_CHANGES_APPLICATION_PASS = "I click on save changes on Application";
     public static final String CLICK_SAVE_CHANGES_APPLICATION_FAIL = "Fail while trying to click on save changes on Application";
     public static final String ADD_APPLICATION_PASS = "I add application '%s'";
     public static final String ADD_APPLICATION_FAIL = "Fail while trying to add application '%s'";
+    public static final String VERIFY_APPLICATION_COMPONENT_PASS = "I verify application component component '%s' group '%s'";
+    public static final String VERIFY_APPLICATION_COMPONENT_FAIL = "Fail while trying to verify application component '%s' group '%s'";
 }

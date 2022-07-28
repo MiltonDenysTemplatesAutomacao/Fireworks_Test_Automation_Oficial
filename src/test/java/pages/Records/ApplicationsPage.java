@@ -11,7 +11,7 @@ import pages.LogPage;
 public class ApplicationsPage extends BasePage {
 
 
-    private static final String ENTRY_TERM_ELEMENT_FIELD = "//input[starts-with(@id, 's2id_autogen') and contains(@aria-autocomplete, 'list')]";
+    private static final String ENTRY_TERM_ELEMENT_FIELD = "//input[starts-with(@id, 's2id_autogen') and contains(@id, '_search') and contains(@aria-activedescendant, 'select2-result-label')]";
     private static final String DATA_LIST = "#select2-drop";
     private static final String APPLICATIONS_SAVE_CHANGES_BUTTON = "#saveChangesBtnPersonApplications";
 
@@ -37,7 +37,7 @@ public class ApplicationsPage extends BasePage {
         return String.format("#s2id_person_application_%s_application_type",group);
     }
     private static String sourceElement(String group){
-        return String.format("#s2id_person_application_0_application_source",group);
+        return String.format("#s2id_person_application_%S_application_source",group);
     }
     private static String receivedDateField(String group){
         return String.format("#person_application_%s_application_started_date",group);
@@ -65,6 +65,7 @@ public class ApplicationsPage extends BasePage {
         String passMessage = String.format(LogPage.ADD_APPLICATION_PASS,group);
         String failMessage = String.format(LogPage.ADD_APPLICATION_FAIL,group);
         try {
+            waitUntilElementToBeSelected(By.cssSelector(applicationAddButton(group)),10);
             scrollToElement(By.cssSelector(applicationAddButton(group)));
             scrollTo("-150");
             click(By.cssSelector(applicationAddButton(group)));
@@ -85,8 +86,8 @@ public class ApplicationsPage extends BasePage {
         }
     }
     public static void verifyApplication(ApplicationBean applicationBean, String group){
-        String passMessage = String.format(LogPage.UPDATE_APPLICATION_PASS,group);
-        String failMessage = String.format(LogPage.UPDATE_APPLICATION_FAIL,group);
+        String passMessage = String.format(LogPage.VERIFY_APPLICATION_PASS,group);
+        String failMessage = String.format(LogPage.VERIFY_APPLICATION_FAIL,group);
         int verifyApplicationDelay = 10;
 
         boolean entryTermValidation = false;
@@ -234,7 +235,7 @@ public class ApplicationsPage extends BasePage {
                 scrollToElement(By.cssSelector(applicationAddButton(group)));
                 waitElementBy(By.cssSelector(entryTermElement(group)),updateApplicationDelay);
                 BasePage.click(By.cssSelector(entryTermElement(group)));
-                //waitElementBy(By.xpath(ENTRY_TERM_ELEMENT_FIELD),updateApplicationDelay);
+                waitElementBy(By.xpath(ENTRY_TERM_ELEMENT_FIELD),updateApplicationDelay);
                 write(By.xpath(ENTRY_TERM_ELEMENT_FIELD),applicationBean.getEntryTerm());
                 KeyPage.pressKey(By.xpath(ENTRY_TERM_ELEMENT_FIELD),"Enter");
 
@@ -249,7 +250,7 @@ public class ApplicationsPage extends BasePage {
             }
             if(applicationBean.getComponentStatus()!=""){
                 scrollToElement(By.cssSelector(applicationAddButton(group)));
-                waitElementBy(By.cssSelector(applicationAddButton(group)),updateApplicationDelay);
+                waitElementBy(By.cssSelector(componentStatusElement(group)),updateApplicationDelay);
                 BasePage.click(By.cssSelector(componentStatusElement(group)));
                 waitElementBy(By.cssSelector(DATA_LIST),updateApplicationDelay);
                 BasePage.selectElementsList(By.cssSelector(DATA_LIST), "a");
@@ -257,29 +258,36 @@ public class ApplicationsPage extends BasePage {
             }
             if(applicationBean.getApplicationType()!=""){
                 scrollToElement(By.cssSelector(applicationAddButton(group)));
-                waitElementBy(By.cssSelector(applicationAddButton(group)),updateApplicationDelay);
+                waitElementBy(By.cssSelector(applicationTypeElement(group)),updateApplicationDelay);
                 BasePage.click(By.cssSelector(applicationTypeElement(group)));
                 waitElementBy(By.cssSelector(DATA_LIST),updateApplicationDelay);
                 BasePage.selectElementsList(By.cssSelector(DATA_LIST), "a");
                 clickOnListOfElements(applicationBean.getApplicationType());
+                wait(500);
             }
             if(applicationBean.getSource()!=""){
                 scrollToElement(By.cssSelector(applicationAddButton(group)));
-                waitElementBy(By.cssSelector(applicationAddButton(group)),updateApplicationDelay);
+                waitElementBy(By.cssSelector(sourceElement(group)),updateApplicationDelay);
                 BasePage.click(By.cssSelector(sourceElement(group)));
                 waitElementBy(By.cssSelector(DATA_LIST),updateApplicationDelay);
                 BasePage.selectElementsList(By.cssSelector(DATA_LIST), "a");
                 clickOnListOfElements(applicationBean.getSource());
+                wait(500);
             }
             if(applicationBean.getReceivedDate()!=""){
-                scrollToElement(By.cssSelector(applicationAddButton(group)));
-                waitElementBy(By.cssSelector(applicationAddButton(group)),updateApplicationDelay);
+                waitElementBy(By.cssSelector(receivedDateField(group)),updateApplicationDelay);
+                scrollToElement(By.cssSelector(major2ElementLocator(group)));
+                waitElementBy(By.cssSelector(receivedDateField(group)),updateApplicationDelay);
+                KeyPage.erase(By.cssSelector(receivedDateField(group)));
+                wait(1000);
                 BasePage.write(By.cssSelector(receivedDateField(group)),applicationBean.getReceivedDate());
+                wait(1000);
+                KeyPage.pressKey(By.cssSelector(receivedDateField(group)), "Enter");
 
             }
             if(applicationBean.getMajor2()!=""){
                 scrollToElement(By.cssSelector(applicationAddButton(group)));
-                waitElementBy(By.cssSelector(applicationAddButton(group)),updateApplicationDelay);
+                waitElementBy(By.cssSelector(major2ElementLocator(group)),updateApplicationDelay);
                 BasePage.click(By.cssSelector(major2ElementLocator(group)));
                 waitElementBy(By.cssSelector(DATA_LIST),updateApplicationDelay);
                 BasePage.selectElementsList(By.cssSelector(DATA_LIST), "a");
@@ -287,7 +295,7 @@ public class ApplicationsPage extends BasePage {
             }
             if(applicationBean.getMajor3()!=""){
                 scrollToElement(By.cssSelector(applicationAddButton(group)));
-                waitElementBy(By.cssSelector(applicationAddButton(group)),updateApplicationDelay);
+                waitElementBy(By.cssSelector(major3ElementLocator(group)),updateApplicationDelay);
                 BasePage.click(By.cssSelector(major3ElementLocator(group)));
                 waitElementBy(By.cssSelector(DATA_LIST),updateApplicationDelay);
                 BasePage.selectElementsList(By.cssSelector(DATA_LIST), "a");
@@ -295,48 +303,48 @@ public class ApplicationsPage extends BasePage {
             }
             if(applicationBean.getAppliedGrade()!=""){
                 scrollToElement(By.cssSelector(applicationAddButton(group)));
-                waitElementBy(By.cssSelector(applicationAddButton(group)),updateApplicationDelay);
+                waitElementBy(By.cssSelector(appliedGrade(group)),updateApplicationDelay);
                 BasePage.click(By.cssSelector(appliedGrade(group)));
                 waitElementBy(By.cssSelector(DATA_LIST),updateApplicationDelay);
                 BasePage.selectElementsList(By.cssSelector(DATA_LIST), "a");
                 clickOnListOfElements(applicationBean.getAppliedGrade());
             }
             if(applicationBean.getConcentration()!=""){
-                scrollToElement(By.cssSelector(applicationAddButton(group)));
-                waitElementBy(By.cssSelector(applicationAddButton(group)),updateApplicationDelay);
+                scrollToElement(By.cssSelector(major2ElementLocator(group)));
+                waitElementBy(By.cssSelector(concentrationElement(group)),updateApplicationDelay);
                 BasePage.click(By.cssSelector(concentrationElement(group)));
                 waitElementBy(By.cssSelector(DATA_LIST),updateApplicationDelay);
                 BasePage.selectElementsList(By.cssSelector(DATA_LIST), "a");
                 clickOnListOfElements(applicationBean.getConcentration());
             }
             if(applicationBean.getHousing()!=""){
-                scrollToElement(By.cssSelector(applicationAddButton(group)));
-                waitElementBy(By.cssSelector(applicationAddButton(group)),updateApplicationDelay);
+                scrollToElement(By.cssSelector(major2ElementLocator(group)));
+                waitElementBy(By.cssSelector(housingElement(group)),updateApplicationDelay);
                 BasePage.click(By.cssSelector(housingElement(group)));
                 waitElementBy(By.cssSelector(DATA_LIST),updateApplicationDelay);
                 BasePage.selectElementsList(By.cssSelector(DATA_LIST), "a");
                 clickOnListOfElements(applicationBean.getHousing());
             }
             if(applicationBean.getMinor()!=""){
-                scrollToElement(By.cssSelector(applicationAddButton(group)));
-                waitElementBy(By.cssSelector(applicationAddButton(group)),updateApplicationDelay);
+                scrollToElement(By.cssSelector(major2ElementLocator(group)));
+                waitElementBy(By.cssSelector(minorElement(group)),updateApplicationDelay);
                 BasePage.click(By.cssSelector(minorElement(group)));
                 waitElementBy(By.cssSelector(DATA_LIST),updateApplicationDelay);
                 BasePage.selectElementsList(By.cssSelector(DATA_LIST), "a");
                 clickOnListOfElements(applicationBean.getMinor());
             }
             if(applicationBean.getCompletionDate()!=""){
-                scrollToElement(By.cssSelector(applicationAddButton(group)));
-                waitElementBy(By.cssSelector(applicationAddButton(group)),updateApplicationDelay);
+                scrollToElement(By.cssSelector(major2ElementLocator(group)));
+                waitElementBy(By.cssSelector(completionDateField(group)),updateApplicationDelay);
                 BasePage.click(By.cssSelector(completionDateField(group)));
                 waitElementBy(By.cssSelector(DATA_LIST),updateApplicationDelay);
                 BasePage.selectElementsList(By.cssSelector(DATA_LIST), "a");
                 clickOnListOfElements(applicationBean.getCompletionDate());
             }
             if(applicationBean.getComments()!=""){
-                scrollToElement(By.cssSelector(commentsField(group)));
+                scrollToElement(By.cssSelector(major2ElementLocator(group)));
                 waitElementBy(By.cssSelector(commentsField(group)),updateApplicationDelay);
-                BasePage.write(By.cssSelector(receivedDateField(group)),applicationBean.getComments());
+                BasePage.write(By.cssSelector(commentsField(group)),applicationBean.getComments());
             }
             ExtentReportsSetUp.testingPass(passMessage);
         } catch (Exception e) {
