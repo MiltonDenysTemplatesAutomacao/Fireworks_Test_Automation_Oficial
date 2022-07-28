@@ -2,7 +2,6 @@ package pages;
 
 import config.extent_reports.ExtentReportsSetUp;
 import org.openqa.selenium.By;
-import pages.Records.StudentStatusPage;
 
 public class LetterTemplatePage extends BasePage{
     public static final String CREATE_NEW_LETTER_TEMPLATE_BUTTON = "top-controls-create-new-letter-template";
@@ -50,14 +49,14 @@ public class LetterTemplatePage extends BasePage{
                 scrollToElement(By.cssSelector(TEMPLATE_DESCRIPTION_FIELD));
                 waitUntilElementToBeSelected(By.cssSelector(TEMPLATE_RECORD_TYPE_DROPDOWN), updateLetterTemplateDelay);
                 BasePage.click(By.cssSelector(TEMPLATE_RECORD_TYPE_DROPDOWN));
-                BasePage.selectElementsList(By.cssSelector(StudentStatusPage.CHECKBOX_LIST), "a");
+                BasePage.selectElementsList(By.cssSelector(PersonPage.SELECT_DROP), "a");
                 clickOnListOfElements(mass.get(person).get("RecordType"));
             }
             if (mass.get(person).get("LetterFormat") != null) {
                 scrollToElement(By.cssSelector(TEMPLATE_RECORD_TYPE_DROPDOWN));
                 waitUntilElementToBeSelected(By.cssSelector(LETTER_FORMAT_DROPDOWN), updateLetterTemplateDelay);
                 BasePage.click(By.cssSelector(LETTER_FORMAT_DROPDOWN));
-                BasePage.selectElementsList(By.cssSelector(StudentStatusPage.CHECKBOX_LIST), "a");
+                BasePage.selectElementsList(By.cssSelector(PersonPage.SELECT_DROP), "a");
                 clickOnListOfElements(mass.get(person).get("LetterFormat"));
             }
             if (mass.get(person).get("LetterContent") != null) {

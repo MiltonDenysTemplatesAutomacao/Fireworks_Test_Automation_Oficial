@@ -6,6 +6,8 @@ import org.openqa.selenium.WebElement;
 import pages.BasePage;
 import pages.FailureDelegatePage;
 import pages.LogPage;
+import pages.PersonPage;
+
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -500,21 +502,21 @@ public class PersonBasicPage extends BasePage {
                 scrollToElement(By.cssSelector(INITIAL_CATEGORY_DROPDOWN));
                 waitElementBy(By.cssSelector(TIME_ZONE_DROPDOWN),updateContextValuesDelay);
                 BasePage.click(By.cssSelector(TIME_ZONE_DROPDOWN));
-                BasePage.selectElementsList(By.cssSelector(StudentStatusPage.CHECKBOX_LIST), "a");
+                BasePage.selectElementsList(By.cssSelector(PersonPage.SELECT_DROP), "a");
                 wait(1000);
                 clickOnListOfElements(timeZone);
             }
             if(classOf!=""){
                 waitElementBy(By.cssSelector(CLASS_OF_DROPDOWN),updateContextValuesDelay);
                 BasePage.click(By.cssSelector(CLASS_OF_DROPDOWN));
-                BasePage.selectElementsList(By.cssSelector(StudentStatusPage.CHECKBOX_LIST), "a");
+                BasePage.selectElementsList(By.cssSelector(PersonPage.SELECT_DROP), "a");
                 wait(1000);
                 clickOnListOfElements(classOf);
             }
             if(currentGrade!=""){
                 waitElementBy(By.cssSelector(CURRENT_GRADE_DROPDOWN),updateContextValuesDelay);
                 BasePage.click(By.cssSelector(CURRENT_GRADE_DROPDOWN));
-                BasePage.selectElementsList(By.cssSelector(StudentStatusPage.CHECKBOX_LIST), "a");
+                BasePage.selectElementsList(By.cssSelector(PersonPage.SELECT_DROP), "a");
                 wait(1000);
                 clickOnListOfElements(currentGrade);
             }
@@ -530,14 +532,14 @@ public class PersonBasicPage extends BasePage {
                 scrollToElement(By.cssSelector(PRIMARY_LANGUAGE_DROPDOWN));
                 waitElementBy(By.cssSelector(INITIAL_CATEGORY_DROPDOWN),20);
                 BasePage.click(By.cssSelector(INITIAL_CATEGORY_DROPDOWN));
-                BasePage.selectElementsList(By.cssSelector(StudentStatusPage.CHECKBOX_LIST), "a");
+                BasePage.selectElementsList(By.cssSelector(PersonPage.SELECT_DROP), "a");
                 wait(1000);
                 clickOnListOfElements(initialCategory);
             }
             if(sourceText != ""){
                 waitElementBy(By.cssSelector(INITIAL_SOURCE_DROPDOWN),20);
                 BasePage.click(By.cssSelector(INITIAL_SOURCE_DROPDOWN));
-                BasePage.selectElementsList(By.cssSelector(StudentStatusPage.CHECKBOX_LIST), "a");
+                BasePage.selectElementsList(By.cssSelector(PersonPage.SELECT_DROP), "a");
                 wait(1000);
                 clickOnListOfElements(sourceText);
             }
@@ -564,28 +566,28 @@ public class PersonBasicPage extends BasePage {
                 scrollToElement(By.cssSelector(BIRTH_STATE_DROPDOWN));
                 waitElementBy(By.cssSelector(ETHNICITY_DROPDOWN),updateCultureValuesDelay);
                 BasePage.click(By.cssSelector(ETHNICITY_DROPDOWN));
-                BasePage.selectElementsList(By.cssSelector(StudentStatusPage.CHECKBOX_LIST), "a");
+                BasePage.selectElementsList(By.cssSelector(PersonPage.SELECT_DROP), "a");
                 wait(1000);
                 clickOnListOfElements(ethnicity);
             }
             if (race != ""){
                 waitElementBy(By.xpath(RACE_DROPDOWN),updateCultureValuesDelay);
                 BasePage.click(By.xpath(RACE_DROPDOWN));
-                BasePage.selectElementsList(By.cssSelector(StudentStatusPage.CHECKBOX_LIST), "a");
+                BasePage.selectElementsList(By.cssSelector(PersonPage.SELECT_DROP), "a");
                 wait(1000);
                 clickOnListOfElements(race);
             }
             if (gender != ""){
                 waitElementBy(By.cssSelector(GENDER_DROPDOWN),updateCultureValuesDelay);
                 BasePage.click(By.cssSelector(GENDER_DROPDOWN));
-                BasePage.selectElementsList(By.cssSelector(StudentStatusPage.CHECKBOX_LIST), "a");
+                BasePage.selectElementsList(By.cssSelector(PersonPage.SELECT_DROP), "a");
                 wait(1000);
                 clickOnListOfElements(gender);
             }
             if (maritalStatus != ""){
                 waitElementBy(By.cssSelector(MARITAL_STATUS_DROPDOWN),updateCultureValuesDelay);
                 BasePage.click(By.cssSelector(MARITAL_STATUS_DROPDOWN));
-                BasePage.selectElementsList(By.cssSelector(StudentStatusPage.CHECKBOX_LIST), "a");
+                BasePage.selectElementsList(By.cssSelector(PersonPage.SELECT_DROP), "a");
                 wait(1000);
                 clickOnListOfElements(maritalStatus);
             }
@@ -593,14 +595,14 @@ public class PersonBasicPage extends BasePage {
                 scrollToElement(By.cssSelector(ETHNICITY_DROPDOWN));
                 waitElementBy(By.cssSelector(PRIMARY_LANGUAGE_DROPDOWN),updateCultureValuesDelay);
                 BasePage.click(By.cssSelector(PRIMARY_LANGUAGE_DROPDOWN));
-                BasePage.selectElementsList(By.cssSelector(StudentStatusPage.CHECKBOX_LIST), "a");
+                BasePage.selectElementsList(By.cssSelector(PersonPage.SELECT_DROP), "a");
                 wait(1000);
                 clickOnListOfElements(primaryLanguage);
             }
             if (religion != ""){
                 waitElementBy(By.cssSelector(RELIGION_DROPDOWN),updateCultureValuesDelay);
                 BasePage.click(By.cssSelector(RELIGION_DROPDOWN));
-                BasePage.selectElementsList(By.cssSelector(StudentStatusPage.CHECKBOX_LIST), "a");
+                BasePage.selectElementsList(By.cssSelector(PersonPage.SELECT_DROP), "a");
                 wait(1000);
                 clickOnListOfElements(religion);
             }
@@ -622,7 +624,7 @@ public class PersonBasicPage extends BasePage {
             if (country != "") {
                 waitElementBy(By.cssSelector(BIRTH_COUNTRY_DROPDOWN), updateBirthValuesDelay);
                 BasePage.click(By.cssSelector(BIRTH_COUNTRY_DROPDOWN));
-                BasePage.selectElementsList(By.cssSelector(StudentStatusPage.CHECKBOX_LIST), "a");
+                BasePage.selectElementsList(By.cssSelector(PersonPage.SELECT_DROP), "a");
                 wait(1000);
                 clickOnListOfElements(country);
             }
@@ -633,7 +635,7 @@ public class PersonBasicPage extends BasePage {
             if (state != "") {
                 waitElementBy(By.cssSelector(BIRTH_STATE_DROPDOWN), updateBirthValuesDelay);
                 BasePage.click(By.cssSelector(BIRTH_STATE_DROPDOWN));
-                BasePage.selectElementsList(By.cssSelector(StudentStatusPage.CHECKBOX_LIST), "a");
+                BasePage.selectElementsList(By.cssSelector(PersonPage.SELECT_DROP), "a");
                 wait(1000);
                 clickOnListOfElements(state);
             }

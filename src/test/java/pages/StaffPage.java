@@ -4,14 +4,12 @@ import bean.ContactAddressBean;
 import bean.ContactPhoneBean;
 import config.extent_reports.ExtentReportsSetUp;
 import org.openqa.selenium.By;
-import pages.Records.StudentStatusPage;
 
 public class StaffPage extends BasePage{
     public static final String STAFF_STATUS_RECORD = "staffHeaderRecordStatusButton";
     public static final String STAFF_PERMISSION_RECORD = ".//*[@class='btn-group autoSubmit dropDownSelect'][2]";
     private static final String CONTACT_PHONE_NUMBER_FIELD = "entity_phone_0_phone_number";
     private static final String CONTACT_PHONE_TYPE_DROPDOWN = "s2id_entity_phone_0_phone_type";
-    private static final String CONTACT_PHONE_TYPE_DROPDOWN_LIST = "#select2-drop";
     private static final String CONTACT_PHONE_COMMENTS_FIELD = "entity_phone_0_phone_comments";
     private static final String STAFF_CONTACT_SAVE_CHANGES_BUTTON = "saveChangesBtnStaffContact";
     private static final String BASIC_PANEL_HEADING_ELEMENT = "#basic span";
@@ -287,7 +285,7 @@ public class StaffPage extends BasePage{
                 scrollToElement(By.cssSelector(statusPlusSignElement(index)));
                 waitUntilElementToBeSelected(By.cssSelector(typeDropdown(index)),20);
                 BasePage.click(By.cssSelector(typeDropdown(index)));
-                BasePage.selectElementsList(By.cssSelector(StudentStatusPage.CHECKBOX_LIST), "a");
+                BasePage.selectElementsList(By.cssSelector(PersonPage.SELECT_DROP), "a");
                 clickOnListOfElements(mass.get(person).get("IDType"));
             }
             if (mass.get(person).get("IDNumber") != null) {
@@ -303,7 +301,7 @@ public class StaffPage extends BasePage{
             if (mass.get(person).get("WhoAddedID") != null) {
                 scrollToElement(By.cssSelector(statusPlusSignElement(index)));
                 BasePage.click(By.cssSelector(whoAddedID(index)));
-                BasePage.selectElementsList(By.cssSelector(OrgPage.WHO_ADDED_ID_DROPDOWN_LIST), "a");
+                BasePage.selectElementsList(By.cssSelector(PersonPage.SELECT_DROP), "a");
                 clickOnListOfElements(mass.get(0).get("WhoAddedID"));
             }
             if (mass.get(person).get("Comments") != null) {
@@ -426,7 +424,7 @@ public class StaffPage extends BasePage{
             }
             if (phone.getPhoneType() !="") {
                 BasePage.click(By.id(CONTACT_PHONE_TYPE_DROPDOWN));
-                BasePage.selectElementsList(By.cssSelector(CONTACT_PHONE_TYPE_DROPDOWN_LIST), "a");
+                BasePage.selectElementsList(By.cssSelector(PersonPage.SELECT_DROP), "a");
                 clickOnListOfElements(phone.getPhoneType());
             }
             if (phone.getPhoneComments() !="") {

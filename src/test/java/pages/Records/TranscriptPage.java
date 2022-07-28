@@ -3,15 +3,9 @@ package pages.Records;
 import bean.TranscriptBean;
 import config.extent_reports.ExtentReportsSetUp;
 import org.openqa.selenium.By;
-import pages.BasePage;
-import pages.FailureDelegatePage;
-import pages.KeyPage;
-import pages.LogPage;
+import pages.*;
 
 public class TranscriptPage extends BasePage {
-
-    private static final String SELECT_DROP = "#select2-drop";
-
 
     private static String transcriptPlusSign(String index){
         return String.format("#person_school_0_person_school_transcript_%s_add",index);
@@ -457,7 +451,7 @@ public class TranscriptPage extends BasePage {
                 wait(1000);
                 BasePage.click(By.cssSelector(transcriptTypeElement(group)));
                 wait(1000);
-                BasePage.selectElementsList(By.cssSelector(SELECT_DROP), "a");
+                BasePage.selectElementsList(By.cssSelector(PersonPage.SELECT_DROP), "a");
                 wait(1000);
                 clickOnListOfElements(transcriptBean.getType());
             }
@@ -488,56 +482,56 @@ public class TranscriptPage extends BasePage {
             if(transcriptBean.getGed()!=null){
                 waitElementBy(By.cssSelector(transcriptGEDElement(group)),updateTranscriptDelay);
                 BasePage.click(By.cssSelector(transcriptGEDElement(group)));
-                waitElementBy(By.cssSelector(SELECT_DROP),updateTranscriptDelay);
-                BasePage.selectElementsList(By.cssSelector(SELECT_DROP), "a");
+                waitElementBy(By.cssSelector(PersonPage.SELECT_DROP),updateTranscriptDelay);
+                BasePage.selectElementsList(By.cssSelector(PersonPage.SELECT_DROP), "a");
                 wait(1000);
                 clickOnListOfElements(transcriptBean.getGed());
             }
             if(transcriptBean.getDiplomaReceived()!=null){
                 waitElementBy(By.cssSelector(transcriptDiplomaReceivedElement(group)),updateTranscriptDelay);
                 BasePage.click(By.cssSelector(transcriptDiplomaReceivedElement(group)));
-                waitElementBy(By.cssSelector(SELECT_DROP),updateTranscriptDelay);
-                BasePage.selectElementsList(By.cssSelector(SELECT_DROP), "a");
+                waitElementBy(By.cssSelector(PersonPage.SELECT_DROP),updateTranscriptDelay);
+                BasePage.selectElementsList(By.cssSelector(PersonPage.SELECT_DROP), "a");
                 wait(1000);
                 clickOnListOfElements(transcriptBean.getDiplomaReceived());
             }
             if(transcriptBean.getOfficialTranscript()!=null){
                 waitElementBy(By.cssSelector(transcriptOfficialTranscriptElement(group)),updateTranscriptDelay);
                 BasePage.click(By.cssSelector(transcriptOfficialTranscriptElement(group)));
-                waitElementBy(By.cssSelector(SELECT_DROP),updateTranscriptDelay);
-                BasePage.selectElementsList(By.cssSelector(SELECT_DROP), "a");
+                waitElementBy(By.cssSelector(PersonPage.SELECT_DROP),updateTranscriptDelay);
+                BasePage.selectElementsList(By.cssSelector(PersonPage.SELECT_DROP), "a");
                 wait(1000);
                 clickOnListOfElements(transcriptBean.getOfficialTranscript());
             }
             if(transcriptBean.getMajor()!=null){
                 waitElementBy(By.cssSelector(transcriptMajorElement(group)),updateTranscriptDelay);
                 BasePage.click(By.cssSelector(transcriptMajorElement(group)));
-                waitElementBy(By.cssSelector(SELECT_DROP),updateTranscriptDelay);
-                BasePage.selectElementsList(By.cssSelector(SELECT_DROP), "a");
+                waitElementBy(By.cssSelector(PersonPage.SELECT_DROP),updateTranscriptDelay);
+                BasePage.selectElementsList(By.cssSelector(PersonPage.SELECT_DROP), "a");
                 wait(1000);
                 clickOnListOfElements(transcriptBean.getMajor());
             }
             if(transcriptBean.getDegree()!=null){
                 waitElementBy(By.cssSelector(transcriptDegreeElement(group)),updateTranscriptDelay);
                 BasePage.click(By.cssSelector(transcriptDegreeElement(group)));
-                waitElementBy(By.cssSelector(SELECT_DROP),updateTranscriptDelay);
-                BasePage.selectElementsList(By.cssSelector(SELECT_DROP), "a");
+                waitElementBy(By.cssSelector(PersonPage.SELECT_DROP),updateTranscriptDelay);
+                BasePage.selectElementsList(By.cssSelector(PersonPage.SELECT_DROP), "a");
                 wait(1000);
                 clickOnListOfElements(transcriptBean.getDegree());
             }
             if(transcriptBean.getDegreeLevel()!=null){
                 waitElementBy(By.cssSelector(transcriptDegreeLevelElement(group)),updateTranscriptDelay);
                 BasePage.click(By.cssSelector(transcriptDegreeLevelElement(group)));
-                waitElementBy(By.cssSelector(SELECT_DROP),updateTranscriptDelay);
-                BasePage.selectElementsList(By.cssSelector(SELECT_DROP), "a");
+                waitElementBy(By.cssSelector(PersonPage.SELECT_DROP),updateTranscriptDelay);
+                BasePage.selectElementsList(By.cssSelector(PersonPage.SELECT_DROP), "a");
                 wait(1000);
                 clickOnListOfElementsContains(transcriptBean.getDegreeLevel());
             }
             if(transcriptBean.getDegreeEarned()!=null){
                 waitElementBy(By.cssSelector(transcriptDegreeEarnedElement(group)),updateTranscriptDelay);
                 BasePage.click(By.cssSelector(transcriptDegreeEarnedElement(group)));
-                waitElementBy(By.cssSelector(SELECT_DROP),updateTranscriptDelay);
-                BasePage.selectElementsList(By.cssSelector(SELECT_DROP), "a");
+                waitElementBy(By.cssSelector(PersonPage.SELECT_DROP),updateTranscriptDelay);
+                BasePage.selectElementsList(By.cssSelector(PersonPage.SELECT_DROP), "a");
                 wait(1000);
                 clickOnListOfElements(transcriptBean.getDegreeEarned());
             }
@@ -548,16 +542,16 @@ public class TranscriptPage extends BasePage {
             if(transcriptBean.getMinor()!=null){
                 waitElementBy(By.cssSelector(transcriptMinorElement(group)),updateTranscriptDelay);
                 BasePage.click(By.cssSelector(transcriptMinorElement(group)));
-                waitElementBy(By.cssSelector(SELECT_DROP),updateTranscriptDelay);
-                BasePage.selectElementsList(By.cssSelector(SELECT_DROP), "a");
+                waitElementBy(By.cssSelector(PersonPage.SELECT_DROP),updateTranscriptDelay);
+                BasePage.selectElementsList(By.cssSelector(PersonPage.SELECT_DROP), "a");
                 wait(1000);
                 clickOnListOfElements(transcriptBean.getMinor());
             }
             if(transcriptBean.getConcentration()!=null){
                 waitElementBy(By.cssSelector(transcriptConcentrationElement(group)),updateTranscriptDelay);
                 BasePage.click(By.cssSelector(transcriptConcentrationElement(group)));
-                waitElementBy(By.cssSelector(SELECT_DROP),updateTranscriptDelay);
-                BasePage.selectElementsList(By.cssSelector(SELECT_DROP), "a");
+                waitElementBy(By.cssSelector(PersonPage.SELECT_DROP),updateTranscriptDelay);
+                BasePage.selectElementsList(By.cssSelector(PersonPage.SELECT_DROP), "a");
                 wait(1000);
                 clickOnListOfElements(transcriptBean.getConcentration());
             }
@@ -590,8 +584,8 @@ public class TranscriptPage extends BasePage {
             if(transcriptBean.getWeighted()!=null){
                 waitElementBy(By.cssSelector(transcriptWeightedElement(group)),updateTranscriptDelay);
                 BasePage.click(By.cssSelector(transcriptWeightedElement(group)));
-                waitElementBy(By.cssSelector(SELECT_DROP),updateTranscriptDelay);
-                BasePage.selectElementsList(By.cssSelector(SELECT_DROP), "a");
+                waitElementBy(By.cssSelector(PersonPage.SELECT_DROP),updateTranscriptDelay);
+                BasePage.selectElementsList(By.cssSelector(PersonPage.SELECT_DROP), "a");
                 wait(1000);
                 clickOnListOfElements(transcriptBean.getWeighted());
             }
@@ -602,16 +596,16 @@ public class TranscriptPage extends BasePage {
             if(transcriptBean.getRankUnavailable()!=null){
                 waitElementBy(By.cssSelector(transcriptRankUnavailableElement(group)),updateTranscriptDelay);
                 BasePage.click(By.cssSelector(transcriptRankUnavailableElement(group)));
-                waitElementBy(By.cssSelector(SELECT_DROP),updateTranscriptDelay);
-                BasePage.selectElementsList(By.cssSelector(SELECT_DROP), "a");
+                waitElementBy(By.cssSelector(PersonPage.SELECT_DROP),updateTranscriptDelay);
+                BasePage.selectElementsList(By.cssSelector(PersonPage.SELECT_DROP), "a");
                 wait(1000);
                 clickOnListOfElements(transcriptBean.getRankUnavailable());
             }
             if(transcriptBean.getRankWeighted()!=null){
                 waitElementBy(By.cssSelector(transcriptRankWeightedElement(group)),updateTranscriptDelay);
                 BasePage.click(By.cssSelector(transcriptRankWeightedElement(group)));
-                waitElementBy(By.cssSelector(SELECT_DROP),updateTranscriptDelay);
-                BasePage.selectElementsList(By.cssSelector(SELECT_DROP), "a");
+                waitElementBy(By.cssSelector(PersonPage.SELECT_DROP),updateTranscriptDelay);
+                BasePage.selectElementsList(By.cssSelector(PersonPage.SELECT_DROP), "a");
                 wait(1000);
                 clickOnListOfElements(transcriptBean.getRankWeighted());
             }
@@ -620,8 +614,8 @@ public class TranscriptPage extends BasePage {
                 scrollTo("-150");
                 waitElementBy(By.cssSelector(transcriptSelfReportedElement(group)),updateTranscriptDelay);
                 BasePage.click(By.cssSelector(transcriptSelfReportedElement(group)));
-                waitElementBy(By.cssSelector(SELECT_DROP),updateTranscriptDelay);
-                BasePage.selectElementsList(By.cssSelector(SELECT_DROP), "a");
+                waitElementBy(By.cssSelector(PersonPage.SELECT_DROP),updateTranscriptDelay);
+                BasePage.selectElementsList(By.cssSelector(PersonPage.SELECT_DROP), "a");
                 wait(1000);
                 clickOnListOfElements(transcriptBean.getSelfReported());
             }

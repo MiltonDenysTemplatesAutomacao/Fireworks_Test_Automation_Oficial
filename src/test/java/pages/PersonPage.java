@@ -9,6 +9,7 @@ import java.util.HashMap;
 import java.util.List;
 
 public class PersonPage extends BasePage{
+    public static final String SELECT_DROP = "#select2-drop";
     public static final String SUMMARY_LABEL = "recordNavTab_summary";
     public static final String SUMMARY_DISPLAY_EMAIL_ADDRESS = "//*[@for='summaryPanelField_64']";
     public static final String SUMMARY_DISPLAY_PERSON_CLASS_OF = "//*[@for='summaryPanelField_427']";
@@ -75,11 +76,9 @@ public class PersonPage extends BasePage{
     private static final String SALUTATION_DROPDOWN_LIST = "#person_name_0_salutation_dropdown_menu";
     private static final String SAVE_CHANGES_BTN_PERSON_CONTACT = "saveChangesBtnPersonContact";
     private static final String TYPE_DROPDOWN = "#s2id_entity_external_id_0_id_type";
-    private static final String TYPE_DROPDOWN_LIST = "#select2-drop";
     private static final String ID_NUMBER_FIELD = "#entity_external_id_0_id_number";
     private static final String ID_RECORDED_DATE_FIELD = "#entity_external_id_0_id_date";
     private static final String WHO_ADDED_ID_DROPDOWN = "#s2id_entity_external_id_0_id_user";
-    private static final String WHO_ADDED_ID_DROPDOWN_LIST = "#select2-drop";
     private static final String COMMENTS_FIELD = "#entity_external_id_0_id_comments";
     private static final String PLUS_BUTTON_EXTERNAL_ID = "//*[@id='entity_external_id_0_add']";
     private static final String SAVE_CHANGES_BTN_PERSON_ID_TYPES = "saveChangesBtnPersonIdTypes";
@@ -654,7 +653,7 @@ public class PersonPage extends BasePage{
             BasePage.scrollToElement(By.xpath(PLUS_BUTTON_EXTERNAL_ID));
             if (mass.get(0).get(type) != null) {
                 BasePage.click(By.cssSelector(TYPE_DROPDOWN));
-                BasePage.selectElementsList(By.cssSelector(TYPE_DROPDOWN_LIST), "a");
+                BasePage.selectElementsList(By.cssSelector(PersonPage.SELECT_DROP), "a");
                 clickOnListOfElements(mass.get(0).get(type));
             }
             if (mass.get(0).get(idNumber) != null) {
@@ -665,7 +664,7 @@ public class PersonPage extends BasePage{
             }
             if (mass.get(0).get(whoAddedId) != null) {
                 BasePage.click(By.cssSelector(WHO_ADDED_ID_DROPDOWN));
-                BasePage.selectElementsList(By.cssSelector(WHO_ADDED_ID_DROPDOWN_LIST), "a");
+                BasePage.selectElementsList(By.cssSelector(PersonPage.SELECT_DROP), "a");
                 clickOnListOfElements(mass.get(0).get(whoAddedId));
             }
             if (mass.get(0).get(comments) != null) {

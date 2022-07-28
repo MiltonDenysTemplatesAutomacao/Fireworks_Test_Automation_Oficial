@@ -511,4 +511,8 @@ public class LogPage {
     public static final String ADD_APPLICATION_FAIL = "Fail while trying to add application '%s'";
     public static final String VERIFY_APPLICATION_COMPONENT_PASS = "I verify application component component '%s' group '%s'";
     public static final String VERIFY_APPLICATION_COMPONENT_FAIL = "Fail while trying to verify application component '%s' group '%s'";
+    public static final String ADD_REVIEW_PASS = "I add a review '%s' app '%s'";
+    public static final String ADD_REVIEW_FAIL = "Fail while trying to add a review '%s' app '%s'";
+    public static final String UPDATE_APPLICATION_REVIEW_PASS = "I update application review application '%s' review '%s'";
+    public static final String UPDATE_APPLICATION_REVIEW_FAIL = "Fail while trying to update application review application '%s' review '%s'";
 }

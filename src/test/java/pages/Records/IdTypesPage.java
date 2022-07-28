@@ -2,10 +2,7 @@ package pages.Records;
 
 import config.extent_reports.ExtentReportsSetUp;
 import org.openqa.selenium.By;
-import pages.BasePage;
-import pages.FailureDelegatePage;
-import pages.LogPage;
-import pages.OrgPage;
+import pages.*;
 
 public class IdTypesPage extends BasePage {
 
@@ -69,7 +66,7 @@ public class IdTypesPage extends BasePage {
                 scrollToElement(By.cssSelector(externalIdPlusSignElement(index)));
                 waitUntilElementToBeSelected(By.xpath(typeDropdown(index)),20);
                 BasePage.click(By.xpath(typeDropdown(index)));
-                BasePage.selectElementsList(By.cssSelector(StudentStatusPage.CHECKBOX_LIST), "a");
+                BasePage.selectElementsList(By.cssSelector(PersonPage.SELECT_DROP), "a");
                 clickOnListOfElements(mass.get(person).get("IDType"));
             }
             if (mass.get(person).get("IDNumber") != null) {
@@ -85,7 +82,7 @@ public class IdTypesPage extends BasePage {
             if (mass.get(person).get("WhoAddedID") != null) {
                 scrollToElement(By.cssSelector(externalIdPlusSignElement(index)));
                 BasePage.click(By.xpath(whoAddedID(index)));
-                BasePage.selectElementsList(By.cssSelector(OrgPage.WHO_ADDED_ID_DROPDOWN_LIST), "a");
+                BasePage.selectElementsList(By.cssSelector(PersonPage.SELECT_DROP), "a");
                 clickOnListOfElements(mass.get(0).get("WhoAddedID"));
             }
             if (mass.get(person).get("Comments") != null) {

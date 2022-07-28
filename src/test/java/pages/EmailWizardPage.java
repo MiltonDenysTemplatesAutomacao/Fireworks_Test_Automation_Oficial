@@ -2,7 +2,6 @@ package pages;
 
 import config.extent_reports.ExtentReportsSetUp;
 import org.openqa.selenium.By;
-import pages.Records.StudentStatusPage;
 
 public class EmailWizardPage extends BasePage{
 
@@ -48,19 +47,19 @@ public class EmailWizardPage extends BasePage{
                 scrollTo("300");
                 waitElementBy(By.cssSelector(ACTION_CATEGORY_DROPDOWN),20);
                 BasePage.click(By.cssSelector(ACTION_CATEGORY_DROPDOWN));
-                BasePage.selectElementsList(By.cssSelector(StudentStatusPage.CHECKBOX_LIST), "a");
+                BasePage.selectElementsList(By.cssSelector(PersonPage.SELECT_DROP), "a");
                 clickOnListOfElements(category);
             }
             if (action != ""){
                 waitElementBy(By.cssSelector(ACTION_DROPDOWN),20);
                 BasePage.click(By.cssSelector(ACTION_DROPDOWN));
-                BasePage.selectElementsList(By.cssSelector(StudentStatusPage.CHECKBOX_LIST), "a");
+                BasePage.selectElementsList(By.cssSelector(PersonPage.SELECT_DROP), "a");
                 clickOnListOfElements(action);
             }
             if (staff != ""){
                 waitElementBy(By.cssSelector(ACTION_STAFF_DROPDOWN),20);
                 BasePage.click(By.cssSelector(ACTION_STAFF_DROPDOWN));
-                BasePage.selectElementsList(By.cssSelector(StudentStatusPage.CHECKBOX_LIST), "a");
+                BasePage.selectElementsList(By.cssSelector(PersonPage.SELECT_DROP), "a");
                 clickOnListOfElements(staff);
             }
             if (actionDateTime != ""){

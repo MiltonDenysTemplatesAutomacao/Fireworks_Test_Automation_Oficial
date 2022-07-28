@@ -5,10 +5,10 @@ import org.openqa.selenium.By;
 import pages.BasePage;
 import pages.FailureDelegatePage;
 import pages.LogPage;
+import pages.PersonPage;
 
 public class StudentStatusPage extends BasePage {
 
-    public static final String CHECKBOX_LIST = "#select2-drop";
     private static final String STUDENT_STATUS_SAVE_CHANGES_BUTTON = "saveChangesBtnPersonStatus";
     private static final String COUNSELOR_HISTORY_DATE_ASSIGNED_TABLE = "//*[@class='table']";
 
@@ -74,7 +74,7 @@ public class StudentStatusPage extends BasePage {
                 scrollToElement(By.cssSelector(statusPlusSignElement(index)));
                 waitUntilElementToBeSelected(By.cssSelector(categoryElement(index)),20);
                 BasePage.click(By.cssSelector(categoryElement(index)));
-                BasePage.selectElementsList(By.cssSelector(CHECKBOX_LIST), "a");
+                BasePage.selectElementsList(By.cssSelector(PersonPage.SELECT_DROP), "a");
                 wait(2000);
                 clickOnListOfElements(mass.get(person).get("StudentStatusCategory"));
             }
@@ -82,7 +82,7 @@ public class StudentStatusPage extends BasePage {
                 scrollToElement(By.cssSelector(statusPlusSignElement(index)));
                 waitUntilElementToBeSelected(By.cssSelector(statusElement(index)),20);
                 BasePage.click(By.cssSelector(statusElement(index)));
-                BasePage.selectElementsList(By.cssSelector(CHECKBOX_LIST), "a");
+                BasePage.selectElementsList(By.cssSelector(PersonPage.SELECT_DROP), "a");
                 wait(2000);
                 clickOnListOfElements(mass.get(person).get("StudentStatus"));
             }
@@ -96,7 +96,7 @@ public class StudentStatusPage extends BasePage {
                 scrollToElement(By.cssSelector(statusElement(index)));
                 waitUntilElementToBeSelected(By.cssSelector(entryTermElement(index)),20);
                 BasePage.click(By.cssSelector(entryTermElement(index)));
-                BasePage.selectElementsList(By.cssSelector(CHECKBOX_LIST), "a");
+                BasePage.selectElementsList(By.cssSelector(PersonPage.SELECT_DROP), "a");
                 wait(2000);
                 clickOnListOfElements(mass.get(person).get("EntryTerm"));
             }

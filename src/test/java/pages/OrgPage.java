@@ -3,7 +3,6 @@ package pages;
 import config.extent_reports.ExtentReportsSetUp;
 import org.openqa.selenium.By;
 import pages.Records.ActionsPage;
-import pages.Records.StudentStatusPage;
 
 import java.util.HashMap;
 
@@ -12,7 +11,6 @@ public class OrgPage extends BasePage{
     public static final String HEADER_OK_TO_CONTACT_ELEMENT = "personHeaderContactButton";
     public static final String HEADER_ORG_CATEGORY_ELEMENT = "orgHeaderCategoryButton";
     public static final String DATATABLE_EMPTY = "#organizationManagerTable_row_0_col_0";
-    public static final String WHO_ADDED_ID_DROPDOWN_LIST = "#select2-drop";
     public static final String ORG_ACTION_COMMENTS_FIELD = "org_action_comments";
     public static final String EMAIL_OPT_DROP_DOWN = "#entity_email_0_org_opt_in_method_id_toggle";
     private static final String EMAIL_ADDRESS_FIELD = "#entity_email_0_org_email_address";
@@ -22,7 +20,6 @@ public class OrgPage extends BasePage{
     private static final String ORG_BASIC_SAVE_CHANGES_BUTTON = "saveChangesBtnOrgContact";
     private static final String ORGANIZATION_NAME_FIELD = "#org_name_0_org_name_formal";
     private static final String TYPE_DROPDOWN = "#select2-chosen-6";
-    private static final String TYPE_DROPDOWN_LIST = "#select2-drop";
     private static final String ID_NUMBER_FIELD = "#entity_external_id_0_org_id_number";
     private static final String ID_RECORDED_DATE_FIELD = "#entity_external_id_0_org_id_date";
     private static final String WHO_ADDED_ID_DROPDOWN = "#select2-chosen-7";
@@ -173,14 +170,14 @@ public class OrgPage extends BasePage{
                 scrollToElement(By.cssSelector(BASIC_ORG_WEBSITE_FIELD));
                 waitElementBy(By.cssSelector(BASIC_ORG_TIME_ZONE_DROPDOWN),20);
                 BasePage.click(By.cssSelector(BASIC_ORG_TIME_ZONE_DROPDOWN));
-                BasePage.selectElementsList(By.cssSelector(StudentStatusPage.CHECKBOX_LIST), "a");
+                BasePage.selectElementsList(By.cssSelector(PersonPage.SELECT_DROP), "a");
                 wait(1000);
                 clickOnListOfElements(orgTimeZone);
             }
             if(assignedCounselor!=""){
                 waitElementBy(By.cssSelector(BASIC_ORG_ASSIGNED_COUNSELOR_DROPDOWN),20);
                 BasePage.click(By.cssSelector(BASIC_ORG_ASSIGNED_COUNSELOR_DROPDOWN));
-                BasePage.selectElementsList(By.cssSelector(StudentStatusPage.CHECKBOX_LIST), "a");
+                BasePage.selectElementsList(By.cssSelector(PersonPage.SELECT_DROP), "a");
                 wait(1000);
                 clickOnListOfElements(assignedCounselor);
             }
@@ -195,14 +192,14 @@ public class OrgPage extends BasePage{
             if(role!=""){
                 waitElementBy(By.cssSelector(BASIC_ORG_ROLE_DROPDOWN),updateBasicIdentificationValuesDelay);
                 BasePage.click(By.cssSelector(BASIC_ORG_ROLE_DROPDOWN));
-                BasePage.selectElementsList(By.cssSelector(StudentStatusPage.CHECKBOX_LIST), "a");
+                BasePage.selectElementsList(By.cssSelector(PersonPage.SELECT_DROP), "a");
                 wait(1000);
                 clickOnListOfElements(role);
             }
             if(orgType!=""){
                 waitElementBy(By.cssSelector(BASIC_ORG_TYPE_DROPDOWN),updateBasicIdentificationValuesDelay);
                 BasePage.click(By.cssSelector(BASIC_ORG_TYPE_DROPDOWN));
-                BasePage.selectElementsList(By.cssSelector(StudentStatusPage.CHECKBOX_LIST), "a");
+                BasePage.selectElementsList(By.cssSelector(PersonPage.SELECT_DROP), "a");
                 wait(1000);
                 clickOnListOfElements(orgType);
             }
@@ -316,7 +313,7 @@ public class OrgPage extends BasePage{
                 scrollToElement(By.xpath(ActionsPage.DETAILS_LABEL));
                 waitUntilElementToBeSelected(By.id(ORG_ACTION_CATEGORY_DROPDOWN), 20);
                 BasePage.click(By.id(ORG_ACTION_CATEGORY_DROPDOWN));
-                BasePage.selectElementsList(By.cssSelector(StudentStatusPage.CHECKBOX_LIST), "a");
+                BasePage.selectElementsList(By.cssSelector(PersonPage.SELECT_DROP), "a");
                 wait(1000);
                 clickOnListOfElements(mass.get(organizationIndex).get("Category"));
             }
@@ -324,7 +321,7 @@ public class OrgPage extends BasePage{
                 scrollToElement(By.xpath(ActionsPage.DETAILS_LABEL));
                 waitUntilElementToBeSelected(By.id(ORG_ACTION_DROPDOWN), 20);
                 BasePage.click(By.id(ORG_ACTION_DROPDOWN));
-                BasePage.selectElementsList(By.cssSelector(StudentStatusPage.CHECKBOX_LIST), "a");
+                BasePage.selectElementsList(By.cssSelector(PersonPage.SELECT_DROP), "a");
                 wait(1000);
                 clickOnListOfElements(mass.get(organizationIndex).get("Action"));
             }
@@ -332,7 +329,7 @@ public class OrgPage extends BasePage{
                 scrollToElement(By.xpath(ActionsPage.DETAILS_LABEL));
                 waitUntilElementToBeSelected(By.id(ORG_ACTION_STAFF_DROPDOWN), 20);
                 BasePage.click(By.id(ORG_ACTION_STAFF_DROPDOWN));
-                BasePage.selectElementsList(By.cssSelector(StudentStatusPage.CHECKBOX_LIST), "a");
+                BasePage.selectElementsList(By.cssSelector(PersonPage.SELECT_DROP), "a");
                 wait(1000);
                 clickOnListOfElements(mass.get(organizationIndex).get("Staff"));
             }
@@ -525,7 +522,7 @@ public class OrgPage extends BasePage{
                 scrollToElement(By.cssSelector(statusPlusSignElement(index)));
                 waitUntilElementToBeSelected(By.cssSelector(orgStatusStatusDropdown(index)),20);
                 BasePage.click(By.cssSelector(orgStatusStatusDropdown(index)));
-                BasePage.selectElementsList(By.cssSelector(StudentStatusPage.CHECKBOX_LIST), "a");
+                BasePage.selectElementsList(By.cssSelector(PersonPage.SELECT_DROP), "a");
                 clickOnListOfElements(mass.get(person).get("OrgStatus"));
             }
             if (mass.get(person).get("OrgStatusDate") != null) {
@@ -608,7 +605,7 @@ public class OrgPage extends BasePage{
             BasePage.scrollToElement(By.xpath(PLUS_BUTTON_EXTERNAL_ID));
             if (mass.get(0).get(type) != null) {
                 BasePage.click(By.cssSelector(TYPE_DROPDOWN));
-                BasePage.selectElementsList(By.cssSelector(TYPE_DROPDOWN_LIST), "a");
+                BasePage.selectElementsList(By.cssSelector(PersonPage.SELECT_DROP), "a");
                 clickOnListOfElements(mass.get(0).get(type));
             }
             if (mass.get(0).get(idNumber) != null) {
@@ -619,7 +616,7 @@ public class OrgPage extends BasePage{
             }
             if (mass.get(0).get(whoAddedId) != null) {
                 BasePage.click(By.cssSelector(WHO_ADDED_ID_DROPDOWN));
-                BasePage.selectElementsList(By.cssSelector(WHO_ADDED_ID_DROPDOWN_LIST), "a");
+                BasePage.selectElementsList(By.cssSelector(PersonPage.SELECT_DROP), "a");
                 clickOnListOfElements(mass.get(0).get(whoAddedId));
             }
             if (mass.get(0).get(comments) != null) {

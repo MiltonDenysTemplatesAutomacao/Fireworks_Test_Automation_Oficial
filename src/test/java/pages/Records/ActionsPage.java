@@ -3,10 +3,7 @@ package pages.Records;
 import config.extent_reports.ExtentReportsSetUp;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
-import pages.BasePage;
-import pages.FailureDelegatePage;
-import pages.KeyPage;
-import pages.LogPage;
+import pages.*;
 
 import java.util.List;
 
@@ -320,7 +317,7 @@ public class ActionsPage extends BasePage {
                 scrollToElement(By.xpath(DETAILS_LABEL));
                 waitUntilElementToBeSelected(By.id(ACTION_CATEGORY_DROPDOWN), 20);
                 BasePage.click(By.id(ACTION_CATEGORY_DROPDOWN));
-                BasePage.selectElementsList(By.cssSelector(StudentStatusPage.CHECKBOX_LIST), "a");
+                BasePage.selectElementsList(By.cssSelector(PersonPage.SELECT_DROP), "a");
                 wait(1000);
                 clickOnListOfElements(mass.get(personNumber).get("Category"));
             }
@@ -328,7 +325,7 @@ public class ActionsPage extends BasePage {
                 scrollToElement(By.xpath(DETAILS_LABEL));
                 waitUntilElementToBeSelected(By.id(ACTION_DROPDOWN), 20);
                 BasePage.click(By.id(ACTION_DROPDOWN));
-                BasePage.selectElementsList(By.cssSelector(StudentStatusPage.CHECKBOX_LIST), "a");
+                BasePage.selectElementsList(By.cssSelector(PersonPage.SELECT_DROP), "a");
                 wait(1000);
                 clickOnListOfElements(mass.get(personNumber).get("Action"));
             }
@@ -336,7 +333,7 @@ public class ActionsPage extends BasePage {
                 scrollToElement(By.xpath(DETAILS_LABEL));
                 waitUntilElementToBeSelected(By.id(ACTION_STAFF_DROPDOWN), 20);
                 BasePage.click(By.id(ACTION_STAFF_DROPDOWN));
-                BasePage.selectElementsList(By.cssSelector(StudentStatusPage.CHECKBOX_LIST), "a");
+                BasePage.selectElementsList(By.cssSelector(PersonPage.SELECT_DROP), "a");
                 wait(1000);
                 clickOnListOfElements(mass.get(personNumber).get("Staff"));
             }

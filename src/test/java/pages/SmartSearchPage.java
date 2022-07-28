@@ -2,7 +2,6 @@ package pages;
 
 import config.extent_reports.ExtentReportsSetUp;
 import org.openqa.selenium.By;
-import pages.Records.StudentStatusPage;
 
 public class SmartSearchPage extends BasePage{
     public static final String CREATE_SEARCH_BUTTON = "#top-controls-create-new-smart-search";
@@ -59,7 +58,7 @@ public class SmartSearchPage extends BasePage{
         try {
             waitElementBy(By.cssSelector(operatorDropdown(index)),20);
             click(By.cssSelector(operatorDropdown(index)));
-            BasePage.selectElementsList(By.cssSelector(StudentStatusPage.CHECKBOX_LIST), "a");
+            BasePage.selectElementsList(By.cssSelector(PersonPage.SELECT_DROP), "a");
             clickOnListOfElements(search);
             ExtentReportsSetUp.testingPass(passMessage);
         } catch (Exception e) {
@@ -73,7 +72,7 @@ public class SmartSearchPage extends BasePage{
         try {
             waitElementBy(By.cssSelector(groupConditionFieldDropdown(index)),20);
             click(By.cssSelector(groupConditionFieldDropdown(index)));
-            BasePage.selectElementsList(By.cssSelector(StudentStatusPage.CHECKBOX_LIST), "a");
+            BasePage.selectElementsList(By.cssSelector(PersonPage.SELECT_DROP), "a");
             clickOnListOfElements(search);
             ExtentReportsSetUp.testingPass(passMessage);
         } catch (Exception e) {

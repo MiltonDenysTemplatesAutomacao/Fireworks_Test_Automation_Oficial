@@ -5,6 +5,7 @@ import org.openqa.selenium.By;
 import pages.BasePage;
 import pages.FailureDelegatePage;
 import pages.LogPage;
+import pages.PersonPage;
 
 public class InterestsActivitiesPage extends BasePage {
 
@@ -225,21 +226,21 @@ public class InterestsActivitiesPage extends BasePage {
                 scrollToElement(By.id(activitiesPlusSign(index)));
                 waitUntilElementToBeSelected(By.id(activityCategory(index)), 20);
                 BasePage.click(By.id(activityCategory(index)));
-                BasePage.selectElementsList(By.cssSelector(StudentStatusPage.CHECKBOX_LIST), "a");
+                BasePage.selectElementsList(By.cssSelector(PersonPage.SELECT_DROP), "a");
                 clickOnListOfElements(mass.get(person).get("ActivityCategory"));
             }
             if (mass.get(person).get("ActivityName") != null) {
                 scrollToElement(By.id(activitiesPlusSign(index)));
                 waitUntilElementToBeSelected(By.id(activityName(index)), 20);
                 BasePage.click(By.id(activityName(index)));
-                BasePage.selectElementsList(By.cssSelector(StudentStatusPage.CHECKBOX_LIST), "a");
+                BasePage.selectElementsList(By.cssSelector(PersonPage.SELECT_DROP), "a");
                 clickOnListOfElements(mass.get(person).get("ActivityName"));
             }
             if (mass.get(person).get("ActivityWhoAdded") != null) {
                 scrollToElement(By.id(activitiesPlusSign(index)));
                 waitUntilElementToBeSelected(By.id(activityWhoAdded(index)), 20);
                 BasePage.click(By.id(activityWhoAdded(index)));
-                BasePage.selectElementsList(By.cssSelector(StudentStatusPage.CHECKBOX_LIST), "a");
+                BasePage.selectElementsList(By.cssSelector(PersonPage.SELECT_DROP), "a");
                 clickOnListOfElements(mass.get(person).get("ActivityWhoAdded"));
             }
             if (mass.get(person).get("ActivityDateAdded") != null) {
@@ -252,14 +253,14 @@ public class InterestsActivitiesPage extends BasePage {
                 scrollToElement(By.id(activitiesPlusSign(index)));
                 waitUntilElementToBeSelected(By.id(activitiesSource(index)), 20);
                 BasePage.click(By.id(activitiesSource(index)));
-                BasePage.selectElementsList(By.cssSelector(StudentStatusPage.CHECKBOX_LIST), "a");
+                BasePage.selectElementsList(By.cssSelector(PersonPage.SELECT_DROP), "a");
                 clickOnListOfElements(mass.get(person).get("ActivitySource"));
             }
             if (mass.get(person).get("ActivityParticipate") != null) {
                 scrollToElement(By.id(activitiesPlusSign(index)));
                 waitUntilElementToBeSelected(By.id(activityParticipate(index)), 20);
                 BasePage.click(By.id(activityParticipate(index)));
-                BasePage.selectElementsList(By.cssSelector(StudentStatusPage.CHECKBOX_LIST), "a");
+                BasePage.selectElementsList(By.cssSelector(PersonPage.SELECT_DROP), "a");
                 clickOnListOfElements(mass.get(person).get("ActivityParticipate"));
             }
             if (mass.get(person).get("ActivityComments") != null) {
@@ -286,21 +287,21 @@ public class InterestsActivitiesPage extends BasePage {
                 scrollToElement(By.id(interestPlusSign(index)));
                 waitUntilElementToBeSelected(By.id(interestCategory(index)), 20);
                 BasePage.click(By.id(interestCategory(index)));
-                BasePage.selectElementsList(By.cssSelector(StudentStatusPage.CHECKBOX_LIST), "a");
+                BasePage.selectElementsList(By.cssSelector(PersonPage.SELECT_DROP), "a");
                 clickOnListOfElements(mass.get(person).get("InterestCategory"));
             }
             if (mass.get(person).get("InterestName") != null) {
                 scrollToElement(By.id(interestPlusSign(index)));
                 waitUntilElementToBeSelected(By.id(interestName(index)), 20);
                 BasePage.click(By.id(interestName(index)));
-                BasePage.selectElementsList(By.cssSelector(StudentStatusPage.CHECKBOX_LIST), "a");
+                BasePage.selectElementsList(By.cssSelector(PersonPage.SELECT_DROP), "a");
                 clickOnListOfElements(mass.get(person).get("InterestName"));
             }
             if (mass.get(person).get("InterestWhoAdded") != null) {
                 scrollToElement(By.id(interestPlusSign(index)));
                 waitUntilElementToBeSelected(By.id(interestWhoAdded(index)), 20);
                 BasePage.click(By.id(interestWhoAdded(index)));
-                BasePage.selectElementsList(By.cssSelector(StudentStatusPage.CHECKBOX_LIST), "a");
+                BasePage.selectElementsList(By.cssSelector(PersonPage.SELECT_DROP), "a");
                 clickOnListOfElements(mass.get(person).get("InterestWhoAdded"));
             }
             if (mass.get(person).get("InterestDateAdded") != null) {
@@ -313,7 +314,7 @@ public class InterestsActivitiesPage extends BasePage {
                 scrollToElement(By.id(interestPlusSign(index)));
                 waitUntilElementToBeSelected(By.id(interestSource(index)), 20);
                 BasePage.click(By.id(interestSource(index)));
-                BasePage.selectElementsList(By.cssSelector(StudentStatusPage.CHECKBOX_LIST), "a");
+                BasePage.selectElementsList(By.cssSelector(PersonPage.SELECT_DROP), "a");
                 clickOnListOfElements(mass.get(person).get("InterestSource"));
             }
             if (mass.get(person).get("InterestComments") != null) {

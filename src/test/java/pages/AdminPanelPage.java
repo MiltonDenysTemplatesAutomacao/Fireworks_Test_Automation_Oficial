@@ -5,7 +5,6 @@ import org.openqa.selenium.By;
 
 public class AdminPanelPage extends BasePage{
 
-    public static final String DROPDOWN_LIST = "#select2-drop";
     public static final String SCHOOL_NAME = "#schoolName";
     private static final String HIGH_SCORE_DISPLAY_DROPDOWN = "#s2id_highScoreDisplay";
     private static final String SAT_R2016_HIGH_SCORE_DROPDOWN = "#s2id_satR2016HighScore";
@@ -30,7 +29,7 @@ public class AdminPanelPage extends BasePage{
             scrollTo("-150");
             waitElementBy(By.cssSelector(HIGH_SCORE_DISPLAY_DROPDOWN),20);
             click(By.cssSelector(HIGH_SCORE_DISPLAY_DROPDOWN));
-            BasePage.selectElementsList(By.cssSelector(DROPDOWN_LIST), "a");
+            BasePage.selectElementsList(By.cssSelector(PersonPage.SELECT_DROP), "a");
             clickOnListOfElements(highScore);
             waitElementBy(By.cssSelector(CHANGE_HIGH_SCORE_YES_CHANGE_BUTTON),20);
             click(By.cssSelector(CHANGE_HIGH_SCORE_YES_CHANGE_BUTTON));
@@ -46,7 +45,7 @@ public class AdminPanelPage extends BasePage{
             scrollTo("-150");
             waitElementBy(By.cssSelector(SAT_R2016_HIGH_SCORE_DROPDOWN),20);
             click(By.cssSelector(SAT_R2016_HIGH_SCORE_DROPDOWN));
-            BasePage.selectElementsList(By.cssSelector(DROPDOWN_LIST), "a");
+            BasePage.selectElementsList(By.cssSelector(PersonPage.SELECT_DROP), "a");
             clickOnListOfElements(satr2016HighScore);
             waitElementBy(By.cssSelector(CHANGE_HIGH_SCORE_YES_CHANGE_BUTTON),20);
             click(By.cssSelector(CHANGE_HIGH_SCORE_YES_CHANGE_BUTTON));
