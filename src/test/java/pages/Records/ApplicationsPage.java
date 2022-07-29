@@ -8,7 +8,7 @@ import pages.*;
 public class ApplicationsPage extends BasePage {
 
 
-    private static final String ENTRY_TERM_ELEMENT_FIELD = "//input[starts-with(@id, 's2id_autogen') and contains(@id, '_search') and contains(@aria-activedescendant, 'select2-result-label')]";
+    public static final String ENTRY_TERM_ELEMENT_FIELD = "//input[starts-with(@id, 's2id_autogen') and contains(@id, '_search') and contains(@aria-activedescendant, 'select2-result-label')]";
     private static final String APPLICATIONS_SAVE_CHANGES_BUTTON = "#saveChangesBtnPersonApplications";
 
     private static String applicationAddButton(String group){
@@ -228,6 +228,7 @@ public class ApplicationsPage extends BasePage {
         int updateApplicationDelay = 10;
         try {
             if(applicationBean.getEntryTerm()!=""){
+                waitElementBy(By.cssSelector(applicationAddButton(group)),updateApplicationDelay);
                 scrollToElement(By.cssSelector(applicationAddButton(group)));
                 waitElementBy(By.cssSelector(entryTermElement(group)),updateApplicationDelay);
                 BasePage.click(By.cssSelector(entryTermElement(group)));
@@ -237,6 +238,7 @@ public class ApplicationsPage extends BasePage {
 
             }
             if(applicationBean.getMajor1()!=""){
+                waitElementBy(By.cssSelector(applicationAddButton(group)),updateApplicationDelay);
                 scrollToElement(By.cssSelector(applicationAddButton(group)));
                 waitElementBy(By.cssSelector(major1ElementLocator(group)),updateApplicationDelay);
                 BasePage.click(By.cssSelector(major1ElementLocator(group)));
@@ -245,6 +247,7 @@ public class ApplicationsPage extends BasePage {
                 clickOnListOfElements(applicationBean.getMajor1());
             }
             if(applicationBean.getComponentStatus()!=""){
+                waitElementBy(By.cssSelector(applicationAddButton(group)),updateApplicationDelay);
                 scrollToElement(By.cssSelector(applicationAddButton(group)));
                 waitElementBy(By.cssSelector(componentStatusElement(group)),updateApplicationDelay);
                 BasePage.click(By.cssSelector(componentStatusElement(group)));
@@ -253,22 +256,24 @@ public class ApplicationsPage extends BasePage {
                 clickOnListOfElements(applicationBean.getComponentStatus());
             }
             if(applicationBean.getApplicationType()!=""){
+                waitElementBy(By.cssSelector(applicationAddButton(group)),updateApplicationDelay);
                 scrollToElement(By.cssSelector(applicationAddButton(group)));
                 waitElementBy(By.cssSelector(applicationTypeElement(group)),updateApplicationDelay);
                 BasePage.click(By.cssSelector(applicationTypeElement(group)));
                 waitElementBy(By.cssSelector(PersonPage.SELECT_DROP),updateApplicationDelay);
                 BasePage.selectElementsList(By.cssSelector(PersonPage.SELECT_DROP), "a");
                 clickOnListOfElements(applicationBean.getApplicationType());
-                wait(500);
+                wait(1000);
             }
             if(applicationBean.getSource()!=""){
-                scrollToElement(By.cssSelector(applicationAddButton(group)));
+                waitElementBy(By.cssSelector(major2ElementLocator(group)),updateApplicationDelay);
+                scrollToElement(By.cssSelector(major2ElementLocator(group)));
                 waitElementBy(By.cssSelector(sourceElement(group)),updateApplicationDelay);
                 BasePage.click(By.cssSelector(sourceElement(group)));
                 waitElementBy(By.cssSelector(PersonPage.SELECT_DROP),updateApplicationDelay);
                 BasePage.selectElementsList(By.cssSelector(PersonPage.SELECT_DROP), "a");
                 clickOnListOfElements(applicationBean.getSource());
-                wait(500);
+                wait(1000);
             }
             if(applicationBean.getReceivedDate()!=""){
                 waitElementBy(By.cssSelector(receivedDateField(group)),updateApplicationDelay);
@@ -282,6 +287,7 @@ public class ApplicationsPage extends BasePage {
 
             }
             if(applicationBean.getMajor2()!=""){
+                waitElementBy(By.cssSelector(applicationAddButton(group)),updateApplicationDelay);
                 scrollToElement(By.cssSelector(applicationAddButton(group)));
                 waitElementBy(By.cssSelector(major2ElementLocator(group)),updateApplicationDelay);
                 BasePage.click(By.cssSelector(major2ElementLocator(group)));
@@ -290,6 +296,7 @@ public class ApplicationsPage extends BasePage {
                 clickOnListOfElements(applicationBean.getMajor2());
             }
             if(applicationBean.getMajor3()!=""){
+                waitElementBy(By.cssSelector(applicationAddButton(group)),updateApplicationDelay);
                 scrollToElement(By.cssSelector(applicationAddButton(group)));
                 waitElementBy(By.cssSelector(major3ElementLocator(group)),updateApplicationDelay);
                 BasePage.click(By.cssSelector(major3ElementLocator(group)));
@@ -298,6 +305,7 @@ public class ApplicationsPage extends BasePage {
                 clickOnListOfElements(applicationBean.getMajor3());
             }
             if(applicationBean.getAppliedGrade()!=""){
+                waitElementBy(By.cssSelector(applicationAddButton(group)),updateApplicationDelay);
                 scrollToElement(By.cssSelector(applicationAddButton(group)));
                 waitElementBy(By.cssSelector(appliedGrade(group)),updateApplicationDelay);
                 BasePage.click(By.cssSelector(appliedGrade(group)));
@@ -306,6 +314,7 @@ public class ApplicationsPage extends BasePage {
                 clickOnListOfElements(applicationBean.getAppliedGrade());
             }
             if(applicationBean.getConcentration()!=""){
+                waitElementBy(By.cssSelector(major2ElementLocator(group)),updateApplicationDelay);
                 scrollToElement(By.cssSelector(major2ElementLocator(group)));
                 waitElementBy(By.cssSelector(concentrationElement(group)),updateApplicationDelay);
                 BasePage.click(By.cssSelector(concentrationElement(group)));
@@ -314,6 +323,7 @@ public class ApplicationsPage extends BasePage {
                 clickOnListOfElements(applicationBean.getConcentration());
             }
             if(applicationBean.getHousing()!=""){
+                waitElementBy(By.cssSelector(major2ElementLocator(group)),updateApplicationDelay);
                 scrollToElement(By.cssSelector(major2ElementLocator(group)));
                 waitElementBy(By.cssSelector(housingElement(group)),updateApplicationDelay);
                 BasePage.click(By.cssSelector(housingElement(group)));
@@ -322,6 +332,7 @@ public class ApplicationsPage extends BasePage {
                 clickOnListOfElements(applicationBean.getHousing());
             }
             if(applicationBean.getMinor()!=""){
+                waitElementBy(By.cssSelector(major2ElementLocator(group)),updateApplicationDelay);
                 scrollToElement(By.cssSelector(major2ElementLocator(group)));
                 waitElementBy(By.cssSelector(minorElement(group)),updateApplicationDelay);
                 BasePage.click(By.cssSelector(minorElement(group)));
@@ -330,6 +341,7 @@ public class ApplicationsPage extends BasePage {
                 clickOnListOfElements(applicationBean.getMinor());
             }
             if(applicationBean.getCompletionDate()!=""){
+                waitElementBy(By.cssSelector(major2ElementLocator(group)),updateApplicationDelay);
                 scrollToElement(By.cssSelector(major2ElementLocator(group)));
                 waitElementBy(By.cssSelector(completionDateField(group)),updateApplicationDelay);
                 BasePage.click(By.cssSelector(completionDateField(group)));
@@ -338,6 +350,7 @@ public class ApplicationsPage extends BasePage {
                 clickOnListOfElements(applicationBean.getCompletionDate());
             }
             if(applicationBean.getComments()!=""){
+                waitElementBy(By.cssSelector(major2ElementLocator(group)),updateApplicationDelay);
                 scrollToElement(By.cssSelector(major2ElementLocator(group)));
                 waitElementBy(By.cssSelector(commentsField(group)),updateApplicationDelay);
                 BasePage.write(By.cssSelector(commentsField(group)),applicationBean.getComments());

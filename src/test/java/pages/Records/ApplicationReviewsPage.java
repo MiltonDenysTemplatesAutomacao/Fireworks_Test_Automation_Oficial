@@ -25,6 +25,74 @@ public class ApplicationReviewsPage extends BasePage {
     private static String reviewCommentsField(String app,String review){
         return String.format("#person_application_%s_person_application_review_%s_application_review_comments",app,review);
     }
+    /*
+     * to update Review Date it is necessary to put any string on Review Date field on step, I selected "1" as a pattern
+     */
+    public static void verifyApplicationReview(ApplicationReviewBean applicationReviewBean, String application, String review){
+
+        boolean reviewFactorValidation = false;
+        boolean ratingValidation = false;
+        boolean readerValidation = false;
+        boolean reviewDateValidation = false;
+        boolean commentsValidation = false;
+
+        String passMessage = String.format(LogPage.VERIFY_APPLICATION_REVIEW_PASS,application,review);
+        String failMessage = String.format(LogPage.VERIFY_APPLICATION_REVIEW_FAIL,application,review);
+
+        try {
+            if(applicationReviewBean.getReviewFactor()!=""){
+                scrollToElement(By.cssSelector(reviewAddButton(application,review)));
+                String reviewFactorText = getText(By.cssSelector(reviewFactorElement(application,review)));
+                reviewFactorValidation = reviewFactorText.contains(applicationReviewBean.getReviewFactor());
+            }else{
+                reviewFactorValidation=true;
+            }
+            if(applicationReviewBean.getRating()!=""){
+                scrollToElement(By.cssSelector(reviewAddButton(application,review)));
+                String reviewFactorText = getText(By.cssSelector(reviewRatingElement(application,review)));
+                ratingValidation = reviewFactorText.contains(applicationReviewBean.getRating());
+            }else{
+                ratingValidation=true;
+            }
+            if(applicationReviewBean.getReader()!=""){
+                scrollToElement(By.cssSelector(reviewAddButton(application,review)));
+                String readerText = getText(By.cssSelector(reviewReaderElement(application,review)));
+                readerValidation = readerText.contains(applicationReviewBean.getReader());
+            }else{
+                readerValidation=true;
+            }
+            if(applicationReviewBean.getReviewDate()!=""){
+                String campusTimeZoneDate = currentDateTimeWithoutHour();
+                scrollToElement(By.cssSelector(reviewAddButton(application,review)));
+                String reviewDateText = getAtribute(By.cssSelector(reviewDateField(application,review)),"value");
+                reviewDateValidation = reviewDateText.contains(campusTimeZoneDate);
+            }else{
+                reviewDateValidation=true;
+            }
+            if(applicationReviewBean.getComments()!=""){
+                scrollToElement(By.cssSelector(reviewAddButton(application,review)));
+                String commentsText = getText(By.cssSelector(reviewCommentsField(application,review)));
+                commentsValidation = commentsText.contains(applicationReviewBean.getComments());
+            }else{
+                commentsValidation=true;
+            }
+
+            if(reviewFactorValidation
+            && ratingValidation
+            && readerValidation
+            && reviewDateValidation
+            && commentsValidation){
+                ExtentReportsSetUp.testingPass(passMessage);
+            }else{
+                FailureDelegatePage.handlePageException(failMessage);
+            }
+        } catch (Exception e) {
+            FailureDelegatePage.handlePageException(failMessage);
+        }
+    }
+    /*
+     * to update Review Date it is necessary to put any string on Review Date field on step, I selected "1" as a pattern
+     */
     public static void updateApplicationReview(ApplicationReviewBean applicationReviewBean, String application, String review){
         String passMessage = String.format(LogPage.UPDATE_APPLICATION_REVIEW_PASS,application,review);
         String failMessage = String.format(LogPage.UPDATE_APPLICATION_REVIEW_FAIL,application,review);

@@ -26,3 +26,6 @@ Feature: Second Application
     And I click on save changes on Application
     And I close alert if return this message "Person has been updated."
     #to verify the application and reviews
+    And I verify application "Summer 2018", "Accounting", "Not Started", "Early Decision", "Common Application", "10/22/2017 12:00 AM", "", "", "", "", "", "", "", "" group "0"
+    And I verify application review "Academic Performance", "3", "Fire Starter", "1", "Review2 Comment" application "0" review "0"
+    And I verify application review "Leadership", "3", "Fire Starter", "1", "Review1 Comment" application "0" review "1"

@@ -97,7 +97,9 @@ public class LogPage {
     public static final String VALIDATE_CLEAR_CHANGES_FAIL = "FAILED while verifying if clear changes worked";
     public static final String SEARCH_SMART_SEARCH_PICKER_FAIL = "Fail while trying to smart search";
     public static final String SEARCH_SINGLE_RECIPIENT_PICKER_FAIL = "Fail while trying to search a recipient ";
+    public static final String SEARCH_RECOMMENDER_FAIL = "Fail while trying to search a recommender ";
     public static final String PICK_SMART_SEARCH_FAIL = "Fail while trying to pick a smart search";
+    public static final String PICK_RECOMMENDER_FAIL = "Fail while trying to pick a recommender";
     public static final String OPEN_TASK_PASS = "I open task";
     public static final String OPEN_TASK_FAIL = "Fail while trying to open task";
     public static final String CLEAR_CHANGES_PASS = "I clear changes";
@@ -511,8 +513,13 @@ public class LogPage {
     public static final String ADD_APPLICATION_FAIL = "Fail while trying to add application '%s'";
     public static final String VERIFY_APPLICATION_COMPONENT_PASS = "I verify application component component '%s' group '%s'";
     public static final String VERIFY_APPLICATION_COMPONENT_FAIL = "Fail while trying to verify application component '%s' group '%s'";
+    public static final String UPDATE_APPLICATION_COMPONENT_PASS = "I update application component component '%s' group '%s'";
+    public static final String UPDATE_APPLICATION_COMPONENT_FAIL = "Fail while trying to update application component '%s' group '%s'";
     public static final String ADD_REVIEW_PASS = "I add a review '%s' app '%s'";
     public static final String ADD_REVIEW_FAIL = "Fail while trying to add a review '%s' app '%s'";
     public static final String UPDATE_APPLICATION_REVIEW_PASS = "I update application review application '%s' review '%s'";
     public static final String UPDATE_APPLICATION_REVIEW_FAIL = "Fail while trying to update application review application '%s' review '%s'";
+    public static final String VERIFY_APPLICATION_REVIEW_PASS = "I verify application review application '%s' review '%s'";
+    public static final String VERIFY_APPLICATION_REVIEW_FAIL = "Fail while trying to verify application review application '%s' review '%s'";
+
 }

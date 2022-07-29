@@ -17,5 +17,16 @@ public class ApplicationComponentsSteps {
         applicationComponentBean.setComment(comment);
         ApplicationComponentsPage.verifyApplicationComponent(applicationComponentBean,group,component);
     }
+    @And("I update application component {string}, {string}, {string}, {string}, {string}, {string} component {string} group {string}")
+    public static void updateApplicationComponent(String componentItem, String receivedValue,String receivedDate,String requiredValue,String recommender,String comment, String group,String component){
+        ApplicationComponentBean applicationComponentBean = new ApplicationComponentBean();
+        applicationComponentBean.setComponentItem(componentItem);
+        applicationComponentBean.setReceivedValue(receivedValue);
+        applicationComponentBean.setReceivedDate(receivedDate);
+        applicationComponentBean.setRequiredValue(requiredValue);
+        applicationComponentBean.setRecommender(recommender);
+        applicationComponentBean.setComment(comment);
+        ApplicationComponentsPage.updateApplicationComponent(applicationComponentBean,group,component);
+    }
 
 }
