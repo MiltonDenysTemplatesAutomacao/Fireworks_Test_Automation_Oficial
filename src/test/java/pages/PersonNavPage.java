@@ -11,7 +11,19 @@ public class PersonNavPage extends BasePage{
     private static final String ACTIONS_PANEL_HEADING_ELEMENT = "#recordNavTab_actions";
     private static final String RELATIONSHIPS_TAB = "#recordNavTab_relationships";
     private static final String APPLICATIONS_TAB = "#recordNavTab_applications";
+    private static final String FINANCIAL_AID_TAB = "#recordNavTab_financial_affairs";
 
+    public static void navigateToFinancialAid(){
+        try {
+            scrollToElement(By.cssSelector(FINANCIAL_AID_TAB));
+            scrollTo("-150");
+            waitElementBy(By.cssSelector(FINANCIAL_AID_TAB),20);
+            BasePage.click(By.cssSelector(FINANCIAL_AID_TAB));
+            ExtentReportsSetUp.testingPass(LogPage.NAVIGATE_TO_FINANCIAL_AID_PASS);
+        } catch (Exception e) {
+            FailureDelegatePage.handlePageException(LogPage.NAVIGATE_TO_FINANCIAL_AID_FAIL);
+        }
+    }
     public static void navigateToApplications(){
         try {
             scrollToElement(By.cssSelector(APPLICATIONS_TAB));

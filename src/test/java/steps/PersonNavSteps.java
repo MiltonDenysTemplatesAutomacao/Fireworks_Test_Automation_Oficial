@@ -28,6 +28,10 @@ public class PersonNavSteps {
     public static void navigateToApplications() {
         PersonNavPage.navigateToApplications();
     }
+    @Then("I navigate to Financial Aid")
+    public static void navigateToFinancialAid() {
+        PersonNavPage.navigateToFinancialAid();
+    }
 
 
 }

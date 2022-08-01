@@ -447,6 +447,8 @@ public class LogPage {
     public static final String NAVIGATE_TO_RELATIONSHIPS_PASS = "I navigate to Relationship";
     public static final String NAVIGATE_TO_RELATIONSHIPS_FAIL = "Fail while trying to navigate to Relationship";
     public static final String NAVIGATE_TO_APPLICATIONS_PASS = "I navigate to Applications";
+    public static final String NAVIGATE_TO_FINANCIAL_AID_FAIL = "Fail while trying to navigate to Financial Aid";
+    public static final String NAVIGATE_TO_FINANCIAL_AID_PASS = "I navigate to Financial Aid";
     public static final String NAVIGATE_TO_APPLICATIONS_FAIL = "Fail while trying to navigate to Applications";
     public static final String OPEN_RELATIONSHIP_TABLE_FAIL = "Fail while trying to open a relationship '%s'";
     public static final String OPEN_RELATIONSHIP_TABLE_PASS = "I open a relationship '%s'";
