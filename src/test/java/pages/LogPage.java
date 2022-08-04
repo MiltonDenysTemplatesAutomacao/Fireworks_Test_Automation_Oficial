@@ -497,6 +497,8 @@ public class LogPage {
     public static final String REFRESH_PAGE_FAIL = "Fail while trying refresh the page";
     public static final String NAVIGATE_ADMIN_PANEL_PAGE_PASS = "I navigate to Admin Panel Page";
     public static final String NAVIGATE_ADMIN_PANEL_PAGE_FAIL = "Fail while trying to navigate to Admin Panel Page";
+    public static final String NAVIGATE_IMPORTS_PACKAGES_PAGE_PASS = "I navigate to Imports Package Page";
+    public static final String NAVIGATE_IMPORTS_PACKAGES_PAGE_FAIL = "Fail while trying to navigate to Imports Package Page";
     public static final String UPDATE_REQUIRED_SCHOOL_NAME_PASS = "I update required school name";
     public static final String UPDATE_REQUIRED_SCHOOL_NAME_FAIL = "Fail while trying to update required school name";
     public static final String UPDATE_HIGH_SCORE_DISPLAY_PASS = "I update High Score Display";
@@ -511,6 +513,8 @@ public class LogPage {
     public static final String VERIFY_APPLICATION_FAIL = "Fail while trying to I verify application group '%s'";
     public static final String CLICK_SAVE_CHANGES_APPLICATION_PASS = "I click on save changes on Application";
     public static final String CLICK_SAVE_CHANGES_APPLICATION_FAIL = "Fail while trying to click on save changes on Application";
+    public static final String CLICK_SAVE_CHANGES_FINANCIAL_AID_PASS = "I click on save changes on Financial Aid";
+    public static final String CLICK_SAVE_CHANGES_FINANCIAL_AID_FAIL = "Fail while trying to click on save changes on Financial Aid";
     public static final String ADD_APPLICATION_PASS = "I add application '%s'";
     public static final String ADD_APPLICATION_FAIL = "Fail while trying to add application '%s'";
     public static final String VERIFY_APPLICATION_COMPONENT_PASS = "I verify application component component '%s' group '%s'";
@@ -523,5 +527,12 @@ public class LogPage {
     public static final String UPDATE_APPLICATION_REVIEW_FAIL = "Fail while trying to update application review application '%s' review '%s'";
     public static final String VERIFY_APPLICATION_REVIEW_PASS = "I verify application review application '%s' review '%s'";
     public static final String VERIFY_APPLICATION_REVIEW_FAIL = "Fail while trying to verify application review application '%s' review '%s'";
-
+    public static final String UPDATE_FINANCIAL_AID_PAYMENT_PASS = "I update FinancialAidPayment group '%s'";
+    public static final String UPDATE_FINANCIAL_AID_PAYMENT_FAIL = "Fail while trying to update FinancialAidPayment group '%s'";
+    public static final String VERIFY_FINANCIAL_AID_PAYMENT_PASS = "I verify FinancialAidPayment group '%s'";
+    public static final String VERIFY_FINANCIAL_AID_PAYMENT_FAIL = "Fail while trying to verify FinancialAidPayment group '%s'";
+    public static final String CREATE_PACKAGE_PASS = "I create a package";
+    public static final String CREATE_PACKAGE_FAIL = "Fail while trying to create a package";
+    public static final String UPDATE_PACKAGE_START_TAB_PASS = "I update PackageStartTab";
+    public static final String UPDATE_PACKAGE_START_TAB_FAIL = "Fail while trying to update PackageStartTab";
 }

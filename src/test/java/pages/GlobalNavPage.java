@@ -19,6 +19,7 @@ public class GlobalNavPage extends BasePage {
     public static final String FOOTER_QUICK_ADD_ORGANIZATION_MENU_ITEM = "#global_nav_add_org";
     public static final String FOOTER_QUICK_ADD_STAFF_MENU_ITEM = "#global_nav_add_staff";
     public static final String FOOTER_TOOLS_MENU = "#global_nav_tools_toggle";
+    public static final String FOOTER_TOOLS_IMPORTS_MENU_ITEM = "#global_nav_import_manager";
     public static final String FOOTER_TOOLS_TASKS_MENU_ITEM = "#global_nav_task";
     public static final String FOOTER_RECORDS_MENU = "#global_nav_records_toggle";
     public static final String FOOTER_RECORDS_DUPLICATES_MENU_ITEM = "#global_nav_duplicate_manager";
@@ -108,7 +109,21 @@ public class GlobalNavPage extends BasePage {
     public static final String FOOTER_COMMUNICATIONS_EMAIL_MENU_ITEM = "#global_nav_direct_mail";
     public static final String FOOTER_SETTINGS_MENU = "#global_nav_settings_toggle";
     public static final String FOOTER_SETTINGS_ADMIN_PANEL_MENU_ITEM = "#global_nav_crm_admin";
+    public static final String PACKAGES_TAB = "Packages";
 
+    public static void navigateImportsPackagesPage(){
+        try {
+            waitUntilElementToBeSelected(By.cssSelector(FOOTER_TOOLS_MENU),20);
+            click(By.cssSelector(FOOTER_TOOLS_MENU));
+            wait(2000);
+            click(By.cssSelector(FOOTER_TOOLS_IMPORTS_MENU_ITEM));
+            wait(2000);
+            click(By.linkText(PACKAGES_TAB));
+            ExtentReportsSetUp.testingPass(LogPage.NAVIGATE_IMPORTS_PACKAGES_PAGE_PASS);
+        } catch (Exception e) {
+            FailureDelegatePage.handlePageException(LogPage.NAVIGATE_IMPORTS_PACKAGES_PAGE_FAIL);
+        }
+    }
     public static void navigateAdminPanelPage(){
         try {
             waitUntilElementToBeSelected(By.cssSelector(FOOTER_SETTINGS_MENU),20);
@@ -119,7 +134,6 @@ public class GlobalNavPage extends BasePage {
         } catch (Exception e) {
             FailureDelegatePage.handlePageException(LogPage.NAVIGATE_ADMIN_PANEL_PAGE_FAIL);
         }
-
     }
     public static void navigateEmailManagerPage(){
         try {

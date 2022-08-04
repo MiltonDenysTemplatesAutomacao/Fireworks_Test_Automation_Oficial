@@ -13,7 +13,6 @@ public class LettersPage extends BasePage{
     private static final String ACTION_DROPDOWN = "div#s2id_action_id.select2-container.form-control.select2.select2 a.select2-choice";
     private static final String ACTION_DROPDOWN_LIST = "select2-results-24";
     private static final String ACTION_STAFF_DROPDOWN = "div#s2id_action_staff.select2-container.form-control.select2 a.select2-choice";
-    private static final String ACTION_STAFF_DROPDOWN_LIST = "select2-drop";
     private static final String ACTION_VISIBILITY = "#s2id_action_visibility_id";
     private static final String ACTION_VISIBILITY_LIST = "select2-results-26";
     private static final String CREATE_NEW_LETTER_BUTTON = "#top-controls-create-new-letter";
@@ -250,7 +249,7 @@ public class LettersPage extends BasePage{
                 scrollToElement(By.xpath(USER_ACTION_SECTION_LABEL));
                 waitUntilElementToBeSelected(By.cssSelector(ACTION_STAFF_DROPDOWN), updateLetterPersonActionDelay);
                 BasePage.click(By.cssSelector(ACTION_STAFF_DROPDOWN));
-                BasePage.selectElementsList(By.id(ACTION_STAFF_DROPDOWN_LIST), "a");
+                BasePage.selectElementsList(By.cssSelector(PersonPage.SELECT_DROP), "a");
                 clickOnListOfElements(mass.get(index).get("Staff"));
             }
             if (mass.get(index).get("Visibility") != null) {

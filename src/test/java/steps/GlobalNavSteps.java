@@ -15,6 +15,10 @@ public class GlobalNavSteps {
     public static void navigateToTools() {
         GlobalNavPage.navigateToTools();
     }
+    @And("I navigate to ImportsPackagesPage")
+    public static void navigateImportsPackagesPage() {
+        GlobalNavPage.navigateImportsPackagesPage();
+    }
     @And("I validate if task is not displayed in tools menu")
     public static void validateTaskNotDisplayedToolsMenu() {
         GlobalNavPage.validateTaskInToolMenuIsNotDisplayed();
