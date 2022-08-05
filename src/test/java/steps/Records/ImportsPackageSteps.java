@@ -10,8 +10,8 @@ public class ImportsPackageSteps {
         ImportsPackagePage.createPackage();
     }
     @And("I click save and continue button {string}")
-    public static void clickSaveAndContinue() {
-        ImportsPackagePage.clickSaveAndContinue();
+    public static void clickSaveAndContinue(String tab) {
+        ImportsPackagePage.clickSaveAndContinuePackage(tab);
     }
     @And("I update PackageStartTab {string}, {string}, {string}, {string}")
     public static void updatePackageStartTab(String name,String description,String sourceFile,String recordType) {

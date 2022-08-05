@@ -535,4 +535,10 @@ public class LogPage {
     public static final String CREATE_PACKAGE_FAIL = "Fail while trying to create a package";
     public static final String UPDATE_PACKAGE_START_TAB_PASS = "I update PackageStartTab";
     public static final String UPDATE_PACKAGE_START_TAB_FAIL = "Fail while trying to update PackageStartTab";
+    public static final String CLICK_SAVE_AND_CONTINUE_PACKAGE_PASS = "I click save and continue button '%s'";
+    public static final String CLICK_SAVE_AND_CONTINUE_PACKAGE_FAIL = "Fail while trying to click save and continue button '%s'";
+    public static final String UPDATE_FINANCIAL_AID_PASS = "I update Financial Aid group '%s'";
+    public static final String UPDATE_FINANCIAL_AID_FAIL = "Fail while trying to update Financial Aid group '%s'";
+    public static final String UPDATE_AID_COMPONENT_PASS = "I update Financial Aid Component group '%s'";
+    public static final String UPDATE_AID_COMPONENT_FAIL = "Fail while trying to update Financial Aid Component group '%s'";
 }

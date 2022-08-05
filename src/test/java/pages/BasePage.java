@@ -11,6 +11,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import java.awt.*;
 import java.awt.datatransfer.StringSelection;
 import java.awt.event.KeyEvent;
+import java.io.File;
 import java.time.Duration;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
@@ -23,6 +24,8 @@ public class BasePage {
     /********* Used for Automation ************/
     protected static List<Map<String, String>> mass;
     protected static List<WebElement> listOfElements;
+    //path to the files used for automation
+    public static String dataFilePath = System.getProperty("user.dir") + File.separator + "src\\test\\resources\\data\\";
 
     /********* Utils ************/
 
@@ -31,6 +34,11 @@ public class BasePage {
 //        DriverBase.getDriver().get(dotenv.get("APP_URL"));
 //
 //    }
+    public static String getFile(String path){
+        String pathToFile = dataFilePath+path;
+        return pathToFile;
+
+    }
     public static void refreshPage(){
         try {
             DriverBase.getDriver().navigate().refresh();

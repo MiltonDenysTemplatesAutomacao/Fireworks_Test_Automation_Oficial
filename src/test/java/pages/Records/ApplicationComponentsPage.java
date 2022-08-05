@@ -80,9 +80,9 @@ public class ApplicationComponentsPage extends BasePage {
                 waitElementBy(By.cssSelector(componentAddButton(component,group)),updateApplicationComponentDelay);
                 scrollToElement(By.cssSelector(componentAddButton(component,group)));
                 click(By.cssSelector(componentElement(component,group)));
-                waitElementBy(By.xpath(ApplicationsPage.ENTRY_TERM_ELEMENT_FIELD),updateApplicationComponentDelay);
-                write(By.xpath(ApplicationsPage.ENTRY_TERM_ELEMENT_FIELD),applicationComponentBean.getComponentItem());
-                KeyPage.pressKey(By.xpath(ApplicationsPage.ENTRY_TERM_ELEMENT_FIELD),"Enter");
+                waitElementBy(By.xpath(ApplicationsPage.INPUT_FIELD),updateApplicationComponentDelay);
+                write(By.xpath(ApplicationsPage.INPUT_FIELD),applicationComponentBean.getComponentItem());
+                KeyPage.pressKey(By.xpath(ApplicationsPage.INPUT_FIELD),"Enter");
             }
             if(applicationComponentBean.getReceivedValue()!=""){
                 waitElementBy(By.cssSelector(componentAddButton(component,group)),updateApplicationComponentDelay);

@@ -8,7 +8,7 @@ import pages.*;
 public class ApplicationsPage extends BasePage {
 
 
-    public static final String ENTRY_TERM_ELEMENT_FIELD = "//input[starts-with(@id, 's2id_autogen') and contains(@id, '_search') and contains(@aria-activedescendant, 'select2-result-label')]";
+    public static final String INPUT_FIELD = "//input[starts-with(@id, 's2id_autogen') and contains(@id, '_search') and contains(@aria-activedescendant, 'select2-result-label')]";
     private static final String APPLICATIONS_SAVE_CHANGES_BUTTON = "#saveChangesBtnPersonApplications";
 
     private static String applicationAddButton(String group){
@@ -232,9 +232,9 @@ public class ApplicationsPage extends BasePage {
                 scrollToElement(By.cssSelector(applicationAddButton(group)));
                 waitElementBy(By.cssSelector(entryTermElement(group)),updateApplicationDelay);
                 BasePage.click(By.cssSelector(entryTermElement(group)));
-                waitElementBy(By.xpath(ENTRY_TERM_ELEMENT_FIELD),updateApplicationDelay);
-                write(By.xpath(ENTRY_TERM_ELEMENT_FIELD),applicationBean.getEntryTerm());
-                KeyPage.pressKey(By.xpath(ENTRY_TERM_ELEMENT_FIELD),"Enter");
+                waitElementBy(By.xpath(INPUT_FIELD),updateApplicationDelay);
+                write(By.xpath(INPUT_FIELD),applicationBean.getEntryTerm());
+                KeyPage.pressKey(By.xpath(INPUT_FIELD),"Enter");
 
             }
             if(applicationBean.getMajor1()!=""){

@@ -33,5 +33,6 @@ Feature: Financial Aid Payment Only
     #to create a Student package with a counselor and an application
     When I navigate to ImportsPackagesPage
     And I create a package
-    And I update PackageStartTab "ApplicationPaymentCounselor", "", "C:\Users\milton.silva\apps\Fireworks_Test_Automation\src\test\resources\data\ApplicationPaytCounselor0940.csv", "Student"
+    And I update PackageStartTab "ApplicationPaymentCounselor", "", "ApplicationPaytCounselor0940.csv", "Student"
     And I click save and continue button "Start"
+    And I map required fields

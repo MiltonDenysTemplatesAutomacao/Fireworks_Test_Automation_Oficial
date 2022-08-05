@@ -11,4 +11,7 @@ public class TestsPage extends BasePage{
         LocalDateTime now = LocalDateTime.now(ZoneId.of("America/New_York"));
         System.out.println(dtf.format(now));
     }
+    public static void textPrint(){
+        System.out.println(dataFilePath);
+    }
 }
