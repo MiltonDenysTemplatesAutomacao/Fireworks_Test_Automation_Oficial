@@ -30,6 +30,84 @@ public class FinancialAidPage extends BasePage {
     private static String financialAidPlusButton(String index){
         return String.format("#person_financial_aid_%s_add",index);
     }
+    private static String financialAidActiveCheckbox(String fin){
+        return String.format("#person_financial_aid_%s_active",fin);
+    }
+    private static String financialAidPrimaryCheckbox(String fin){
+        return String.format("#person_financial_aid_%s_primary",fin);
+    }
+
+    /*
+     * checkbox variable is used to validate if checkbox is checked or not checked, number 1 to validate if it is checked and number 0
+     * to validate if it is not checked
+     */
+    public static void verifyFinancialAidActivePrimaryCheckbox(String checkboxName,String fin,String checkbox){
+        String passMessage = String.format(LogPage.VERIFY_FINANCIAL_AID_ACTIVE_PRIMARY_CHECKBOX_PASS,checkboxName,fin);
+        String failMessage = String.format(LogPage.VERIFY_FINANCIAL_AID_ACTIVE_PRIMARY_CHECKBOX_PASS,checkboxName,fin);
+        boolean activeValidation = false;
+        boolean primaryValidation = false;
+
+        try {
+            if(checkbox=="Active"){
+                switch (checkbox){
+                    case "1":
+                        activeValidation = checkBoxIsActive(By.cssSelector(financialAidActiveCheckbox(fin)));
+                        break;
+                    case "0":
+                        activeValidation = !checkBoxIsActive(By.cssSelector(financialAidActiveCheckbox(fin)));
+                        break;
+                    default:
+                        throw new IllegalArgumentException("Unhandled index. Update business logic");
+                }
+            }else{
+                activeValidation=true;
+            }
+
+            if(checkbox=="Primary"){
+                switch (checkbox){
+                    case "1":
+                        activeValidation = checkBoxIsActive(By.cssSelector(financialAidPrimaryCheckbox(fin)));
+                        break;
+                    case "0":
+                        activeValidation = !checkBoxIsActive(By.cssSelector(financialAidPrimaryCheckbox(fin)));
+                        break;
+                    default:
+                        throw new IllegalArgumentException("Unhandled index. Update business logic");
+                }
+            }else{
+                primaryValidation=true;
+            }
+            if(activeValidation && primaryValidation){
+                ExtentReportsSetUp.testingPass(passMessage);
+            }
+        } catch (Exception e) {
+            FailureDelegatePage.handlePageException(failMessage);
+        }
+    }
+    public static void clickFinancialAidActive(String fin){
+        String passMessage = String.format(LogPage.CLICK_FINANCIAL_AID_ACTIVE_PASS,fin);
+        String failMessage = String.format(LogPage.CLICK_FINANCIAL_AID_ACTIVE_FAIL,fin);
+        try {
+            scrollToElement(By.cssSelector(financialAidPlusButton(fin)));
+            scrollTo("-150");
+            click(By.cssSelector(financialAidActiveCheckbox(fin)));
+            ExtentReportsSetUp.testingPass(passMessage);
+        } catch (Exception e) {
+            FailureDelegatePage.handlePageException(failMessage);
+        }
+    }
+    public static void addFinancialAid(String fin){
+        String passMessage = String.format(LogPage.ADD_FINANCIAL_AID_PASS,fin);
+        String failMessage = String.format(LogPage.ADD_FINANCIAL_AID_FAIL,fin);
+        try {
+            scrollToElement(By.cssSelector(financialAidPlusButton(fin)));
+            scrollTo("-150");
+            click(By.cssSelector(financialAidPlusButton(fin)));
+            ExtentReportsSetUp.testingPass(passMessage);
+        } catch (Exception e) {
+            FailureDelegatePage.handlePageException(failMessage);
+        }
+    }
 
     public static void updateFinancialAid(FinancialAidBean financialAidBean, String group){
         String passMessage = String.format(LogPage.UPDATE_FINANCIAL_AID_PASS,group);

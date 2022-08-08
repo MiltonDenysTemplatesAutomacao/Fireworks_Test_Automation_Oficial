@@ -1,16 +1,27 @@
 package steps.Records;
 
 import bean.FinancialAidBean;
-import bean.FinancialAidPaymentBean;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 import pages.Records.FinancialAidPage;
 
-public class FinancialAidPageSteps {
+public class FinancialAidSteps {
 
     @And("I click save changes on financial aid")
     public static void clickSaveChanges() {
         FinancialAidPage.clickSaveChanges();
+    }
+    @And("I add Financial Aid {string}")
+    public static void addFinancialAid(String fin) {
+        FinancialAidPage.addFinancialAid(fin);
+    }
+    @And("I update Financial Aid Active {string}")
+    public static void clickFinancialAidActive(String fin) {
+        FinancialAidPage.clickFinancialAidActive(fin);
+    }
+    @And("I verify financial Aid {string} group {string} checkbox {string}")
+    public static void verifyFinancialAidActivePrimaryCheckbox(String checkboxName,String fin,String checkbox) {
+        FinancialAidPage.verifyFinancialAidActivePrimaryCheckbox(checkboxName,fin,checkbox);
     }
 
     @Then("I update Financial Aid {string}, {string}, {string}, {string}, {string}, {string} group {string}")
