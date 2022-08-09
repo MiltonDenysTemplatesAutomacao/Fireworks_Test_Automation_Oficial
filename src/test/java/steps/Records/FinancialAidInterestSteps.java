@@ -15,5 +15,14 @@ public class FinancialAidInterestSteps {
         financialAidInterestBean.setExpressedInterestDate(expressedInterestDate);
         FinancialAidInterestsPage.updateFinancialAidInterest(financialAidInterestBean,group);
     }
+    @And("I verify Financial Aid Interest {string}, {string}, {string}, {string} group {string}")
+    public static void verifyFinancialAidInterest(String aidInterestCategory, String aidInterestType, String expressedInterest, String expressedInterestDate,String group) {
+        FinancialAidInterestBean financialAidInterestBean = new FinancialAidInterestBean();
+        financialAidInterestBean.setAidInterestCategory(aidInterestCategory);
+        financialAidInterestBean.setAidInterestType(aidInterestType);
+        financialAidInterestBean.setExpressedInterest(expressedInterest);
+        financialAidInterestBean.setExpressedInterestDate(expressedInterestDate);
+        FinancialAidInterestsPage.verifyFinancialAidInterest(financialAidInterestBean,group);
+    }
 
 }

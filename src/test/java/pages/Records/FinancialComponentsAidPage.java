@@ -26,7 +26,66 @@ public class FinancialComponentsAidPage extends BasePage {
         return String.format("#person_financial_aid_%s_person_financial_aid_app_component_%s_aid_component_comments",fin,aid);
     }
 
+    public static void verifyAidComponent(FinancialAidBean financialAidBean, String fin,String aid){
+        String passMessage = String.format(LogPage.VERIFY_AID_COMPONENT_PASS,fin,aid);
+        String failMessage = String.format(LogPage.VERIFY_AID_COMPONENT_FAIL,fin,aid);
 
+        boolean aidComponentTypeValidation = false;
+        boolean aidComponentRcvdValidation = false;
+        boolean aidComponentRcvdDateValidation = false;
+        boolean aidComponentReqdValidation = false;
+        boolean aidComponentCommentsValidation = false;
+
+        try {
+            if(financialAidBean.getAidComponentType()!=""){
+                scrollToElement(By.cssSelector(financialAidPaymentPlusButton(fin,aid)));
+                String aidComponentTypeText = getText(By.cssSelector(aidComponentTypeElement(fin,aid)));
+                aidComponentTypeValidation = aidComponentTypeText.contains(financialAidBean.getAidComponentType());
+            }else{
+                aidComponentTypeValidation=true;
+            }
+            if(financialAidBean.getAidComponentRcvd()!=""){
+                scrollToElement(By.cssSelector(financialAidPaymentPlusButton(fin,aid)));
+                String aidComponentRcvdText = getText(By.cssSelector(aidComponentReceivedElement(fin,aid)));
+                aidComponentRcvdValidation = aidComponentRcvdText.contains(financialAidBean.getAidComponentRcvd());
+            }else{
+                aidComponentRcvdValidation=true;
+            }
+            if(financialAidBean.getAidComponentRcvdDate()!=""){
+                scrollToElement(By.cssSelector(financialAidPaymentPlusButton(fin,aid)));
+                String aidComponentRcvdDateText = getAtribute(By.cssSelector(aidComponentReceivedDateField(fin,aid)),"value");
+                aidComponentRcvdDateValidation = aidComponentRcvdDateText.contains(financialAidBean.getAidComponentRcvdDate());
+            }else{
+                aidComponentRcvdDateValidation=true;
+            }
+            if(financialAidBean.getAidComponentReqd()!=""){
+                scrollToElement(By.cssSelector(financialAidPaymentPlusButton(fin,aid)));
+                String aidComponentReqdText = getText(By.cssSelector(aidComponentRequiredElement(fin,aid)));
+                aidComponentReqdValidation = aidComponentReqdText.contains(financialAidBean.getAidComponentReqd());
+            }else{
+                aidComponentReqdValidation=true;
+            }
+            if(financialAidBean.getAidComponentComments()!=""){
+                scrollToElement(By.cssSelector(financialAidPaymentPlusButton(fin,aid)));
+                String aidComponentCommentsText = getAtribute(By.cssSelector(aidComponentCommentsField(fin,aid)),"value");
+                aidComponentCommentsValidation = aidComponentCommentsText.contains(financialAidBean.getAidComponentComments());
+            }else{
+                aidComponentCommentsValidation=true;
+            }
+
+            if(aidComponentTypeValidation
+            && aidComponentRcvdValidation
+            && aidComponentRcvdDateValidation
+            && aidComponentReqdValidation
+            && aidComponentCommentsValidation){
+                ExtentReportsSetUp.testingPass(passMessage);
+            }else{
+                FailureDelegatePage.handlePageException(failMessage);
+            }
+        } catch (Exception e) {
+            FailureDelegatePage.handlePageException(failMessage);
+        }
+    }
     public static void updateAidComponent(FinancialAidBean financialAidBean, String fin,String aid){
         String passMessage = String.format(LogPage.UPDATE_AID_COMPONENT_PASS,fin,aid);
         String failMessage = String.format(LogPage.UPDATE_AID_COMPONENT_FAIL,fin,aid);

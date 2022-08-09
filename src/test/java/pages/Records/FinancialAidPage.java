@@ -18,6 +18,12 @@ public class FinancialAidPage extends BasePage {
     private static String aidTermElement(String index){
         return String.format("#s2id_person_financial_aid_%s_financial_aid_term",index);
     }
+    private static String totalAwardAmountField(String index){
+        return String.format("#person_financial_aid_%s_financial_aid_award_total",index);
+    }
+    private static String awardCountField(String index){
+        return String.format("#person_financial_aid_%s_financial_aid_award_count",index);
+    }
     private static String dateReceivedField(String index){
         return String.format("#person_financial_aid_%s_financial_aid_date_received",index);
     }
@@ -37,13 +43,100 @@ public class FinancialAidPage extends BasePage {
         return String.format("#person_financial_aid_%s_primary",fin);
     }
 
+    public static void verifyFinancialAid(FinancialAidBean financialAidBean, String group){
+        boolean aidAppTypeValidation = false;
+        boolean statusValidation = false;
+        boolean aidTermValidation = false;
+        boolean awardCountValidation = false;
+        boolean totalAwardAmountValidation = false;
+        boolean dateReceivedValidation = false;
+        boolean desirabilityScoreValidation = false;
+        boolean needScoreValidation = false;
+
+        String passMessage = String.format(LogPage.VERIFY_FINANCIAL_AID_PASS,group);
+        String failMessage = String.format(LogPage.VERIFY_FINANCIAL_AID_FAIL,group);
+
+        try {
+            if(financialAidBean.getAidAppType()!=""){
+                scrollToElement(By.cssSelector(financialAidPlusButton(group)));
+                String aidAppTypeText = getText(By.cssSelector(aidAppTypeElement(group)));
+                aidAppTypeValidation = aidAppTypeText.contains(financialAidBean.getAidAppType());
+            }else{
+                aidAppTypeValidation=true;
+            }
+            if(financialAidBean.getStatus()!=""){
+                scrollToElement(By.cssSelector(financialAidPlusButton(group)));
+                String statusText = getText(By.cssSelector(statusElement(group)));
+                statusValidation = statusText.contains(financialAidBean.getStatus());
+            }else{
+                statusValidation=true;
+            }
+            if(financialAidBean.getAidTerm()!=""){
+                scrollToElement(By.cssSelector(financialAidPlusButton(group)));
+                String aidTermElementText = getText(By.cssSelector(aidTermElement(group)));
+                aidTermValidation = aidTermElementText.contains(financialAidBean.getAidTerm());
+            }else{
+                aidTermValidation=true;
+            }
+            if(financialAidBean.getAwardCount()!=""){
+                scrollToElement(By.cssSelector(financialAidPlusButton(group)));
+                String awardCountText = getAtribute(By.cssSelector(awardCountField(group)),"value");
+                awardCountValidation = awardCountText.contains(financialAidBean.getAwardCount());
+            }else{
+                awardCountValidation=true;
+            }
+            if(financialAidBean.getTotalAwardAmount()!=""){
+                scrollToElement(By.cssSelector(financialAidPlusButton(group)));
+                String totalAwardAmountText = getAtribute(By.cssSelector(totalAwardAmountField(group)),"value");
+                totalAwardAmountValidation = totalAwardAmountText.contains(financialAidBean.getTotalAwardAmount());
+            }else{
+                totalAwardAmountValidation=true;
+            }
+            if(financialAidBean.getDateReceived()!=""){
+                scrollToElement(By.cssSelector(financialAidPlusButton(group)));
+                String dateReceivedText = getAtribute(By.cssSelector(dateReceivedField(group)),"value");
+                dateReceivedValidation = dateReceivedText.contains(financialAidBean.getDateReceived());
+            }else{
+                dateReceivedValidation=true;
+            }
+            if(financialAidBean.getDesirabilityScore()!=""){
+                scrollToElement(By.cssSelector(financialAidPlusButton(group)));
+                String desirabilityScoreText = getAtribute(By.cssSelector(desirabilityScoreField(group)),"value");
+                desirabilityScoreValidation = desirabilityScoreText.contains(financialAidBean.getDesirabilityScore());
+            }else{
+                desirabilityScoreValidation=true;
+            }
+            if(financialAidBean.getNeedScore()!=""){
+                scrollToElement(By.cssSelector(financialAidPlusButton(group)));
+                String  needScoreText = getAtribute(By.cssSelector(needScoreField(group)),"value");
+                needScoreValidation = needScoreText.contains(financialAidBean.getNeedScore());
+            }else{
+                needScoreValidation=true;
+            }
+
+            if(aidAppTypeValidation
+                    && statusValidation
+                    && aidTermValidation
+                    && awardCountValidation
+                    && totalAwardAmountValidation
+                    && dateReceivedValidation
+                    && desirabilityScoreValidation
+                    && needScoreValidation){
+                ExtentReportsSetUp.testingPass(passMessage);
+            }else{
+                FailureDelegatePage.handlePageException(failMessage);
+            }
+        } catch (Exception e) {
+            FailureDelegatePage.handlePageException(failMessage);
+        }
+    }
     /*
      * checkbox variable is used to validate if checkbox is checked or not checked, number 1 to validate if it is checked and number 0
      * to validate if it is not checked
      */
     public static void verifyFinancialAidActivePrimaryCheckbox(String checkboxName,String fin,String checkbox){
         String passMessage = String.format(LogPage.VERIFY_FINANCIAL_AID_ACTIVE_PRIMARY_CHECKBOX_PASS,checkboxName,fin);
-        String failMessage = String.format(LogPage.VERIFY_FINANCIAL_AID_ACTIVE_PRIMARY_CHECKBOX_PASS,checkboxName,fin);
+        String failMessage = String.format(LogPage.VERIFY_FINANCIAL_AID_ACTIVE_PRIMARY_CHECKBOX_FAIL,checkboxName,fin);
         boolean activeValidation = false;
         boolean primaryValidation = false;
 

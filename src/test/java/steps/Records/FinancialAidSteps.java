@@ -35,5 +35,18 @@ public class FinancialAidSteps {
         financialAidBean.setNeedScore(needScore);
         FinancialAidPage.updateFinancialAid(financialAidBean,group);
     }
+    @Then("I verify financial Aid {string}, {string}, {string}, {string}, {string}, {string}, {string}, {string} group {string}")
+    public static void verifyFinancialAid(String aidAppType,String status,String aidTerm,String awardCount,String totalAwardAmount, String dateReceived,String desirabilityScore,String needScore,String group) {
+        FinancialAidBean financialAidBean = new FinancialAidBean();
+        financialAidBean.setAidAppType(aidAppType);
+        financialAidBean.setStatus(status);
+        financialAidBean.setAidTerm(aidTerm);
+        financialAidBean.setAwardCount(awardCount);
+        financialAidBean.setTotalAwardAmount(totalAwardAmount);
+        financialAidBean.setDateReceived(dateReceived);
+        financialAidBean.setDesirabilityScore(desirabilityScore);
+        financialAidBean.setNeedScore(needScore);
+        FinancialAidPage.verifyFinancialAid(financialAidBean,group);
+    }
 
 }

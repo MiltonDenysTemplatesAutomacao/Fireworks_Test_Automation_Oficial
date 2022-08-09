@@ -24,7 +24,54 @@ public class FinancialAidInterestsPage extends BasePage {
         return String.format("#person_financial_aid_interest_%s_aid_expressed_interest_date",group);
     }
 
-
+    public static void verifyFinancialAidInterest(FinancialAidInterestBean financialAidInterestBean,String group){
+        String passMessage = String.format(LogPage.VERIFY_FINANCIAL_AID_INTEREST_PASS,group);
+        String failMessage = String.format(LogPage.VERIFY_FINANCIAL_AID_INTEREST_FAIL,group);
+        boolean aidInterestCategoryValidation = false;
+        boolean aidInterestTypeValidation = false;
+        boolean expressedInterestValidation = false;
+        boolean expressedInterestDateValidation = false;
+        try {
+            if(financialAidInterestBean.getAidInterestCategory()!=""){
+                scrollToElement(By.cssSelector(financialAidInterestsPlusButton(group)));
+                String aidInterestCategoryText = getText(By.cssSelector(aidInterestCategoryDropdownLocator(group)));
+                aidInterestCategoryValidation = aidInterestCategoryText.contains(financialAidInterestBean.getAidInterestCategory());
+            }else{
+                aidInterestCategoryValidation = true;
+            }
+            if(financialAidInterestBean.getAidInterestType()!=""){
+                scrollToElement(By.cssSelector(financialAidInterestsPlusButton(group)));
+                String aidInterestTypeText = getText(By.cssSelector(aidInterestTypeDropdownLocator(group)));
+                aidInterestTypeValidation = aidInterestTypeText.contains(financialAidInterestBean.getAidInterestType());
+            }else{
+                aidInterestTypeValidation = true;
+            }
+            if(financialAidInterestBean.getExpressedInterest()!=""){
+                scrollToElement(By.cssSelector(financialAidInterestsPlusButton(group)));
+                String expressedInterestText = getText(By.cssSelector(expressedInterestDropdownLocator(group)));
+                expressedInterestValidation = expressedInterestText.contains(financialAidInterestBean.getExpressedInterest());
+            }else{
+                expressedInterestValidation = true;
+            }
+            if(financialAidInterestBean.getExpressedInterestDate()!=""){
+                scrollToElement(By.cssSelector(financialAidInterestsPlusButton(group)));
+                String expressedInterestText = getAtribute(By.cssSelector(expressedInterestDateField(group)),"value");
+                expressedInterestDateValidation = expressedInterestText.contains(financialAidInterestBean.getExpressedInterestDate());
+            }else{
+                expressedInterestDateValidation = true;
+            }
+            if(aidInterestCategoryValidation
+            && aidInterestTypeValidation
+            && expressedInterestValidation
+            && expressedInterestDateValidation){
+                ExtentReportsSetUp.testingPass(passMessage);
+            }else{
+                FailureDelegatePage.handlePageException(failMessage);
+            }
+        } catch (Exception e) {
+            FailureDelegatePage.handlePageException(failMessage);
+        }
+    }
     public static void updateFinancialAidInterest(FinancialAidInterestBean financialAidInterestBean,String group){
 
         String passMessage = String.format(LogPage.UPDATE_FINANCIAL_AID_INTEREST_PASS,group);

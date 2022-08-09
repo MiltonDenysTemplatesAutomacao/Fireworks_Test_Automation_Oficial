@@ -541,8 +541,12 @@ public class LogPage {
     public static final String UPDATE_FINANCIAL_AID_FAIL = "Fail while trying to update Financial Aid group '%s'";
     public static final String UPDATE_AID_COMPONENT_PASS = "I update Financial Aid Component Financial '%s' Aid '%s'";
     public static final String UPDATE_AID_COMPONENT_FAIL = "Fail while trying to update Financial Aid Component Financial '%s' Aid '%s'";
+    public static final String VERIFY_AID_COMPONENT_PASS = "I verify Financial Aid Component Financial '%s' Aid '%s'";
+    public static final String VERIFY_AID_COMPONENT_FAIL = "Fail while trying to verify Financial Aid Component Financial '%s' Aid '%s'";
     public static final String UPDATE_AWARD_COMPONENT_PASS = "I update Financial Aid Component Financial '%s' award component '%s'";
     public static final String UPDATE_AWARD_COMPONENT_FAIL = "Fail while trying to update Financial Aid Component financial '%s' award component '%s'";
+    public static final String VERIFY_AWARD_COMPONENT_PASS = "I verify Financial Aid Component Financial '%s' award component '%s'";
+    public static final String VERIFY_AWARD_COMPONENT_FAIL = "Fail while trying to verify Financial Aid Component financial '%s' award component '%s'";
     public static final String ADD_AWARD_COMPONENT_PASS = "I add Award Component Financial '%s' Award Component '%s'";
     public static final String ADD_AWARD_COMPONENT_FAIL = "Fail while trying to add Award Component Financial '%s' Award Component '%s'";
     public static final String ADD_FINANCIAL_AID_PASS = "I add Financial Aid '%s'";
@@ -551,6 +555,10 @@ public class LogPage {
     public static final String CLICK_FINANCIAL_AID_ACTIVE_FAIL = "Fail while trying to update Financial Aid Active '%s'";
     public static final String UPDATE_FINANCIAL_AID_INTEREST_PASS = "I update Financial Aid Interest group '%s'";
     public static final String UPDATE_FINANCIAL_AID_INTEREST_FAIL = "Fail while trying to update Financial Aid Interest group '%s'";
+    public static final String VERIFY_FINANCIAL_AID_INTEREST_PASS = "I verify Financial Aid Interest group '%s'";
+    public static final String VERIFY_FINANCIAL_AID_INTEREST_FAIL = "Fail while trying to verify Financial Aid Interest group '%s'";
     public static final String VERIFY_FINANCIAL_AID_ACTIVE_PRIMARY_CHECKBOX_PASS = "I verify financial Aid '%s' checkbox '%s'";
     public static final String VERIFY_FINANCIAL_AID_ACTIVE_PRIMARY_CHECKBOX_FAIL = "Fail while trying to verify financial Aid '%s' checkbox '%s'";
+    public static final String VERIFY_FINANCIAL_AID_PASS = "I verify financial Aid group '%s'";
+    public static final String VERIFY_FINANCIAL_AID_FAIL = "Fail while trying to verify financial Aid group '%s'";
 }
