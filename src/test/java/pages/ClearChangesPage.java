@@ -2,7 +2,7 @@ package pages;
 
 import config.extent_reports.ExtentReportsSetUp;
 import org.openqa.selenium.By;
-import pages.Records.ActionsPage;
+import pages.records.ActionsPage;
 
 
 public class ClearChangesPage extends BasePage{
