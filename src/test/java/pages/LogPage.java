@@ -561,4 +561,8 @@ public class LogPage {
     public static final String VERIFY_FINANCIAL_AID_ACTIVE_PRIMARY_CHECKBOX_FAIL = "Fail while trying to verify financial Aid '%s' checkbox '%s'";
     public static final String VERIFY_FINANCIAL_AID_PASS = "I verify financial Aid group '%s'";
     public static final String VERIFY_FINANCIAL_AID_FAIL = "Fail while trying to verify financial Aid group '%s'";
+    public static final String MAP_REQUIRED_FIELDS_PASS = "I map required fields '%s'";
+    public static final String MAP_REQUIRED_FIELDS_FAIL = "Fail while trying to map required fields '%s'";
+    public static final String ADD_OPTIONAL_FIELD_GROUP_PASS = "I add Optional Field Group '%s'";
+    public static final String ADD_OPTIONAL_FIELD_GROUP_FAIL = "Fail while trying to add Optional Field Group '%s'";
 }

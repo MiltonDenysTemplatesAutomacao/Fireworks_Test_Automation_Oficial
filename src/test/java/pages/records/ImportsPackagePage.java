@@ -54,6 +54,7 @@ public class ImportsPackagePage extends BasePage {
                 wait(1000);
                 copyToTheClipboard(filePath);
                 attachFile();
+                wait(1000);
             }
             if(recordType!=""){
                 scrollToElement(By.cssSelector(PACKAGE_RECORD_TYPE_DROPDOWN));

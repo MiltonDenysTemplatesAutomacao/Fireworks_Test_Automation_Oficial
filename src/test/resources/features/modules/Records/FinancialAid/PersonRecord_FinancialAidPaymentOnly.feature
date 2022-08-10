@@ -35,4 +35,4 @@ Feature: Financial Aid Payment Only
     And I create a package
     And I update PackageStartTab "ApplicationPaymentCounselor", "", "ApplicationPaytCounselor0940.csv", "Student"
     And I click save and continue button "Start"
-    And I map required fields
+    #And I map required fields

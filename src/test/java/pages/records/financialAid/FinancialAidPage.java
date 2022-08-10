@@ -215,6 +215,7 @@ public class FinancialAidPage extends BasePage {
                 waitElementBy(By.cssSelector(PersonPage.SELECT_DROP),updateFinancialAidDelay);
                 BasePage.selectElementsList(By.cssSelector(PersonPage.SELECT_DROP), "a");
                 clickOnListOfElements(financialAidBean.getAidAppType());
+                wait(1000);
             }
             if(financialAidBean.getStatus()!=""){
                 scrollToElement(By.cssSelector(financialAidPlusButton(group)));
