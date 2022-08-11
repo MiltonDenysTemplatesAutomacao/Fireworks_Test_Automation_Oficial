@@ -10,12 +10,16 @@ public class KeyPage extends BasePage{
     public static final String ENTER = "\ue007";
     public static final String CONTROL = "\ue009";
     public static final String DELETE = "\ue017";
+    public static final String TAB = "\uE004";
+    public static final String SPACE = "\uE00D";
 
     public static String keyList(String key) {
         Map<String, String> keyReturn = new HashMap<String, String>();
         keyReturn.put("Enter", ENTER);
         keyReturn.put("Control", CONTROL);
         keyReturn.put("Delete", DELETE);
+        keyReturn.put("Tab", TAB);
+        keyReturn.put("Space", SPACE);
         return keyReturn.get(key);
     }
     public static void pressKey(By by, String key) throws Exception{

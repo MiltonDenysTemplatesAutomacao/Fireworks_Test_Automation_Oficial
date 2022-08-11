@@ -565,4 +565,10 @@ public class LogPage {
     public static final String MAP_REQUIRED_FIELDS_FAIL = "Fail while trying to map required fields '%s'";
     public static final String ADD_OPTIONAL_FIELD_GROUP_PASS = "I add Optional Field Group '%s'";
     public static final String ADD_OPTIONAL_FIELD_GROUP_FAIL = "Fail while trying to add Optional Field Group '%s'";
+    public static final String MAP_OPTIONAL_FIELD_PASS = "I map optional fields '%s'";
+    public static final String MAP_OPTIONAL_FIELD_FAIL = "Fail while trying to map optional fields '%s'";
+    public static final String ADD_FIELD_SUB_FIELD_RELATIONSHIP_FIELD_GROUP_PASS = "I '%s' name '%s' group '%s'";
+    public static final String ADD_FIELD_SUB_FIELD_RELATIONSHIP_FIELD_GROUP_FAIL = "Fail while trying to '%s' name '%s' group '%s'";
+    public static final String ADD_CONVERSION_PASS = "I add conversion field '%s' value '%s'";
+    public static final String ADD_CONVERSION_FAIL = "Fail while trying to add conversion field '%s' value '%s'";
 }

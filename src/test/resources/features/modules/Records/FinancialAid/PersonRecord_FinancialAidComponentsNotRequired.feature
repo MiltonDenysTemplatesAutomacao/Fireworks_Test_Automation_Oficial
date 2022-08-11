@@ -45,7 +45,7 @@ Feature: Financial Aid: Components not required
     Given I login as "firestarterUsername", "firestarterPassword", "firestarterFullName"
     When I navigate to ImportsPackagesPage
     And I create a package
-    And I update PackageStartTab "FinancialAidPackage25", "", "FinancialAid0950.csv", "Student"
+    And I update PackageStartTab "FinancialAidPackage38", "", "FinancialAid0950.csv", "Student"
     And I click save and continue button "Start"
     And I map required fields "STUDENT_TYPE"
     And I map required fields "STUDENT_CATEGORY"
@@ -60,4 +60,21 @@ Feature: Financial Aid: Components not required
     And I map required fields "OPTIN"
     And I click save and continue button "Required"
     And I add Optional Field Group "0" name "Financial Aid"
+    And I map optional fields "ENTRY_TERM"
+    And I map optional fields "APP_STATUS"
+    And I map optional fields "APP_TYPE"
+    And I map optional fields "RECVD_DATE"
+    And I map optional fields "DESIRABILITY"
+    And I map optional fields "NEED_SCORE"
+    And I "Subfield Group" name "Financial Aid Award Components" group "0"
+    And I map optional fields "AWARD_CAT"
+    And I map optional fields "AWARD_TYPE"
+    And I map optional fields "AWARD_AMT"
+    And I map optional fields "AWARD_COMMENTS"
+    And I "Field Group" name "Financial Aid Interests" group "0"
+    And I map optional fields "INTEREST_CATEGORY"
+    And I map optional fields "INTEREST_TYPE"
+    And I map optional fields "Static Value"
+    #And I add conversion field "Static Value" value "Yes" group "0"
+
 

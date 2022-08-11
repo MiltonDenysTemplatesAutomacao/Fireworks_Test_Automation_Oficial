@@ -15,10 +15,10 @@ public class ImportsPackagePage extends BasePage {
     private static final String PACKAGE_RECORD_TYPE_DROPDOWN = "#s2id_packageRecordType";
     private static final String CHOOSE_FILE_BUTTON = "#importSourceFileButton";
 
-
     private static String packageSaveContinueButton(String index){
         return String.format("#package%sFormSubmitButton",index);
     }
+
     public static void clickSaveAndContinuePackage(String tab){
 
         String passMessage = String.format(LogPage.CLICK_SAVE_AND_CONTINUE_PACKAGE_PASS,tab);
