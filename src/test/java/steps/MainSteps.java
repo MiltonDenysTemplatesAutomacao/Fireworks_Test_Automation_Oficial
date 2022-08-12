@@ -14,6 +14,10 @@ public class MainSteps {
     public static void refreshPage() {
         BasePage.refreshPage();
     }
+    @When("I click on {string}")
+    public static void clickElementByText(String text) {
+        MainPage.clickElementByText(text);
+    }
 
 
 }

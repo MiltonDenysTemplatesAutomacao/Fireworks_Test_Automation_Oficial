@@ -2,7 +2,6 @@ package steps.records;
 
 import io.cucumber.java.en.And;
 import pages.records.ImportFieldsPage;
-import pages.records.ImportsPackagePage;
 
 public class ImportFieldsSteps {
 
@@ -14,13 +13,21 @@ public class ImportFieldsSteps {
     public static void addOptionalFieldGroup(String group,String name) {
         ImportFieldsPage.addOptionalFieldGroup(group,name);
     }
-    @And("I map optional fields {string}")
-    public static void mapOptionalField(String field) {
-        ImportFieldsPage.mapOptionalField(field);
+    @And("I map Financial Aid optional fields {string}")
+    public static void mapFinancialAidOptionalField(String field) {
+        ImportFieldsPage.mapFinancialAidOptionalField(field);
+    }
+    @And("I map Financial Aid Interests optional fields {string}")
+    public static void mapFinancialAidInterestsOptionalField(String field) {
+        ImportFieldsPage.mapFinancialAidInterestsOptionalField(field);
     }
     @And("I {string} name {string} group {string}")
     public static void addFieldSubFieldRelationshipFieldGroup(String option,String name,String group) {
         ImportFieldsPage.addFieldSubFieldRelationshipFieldGroup(option,name,group);
+    }
+    @And("I add conversion field {string} value {string} group {string}")
+    public static void addConversion(String option,String value,String group) {
+        ImportFieldsPage.addConversion(option,value,group);
     }
 
 }

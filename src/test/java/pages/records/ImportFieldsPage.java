@@ -40,17 +40,33 @@ public class ImportFieldsPage extends BasePage {
         return String.format("//div[contains(text(),'%s')]",groupType);
     }
     private static String conversionOptionalField(String group,String value){
-        return String.format("person_financial_aid_interest_%s_%s_toggle",group,value);
+        return String.format("#person_financial_aid_interest_%s_%s_toggle",group,value);
+    }
+    private static String conversionOptionalFieldDropDownMenu(String group,String value){
+        return String.format("#person_financial_aid_interest_%s_%s_dropdown_menu",group,value);
     }
 
-    public static void addConversion(String group,String value){
-        String passMessage = String.format(LogPage.ADD_CONVERSION_PASS,group,value);
-        String failMessage = String.format(LogPage.ADD_CONVERSION_FAIL,group,value);
-        try {
-            waitUntilElementToBeSelected(By.cssSelector(conversionOptionalField(group,value)),10);
-            //click(By.cssSelector());
-        } catch (Exception e) {
+    public static String returnMapConversionFields(String field){
+        Map<String, String> fieldParameter = new HashMap<String, String>();
+        fieldParameter.put("Static Value", "aid_expressed_interest_static_value");
+        return fieldParameter.get(field);
+    }
 
+    public static void addConversion(String option,String value,String group){
+        String passMessage = String.format(LogPage.ADD_CONVERSION_PASS,option,value,group);
+        String failMessage = String.format(LogPage.ADD_CONVERSION_FAIL,option,value,group);
+        try {
+            String returnConversion = returnMapConversionFields(option);
+            scrollToElement(By.cssSelector(conversionOptionalField(group,returnConversion)));
+            scrollTo("-150");
+            waitUntilElementToBeSelected(By.cssSelector(conversionOptionalField(group,returnConversion)),10);
+            click(By.cssSelector(conversionOptionalField(group,returnConversion)));
+            waitUntilElementToBeSelected(By.cssSelector(conversionOptionalField(group,returnConversion)),10);
+            BasePage.selectElementsList(By.cssSelector(conversionOptionalFieldDropDownMenu(group,returnConversion)), "a");
+            clickOnListOfElements(value);
+            ExtentReportsSetUp.testingPass(passMessage);
+        } catch (Exception e) {
+            FailureDelegatePage.handlePageException(failMessage);
         }
     }
 
@@ -82,7 +98,7 @@ public class ImportFieldsPage extends BasePage {
             BasePage.selectElementsList(By.cssSelector(optionalDropdownMenuFieldGroupSelect(group)), "a");
             clickOnListOfElements(name);
     }
-    public static String returnMapOptionalFields(String field){
+    public static String returnMapFinancialAidOptionalFields(String field){
         Map<String, String> fieldParameter = new HashMap<String, String>();
         fieldParameter.put("ENTRY_TERM", "financial_aid_term");
         fieldParameter.put("APP_STATUS", "financial_aid_status");
@@ -97,15 +113,37 @@ public class ImportFieldsPage extends BasePage {
         fieldParameter.put("INTEREST_CATEGORY", "aid_interest_category");
         fieldParameter.put("INTEREST_TYPE", "aid_interest_type");
         fieldParameter.put("Static Value", "aid_expressed_interest");
-
         return fieldParameter.get(field);
     }
 
-    public static void mapOptionalField(String field){
-        String passMessage = String.format(LogPage.MAP_OPTIONAL_FIELD_PASS,field);
-        String failMessage = String.format(LogPage.MAP_OPTIONAL_FIELD_FAIL,field);
+    public static void mapFinancialAidOptionalField(String field){
+        String passMessage = String.format(LogPage.MAP_FINANCIAL_AID_OPTIONAL_FIELD_PASS,field);
+        String failMessage = String.format(LogPage.MAP_FINANCIAL_AID_OPTIONAL_FIELD_FAIL,field);
         try {
-            String fieldReturn = returnMapOptionalFields(field);
+            String fieldReturn = returnMapFinancialAidOptionalFields(field);
+            scrollToElement(By.xpath(fieldSourceDropdown(fieldReturn)));
+            scrollTo("-150");
+            waitUntilElementToBeSelected(By.xpath(fieldSourceDropdown(fieldReturn)),10);
+            click(By.xpath(fieldSourceDropdown(fieldReturn)));
+            waitUntilElementToBeSelected(By.xpath(inputOptionalFieldElement(fieldReturn)),10);
+            write(By.xpath(inputOptionalFieldElement(fieldReturn)),field);
+            BasePage.selectElementsList(By.xpath(optionalDropdownMenuFieldGroupSelectName(fieldReturn)), "a");
+            clickOnListOfElements(field);
+            ExtentReportsSetUp.testingPass(passMessage);
+        } catch (Exception e) {
+            FailureDelegatePage.handlePageException(failMessage);
+        }
+    }
+    public static String returnMapFinancialAidInterestsOptionalFields(String field){
+        Map<String, String> fieldParameter = new HashMap<String, String>();
+        fieldParameter.put("RECVD_DATE", "aid_expressed_interest_date");
+        return fieldParameter.get(field);
+    }
+    public static void mapFinancialAidInterestsOptionalField(String field){
+        String passMessage = String.format(LogPage.MAP_FINANCIAL_AID_INTERESTS_OPTIONAL_FIELD_PASS,field);
+        String failMessage = String.format(LogPage.MAP_FINANCIAL_AID_INTERESTS_OPTIONAL_FIELD_FAIL,field);
+        try {
+            String fieldReturn = returnMapFinancialAidInterestsOptionalFields(field);
             scrollToElement(By.xpath(fieldSourceDropdown(fieldReturn)));
             scrollTo("-150");
             waitUntilElementToBeSelected(By.xpath(fieldSourceDropdown(fieldReturn)),10);

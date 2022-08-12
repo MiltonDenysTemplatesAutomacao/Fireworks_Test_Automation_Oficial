@@ -17,7 +17,7 @@ public class LettersPage extends BasePage{
     private static final String ACTION_VISIBILITY_LIST = "select2-results-26";
     private static final String CREATE_NEW_LETTER_BUTTON = "#top-controls-create-new-letter";
     private static final String LOAD_TEMPLATE_DROPDOWN = "s2id_loadTemplate";
-    private static final String DROPDOWN_INPUT_FIELD_ELEMENT = "s2id_autogen1_search";
+    public static final String DROPDOWN_INPUT_FIELD_ELEMENT = "s2id_autogen1_search";
     private static final String LETTER_NAME_FIELD = "#name";
     private static final String SMART_SEARCH_DROPDOWN = "div#s2id_saved_search_id.select2-container.form-control.select2.select2 a.select2-choice";
     private static final String SMART_SEARCH_DROPDOWN_LIST = "select2-results-2";

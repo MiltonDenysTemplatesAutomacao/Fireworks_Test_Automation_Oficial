@@ -17,4 +17,8 @@ public class ImportsPackageSteps {
     public static void updatePackageStartTab(String name,String description,String sourceFile,String recordType) {
         ImportsPackagePage.updatePackageStartTab(name,description,sourceFile,recordType);
     }
+    @And("I update Package Actions {string}, {string}, {string}")
+    public static void updatePackageActions(String category,String action,String comments) {
+        ImportsPackagePage.updatePackageActions(category,action,comments);
+    }
 }

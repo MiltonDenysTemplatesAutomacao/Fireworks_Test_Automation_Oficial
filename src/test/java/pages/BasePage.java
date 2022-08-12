@@ -153,7 +153,9 @@ public class BasePage {
     public static void click(By by) throws Exception {
         DriverBase.getDriver().findElement(by).click();
     }
-
+    public static String getElementByText(String text){
+        return String.format("//*[contains(text(),'%s')]",text);
+    }
     /********* Texts ************/
 
     public static String getText(By by) throws Exception {
