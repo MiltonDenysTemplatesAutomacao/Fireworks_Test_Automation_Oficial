@@ -45,7 +45,7 @@ Feature: Financial Aid: Components not required
     Given I login as "firestarterUsername", "firestarterPassword", "firestarterFullName"
     When I navigate to ImportsPackagesPage
     And I create a package
-    And I update PackageStartTab "FinancialAidPackage4", "", "FinancialAid0950.csv", "Student"
+    And I update PackageStartTab "FinancialAidPackage9", "", "FinancialAid0950.csv", "Student"
     And I click save and continue button "Start"
     And I map required fields "STUDENT_TYPE"
     And I map required fields "STUDENT_CATEGORY"
@@ -82,5 +82,23 @@ Feature: Financial Aid: Components not required
     And I click on "Save & Continue"
     #to run the import
     And I click on "Make Ready & Run"
-    And I update Run Tab Actions "", "", "", "", ""
+    And I update Run Tab Actions "", "", "Fire Starter", "", ""
+    And I click on "Review Import"
+    And I click on "Run Import"
 
+  @FinancialAidComponentsNotRequiredScenario3 @Done @FinancialAid
+  Scenario: Record - Financial Aid - The financial aid components were pre-populated with expected defaults
+    Given I login as "firestarterUsername", "firestarterPassword", "firestarterFullName"
+    When I create a person
+      |FirstName|LastName |EmailAddress                 |EmailType  |EmailOptInMethod |Role1  |StudentType|StudentStatusCategory|StudentStatus    |StudentStatusDate|EntryTerm|
+      |Miriam   |Maisel    |miriammaisel@wisconsin.com  |Personal   |Inquiry          |Student|Freshman   |Accepted             |Accepted         |06/20/2017       |Fall 2017|
+    #And I validate if "Person has been created." message is correct
+    And I navigate to people on records
+    And I open a people record by "Miriam"
+    And I validate if "Miriam"summary opened properly
+    And I navigate to Financial Aid
+    And I verify financial Aid "Scholarship", "Incomplete", "Fall 2020", "1", "3800.00", "10/01/2020", "9", "500" group "0"
+    And I verify Financial Aid Component "Application", "No", "", "Yes", "" Financial "0" Aid "0"
+    And I verify Financial Aid Component "Audition Tape", "No", "", "Yes", "" Financial "0" Aid "1"
+    And I verify Award Component "3800.00", "Other", "Outside Scholarship", "Anonymous benefactor" Financial "0" Award Component "0"
+    And I verify Financial Aid Interest "Merit-Based", "Academic", "Yes", "10/01/2020" group "0"

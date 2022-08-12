@@ -577,4 +577,6 @@ public class LogPage {
     public static final String CLICK_ELEMENT_BY_TEXT_FAIL = "Fail while trying to I click on '%s'";
     public static final String UPDATE_PACKAGE_ACTIONS_PASS = "I update Package Actions";
     public static final String UPDATE_PACKAGE_ACTIONS_FAIL = "Fail while trying to update Package Actions";
+    public static final String UPDATE_RUN_TAB_ACTIONS_PASS = "I update Run Tab Actions";
+    public static final String UPDATE_RUN_TAB_ACTIONS_FAIL = "Fail while trying to update Run Tab Actions";
 }

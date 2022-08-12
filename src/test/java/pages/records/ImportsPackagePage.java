@@ -45,9 +45,9 @@ public class ImportsPackagePage extends BasePage {
                 scrollTo("-150");
                 write(By.cssSelector(UPDATE_ACTION_COMMENTS),comments);
             }
-            ExtentReportsSetUp.testingPass(LogPage.CREATE_PACKAGE_PASS);
+            ExtentReportsSetUp.testingPass(LogPage.UPDATE_PACKAGE_ACTIONS_PASS);
         } catch (Exception e) {
-            FailureDelegatePage.handlePageException(LogPage.UPDATE_PACKAGE_START_TAB_FAIL);
+            FailureDelegatePage.handlePageException(LogPage.UPDATE_PACKAGE_ACTIONS_FAIL);
         }
     }
     public static void clickSaveAndContinuePackage(String tab){
