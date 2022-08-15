@@ -579,4 +579,10 @@ public class LogPage {
     public static final String UPDATE_PACKAGE_ACTIONS_FAIL = "Fail while trying to update Package Actions";
     public static final String UPDATE_RUN_TAB_ACTIONS_PASS = "I update Run Tab Actions";
     public static final String UPDATE_RUN_TAB_ACTIONS_FAIL = "Fail while trying to update Run Tab Actions";
+    public static final String RUN_IMPORT_PASS = "I click on Run Import button";
+    public static final String RUN_IMPORT_FAIL = "Fail while trying to click on Run Import button";
+    public static final String SEARCH_IMPORT_MANAGER_PASS = "I search '%s' package";
+    public static final String SEARCH_IMPORT_MANAGER_FAIL = "Fail while trying to search '%s' package";
+    public static final String WAIT_UNTIL_IMPORT_CONCLUDES_PASS = "I validate if '%s' status is displayed for package '%s'";
+    public static final String WAIT_UNTIL_IMPORT_CONCLUDES_FAIL = "Fail while trying to validate if '%s' status is displayed for package '%s'";
 }

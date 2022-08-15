@@ -45,7 +45,7 @@ Feature: Financial Aid: Components not required
     Given I login as "firestarterUsername", "firestarterPassword", "firestarterFullName"
     When I navigate to ImportsPackagesPage
     And I create a package
-    And I update PackageStartTab "FinancialAidPackage9", "", "FinancialAid0950.csv", "Student"
+    And I update PackageStartTab "FinancialAidPackage", "", "FinancialAid0950.csv", "Student"
     And I click save and continue button "Start"
     And I map required fields "STUDENT_TYPE"
     And I map required fields "STUDENT_CATEGORY"
@@ -84,7 +84,8 @@ Feature: Financial Aid: Components not required
     And I click on "Make Ready & Run"
     And I update Run Tab Actions "", "", "Fire Starter", "", ""
     And I click on "Review Import"
-    And I click on "Run Import"
+    And I click on Run Import button
+    Then I validate if "In Progress" status is displayed for package "FinancialAidPackage"
 
   @FinancialAidComponentsNotRequiredScenario3 @Done @FinancialAid
   Scenario: Record - Financial Aid - The financial aid components were pre-populated with expected defaults
@@ -92,7 +93,7 @@ Feature: Financial Aid: Components not required
     When I create a person
       |FirstName|LastName |EmailAddress                 |EmailType  |EmailOptInMethod |Role1  |StudentType|StudentStatusCategory|StudentStatus    |StudentStatusDate|EntryTerm|
       |Miriam   |Maisel    |miriammaisel@wisconsin.com  |Personal   |Inquiry          |Student|Freshman   |Accepted             |Accepted         |06/20/2017       |Fall 2017|
-    #And I validate if "Person has been created." message is correct
+    And I validate if "Person has been created." message is correct
     And I navigate to people on records
     And I open a people record by "Miriam"
     And I validate if "Miriam"summary opened properly

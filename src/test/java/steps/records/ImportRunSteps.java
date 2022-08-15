@@ -10,5 +10,9 @@ public class ImportRunSteps {
     public static void updateRunTabActions(String category,String action,String staff,String actionDate,String comments) {
         ImportRunPage.updateRunTabActions(category,action,staff,actionDate,comments);
     }
+    @When("I click on Run Import button")
+    public static void runImport() {
+        ImportRunPage.runImport();
+    }
 
 }
