@@ -66,12 +66,12 @@ Feature: Financial Aid: Components not required
     And I map Financial Aid optional fields "RECVD_DATE"
     And I map Financial Aid optional fields "DESIRABILITY"
     And I map Financial Aid optional fields "NEED_SCORE"
-    And I "Subfield Group" name "Financial Aid Award Components" group "0"
+    And I add "Subfield Group" name "Financial Aid Award Components" group "0" for "Financial Aid" Field Group
     And I map Financial Aid optional fields "AWARD_CAT"
     And I map Financial Aid optional fields "AWARD_TYPE"
     And I map Financial Aid optional fields "AWARD_AMT"
     And I map Financial Aid optional fields "AWARD_COMMENTS"
-    And I "Field Group" name "Financial Aid Interests" group "0"
+    And I add "Field Group" name "Financial Aid Interests" group "0" for "Financial Aid" Field Group
     And I map Financial Aid optional fields "INTEREST_CATEGORY"
     And I map Financial Aid optional fields "INTEREST_TYPE"
     And I map Financial Aid optional fields "Static Value"

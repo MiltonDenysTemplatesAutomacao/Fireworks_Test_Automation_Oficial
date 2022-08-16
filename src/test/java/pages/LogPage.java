@@ -567,10 +567,12 @@ public class LogPage {
     public static final String ADD_OPTIONAL_FIELD_GROUP_FAIL = "Fail while trying to add Optional Field Group '%s'";
     public static final String MAP_FINANCIAL_AID_OPTIONAL_FIELD_PASS = "I map financial aid optional fields '%s'";
     public static final String MAP_FINANCIAL_AID_OPTIONAL_FIELD_FAIL = "Fail while trying to map financial aid optional fields '%s'";
+    public static final String MAP_APPLICATION_OPTIONAL_FIELD_PASS = "I map application optional fields '%s'";
+    public static final String MAP_APPLICATION_OPTIONAL_FIELD_FAIL = "Fail while trying to map application optional fields '%s'";
     public static final String MAP_FINANCIAL_AID_INTERESTS_OPTIONAL_FIELD_PASS = "I map financial aid interests optional fields '%s'";
     public static final String MAP_FINANCIAL_AID_INTERESTS_OPTIONAL_FIELD_FAIL = "Fail while trying to map financial aid interests optional fields '%s'";
-    public static final String ADD_FIELD_SUB_FIELD_RELATIONSHIP_FIELD_GROUP_PASS = "I '%s' name '%s' group '%s'";
-    public static final String ADD_FIELD_SUB_FIELD_RELATIONSHIP_FIELD_GROUP_FAIL = "Fail while trying to '%s' name '%s' group '%s'";
+    public static final String ADD_FIELD_SUB_FIELD_RELATIONSHIP_FIELD_GROUP_PASS = "I add '%s' name '%s' group '%s' for '%s' field group";
+    public static final String ADD_FIELD_SUB_FIELD_RELATIONSHIP_FIELD_GROUP_FAIL = "Fail while trying to add '%s' name '%s' group '%s' for '%s' field group";
     public static final String ADD_CONVERSION_PASS = "I add conversion field '%s' value '%s' group '%s'";
     public static final String ADD_CONVERSION_FAIL = "Fail while trying to add conversion field '%s' value '%s' group '%s'";
     public static final String CLICK_ELEMENT_BY_TEXT_PASS = "I click on '%s'";

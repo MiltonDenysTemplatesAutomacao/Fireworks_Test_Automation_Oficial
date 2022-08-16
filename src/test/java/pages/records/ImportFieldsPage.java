@@ -33,8 +33,8 @@ public class ImportFieldsPage extends BasePage {
     private static String optionalDropdownMenuFieldGroupSelectName(String field){
         return String.format("//ul[contains(@id, '_%s_source_dropdown_menu')]",field);
     }
-    private static String optionalFieldsPlusSign(String group){
-        return String.format("#person_financial_aid_%s_addFieldGroupDropdownBtn",group);
+    private static String optionalFieldsPlusSign(String fieldGroup,String group){
+        return String.format("#person_%s_%s_addFieldGroupDropdownBtn",fieldGroup,group);
     }
     private static String addGroupDropdownElement(String groupType){
         return String.format("//div[contains(text(),'%s')]",groupType);
@@ -70,15 +70,23 @@ public class ImportFieldsPage extends BasePage {
         }
     }
 
-    public static void addFieldSubFieldRelationshipFieldGroup(String option,String name,String group){
-        String passMessage = String.format(LogPage.ADD_FIELD_SUB_FIELD_RELATIONSHIP_FIELD_GROUP_PASS,option,name,group);
-        String failMessage = String.format(LogPage.ADD_FIELD_SUB_FIELD_RELATIONSHIP_FIELD_GROUP_FAIL,option,name,group);
+    public static String returnAddFieldSubFieldRelationshipFieldGroup(String name){
+        Map<String, String> fieldParameter = new HashMap<String, String>();
+        fieldParameter.put("Application", "application");
+        fieldParameter.put("Financial Aid", "financial_aid");
+        return fieldParameter.get(name);
+    }
+
+    public static void addFieldSubFieldRelationshipFieldGroup(String option,String name,String group,String fieldGroup){
+        String passMessage = String.format(LogPage.ADD_FIELD_SUB_FIELD_RELATIONSHIP_FIELD_GROUP_PASS,option,name,group,fieldGroup);
+        String failMessage = String.format(LogPage.ADD_FIELD_SUB_FIELD_RELATIONSHIP_FIELD_GROUP_FAIL,option,name,group,fieldGroup);
 
         try {
-            scrollToElement(By.cssSelector(optionalFieldsPlusSign(group)));
+            String returnFieldGroup = returnAddFieldSubFieldRelationshipFieldGroup(fieldGroup);
+            scrollToElement(By.cssSelector(optionalFieldsPlusSign(returnFieldGroup,group)));
             scrollTo("-150");
-            waitUntilElementToBeSelected(By.cssSelector(optionalFieldsPlusSign(group)),10);
-            click(By.cssSelector(optionalFieldsPlusSign(group)));
+            waitUntilElementToBeSelected(By.cssSelector(optionalFieldsPlusSign(returnFieldGroup,group)),10);
+            click(By.cssSelector(optionalFieldsPlusSign(returnFieldGroup,group)));
             waitUntilElementToBeSelected(By.xpath(OPTIONAL_FIELDS_PLUS_SIGN_LIST),10);
             BasePage.selectElementsList(By.xpath(OPTIONAL_FIELDS_PLUS_SIGN_LIST), "li");
             clickOnListOfElementsContains(option);
@@ -97,6 +105,43 @@ public class ImportFieldsPage extends BasePage {
             write(By.cssSelector(inputFieldGroup(group)),name);
             BasePage.selectElementsList(By.cssSelector(optionalDropdownMenuFieldGroupSelect(group)), "a");
             clickOnListOfElements(name);
+    }
+    public static String returnMapApplicationOptionalFields(String field){
+        Map<String, String> fieldParameter = new HashMap<String, String>();
+        fieldParameter.put("ENTRY_TERM", "application_entry_term");
+        fieldParameter.put("APP_SOURCE", "application_source");
+        fieldParameter.put("APP_TYPE", "application_type");
+        fieldParameter.put("COMPLETE_DATE", "application_completion_date");
+        fieldParameter.put("HOUSING", "application_housing");
+        fieldParameter.put("APP_COMMENTS", "application_comments");
+        fieldParameter.put("MAJOR1", "application_major_1");
+        fieldParameter.put("CONCENTRATION", "application_concentration");
+        fieldParameter.put("COMP_STATUS", "application_status");
+        fieldParameter.put("RECVD_DATE", "application_started_date");
+        fieldParameter.put("APPLIED_GRADE", "application_for_grade");
+        fieldParameter.put("MAJOR2", "application_major_2");
+        fieldParameter.put("MAJOR3", "application_major_3");
+        fieldParameter.put("MINOR", "application_minor");
+        fieldParameter.put("DEGREE", "application_degree_type");
+        return fieldParameter.get(field);
+    }
+    public static void mapApplicationOptionalField(String field){
+        String passMessage = String.format(LogPage.MAP_APPLICATION_OPTIONAL_FIELD_PASS,field);
+        String failMessage = String.format(LogPage.MAP_APPLICATION_OPTIONAL_FIELD_FAIL,field);
+        try {
+            String fieldReturn = returnMapApplicationOptionalFields(field);
+            scrollToElement(By.xpath(fieldSourceDropdown(fieldReturn)));
+            scrollTo("-150");
+            waitUntilElementToBeSelected(By.xpath(fieldSourceDropdown(fieldReturn)),10);
+            click(By.xpath(fieldSourceDropdown(fieldReturn)));
+            waitUntilElementToBeSelected(By.xpath(inputOptionalFieldElement(fieldReturn)),10);
+            write(By.xpath(inputOptionalFieldElement(fieldReturn)),field);
+            BasePage.selectElementsList(By.xpath(optionalDropdownMenuFieldGroupSelectName(fieldReturn)), "a");
+            clickOnListOfElements(field);
+            ExtentReportsSetUp.testingPass(passMessage);
+        } catch (Exception e) {
+            FailureDelegatePage.handlePageException(failMessage);
+        }
     }
     public static String returnMapFinancialAidOptionalFields(String field){
         Map<String, String> fieldParameter = new HashMap<String, String>();
@@ -196,6 +241,7 @@ public class ImportFieldsPage extends BasePage {
         String passMessage = String.format(LogPage.MAP_REQUIRED_FIELDS_PASS,field);
         String failMessage = String.format(LogPage.MAP_REQUIRED_FIELDS_FAIL,field);
         try {
+            wait(1000);
             String fieldReturn = returnMapRequiredFields(field);
             scrollToElement(By.xpath(fieldSourceDropdown(fieldReturn)));
             scrollTo("-150");

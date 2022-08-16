@@ -17,13 +17,17 @@ public class ImportFieldsSteps {
     public static void mapFinancialAidOptionalField(String field) {
         ImportFieldsPage.mapFinancialAidOptionalField(field);
     }
+    @And("I map Application optional fields {string}")
+    public static void mapApplicationOptionalField(String field) {
+        ImportFieldsPage.mapApplicationOptionalField(field);
+    }
     @And("I map Financial Aid Interests optional fields {string}")
     public static void mapFinancialAidInterestsOptionalField(String field) {
         ImportFieldsPage.mapFinancialAidInterestsOptionalField(field);
     }
-    @And("I {string} name {string} group {string}")
-    public static void addFieldSubFieldRelationshipFieldGroup(String option,String name,String group) {
-        ImportFieldsPage.addFieldSubFieldRelationshipFieldGroup(option,name,group);
+    @And("I add {string} name {string} group {string} for {string} Field Group")
+    public static void addFieldSubFieldRelationshipFieldGroup(String option,String name,String groupNum,String fieldGroup) {
+        ImportFieldsPage.addFieldSubFieldRelationshipFieldGroup(option,name,groupNum,fieldGroup);
     }
     @And("I add conversion field {string} value {string} group {string}")
     public static void addConversion(String option,String value,String group) {

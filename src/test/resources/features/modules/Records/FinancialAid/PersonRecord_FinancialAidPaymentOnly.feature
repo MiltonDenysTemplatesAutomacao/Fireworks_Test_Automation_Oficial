@@ -35,4 +35,36 @@ Feature: Financial Aid Payment Only
     And I create a package
     And I update PackageStartTab "ApplicationPaymentCounselor", "", "ApplicationPaytCounselor0940.csv", "Student"
     And I click save and continue button "Start"
-    #And I map required fields
+    And I map required fields "STUDENT_TYPE"
+    And I map required fields "STUDENT_CATEGORY"
+    And I map required fields "STUDENT_STATUS"
+    And I map required fields "ENTRY_TERM"
+    And I map required fields "STATUS_DATE"
+    And I map required fields "ROLE"
+    And I map required fields "FIRST_NAME"
+    And I map required fields "LAST_NAME"
+    And I map required fields "EMAIL_ADDRESS"
+    And I map required fields "EMAIL_TYPE"
+    And I map required fields "OPTIN"
+    And I click save and continue button "Required"
+    And I add Optional Field Group "0" name "Application"
+    And I map Application optional fields "ENTRY_TERM"
+    And I map Application optional fields "APP_SOURCE"
+    And I map Application optional fields "APP_TYPE"
+    And I map Application optional fields "COMPLETE_DATE"
+    And I map Application optional fields "HOUSING"
+    And I map Application optional fields "APP_COMMENTS"
+    And I map Application optional fields "MAJOR1"
+    And I map Application optional fields "CONCENTRATION"
+    And I map Application optional fields "COMP_STATUS"
+    And I map Application optional fields "RECVD_DATE"
+    And I map Application optional fields "APPLIED_GRADE"
+    And I map Application optional fields "MAJOR2"
+    And I map Application optional fields "MAJOR3"
+    And I map Application optional fields "MINOR"
+    And I map Application optional fields "DEGREE"
+    And I add "Subfield Group" name "Application Review" group "0" for "Application" Field Group
+
+
+
+
