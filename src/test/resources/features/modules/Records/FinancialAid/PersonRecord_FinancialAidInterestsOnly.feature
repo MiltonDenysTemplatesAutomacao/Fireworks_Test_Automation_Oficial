@@ -1,7 +1,6 @@
 #Author: Milton Silva
 #Regression testcase TL-255:Financial Aid: Interests only
 
-
 @FinancialAidInterestsOnly
 Feature: Financial Aid Payment Only
 
