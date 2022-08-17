@@ -587,4 +587,10 @@ public class LogPage {
     public static final String SEARCH_IMPORT_MANAGER_FAIL = "Fail while trying to search '%s' package";
     public static final String WAIT_UNTIL_IMPORT_CONCLUDES_PASS = "I validate if '%s' status is displayed for package '%s'";
     public static final String WAIT_UNTIL_IMPORT_CONCLUDES_FAIL = "Fail while trying to validate if '%s' status is displayed for package '%s'";
+    public static final String ADD_FIELD_GROUP_PASS = "I add '%s'";
+    public static final String ADD_FIELD_GROUP_FAIL = "Fail while trying to add '%s'";
+    public static final String MAP_PAYMENT_OPTIONAL_FIELD_PASS = "I map payment optional fields '%s'";
+    public static final String MAP_PAYMENT_OPTIONAL_FIELD_FAIL = "Fail while trying to map payment optional fields '%s'";
+    public static final String MAP_COUSELOR_OPTIONAL_FIELD_PASS = "I map couselor optional fields '%s'";
+    public static final String MAP_COUSELOR_OPTIONAL_FIELD_FAIL = "Fail while trying to map couselor optional fields '%s'";
 }

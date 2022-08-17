@@ -21,6 +21,14 @@ public class ImportFieldsSteps {
     public static void mapApplicationOptionalField(String field) {
         ImportFieldsPage.mapApplicationOptionalField(field);
     }
+    @And("I map Payment optional fields {string}")
+    public static void mapPaymentOptionalField(String field) {
+        ImportFieldsPage.mapPaymentOptionalField(field);
+    }
+    @And("I map Counselor optional fields {string}")
+    public static void mapCounselorOptionalField(String field) {
+        ImportFieldsPage.mapCounselorOptionalField(field);
+    }
     @And("I map Financial Aid Interests optional fields {string}")
     public static void mapFinancialAidInterestsOptionalField(String field) {
         ImportFieldsPage.mapFinancialAidInterestsOptionalField(field);
@@ -28,6 +36,10 @@ public class ImportFieldsSteps {
     @And("I add {string} name {string} group {string} for {string} Field Group")
     public static void addFieldSubFieldRelationshipFieldGroup(String option,String name,String groupNum,String fieldGroup) {
         ImportFieldsPage.addFieldSubFieldRelationshipFieldGroup(option,name,groupNum,fieldGroup);
+    }
+    @And("I add {string}")
+    public static void addFieldGroup(String option) {
+        ImportFieldsPage.addFieldGroup(option);
     }
     @And("I add conversion field {string} value {string} group {string}")
     public static void addConversion(String option,String value,String group) {
