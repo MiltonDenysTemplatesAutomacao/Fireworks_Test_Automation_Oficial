@@ -206,51 +206,24 @@ public class FinancialAidPage extends BasePage {
     public static void updateFinancialAid(FinancialAidBean financialAidBean, String group){
         String passMessage = String.format(LogPage.UPDATE_FINANCIAL_AID_PASS,group);
         String failMessage = String.format(LogPage.UPDATE_FINANCIAL_AID_FAIL,group);
-        int updateFinancialAidDelay=10;
         try {
             if(financialAidBean.getAidAppType()!=""){
-                scrollToElement(By.cssSelector(financialAidPlusButton(group)));
-                waitElementBy(By.cssSelector(aidAppTypeElement(group)),updateFinancialAidDelay);
-                click(By.cssSelector(aidAppTypeElement(group)));
-                waitElementBy(By.cssSelector(PersonPage.SELECT_DROP),updateFinancialAidDelay);
-                BasePage.selectElementsList(By.cssSelector(PersonPage.SELECT_DROP), "a");
-                clickOnListOfElements(financialAidBean.getAidAppType());
-                wait(1000);
+                MainPage.clickOption(By.cssSelector(aidAppTypeElement(group)),financialAidBean.getAidAppType(),By.cssSelector(PersonPage.SELECT_DROP),"a");
             }
             if(financialAidBean.getStatus()!=""){
-                scrollToElement(By.cssSelector(financialAidPlusButton(group)));
-                waitElementBy(By.cssSelector(statusElement(group)),updateFinancialAidDelay);
-                click(By.cssSelector(statusElement(group)));
-                waitElementBy(By.cssSelector(PersonPage.SELECT_DROP),updateFinancialAidDelay);
-                BasePage.selectElementsList(By.cssSelector(PersonPage.SELECT_DROP), "a");
-                clickOnListOfElements(financialAidBean.getStatus());
+                MainPage.clickOption(By.cssSelector(statusElement(group)),financialAidBean.getStatus(),By.cssSelector(PersonPage.SELECT_DROP),"a");
             }
             if(financialAidBean.getAidTerm()!=""){
-                scrollToElement(By.cssSelector(financialAidPlusButton(group)));
-                wait(1000);
-                click(By.cssSelector(aidTermElement(group)));
-                waitElementBy(By.xpath(ApplicationsPage.INPUT_FIELD),updateFinancialAidDelay);
-                write(By.xpath(ApplicationsPage.INPUT_FIELD),financialAidBean.getAidTerm());
-                waitElementBy(By.xpath(ApplicationsPage.INPUT_FIELD),updateFinancialAidDelay);
-                KeyPage.pressKey(By.xpath(ApplicationsPage.INPUT_FIELD),"Enter");
+                MainPage.inputOptionField(By.cssSelector(aidTermElement(group)),financialAidBean.getAidTerm(),By.xpath(ApplicationsPage.INPUT_FIELD));
             }
             if(financialAidBean.getDateReceived()!=""){
-                scrollToElement(By.cssSelector(financialAidPlusButton(group)));
-                waitElementBy(By.cssSelector(dateReceivedField(group)),updateFinancialAidDelay);
-                KeyPage.erase(By.cssSelector(dateReceivedField(group)));
-                waitElementBy(By.cssSelector(dateReceivedField(group)),updateFinancialAidDelay);
-                write(By.cssSelector(dateReceivedField(group)),financialAidBean.getDateReceived());
-                KeyPage.pressKey(By.cssSelector(dateReceivedField(group)),"Enter");
+                MainPage.fillDateField(By.cssSelector(dateReceivedField(group)),financialAidBean.getDateReceived());
             }
             if(financialAidBean.getDesirabilityScore()!=""){
-                scrollToElement(By.cssSelector(financialAidPlusButton(group)));
-                waitElementBy(By.cssSelector(desirabilityScoreField(group)),updateFinancialAidDelay);
-                write(By.cssSelector(desirabilityScoreField(group)),financialAidBean.getDesirabilityScore());
+                MainPage.fillField(By.cssSelector(desirabilityScoreField(group)),financialAidBean.getDesirabilityScore());
             }
             if(financialAidBean.getNeedScore()!=""){
-                scrollToElement(By.cssSelector(financialAidPlusButton(group)));
-                waitElementBy(By.cssSelector(needScoreField(group)),updateFinancialAidDelay);
-                write(By.cssSelector(needScoreField(group)),financialAidBean.getNeedScore());
+                MainPage.fillField(By.cssSelector(needScoreField(group)),financialAidBean.getNeedScore());
             }
             ExtentReportsSetUp.testingPass(passMessage);
         } catch (Exception e) {

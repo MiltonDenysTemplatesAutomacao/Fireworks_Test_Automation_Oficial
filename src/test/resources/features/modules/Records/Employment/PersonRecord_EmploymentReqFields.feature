@@ -10,11 +10,11 @@ Feature: Employment Required Field
     And I create an organization
       |Name					    |Role		|Address1		  |City	               |State	   |PostalCode |Country	     |
       |Stagecoach Data Systems  |Institution|53 Wild Horse St |Egg Harbor Township |New Jersey |08234      |United States|
-    #Then I validate if "Organization has been created." message is correct
+    Then I validate if "Organization has been created." message is correct
     When I create a person
       |FirstName|LastName |EmailAddress         |EmailType  |EmailOptInMethod |Role1  |StudentType|StudentStatusCategory|StudentStatus    |StudentStatusDate|EntryTerm|
       |Choker   |Campbell |BCampbell@music.com  |Personal   |Inquiry          |Student|Freshman   |Accepted             |Accepted         |03/17/2019       |Fall 2019|
-    #And I validate if "Person has been created." message is correct
+    And I validate if "Person has been created." message is correct
     #add employment comment to trigger required fields validation
     And I navigate to people on records
     And I open a people record by "Choker"
@@ -22,4 +22,10 @@ Feature: Employment Required Field
     And I navigate to Employment
     And I update Employment "", "", "", "", "Comment" group "0"
     And I click on "Save Changes"
+    #correct validation messages are returned
+    And I verify validation message "The Employer field is required."
+    And I verify validation message "The Position field is required."
+    And I verify validation message "The Start Date field is required."
+    And I click on close button on modal
+
 

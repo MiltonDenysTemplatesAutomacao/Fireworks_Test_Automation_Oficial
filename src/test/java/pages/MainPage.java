@@ -9,6 +9,28 @@ import static pages.GlobalNavPage.QUICK_ADD_PERSON_OPT_IN_METHOD_DROPDOWN_LIST;
 
 public class MainPage extends BasePage{
 
+    public static void inputOptionField(By by,String value,By inputField)throws Exception{
+        int delay = 10;
+        scrollToElement(by);
+        scrollTo("-150");
+        wait(1000);
+        click(by);
+        waitElementBy(inputField,delay);
+        write(inputField,value);
+        waitElementBy(inputField,delay);
+        KeyPage.pressKey(inputField,"Enter");
+    }
+    public static void clickOption(By by,String value,By dropDownList,String tag)throws Exception{
+        int delay = 10;
+        scrollToElement(by);
+        scrollTo("-150");
+        waitElementBy(by,delay);
+        click(by);
+        waitElementBy(dropDownList,delay);
+        BasePage.selectElementsList(dropDownList, tag);
+        clickOnListOfElements(value);
+    }
+
     public static void fillDateField(By by,String value)throws Exception{
         int delay = 10;
         scrollToElement(by);
