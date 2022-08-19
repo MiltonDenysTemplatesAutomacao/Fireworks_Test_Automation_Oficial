@@ -23,7 +23,7 @@ Feature: Financial Aid Payment Only
     And I close alert if return this message "Person has been updated."
     And I verify FinancialAidPayment "08/10/2017 12:00 AM", "1000.00", "Application", "Credit Card", "Fire Starter", "Payment comment" group "0"
 
-  @FinancialAidPaymentOnlyScenario2 @Done @FinancialAid
+  @FinancialAidPaymentOnlyScenario2 @Fix @FinancialAid
   Scenario: Record - Financial Aid - to add a staff to use as the counselor
     Given I login as "firestarterUsername", "firestarterPassword", "firestarterFullName"
     When I create a staff
@@ -90,7 +90,7 @@ Feature: Financial Aid Payment Only
     And I click on "Review Import"
     And I click on Run Import button
     Then I validate if "Completed" status is displayed for package "FinancialAidPackage"
-  @FinancialAidPaymentOnlyScenario3 @Done @FinancialAid
+  @FinancialAidPaymentOnlyScenario3 @Fix @FinancialAid
   Scenario: Record - Financial Aid - The application components were pre-populated with expected defaults
     Given I login as "firestarterUsername", "firestarterPassword", "firestarterFullName"
     When I create a person

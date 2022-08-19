@@ -1,5 +1,6 @@
 package steps;
 
+import io.cucumber.datatable.DataTable;
 import io.cucumber.java.en.When;
 import pages.BasePage;
 import pages.MainPage;
@@ -17,6 +18,10 @@ public class MainSteps {
     @When("I click on {string}")
     public static void clickElementByText(String text) {
         MainPage.clickElementByText(text);
+    }
+    @When("I use datatable")
+    public static void toUseDatatable(DataTable data) {
+        MainPage.toUseDatatable(data);
     }
 
 

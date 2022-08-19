@@ -1,6 +1,7 @@
 package pages;
 
 import config.extent_reports.ExtentReportsSetUp;
+import io.cucumber.datatable.DataTable;
 import org.openqa.selenium.By;
 
 import static pages.GlobalNavPage.QUICK_ADD_PERSON_OPT_IN_METHOD_DROPDOWN;
@@ -8,6 +9,13 @@ import static pages.GlobalNavPage.QUICK_ADD_PERSON_OPT_IN_METHOD_DROPDOWN_LIST;
 
 public class MainPage extends BasePage{
 
+    public static void toUseDatatable(DataTable data){
+        createDatatable(data);
+    }
+
+    public static void createDatatable(DataTable data){
+        mass = data.asMaps(String.class, String.class);
+    }
     public static void selectQuickAddEmailOptIn(String emailOptIn){
         String errorMessage = String.format(LogPage.SELECT_QUICK_ADD_EMAIL_OPT_IN_FAIL, emailOptIn);
         String passMessage = String.format(LogPage.SELECT_QUICK_ADD_EMAIL_OPT_IN_PASS, emailOptIn);

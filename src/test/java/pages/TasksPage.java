@@ -45,8 +45,8 @@ public class TasksPage extends BasePage{
     public static final String TASK_SAVE_CHANGES_DISABLED_BUTTON = "#taskSaveButton[disabled]";
     public static final String TASK_NAME_DISABLED_FIELD = "#task_name[disabled]";
     public static final String TASK_MANAGER_TABLE_FILTER_BUTTON = "div.btn-group.columnFilter";
-    public static final String TASK_MANAGER_TABLE_FILTER_BUTTON_YES = ".//*[@href='6038']";
-    public static final String TASK_MANAGER_TABLE_FILTER_BUTTON_NO = ".//*[@href='6039']";
+    public static final String TASK_MANAGER_TABLE_FILTER_BUTTON_YES = "6038";
+    public static final String TASK_MANAGER_TABLE_FILTER_BUTTON_NO = "6039";
     public static final String ASSIGN_TO_COLUMN = "//*[@id='taskManagerTable']/thead/tr/th[4]";
 
 
@@ -119,16 +119,14 @@ public class TasksPage extends BasePage{
     public static void clickFilterArchivedStatus(String status){
         try {
             waitUntilElementToBeSelected(By.cssSelector(TASK_MANAGER_TABLE_FILTER_BUTTON),20);
-            BasePage.click(By.cssSelector(TASK_MANAGER_TABLE_FILTER_BUTTON));
+            click(By.cssSelector(TASK_MANAGER_TABLE_FILTER_BUTTON));
 
             switch (status) {
                 case "Yes":
-                    BasePage.click(By.xpath(TASK_MANAGER_TABLE_FILTER_BUTTON_YES));
-                    System.out.println(true);
+                    click(By.id(TASK_MANAGER_TABLE_FILTER_BUTTON_YES));
                     break;
                 case "No":
-                    BasePage.click(By.xpath(TASK_MANAGER_TABLE_FILTER_BUTTON_NO));
-                    System.out.println(false);
+                    click(By.id(TASK_MANAGER_TABLE_FILTER_BUTTON_NO));
                     break;
             }
         } catch (Exception e) {

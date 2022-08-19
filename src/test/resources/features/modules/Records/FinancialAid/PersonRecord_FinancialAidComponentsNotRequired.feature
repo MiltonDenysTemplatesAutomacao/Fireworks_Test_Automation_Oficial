@@ -40,7 +40,7 @@ Feature: Financial Aid: Components not required
     And I verify Financial Aid Component "Institutional Aid Form", "No", "", "Yes", "" Financial "0" Aid "4"
     And I verify Financial Aid Component "Financial Aid Transcript", "No", "", "Yes", "" Financial "0" Aid "5"
 
-  @FinancialAidComponentsNotRequiredScenario2 @Done @FinancialAid
+  @FinancialAidComponentsNotRequiredScenario2 @Fix @FinancialAid
   Scenario: Record - Import - Financial Aid without components
     Given I login as "firestarterUsername", "firestarterPassword", "firestarterFullName"
     When I navigate to ImportsPackagesPage
@@ -87,7 +87,7 @@ Feature: Financial Aid: Components not required
     And I click on Run Import button
     Then I validate if "In Progress" status is displayed for package "FinancialAidPackage"
 
-  @FinancialAidComponentsNotRequiredScenario3 @Done @FinancialAid
+  @FinancialAidComponentsNotRequiredScenario3 @Fix @FinancialAid
   Scenario: Record - Financial Aid - The financial aid components were pre-populated with expected defaults
     Given I login as "firestarterUsername", "firestarterPassword", "firestarterFullName"
     When I create a person

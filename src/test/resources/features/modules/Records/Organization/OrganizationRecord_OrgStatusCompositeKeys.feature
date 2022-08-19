@@ -13,7 +13,7 @@ Feature: Organization Status: Composite keys
       |                       |           |               |           |                 |         |         |           |             |Active   |11/11/2025   |Comment 2        |
       |                       |           |               |           |                 |         |         |           |             |         |11/12/2025   |                 |
     Then I validate if "Organization has been created." message is correct
-    #to update org Status
+      #to update org Status
     Given I navigate to status organization
     And I update organization status group "0" person 0
     When I click on Save Changes button in organization status

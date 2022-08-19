@@ -543,8 +543,9 @@ public class OrgPage extends BasePage{
 
     public static void organizationStatusSaveChanges(){
         try {
+            scrollToTheBottom();
             waitUntilElementToBeSelected(By.id(ORG_STATUS_SAVE_CHANGES_BUTTON),20);
-            BasePage.click(By.id(ORG_STATUS_SAVE_CHANGES_BUTTON));
+            click(By.id(ORG_STATUS_SAVE_CHANGES_BUTTON));
             ExtentReportsSetUp.testingPass(LogPage.ORGANIZATION_STATUS_SAVE_CHANGES_PASS);
         } catch (Exception e) {
             FailureDelegatePage.handlePageException(LogPage.ORGANIZATION_STATUS_SAVE_CHANGES_FAIL);
