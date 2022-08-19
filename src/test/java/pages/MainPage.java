@@ -9,6 +9,23 @@ import static pages.GlobalNavPage.QUICK_ADD_PERSON_OPT_IN_METHOD_DROPDOWN_LIST;
 
 public class MainPage extends BasePage{
 
+    public static void fillDateField(By by,String value)throws Exception{
+        int delay = 10;
+        scrollToElement(by);
+        scrollTo("-150");
+        waitElementBy(by,delay);
+        KeyPage.erase(by);
+        write(by,value);
+        KeyPage.pressKey(by,"Enter");
+    }
+
+    public static void fillField(By by,String value)throws Exception{
+        int delay = 10;
+        scrollToElement(by);
+        scrollTo("-150");
+        waitElementBy(by,delay);
+        write(by,value);
+    }
     public static void toUseDatatable(DataTable data){
         createDatatable(data);
     }

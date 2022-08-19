@@ -449,6 +449,8 @@ public class LogPage {
     public static final String NAVIGATE_TO_APPLICATIONS_PASS = "I navigate to Applications";
     public static final String NAVIGATE_TO_FINANCIAL_AID_FAIL = "Fail while trying to navigate to Financial Aid";
     public static final String NAVIGATE_TO_FINANCIAL_AID_PASS = "I navigate to Financial Aid";
+    public static final String NAVIGATE_TO_EMPLOYMENT_FAIL = "Fail while trying to navigate to Employment";
+    public static final String NAVIGATE_TO_EMPLOYMENT_PASS = "I navigate to Employment";
     public static final String NAVIGATE_TO_APPLICATIONS_FAIL = "Fail while trying to navigate to Applications";
     public static final String OPEN_RELATIONSHIP_TABLE_FAIL = "Fail while trying to open a relationship '%s'";
     public static final String OPEN_RELATIONSHIP_TABLE_PASS = "I open a relationship '%s'";
@@ -593,4 +595,6 @@ public class LogPage {
     public static final String MAP_PAYMENT_OPTIONAL_FIELD_FAIL = "Fail while trying to map payment optional fields '%s'";
     public static final String MAP_COUSELOR_OPTIONAL_FIELD_PASS = "I map couselor optional fields '%s'";
     public static final String MAP_COUSELOR_OPTIONAL_FIELD_FAIL = "Fail while trying to map couselor optional fields '%s'";
+    public static final String UPDATE_EMPLOYMENT_PASS = "I update Employment group '%s'";
+    public static final String UPDATE_EMPLOYMENT_FAIL = "Fail while trying to update Employment group '%s'";
 }

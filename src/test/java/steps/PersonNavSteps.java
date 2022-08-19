@@ -32,6 +32,10 @@ public class PersonNavSteps {
     public static void navigateToFinancialAid() {
         PersonNavPage.navigateToFinancialAid();
     }
+    @Then("I navigate to Employment")
+    public static void navigateToEmployment() {
+        PersonNavPage.navigateToEmployment();
+    }
 
 
 }
