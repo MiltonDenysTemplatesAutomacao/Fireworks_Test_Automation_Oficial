@@ -97,6 +97,7 @@ public class LogPage {
     public static final String VALIDATE_CLEAR_CHANGES_FAIL = "FAILED while verifying if clear changes worked";
     public static final String SEARCH_SMART_SEARCH_PICKER_FAIL = "Fail while trying to smart search";
     public static final String SEARCH_SINGLE_RECIPIENT_PICKER_FAIL = "Fail while trying to search a recipient ";
+    public static final String SEARCH_PICKER_FAIL = "Fail while trying to search a picker ";
     public static final String SEARCH_RECOMMENDER_FAIL = "Fail while trying to search a recommender ";
     public static final String PICK_SMART_SEARCH_FAIL = "Fail while trying to pick a smart search";
     public static final String PICK_RECOMMENDER_FAIL = "Fail while trying to pick a recommender";
@@ -597,4 +598,9 @@ public class LogPage {
     public static final String MAP_COUSELOR_OPTIONAL_FIELD_FAIL = "Fail while trying to map couselor optional fields '%s'";
     public static final String UPDATE_EMPLOYMENT_PASS = "I update Employment group '%s'";
     public static final String UPDATE_EMPLOYMENT_FAIL = "Fail while trying to update Employment group '%s'";
+    public static final String PICK_EMPLOYER_PASS = "I pick an organization Employer '%s' group '%s'";
+    public static final String PICK_EMPLOYER_FAIL = "Fail while trying to pick an organization Employer '%s' group '%s'";
+    public static final String VERIFY_EMPLOYMENT_PASS = "I verify employment group '%s'";
+    public static final String VERIFY_EMPLOYMENT_FAIL = "Fail while trying to verify employment group '%s'";
+
 }

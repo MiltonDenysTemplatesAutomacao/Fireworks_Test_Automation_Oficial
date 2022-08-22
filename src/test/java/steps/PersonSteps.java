@@ -75,6 +75,10 @@ public class PersonSteps {
     public static void verifyStudentRecordPanels() {
         PersonPage.verifyStudentRecordPanels();
     }
+    @Then("I click on save changes in contact for person")
+    public static void saveChangesBtnPersonContact() {
+        PersonPage.saveChangesBtnPersonContact();
+    }
     @When("I update {string}, {string}, {string}, {string}, {string} and {string} to update name")
     public static void updateName(String firstName,String lastName,String middleName,String preferredName, String suffix, String salutation) {
         PersonPage.updateNameValues(firstName,lastName,middleName,preferredName,suffix,salutation);

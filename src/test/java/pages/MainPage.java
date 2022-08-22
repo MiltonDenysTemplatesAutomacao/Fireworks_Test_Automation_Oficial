@@ -9,6 +9,53 @@ import static pages.GlobalNavPage.QUICK_ADD_PERSON_OPT_IN_METHOD_DROPDOWN_LIST;
 
 public class MainPage extends BasePage{
 
+    public static boolean verifyGetText(By by,String value)throws Exception{
+        boolean validation = false;
+        if(value!=""){
+            scrollToElement(by);
+            scrollTo("-150");
+            String returnText = getText(by);
+            validation = returnText.contains(value);
+        }else{
+            validation=true;
+        }
+        return validation;
+    }
+
+    public static boolean verifyGetAttribute(By by, String value)throws Exception{
+        boolean validation = false;
+        if(value!=""){
+        scrollToElement(by);
+        scrollTo("-150");
+        String returnText = getAtribute(by,"value");
+        validation = returnText.contains(value);
+    }else{
+        validation=true;
+    }
+        return validation;
+    }
+    public static void picker(By pickerButton,By searchField, By recordPickerModalTableRow1,By orgPickerModalTableRow1Checkbox,By modalChooseButton,String value)throws Exception{
+        int delay = 10;
+        waitElementBy(pickerButton,delay);
+        click(pickerButton);
+        searchPicker(searchField,recordPickerModalTableRow1,orgPickerModalTableRow1Checkbox,value);
+        modalChooseButton(modalChooseButton);
+    }
+    public static void searchPicker(By searchField,By recordPickerModalTableRow1,By orgPickerModalTableRow1Checkbox,String value)throws Exception{
+        int delay = 10;
+        waitElementBy(searchField,delay);
+        write(searchField,value);
+        wait(3000);
+        if(verifyIfContains(recordPickerModalTableRow1,value)){
+            wait(1000);
+            click(orgPickerModalTableRow1Checkbox);
+        }else{
+            FailureDelegatePage.handlePageException(LogPage.SEARCH_PICKER_FAIL);
+        }
+    }
+    public static void modalChooseButton(By modalChooseButton)throws Exception{
+        click(modalChooseButton);
+    }
     public static void inputOptionField(By by,String value,By inputField)throws Exception{
         int delay = 10;
         scrollToElement(by);

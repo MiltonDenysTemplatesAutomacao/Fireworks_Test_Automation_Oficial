@@ -27,5 +27,11 @@ Feature: Employment Required Field
     And I verify validation message "The Position field is required."
     And I verify validation message "The Start Date field is required."
     And I click on close button on modal
+    #employment record can be added
+    And I pick an organization Employer "Stagecoach Data Systems" group "0"
+    And I update Employment "Position", "11/11/2012", "", "", "" group "0"
+    And I click on "Save Changes"
+    And I close alert if return this message "Person has been updated."
+    And I verify Employment "Stagecoach Data Systems", "Position", "11/11/2012", "", "", "Comment" group "0"
 
 
