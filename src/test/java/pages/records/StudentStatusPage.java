@@ -72,64 +72,30 @@ public class StudentStatusPage extends BasePage {
                                     mass.get(person).get("StudentStatusCategory"),
                                     By.cssSelector(PersonPage.SELECT_DROP),
                                     "a");
-
-//                scrollToElement(By.cssSelector(statusPlusSignElement(index)));
-//                waitUntilElementToBeSelected(By.cssSelector(categoryElement(index)),20);
-//                BasePage.click(By.cssSelector(categoryElement(index)));
-//                BasePage.selectElementsList(By.cssSelector(PersonPage.SELECT_DROP), "a");
-//                wait(2000);
-//                clickOnListOfElements(mass.get(person).get("StudentStatusCategory"));
             }
             if (mass.get(person).get("StudentStatus") != null) {
                 MainPage.clickOptionList(By.cssSelector(statusElement(index)),
                         mass.get(person).get("StudentStatus"),
                         By.cssSelector(PersonPage.SELECT_DROP),
                         "a");
-//                scrollToElement(By.cssSelector(statusPlusSignElement(index)));
-//                waitUntilElementToBeSelected(By.cssSelector(statusElement(index)),20);
-//                BasePage.click(By.cssSelector(statusElement(index)));
-//                BasePage.selectElementsList(By.cssSelector(PersonPage.SELECT_DROP), "a");
-//                wait(2000);
-//                clickOnListOfElements(mass.get(person).get("StudentStatus"));
             }
             if (mass.get(person).get("StudentStatusDate") != null) {
                 MainPage.fillDateField(By.cssSelector(statusDateField(index)),mass.get(person).get("StudentStatusDate"));
-//                scrollToElement(By.cssSelector(statusElement(index)));
-//                waitUntilElementToBeSelected(By.cssSelector(statusDateField(index)),20);
-//                BasePage.click(By.cssSelector(statusDateField(index)));
-//                BasePage.write(By.cssSelector(statusDateField(index)),mass.get(person).get("StudentStatusDate"));
             }
             if (mass.get(person).get("EntryTerm") != null) {
                 MainPage.clickOptionList(By.cssSelector(entryTermElement(index)),
                         mass.get(person).get("EntryTerm"),
                         By.cssSelector(PersonPage.SELECT_DROP),
                         "a");
-//                scrollToElement(By.cssSelector(statusElement(index)));
-//                waitUntilElementToBeSelected(By.cssSelector(entryTermElement(index)),20);
-//                BasePage.click(By.cssSelector(entryTermElement(index)));
-//                BasePage.selectElementsList(By.cssSelector(PersonPage.SELECT_DROP), "a");
-//                wait(2000);
-//                clickOnListOfElements(mass.get(person).get("EntryTerm"));
             }
             if (mass.get(person).get("Comments") != null) {
                 MainPage.fillField(By.cssSelector(statusCommentsField(index)),mass.get(person).get("Comments"));
-
-//                scrollToElement(By.cssSelector(entryTermElement(index)));
-//                waitUntilElementToBeSelected(By.cssSelector(statusCommentsField(index)),20);
-//                BasePage.write(By.cssSelector(statusCommentsField(index)),mass.get(person).get("Comments"));
             }
             if (mass.get(person).get("Active") != null) {
                 MainPage.clickOption(By.cssSelector(statusActiveCheckbox(index)));
-//                scrollToElement(By.cssSelector(statusPlusSignElement(index)));
-//                waitUntilElementPresence(By.cssSelector(statusActiveCheckbox(index)),20);
-//                BasePage.click(By.cssSelector(statusActiveCheckbox(index)));
             }
             if (mass.get(person).get("Primary") != null) {
                 MainPage.clickOption(By.cssSelector(statusPrimaryCheckbox(index)));
-
-//                scrollToElement(By.cssSelector(statusPlusSignElement(index)));
-//                waitUntilElementPresence(By.cssSelector(statusPrimaryCheckbox(index)),20);
-//                BasePage.click(By.cssSelector(statusPrimaryCheckbox(index)));
             }
             ExtentReportsSetUp.testingPass(passMessage);
         } catch (Exception e) {
@@ -159,77 +125,17 @@ public class StudentStatusPage extends BasePage {
     }
 
     public static void verifyStudentStatus(String studentStatus, int person){
-        boolean studentStatusCategoryValidation = false;
-        boolean studentStatusValidation = false;
-        boolean studentStatusDateValidation = false;
-        boolean entryTermValidation = false;
-        boolean studentCommentsValidation = false;
-        boolean studentActiveCheckboxLocator = false;
-        boolean studentPrymaryCheckboxLocator = false;
-
         String errorMessage = String.format(LogPage.VERIFY_STUDENT_STATUS_FAIL, studentStatus,person);
         String passMessage = String.format(LogPage.VERIFY_STUDENT_STATUS_PASS, studentStatus,person);
-
         try {
-            scrollToElement(By.cssSelector(statusPlusSignElement(studentStatus)));
-            if (mass.get(person).get("StudentStatusCategory") != null) {
-                String category = getText(By.cssSelector(categoryElement(studentStatus)));
-                studentStatusCategoryValidation = category.contains(mass.get(person).get("StudentStatusCategory"));
-            }else{
-                studentStatusCategoryValidation = true;
-    }
-            if (mass.get(person).get("StudentStatus") != null) {
-                String status = getText(By.cssSelector(statusElement(studentStatus)));
-                studentStatusValidation = status.contains(mass.get(person).get("StudentStatus"));
-            }else{
-                studentStatusValidation = true;
-    }
-            if (mass.get(person).get("StudentStatusDate") != null) {
-                String studentStatusDate = getAtribute(By.cssSelector(statusDateField(studentStatus)),"value");
-                studentStatusDateValidation = studentStatusDate.contains(mass.get(person).get("StudentStatusDate"));
-            }else{
-                studentStatusDateValidation = true;
-            }
-            if (mass.get(person).get("EntryTerm") != null) {
-                String entryTerm = getText(By.cssSelector(entryTermElement(studentStatus)));
-                entryTermValidation = entryTerm.contains(mass.get(person).get("EntryTerm"));
-            }else{
-                entryTermValidation = true;
-            }
-            if (mass.get(person).get("StudentComments") != null) {
-                String studentComments = getText(By.cssSelector(statusCommentsField(studentStatus)));
-                studentCommentsValidation = studentComments.contains(mass.get(person).get("StudentComments"));
-            }else{
-                studentCommentsValidation = true;
-            }
-            switch (mass.get(person).get("Active")){
-                case "1":
-                    studentActiveCheckboxLocator = checkBoxIsActive(By.cssSelector(statusActiveCheckbox(studentStatus)));
-                    break;
-                case "0":
-                    studentActiveCheckboxLocator = !checkBoxIsActive(By.cssSelector(statusActiveCheckbox(studentStatus)));
-                    break;
-                default: throw new IllegalArgumentException("Unhandled index. Update business logic");
-
-            }
-
-            switch (mass.get(person).get("Primary")){
-                case "1":
-                    studentPrymaryCheckboxLocator = checkBoxIsActive(By.cssSelector(statusPrimaryCheckbox(studentStatus)));
-                    break;
-                case "0":
-                    studentPrymaryCheckboxLocator = !checkBoxIsActive(By.cssSelector(statusPrimaryCheckbox(studentStatus)));
-                    break;
-                default: throw new IllegalArgumentException("Unhandled index. Update business logic");
-
-            }
-            if(studentStatusCategoryValidation
-                    && studentStatusValidation
-                    && studentStatusDateValidation
-                    && entryTermValidation
-                    && studentCommentsValidation
-                    && studentActiveCheckboxLocator
-                    && studentPrymaryCheckboxLocator){
+            if(MainPage.verifyGetText(By.cssSelector(categoryElement(studentStatus)),mass.get(person).get("StudentStatusCategory"))
+            && MainPage.verifyGetText(By.cssSelector(statusElement(studentStatus)),mass.get(person).get("StudentStatus"))
+            && MainPage.verifyGetAttribute(By.cssSelector(statusDateField(studentStatus)),mass.get(person).get("StudentStatusDate"))
+            && MainPage.verifyGetText(By.cssSelector(entryTermElement(studentStatus)),mass.get(person).get("EntryTerm"))
+            && MainPage.verifyGetText(By.cssSelector(statusCommentsField(studentStatus)),mass.get(person).get("StudentComments"))
+            && MainPage.verifyCheckboxActiveOrNot(By.cssSelector(statusActiveCheckbox(studentStatus)),mass.get(person).get("Active"))
+            && MainPage.verifyCheckboxActiveOrNot(By.cssSelector(statusPrimaryCheckbox(studentStatus)),mass.get(person).get("Primary"))
+            ){
                 ExtentReportsSetUp.testingPass(passMessage);
             }else{
                 FailureDelegatePage.handlePageException(errorMessage);

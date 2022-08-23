@@ -9,6 +9,23 @@ import static pages.GlobalNavPage.QUICK_ADD_PERSON_OPT_IN_METHOD_DROPDOWN_LIST;
 
 public class MainPage extends BasePage{
 
+    public static boolean verifyCheckboxActiveOrNot(By by,String value)throws Exception{
+        boolean validation = false;
+        if(value!="" && value != null){
+            switch(value){
+                case "1":
+                    validation = checkBoxIsActive(by);
+                    break;
+                case "0":
+                    validation = !checkBoxIsActive(by);
+                    break;
+                default: throw new IllegalArgumentException("Unhandled index. Update business logic");
+            }
+        }else{
+            validation=true;
+        }
+        return validation;
+    }
     public static void addWithPlusButton(By by)throws Exception{
             waitUntilElementToBeSelected(by,10);
             scrollToElement(by);
@@ -19,7 +36,7 @@ public class MainPage extends BasePage{
 
     public static boolean verifyGetText(By by,String value)throws Exception{
         boolean validation = false;
-        if(value!=""){
+        if(value!="" && value!= null){
             scrollToElement(by);
             scrollTo("-150");
             String returnText = getText(by);
@@ -32,7 +49,7 @@ public class MainPage extends BasePage{
 
     public static boolean verifyGetAttribute(By by, String value)throws Exception{
         boolean validation = false;
-        if(value!=""){
+        if(value!="" || value !=null){
         scrollToElement(by);
         scrollTo("-150");
         String returnText = getAtribute(by,"value");
