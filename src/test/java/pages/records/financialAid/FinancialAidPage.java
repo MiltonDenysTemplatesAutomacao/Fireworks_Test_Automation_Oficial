@@ -208,10 +208,10 @@ public class FinancialAidPage extends BasePage {
         String failMessage = String.format(LogPage.UPDATE_FINANCIAL_AID_FAIL,group);
         try {
             if(financialAidBean.getAidAppType()!=""){
-                MainPage.clickOption(By.cssSelector(aidAppTypeElement(group)),financialAidBean.getAidAppType(),By.cssSelector(PersonPage.SELECT_DROP),"a");
+                MainPage.clickOptionList(By.cssSelector(aidAppTypeElement(group)),financialAidBean.getAidAppType(),By.cssSelector(PersonPage.SELECT_DROP),"a");
             }
             if(financialAidBean.getStatus()!=""){
-                MainPage.clickOption(By.cssSelector(statusElement(group)),financialAidBean.getStatus(),By.cssSelector(PersonPage.SELECT_DROP),"a");
+                MainPage.clickOptionList(By.cssSelector(statusElement(group)),financialAidBean.getStatus(),By.cssSelector(PersonPage.SELECT_DROP),"a");
             }
             if(financialAidBean.getAidTerm()!=""){
                 MainPage.inputOptionField(By.cssSelector(aidTermElement(group)),financialAidBean.getAidTerm(),By.xpath(ApplicationsPage.INPUT_FIELD));

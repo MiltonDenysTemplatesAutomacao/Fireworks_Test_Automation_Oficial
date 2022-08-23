@@ -53,12 +53,12 @@ Feature: Multiples Transcripts
       |FirstName   |LastName   |EmailAddress            |EmailType|EmailOptInMethod |Role1   |StudentType|StudentStatusCategory |StudentStatus  |StudentStatusDate|EntryTerm|TranscriptType |TranscriptDate|OfficialTranscript |
       |Danny       |Devito     |dannydevito@actors.net  |Personal |Inquiry          |Student |Freshman   |Accepted              |Accepted       |01/15/2016       |Fall 2017|7th Semester   |11/11/2016    |Yes                |
       |Danny       |Devito     |dannydevito@actors.net  |Personal |Inquiry          |Student |Freshman   |Accepted              |Accepted       |01/15/2016       |Fall 2017|7th Semester   |11/11/2016    |Yes                |
-    #Then I validate if "Person has been created." message is correct
+    Then I validate if "Person has been created." message is correct
     And I navigate to people on records
     And I open a people record by "Danny"
     And I validate if "Danny"summary opened properly
     And I navigate to Education
-    And I update school in education for person "Barrows-Jones", "", "", "", "", "", "" group "0"
+    And I update school in education for person "Chaminade College Preparatory", "", "", "", "", "", "" group "0"
     When I update transcript person "0" group "0"
     And I add a transcript "0"
     When I update transcript person "0" group "1"

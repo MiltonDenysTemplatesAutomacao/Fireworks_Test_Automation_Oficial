@@ -2,10 +2,7 @@ package pages.records;
 
 import config.extent_reports.ExtentReportsSetUp;
 import org.openqa.selenium.By;
-import pages.BasePage;
-import pages.FailureDelegatePage;
-import pages.LogPage;
-import pages.PersonPage;
+import pages.*;
 
 public class StudentStatusPage extends BasePage {
 
@@ -71,49 +68,68 @@ public class StudentStatusPage extends BasePage {
 
         try {
             if (mass.get(person).get("StudentStatusCategory") != null) {
-                scrollToElement(By.cssSelector(statusPlusSignElement(index)));
-                waitUntilElementToBeSelected(By.cssSelector(categoryElement(index)),20);
-                BasePage.click(By.cssSelector(categoryElement(index)));
-                BasePage.selectElementsList(By.cssSelector(PersonPage.SELECT_DROP), "a");
-                wait(2000);
-                clickOnListOfElements(mass.get(person).get("StudentStatusCategory"));
+                MainPage.clickOptionList(By.cssSelector(categoryElement(index)),
+                                    mass.get(person).get("StudentStatusCategory"),
+                                    By.cssSelector(PersonPage.SELECT_DROP),
+                                    "a");
+
+//                scrollToElement(By.cssSelector(statusPlusSignElement(index)));
+//                waitUntilElementToBeSelected(By.cssSelector(categoryElement(index)),20);
+//                BasePage.click(By.cssSelector(categoryElement(index)));
+//                BasePage.selectElementsList(By.cssSelector(PersonPage.SELECT_DROP), "a");
+//                wait(2000);
+//                clickOnListOfElements(mass.get(person).get("StudentStatusCategory"));
             }
             if (mass.get(person).get("StudentStatus") != null) {
-                scrollToElement(By.cssSelector(statusPlusSignElement(index)));
-                waitUntilElementToBeSelected(By.cssSelector(statusElement(index)),20);
-                BasePage.click(By.cssSelector(statusElement(index)));
-                BasePage.selectElementsList(By.cssSelector(PersonPage.SELECT_DROP), "a");
-                wait(2000);
-                clickOnListOfElements(mass.get(person).get("StudentStatus"));
+                MainPage.clickOptionList(By.cssSelector(statusElement(index)),
+                        mass.get(person).get("StudentStatus"),
+                        By.cssSelector(PersonPage.SELECT_DROP),
+                        "a");
+//                scrollToElement(By.cssSelector(statusPlusSignElement(index)));
+//                waitUntilElementToBeSelected(By.cssSelector(statusElement(index)),20);
+//                BasePage.click(By.cssSelector(statusElement(index)));
+//                BasePage.selectElementsList(By.cssSelector(PersonPage.SELECT_DROP), "a");
+//                wait(2000);
+//                clickOnListOfElements(mass.get(person).get("StudentStatus"));
             }
             if (mass.get(person).get("StudentStatusDate") != null) {
-                scrollToElement(By.cssSelector(statusElement(index)));
-                waitUntilElementToBeSelected(By.cssSelector(statusDateField(index)),20);
-                BasePage.click(By.cssSelector(statusDateField(index)));
-                BasePage.write(By.cssSelector(statusDateField(index)),mass.get(person).get("StudentStatusDate"));
+                MainPage.fillDateField(By.cssSelector(statusDateField(index)),mass.get(person).get("StudentStatusDate"));
+//                scrollToElement(By.cssSelector(statusElement(index)));
+//                waitUntilElementToBeSelected(By.cssSelector(statusDateField(index)),20);
+//                BasePage.click(By.cssSelector(statusDateField(index)));
+//                BasePage.write(By.cssSelector(statusDateField(index)),mass.get(person).get("StudentStatusDate"));
             }
             if (mass.get(person).get("EntryTerm") != null) {
-                scrollToElement(By.cssSelector(statusElement(index)));
-                waitUntilElementToBeSelected(By.cssSelector(entryTermElement(index)),20);
-                BasePage.click(By.cssSelector(entryTermElement(index)));
-                BasePage.selectElementsList(By.cssSelector(PersonPage.SELECT_DROP), "a");
-                wait(2000);
-                clickOnListOfElements(mass.get(person).get("EntryTerm"));
+                MainPage.clickOptionList(By.cssSelector(entryTermElement(index)),
+                        mass.get(person).get("EntryTerm"),
+                        By.cssSelector(PersonPage.SELECT_DROP),
+                        "a");
+//                scrollToElement(By.cssSelector(statusElement(index)));
+//                waitUntilElementToBeSelected(By.cssSelector(entryTermElement(index)),20);
+//                BasePage.click(By.cssSelector(entryTermElement(index)));
+//                BasePage.selectElementsList(By.cssSelector(PersonPage.SELECT_DROP), "a");
+//                wait(2000);
+//                clickOnListOfElements(mass.get(person).get("EntryTerm"));
             }
             if (mass.get(person).get("Comments") != null) {
-                scrollToElement(By.cssSelector(entryTermElement(index)));
-                waitUntilElementToBeSelected(By.cssSelector(statusCommentsField(index)),20);
-                BasePage.write(By.cssSelector(statusCommentsField(index)),mass.get(person).get("Comments"));
+                MainPage.fillField(By.cssSelector(statusCommentsField(index)),mass.get(person).get("Comments"));
+
+//                scrollToElement(By.cssSelector(entryTermElement(index)));
+//                waitUntilElementToBeSelected(By.cssSelector(statusCommentsField(index)),20);
+//                BasePage.write(By.cssSelector(statusCommentsField(index)),mass.get(person).get("Comments"));
             }
             if (mass.get(person).get("Active") != null) {
-                scrollToElement(By.cssSelector(statusPlusSignElement(index)));
-                waitUntilElementPresence(By.cssSelector(statusActiveCheckbox(index)),20);
-                BasePage.click(By.cssSelector(statusActiveCheckbox(index)));
+                MainPage.clickOption(By.cssSelector(statusActiveCheckbox(index)));
+//                scrollToElement(By.cssSelector(statusPlusSignElement(index)));
+//                waitUntilElementPresence(By.cssSelector(statusActiveCheckbox(index)),20);
+//                BasePage.click(By.cssSelector(statusActiveCheckbox(index)));
             }
             if (mass.get(person).get("Primary") != null) {
-                scrollToElement(By.cssSelector(statusPlusSignElement(index)));
-                waitUntilElementPresence(By.cssSelector(statusPrimaryCheckbox(index)),20);
-                BasePage.click(By.cssSelector(statusPrimaryCheckbox(index)));
+                MainPage.clickOption(By.cssSelector(statusPrimaryCheckbox(index)));
+
+//                scrollToElement(By.cssSelector(statusPlusSignElement(index)));
+//                waitUntilElementPresence(By.cssSelector(statusPrimaryCheckbox(index)),20);
+//                BasePage.click(By.cssSelector(statusPrimaryCheckbox(index)));
             }
             ExtentReportsSetUp.testingPass(passMessage);
         } catch (Exception e) {

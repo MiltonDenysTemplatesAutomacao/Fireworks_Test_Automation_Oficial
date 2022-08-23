@@ -67,14 +67,22 @@ public class MainPage extends BasePage{
         waitElementBy(inputField,delay);
         KeyPage.pressKey(inputField,"Enter");
     }
-    public static void clickOption(By by,String value,By dropDownList,String tag)throws Exception{
+    public static void clickOption(By by)throws Exception{
+        scrollToElement(by);
+        scrollTo("-150");
+        waitUntilElementPresence(by,10);
+        BasePage.click(by);
+    }
+    public static void clickOptionList(By by, String value, By dropDownList, String tag)throws Exception{
         int delay = 10;
+        wait(1000);
         scrollToElement(by);
         scrollTo("-150");
         waitElementBy(by,delay);
         click(by);
         waitElementBy(dropDownList,delay);
         BasePage.selectElementsList(dropDownList, tag);
+        wait(2000);
         clickOnListOfElements(value);
     }
 
@@ -84,7 +92,9 @@ public class MainPage extends BasePage{
         scrollTo("-150");
         waitElementBy(by,delay);
         KeyPage.erase(by);
+        waitElementBy(by,delay);
         write(by,value);
+        waitElementBy(by,delay);
         KeyPage.pressKey(by,"Enter");
     }
 
