@@ -9,6 +9,14 @@ import static pages.GlobalNavPage.QUICK_ADD_PERSON_OPT_IN_METHOD_DROPDOWN_LIST;
 
 public class MainPage extends BasePage{
 
+    public static void addWithPlusButton(By by)throws Exception{
+            waitUntilElementToBeSelected(by,10);
+            scrollToElement(by);
+            scrollTo("-150");
+            wait(1000);
+            click(by);
+    }
+
     public static boolean verifyGetText(By by,String value)throws Exception{
         boolean validation = false;
         if(value!=""){
@@ -35,11 +43,15 @@ public class MainPage extends BasePage{
         return validation;
     }
     public static void picker(By pickerButton,By searchField, By recordPickerModalTableRow1,By orgPickerModalTableRow1Checkbox,By modalChooseButton,String value)throws Exception{
-        int delay = 10;
-        waitElementBy(pickerButton,delay);
-        click(pickerButton);
+        pickerButtonClick(pickerButton);
         searchPicker(searchField,recordPickerModalTableRow1,orgPickerModalTableRow1Checkbox,value);
         modalChooseButton(modalChooseButton);
+    }
+    public static void pickerButtonClick(By pickerButton)throws Exception{
+        scrollToElement(pickerButton);
+        scrollTo("-150");
+        waitElementBy(pickerButton,10);
+        click(pickerButton);
     }
     public static void searchPicker(By searchField,By recordPickerModalTableRow1,By orgPickerModalTableRow1Checkbox,String value)throws Exception{
         int delay = 10;

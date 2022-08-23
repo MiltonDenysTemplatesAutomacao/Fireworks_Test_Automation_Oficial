@@ -16,4 +16,8 @@ public class EmploymentSteps {
     public static void pickEmployer(String employerName,String group) {
         EmploymentPage.pickEmployer(employerName,group);
     }
+    @Then("I add Employment group {string}")
+    public static void addEmployment(String group) {
+        EmploymentPage.addEmployment(group);
+    }
 }

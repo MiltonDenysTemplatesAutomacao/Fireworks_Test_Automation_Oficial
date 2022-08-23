@@ -602,5 +602,7 @@ public class LogPage {
     public static final String PICK_EMPLOYER_FAIL = "Fail while trying to pick an organization Employer '%s' group '%s'";
     public static final String VERIFY_EMPLOYMENT_PASS = "I verify employment group '%s'";
     public static final String VERIFY_EMPLOYMENT_FAIL = "Fail while trying to verify employment group '%s'";
+    public static final String ADD_EMPLOYMENT_PASS = "I add Employment group '%s'";
+    public static final String ADD_EMPLOYMENT_FAIL = "Fail while trying to add Employment group '%s'";
 
 }

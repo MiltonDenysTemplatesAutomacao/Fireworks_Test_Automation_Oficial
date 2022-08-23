@@ -38,7 +38,20 @@ public class EmploymentPage extends BasePage {
     private static String employmentPosition(String index){
         return String.format("#person_employment_%s_employment_position",index);
     }
+    private static String employmentPlusSignButton(String index){
+        return String.format("#person_employment_%s_add",index);
+    }
 
+    public static void addEmployment(String group){
+        String passMessage = String.format(LogPage.ADD_EMPLOYMENT_PASS,group);
+        String failMessage = String.format(LogPage.ADD_EMPLOYMENT_FAIL,group);
+        try {
+            MainPage.addWithPlusButton(By.cssSelector(employmentPlusSignButton(group)));
+            ExtentReportsSetUp.testingPass(passMessage);
+        } catch (Exception e) {
+            FailureDelegatePage.handlePageException(failMessage);
+        }
+    }
     public static void verifyEmployment(String employerName, String position,String startDate,String endDate,String duties,String comments,String group){
         String passMessage = String.format(LogPage.VERIFY_EMPLOYMENT_PASS,group);
         String failMessage = String.format(LogPage.VERIFY_EMPLOYMENT_FAIL,group);
