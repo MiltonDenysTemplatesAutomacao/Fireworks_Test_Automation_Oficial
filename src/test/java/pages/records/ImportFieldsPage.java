@@ -158,8 +158,6 @@ public class ImportFieldsPage extends BasePage {
         String failMessage = String.format(LogPage.ADD_FIELD_SUB_FIELD_RELATIONSHIP_FIELD_GROUP_FAIL,option,name,group,fieldGroup);
 
         try {
-            //String returnFieldGroup = returnAddFieldSubFieldRelationshipFieldGroup(fieldGroup);
-            System.out.println(optionalFieldsPlusSign(group));
             scrollToElement(By.xpath(optionalFieldsPlusSign(group)));
             scrollTo("-150");
             waitUntilElementToBeSelected(By.xpath(optionalFieldsPlusSign(group)),10);

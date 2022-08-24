@@ -105,6 +105,18 @@ public class MainPage extends BasePage{
         waitUntilElementPresence(by,10);
         BasePage.click(by);
     }
+    public static void selectOptionList(By by, String value,By dropDownList)throws Exception{
+        int delay = 10;
+        wait(1000);
+        scrollToElement(by);
+        scrollTo("-150");
+        waitElementBy(by,delay);
+        click(by);
+        waitElementBy(dropDownList,delay);
+        write(by,value);
+        KeyPage.pressKey(by,"Enter");
+
+    }
     public static void clickOptionList(By by, String value, By dropDownList, String tag)throws Exception{
         int delay = 10;
         wait(1000);

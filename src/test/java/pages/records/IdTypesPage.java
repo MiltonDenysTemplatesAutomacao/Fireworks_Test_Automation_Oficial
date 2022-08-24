@@ -32,9 +32,7 @@ public class IdTypesPage extends BasePage {
         return String.format("//*[contains(@id, 'entity_external_id_%s_') and contains(@id, '_id_comments')]",index);
     }
 
-
     public static void validateVisaNumber(){
-
         try {
             scrollToElement(By.cssSelector(externalIdPlusSignElement("0")));
             if (mass.get(0).get("IDNumber").contains(getText(By.id(VISA_NUMBER)))) {
@@ -63,37 +61,28 @@ public class IdTypesPage extends BasePage {
         String passMessage = String.format(LogPage.UPDATE_EXTERNAL_ID_PASS, index,person);
         try {
             if (mass.get(person).get("IDType") != null) {
-                scrollToElement(By.cssSelector(externalIdPlusSignElement(index)));
-                waitUntilElementToBeSelected(By.xpath(typeDropdown(index)),20);
-                BasePage.click(By.xpath(typeDropdown(index)));
-                BasePage.selectElementsList(By.cssSelector(PersonPage.SELECT_DROP), "a");
-                clickOnListOfElements(mass.get(person).get("IDType"));
+                MainPage.clickOptionList(By.xpath(typeDropdown(index)),
+                        mass.get(person).get("IDType"),
+                        By.cssSelector(PersonPage.SELECT_DROP),
+                        "a");
             }
             if (mass.get(person).get("IDNumber") != null) {
-                scrollToElement(By.cssSelector(externalIdPlusSignElement(index)));
-                waitElementBy(By.xpath(idNumber(index)),20);
-                BasePage.write(By.xpath(idNumber(index)),mass.get(person).get("IDNumber"));
+                MainPage.fillField(By.xpath(idNumber(index)), mass.get(person).get("IDNumber"));
             }
             if (mass.get(person).get("IdRecordedDate") != null) {
-                scrollToElement(By.cssSelector(externalIdPlusSignElement(index)));
-                waitElementBy(By.xpath(idRecordedDate(index)),20);
-                BasePage.write(By.xpath(idRecordedDate(index)),mass.get(person).get("IdRecordedDate"));
+                MainPage.fillDateField(By.xpath(idNumber(index)), mass.get(person).get("IdRecordedDate"));
             }
             if (mass.get(person).get("WhoAddedID") != null) {
-                scrollToElement(By.cssSelector(externalIdPlusSignElement(index)));
-                BasePage.click(By.xpath(whoAddedID(index)));
-                BasePage.selectElementsList(By.cssSelector(PersonPage.SELECT_DROP), "a");
-                clickOnListOfElements(mass.get(0).get("WhoAddedID"));
+                MainPage.clickOptionList(By.xpath(whoAddedID(index)),
+                        mass.get(person).get("WhoAddedID"),
+                        By.cssSelector(PersonPage.SELECT_DROP),
+                        "a");
             }
             if (mass.get(person).get("Comments") != null) {
-                scrollToElement(By.cssSelector(externalIdPlusSignElement(index)));
-                waitElementBy(By.xpath(comments(index)),20);
-                BasePage.write(By.xpath(comments(index)),mass.get(person).get("Comments"));
+                MainPage.fillField(By.xpath(comments(index)), mass.get(person).get("Comments"));
             }
             if (mass.get(person).get("Primary") != null) {
-                scrollToElement(By.cssSelector(externalIdPlusSignElement(index)));
-                waitUntilElementPresence(By.cssSelector(idTypePrimaryCheckbox(index)),20);
-                BasePage.click(By.cssSelector(idTypePrimaryCheckbox(index)));
+                MainPage.click(By.cssSelector(idTypePrimaryCheckbox(index)));
             }
             ExtentReportsSetUp.testingPass(passMessage);
         } catch (Exception e) {

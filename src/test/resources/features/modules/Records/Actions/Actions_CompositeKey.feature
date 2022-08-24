@@ -2,7 +2,6 @@
 #Regression testcase TL-620 (1 of 2): Actions: Duplicates cannot be added
 #Regression testcase TL-620 (2 of 2): Actions: Duplicates cannot be added
 
-
 @ActionsDuplicatesCannotBeAdded
 Feature: Actions: Duplicates cannot be added
 

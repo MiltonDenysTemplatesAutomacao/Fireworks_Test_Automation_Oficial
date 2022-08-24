@@ -306,47 +306,34 @@ public class ActionsPage extends BasePage {
         } catch (Exception e) {
             FailureDelegatePage.handlePageException(LogPage.VERIFY_ACTION_DATA_TABLE_VALUES_FAIL);
         }
-
     }
-
 
     public static void updateAction(String person){
         int personNumber = Integer.parseInt(person);
         try {
             if (mass.get(personNumber).get("Category") != null) {
-                scrollToElement(By.xpath(DETAILS_LABEL));
-                waitUntilElementToBeSelected(By.id(ACTION_CATEGORY_DROPDOWN), 20);
-                BasePage.click(By.id(ACTION_CATEGORY_DROPDOWN));
-                BasePage.selectElementsList(By.cssSelector(PersonPage.SELECT_DROP), "a");
-                wait(1000);
-                clickOnListOfElements(mass.get(personNumber).get("Category"));
+                MainPage.clickOptionList(By.id(ACTION_CATEGORY_DROPDOWN),
+                        mass.get(personNumber).get("Category"),
+                        By.cssSelector(PersonPage.SELECT_DROP),
+                        "a");
             }
             if (mass.get(personNumber).get("Action") != null) {
-                scrollToElement(By.xpath(DETAILS_LABEL));
-                waitUntilElementToBeSelected(By.id(ACTION_DROPDOWN), 20);
-                BasePage.click(By.id(ACTION_DROPDOWN));
-                BasePage.selectElementsList(By.cssSelector(PersonPage.SELECT_DROP), "a");
-                wait(1000);
-                clickOnListOfElements(mass.get(personNumber).get("Action"));
+                MainPage.clickOptionList(By.id(ACTION_DROPDOWN),
+                        mass.get(personNumber).get("Action"),
+                        By.cssSelector(PersonPage.SELECT_DROP),
+                        "a");
             }
             if (mass.get(personNumber).get("Staff") != null) {
-                scrollToElement(By.xpath(DETAILS_LABEL));
-                waitUntilElementToBeSelected(By.id(ACTION_STAFF_DROPDOWN), 20);
-                BasePage.click(By.id(ACTION_STAFF_DROPDOWN));
-                BasePage.selectElementsList(By.cssSelector(PersonPage.SELECT_DROP), "a");
-                wait(1000);
-                clickOnListOfElements(mass.get(personNumber).get("Staff"));
+                MainPage.clickOptionList(By.id(ACTION_STAFF_DROPDOWN),
+                        mass.get(personNumber).get("Staff"),
+                        By.cssSelector(PersonPage.SELECT_DROP),
+                        "a");
             }
             if (mass.get(personNumber).get("ActionDateField") != null) {
-                scrollToElement(By.xpath(DETAILS_LABEL));
-                waitUntilElementToBeSelected(By.cssSelector(ACTION_DATE_FIELD), 20);
-                KeyPage.erase(By.cssSelector(ACTION_DATE_FIELD));
-                BasePage.write(By.cssSelector(ACTION_DATE_FIELD),mass.get(personNumber).get("ActionDateField"));
+                MainPage.fillDateField(By.cssSelector(ACTION_DATE_FIELD),mass.get(personNumber).get("ActionDateField"));
             }
             if (mass.get(personNumber).get("Comments") != null) {
-                scrollToElement(By.xpath(DETAILS_LABEL));
-                waitUntilElementToBeSelected(By.id(ACTION_COMMENTS_FIELD), 20);
-                BasePage.write(By.id(ACTION_COMMENTS_FIELD),mass.get(personNumber).get("Comments"));
+                MainPage.fillField(By.id(ACTION_COMMENTS_FIELD),mass.get(personNumber).get("Comments"));
             }
             ExtentReportsSetUp.testingPass(LogPage.UPDATE_ACTION_PASS);
         } catch (Exception e) {
