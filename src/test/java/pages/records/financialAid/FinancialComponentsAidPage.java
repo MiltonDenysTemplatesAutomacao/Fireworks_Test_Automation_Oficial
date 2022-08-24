@@ -32,9 +32,9 @@ public class FinancialComponentsAidPage extends BasePage {
         try {
             if(MainPage.verifyGetText(By.cssSelector(aidComponentTypeElement(fin,aid)),financialAidBean.getAidComponentType())
                     && MainPage.verifyGetText(By.cssSelector(aidComponentReceivedElement(fin,aid)),financialAidBean.getAidComponentRcvd())
-                    && MainPage.verifyGetText(By.cssSelector(aidComponentReceivedDateField(fin,aid)),financialAidBean.getAidComponentRcvdDate())
+                    && MainPage.verifyGetAttribute(By.cssSelector(aidComponentReceivedDateField(fin,aid)),financialAidBean.getAidComponentRcvdDate())
                     && MainPage.verifyGetText(By.cssSelector(aidComponentRequiredElement(fin,aid)),financialAidBean.getAidComponentReqd())
-                    && MainPage.verifyGetText(By.cssSelector(aidComponentCommentsField(fin,aid)),financialAidBean.getAidComponentComments())
+                    && MainPage.verifyGetAttribute(By.cssSelector(aidComponentCommentsField(fin,aid)),financialAidBean.getAidComponentComments())
             ){
                 ExtentReportsSetUp.testingPass(passMessage);
             }else{

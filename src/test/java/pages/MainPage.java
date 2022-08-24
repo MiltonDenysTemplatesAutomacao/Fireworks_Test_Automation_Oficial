@@ -67,6 +67,7 @@ public class MainPage extends BasePage{
         modalChooseButton(modalChooseButton);
     }
     public static void pickerButtonClick(By pickerButton)throws Exception{
+        wait(1000);
         scrollToElement(pickerButton);
         scrollTo("-150");
         waitElementBy(pickerButton,10);
