@@ -4,7 +4,7 @@
 @RoleTypeDrivesPanelAndFieldVisibility
 Feature: Role Type drives panel and field visibility
 
-  @VerifyBasicFieldsNonStudentRecord @Person @Done
+  @VerifyBasicFieldsNonStudentRecord @Person @Fix
   Scenario: Record - Person - to verify the Basic fields for a non-student record
     Given I login as "firestarterUsername", "firestarterPassword", "firestarterFullName"
     And I create a person

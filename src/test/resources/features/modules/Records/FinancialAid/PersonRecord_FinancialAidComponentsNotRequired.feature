@@ -85,7 +85,7 @@ Feature: Financial Aid: Components not required
     And I update Run Tab Actions "", "", "Fire Starter", "", ""
     And I click on "Review Import"
     And I click on Run Import button
-    Then I validate if "In Progress" status is displayed for package "FinancialAidPackage"
+    Then I validate if "Completed" status is displayed for package "FinancialAidPackage"
 
   @FinancialAidComponentsNotRequiredScenario3 @Fix @FinancialAid
   Scenario: Record - Financial Aid - The financial aid components were pre-populated with expected defaults

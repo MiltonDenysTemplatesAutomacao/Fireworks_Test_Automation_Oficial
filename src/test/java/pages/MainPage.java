@@ -37,6 +37,7 @@ public class MainPage extends BasePage{
     public static boolean verifyGetText(By by,String value)throws Exception{
         boolean validation = false;
         if(value!="" && value!= null){
+            wait(1000);
             scrollToElement(by);
             scrollTo("-150");
             String returnText = getText(by);
@@ -50,6 +51,7 @@ public class MainPage extends BasePage{
     public static boolean verifyGetAttribute(By by, String value)throws Exception{
         boolean validation = false;
         if(value!="" || value !=null){
+        wait(1000);
         scrollToElement(by);
         scrollTo("-150");
         String returnText = getAtribute(by,"value");

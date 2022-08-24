@@ -45,89 +45,25 @@ public class FinancialAidPage extends BasePage {
     }
 
     public static void verifyFinancialAid(FinancialAidBean financialAidBean, String group){
-        boolean aidAppTypeValidation = false;
-        boolean statusValidation = false;
-        boolean aidTermValidation = false;
-        boolean awardCountValidation = false;
-        boolean totalAwardAmountValidation = false;
-        boolean dateReceivedValidation = false;
-        boolean desirabilityScoreValidation = false;
-        boolean needScoreValidation = false;
 
         String passMessage = String.format(LogPage.VERIFY_FINANCIAL_AID_PASS,group);
         String failMessage = String.format(LogPage.VERIFY_FINANCIAL_AID_FAIL,group);
 
         try {
-            if(financialAidBean.getAidAppType()!=""){
-                scrollToElement(By.cssSelector(financialAidPlusButton(group)));
-                String aidAppTypeText = getText(By.cssSelector(aidAppTypeElement(group)));
-                aidAppTypeValidation = aidAppTypeText.contains(financialAidBean.getAidAppType());
-            }else{
-                aidAppTypeValidation=true;
-            }
-            if(financialAidBean.getStatus()!=""){
-                scrollToElement(By.cssSelector(financialAidPlusButton(group)));
-                String statusText = getText(By.cssSelector(statusElement(group)));
-                statusValidation = statusText.contains(financialAidBean.getStatus());
-            }else{
-                statusValidation=true;
-            }
-            if(financialAidBean.getAidTerm()!=""){
-                scrollToElement(By.cssSelector(financialAidPlusButton(group)));
-                String aidTermElementText = getText(By.cssSelector(aidTermElement(group)));
-                aidTermValidation = aidTermElementText.contains(financialAidBean.getAidTerm());
-            }else{
-                aidTermValidation=true;
-            }
-            if(financialAidBean.getAwardCount()!=""){
-                scrollToElement(By.cssSelector(financialAidPlusButton(group)));
-                String awardCountText = getAtribute(By.cssSelector(awardCountField(group)),"value");
-                awardCountValidation = awardCountText.contains(financialAidBean.getAwardCount());
-            }else{
-                awardCountValidation=true;
-            }
-            if(financialAidBean.getTotalAwardAmount()!=""){
-                scrollToElement(By.cssSelector(financialAidPlusButton(group)));
-                String totalAwardAmountText = getAtribute(By.cssSelector(totalAwardAmountField(group)),"value");
-                totalAwardAmountValidation = totalAwardAmountText.contains(financialAidBean.getTotalAwardAmount());
-            }else{
-                totalAwardAmountValidation=true;
-            }
-            if(financialAidBean.getDateReceived()!=""){
-                scrollToElement(By.cssSelector(financialAidPlusButton(group)));
-                String dateReceivedText = getAtribute(By.cssSelector(dateReceivedField(group)),"value");
-                dateReceivedValidation = dateReceivedText.contains(financialAidBean.getDateReceived());
-            }else{
-                dateReceivedValidation=true;
-            }
-            if(financialAidBean.getDesirabilityScore()!=""){
-                scrollToElement(By.cssSelector(financialAidPlusButton(group)));
-                String desirabilityScoreText = getAtribute(By.cssSelector(desirabilityScoreField(group)),"value");
-                desirabilityScoreValidation = desirabilityScoreText.contains(financialAidBean.getDesirabilityScore());
-            }else{
-                desirabilityScoreValidation=true;
-            }
-            if(financialAidBean.getNeedScore()!=""){
-                scrollToElement(By.cssSelector(financialAidPlusButton(group)));
-                String  needScoreText = getAtribute(By.cssSelector(needScoreField(group)),"value");
-                needScoreValidation = needScoreText.contains(financialAidBean.getNeedScore());
-            }else{
-                needScoreValidation=true;
-            }
-
-            if(aidAppTypeValidation
-                    && statusValidation
-                    && aidTermValidation
-                    && awardCountValidation
-                    && totalAwardAmountValidation
-                    && dateReceivedValidation
-                    && desirabilityScoreValidation
-                    && needScoreValidation){
+            if(MainPage.verifyGetText(By.cssSelector(aidAppTypeElement(group)),financialAidBean.getAidAppType())
+                    && MainPage.verifyGetText(By.cssSelector(statusElement(group)),financialAidBean.getStatus())
+                    && MainPage.verifyGetText(By.cssSelector(aidTermElement(group)),financialAidBean.getAidTerm())
+                    && MainPage.verifyGetAttribute(By.cssSelector(awardCountField(group)),financialAidBean.getAwardCount())
+                    && MainPage.verifyGetAttribute(By.cssSelector(totalAwardAmountField(group)),financialAidBean.getTotalAwardAmount())
+                    && MainPage.verifyGetAttribute(By.cssSelector(dateReceivedField(group)),financialAidBean.getDateReceived())
+                    && MainPage.verifyGetAttribute(By.cssSelector(desirabilityScoreField(group)),financialAidBean.getDesirabilityScore())
+                    && MainPage.verifyGetAttribute(By.cssSelector(needScoreField(group)),financialAidBean.getNeedScore())
+            ){
                 ExtentReportsSetUp.testingPass(passMessage);
             }else{
                 FailureDelegatePage.handlePageException(failMessage);
             }
-        } catch (Exception e) {
+        }catch (Exception e){
             FailureDelegatePage.handlePageException(failMessage);
         }
     }
