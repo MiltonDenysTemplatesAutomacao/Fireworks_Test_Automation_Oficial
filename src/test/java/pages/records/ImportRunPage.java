@@ -30,56 +30,21 @@ public class ImportRunPage extends BasePage {
     }
 
     public static void updateRunTabActions(String category,String action,String staff,String actionDate,String comments){
-        int updateRunTabActionsDelay = 10;
         try {
             if(category!=""){
                 MainPage.selectOptionList(By.cssSelector(UPDATE_ACTION_CATEGORY),category,By.cssSelector(UPDATE_ACTION_CATEGORY_FIELD));
-//                scrollToElement(By.cssSelector(UPDATE_ACTION_CATEGORY));
-//                scrollTo("-150");
-//                waitElementBy(By.cssSelector(UPDATE_ACTION_CATEGORY),updateRunTabActionsDelay);
-//                click(By.cssSelector(UPDATE_ACTION_CATEGORY));
-//                waitElementBy(By.cssSelector(UPDATE_ACTION_CATEGORY_FIELD),updateRunTabActionsDelay);
-//                write(By.cssSelector(UPDATE_ACTION_CATEGORY_FIELD),category);
-//                KeyPage.pressKey(By.cssSelector(UPDATE_ACTION_CATEGORY_FIELD),"Enter");
             }
             if(action!=""){
                 MainPage.selectOptionList(By.cssSelector(UPDATE_ACTION),action,By.cssSelector(UPDATE_ACTION_FIELD));
-
-//                scrollToElement(By.cssSelector(UPDATE_ACTION));
-//                scrollTo("-150");
-//                waitElementBy(By.cssSelector(UPDATE_ACTION),updateRunTabActionsDelay);
-//                click(By.cssSelector(UPDATE_ACTION));
-//                waitElementBy(By.cssSelector(UPDATE_ACTION_FIELD),updateRunTabActionsDelay);
-//                write(By.cssSelector(UPDATE_ACTION_FIELD),action);
-//                KeyPage.pressKey(By.cssSelector(UPDATE_ACTION_FIELD),"Enter");
             }
             if(staff!=""){
                 MainPage.selectOptionList(By.cssSelector(UPDATE_ACTION),action,By.cssSelector(IMPORT_ACTION_STAFF_FIELD));
-
-//                scrollToElement(By.cssSelector(IMPORT_ACTION_STAFF_DROPDOWN),staff,By.cssSelector(IMPORT_ACTION_STAFF_FIELD));
-//                scrollTo("-150");
-//                waitElementBy(By.cssSelector(IMPORT_ACTION_STAFF_DROPDOWN),updateRunTabActionsDelay);
-//                click(By.cssSelector(IMPORT_ACTION_STAFF_DROPDOWN));
-//                waitElementBy(By.cssSelector(IMPORT_ACTION_STAFF_FIELD),updateRunTabActionsDelay);
-//                write(By.cssSelector(IMPORT_ACTION_STAFF_FIELD),staff);
-//                KeyPage.pressKey(By.cssSelector(IMPORT_ACTION_STAFF_FIELD),"Enter");
             }
             if(actionDate!=""){
                 MainPage.fillDateField(By.cssSelector(IMPORT_ACTION_DATE_FIELD),actionDate);
-//                scrollToElement(By.cssSelector(IMPORT_ACTION_DATE_FIELD));
-//                scrollTo("-150");
-//                waitElementBy(By.cssSelector(IMPORT_ACTION_DATE_FIELD),updateRunTabActionsDelay);
-//                KeyPage.erase(By.cssSelector(IMPORT_ACTION_DATE_FIELD));
-//                write(By.cssSelector(IMPORT_ACTION_DATE_FIELD),actionDate);
-//                KeyPage.pressKey(By.cssSelector(IMPORT_ACTION_DATE_FIELD),"Enter");
             }
             if(comments!=""){
                 MainPage.fillField(By.cssSelector(UPDATE_ACTION_COMMENTS),comments);
-//
-//                scrollToElement(By.cssSelector(UPDATE_ACTION_COMMENTS));
-//                scrollTo("-150");
-//                waitElementBy(By.cssSelector(UPDATE_ACTION_COMMENTS),updateRunTabActionsDelay);
-//                write(By.cssSelector(UPDATE_ACTION_COMMENTS),comments);
             }
             ExtentReportsSetUp.testingPass(LogPage.UPDATE_RUN_TAB_ACTIONS_PASS);
         } catch (Exception e) {

@@ -2,10 +2,7 @@ package pages.records;
 
 import config.extent_reports.ExtentReportsSetUp;
 import org.openqa.selenium.By;
-import pages.BasePage;
-import pages.FailureDelegatePage;
-import pages.LogPage;
-import pages.PersonPage;
+import pages.*;
 
 public class InterestsActivitiesPage extends BasePage {
 
@@ -61,67 +58,17 @@ public class InterestsActivitiesPage extends BasePage {
      * Method to verify interests
      */
     public static void verifyInterests(String index, int person){
-        boolean interestCategoryValidation = false;
-        boolean interestNameValidation = false;
-        boolean interestWhoAddedValidation = false;
-        boolean interestDateAddedValidation = false;
-        boolean interestSourceValidation = false;
-        boolean interestCommentsValidation = false;
 
         String errorMessage = String.format(LogPage.VERIFY_INTERESTS_FAIL, index,person);
         String passMessage = String.format(LogPage.VERIFY_INTERESTS_PASS, index,person);
 
         try {
-            if (mass.get(person).get("InterestCategory") != null) {
-                scrollToElement(By.id(activitiesPlusSign(index)));
-                String category = getText(By.id(interestCategory(index)));
-                interestCategoryValidation = category.contains(mass.get(person).get("InterestCategory"));
-            }else{
-                interestCategoryValidation = true;
-            }
-            if (mass.get(person).get("InterestName") != null) {
-                scrollToElement(By.id(activitiesPlusSign(index)));
-                String interestName = getText(By.id(interestName(index)));
-                interestNameValidation = interestName.contains(mass.get(person).get("InterestName"));
-            }else{
-                interestNameValidation = true;
-            }
-            if (mass.get(person).get("InterestWhoAdded") != null) {
-                scrollToElement(By.id(activitiesPlusSign(index)));
-                String interestWhoAdded = getText(By.id(interestWhoAdded(index)));
-                interestWhoAddedValidation = interestWhoAdded.contains(mass.get(person).get("InterestWhoAdded"));
-            }else{
-                interestWhoAddedValidation = true;
-            }
-            if (mass.get(person).get("InterestDateAdded") != null) {
-                scrollToElement(By.id(activitiesPlusSign(index)));
-                String interestDateAdded = getAtribute(By.id(interestDateAdded(index)),"value");
-                interestDateAddedValidation = interestDateAdded.contains(mass.get(person).get("InterestDateAdded"));
-            }else{
-                interestDateAddedValidation = true;
-            }
-            if (mass.get(person).get("InterestSource") != null) {
-                scrollToElement(By.id(activitiesPlusSign(index)));
-                String interestSource = getText(By.id(interestSource(index)));
-                interestSourceValidation = interestSource.contains(mass.get(person).get("InterestSource"));
-            }else{
-                interestSourceValidation = true;
-            }
-            if (mass.get(person).get("InterestComments") != null) {
-                scrollToElement(By.id(activitiesPlusSign(index)));
-                String interestComments = getText(By.id(interestComments(index)));
-                interestCommentsValidation = interestComments.contains(mass.get(person).get("InterestComments"));
-            }else{
-                interestCommentsValidation = true;
-            }
-
-            if(interestCategoryValidation
-                    && interestNameValidation
-                    && interestWhoAddedValidation
-                    && interestDateAddedValidation
-                    && interestSourceValidation
-                    && interestCommentsValidation
-                  ){
+            if(MainPage.verifyGetText(By.id(interestCategory(index)),mass.get(person).get("InterestCategory"))
+                && MainPage.verifyGetText(By.id(interestName(index)),mass.get(person).get("InterestName"))
+                && MainPage.verifyGetText(By.id(interestWhoAdded(index)),mass.get(person).get("InterestWhoAdded"))
+                && MainPage.verifyGetAttribute(By.id(interestDateAdded(index)),mass.get(person).get("InterestDateAdded"))
+                && MainPage.verifyGetText(By.id(interestSource(index)),mass.get(person).get("InterestSource"))
+                && MainPage.verifyGetText(By.id(interestComments(index)),mass.get(person).get("InterestComments"))){
                 ExtentReportsSetUp.testingPass(passMessage);
             }else{
                 FailureDelegatePage.handlePageException(errorMessage);
@@ -134,75 +81,17 @@ public class InterestsActivitiesPage extends BasePage {
      * Method to verify activities
      */
     public static void verifyActivities(String index, int person){
-        boolean activityCategoryValidation = false;
-        boolean activityNameValidation = false;
-        boolean activityWhoAddedValidation = false;
-        boolean activityDateAddedValidation = false;
-        boolean activitySourceValidation = false;
-        boolean activityParticipateValidation = false;
-        boolean activityCommentsValidation = false;
-
         String errorMessage = String.format(LogPage.VERIFY_ACTIVITIES_FAIL, index,person);
         String passMessage = String.format(LogPage.VERIFY_ACTIVITIES_PASS, index,person);
 
         try {
-            if (mass.get(person).get("ActivityCategory") != null) {
-                scrollToElement(By.id(activitiesPlusSign(index)));
-                String category = getText(By.id(interestCategory(index)));
-                activityCategoryValidation = category.contains(mass.get(person).get("ActivityCategory"));
-            }else{
-                activityCategoryValidation = true;
-            }
-            if (mass.get(person).get("ActivityName") != null) {
-                scrollToElement(By.id(activitiesPlusSign(index)));
-                String activityName = getText(By.id(activityName(index)));
-                activityNameValidation = activityName.contains(mass.get(person).get("ActivityName"));
-            }else{
-                activityNameValidation = true;
-            }
-            if (mass.get(person).get("ActivityWhoAdded") != null) {
-                scrollToElement(By.id(activitiesPlusSign(index)));
-                String activityWhoAdded = getText(By.id(activityWhoAdded(index)));
-                activityWhoAddedValidation = activityWhoAdded.contains(mass.get(person).get("ActivityWhoAdded"));
-            }else{
-                activityWhoAddedValidation = true;
-            }
-            if (mass.get(person).get("ActivityDateAdded") != null) {
-                scrollToElement(By.id(activitiesPlusSign(index)));
-                String activityDateAdded = getAtribute(By.id(activityDateAdded(index)),"value");
-                activityDateAddedValidation = activityDateAdded.contains(mass.get(person).get("ActivityDateAdded"));
-            }else{
-                activityDateAddedValidation = true;
-            }
-            if (mass.get(person).get("ActivitySource") != null) {
-                scrollToElement(By.id(activitiesPlusSign(index)));
-                String activitySource = getText(By.id(activitiesSource(index)));
-                activitySourceValidation = activitySource.contains(mass.get(person).get("ActivitySource"));
-            }else{
-                activitySourceValidation = true;
-            }
-            if (mass.get(person).get("ActivityComments") != null) {
-                scrollToElement(By.id(activitiesPlusSign(index)));
-                String activityComments = getText(By.id(activityComments(index)));
-                activityCommentsValidation = activityComments.contains(mass.get(person).get("ActivityComments"));
-            }else{
-                activityCommentsValidation = true;
-            }
-            if (mass.get(person).get("ActivityParticipate") != null) {
-                scrollToElement(By.id(activitiesPlusSign(index)));
-                String activityParticipate = getText(By.id(activityParticipate(index)));
-                activityParticipateValidation = activityParticipate.contains(mass.get(person).get("ActivityParticipate"));
-            }else{
-                activityParticipateValidation = true;
-            }
-
-            if(activityCategoryValidation
-                    && activityNameValidation
-                    && activityWhoAddedValidation
-                    && activityDateAddedValidation
-                    && activitySourceValidation
-                    && activityCommentsValidation
-                    && activityParticipateValidation
+            if(MainPage.verifyGetText(By.id(activityCategory(index)),mass.get(person).get("ActivityCategory"))
+                    && MainPage.verifyGetText(By.id(activityName(index)),mass.get(person).get("ActivityName"))
+                    && MainPage.verifyGetText(By.id(activityWhoAdded(index)),mass.get(person).get("ActivityWhoAdded"))
+                    && MainPage.verifyGetAttribute(By.id(activityDateAdded(index)),mass.get(person).get("ActivityDateAdded"))
+                    && MainPage.verifyGetText(By.id(activitiesSource(index)),mass.get(person).get("ActivitySource"))
+                    && MainPage.verifyGetText(By.id(activityComments(index)),mass.get(person).get("ActivityComments"))
+                    && MainPage.verifyGetText(By.id(activityParticipate(index)),mass.get(person).get("ActivityParticipate"))
             ){
                 ExtentReportsSetUp.testingPass(passMessage);
             }else{
@@ -223,51 +112,40 @@ public class InterestsActivitiesPage extends BasePage {
 
         try {
             if (mass.get(person).get("ActivityCategory") != null) {
-                scrollToElement(By.id(activitiesPlusSign(index)));
-                waitUntilElementToBeSelected(By.id(activityCategory(index)), 20);
-                BasePage.click(By.id(activityCategory(index)));
-                BasePage.selectElementsList(By.cssSelector(PersonPage.SELECT_DROP), "a");
-                clickOnListOfElements(mass.get(person).get("ActivityCategory"));
+                MainPage.clickOptionList(By.id(activityCategory(index)),
+                        mass.get(person).get("ActivityCategory"),
+                        By.cssSelector(PersonPage.SELECT_DROP),
+                        "a");
             }
             if (mass.get(person).get("ActivityName") != null) {
-                scrollToElement(By.id(activitiesPlusSign(index)));
-                waitUntilElementToBeSelected(By.id(activityName(index)), 20);
-                BasePage.click(By.id(activityName(index)));
-                BasePage.selectElementsList(By.cssSelector(PersonPage.SELECT_DROP), "a");
-                clickOnListOfElements(mass.get(person).get("ActivityName"));
+                MainPage.clickOptionList(By.id(activityName(index)),
+                        mass.get(person).get("ActivityName"),
+                        By.cssSelector(PersonPage.SELECT_DROP),
+                        "a");
             }
             if (mass.get(person).get("ActivityWhoAdded") != null) {
-                scrollToElement(By.id(activitiesPlusSign(index)));
-                waitUntilElementToBeSelected(By.id(activityWhoAdded(index)), 20);
-                BasePage.click(By.id(activityWhoAdded(index)));
-                BasePage.selectElementsList(By.cssSelector(PersonPage.SELECT_DROP), "a");
-                clickOnListOfElements(mass.get(person).get("ActivityWhoAdded"));
+                MainPage.clickOptionList(By.id(activityWhoAdded(index)),
+                        mass.get(person).get("ActivityWhoAdded"),
+                        By.cssSelector(PersonPage.SELECT_DROP),
+                        "a");
             }
             if (mass.get(person).get("ActivityDateAdded") != null) {
-                scrollToElement(By.id(activitiesPlusSign(index)));
-                waitUntilElementToBeSelected(By.id(activityDateAdded(index)), 20);
-                BasePage.click(By.id(activityDateAdded(index)));
-                BasePage.write(By.id(activityDateAdded(index)),mass.get(person).get("ActivityDateAdded"));
+                MainPage.fillDateField(By.id(activityDateAdded(index)),mass.get(person).get("ActivityDateAdded"));
             }
             if (mass.get(person).get("ActivitySource") != null) {
-                scrollToElement(By.id(activitiesPlusSign(index)));
-                waitUntilElementToBeSelected(By.id(activitiesSource(index)), 20);
-                BasePage.click(By.id(activitiesSource(index)));
-                BasePage.selectElementsList(By.cssSelector(PersonPage.SELECT_DROP), "a");
-                clickOnListOfElements(mass.get(person).get("ActivitySource"));
+                MainPage.clickOptionList(By.id(activitiesSource(index)),
+                        mass.get(person).get("ActivitySource"),
+                        By.cssSelector(PersonPage.SELECT_DROP),
+                        "a");
             }
             if (mass.get(person).get("ActivityParticipate") != null) {
-                scrollToElement(By.id(activitiesPlusSign(index)));
-                waitUntilElementToBeSelected(By.id(activityParticipate(index)), 20);
-                BasePage.click(By.id(activityParticipate(index)));
-                BasePage.selectElementsList(By.cssSelector(PersonPage.SELECT_DROP), "a");
-                clickOnListOfElements(mass.get(person).get("ActivityParticipate"));
+                MainPage.clickOptionList(By.id(activityParticipate(index)),
+                        mass.get(person).get("ActivityParticipate"),
+                        By.cssSelector(PersonPage.SELECT_DROP),
+                        "a");
             }
             if (mass.get(person).get("ActivityComments") != null) {
-                scrollToElement(By.id(activitiesPlusSign(index)));
-                waitUntilElementToBeSelected(By.id(activityComments(index)), 20);
-                BasePage.click(By.id(activityComments(index)));
-                BasePage.write(By.id(activityComments(index)),mass.get(person).get("ActivityComments"));
+                MainPage.fillField(By.id(activityComments(index)),mass.get(person).get("ActivityComments"));
             }
             ExtentReportsSetUp.testingPass(passMessage);
         } catch (Exception e) {
@@ -280,48 +158,36 @@ public class InterestsActivitiesPage extends BasePage {
     public static void updateInterest(String index, int person) {
         String errorMessage = String.format(LogPage.UPDATE_INTEREST_FAIL, index, person);
         String passMessage = String.format(LogPage.UPDATE_INTEREST_PASS, index, person);
-
-
         try {
             if (mass.get(person).get("InterestCategory") != null) {
-                scrollToElement(By.id(interestPlusSign(index)));
-                waitUntilElementToBeSelected(By.id(interestCategory(index)), 20);
-                BasePage.click(By.id(interestCategory(index)));
-                BasePage.selectElementsList(By.cssSelector(PersonPage.SELECT_DROP), "a");
-                clickOnListOfElements(mass.get(person).get("InterestCategory"));
+                MainPage.clickOptionList(By.id(interestCategory(index)),
+                        mass.get(person).get("InterestCategory"),
+                        By.cssSelector(PersonPage.SELECT_DROP),
+                        "a");
             }
             if (mass.get(person).get("InterestName") != null) {
-                scrollToElement(By.id(interestPlusSign(index)));
-                waitUntilElementToBeSelected(By.id(interestName(index)), 20);
-                BasePage.click(By.id(interestName(index)));
-                BasePage.selectElementsList(By.cssSelector(PersonPage.SELECT_DROP), "a");
-                clickOnListOfElements(mass.get(person).get("InterestName"));
+                MainPage.clickOptionList(By.id(interestName(index)),
+                        mass.get(person).get("InterestName"),
+                        By.cssSelector(PersonPage.SELECT_DROP),
+                        "a");
             }
             if (mass.get(person).get("InterestWhoAdded") != null) {
-                scrollToElement(By.id(interestPlusSign(index)));
-                waitUntilElementToBeSelected(By.id(interestWhoAdded(index)), 20);
-                BasePage.click(By.id(interestWhoAdded(index)));
-                BasePage.selectElementsList(By.cssSelector(PersonPage.SELECT_DROP), "a");
-                clickOnListOfElements(mass.get(person).get("InterestWhoAdded"));
+                MainPage.clickOptionList(By.id(interestWhoAdded(index)),
+                        mass.get(person).get("InterestWhoAdded"),
+                        By.cssSelector(PersonPage.SELECT_DROP),
+                        "a");
             }
             if (mass.get(person).get("InterestDateAdded") != null) {
-                scrollToElement(By.id(interestPlusSign(index)));
-                waitUntilElementToBeSelected(By.id(interestDateAdded(index)), 20);
-                BasePage.click(By.id(interestDateAdded(index)));
-                BasePage.write(By.id(interestDateAdded(index)),mass.get(person).get("InterestDateAdded"));
+                MainPage.fillField(By.id(interestDateAdded(index)), mass.get(person).get("InterestDateAdded"));
             }
             if (mass.get(person).get("InterestSource") != null) {
-                scrollToElement(By.id(interestPlusSign(index)));
-                waitUntilElementToBeSelected(By.id(interestSource(index)), 20);
-                BasePage.click(By.id(interestSource(index)));
-                BasePage.selectElementsList(By.cssSelector(PersonPage.SELECT_DROP), "a");
-                clickOnListOfElements(mass.get(person).get("InterestSource"));
+                MainPage.clickOptionList(By.id(interestSource(index)),
+                        mass.get(person).get("InterestSource"),
+                        By.cssSelector(PersonPage.SELECT_DROP),
+                        "a");
             }
             if (mass.get(person).get("InterestComments") != null) {
-                scrollToElement(By.id(interestPlusSign(index)));
-                waitUntilElementToBeSelected(By.id(interestComments(index)), 20);
-                BasePage.click(By.id(interestComments(index)));
-                BasePage.write(By.id(interestComments(index)),mass.get(person).get("InterestComments"));
+                MainPage.fillField(By.id(interestComments(index)), mass.get(person).get("InterestComments"));
             }
             ExtentReportsSetUp.testingPass(passMessage);
         } catch (Exception e) {
