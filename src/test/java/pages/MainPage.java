@@ -9,6 +9,9 @@ import static pages.GlobalNavPage.QUICK_ADD_PERSON_OPT_IN_METHOD_DROPDOWN_LIST;
 
 public class MainPage extends BasePage{
 
+    public static boolean verifyIfElementIsVisible(By by)throws Exception{
+        return checkIfElementIsVisible(by);
+    }
     public static boolean verifyCheckboxActiveOrNot(By by,String value)throws Exception{
         boolean validation = false;
         if(value!="" && value != null){

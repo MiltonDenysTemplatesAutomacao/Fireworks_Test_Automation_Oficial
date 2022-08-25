@@ -91,8 +91,7 @@ public class InterestsActivitiesPage extends BasePage {
                     && MainPage.verifyGetAttribute(By.id(activityDateAdded(index)),mass.get(person).get("ActivityDateAdded"))
                     && MainPage.verifyGetText(By.id(activitiesSource(index)),mass.get(person).get("ActivitySource"))
                     && MainPage.verifyGetText(By.id(activityComments(index)),mass.get(person).get("ActivityComments"))
-                    && MainPage.verifyGetText(By.id(activityParticipate(index)),mass.get(person).get("ActivityParticipate"))
-            ){
+                    && MainPage.verifyGetText(By.id(activityParticipate(index)),mass.get(person).get("ActivityParticipate"))){
                 ExtentReportsSetUp.testingPass(passMessage);
             }else{
                 FailureDelegatePage.handlePageException(errorMessage);
