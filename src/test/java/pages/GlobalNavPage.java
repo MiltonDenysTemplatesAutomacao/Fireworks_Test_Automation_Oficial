@@ -652,7 +652,7 @@ public class GlobalNavPage extends BasePage {
         String errorMessage = String.format(LogPage.QUICK_SEARCH_ONE_PARAMETER_FAIL, parameter);
         String passMessage = String.format(LogPage.QUICK_SEARCH_ONE_PARAMETER_PASS, parameter);
         try {
-            BasePage.write(By.cssSelector(HOME_QUICK_SEARCH_FIELD), mass.get(0).get(parameter));
+            BasePage.write(By.cssSelector(HOME_QUICK_SEARCH_FIELD), parameter);
             BasePage.click(By.cssSelector(HOME_QUICK_SEARCH_BUTTON));
             wait(2000);
             ExtentReportsSetUp.testingPass(passMessage);

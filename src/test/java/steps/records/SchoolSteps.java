@@ -43,10 +43,4 @@ public class SchoolSteps {
     public static void deleteSchool(String index) {
         SchoolPage.deleteSchool(index);
     }
-    @And("I click on choose button on school picker modal")
-    public static void clickChooseButton() {
-        SchoolPage.clickChooseButton();
-    }
-
-
 }

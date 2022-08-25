@@ -61,12 +61,12 @@ public class SchoolPage extends BasePage{
         String failMessage = String.format(LogPage.SEARCH_PICKER_SCHOOL_FAIL,school,group);
 
         try {
-            scrollToElement(By.cssSelector(schoolPlusSign(group)));
-            waitUntilElementToBeSelected(By.cssSelector(pickerTriggerElement(group)),20);
-            click(By.cssSelector(pickerTriggerElement(group)));
-            waitElementBy(By.cssSelector(SCHOOL_PICKER_SEARCH_FIELD),20);
-            write(By.cssSelector(SCHOOL_PICKER_SEARCH_FIELD),school);
-            wait(2000);
+            MainPage.picker(By.cssSelector(pickerTriggerElement(group)),
+                    By.cssSelector(SCHOOL_PICKER_SEARCH_FIELD),
+                    By.cssSelector(SCHOOL_PICKER_MODAL_TABLE_ROW1),
+                    By.xpath(SCHOOL_PICKER_MODAL_TABLE_ROW1_CHECKBOX),
+                    By.cssSelector(SCHOOL_PICKER_MODAL_CHOOSE_BUTTON),
+                    school);
             ExtentReportsSetUp.testingPass(passMessage);
         } catch (Exception e) {
             FailureDelegatePage.handlePageException(failMessage);
