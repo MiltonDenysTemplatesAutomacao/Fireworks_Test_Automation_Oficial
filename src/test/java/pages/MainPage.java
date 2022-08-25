@@ -29,7 +29,7 @@ public class MainPage extends BasePage{
         }
         return validation;
     }
-    public static void addWithPlusButton(By by)throws Exception{
+    public static void addDeleteWithPlusButton(By by)throws Exception{
             waitUntilElementToBeSelected(by,10);
             scrollToElement(by);
             scrollTo("-150");

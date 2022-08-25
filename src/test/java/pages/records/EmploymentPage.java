@@ -46,7 +46,7 @@ public class EmploymentPage extends BasePage {
         String passMessage = String.format(LogPage.ADD_EMPLOYMENT_PASS,group);
         String failMessage = String.format(LogPage.ADD_EMPLOYMENT_FAIL,group);
         try {
-            MainPage.addWithPlusButton(By.cssSelector(employmentPlusSignButton(group)));
+            MainPage.addDeleteWithPlusButton(By.cssSelector(employmentPlusSignButton(group)));
             ExtentReportsSetUp.testingPass(passMessage);
         } catch (Exception e) {
             FailureDelegatePage.handlePageException(failMessage);
