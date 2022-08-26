@@ -25,12 +25,10 @@ public class AdminPanelPage extends BasePage{
 
     public static void updateHighScoreDisplay(String highScore){
         try {
-            scrollToElement(By.cssSelector(HIGH_SCORE_DISPLAY_DROPDOWN));
-            scrollTo("-150");
-            waitElementBy(By.cssSelector(HIGH_SCORE_DISPLAY_DROPDOWN),20);
-            click(By.cssSelector(HIGH_SCORE_DISPLAY_DROPDOWN));
-            BasePage.selectElementsList(By.cssSelector(PersonPage.SELECT_DROP), "a");
-            clickOnListOfElements(highScore);
+            MainPage.clickOptionList(By.cssSelector(HIGH_SCORE_DISPLAY_DROPDOWN),
+                    highScore,
+                    By.cssSelector(PersonPage.SELECT_DROP),
+                    "a");
             waitElementBy(By.cssSelector(CHANGE_HIGH_SCORE_YES_CHANGE_BUTTON),20);
             click(By.cssSelector(CHANGE_HIGH_SCORE_YES_CHANGE_BUTTON));
             ExtentReportsSetUp.testingPass(LogPage.UPDATE_HIGH_SCORE_DISPLAY_PASS);
@@ -41,13 +39,10 @@ public class AdminPanelPage extends BasePage{
     }
     public static void updateSATR2016HighScore(String satr2016HighScore){
         try {
-            scrollToElement(By.cssSelector(SAT_R2016_HIGH_SCORE_DROPDOWN));
-            scrollTo("-150");
-            waitElementBy(By.cssSelector(SAT_R2016_HIGH_SCORE_DROPDOWN),20);
-            click(By.cssSelector(SAT_R2016_HIGH_SCORE_DROPDOWN));
-            BasePage.selectElementsList(By.cssSelector(PersonPage.SELECT_DROP), "a");
-            clickOnListOfElements(satr2016HighScore);
-            waitElementBy(By.cssSelector(CHANGE_HIGH_SCORE_YES_CHANGE_BUTTON),20);
+            MainPage.clickOptionList(By.cssSelector(SAT_R2016_HIGH_SCORE_DROPDOWN),
+                    satr2016HighScore,
+                    By.cssSelector(PersonPage.SELECT_DROP),
+                    "a");
             click(By.cssSelector(CHANGE_HIGH_SCORE_YES_CHANGE_BUTTON));
             ExtentReportsSetUp.testingPass(LogPage.UPDATE_SAT_R2016_HIGH_SCORE_PASS);
             wait(5000);
@@ -57,8 +52,7 @@ public class AdminPanelPage extends BasePage{
     }
     public static void updateRequiredSchoolName(String schoolName){
         try {
-            waitElementBy(By.cssSelector(SCHOOL_NAME),20);
-            write(By.cssSelector(SCHOOL_NAME),schoolName);
+            MainPage.fillField(By.cssSelector(SCHOOL_NAME), schoolName);
             ExtentReportsSetUp.testingPass(LogPage.UPDATE_REQUIRED_SCHOOL_NAME_PASS);
         } catch (Exception e) {
             FailureDelegatePage.handlePageException(LogPage.UPDATE_REQUIRED_SCHOOL_NAME_FAIL);

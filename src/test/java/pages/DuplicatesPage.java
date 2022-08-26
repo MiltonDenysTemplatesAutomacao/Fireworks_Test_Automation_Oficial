@@ -94,7 +94,6 @@ public class DuplicatesPage extends BasePage{
             scrollToElement(By.cssSelector(PREVIEW_MERGE_MATCH_COUNTRY));
             waitUntilElementToBeSelected(By.id(MERGE_AND_CLOSE_BUTTON),20);
             click(By.id(MERGE_AND_CLOSE_BUTTON));
-
             ExtentReportsSetUp.testingPass(LogPage.CONFIRM_MERGE_AND_CLOSE_PASS);
         } catch (Exception e) {
             FailureDelegatePage.handlePageException(LogPage.CONFIRM_MERGE_AND_CLOSE_FAIL);
