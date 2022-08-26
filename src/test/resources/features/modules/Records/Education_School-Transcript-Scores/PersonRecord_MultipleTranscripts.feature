@@ -26,7 +26,7 @@ Feature: Multiples Transcripts
     And I validate if "Akim"summary opened properly
     And I navigate to Education
     #to add a high school with two transcripts
-    And I update school in education for person "Chaminade College Preparatory", "", "", "", "", "", "" group "0"
+    And I update school in education for person "Chaminade", "", "", "", "", "", "" group "0"
     When I update transcript person "0" group "0"
     And I verify if there is no post secondary fields visible group "0"
     And I add a transcript "0"

@@ -53,7 +53,7 @@ public class MainPage extends BasePage{
 
     public static boolean verifyGetAttribute(By by, String value)throws Exception{
         boolean validation = false;
-        if(value!="" || value !=null){
+        if(value!="" && value !=null){
         wait(1000);
         scrollToElement(by);
         scrollTo("-150");

@@ -96,11 +96,7 @@ public class TranscriptPage extends BasePage {
         String passMessage = String.format(LogPage.ADD_TRANSCRIPT_PASS,index);
         String failMessage = String.format(LogPage.ADD_TRANSCRIPT_FAIL,index);
         try {
-            waitUntilElementToBeSelected(By.cssSelector(transcriptPlusSign(index)),20);
-            scrollToElement(By.cssSelector(transcriptPlusSign(index)));
-            scrollTo("-150");
-            wait(1000);
-            click(By.cssSelector(transcriptPlusSign(index)));
+            MainPage.addDeleteWithPlusButton(By.cssSelector(transcriptPlusSign(index)));
             ExtentReportsSetUp.testingPass(passMessage);
         } catch (Exception e) {
             FailureDelegatePage.handlePageException(failMessage);
@@ -111,23 +107,14 @@ public class TranscriptPage extends BasePage {
         String failMessage = String.format(LogPage.VERIFY_NO_POST_SECONDARY_FIELDS_ARE_VISIBLE_FAIL,group);
 
         try {
-            scrollToElement(By.cssSelector(transcriptPlusSign(group)));
-            boolean classRankValidation = !checkIfElementIsVisible(By.cssSelector(transcriptClassRankField(group)));
-            boolean classSizeValidation = !checkIfElementIsVisible(By.cssSelector(transcriptClassSizeField(group)));
-            boolean weightedValidation = !checkIfElementIsVisible(By.cssSelector(transcriptWeightedElement(group)));
-            boolean percentileValidation = !checkIfElementIsVisible(By.cssSelector(transcriptPercentileField(group)));
-            boolean rankUnavailableValidation = !checkIfElementIsVisible(By.cssSelector(transcriptRankUnavailableElement(group)));
-            boolean rankWeightedValidation = !checkIfElementIsVisible(By.cssSelector(transcriptRankWeightedElement(group)));
-            boolean gedValidation = !checkIfElementIsVisible(By.cssSelector(transcriptGEDElement(group)));
-
-            if(classRankValidation
-                    && classSizeValidation
-                    && weightedValidation
-                    && percentileValidation
-                    && rankUnavailableValidation
-                    && rankWeightedValidation
-                    && gedValidation
-                    ){
+            if(!MainPage.verifyIfElementIsVisible(By.cssSelector(transcriptClassRankField(group)))
+                    && !MainPage.verifyIfElementIsVisible(By.cssSelector(transcriptClassSizeField(group)))
+                    && !MainPage.verifyIfElementIsVisible(By.cssSelector(transcriptWeightedElement(group)))
+                    && !MainPage.verifyIfElementIsVisible(By.cssSelector(transcriptPercentileField(group)))
+                    && !MainPage.verifyIfElementIsVisible(By.cssSelector(transcriptRankUnavailableElement(group)))
+                    && !MainPage.verifyIfElementIsVisible(By.cssSelector(transcriptRankWeightedElement(group)))
+                    && !MainPage.verifyIfElementIsVisible(By.cssSelector(transcriptGEDElement(group)))
+            ){
                 ExtentReportsSetUp.testingPass(passMessage);
             }else{
                 FailureDelegatePage.handlePageException(failMessage);
@@ -144,24 +131,14 @@ public class TranscriptPage extends BasePage {
         String failMessage = String.format(LogPage.VERIFY_NO_POST_SECONDARY_FIELDS_ARE_VISIBLE_FAIL,group);
 
         try {
-            scrollToElement(By.cssSelector(transcriptPlusSign(group)));
-            boolean transcriptMajorValidation = !checkIfElementIsVisible(By.cssSelector(transcriptMajorElement(group)));
-            boolean transcriptDegreeValidation = !checkIfElementIsVisible(By.cssSelector(transcriptDegreeElement(group)));
-            boolean transcriptDegreeLevelValidation = !checkIfElementIsVisible(By.cssSelector(transcriptDegreeLevelElement(group)));
-            boolean transcriptDegreeEarnedValidation = !checkIfElementIsVisible(By.cssSelector(transcriptDegreeEarnedElement(group)));
-            boolean transcriptDegreeDateFieldValidation = !checkIfElementIsVisible(By.cssSelector(transcriptDegreeDateField(group)));
-            boolean transcriptMinorValidation = !checkIfElementIsVisible(By.cssSelector(transcriptMinorElement(group)));
-            boolean transcriptConcentrationValidation = !checkIfElementIsVisible(By.cssSelector(transcriptConcentrationElement(group)));
-            boolean transcriptCreditHoursFieldValidation = !checkIfElementIsVisible(By.cssSelector(transcriptCreditHoursField(group)));
-
-            if(transcriptMajorValidation
-            && transcriptDegreeValidation
-            && transcriptDegreeLevelValidation
-            && transcriptDegreeEarnedValidation
-            && transcriptDegreeDateFieldValidation
-            && transcriptMinorValidation
-            && transcriptConcentrationValidation
-            && transcriptCreditHoursFieldValidation){
+            if(!MainPage.verifyIfElementIsVisible(By.cssSelector(transcriptMajorElement(group)))
+                    && !MainPage.verifyIfElementIsVisible(By.cssSelector(transcriptDegreeElement(group)))
+                    && !MainPage.verifyIfElementIsVisible(By.cssSelector(transcriptDegreeLevelElement(group)))
+                    && !MainPage.verifyIfElementIsVisible(By.cssSelector(transcriptDegreeEarnedElement(group)))
+                    && !MainPage.verifyIfElementIsVisible(By.cssSelector(transcriptDegreeDateField(group)))
+                    && !MainPage.verifyIfElementIsVisible(By.cssSelector(transcriptMinorElement(group)))
+                    && !MainPage.verifyIfElementIsVisible(By.cssSelector(transcriptConcentrationElement(group)))
+                    && !MainPage.verifyIfElementIsVisible(By.cssSelector(transcriptCreditHoursField(group)))){
                 ExtentReportsSetUp.testingPass(passMessage);
             }else{
                 FailureDelegatePage.handlePageException(failMessage);
@@ -201,209 +178,36 @@ public class TranscriptPage extends BasePage {
         transcriptBean.setRankUnavailable(mass.get(personIndex).get("RankUnavailable"));
         transcriptBean.setRankWeighted(mass.get(personIndex).get("RankWeighted"));
 
-        boolean typeValidation = false;
-        boolean transcriptDateValidation = false;
-        boolean graduationDateValidation = false;
-        boolean gedValidation = false;
-        boolean diplomaReceivedValidation = false;
-        boolean officialTranscriptValidation = false;
-        boolean majorValidation = false;
-        boolean degreeValidation = false;
-        boolean degreeLevelValidation = false;
-        boolean degreeEarnedValidation = false;
-        boolean degreeDateValidation = false;
-        boolean minorValidation = false;
-        boolean concentrationValidation = false;
-        boolean creditHoursValidation = false;
-        boolean classRankValidation = false;
-        boolean classSizeValidation = false;
-        boolean gpaValidation = false;
-        boolean gpaRecalculatedValidation = false;
-        boolean scaleValidation = false;
-        boolean weightedValidation = false;
-        boolean percentileValidation = false;
-        boolean rankUnavailableValidation = false;
-        boolean rankWeightedValidation = false;
-        boolean selfReportedValidation = false;
-        boolean commentsValidation = false;
-
         String passMessage = String.format(LogPage.VERIFY_TRANSCRIPT_PASS,person,group);
         String failMessage = String.format(LogPage.VERIFY_TRANSCRIPT_FAIL,person,group);
 
         try {
-            scrollToElement(By.cssSelector(transcriptPlusSign(group)));
-
-            if (transcriptBean.getType() != null) {
-                String typeText = getText(By.cssSelector(transcriptTypeElement(group)));
-                typeValidation = typeText.contains(transcriptBean.getType());
-            } else {
-                typeValidation = true;
-            }
-            if (transcriptBean.getTranscriptDate() != null) {
-                String transcriptDateDateText = getAtribute(By.cssSelector(transcriptDateField(group)),"value");
-                transcriptDateValidation = transcriptDateDateText.contains(transcriptBean.getTranscriptDate());
-            } else {
-                transcriptDateValidation = true;
-            }
-            if (transcriptBean.getGraduationDate() != null) {
-                String graduationDateText = getAtribute(By.cssSelector(transcriptGraduationDateField(group)),"value");
-                graduationDateValidation = graduationDateText.contains(transcriptBean.getGraduationDate());
-            } else {
-                graduationDateValidation = true;
-            }
-            if (transcriptBean.getGed() != null) {
-                String gedText = getText(By.cssSelector(transcriptGEDElement(group)));
-                gedValidation = gedText.contains(transcriptBean.getGed());
-            } else {
-                gedValidation = true;
-            }
-            if (transcriptBean.getDiplomaReceived() != null) {
-                String diplomomaReceivedText = getText(By.cssSelector(transcriptDiplomaReceivedElement(group)));
-                diplomaReceivedValidation = diplomomaReceivedText.contains(transcriptBean.getDiplomaReceived());
-            } else {
-                diplomaReceivedValidation = true;
-            }
-            if (transcriptBean.getOfficialTranscript() != null) {
-                String officialTranscriptText = getText(By.cssSelector(transcriptOfficialTranscriptElement(group)));
-                officialTranscriptValidation = officialTranscriptText.contains(transcriptBean.getOfficialTranscript());
-            } else {
-                officialTranscriptValidation = true;
-            }
-            if (transcriptBean.getMajor() != null) {
-                String majorText = getText(By.cssSelector(transcriptMajorElement(group)));
-                majorValidation = majorText.contains(transcriptBean.getMajor());
-            } else {
-                majorValidation = true;
-            }
-            if (transcriptBean.getDegree() != null) {
-                String degreeText = getText(By.cssSelector(transcriptDegreeElement(group)));
-                degreeValidation = degreeText.contains(transcriptBean.getDegree());
-            } else {
-                degreeValidation = true;
-            }
-            if (transcriptBean.getDegreeLevel() != null) {
-                String degreeLevelText = getText(By.cssSelector(transcriptDegreeLevelElement(group)));
-                degreeLevelValidation = degreeLevelText.contains(transcriptBean.getDegreeLevel());
-            } else {
-                degreeLevelValidation = true;
-            }
-            if (transcriptBean.getDegreeEarned() != null) {
-                String degreeEarnedText = getText(By.cssSelector(transcriptDegreeEarnedElement(group)));
-                degreeEarnedValidation = degreeEarnedText.contains(transcriptBean.getDegreeEarned());
-            } else {
-                degreeEarnedValidation = true;
-            }
-            if (transcriptBean.getDegreeDate() != null) {
-                String degreeDateText = getAtribute(By.cssSelector(transcriptDegreeDateField(group)),"value");
-                degreeDateValidation = degreeDateText.contains(transcriptBean.getDegreeDate());
-            } else {
-                degreeDateValidation = true;
-            }
-            if (transcriptBean.getMinor() != null) {
-                String minorText = getText(By.cssSelector(transcriptMinorElement(group)));
-                minorValidation = minorText.contains(transcriptBean.getMinor());
-            } else {
-                minorValidation = true;
-            }
-            if (transcriptBean.getConcentration() != null) {
-                String concentrationText = getText(By.cssSelector(transcriptConcentrationElement(group)));
-                concentrationValidation = concentrationText.contains(transcriptBean.getConcentration());
-            } else {
-                concentrationValidation = true;
-            }
-            if (transcriptBean.getCreditHours() != null) {
-                String creditHoursText = getAtribute(By.cssSelector(transcriptCreditHoursField(group)),"value");
-                creditHoursValidation = creditHoursText.contains(transcriptBean.getCreditHours());
-            } else {
-                creditHoursValidation = true;
-            }
-            if (transcriptBean.getClassRank() != null) {
-                String classRankText = getAtribute(By.cssSelector(transcriptClassRankField(group)),"value");
-                classRankValidation = classRankText.contains(transcriptBean.getClassRank());
-            } else {
-                classRankValidation = true;
-            }
-            if (transcriptBean.getClassSize() != null) {
-                String classSizeText = getAtribute(By.cssSelector(transcriptClassSizeField(group)),"value");
-                classSizeValidation = classSizeText.contains(transcriptBean.getClassSize());
-            } else {
-                classSizeValidation = true;
-            }
-            if (transcriptBean.getGpa() != null) {
-                String gpaText = getAtribute(By.cssSelector(transcriptGpaField(group)),"value");
-                gpaValidation = gpaText.contains(transcriptBean.getGpa());
-            } else {
-                gpaValidation = true;
-            }
-            if (transcriptBean.getGpaRecalculated() != null) {
-                String gpaRecalculatedText = getAtribute(By.cssSelector(transcriptGpaRecalculatedField(group)),"value");
-                gpaRecalculatedValidation = gpaRecalculatedText.contains(transcriptBean.getGpaRecalculated());
-            } else {
-                gpaRecalculatedValidation = true;
-            }
-            scrollToElement(By.cssSelector(transcriptGraduationDateField(group)));
-            if (transcriptBean.getScale() != null) {
-                String scaleText = getAtribute(By.cssSelector(transcriptScaleField(group)),"value");
-                scaleValidation = scaleText.contains(transcriptBean.getScale());
-            } else {
-                scaleValidation = true;
-            }
-            if (transcriptBean.getWeighted() != null) {
-                String weightedText = getText(By.cssSelector(transcriptWeightedElement(group)));
-                weightedValidation = weightedText.contains(transcriptBean.getWeighted());
-            } else {
-                weightedValidation = true;
-            }
-            if (transcriptBean.getPercentile() != null) {
-                String percentileText = getAtribute(By.cssSelector(transcriptPercentileField(group)),"value");
-                percentileValidation = percentileText.contains(transcriptBean.getPercentile());
-            } else {
-                percentileValidation = true;
-            }
-            if (transcriptBean.getRankUnavailable() != null) {
-                String rankUnavailableText = getText(By.cssSelector(transcriptRankUnavailableElement(group)));
-                rankUnavailableValidation = rankUnavailableText.contains(transcriptBean.getRankUnavailable());
-            } else {
-                rankUnavailableValidation = true;
-            }
-            if (transcriptBean.getRankWeighted() != null) {
-                String rankWeightedText = getText(By.cssSelector(transcriptRankWeightedElement(group)));
-                rankWeightedValidation = rankWeightedText.contains(transcriptBean.getRankWeighted());
-            } else {
-                rankWeightedValidation = true;
-            }
-            if (transcriptBean.getSelfReported() != null) {
-                String selfReportedText = getText(By.cssSelector(transcriptSelfReportedElement(group)));
-                selfReportedValidation = selfReportedText.contains(transcriptBean.getSelfReported());
-            } else {
-                selfReportedValidation = true;
-            }
-            if (transcriptBean.getComments() != null) {
-                String commentsText = getAtribute(By.cssSelector(transcriptCommentsField(group)),"value");
-                commentsValidation = commentsText.contains(transcriptBean.getComments());
-            } else {
-                commentsValidation = true;
-            }
-
-            if(typeValidation
-                    && graduationDateValidation
-                    && transcriptDateValidation
-                    && gedValidation
-                    && diplomaReceivedValidation
-                    && officialTranscriptValidation
-                    && classRankValidation
-                    && classSizeValidation
-                    && gpaValidation
-                    && gpaRecalculatedValidation
-                    && scaleValidation
-                    && weightedValidation
-                    && percentileValidation
-                    && rankUnavailableValidation
-                    && rankWeightedValidation
-                    && selfReportedValidation
-                    && commentsValidation
-               ){
-                ExtentReportsSetUp.testingPass(passMessage);
+            if(MainPage.verifyGetText(By.cssSelector(transcriptTypeElement(group)),transcriptBean.getType())
+                    && MainPage.verifyGetAttribute(By.cssSelector(transcriptDateField(group)),transcriptBean.getTranscriptDate())
+                    && MainPage.verifyGetAttribute(By.cssSelector(transcriptGraduationDateField(group)),transcriptBean.getGraduationDate())
+                    && MainPage.verifyGetText(By.cssSelector(transcriptGEDElement(group)),transcriptBean.getGed())
+                    && MainPage.verifyGetText(By.cssSelector(transcriptDiplomaReceivedElement(group)),transcriptBean.getDiplomaReceived())
+                    && MainPage.verifyGetText(By.cssSelector(transcriptOfficialTranscriptElement(group)),transcriptBean.getOfficialTranscript())
+                    && MainPage.verifyGetText(By.cssSelector(transcriptMajorElement(group)),transcriptBean.getMajor())
+                    && MainPage.verifyGetText(By.cssSelector(transcriptDegreeElement(group)),transcriptBean.getDegree())
+                    && MainPage.verifyGetText(By.cssSelector(transcriptDegreeLevelElement(group)),transcriptBean.getDegreeLevel())
+                    && MainPage.verifyGetText(By.cssSelector(transcriptDegreeEarnedElement(group)),transcriptBean.getDegreeEarned())
+                    && MainPage.verifyGetAttribute(By.cssSelector(transcriptDegreeDateField(group)),transcriptBean.getDegreeDate())
+                    && MainPage.verifyGetText(By.cssSelector(transcriptMinorElement(group)),transcriptBean.getMinor())
+                    && MainPage.verifyGetText(By.cssSelector(transcriptConcentrationElement(group)),transcriptBean.getConcentration())
+                    && MainPage.verifyGetAttribute(By.cssSelector(transcriptCreditHoursField(group)),transcriptBean.getCreditHours())
+                    && MainPage.verifyGetAttribute(By.cssSelector(transcriptClassRankField(group)),transcriptBean.getClassRank())
+                    && MainPage.verifyGetAttribute(By.cssSelector(transcriptClassSizeField(group)),transcriptBean.getClassSize())
+                    && MainPage.verifyGetAttribute(By.cssSelector(transcriptGpaField(group)),transcriptBean.getGpa())
+                    && MainPage.verifyGetAttribute(By.cssSelector(transcriptGpaRecalculatedField(group)),transcriptBean.getGpaRecalculated())
+                    && MainPage.verifyGetAttribute(By.cssSelector(transcriptScaleField(group)),transcriptBean.getScale())
+                    && MainPage.verifyGetText(By.cssSelector(transcriptWeightedElement(group)),transcriptBean.getWeighted())
+                    && MainPage.verifyGetAttribute(By.cssSelector(transcriptPercentileField(group)),transcriptBean.getPercentile())
+                    && MainPage.verifyGetText(By.cssSelector(transcriptRankUnavailableElement(group)),transcriptBean.getRankUnavailable())
+                    && MainPage.verifyGetText(By.cssSelector(transcriptRankWeightedElement(group)),transcriptBean.getRankWeighted())
+                    && MainPage.verifyGetText(By.cssSelector(transcriptSelfReportedElement(group)),transcriptBean.getSelfReported())
+                    && MainPage.verifyGetAttribute(By.cssSelector(transcriptCommentsField(group)),transcriptBean.getComments())){
+                    ExtentReportsSetUp.testingPass(passMessage);
             }else{
                 FailureDelegatePage.handlePageException(failMessage);
             }
@@ -448,180 +252,128 @@ public class TranscriptPage extends BasePage {
         try {
             scrollToElement(By.cssSelector(transcriptPlusSign(group)));
             if(transcriptBean.getType()!=null){
-                wait(1000);
-                BasePage.click(By.cssSelector(transcriptTypeElement(group)));
-                wait(1000);
-                BasePage.selectElementsList(By.cssSelector(PersonPage.SELECT_DROP), "a");
-                wait(1000);
-                clickOnListOfElements(transcriptBean.getType());
+                MainPage.clickOptionList(By.cssSelector(transcriptTypeElement(group)),
+                        transcriptBean.getType(),
+                        By.cssSelector(PersonPage.SELECT_DROP),
+                        "a");
             }
             if(transcriptBean.getTranscriptDate()!=null){
-                waitElementBy(By.cssSelector(transcriptDateField(group)),updateTranscriptDelay);
-                KeyPage.erase(By.cssSelector(transcriptDateField(group)));
-                BasePage.write(By.cssSelector(transcriptDateField(group)), transcriptBean.getTranscriptDate());
-                KeyPage.pressKey(By.cssSelector(transcriptDateField(group)),"Enter");
+                MainPage.fillDateField(By.cssSelector(transcriptDateField(group)), transcriptBean.getTranscriptDate());
             }
             if(transcriptBean.getStartDate()!=null){
-                waitElementBy(By.cssSelector(transcriptStartDateField(group)),updateTranscriptDelay);
-                KeyPage.erase(By.cssSelector(transcriptStartDateField(group)));
-                BasePage.write(By.cssSelector(transcriptStartDateField(group)), transcriptBean.getStartDate());
-                KeyPage.pressKey(By.cssSelector(transcriptStartDateField(group)),"Enter");
+                MainPage.fillDateField(By.cssSelector(transcriptDateField(group)), transcriptBean.getStartDate());
             }
             if(transcriptBean.getEndDate()!=null){
-                waitElementBy(By.cssSelector(transcriptEndDateField(group)),updateTranscriptDelay);
-                KeyPage.erase(By.cssSelector(transcriptEndDateField(group)));
-                BasePage.write(By.cssSelector(transcriptEndDateField(group)), transcriptBean.getEndDate());
-                KeyPage.pressKey(By.cssSelector(transcriptEndDateField(group)),"Enter");
+                MainPage.fillDateField(By.cssSelector(transcriptDateField(group)), transcriptBean.getEndDate());
             }
             if(transcriptBean.getGraduationDate()!=null){
-                waitElementBy(By.cssSelector(transcriptGraduationDateField(group)),updateTranscriptDelay);
-                KeyPage.erase(By.cssSelector(transcriptGraduationDateField(group)));
-                BasePage.write(By.cssSelector(transcriptGraduationDateField(group)), transcriptBean.getGraduationDate());
-                KeyPage.pressKey(By.cssSelector(transcriptGraduationDateField(group)),"Enter");
+                MainPage.fillDateField(By.cssSelector(transcriptDateField(group)), transcriptBean.getGraduationDate());
             }
             if(transcriptBean.getGed()!=null){
-                waitElementBy(By.cssSelector(transcriptGEDElement(group)),updateTranscriptDelay);
-                BasePage.click(By.cssSelector(transcriptGEDElement(group)));
-                waitElementBy(By.cssSelector(PersonPage.SELECT_DROP),updateTranscriptDelay);
-                BasePage.selectElementsList(By.cssSelector(PersonPage.SELECT_DROP), "a");
-                wait(1000);
-                clickOnListOfElements(transcriptBean.getGed());
+                MainPage.clickOptionList(By.cssSelector(transcriptGEDElement(group)),
+                        transcriptBean.getGed(),
+                        By.cssSelector(PersonPage.SELECT_DROP),
+                        "a");
             }
             if(transcriptBean.getDiplomaReceived()!=null){
-                waitElementBy(By.cssSelector(transcriptDiplomaReceivedElement(group)),updateTranscriptDelay);
-                BasePage.click(By.cssSelector(transcriptDiplomaReceivedElement(group)));
-                waitElementBy(By.cssSelector(PersonPage.SELECT_DROP),updateTranscriptDelay);
-                BasePage.selectElementsList(By.cssSelector(PersonPage.SELECT_DROP), "a");
-                wait(1000);
-                clickOnListOfElements(transcriptBean.getDiplomaReceived());
+                MainPage.clickOptionList(By.cssSelector(transcriptDiplomaReceivedElement(group)),
+                        transcriptBean.getDiplomaReceived(),
+                        By.cssSelector(PersonPage.SELECT_DROP),
+                        "a");
             }
             if(transcriptBean.getOfficialTranscript()!=null){
-                waitElementBy(By.cssSelector(transcriptOfficialTranscriptElement(group)),updateTranscriptDelay);
-                BasePage.click(By.cssSelector(transcriptOfficialTranscriptElement(group)));
-                waitElementBy(By.cssSelector(PersonPage.SELECT_DROP),updateTranscriptDelay);
-                BasePage.selectElementsList(By.cssSelector(PersonPage.SELECT_DROP), "a");
-                wait(1000);
-                clickOnListOfElements(transcriptBean.getOfficialTranscript());
+                MainPage.clickOptionList(By.cssSelector(transcriptOfficialTranscriptElement(group)),
+                        transcriptBean.getOfficialTranscript(),
+                        By.cssSelector(PersonPage.SELECT_DROP),
+                        "a");
             }
             if(transcriptBean.getMajor()!=null){
-                waitElementBy(By.cssSelector(transcriptMajorElement(group)),updateTranscriptDelay);
-                BasePage.click(By.cssSelector(transcriptMajorElement(group)));
-                waitElementBy(By.cssSelector(PersonPage.SELECT_DROP),updateTranscriptDelay);
-                BasePage.selectElementsList(By.cssSelector(PersonPage.SELECT_DROP), "a");
-                wait(1000);
-                clickOnListOfElements(transcriptBean.getMajor());
+                MainPage.clickOptionList(By.cssSelector(transcriptMajorElement(group)),
+                        transcriptBean.getMajor(),
+                        By.cssSelector(PersonPage.SELECT_DROP),
+                        "a");
             }
             if(transcriptBean.getDegree()!=null){
-                waitElementBy(By.cssSelector(transcriptDegreeElement(group)),updateTranscriptDelay);
-                BasePage.click(By.cssSelector(transcriptDegreeElement(group)));
-                waitElementBy(By.cssSelector(PersonPage.SELECT_DROP),updateTranscriptDelay);
-                BasePage.selectElementsList(By.cssSelector(PersonPage.SELECT_DROP), "a");
-                wait(1000);
-                clickOnListOfElements(transcriptBean.getDegree());
+                MainPage.clickOptionList(By.cssSelector(transcriptDegreeElement(group)),
+                        transcriptBean.getDegree(),
+                        By.cssSelector(PersonPage.SELECT_DROP),
+                        "a");
             }
             if(transcriptBean.getDegreeLevel()!=null){
-                waitElementBy(By.cssSelector(transcriptDegreeLevelElement(group)),updateTranscriptDelay);
-                BasePage.click(By.cssSelector(transcriptDegreeLevelElement(group)));
-                waitElementBy(By.cssSelector(PersonPage.SELECT_DROP),updateTranscriptDelay);
-                BasePage.selectElementsList(By.cssSelector(PersonPage.SELECT_DROP), "a");
-                wait(1000);
-                clickOnListOfElementsContains(transcriptBean.getDegreeLevel());
+                MainPage.clickOptionList(By.cssSelector(transcriptDegreeLevelElement(group)),
+                        transcriptBean.getDegreeLevel(),
+                        By.cssSelector(PersonPage.SELECT_DROP),
+                        "a");
             }
             if(transcriptBean.getDegreeEarned()!=null){
-                waitElementBy(By.cssSelector(transcriptDegreeEarnedElement(group)),updateTranscriptDelay);
-                BasePage.click(By.cssSelector(transcriptDegreeEarnedElement(group)));
-                waitElementBy(By.cssSelector(PersonPage.SELECT_DROP),updateTranscriptDelay);
-                BasePage.selectElementsList(By.cssSelector(PersonPage.SELECT_DROP), "a");
-                wait(1000);
-                clickOnListOfElements(transcriptBean.getDegreeEarned());
+                MainPage.clickOptionList(By.cssSelector(transcriptDegreeEarnedElement(group)),
+                        transcriptBean.getDegreeEarned(),
+                        By.cssSelector(PersonPage.SELECT_DROP),
+                        "a");
             }
             if(transcriptBean.getDegreeDate()!=null){
-                waitElementBy(By.cssSelector(transcriptDegreeDateField(group)),updateTranscriptDelay);
-                BasePage.write(By.cssSelector(transcriptDegreeDateField(group)), transcriptBean.getDegreeDate());
+                MainPage.fillField(By.cssSelector(transcriptDegreeDateField(group)), transcriptBean.getDegreeDate());
             }
             if(transcriptBean.getMinor()!=null){
-                waitElementBy(By.cssSelector(transcriptMinorElement(group)),updateTranscriptDelay);
-                BasePage.click(By.cssSelector(transcriptMinorElement(group)));
-                waitElementBy(By.cssSelector(PersonPage.SELECT_DROP),updateTranscriptDelay);
-                BasePage.selectElementsList(By.cssSelector(PersonPage.SELECT_DROP), "a");
-                wait(1000);
-                clickOnListOfElements(transcriptBean.getMinor());
+                MainPage.clickOptionList(By.cssSelector(transcriptMinorElement(group)),
+                        transcriptBean.getMinor(),
+                        By.cssSelector(PersonPage.SELECT_DROP),
+                        "a");
             }
             if(transcriptBean.getConcentration()!=null){
-                waitElementBy(By.cssSelector(transcriptConcentrationElement(group)),updateTranscriptDelay);
-                BasePage.click(By.cssSelector(transcriptConcentrationElement(group)));
-                waitElementBy(By.cssSelector(PersonPage.SELECT_DROP),updateTranscriptDelay);
-                BasePage.selectElementsList(By.cssSelector(PersonPage.SELECT_DROP), "a");
-                wait(1000);
-                clickOnListOfElements(transcriptBean.getConcentration());
+                MainPage.clickOptionList(By.cssSelector(transcriptConcentrationElement(group)),
+                        transcriptBean.getConcentration(),
+                        By.cssSelector(PersonPage.SELECT_DROP),
+                        "a");
             }
             if(transcriptBean.getCreditHours()!=null){
-                waitElementBy(By.cssSelector(transcriptCreditHoursField(group)),updateTranscriptDelay);
-                BasePage.write(By.cssSelector(transcriptCreditHoursField(group)), transcriptBean.getCreditHours());
+                MainPage.fillField(By.cssSelector(transcriptCreditHoursField(group)), transcriptBean.getCreditHours());
             }
             if(transcriptBean.getClassRank()!=null){
-                waitElementBy(By.cssSelector(transcriptClassRankField(group)),updateTranscriptDelay);
-                BasePage.write(By.cssSelector(transcriptClassRankField(group)), transcriptBean.getClassRank());
+                MainPage.fillField(By.cssSelector(transcriptClassRankField(group)), transcriptBean.getClassRank());
             }
             if(transcriptBean.getClassSize()!=null){
-                waitElementBy(By.cssSelector(transcriptClassSizeField(group)),updateTranscriptDelay);
-                BasePage.write(By.cssSelector(transcriptClassSizeField(group)), transcriptBean.getClassSize());
+                MainPage.fillField(By.cssSelector(transcriptClassSizeField(group)), transcriptBean.getClassSize());
             }
-
             if(transcriptBean.getGpa()!=null){
-                waitElementBy(By.cssSelector(transcriptGpaField(group)),updateTranscriptDelay);
-                BasePage.write(By.cssSelector(transcriptGpaField(group)), transcriptBean.getGpa());
+                MainPage.fillField(By.cssSelector(transcriptGpaField(group)), transcriptBean.getGpa());
             }
             if(transcriptBean.getGpaRecalculated()!=null){
-                waitElementBy(By.cssSelector(transcriptGpaRecalculatedField(group)),updateTranscriptDelay);
-                BasePage.write(By.cssSelector(transcriptGpaRecalculatedField(group)), transcriptBean.getGpaRecalculated());
+                MainPage.fillField(By.cssSelector(transcriptGpaRecalculatedField(group)), transcriptBean.getGpaRecalculated());
             }
             scrollToElement(By.cssSelector(transcriptGraduationDateField(group)));
             if(transcriptBean.getScale()!=null){
-                waitElementBy(By.cssSelector(transcriptScaleField(group)),updateTranscriptDelay);
-                BasePage.write(By.cssSelector(transcriptScaleField(group)), transcriptBean.getScale());
+                MainPage.fillField(By.cssSelector(transcriptScaleField(group)), transcriptBean.getScale());
             }
             if(transcriptBean.getWeighted()!=null){
-                waitElementBy(By.cssSelector(transcriptWeightedElement(group)),updateTranscriptDelay);
-                BasePage.click(By.cssSelector(transcriptWeightedElement(group)));
-                waitElementBy(By.cssSelector(PersonPage.SELECT_DROP),updateTranscriptDelay);
-                BasePage.selectElementsList(By.cssSelector(PersonPage.SELECT_DROP), "a");
-                wait(1000);
-                clickOnListOfElements(transcriptBean.getWeighted());
+                MainPage.clickOptionList(By.cssSelector(transcriptWeightedElement(group)),
+                        transcriptBean.getWeighted(),
+                        By.cssSelector(PersonPage.SELECT_DROP),
+                        "a");
             }
             if(transcriptBean.getPercentile()!=null){
-                waitElementBy(By.cssSelector(transcriptPercentileField(group)),updateTranscriptDelay);
-                BasePage.write(By.cssSelector(transcriptPercentileField(group)), transcriptBean.getPercentile());
+                MainPage.fillField(By.cssSelector(transcriptPercentileField(group)), transcriptBean.getPercentile());
             }
             if(transcriptBean.getRankUnavailable()!=null){
-                waitElementBy(By.cssSelector(transcriptRankUnavailableElement(group)),updateTranscriptDelay);
-                BasePage.click(By.cssSelector(transcriptRankUnavailableElement(group)));
-                waitElementBy(By.cssSelector(PersonPage.SELECT_DROP),updateTranscriptDelay);
-                BasePage.selectElementsList(By.cssSelector(PersonPage.SELECT_DROP), "a");
-                wait(1000);
-                clickOnListOfElements(transcriptBean.getRankUnavailable());
+                MainPage.clickOptionList(By.cssSelector(transcriptRankUnavailableElement(group)),
+                        transcriptBean.getRankUnavailable(),
+                        By.cssSelector(PersonPage.SELECT_DROP),
+                        "a");
             }
             if(transcriptBean.getRankWeighted()!=null){
-                waitElementBy(By.cssSelector(transcriptRankWeightedElement(group)),updateTranscriptDelay);
-                BasePage.click(By.cssSelector(transcriptRankWeightedElement(group)));
-                waitElementBy(By.cssSelector(PersonPage.SELECT_DROP),updateTranscriptDelay);
-                BasePage.selectElementsList(By.cssSelector(PersonPage.SELECT_DROP), "a");
-                wait(1000);
-                clickOnListOfElements(transcriptBean.getRankWeighted());
+                MainPage.clickOptionList(By.cssSelector(transcriptRankWeightedElement(group)),
+                        transcriptBean.getRankWeighted(),
+                        By.cssSelector(PersonPage.SELECT_DROP),
+                        "a");
             }
             if(transcriptBean.getSelfReported()!=null){
-                scrollToElement(By.cssSelector(transcriptSelfReportedElement(group)));
-                scrollTo("-150");
-                waitElementBy(By.cssSelector(transcriptSelfReportedElement(group)),updateTranscriptDelay);
-                BasePage.click(By.cssSelector(transcriptSelfReportedElement(group)));
-                waitElementBy(By.cssSelector(PersonPage.SELECT_DROP),updateTranscriptDelay);
-                BasePage.selectElementsList(By.cssSelector(PersonPage.SELECT_DROP), "a");
-                wait(1000);
-                clickOnListOfElements(transcriptBean.getSelfReported());
+                MainPage.clickOptionList(By.cssSelector(transcriptSelfReportedElement(group)),
+                        transcriptBean.getSelfReported(),
+                        By.cssSelector(PersonPage.SELECT_DROP),
+                        "a");
             }
             if(transcriptBean.getComments()!=null){
-                waitElementBy(By.cssSelector(transcriptCommentsField(group)),updateTranscriptDelay);
-                BasePage.write(By.cssSelector(transcriptCommentsField(group)), transcriptBean.getComments());
+                MainPage.fillField(By.cssSelector(transcriptCommentsField(group)), transcriptBean.getComments());
             }
             ExtentReportsSetUp.testingPass(passMessage);
         } catch (Exception e) {
