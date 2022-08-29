@@ -34,35 +34,29 @@ public class LetterTemplatePage extends BasePage{
         }
     }
     public static void updateLetterTemplate(int person){
-        int updateLetterTemplateDelay = 20;
 
         try {
             if (mass.get(person).get("TemplateName") != null) {
-                waitElementBy(By.cssSelector(TEMPLATE_NAME_FIELD), updateLetterTemplateDelay);
-                BasePage.write(By.cssSelector(TEMPLATE_NAME_FIELD),mass.get(person).get("TemplateName"));
+                MainPage.fillField(By.cssSelector(TEMPLATE_NAME_FIELD), mass.get(person).get("TemplateName"));
             }
             if (mass.get(person).get("TemplateDescription") != null) {
-                waitElementBy(By.cssSelector(TEMPLATE_DESCRIPTION_FIELD), updateLetterTemplateDelay);
-                BasePage.write(By.cssSelector(TEMPLATE_DESCRIPTION_FIELD),mass.get(person).get("TemplateDescription"));
+                MainPage.fillField(By.cssSelector(TEMPLATE_DESCRIPTION_FIELD), mass.get(person).get("TemplateDescription"));
             }
             if (mass.get(person).get("RecordType") != null) {
-                scrollToElement(By.cssSelector(TEMPLATE_DESCRIPTION_FIELD));
-                waitUntilElementToBeSelected(By.cssSelector(TEMPLATE_RECORD_TYPE_DROPDOWN), updateLetterTemplateDelay);
-                BasePage.click(By.cssSelector(TEMPLATE_RECORD_TYPE_DROPDOWN));
-                BasePage.selectElementsList(By.cssSelector(PersonPage.SELECT_DROP), "a");
-                clickOnListOfElements(mass.get(person).get("RecordType"));
+                MainPage.clickOptionList(By.cssSelector(TEMPLATE_RECORD_TYPE_DROPDOWN),
+                        mass.get(person).get("RecordType"),
+                        By.cssSelector(PersonPage.SELECT_DROP),
+                        "a");
             }
             if (mass.get(person).get("LetterFormat") != null) {
-                scrollToElement(By.cssSelector(TEMPLATE_RECORD_TYPE_DROPDOWN));
-                waitUntilElementToBeSelected(By.cssSelector(LETTER_FORMAT_DROPDOWN), updateLetterTemplateDelay);
-                BasePage.click(By.cssSelector(LETTER_FORMAT_DROPDOWN));
-                BasePage.selectElementsList(By.cssSelector(PersonPage.SELECT_DROP), "a");
-                clickOnListOfElements(mass.get(person).get("LetterFormat"));
+                MainPage.clickOptionList(By.cssSelector(LETTER_FORMAT_DROPDOWN),
+                        mass.get(person).get("LetterFormat"),
+                        By.cssSelector(PersonPage.SELECT_DROP),
+                        "a");
             }
             if (mass.get(person).get("LetterContent") != null) {
                 switchToIFrame(LETTER_CONTENT_IFRAME_ELEMENT);
-                waitElementBy(By.id(LETTER_CONTENT_IFRAME_BODY_ELEMENT), updateLetterTemplateDelay);
-                BasePage.write(By.id(LETTER_CONTENT_IFRAME_BODY_ELEMENT),mass.get(person).get("LetterContent"));
+                MainPage.fillField(By.id(LETTER_CONTENT_IFRAME_BODY_ELEMENT), mass.get(person).get("LetterContent"));
                 switchToDefaultContent();
             }
             ExtentReportsSetUp.testingPass(LogPage.UPDATE_LETTER_TEMPLATE_PASS);
