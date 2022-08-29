@@ -5,6 +5,7 @@ import org.openqa.selenium.By;
 
 public class PersonNavPage extends BasePage{
 
+    public static final String RECORD_NAV_TAB_ID_TYPES = "recordNavTab_id_types";
     private static final String RECORD_NAV_TAB_CONTACT = "recordNavTab_contact";
     private static final String STUDENT_STATUS_TAB = "#recordNavTab_status";
     private static final String INTERESTS_ACTIVITIES_TAB = "#recordNavTab_activities_interests";
@@ -13,6 +14,7 @@ public class PersonNavPage extends BasePage{
     private static final String APPLICATIONS_TAB = "#recordNavTab_applications";
     private static final String FINANCIAL_AID_TAB = "#recordNavTab_financial_affairs";
     private static final String EMPLOYMENT_TAB = "#recordNavTab_employment";
+    private static final String RECORD_NAV_TAB_BASIC = "recordNavTab_basic";
 
     public static void navigateToEmployment(){
         try {
@@ -22,6 +24,14 @@ public class PersonNavPage extends BasePage{
             FailureDelegatePage.handlePageException(LogPage.NAVIGATE_TO_EMPLOYMENT_FAIL);
         }
     }
+    public static void navigateToIdTypes(){
+        try {
+            MainPage.navigateToFeature(By.id(RECORD_NAV_TAB_ID_TYPES));
+            ExtentReportsSetUp.testingPass(LogPage.NAVIGATE_TO_ID_TYPES_PASS);
+        } catch (Exception e) {
+            FailureDelegatePage.handlePageException(LogPage.NAVIGATE_TO_ID_TYPES_FAIL);
+        }
+    }
 
     public static void navigateToFinancialAid(){
         try {
@@ -29,6 +39,14 @@ public class PersonNavPage extends BasePage{
             ExtentReportsSetUp.testingPass(LogPage.NAVIGATE_TO_FINANCIAL_AID_PASS);
         } catch (Exception e) {
             FailureDelegatePage.handlePageException(LogPage.NAVIGATE_TO_FINANCIAL_AID_FAIL);
+        }
+    }
+    public static void navigateToBasic(){
+        try {
+            MainPage.navigateToFeature(By.id(RECORD_NAV_TAB_BASIC));
+            ExtentReportsSetUp.testingPass(LogPage.NAVIGATE_TO_BASIC_PASS);
+        } catch (Exception e) {
+            FailureDelegatePage.handlePageException(LogPage.NAVIGATE_TO_BASIC_FAIL);
         }
     }
     public static void navigateToApplications(){
@@ -67,7 +85,7 @@ public class PersonNavPage extends BasePage{
 
     public static void navigateToContact(){
         try {
-            MainPage.navigateToFeature(By.cssSelector(RECORD_NAV_TAB_CONTACT));
+            MainPage.navigateToFeature(By.id(RECORD_NAV_TAB_CONTACT));
             ExtentReportsSetUp.testingPass(LogPage.NAVIGATE_TO_CONTACT_PASS);
         } catch (Exception e) {
             FailureDelegatePage.handlePageException(LogPage.NAVIGATE_TO_CONTACT_FAIL);

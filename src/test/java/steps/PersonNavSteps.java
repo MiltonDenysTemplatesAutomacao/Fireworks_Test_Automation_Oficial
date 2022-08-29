@@ -20,6 +20,10 @@ public class PersonNavSteps {
     public static void navigateToStudentStatus() {
         PersonNavPage.navigateToStudentStatus();
     }
+    @Then("I navigate to ID Types")
+    public static void navigateToIdTypes() {
+        PersonNavPage.navigateToIdTypes();
+    }
     @Then("I navigate to Relationship")
     public static void navigateToRelationships() {
         PersonNavPage.navigateToRelationships();
@@ -35,6 +39,10 @@ public class PersonNavSteps {
     @Then("I navigate to Employment")
     public static void navigateToEmployment() {
         PersonNavPage.navigateToEmployment();
+    }
+    @Then("I navigate to basic")
+    public static void navigateToBasic() {
+        PersonNavPage.navigateToBasic();
     }
 
 

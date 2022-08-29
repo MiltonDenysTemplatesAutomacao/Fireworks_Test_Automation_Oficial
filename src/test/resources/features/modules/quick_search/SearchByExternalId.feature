@@ -8,8 +8,8 @@ Feature: Search by external Id
   Scenario: Quick Search - to Quick Search for a person External Id
     Given I login as "firestarterUsername", "firestarterPassword", "firestarterFullName"
     And I create a person
-      |FirstName	|LastName	|FullName	|EmailAddress	|EmailType		|EmailOptInMethod	|Role1	|Type                 |ID Number|Who Added ID     |
-      |Andre 		|Lamb		|Andre Lamb |andre@lamb.com	|Personal		|Inquiry			|Person	|College Board Search |00199    |Kaylin Considine |
+      |FirstName	|LastName	|FullName	|EmailAddress	|EmailType		|EmailOptInMethod	|Role1	|Type                 |ID Number|Who Added ID  |
+      |Andre 		|Lamb		|Andre Lamb |andre@lamb.com	|Personal		|Inquiry			|Person	|College Board Search |00199    |Fire Starter  |
     And I go to Home page
     When I quick search "FirstName"
     And I open a record

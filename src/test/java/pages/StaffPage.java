@@ -208,8 +208,8 @@ public class StaffPage extends BasePage{
     }
     public static void navigateToIdTypesStaffManager(){
         try {
-            waitUntilElementToBeSelected(By.id(PersonPage.RECORD_NAV_TAB_ID_TYPES),20);
-            BasePage.click(By.id(PersonPage.RECORD_NAV_TAB_ID_TYPES));
+            waitUntilElementToBeSelected(By.id(PersonNavPage.RECORD_NAV_TAB_ID_TYPES),20);
+            BasePage.click(By.id(PersonNavPage.RECORD_NAV_TAB_ID_TYPES));
             ExtentReportsSetUp.testingPass(LogPage.NAVIGATE_TO_ID_TYPES_PASS);
         } catch (Exception e) {
             FailureDelegatePage.handlePageException(LogPage.SAVE_CHANGES_FAIL);

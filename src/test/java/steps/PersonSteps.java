@@ -7,10 +7,7 @@ import pages.PersonPage;
 import pages.StaffPage;
 
 public class PersonSteps {
-    @Then("I navigate to basic")
-    public static void navigateToBasic() {
-        PersonPage.navigateToBasic();
-    }
+
     @Then("I delete a person")
     public static void deletePerson() {
         PersonPage.deletePerson();
@@ -86,10 +83,6 @@ public class PersonSteps {
     @When("I update {string}, {string}, {string}, {string}, and {string} to update external ID Types for person")
     public static void updateExternalIdTypes(String type,String idNumber,String idRecordedDate,String whoAddedId, String comments) {
         PersonPage.updateExternalIdTypes(type,idNumber,idRecordedDate,whoAddedId,comments);
-    }
-    @Then("I navigate to ID Types")
-    public static void navigateToIdTypes() {
-        PersonPage.navigateToIdTypes();
     }
     @Then("I add in summary field {string}")
     public static void addSummaryField(String summary) {

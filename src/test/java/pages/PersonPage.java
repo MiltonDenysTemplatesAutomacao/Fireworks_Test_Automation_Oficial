@@ -23,7 +23,6 @@ public class PersonPage extends BasePage{
     public static final String SUMMARY_PERSON_INITIAL_CATEGORY_DELETE_BUTTON = "//*[@id='summaryPanelFieldBlock_592']/div[2]/div/div/button";
     public static final String SUMMARY_PERSON_INITIAL_SOURCE_DELETE_BUTTON = "//*[@id='summaryPanelFieldBlock_593']/div[2]/div/div/button";
     public static final String SUMMARY_STUDENT_STATUS_DATE_DELETE_BUTTON = "//*[@id='summaryPanelFieldBlock_240']/div[2]/div/div/button";
-    public static final String RECORD_NAV_TAB_ID_TYPES = "recordNavTab_id_types";
     private static final String SUMMARY_FIELD_DROPDOWN = "s2id_summaryFieldPickerEntityType1";
     private static final String SUMMARY_FIELD_DROPDOWN_LIST = "#select2-results-2";
     private static final String COMPOSER_FIRST_NAME_FIELD = "person_name_0_createPersonNameFirst";
@@ -65,7 +64,6 @@ public class PersonPage extends BasePage{
     private static final String QUICK_SEARCH_EMPTY = "quickSearchManagerTable_row_0_col_0";
     private static final String HEADER_STUDENT_STATUS_DISPLAY = "#descriptionObjectStudentStatusLabel";
     private static final String HEADER_ENTRY_TERM_DISPLAY = "#descriptionObjectEntryTermLabel";
-    private static final String RECORD_NAV_TAB_BASIC = "recordNavTab_basic";
     private static final String FIRST_NAME_FIELD = "person_name_0_name_first";
     private static final String LAST_NAME_FIELD = "person_name_0_name_last";
     private static final String MIDDLE_NAME_FIELD = "person_name_0_name_middle";
@@ -154,11 +152,8 @@ public class PersonPage extends BasePage{
     public static void verifySummaryData(String summaryData){
         String passMessage = String.format(LogPage.VERIFY_SUMMARY_DATA_PASS, summaryData);
         String failMessage = String.format(LogPage.VERIFY_SUMMARY_DATA_FAIL, summaryData);
-
         try {
-            waitElementBy(By.xpath(summaryList(summaryData)),20);
-            String summaryText = getText(By.xpath(summaryList(summaryData)));
-            if(summaryText.contains(summaryData)){
+            if(MainPage.verifyGetText(By.xpath(summaryList(summaryData)),summaryData)){
                 ExtentReportsSetUp.testingPass(passMessage);
             }else{
                 FailureDelegatePage.handlePageException(failMessage);
@@ -172,12 +167,10 @@ public class PersonPage extends BasePage{
         String passMessage = String.format(LogPage.ADD_SUMMARY_FIELD_PASS, summary);
         String failMessage = String.format(LogPage.ADD_SUMMARY_FIELD_FAIL, summary);
         try {
-            waitUntilElementToBeSelected(By.id(SUMMARY_FIELD_DROPDOWN),20);
-            click(By.id(SUMMARY_FIELD_DROPDOWN));
-            waitElementBy(By.cssSelector(SUMMARY_FIELD_DROPDOWN_LIST),20);
-            BasePage.selectElementsList(By.cssSelector(SUMMARY_FIELD_DROPDOWN_LIST), "a");
-            clickOnListOfElements(summary);
-            wait(500);
+            MainPage.clickOptionList(By.id(SUMMARY_FIELD_DROPDOWN),
+                    summary,
+                    By.cssSelector(SUMMARY_FIELD_DROPDOWN_LIST),
+                    "a");
             ExtentReportsSetUp.testingPass(passMessage);
         } catch (Exception e) {
             FailureDelegatePage.handlePageException(failMessage);
@@ -187,13 +180,18 @@ public class PersonPage extends BasePage{
         String passMessage = String.format(LogPage.VERIFY_STUDENT_STATUS_LABEL_PASS, studentStatusLabel);
         String failMessage = String.format(LogPage.VERIFY_STUDENT_STATUS_LABEL_FAIL, studentStatusLabel);
         try {
-            waitUntilElementPresence(By.cssSelector(HEADER_STUDENT_STATUS_DISPLAY),20);
-            String studentStatusLabelText = getText(By.cssSelector(HEADER_STUDENT_STATUS_DISPLAY));
-            if(studentStatusLabelText.contains(studentStatusLabel)){
+//            waitUntilElementPresence(By.cssSelector(HEADER_STUDENT_STATUS_DISPLAY),20);
+//            String studentStatusLabelText = getText(By.cssSelector(HEADER_STUDENT_STATUS_DISPLAY));
+            if(MainPage.verifyGetText(By.cssSelector(summaryList(HEADER_STUDENT_STATUS_DISPLAY)),studentStatusLabel)){
                 ExtentReportsSetUp.testingPass(passMessage);
             }else{
                 FailureDelegatePage.handlePageException(failMessage);
             }
+//            if(studentStatusLabelText.contains(studentStatusLabel)){
+//                ExtentReportsSetUp.testingPass(passMessage);
+//            }else{
+//                FailureDelegatePage.handlePageException(failMessage);
+//            }
         } catch (Exception e) {
             FailureDelegatePage.handlePageException(failMessage);
         }
@@ -202,13 +200,18 @@ public class PersonPage extends BasePage{
         String passMessage = String.format(LogPage.VERIFY_ENTRY_TERM_LABEL_PASS, entryTermLabel);
         String failMessage = String.format(LogPage.VERIFY_ENTRY_TERM_LABEL_FAIL, entryTermLabel);
         try {
-            waitUntilElementPresence(By.cssSelector(HEADER_ENTRY_TERM_DISPLAY),20);
-            String entryTermLabelText = getText(By.cssSelector(HEADER_ENTRY_TERM_DISPLAY));
-            if(entryTermLabelText.contains(entryTermLabel)){
+            if(MainPage.verifyGetText(By.cssSelector(summaryList(HEADER_ENTRY_TERM_DISPLAY)),entryTermLabel)){
                 ExtentReportsSetUp.testingPass(passMessage);
             }else{
                 FailureDelegatePage.handlePageException(failMessage);
             }
+//            waitUntilElementPresence(By.cssSelector(HEADER_ENTRY_TERM_DISPLAY),20);
+//            String entryTermLabelText = getText(By.cssSelector(HEADER_ENTRY_TERM_DISPLAY));
+//            if(entryTermLabelText.contains(entryTermLabel)){
+//                ExtentReportsSetUp.testingPass(passMessage);
+//            }else{
+//                FailureDelegatePage.handlePageException(failMessage);
+//            }
         } catch (Exception e) {
             FailureDelegatePage.handlePageException(failMessage);
         }
@@ -217,10 +220,14 @@ public class PersonPage extends BasePage{
         String errorMessage = String.format(LogPage.UPDATE_HEADER_ROLE_FAIL, role);
         String passMessage = String.format(LogPage.UPDATE_HEADER_ROLE_PASS, role);
         try {
-            waitUntilElementToBeSelected(By.cssSelector(HEADER_ROLE_ELEMENT),20);
-            click(By.cssSelector(HEADER_ROLE_ELEMENT));
-            BasePage.selectElementsList(By.xpath(HEADER_ROLE_ELEMENT_LIST), "a");
-            clickOnListOfElements(role);
+            MainPage.clickOptionList(By.cssSelector(HEADER_ROLE_ELEMENT),
+                    role,
+                    By.xpath(HEADER_ROLE_ELEMENT_LIST),
+                    "a");
+//            waitUntilElementToBeSelected(By.cssSelector(HEADER_ROLE_ELEMENT),20);
+//            click(By.cssSelector(HEADER_ROLE_ELEMENT));
+//            BasePage.selectElementsList(By.xpath(HEADER_ROLE_ELEMENT_LIST), "a");
+//            clickOnListOfElements(role);
             ExtentReportsSetUp.testingPass(passMessage);
         } catch (Exception e) {
             FailureDelegatePage.handlePageException(errorMessage);
@@ -228,35 +235,45 @@ public class PersonPage extends BasePage{
     }
 
     public static void validateQuickSearchEmpty(String message){
-        String errorMessage = String.format(LogPage.VALIDATE_QUICK_SEARCH_EMPTY_FAIL, message);
+        String failMessage = String.format(LogPage.VALIDATE_QUICK_SEARCH_EMPTY_FAIL, message);
         String passMessage = String.format(LogPage.VALIDATE_QUICK_SEARCH_EMPTY_PASS, message);
         try {
-            waitElementBy(By.id(QUICK_SEARCH_EMPTY),20);
-            String messageQuickSearchEmpty = getText(By.id(QUICK_SEARCH_EMPTY));
-            wait(3000);
-            if(messageQuickSearchEmpty.equals(message)){
+            if(MainPage.verifyGetText(By.id(QUICK_SEARCH_EMPTY),message)){
                 ExtentReportsSetUp.testingPass(passMessage);
             }else{
-                FailureDelegatePage.handlePageException(errorMessage);
+                FailureDelegatePage.handlePageException(failMessage);
             }
+//            waitElementBy(By.id(QUICK_SEARCH_EMPTY),20);
+//            String messageQuickSearchEmpty = getText(By.id(QUICK_SEARCH_EMPTY));
+//            wait(3000);
+//            if(messageQuickSearchEmpty.equals(message)){
+//                ExtentReportsSetUp.testingPass(passMessage);
+//            }else{
+//                FailureDelegatePage.handlePageException(errorMessage);
+//            }
         } catch (Exception e) {
-            FailureDelegatePage.handlePageException(errorMessage);
+            FailureDelegatePage.handlePageException(failMessage);
         }
     }
 
     public static void validateDatatableMessage(String message){
-        String errorMessage = String.format(LogPage.VALIDATE_DATATABLE_MESSAGE_FAIL, message);
+        String failMessage = String.format(LogPage.VALIDATE_DATATABLE_MESSAGE_FAIL, message);
         String passMessage = String.format(LogPage.VALIDATE_DATATABLE_MESSAGE_PASS, message);
         try {
-            wait(2000);
-            String messageDatatableEmpty = getText(By.id(DATATABLE_EMPTY));
-            if(messageDatatableEmpty.equals(message)){
+            if(MainPage.verifyGetText(By.id(DATATABLE_EMPTY),message)){
                 ExtentReportsSetUp.testingPass(passMessage);
             }else{
-                FailureDelegatePage.handlePageException(errorMessage);
+                FailureDelegatePage.handlePageException(failMessage);
             }
+//            wait(2000);
+//            String messageDatatableEmpty = getText(By.id(DATATABLE_EMPTY));
+//            if(messageDatatableEmpty.equals(message)){
+//                ExtentReportsSetUp.testingPass(passMessage);
+//            }else{
+//                FailureDelegatePage.handlePageException(errorMessage);
+//            }
         } catch (Exception e) {
-            FailureDelegatePage.handlePageException(errorMessage);
+            FailureDelegatePage.handlePageException(failMessage);
         }
     }
 
@@ -273,143 +290,117 @@ public class PersonPage extends BasePage{
     }
 
     public static void updatePeopleComposer(DataTable data){
-        int updatePeopleComposerDelay = 0;
         try {
             mass = data.asMaps(String.class, String.class);
             if (mass.get(0).get("FirstName") != null) {
-                waitElementBy(By.id(COMPOSER_FIRST_NAME_FIELD),updatePeopleComposerDelay);
-                BasePage.write(By.id(COMPOSER_FIRST_NAME_FIELD), mass.get(0).get("FirstName"));
+                MainPage.fillField(By.id(COMPOSER_FIRST_NAME_FIELD), mass.get(0).get("FirstName"));
             }
             if (mass.get(0).get("LastName") != null) {
-                waitElementBy(By.id(COMPOSER_LAST_NAME_FIELD),updatePeopleComposerDelay);
-                BasePage.write(By.id(COMPOSER_LAST_NAME_FIELD), mass.get(0).get("LastName"));
+                MainPage.fillField(By.id(COMPOSER_LAST_NAME_FIELD), mass.get(0).get("LastName"));
             }
             if (mass.get(0).get("EmailAddress") != null) {
-                waitElementBy(By.id(COMPOSER_EMAIL_ADDRESS_FIELD),updatePeopleComposerDelay);
-                BasePage.write(By.id(COMPOSER_EMAIL_ADDRESS_FIELD), mass.get(0).get("EmailAddress"));
+                MainPage.fillField(By.id(COMPOSER_EMAIL_ADDRESS_FIELD), mass.get(0).get("EmailAddress"));
             }
             if (mass.get(0).get("EmailType") != null) {
-                waitElementBy(By.id(COMPOSER_EMAIL_TYPE_DROPDOWN),updatePeopleComposerDelay);
-                BasePage.click(By.id(COMPOSER_EMAIL_TYPE_DROPDOWN));
-                BasePage.selectElementsList(By.id(COMPOSER_EMAIL_TYPE_DROPDOWN_LIST), "a");
-                wait(1000);
-                clickOnListOfElements(mass.get(0).get("EmailType"));
+                MainPage.clickOptionList(By.id(COMPOSER_EMAIL_TYPE_DROPDOWN),
+                        mass.get(0).get("EmailType"),
+                        By.id(COMPOSER_EMAIL_TYPE_DROPDOWN_LIST),
+                        "a");
             }
-            scrollToElement(By.id(COMPOSER_EMAIL_ADDRESS_FIELD));
             if (mass.get(0).get("EmailOptInMethod") != null) {
-                waitElementBy(By.id(COMPOSER_EMAIL_OPT_IN_METHOD_DROPDOWN),updatePeopleComposerDelay);
-                BasePage.click(By.id(COMPOSER_EMAIL_OPT_IN_METHOD_DROPDOWN));
-                BasePage.selectElementsList(By.id(COMPOSER_EMAIL_OPT_IN_METHOD_DROPDOWN_LIST), "a");
-                wait(2000);
-                clickOnListOfElements(mass.get(0).get("EmailOptInMethod"));
+                MainPage.clickOptionList(By.id(COMPOSER_EMAIL_OPT_IN_METHOD_DROPDOWN),
+                        mass.get(0).get("EmailOptInMethod"),
+                        By.id(COMPOSER_EMAIL_OPT_IN_METHOD_DROPDOWN_LIST),
+                        "a");
             }
             if (mass.get(0).get("Phone") != null) {
-                waitElementBy(By.id(COMPOSER_PHONE_NUMBER_FIELD),updatePeopleComposerDelay);
-                BasePage.write(By.id(COMPOSER_PHONE_NUMBER_FIELD), mass.get(0).get("Phone"));
+                MainPage.fillField(By.id(COMPOSER_PHONE_NUMBER_FIELD), mass.get(0).get("Phone"));
             }
             if (mass.get(0).get("PhoneType") != null) {
-                waitElementBy(By.id(COMPOSER_PHONE_TYPE_DROPDOWN),updatePeopleComposerDelay);
-                BasePage.click(By.id(COMPOSER_PHONE_TYPE_DROPDOWN));
-                BasePage.selectElementsList(By.id(COMPOSER_PHONE_TYPE_DROPDOWN_LIST), "a");
-                wait(2000);
-                clickOnListOfElements(mass.get(0).get("PhoneType"));
+                MainPage.clickOptionList(By.id(COMPOSER_PHONE_TYPE_DROPDOWN),
+                        mass.get(0).get("PhoneType"),
+                        By.id(COMPOSER_PHONE_TYPE_DROPDOWN_LIST),
+                        "a");
             }
             scrollToElement(By.id(COMPOSER_PHONE_TYPE_DROPDOWN));
             if (mass.get(0).get("Address1") != null) {
-                waitElementBy(By.id(COMPOSER_ADDRESS1_FIELD),updatePeopleComposerDelay);
-                BasePage.write(By.id(COMPOSER_ADDRESS1_FIELD), mass.get(0).get("Address1"));
+                MainPage.fillField(By.id(COMPOSER_ADDRESS1_FIELD), mass.get(0).get("Address1"));
             }
             if (mass.get(0).get("Address2") != null) {
-                waitElementBy(By.id(COMPOSER_ADDRESS2_FIELD),updatePeopleComposerDelay);
-                BasePage.write(By.id(COMPOSER_ADDRESS2_FIELD), mass.get(0).get("Address2"));
+                MainPage.fillField(By.id(COMPOSER_ADDRESS2_FIELD), mass.get(0).get("Address2"));
             }
             if (mass.get(0).get("Address3") != null) {
-                waitElementBy(By.id(COMPOSER_ADDRESS3_FIELD),updatePeopleComposerDelay);
-                BasePage.write(By.id(COMPOSER_ADDRESS3_FIELD), mass.get(0).get("Address3"));
+                MainPage.fillField(By.id(COMPOSER_ADDRESS3_FIELD), mass.get(0).get("Address3"));
             }
             if (mass.get(0).get("Address4") != null) {
-                waitElementBy(By.id(COMPOSER_ADDRESS4_FIELD),updatePeopleComposerDelay);
-                BasePage.write(By.id(COMPOSER_ADDRESS4_FIELD), mass.get(0).get("Address4"));
+                MainPage.fillField(By.id(COMPOSER_ADDRESS4_FIELD), mass.get(0).get("Address4"));
             }
             if (mass.get(0).get("City") != null) {
-                waitElementBy(By.id(COMPOSER_ADDRESS_CITY_FIELD),updatePeopleComposerDelay);
-                BasePage.write(By.id(COMPOSER_ADDRESS_CITY_FIELD), mass.get(0).get("City"));
+                MainPage.fillField(By.id(COMPOSER_ADDRESS_CITY_FIELD), mass.get(0).get("City"));
             }
             if (mass.get(0).get("State") != null) {
-                waitElementBy(By.id(COMPOSER_ADDRESS_STATE_DROPDOWN),updatePeopleComposerDelay);
-                BasePage.click(By.id(COMPOSER_ADDRESS_STATE_DROPDOWN));
-                BasePage.selectElementsList(By.id(COMPOSER_ADDRESS_STATE_DROPDOWN_LIST), "a");
-                wait(2000);
-                clickOnListOfElements(mass.get(0).get("State"));
+                MainPage.clickOptionList(By.id(COMPOSER_ADDRESS_STATE_DROPDOWN),
+                        mass.get(0).get("State"),
+                        By.id(COMPOSER_ADDRESS_STATE_DROPDOWN_LIST),
+                        "a");
             }
             if (mass.get(0).get("PostalCode") != null) {
-                waitElementBy(By.id(COMPOSER_ADDRESS_POSTAL_CODE_FIELD),updatePeopleComposerDelay);
-                BasePage.write(By.id(COMPOSER_ADDRESS_POSTAL_CODE_FIELD), mass.get(0).get("PostalCode"));
+                MainPage.fillField(By.id(COMPOSER_ADDRESS_POSTAL_CODE_FIELD), mass.get(0).get("PostalCode"));
             }
             if (mass.get(0).get("Country") != null) {
-                waitElementBy(By.id(COMPOSER_ADDRESS_COUNTRY_DROPDOWN),updatePeopleComposerDelay);
-                BasePage.click(By.id(COMPOSER_ADDRESS_COUNTRY_DROPDOWN));
-                BasePage.selectElementsList(By.id(COMPOSER_ADDRESS_COUNTRY_DROPDOWN_LIST), "a");
-                wait(2000);
-                clickOnListOfElements(mass.get(0).get("Country"));
+                MainPage.clickOptionList(By.id(COMPOSER_ADDRESS_COUNTRY_DROPDOWN),
+                        mass.get(0).get("Country"),
+                        By.id(COMPOSER_ADDRESS_COUNTRY_DROPDOWN_LIST),
+                        "a");
             }
             if (mass.get(0).get("Region") != null) {
-                waitElementBy(By.id(COMPOSER_ADDRESS_REGION_FIELD),updatePeopleComposerDelay);
-                BasePage.write(By.id(COMPOSER_ADDRESS_REGION_FIELD), mass.get(0).get("Region"));
+                MainPage.fillField(By.id(COMPOSER_ADDRESS_REGION_FIELD), mass.get(0).get("Region"));
             }
             scrollToElement(By.id(COMPOSER_ADDRESS_CITY_FIELD));
             if (mass.get(0).get("Role1") != null) {
-                waitElementBy(By.id(COMPOSER_ROLE_DROPDOWN),20);
-                BasePage.click(By.id(COMPOSER_ROLE_DROPDOWN));
-                BasePage.selectElementsList(By.id(COMPOSER_ROLE_DROPDOWN_LIST), "a");
-                wait(2000);
-                clickOnListOfElements(mass.get(0).get("Role1"));
+                MainPage.clickOptionList(By.id(COMPOSER_ROLE_DROPDOWN),
+                        mass.get(0).get("Role1"),
+                        By.id(COMPOSER_ROLE_DROPDOWN_LIST),
+                        "a");
             }
             if (mass.get(0).get("Role2") != null) {
-                waitElementBy(By.id(COMPOSER_ROLE_DROPDOWN),20);
-                BasePage.click(By.id(COMPOSER_ROLE_DROPDOWN));
-                BasePage.selectElementsList(By.id(COMPOSER_ROLE_DROPDOWN_LIST), "a");
-                wait(2000);
-                clickOnListOfElements(mass.get(0).get("Role2"));
+                MainPage.clickOptionList(By.id(COMPOSER_ROLE_DROPDOWN),
+                        mass.get(0).get("Role2"),
+                        By.id(COMPOSER_ROLE_DROPDOWN_LIST),
+                        "a");
             }
             if (mass.get(0).get("Role3") != null) {
-                waitElementBy(By.id(COMPOSER_ROLE_DROPDOWN),20);
-                BasePage.click(By.id(COMPOSER_ROLE_DROPDOWN));
-                BasePage.selectElementsList(By.id(COMPOSER_ROLE_DROPDOWN_LIST), "a");
-                wait(2000);
-                clickOnListOfElements(mass.get(0).get("Role3"));
+                MainPage.clickOptionList(By.id(COMPOSER_ROLE_DROPDOWN),
+                        mass.get(0).get("Role3"),
+                        By.id(COMPOSER_ROLE_DROPDOWN_LIST),
+                        "a");
             }
             if (mass.get(0).get("StudentType") != null) {
-                waitElementBy(By.id(COMPOSER_STUDENT_TYPE_DROPDOWN),20);
-                BasePage.click(By.id(COMPOSER_STUDENT_TYPE_DROPDOWN));
-                BasePage.selectElementsList(By.id(COMPOSER_STUDENT_TYPE_DROPDOWN_LIST), "a");
-                wait(2000);
-                clickOnListOfElements(mass.get(0).get("StudentType"));
+                MainPage.clickOptionList(By.id(COMPOSER_STUDENT_TYPE_DROPDOWN),
+                        mass.get(0).get("StudentType"),
+                        By.id(COMPOSER_STUDENT_TYPE_DROPDOWN_LIST),
+                        "a");
             }
             if (mass.get(0).get("StudentStatusCategory") != null) {
-                waitElementBy(By.id(COMPOSER_STUDENT_STATUS_CATEGORY_DROPDOWN),20);
-                BasePage.click(By.id(COMPOSER_STUDENT_STATUS_CATEGORY_DROPDOWN));
-                BasePage.selectElementsList(By.id(COMPOSER_STUDENT_STATUS_CATEGORY_DROPDOWN_LIST), "a");
-                wait(2000);
-                clickOnListOfElements(mass.get(0).get("StudentStatusCategory"));
+                MainPage.clickOptionList(By.id(COMPOSER_STUDENT_STATUS_CATEGORY_DROPDOWN),
+                        mass.get(0).get("StudentStatusCategory"),
+                        By.id(COMPOSER_STUDENT_STATUS_CATEGORY_DROPDOWN_LIST),
+                        "a");
             }
             if (mass.get(0).get("StudentStatus") != null) {
-                waitElementBy(By.id(COMPOSER_STUDENT_STATUS_DROPDOWN),20);
-                BasePage.click(By.id(COMPOSER_STUDENT_STATUS_DROPDOWN));
-                BasePage.selectElementsList(By.id(COMPOSER_STUDENT_STATUS_DROPDOWN_LIST), "a");
-                wait(2000);
-                clickOnListOfElements(mass.get(0).get("StudentStatus"));
+                MainPage.clickOptionList(By.id(COMPOSER_STUDENT_STATUS_DROPDOWN),
+                        mass.get(0).get("StudentStatus"),
+                        By.id(COMPOSER_STUDENT_STATUS_DROPDOWN_LIST),
+                        "a");
             }
             if (mass.get(0).get("StudentStatusDate") != null) {
-                waitElementBy(By.id(COMPOSER_STUDENT_STATUS_DATE_FIELD),20);
-                BasePage.write(By.id(COMPOSER_STUDENT_STATUS_DATE_FIELD), mass.get(0).get("StudentStatusDate"));
+                MainPage.fillDateField(By.id(COMPOSER_STUDENT_STATUS_DATE_FIELD), mass.get(0).get("StudentStatusDate"));
             }
             if (mass.get(0).get("EntryTerm") != null) {
-                waitElementBy(By.id(COMPOSER_STUDENT_STATUS_ENTRY_TERM_DROPDOWN),20);
-                BasePage.click(By.id(COMPOSER_STUDENT_STATUS_ENTRY_TERM_DROPDOWN));
-                BasePage.selectElementsList(By.id(COMPOSER_STUDENT_STATUS_ENTRY_TERM_DROPDOWN_LIST), "a");
-                wait(2000);
-                clickOnListOfElements(mass.get(0).get("EntryTerm"));
+                MainPage.clickOptionList(By.id(COMPOSER_STUDENT_STATUS_ENTRY_TERM_DROPDOWN),
+                        mass.get(0).get("EntryTerm"),
+                        By.id(COMPOSER_STUDENT_STATUS_ENTRY_TERM_DROPDOWN_LIST),
+                        "a");
             }
             ExtentReportsSetUp.testingPass(LogPage.UPDATE_PEOPLE_COMPOSER_PASS);
         } catch (Exception e) {
@@ -530,11 +521,9 @@ public class PersonPage extends BasePage{
         String passMessage = String.format(LogPage.VERIFY_HEADER_ASSIGNED_STAFF_PASS, assignedStaff);
         String failMessage = String.format(LogPage.VERIFY_HEADER_ASSIGNED_STAFF_FAIL, assignedStaff);
         try {
-            waitUntilElementPresence(By.cssSelector(HEADER_ASSIGNED_STAFF_ELEMENT),20);
-            String assignedStaffText = getText(By.cssSelector(HEADER_ASSIGNED_STAFF_ELEMENT));
-            if(assignedStaffText.contains(assignedStaff)){
+            if (MainPage.verifyGetText(By.cssSelector(HEADER_ASSIGNED_STAFF_ELEMENT),assignedStaff)) {
                 ExtentReportsSetUp.testingPass(passMessage);
-            }else{
+            } else {
                 FailureDelegatePage.handlePageException(failMessage);
             }
         } catch (Exception e) {
@@ -544,11 +533,9 @@ public class PersonPage extends BasePage{
 
     public static void verifyStudentType(String studentType){
         try {
-            waitUntilElementPresence(By.cssSelector(HEADER_STUDENT_TYPE_ELEMENT),20);
-            String studentTypeText = getText(By.cssSelector(HEADER_STUDENT_TYPE_ELEMENT));
-            if(studentTypeText.contains(studentType)){
+            if (MainPage.verifyGetText(By.cssSelector(HEADER_STUDENT_TYPE_ELEMENT),studentType)) {
                 ExtentReportsSetUp.testingPass(LogPage.VERIFY_STUDENT_TYPE_PASS);
-            }else{
+            } else {
                 FailureDelegatePage.handlePageException(LogPage.VERIFY_STUDENT_TYPE_FAIL);
             }
         } catch (Exception e) {
@@ -589,27 +576,6 @@ public class PersonPage extends BasePage{
         }
     }
 
-    public static void navigateToBasic(){
-        try {
-            scrollToTheTop();
-            BasePage.click(By.id(RECORD_NAV_TAB_BASIC));
-            ExtentReportsSetUp.testingPass(LogPage.NAVIGATE_TO_BASIC_PASS);
-        } catch (Exception e) {
-            FailureDelegatePage.handlePageException(LogPage.NAVIGATE_TO_BASIC_FAIL);
-        }
-    }
-
-    public static void navigateToIdTypes(){
-        wait(1000);
-        try {
-            scrollToElement(By.id(SUMMARY_LABEL));
-            waitUntilElementToBeSelected(By.id(RECORD_NAV_TAB_ID_TYPES),20);
-            BasePage.click(By.id(RECORD_NAV_TAB_ID_TYPES));
-            ExtentReportsSetUp.testingPass(LogPage.NAVIGATE_TO_ID_TYPES_PASS);
-        } catch (Exception e) {
-            FailureDelegatePage.handlePageException(LogPage.NAVIGATE_TO_ID_TYPES_FAIL);
-        }
-    }
     /*
      * to update names values values in contact tab on records
      */
@@ -617,26 +583,28 @@ public class PersonPage extends BasePage{
         try {
             waitElementBy(By.id(FIRST_NAME_FIELD),20);
             if (mass.get(0).get(firstName) != null) {
-                BasePage.write(By.id(FIRST_NAME_FIELD), mass.get(0).get(firstName));
+                MainPage.fillField(By.id(FIRST_NAME_FIELD), mass.get(0).get(firstName));
             }
             if (mass.get(0).get(lastName) != null) {
-                BasePage.write(By.id(LAST_NAME_FIELD), mass.get(0).get(lastName));
+                MainPage.fillField(By.id(LAST_NAME_FIELD), mass.get(0).get(lastName));
             }
             if (mass.get(0).get(middleName) != null) {
-                BasePage.write(By.id(MIDDLE_NAME_FIELD), mass.get(0).get(middleName));
+                MainPage.fillField(By.id(MIDDLE_NAME_FIELD), mass.get(0).get(middleName));
             }
             if (mass.get(0).get(preferredName) != null) {
-                BasePage.write(By.id(PREFERRED_NAME_FIELD), mass.get(0).get(preferredName));
+                MainPage.fillField(By.id(PREFERRED_NAME_FIELD), mass.get(0).get(preferredName));
             }
             if (mass.get(0).get(suffix) != null) {
-                BasePage.click(By.cssSelector(SUFFIX_DROPDOWN));
-                BasePage.selectElementsList(By.cssSelector(SUFFIX_DROPDOWN_LIST), "a");
-                clickOnListOfElements(mass.get(0).get(suffix));
+                MainPage.clickOptionList(By.cssSelector(SUFFIX_DROPDOWN),
+                        mass.get(0).get(suffix),
+                        By.cssSelector(SUFFIX_DROPDOWN_LIST),
+                        "a");
             }
             if (mass.get(0).get(salutation) != null) {
-                BasePage.click(By.cssSelector(SALUTATION_DROPDOWN));
-                BasePage.selectElementsList(By.cssSelector(SALUTATION_DROPDOWN_LIST), "a");
-                clickOnListOfElements(mass.get(0).get(salutation));
+                MainPage.clickOptionList(By.cssSelector(SALUTATION_DROPDOWN),
+                        mass.get(0).get(salutation),
+                        By.cssSelector(SALUTATION_DROPDOWN_LIST),
+                        "a");
             }
             saveChangesBtnPersonContact();
             ExtentReportsSetUp.testingPass(LogPage.UPDATE_NAME_PASS);
@@ -649,26 +617,26 @@ public class PersonPage extends BasePage{
      */
     public static void updateExternalIdTypes(String type,String idNumber,String idRecordedDate,String whoAddedId, String comments){
         try {
-            waitElementBy(By.cssSelector(TYPE_DROPDOWN),20);
-            BasePage.scrollToElement(By.xpath(PLUS_BUTTON_EXTERNAL_ID));
             if (mass.get(0).get(type) != null) {
-                BasePage.click(By.cssSelector(TYPE_DROPDOWN));
-                BasePage.selectElementsList(By.cssSelector(PersonPage.SELECT_DROP), "a");
-                clickOnListOfElements(mass.get(0).get(type));
+                MainPage.clickOptionList(By.cssSelector(TYPE_DROPDOWN),
+                        mass.get(0).get(type),
+                        By.cssSelector(PersonPage.SELECT_DROP),
+                        "a");
             }
             if (mass.get(0).get(idNumber) != null) {
-                BasePage.write(By.cssSelector(ID_NUMBER_FIELD), mass.get(0).get(idNumber));
+                MainPage.fillField(By.cssSelector(ID_NUMBER_FIELD), mass.get(0).get(idNumber));
             }
             if (mass.get(0).get(idRecordedDate) != null) {
-                BasePage.write(By.cssSelector(ID_RECORDED_DATE_FIELD), mass.get(0).get(idRecordedDate));
+                MainPage.fillDateField(By.cssSelector(ID_RECORDED_DATE_FIELD), mass.get(0).get(idRecordedDate));
             }
             if (mass.get(0).get(whoAddedId) != null) {
-                BasePage.click(By.cssSelector(WHO_ADDED_ID_DROPDOWN));
-                BasePage.selectElementsList(By.cssSelector(PersonPage.SELECT_DROP), "a");
-                clickOnListOfElements(mass.get(0).get(whoAddedId));
+                MainPage.clickOptionList(By.cssSelector(WHO_ADDED_ID_DROPDOWN),
+                        mass.get(0).get(whoAddedId),
+                        By.cssSelector(PersonPage.SELECT_DROP),
+                        "a");
             }
             if (mass.get(0).get(comments) != null) {
-                BasePage.write(By.cssSelector(COMMENTS_FIELD), mass.get(0).get(comments));
+                MainPage.fillField(By.cssSelector(COMMENTS_FIELD), mass.get(0).get(comments));
             }
             saveChangesBtnPersonIdTypes();
             ExtentReportsSetUp.testingPass(LogPage.UPDATE_EXTERNAL_ID_TYPES_PASS);
