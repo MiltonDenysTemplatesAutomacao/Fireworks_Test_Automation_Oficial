@@ -218,7 +218,6 @@ public class LoginPage {
             BasePage.click(By.cssSelector(LOGIN_BUTTON));
             if(BasePage.alertMessageContains(By.id("alertMessage"),returnFullNameLoginParameter(fullName))) {
                 ExtentReportsSetUp.testingPass(passMessage);
-
             }else {
                 FailureDelegatePage.handlePageException(errorMessage);
             }

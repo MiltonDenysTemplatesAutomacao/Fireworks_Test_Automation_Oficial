@@ -80,26 +80,8 @@ public class OrgPage extends BasePage{
 
     public static void verifyBasicContextValues(String orgTimeZone,String assignedCounselor){
         try {
-            int verifyBasicIdentificationValuesDelay = 20;
-            boolean orgTimeZoneValidation = false;
-            boolean assignedCounselorValidation = false;
-            scrollToElement(By.cssSelector(BASIC_ORG_WEBSITE_FIELD));
-            String orgTimeZoneText = getText(By.cssSelector(BASIC_ORG_TIME_ZONE_DROPDOWN));
-            String assignedCounselorText = getText(By.cssSelector(BASIC_ORG_ASSIGNED_COUNSELOR_DROPDOWN));
-
-            if(orgTimeZone!=""){
-                waitElementBy(By.cssSelector(BASIC_ORG_ROLE_DROPDOWN),verifyBasicIdentificationValuesDelay);
-                orgTimeZoneValidation = orgTimeZoneText.equals(orgTimeZone);
-            }else{
-                orgTimeZoneValidation=true;
-            }
-            if(assignedCounselor!=""){
-                waitElementBy(By.cssSelector(BASIC_ORG_ASSIGNED_COUNSELOR_DROPDOWN),verifyBasicIdentificationValuesDelay);
-                assignedCounselorValidation = assignedCounselorText.equals(assignedCounselor);
-            }else{
-                assignedCounselorValidation=true;
-            }
-            if(orgTimeZoneValidation && assignedCounselorValidation){
+            if(MainPage.verifyGetText(By.cssSelector(BASIC_ORG_TIME_ZONE_DROPDOWN),orgTimeZone)
+                && MainPage.verifyGetText(By.cssSelector(BASIC_ORG_ASSIGNED_COUNSELOR_DROPDOWN),assignedCounselor)){
                 ExtentReportsSetUp.testingPass(LogPage.VERIFY_BASIC_CONTEXT_VALUES_PASS);
             }else{
                 FailureDelegatePage.handlePageException(LogPage.VERIFY_BASIC_CONTEXT_VALUES_PASS);
@@ -110,42 +92,10 @@ public class OrgPage extends BasePage{
     }
     public static void verifyBasicIdentificationValues(String role,String orgType,String website,String primaryContact){
         try {
-            int verifyBasicIdentificationValuesDelay = 20;
-            boolean roleValidation = false;
-            boolean orgTypeValidation = false;
-            boolean websiteValidation = false;
-            boolean primaryContactValidation = false;
-
-            String roleText = getText(By.cssSelector(BASIC_ORG_ROLE_DROPDOWN));
-            String orgTypeText = getText(By.cssSelector(BASIC_ORG_TYPE_DROPDOWN));
-            String websiteText = getAtribute(By.cssSelector(BASIC_ORG_WEBSITE_FIELD),"value");
-            String primaryContactText = getText(By.cssSelector(BASIC_PRIMARY_CONTACT_PICK_BUTTON));
-
-            if(role!=""){
-                waitElementBy(By.cssSelector(BASIC_ORG_ROLE_DROPDOWN),verifyBasicIdentificationValuesDelay);
-                roleValidation = roleText.equals(role);
-            }else{
-                roleValidation=true;
-            }
-            if(orgType!=""){
-                waitElementBy(By.cssSelector(BASIC_ORG_TYPE_DROPDOWN),verifyBasicIdentificationValuesDelay);
-                orgTypeValidation = orgTypeText.equals(orgType);
-            }else{
-                orgTypeValidation=true;
-            }
-            if(website!=""){
-                waitElementBy(By.cssSelector(BASIC_ORG_WEBSITE_FIELD),verifyBasicIdentificationValuesDelay);
-                websiteValidation = websiteText.equals(website);
-            }else{
-                websiteValidation=true;
-            }
-            if(primaryContact!=""){
-                waitElementBy(By.cssSelector(BASIC_PRIMARY_CONTACT_PICK_BUTTON),verifyBasicIdentificationValuesDelay);
-                primaryContactValidation = primaryContactText.equals(primaryContact);
-            }else{
-                primaryContactValidation=true;
-            }
-            if(roleValidation && orgTypeValidation && websiteValidation && primaryContactValidation){
+            if(MainPage.verifyGetText(By.cssSelector(BASIC_ORG_ROLE_DROPDOWN),role)
+                && MainPage.verifyGetText(By.cssSelector(BASIC_ORG_TYPE_DROPDOWN),orgType)
+                && MainPage.verifyGetAttribute(By.cssSelector(BASIC_ORG_WEBSITE_FIELD),website)
+                && MainPage.verifyGetText(By.cssSelector(BASIC_PRIMARY_CONTACT_PICK_BUTTON),primaryContact)){
                 ExtentReportsSetUp.testingPass(LogPage.VERIFY_BASIC_IDENTIFICATION_VALUES_PASS);
             }else{
                 FailureDelegatePage.handlePageException(LogPage.VERIFY_BASIC_IDENTIFICATION_VALUES_FAIL);
@@ -167,19 +117,16 @@ public class OrgPage extends BasePage{
     public static void updateBasicContextValues(String orgTimeZone,String assignedCounselor){
         try {
             if(orgTimeZone!=""){
-                scrollToElement(By.cssSelector(BASIC_ORG_WEBSITE_FIELD));
-                waitElementBy(By.cssSelector(BASIC_ORG_TIME_ZONE_DROPDOWN),20);
-                BasePage.click(By.cssSelector(BASIC_ORG_TIME_ZONE_DROPDOWN));
-                BasePage.selectElementsList(By.cssSelector(PersonPage.SELECT_DROP), "a");
-                wait(1000);
-                clickOnListOfElements(orgTimeZone);
+                MainPage.clickOptionList(By.cssSelector(BASIC_ORG_TIME_ZONE_DROPDOWN),
+                        orgTimeZone,
+                        By.cssSelector(PersonPage.SELECT_DROP),
+                        "a");
             }
             if(assignedCounselor!=""){
-                waitElementBy(By.cssSelector(BASIC_ORG_ASSIGNED_COUNSELOR_DROPDOWN),20);
-                BasePage.click(By.cssSelector(BASIC_ORG_ASSIGNED_COUNSELOR_DROPDOWN));
-                BasePage.selectElementsList(By.cssSelector(PersonPage.SELECT_DROP), "a");
-                wait(1000);
-                clickOnListOfElements(assignedCounselor);
+                MainPage.clickOptionList(By.cssSelector(BASIC_ORG_ASSIGNED_COUNSELOR_DROPDOWN),
+                        assignedCounselor,
+                        By.cssSelector(PersonPage.SELECT_DROP),
+                        "a");
             }
             ExtentReportsSetUp.testingPass(LogPage.UPDATE_BASIC_CONTEXT_VALUES_PASS);
         } catch (Exception e) {
@@ -190,22 +137,19 @@ public class OrgPage extends BasePage{
         int updateBasicIdentificationValuesDelay=20;
         try {
             if(role!=""){
-                waitElementBy(By.cssSelector(BASIC_ORG_ROLE_DROPDOWN),updateBasicIdentificationValuesDelay);
-                BasePage.click(By.cssSelector(BASIC_ORG_ROLE_DROPDOWN));
-                BasePage.selectElementsList(By.cssSelector(PersonPage.SELECT_DROP), "a");
-                wait(1000);
-                clickOnListOfElements(role);
+                MainPage.clickOptionList(By.cssSelector(BASIC_ORG_ROLE_DROPDOWN),
+                        role,
+                        By.cssSelector(PersonPage.SELECT_DROP),
+                        "a");
             }
             if(orgType!=""){
-                waitElementBy(By.cssSelector(BASIC_ORG_TYPE_DROPDOWN),updateBasicIdentificationValuesDelay);
-                BasePage.click(By.cssSelector(BASIC_ORG_TYPE_DROPDOWN));
-                BasePage.selectElementsList(By.cssSelector(PersonPage.SELECT_DROP), "a");
-                wait(1000);
-                clickOnListOfElements(orgType);
+                MainPage.clickOptionList(By.cssSelector(BASIC_ORG_TYPE_DROPDOWN),
+                        orgType,
+                        By.cssSelector(PersonPage.SELECT_DROP),
+                        "a");
             }
             if(website!=""){
-                waitElementBy(By.cssSelector(BASIC_ORG_WEBSITE_FIELD),updateBasicIdentificationValuesDelay);
-                write(By.cssSelector(BASIC_ORG_WEBSITE_FIELD),website);
+                MainPage.fillField(By.cssSelector(BASIC_ORG_WEBSITE_FIELD), website);
             }
             if(primaryContact!=""){
                 waitElementBy(By.cssSelector(BASIC_PRIMARY_CONTACT_PICK_BUTTON),updateBasicIdentificationValuesDelay);
@@ -246,103 +190,55 @@ public class OrgPage extends BasePage{
     }
 
 
-    public static boolean verifyActionAttributes(int indexNumber)throws Exception{
-        boolean staffValidation = false;
-        boolean actionDateTimeValidation = false;
-        boolean commentsValidation = false;
-        waitElementBy(By.cssSelector(CREATE_ACTION_PANEL_TITLE),20);
-
-        if(mass.get(indexNumber).get("Staff") !=null){
-            String staffText = getText(By.cssSelector(ACTION_STAFF_DROPDOWN));
-            staffValidation = staffText.contains(mass.get(indexNumber).get("Staff"));
-        }else{
-            staffValidation=true;
+    public static boolean verifyActionAttributes(int indexNumber)throws Exception {
+        boolean validation = false;
+        if (MainPage.verifyGetText(By.cssSelector(ACTION_STAFF_DROPDOWN), mass.get(indexNumber).get("Staff"))
+                && MainPage.verifyGetAttribute(By.cssSelector(ACTION_DATE_FIELD), mass.get(indexNumber).get("ActionDateField"))
+                && MainPage.verifyGetAttribute(By.id(ACTION_COMMENTS_FIELD), mass.get(indexNumber).get("Comments"))) {
+                validation = true;
+        } else {
+            validation = false;
         }
-        if(mass.get(indexNumber).get("ActionDateField") !=null){
-            String actionDateTimeText = getAtribute(By.cssSelector(ACTION_DATE_FIELD),"value");
-            actionDateTimeValidation = actionDateTimeText.contains(mass.get(indexNumber).get("ActionDateField"));
-        }else{
-            actionDateTimeValidation=true;
-        }
-        if(mass.get(indexNumber).get("Comments") !=null){
-            String commentsText = getAtribute(By.id(ACTION_COMMENTS_FIELD),"value");
-            commentsValidation = commentsText.contains(mass.get(indexNumber).get("Comments"));
-        }else{
-            commentsValidation=true;
-        }
-        return staffValidation && actionDateTimeValidation && commentsValidation;
+        return validation;
     }
 
     public static boolean verifyActionDetails(int indexNumber)throws Exception{
-
-        boolean categoryValidation = false;
-        boolean actionValidation = false;
-        boolean actionTypeValidation = false;
-        boolean actionVisibilityValidation = false;
-        waitElementBy(By.cssSelector(CREATE_ACTION_PANEL_TITLE),20);
-
-        if(mass.get(indexNumber).get("Category") !=null){
-            String categoryText = getText(By.cssSelector(ACTION_CATEGORY_DROPDOWN));
-            categoryValidation = categoryText.contains(mass.get(indexNumber).get("Category"));
-        }else{
-            categoryValidation=true;
+        boolean validation = false;
+        if (MainPage.verifyGetText(By.cssSelector(ACTION_CATEGORY_DROPDOWN), mass.get(indexNumber).get("Category"))
+                && MainPage.verifyGetText(By.cssSelector(ACTION_DROPDOWN), mass.get(indexNumber).get("Action"))
+                && MainPage.verifyGetText(By.cssSelector(ACTION_TYPE_DISABLED_DROPDOWN), mass.get(indexNumber).get("ActionType"))
+                && MainPage.verifyGetText(By.cssSelector(ACTION_VISIBILITY_DISABLED_DROPDOWN), mass.get(indexNumber).get("ActionVisibility"))){
+            validation = true;
+        } else {
+            validation = false;
         }
-        if(mass.get(indexNumber).get("Action") !=null){
-            String actionText = getText(By.cssSelector(ACTION_DROPDOWN));
-            actionValidation = actionText.contains(mass.get(indexNumber).get("Action"));
-        }else{
-            actionValidation=true;
-        }
-        if(mass.get(indexNumber).get("ActionType") !=null){
-            String actionTypeText = getText(By.cssSelector(ACTION_TYPE_DISABLED_DROPDOWN));
-            actionTypeValidation = actionTypeText.contains(mass.get(indexNumber).get("ActionType"));
-        }else{
-            actionTypeValidation=true;
-        }
-        if(mass.get(indexNumber).get("ActionVisibility") !=null){
-            String actionVisibilityText = getText(By.cssSelector(ACTION_VISIBILITY_DISABLED_DROPDOWN));
-            actionVisibilityValidation = actionVisibilityText.contains(mass.get(indexNumber).get("ActionVisibility"));
-        }else{
-            actionVisibilityValidation=true;
-        }
-        return categoryValidation && actionValidation && actionTypeValidation && actionVisibilityValidation;
+        return validation;
     }
     public static void updateOrgAction(int organizationIndex){
         try {
             if (mass.get(organizationIndex).get("Category") != null) {
-                scrollToElement(By.xpath(ActionsPage.DETAILS_LABEL));
-                waitUntilElementToBeSelected(By.id(ORG_ACTION_CATEGORY_DROPDOWN), 20);
-                BasePage.click(By.id(ORG_ACTION_CATEGORY_DROPDOWN));
-                BasePage.selectElementsList(By.cssSelector(PersonPage.SELECT_DROP), "a");
-                wait(1000);
-                clickOnListOfElements(mass.get(organizationIndex).get("Category"));
+                MainPage.clickOptionList(By.id(ORG_ACTION_CATEGORY_DROPDOWN),
+                        mass.get(organizationIndex).get("Category"),
+                        By.cssSelector(PersonPage.SELECT_DROP),
+                        "a");
             }
             if (mass.get(organizationIndex).get("Action") != null) {
-                scrollToElement(By.xpath(ActionsPage.DETAILS_LABEL));
-                waitUntilElementToBeSelected(By.id(ORG_ACTION_DROPDOWN), 20);
-                BasePage.click(By.id(ORG_ACTION_DROPDOWN));
-                BasePage.selectElementsList(By.cssSelector(PersonPage.SELECT_DROP), "a");
-                wait(1000);
-                clickOnListOfElements(mass.get(organizationIndex).get("Action"));
+                MainPage.clickOptionList(By.id(ORG_ACTION_DROPDOWN),
+                        mass.get(organizationIndex).get("Action"),
+                        By.cssSelector(PersonPage.SELECT_DROP),
+                        "a");
             }
             if (mass.get(organizationIndex).get("Staff") != null) {
-                scrollToElement(By.xpath(ActionsPage.DETAILS_LABEL));
-                waitUntilElementToBeSelected(By.id(ORG_ACTION_STAFF_DROPDOWN), 20);
-                BasePage.click(By.id(ORG_ACTION_STAFF_DROPDOWN));
-                BasePage.selectElementsList(By.cssSelector(PersonPage.SELECT_DROP), "a");
-                wait(1000);
-                clickOnListOfElements(mass.get(organizationIndex).get("Staff"));
+                MainPage.clickOptionList(By.id(ORG_ACTION_STAFF_DROPDOWN),
+                        mass.get(organizationIndex).get("Staff"),
+                        By.cssSelector(PersonPage.SELECT_DROP),
+                        "a");
             }
             if (mass.get(organizationIndex).get("ActionDateField") != null) {
-                scrollToElement(By.xpath(ActionsPage.DETAILS_LABEL));
-                waitUntilElementToBeSelected(By.cssSelector(ORG_ACTION_DATE_FIELD), 20);
-                KeyPage.erase(By.cssSelector(ORG_ACTION_DATE_FIELD));
-                BasePage.write(By.cssSelector(ORG_ACTION_DATE_FIELD),mass.get(organizationIndex).get("ActionDateField"));
+                MainPage.fillDateField(By.cssSelector(ORG_ACTION_DATE_FIELD), mass.get(organizationIndex).get("ActionDateField"));
             }
             if (mass.get(organizationIndex).get("Comments") != null) {
-                scrollToElement(By.xpath(ActionsPage.DETAILS_LABEL));
-                waitUntilElementToBeSelected(By.id(ORG_ACTION_COMMENTS_FIELD), 20);
-                BasePage.write(By.id(ORG_ACTION_COMMENTS_FIELD),mass.get(organizationIndex).get("Comments"));
+                MainPage.fillField(By.id(ORG_ACTION_COMMENTS_FIELD), mass.get(organizationIndex).get("Comments"));
             }
             ExtentReportsSetUp.testingPass(LogPage.UPDATE_ORG_ACTION_PASS);
         } catch (Exception e) {
@@ -412,7 +308,7 @@ public class OrgPage extends BasePage{
             FailureDelegatePage.handlePageException(failMessage);
         }
     }
-    public static void openPeopleRecord(String search){
+    public static void navigateOrganizationRecords(String search){
         searchOrganizationManager(search);
         String passMessage = String.format(LogPage.OPEN_ORGANIZATION_RECORD_PASS, search);
         String failMessage = String.format(LogPage.OPEN_ORGANIZATION_RECORD_FAIL, search);
@@ -440,18 +336,12 @@ public class OrgPage extends BasePage{
         }
     }
     public static void verifyRecordHeader(String name, String oktoContact, String recordStatus, String orgCategory){
-
         try {
-            scrollToElement(By.id(QuickSearchPage.OBJECT_TITLE_ELEMENT));
-            waitElementBy(By.id(QuickSearchPage.OBJECT_TITLE_ELEMENT),20);
-            String fullNameText = getText(By.id(QuickSearchPage.OBJECT_TITLE_ELEMENT));
-            String okToContactText = getText(By.id(HEADER_OK_TO_CONTACT_ELEMENT));
-            String recordStatusText = getText(By.id(HEADER_RECORD_STATUS_ELEMENT));
-            String orgCategoryText = getText(By.id(HEADER_ORG_CATEGORY_ELEMENT));
-            if(fullNameText.contains(name)
-                && okToContactText.contains(oktoContact)
-                && recordStatusText.contains(recordStatus)
-                && orgCategoryText.contains(orgCategory)){
+
+            if(MainPage.verifyGetText(By.id(QuickSearchPage.OBJECT_TITLE_ELEMENT),name)
+                && MainPage.verifyGetText(By.id(HEADER_OK_TO_CONTACT_ELEMENT),oktoContact)
+                && MainPage.verifyGetText(By.id(HEADER_RECORD_STATUS_ELEMENT),recordStatus)
+                && MainPage.verifyGetText(By.id(HEADER_ORG_CATEGORY_ELEMENT),orgCategory)){
                 ExtentReportsSetUp.testingPass(LogPage.VERIFY_RECORD_HEADER_PASS);
             }else{
                 FailureDelegatePage.handlePageException(LogPage.VERIFY_RECORD_HEADER_FAIL);
@@ -459,7 +349,6 @@ public class OrgPage extends BasePage{
         } catch (Exception e) {
             FailureDelegatePage.handlePageException(LogPage.VERIFY_RECORD_HEADER_FAIL);
         }
-
     }
 
     public static void validateOrganizationDatatableMessage(String message){
@@ -519,21 +408,16 @@ public class OrgPage extends BasePage{
         String passMessage = String.format(LogPage.UPDATE_STATUS_ORG_PASS, index,person);
         try {
             if (mass.get(person).get("OrgStatus") != null) {
-                scrollToElement(By.cssSelector(statusPlusSignElement(index)));
-                waitUntilElementToBeSelected(By.cssSelector(orgStatusStatusDropdown(index)),20);
-                BasePage.click(By.cssSelector(orgStatusStatusDropdown(index)));
-                BasePage.selectElementsList(By.cssSelector(PersonPage.SELECT_DROP), "a");
-                clickOnListOfElements(mass.get(person).get("OrgStatus"));
+                MainPage.clickOptionList(By.cssSelector(orgStatusStatusDropdown(index)),
+                        mass.get(person).get("OrgStatus"),
+                        By.cssSelector(PersonPage.SELECT_DROP),
+                        "a");
             }
             if (mass.get(person).get("OrgStatusDate") != null) {
-                scrollToElement(By.cssSelector(statusPlusSignElement(index)));
-                waitElementBy(By.cssSelector(orgStatusStatusDate(index)),20);
-                BasePage.write(By.cssSelector(orgStatusStatusDate(index)),mass.get(person).get("OrgStatusDate"));
+                MainPage.fillDateField(By.cssSelector(orgStatusStatusDate(index)), mass.get(person).get("OrgStatusDate"));
             }
             if (mass.get(person).get("OrgStatusComments") != null) {
-                scrollToElement(By.cssSelector(statusPlusSignElement(index)));
-                waitElementBy(By.cssSelector(orgStatusStatusComments(index)),20);
-                BasePage.write(By.cssSelector(orgStatusStatusComments(index)),mass.get(person).get("OrgStatusComments"));
+                MainPage.fillField(By.cssSelector(orgStatusStatusComments(index)), mass.get(person).get("OrgStatusComments"));
             }
             ExtentReportsSetUp.testingPass(passMessage);
         } catch (Exception e) {
@@ -561,20 +445,19 @@ public class OrgPage extends BasePage{
             waitElementBy(By.cssSelector(EMAIL_ADDRESS_FIELD),updateEmailAddressDelay);
             BasePage.scrollToElement(By.cssSelector(ORGANIZATION_NAME_FIELD));
             if (mass.get(0).get(emailAddress) != null) {
-                waitElementBy(By.cssSelector(EMAIL_ADDRESS_FIELD),updateEmailAddressDelay);
-                BasePage.write(By.cssSelector(EMAIL_ADDRESS_FIELD), mass.get(0).get(emailAddress));
+                MainPage.fillField(By.cssSelector(EMAIL_ADDRESS_FIELD), mass.get(0).get(emailAddress));
             }
             if (mass.get(0).get(emailType) != null) {
-                waitElementBy(By.cssSelector(EMAIL_TYPE_DROP_DOWN),updateEmailAddressDelay);
-                BasePage.click(By.cssSelector(EMAIL_TYPE_DROP_DOWN));
-                BasePage.selectElementsList(By.cssSelector(EMAIL_TYPE_DROP_DOWN_LIST), "a");
-                clickOnListOfElements(mass.get(0).get(emailType));
+                MainPage.clickOptionList(By.cssSelector(EMAIL_TYPE_DROP_DOWN),
+                        mass.get(0).get(emailType),
+                        By.cssSelector(EMAIL_TYPE_DROP_DOWN_LIST),
+                        "a");
             }
             if (mass.get(0).get(emailOpt) != null) {
-                waitElementBy(By.cssSelector(EMAIL_OPT_DROP_DOWN),updateEmailAddressDelay);
-                BasePage.click(By.cssSelector(EMAIL_OPT_DROP_DOWN));
-                BasePage.selectElementsList(By.cssSelector(EMAIL_OPT_DROP_DOWN_LIST), "a");
-                clickOnListOfElements(mass.get(0).get(emailOpt));
+                MainPage.clickOptionList(By.cssSelector(EMAIL_OPT_DROP_DOWN),
+                        mass.get(0).get(emailOpt),
+                        By.cssSelector(EMAIL_OPT_DROP_DOWN_LIST),
+                        "a");
             }
             saveChangesBtnOrgContact();
             ExtentReportsSetUp.testingPass(LogPage.UPDATE_EMAIL_ADDRESS_PASS);
@@ -582,7 +465,6 @@ public class OrgPage extends BasePage{
             FailureDelegatePage.handlePageException(LogPage.UPDATE_EMAIL_ADDRESS_FAIL);
         }
     }
-
 
     /*
      * to save changes in Contact tab on records
@@ -602,26 +484,26 @@ public class OrgPage extends BasePage{
      */
     public static void updateExternalIdTypes(String type,String idNumber,String idRecordedDate,String whoAddedId, String comments){
         try {
-            waitElementBy(By.xpath(PLUS_BUTTON_EXTERNAL_ID),20);
-            BasePage.scrollToElement(By.xpath(PLUS_BUTTON_EXTERNAL_ID));
             if (mass.get(0).get(type) != null) {
-                BasePage.click(By.cssSelector(TYPE_DROPDOWN));
-                BasePage.selectElementsList(By.cssSelector(PersonPage.SELECT_DROP), "a");
-                clickOnListOfElements(mass.get(0).get(type));
+                MainPage.clickOptionList(By.cssSelector(TYPE_DROPDOWN),
+                        mass.get(0).get(type),
+                        By.cssSelector(PersonPage.SELECT_DROP),
+                        "a");
             }
             if (mass.get(0).get(idNumber) != null) {
-                BasePage.write(By.cssSelector(ID_NUMBER_FIELD), mass.get(0).get(idNumber));
+                MainPage.fillField(By.cssSelector(ID_NUMBER_FIELD), mass.get(0).get(idNumber));
             }
             if (mass.get(0).get(idRecordedDate) != null) {
-                BasePage.write(By.cssSelector(ID_RECORDED_DATE_FIELD), mass.get(0).get(idRecordedDate));
+                MainPage.fillField(By.cssSelector(ID_RECORDED_DATE_FIELD), mass.get(0).get(idRecordedDate));
             }
             if (mass.get(0).get(whoAddedId) != null) {
-                BasePage.click(By.cssSelector(WHO_ADDED_ID_DROPDOWN));
-                BasePage.selectElementsList(By.cssSelector(PersonPage.SELECT_DROP), "a");
-                clickOnListOfElements(mass.get(0).get(whoAddedId));
+                MainPage.clickOptionList(By.cssSelector(WHO_ADDED_ID_DROPDOWN),
+                        mass.get(0).get(whoAddedId),
+                        By.cssSelector(PersonPage.SELECT_DROP),
+                        "a");
             }
             if (mass.get(0).get(comments) != null) {
-                BasePage.write(By.cssSelector(COMMENTS_FIELD), mass.get(0).get(comments));
+                MainPage.fillField(By.cssSelector(COMMENTS_FIELD), mass.get(0).get(comments));
             }
             saveChangesBtnPersonIdTypes();
             ExtentReportsSetUp.testingPass(LogPage.UPDATE_EXTERNAL_ID_TYPES_PASS);

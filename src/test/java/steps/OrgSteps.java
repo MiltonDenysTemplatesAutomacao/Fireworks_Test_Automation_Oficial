@@ -48,7 +48,7 @@ public class OrgSteps {
     }
     @When("I open an organization record by {string}")
     public static void navigateOrganizationRecords(String search) {
-        OrgPage.openPeopleRecord(search);
+        OrgPage.navigateOrganizationRecords(search);
     }
     @When("I add in summary organization field {string}")
     public static void addSummaryOrganizationField(String summary) {
@@ -63,7 +63,7 @@ public class OrgSteps {
         OrgPage.deleteSummaryFields(summaryField);
     }
     @When("I update action organization {int}")
-    public static void deleteSummaryFields(int organizationIndex) {
+    public static void updateOrgAction(int organizationIndex) {
         OrgPage.updateOrgAction(organizationIndex);
     }
     @When("I verify action values for organization index {int}")
