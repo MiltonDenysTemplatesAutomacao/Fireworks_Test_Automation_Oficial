@@ -80,38 +80,11 @@ public class StaffPage extends BasePage{
     }
 
     public static void verifyStaffPhoneNumber(ContactPhoneBean phone){
-        boolean phoneNumberValidation = false;
-        boolean phoneTypeValidation = false;
-        boolean commentsValidation = false;
-
         try {
-            if(phone.getPhoneNumber()!=""){
-                scrollToElement(By.id(CONTACT_PHONE_NUMBER_FIELD));
-                scrollTo("-150");
-                String phoneNumberText = getAtribute(By.id(CONTACT_PHONE_NUMBER_FIELD),"value");
-                phoneNumberValidation = phoneNumberText.contains(phone.getPhoneNumber());
-            }else{
-                phoneNumberValidation=true;
-            }
-            if(phone.getPhoneType()!=""){
-                scrollToElement(By.id(CONTACT_PHONE_NUMBER_FIELD));
-                scrollTo("-150");
-                String phoneTypeText = getText(By.id(CONTACT_PHONE_TYPE_DROPDOWN));
-                phoneTypeValidation = phoneTypeText.contains(phone.getPhoneType());
-            }else{
-                phoneTypeValidation=true;
-            }
-            if(phone.getPhoneComments()!=""){
-                scrollToElement(By.id(CONTACT_PHONE_NUMBER_FIELD));
-                scrollTo("-150");
-                String commentText = getAtribute(By.id(CONTACT_PHONE_NUMBER_FIELD),"value");
-                commentsValidation = commentText.contains(phone.getPhoneComments());
-            }else{
-                commentsValidation=true;
-            }
-            if(phoneNumberValidation && phoneTypeValidation && commentsValidation
-                ){
-                ExtentReportsSetUp.testingPass(LogPage.VERIFY_STAFF_PHONE_NUMBER_PASS);
+            if(MainPage.verifyGetAttribute(By.id(CONTACT_PHONE_NUMBER_FIELD),phone.getPhoneNumber())
+                    && MainPage.verifyGetText(By.id(CONTACT_PHONE_TYPE_DROPDOWN),phone.getPhoneType())
+                    && MainPage.verifyGetAttribute(By.id(CONTACT_PHONE_COMMENTS_FIELD),phone.getPhoneComments())){
+                    ExtentReportsSetUp.testingPass(LogPage.VERIFY_STAFF_PHONE_NUMBER_PASS);
             }else{
                 FailureDelegatePage.handlePageException(LogPage.VERIFY_STAFF_PHONE_NUMBER_FAIL);
             }

@@ -20,8 +20,7 @@ public class SmartSearchPage extends BasePage{
 
     public static void fillSmartSearchName(String searchName){
         try {
-            waitUntilElementToBeSelected(By.cssSelector(SEARCH_NAME_FIELD),20);
-            write(By.cssSelector(SEARCH_NAME_FIELD),searchName);
+            MainPage.fillField(By.cssSelector(SEARCH_NAME_FIELD), searchName);
             ExtentReportsSetUp.testingPass(LogPage.FILL_SMART_SEARCH_NAME_PASS);
         } catch (Exception e) {
             FailureDelegatePage.handlePageException(LogPage.FILL_SMART_SEARCH_NAME_FAIL);
@@ -43,8 +42,7 @@ public class SmartSearchPage extends BasePage{
         String passMessage = String.format(LogPage.FILL_TEXT_CONDITION_VALUE_PASS, search, index);
         String failMessage = String.format(LogPage.FILL_TEXT_CONDITION_VALUE_FAIL, search, index);
         try {
-            waitElementBy(By.cssSelector(groupConditionConditionValueTextField(index)),20);
-            write(By.cssSelector(groupConditionConditionValueTextField(index)),search);
+            MainPage.fillField(By.cssSelector(groupConditionConditionValueTextField(index)),search);
             ExtentReportsSetUp.testingPass(passMessage);
         } catch (Exception e) {
             FailureDelegatePage.handlePageException(failMessage);
@@ -56,10 +54,10 @@ public class SmartSearchPage extends BasePage{
         String failMessage = String.format(LogPage.SELECT_OPERATOR_FAIL, search, index);
 
         try {
-            waitElementBy(By.cssSelector(operatorDropdown(index)),20);
-            click(By.cssSelector(operatorDropdown(index)));
-            BasePage.selectElementsList(By.cssSelector(PersonPage.SELECT_DROP), "a");
-            clickOnListOfElements(search);
+            MainPage.clickOptionList(By.cssSelector(operatorDropdown(index)),
+                    search,
+                    By.cssSelector(PersonPage.SELECT_DROP),
+                    "a");
             ExtentReportsSetUp.testingPass(passMessage);
         } catch (Exception e) {
             FailureDelegatePage.handlePageException(failMessage);
@@ -70,10 +68,10 @@ public class SmartSearchPage extends BasePage{
         String passMessage = String.format(LogPage.SELECT_SEARCH_FIELD_PASS, search, index);
         String failMessage = String.format(LogPage.SELECT_SEARCH_FIELD_FAIL, search, index);
         try {
-            waitElementBy(By.cssSelector(groupConditionFieldDropdown(index)),20);
-            click(By.cssSelector(groupConditionFieldDropdown(index)));
-            BasePage.selectElementsList(By.cssSelector(PersonPage.SELECT_DROP), "a");
-            clickOnListOfElements(search);
+            MainPage.clickOptionList(By.cssSelector(groupConditionFieldDropdown(index)),
+                    search,
+                    By.cssSelector(PersonPage.SELECT_DROP),
+                    "a");
             ExtentReportsSetUp.testingPass(passMessage);
         } catch (Exception e) {
             FailureDelegatePage.handlePageException(failMessage);

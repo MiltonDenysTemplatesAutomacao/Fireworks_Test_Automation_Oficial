@@ -15,9 +15,7 @@ public class QuickSearchPage extends BasePage{
         String errorMessage = String.format(LogPage.QUICK_SEARCH_ONE_PARAMETER_FAIL,parameter);
         String passMessage = String.format(LogPage.QUICK_SEARCH_ONE_PARAMETER_PASS,parameter);
         try {
-            waitElementBy(By.xpath(QUICK_SEARCH_MANAGER_TABLE),20);
-            String text = getText(By.xpath(QUICK_SEARCH_MANAGER_TABLE));
-            if (text.contains(mass.get(0).get(parameter))){
+            if (MainPage.verifyGetText(By.xpath(QUICK_SEARCH_MANAGER_TABLE),mass.get(0).get(parameter))){
                 ExtentReportsSetUp.testingPass(passMessage);
             } else {
                 FailureDelegatePage.handlePageException(errorMessage);
@@ -44,8 +42,7 @@ public class QuickSearchPage extends BasePage{
      */
     public static void validateIfOpenedSummaryProperly(String parameter) {
         try {
-            String text = getText(By.id(OBJECT_TITLE_ELEMENT));
-            if (text.contains(parameter)) {
+            if (MainPage.verifyGetText(By.id(OBJECT_TITLE_ELEMENT),mass.get(0).get(parameter))){
                 ExtentReportsSetUp.testingPass(LogPage.VALIDATE_IF_OPENED_SUMMARY_PROPERLY_PASS);
             } else {
                 FailureDelegatePage.handlePageException(LogPage.VALIDATE_IF_OPENED_SUMMARY_PROPERLY_FAIL);
