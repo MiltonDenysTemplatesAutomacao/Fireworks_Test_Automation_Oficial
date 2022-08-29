@@ -215,10 +215,7 @@ public class GlobalNavPage extends BasePage {
         } catch (Exception e) {
             FailureDelegatePage.handlePageException(LogPage.LOGOUT_FAIL);
         }
-
-
     }
-
 
     public static void validateTaskInToolMenuIsNotDisplayed(){
         try {
@@ -363,6 +360,7 @@ public class GlobalNavPage extends BasePage {
                 clickOnListOfElements(mass.get(0).get("Role1"));
             }
             if (mass.get(0).get("Role2") != null) {
+
                 waitElementBy(By.cssSelector(QUICK_ADD_PERSON_ROLE_DROPDOWN),quickAddPersonDelay);
                 BasePage.click(By.cssSelector(QUICK_ADD_PERSON_ROLE_DROPDOWN));
                 BasePage.selectElementsList(By.cssSelector(QUICK_ADD_PERSON_ROLE_DROPDOWN_LIST), "a");

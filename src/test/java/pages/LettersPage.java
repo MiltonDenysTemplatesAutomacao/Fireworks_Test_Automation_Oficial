@@ -93,45 +93,22 @@ public class LettersPage extends BasePage{
             FailureDelegatePage.handlePageException(errorMessage);
         }
     }
-    public static void searchSingleRecipientPicker (String searchName)throws Exception{
-        try {
-            waitElementBy(By.cssSelector(RECORD_PICKER_MODAL_SEARCH_FIELD),20);
-            BasePage.write(By.cssSelector(RECORD_PICKER_MODAL_SEARCH_FIELD), searchName);
-            if(verifyIfContains(By.cssSelector(RECORD_PICKER_MODAL_TABLE_ROW1),searchName)){
-                wait(2000);
-                BasePage.click(By.cssSelector(RECORD_PICKER_MODAL_TABLE_ROW1_CHECKBOX));
-            }else{
-                FailureDelegatePage.handlePageException(LogPage.SEARCH_SINGLE_RECIPIENT_PICKER_FAIL);
-            }
-        } catch (Exception e) {
-            FailureDelegatePage.handlePageException(LogPage.SEARCH_SINGLE_RECIPIENT_PICKER_FAIL);
-        }
-    }
-    public static void singleRecipientPickerModalChooseButton()throws Exception{
-        BasePage.click(By.cssSelector(RECORD_PICKER_MODAL_CHOOSE_BUTTON));
-    }
-    public static void pickSingleRecipient(String singleRecipient){
-        try {
-            waitElementBy(By.cssSelector(SINGLE_RECIPIENT_PICKER_BUTTON),20);
-            BasePage.click(By.cssSelector(SINGLE_RECIPIENT_PICKER_BUTTON));
-            searchSingleRecipientPicker(singleRecipient);
-            singleRecipientPickerModalChooseButton();
-        } catch (Exception e) {
-            FailureDelegatePage.handlePageException(LogPage.PICK_SMART_SEARCH_FAIL);
-        }
-    }
 
     public static void updateLetterRecipients(int index){
         try {
             if (mass.get(index).get("SmartSearch") != null) {
-                scrollToElement(By.cssSelector(LETTER_NAME_FIELD));
-                waitUntilElementToBeSelected(By.cssSelector(SMART_SEARCH_DROPDOWN), 20);
-                BasePage.click(By.cssSelector(SMART_SEARCH_DROPDOWN));
-                BasePage.selectElementsList(By.cssSelector(SMART_SEARCH_DROPDOWN_LIST), "a");
-                clickOnListOfElements(mass.get(index).get("SmartSearch"));
+                MainPage.clickOptionList(By.cssSelector(SMART_SEARCH_DROPDOWN),
+                        mass.get(index).get("SmartSearch"),
+                        By.cssSelector(SMART_SEARCH_DROPDOWN_LIST),
+                        "a");
             }
             if (mass.get(0).get("SingleRecipient") != null) {
-                pickSingleRecipient(mass.get(index).get("SingleRecipient"));
+                MainPage.picker(By.cssSelector(SINGLE_RECIPIENT_PICKER_BUTTON),
+                        By.cssSelector(RECORD_PICKER_MODAL_SEARCH_FIELD),
+                        By.cssSelector(RECORD_PICKER_MODAL_TABLE_ROW1),
+                        By.cssSelector(RECORD_PICKER_MODAL_TABLE_ROW1_CHECKBOX),
+                        By.cssSelector(RECORD_PICKER_MODAL_CHOOSE_BUTTON),
+                        mass.get(0).get("SingleRecipient"));
             }
             ExtentReportsSetUp.testingPass(LogPage.UPDATE_LETTER_RECIPIENTS_PASS);
         } catch (Exception e) {
@@ -228,46 +205,37 @@ public class LettersPage extends BasePage{
     }
 
     public static void updateLetterPersonAction(int index){
-        int updateLetterPersonActionDelay = 20;
         wait(2000);
         try {
             if (mass.get(index).get("Category") != null) {
-                scrollToElement(By.xpath(USER_ACTION_SECTION_LABEL));
-                waitUntilElementToBeSelected(By.cssSelector(ACTION_CATEGORY_DROPDOWN), updateLetterPersonActionDelay);
-                BasePage.click(By.cssSelector(ACTION_CATEGORY_DROPDOWN));
-                BasePage.selectElementsList(By.id(ACTION_CATEGORY_DROPDOWN_LIST), "a");
-                clickOnListOfElements(mass.get(index).get("Category"));
+                MainPage.clickOptionList(By.cssSelector(ACTION_CATEGORY_DROPDOWN),
+                        mass.get(index).get("Category"),
+                        By.id(ACTION_CATEGORY_DROPDOWN_LIST),
+                        "a");
             }
             if (mass.get(index).get("Action") != null) {
-                scrollToElement(By.xpath(USER_ACTION_SECTION_LABEL));
-                waitUntilElementToBeSelected(By.cssSelector(ACTION_DROPDOWN), updateLetterPersonActionDelay);
-                BasePage.click(By.cssSelector(ACTION_DROPDOWN));
-                BasePage.selectElementsList(By.id(ACTION_DROPDOWN_LIST), "a");
-                clickOnListOfElements(mass.get(index).get("Action"));
+                MainPage.clickOptionList(By.cssSelector(ACTION_DROPDOWN),
+                        mass.get(index).get("Action"),
+                        By.id(ACTION_DROPDOWN_LIST),
+                        "a");
             }
             if (mass.get(index).get("Staff") != null) {
-                scrollToElement(By.xpath(USER_ACTION_SECTION_LABEL));
-                waitUntilElementToBeSelected(By.cssSelector(ACTION_STAFF_DROPDOWN), updateLetterPersonActionDelay);
-                BasePage.click(By.cssSelector(ACTION_STAFF_DROPDOWN));
-                BasePage.selectElementsList(By.cssSelector(PersonPage.SELECT_DROP), "a");
-                clickOnListOfElements(mass.get(index).get("Staff"));
+                MainPage.clickOptionList(By.cssSelector(ACTION_STAFF_DROPDOWN),
+                        mass.get(index).get("Staff"),
+                        By.cssSelector(ACTION_STAFF_DROPDOWN),
+                        "a");
             }
             if (mass.get(index).get("Visibility") != null) {
-                scrollToElement(By.xpath(USER_ACTION_SECTION_LABEL));
-                waitUntilElementToBeSelected(By.cssSelector(ACTION_VISIBILITY), updateLetterPersonActionDelay);
-                BasePage.click(By.cssSelector(ACTION_VISIBILITY));
-                BasePage.selectElementsList(By.id(ACTION_VISIBILITY_LIST), "a");
-                clickOnListOfElements(mass.get(index).get("Visibility"));
+                MainPage.clickOptionList(By.cssSelector(ACTION_VISIBILITY),
+                        mass.get(index).get("Visibility"),
+                        By.id(ACTION_VISIBILITY_LIST),
+                        "a");
             }
             if (mass.get(index).get("Comments") != null) {
-                scrollToElement(By.xpath(USER_ACTION_SECTION_LABEL));
-                waitUntilElementToBeSelected(By.cssSelector(ACTION_VISIBILITY), updateLetterPersonActionDelay);
-                BasePage.write(By.cssSelector(ACTION_COMMENTS_FIELD),mass.get(index).get("Comments"));
+                MainPage.fillField(By.cssSelector(ACTION_COMMENTS_FIELD), mass.get(index).get("Comments"));
             }
             if (mass.get(index).get("ActionDateTime") != null) {
-                scrollToElement(By.xpath(USER_ACTION_SECTION_LABEL));
-                waitUntilElementToBeSelected(By.cssSelector(ACTION_DATE_FIELD), updateLetterPersonActionDelay);
-                BasePage.write(By.cssSelector(ACTION_DATE_FIELD),mass.get(index).get("ActionDateTime"));
+                MainPage.fillField(By.cssSelector(ACTION_DATE_FIELD), mass.get(index).get("ActionDateTime"));
             }
             ExtentReportsSetUp.testingPass(LogPage.UPDATE_LETTER_PERSON_ACTION_PASS);
         } catch (Exception e) {

@@ -44,31 +44,28 @@ public class EmailWizardPage extends BasePage{
     public static void updateEmailFinishTab(String category, String action, String staff, String actionDateTime, String comments){
         try {
             if (category != ""){
-                scrollTo("300");
-                waitElementBy(By.cssSelector(ACTION_CATEGORY_DROPDOWN),20);
-                BasePage.click(By.cssSelector(ACTION_CATEGORY_DROPDOWN));
-                BasePage.selectElementsList(By.cssSelector(PersonPage.SELECT_DROP), "a");
-                clickOnListOfElements(category);
+                MainPage.clickOptionList(By.cssSelector(ACTION_CATEGORY_DROPDOWN),
+                        category,
+                        By.cssSelector(PersonPage.SELECT_DROP),
+                        "a");
             }
             if (action != ""){
-                waitElementBy(By.cssSelector(ACTION_DROPDOWN),20);
-                BasePage.click(By.cssSelector(ACTION_DROPDOWN));
-                BasePage.selectElementsList(By.cssSelector(PersonPage.SELECT_DROP), "a");
-                clickOnListOfElements(action);
+                MainPage.clickOptionList(By.cssSelector(ACTION_DROPDOWN),
+                        action,
+                        By.cssSelector(PersonPage.SELECT_DROP),
+                        "a");
             }
             if (staff != ""){
-                waitElementBy(By.cssSelector(ACTION_STAFF_DROPDOWN),20);
-                BasePage.click(By.cssSelector(ACTION_STAFF_DROPDOWN));
-                BasePage.selectElementsList(By.cssSelector(PersonPage.SELECT_DROP), "a");
-                clickOnListOfElements(staff);
+                MainPage.clickOptionList(By.cssSelector(ACTION_STAFF_DROPDOWN),
+                        staff,
+                        By.cssSelector(PersonPage.SELECT_DROP),
+                        "a");
             }
             if (actionDateTime != ""){
-                waitElementBy(By.cssSelector(ACTION_DATE_FIELD),20);
-                write(By.cssSelector(ACTION_DATE_FIELD),actionDateTime);
+                MainPage.fillDateField(By.cssSelector(ACTION_DATE_FIELD), actionDateTime);
             }
             if (comments != ""){
-                waitElementBy(By.cssSelector(ACTION_COMMENTS_FIELD),20);
-                write(By.cssSelector(ACTION_COMMENTS_FIELD),comments);
+                MainPage.fillField(By.cssSelector(ACTION_COMMENTS_FIELD), comments);
             }
             ExtentReportsSetUp.testingPass(LogPage.UPDATE_EMAIL_FINISH_TAB_PASS);
         } catch (Exception e) {
@@ -95,7 +92,6 @@ public class EmailWizardPage extends BasePage{
             click(By.cssSelector(ADD_ATTACHMENTS_DROPZONE_BUTTON));
             copyToTheClipboard(attachment);
             attachFile();
-
         } catch (Exception e) {
             FailureDelegatePage.handlePageException(LogPage.ADD_EMAIL_ATTACHMENT_FAIL);
         }
@@ -134,28 +130,19 @@ public class EmailWizardPage extends BasePage{
         try {
             waitElementBy(By.cssSelector(SENDER_NAME_FIELD),updateEmailHeadersTabDelay);
             if (senderName != ""){
-                waitElementBy(By.cssSelector(SENDER_NAME_FIELD),updateEmailHeadersTabDelay);
-                write(By.cssSelector(SENDER_NAME_FIELD),senderName);
+                MainPage.fillField(By.cssSelector(SENDER_NAME_FIELD), senderName);
             }
             if (senderEmail != ""){
-                scrollToElement(By.cssSelector(SENDER_NAME_FIELD));
-                waitElementBy(By.cssSelector(SENDER_EMAIL_FIELD),updateEmailHeadersTabDelay);
-                write(By.cssSelector(SENDER_EMAIL_FIELD),senderEmail);
+                MainPage.fillField(By.cssSelector(SENDER_EMAIL_FIELD), senderEmail);
             }
             if (replyToEmail != ""){
-                scrollToElement(By.cssSelector(SENDER_EMAIL_FIELD));
-                waitElementBy(By.cssSelector(REPLY_TO_EMAIL_FIELD),updateEmailHeadersTabDelay);
-                write(By.cssSelector(REPLY_TO_EMAIL_FIELD),replyToEmail);
+                MainPage.fillField(By.cssSelector(REPLY_TO_EMAIL_FIELD), replyToEmail);
             }
             if (subject != ""){
-                scrollToElement(By.cssSelector(REPLY_TO_EMAIL_FIELD));
-                waitElementBy(By.cssSelector(SUBJECT_FIELD),updateEmailHeadersTabDelay);
-                write(By.cssSelector(SUBJECT_FIELD),subject);
+                MainPage.fillField(By.cssSelector(SUBJECT_FIELD), subject);
             }
             if (preheaders != ""){
-                scrollToElement(By.cssSelector(SUBJECT_FIELD));
-                waitElementBy(By.cssSelector(PREHEADERS_FIELD),updateEmailHeadersTabDelay);
-                write(By.cssSelector(PREHEADERS_FIELD),preheaders);
+                MainPage.fillField(By.cssSelector(PREHEADERS_FIELD), preheaders);
             }
             if (attachment != ""){
                 addEmailAttachment(attachment);
@@ -177,63 +164,6 @@ public class EmailWizardPage extends BasePage{
         } catch (Exception e) {
             FailureDelegatePage.handlePageException(LogPage.CLICK_SAVE_AND_CONTINUE_PASS);
         }
-    }
-    public static void searchEmailAddressPicker(String singleEmail){
-        try {
-            waitElementBy(By.cssSelector(SINGLE_RECIPIENT_PICKER_MODAL_SEARCH_BOX),20);
-            write(By.cssSelector(SINGLE_RECIPIENT_PICKER_MODAL_SEARCH_BOX),singleEmail);
-            String singleEmailText = getText(By.cssSelector(SINGLE_RECIPIENT_PICKER_MODAL_FIRST_ROW_ELEMENT));
-            if(!singleEmailText.equals("No table data available.")){
-                waitUntilElementToBeSelected(By.cssSelector(SINGLE_RECIPIENT_PICKER_MODAL_FIRST_ROW_ELEMENT),20);
-                click(By.cssSelector(SINGLE_RECIPIENT_PICKER_MODAL_FIRST_ROW_ELEMENT));
-                waitUntilElementToBeSelected(By.cssSelector(SINGLE_RECIPIENT_PICKER_MODAL_CHOOSE_BUTTON),20);
-                click(By.cssSelector(SINGLE_RECIPIENT_PICKER_MODAL_CHOOSE_BUTTON));
-            }else{
-                FailureDelegatePage.handlePageException(LogPage.EMAIL_WIZARD_SMART_SEARCH_PICKER);
-            }
-        } catch (Exception e) {
-            FailureDelegatePage.handlePageException(LogPage.EMAIL_WIZARD_SMART_SEARCH_PICKER);
-        }
-    }
-    public static void pickSingleRecipient(String singleEmail){
-        try {
-            scrollToElement(By.cssSelector(EMAIL_DESCRIPTION_FIELD));
-            waitUntilElementToBeSelected(By.cssSelector(SINGLE_RECIPIENT_PICKER_BUTTON),20);
-            click(By.cssSelector(SINGLE_RECIPIENT_PICKER_BUTTON));
-            searchEmailAddressPicker(singleEmail);
-        } catch (Exception e) {
-            FailureDelegatePage.handlePageException(LogPage.PICK_SINGLE_RECIPIENT_SMART_SEARCH_FAIL);
-        }
-    }
-
-    public static void searchSmartSearchPicker(String smartSearch){
-        try {
-            waitElementBy(By.cssSelector(SMART_SEARCH_PICKER_MODAL_SEARCH_FIELD),20);
-            write(By.cssSelector(SMART_SEARCH_PICKER_MODAL_SEARCH_FIELD),smartSearch);
-            String smartSearchText = getText(By.cssSelector(SMART_SEARCH_PICKER_MODAL_FIRST_ROW_ELEMENT));
-            if(!smartSearchText.equals("No table data available.")){
-                waitUntilElementToBeSelected(By.cssSelector(SMART_SEARCH_PICKER_MODAL_FIRST_ROW_CHECKBOX),20);
-                click(By.cssSelector(SMART_SEARCH_PICKER_MODAL_FIRST_ROW_CHECKBOX));
-                waitUntilElementToBeSelected(By.cssSelector(SMART_SEARCH_PICKER_MODAL_CHOOSE_BUTTON),20);
-                click(By.cssSelector(SMART_SEARCH_PICKER_MODAL_CHOOSE_BUTTON));
-            }else{
-                FailureDelegatePage.handlePageException(LogPage.EMAIL_WIZARD_SMART_SEARCH_PICKER);
-            }
-        } catch (Exception e) {
-            FailureDelegatePage.handlePageException(LogPage.EMAIL_WIZARD_SMART_SEARCH_PICKER);
-        }
-    }
-
-    public static void pickSmartSearch(String smartSearch){
-        try {
-            scrollToElement(By.cssSelector(EMAIL_DESCRIPTION_FIELD));
-            waitUntilElementToBeSelected(By.cssSelector(EMAIL_TEMPLATE_PICKER_BUTTON),20);
-            click(By.cssSelector(SMART_SEARCH_PICKER_BUTTON));
-            searchSmartSearchPicker(smartSearch);
-        } catch (Exception e) {
-            FailureDelegatePage.handlePageException(LogPage.PICK_EMAIL_WIZARD_SMART_SEARCH_FAIL);
-        }
-
     }
 
     public static void loadEmailTemplate(String template){
@@ -263,17 +193,26 @@ public class EmailWizardPage extends BasePage{
                 loadEmailTemplate(template);
             }
             if (emailName != ""){
-                waitElementBy(By.cssSelector(EMAIL_NAME_FIELD),updateEmailStartTabDelay);
-                write(By.cssSelector(EMAIL_NAME_FIELD),emailName);
+                MainPage.fillField(By.cssSelector(EMAIL_NAME_FIELD), emailName);
             }
             if (emailDescription != ""){
-                write(By.cssSelector(EMAIL_DESCRIPTION_FIELD),emailDescription);
+                MainPage.fillField(By.cssSelector(EMAIL_DESCRIPTION_FIELD), emailDescription);
             }
             if (smartSearch != ""){
-                pickSmartSearch(smartSearch);
+                MainPage.picker(By.cssSelector(SMART_SEARCH_PICKER_BUTTON),
+                        By.cssSelector(SMART_SEARCH_PICKER_MODAL_SEARCH_FIELD),
+                        By.cssSelector(SMART_SEARCH_PICKER_MODAL_FIRST_ROW_ELEMENT),
+                        By.cssSelector(SMART_SEARCH_PICKER_MODAL_FIRST_ROW_CHECKBOX),
+                        By.cssSelector(SMART_SEARCH_PICKER_MODAL_CHOOSE_BUTTON),
+                        smartSearch);
             }
             if (singleEmail != ""){
-                pickSingleRecipient(singleEmail);
+                MainPage.picker(By.cssSelector(SINGLE_RECIPIENT_PICKER_BUTTON),
+                        By.cssSelector(SINGLE_RECIPIENT_PICKER_MODAL_SEARCH_BOX),
+                        By.cssSelector(SINGLE_RECIPIENT_PICKER_MODAL_FIRST_ROW_ELEMENT),
+                        By.cssSelector(SINGLE_RECIPIENT_PICKER_MODAL_FIRST_ROW_ELEMENT),
+                        By.cssSelector(SINGLE_RECIPIENT_PICKER_MODAL_CHOOSE_BUTTON),
+                        singleEmail);
             }
             ExtentReportsSetUp.testingPass(LogPage.UPDATE_EMAIL_START_TAB_PASS);
         } catch (Exception e) {
