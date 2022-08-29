@@ -8,7 +8,12 @@ import static pages.GlobalNavPage.QUICK_ADD_PERSON_OPT_IN_METHOD_DROPDOWN;
 import static pages.GlobalNavPage.QUICK_ADD_PERSON_OPT_IN_METHOD_DROPDOWN_LIST;
 
 public class MainPage extends BasePage{
-
+    public static void navigateToFeature(By by)throws Exception{
+        scrollToElement(by);
+        scrollTo("-150");
+        waitElementBy(by,10);
+        BasePage.click(by);
+    }
     public static boolean verifyIfElementIsVisible(By by)throws Exception{
         return checkIfElementIsVisible(by);
     }
