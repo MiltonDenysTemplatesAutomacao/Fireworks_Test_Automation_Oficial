@@ -6,6 +6,7 @@ import org.openqa.selenium.By;
 import pages.BasePage;
 import pages.FailureDelegatePage;
 import pages.LogPage;
+import pages.MainPage;
 
 public class PersonContactAddressPage extends BasePage{
 
@@ -78,150 +79,26 @@ public class PersonContactAddressPage extends BasePage{
     }
 
     public static void verifyAddress(ContactAddressBean address, String group){
-        boolean address1Validation = false;
-        boolean address2Validation = false;
-        boolean address3Validation = false;
-        boolean address4Validation = false;
-        boolean cityValidation = false;
-        boolean countyValidation = false;
-        boolean stateValidation = false;
-        boolean regionValidation = false;
-        boolean countryValidation = false;
-        boolean postalCodeValidation = false;
-        boolean geomarketValidation = false;
-        boolean addressTypeValidation = false;
-        boolean educationNeighborhoodValidation = false;
-        boolean addressCommentsValidation = false;
-        boolean activeValidation = false;
-        boolean primaryValidation = false;
-
         String passMessage = String.format(LogPage.VERIFY_ADDRESS_PASS,group);
         String failMessage = String.format(LogPage.VERIFY_ADDRESS_FAIL,group);
 
         try {
-            if(address.getAddress1()!=""){
-                String address1Text = getAtribute(By.cssSelector(address1Field(group)),"value");
-                address1Validation = address.getAddress1().equals(address1Text);
-            }else{
-                address1Validation=true;
-            }
-            if(address.getAddress2()!=""){
-                String address2Text = getAtribute(By.cssSelector(address2Field(group)),"value");
-                address2Validation = address.getAddress2().equals(address2Text);
-            }else{
-                address2Validation=true;
-            }
-            if(address.getAddress3()!=""){
-                String address3Text = getAtribute(By.cssSelector(address3Field(group)),"value");
-                address3Validation = address.getAddress1().equals(address3Text);
-            }else{
-                address3Validation=true;
-            }
-            if(address.getAddress4()!=""){
-                String address4Text = getAtribute(By.cssSelector(address4Field(group)),"value");
-                address4Validation = address.getAddress4().equals(address4Text);
-            }else{
-                address4Validation=true;
-            }
-            if(address.getCity()!=""){
-                String cityText = getAtribute(By.cssSelector(addressCityField(group)),"value");
-                cityValidation = address.getCity().equals(cityText);
-            }else{
-                cityValidation=true;
-            }
-            if(address.getCounty()!=""){
-                String countyText = getAtribute(By.cssSelector(addressCountyField(group)),"value");
-                countyValidation = address.getCounty().equals(countyText);
-            }else{
-                countyValidation=true;
-            }
-            if(address.getState()!=""){
-                String stateText = getText(By.cssSelector(addressStateElement(group)));
-                stateValidation = address.getState().equals(stateText);
-            }else{
-                stateValidation=true;
-            }
-            if(address.getRegion()!=""){
-                String regionText = getAtribute(By.cssSelector(addressRegionField(group)),"value");
-                regionValidation = address.getRegion().equals(regionText);
-            }else{
-                regionValidation=true;
-            }
-            if(address.getCountry()!=""){
-                String countryText = getText(By.cssSelector(addressCountryElement(group)));
-                countryValidation = address.getCountry().equals(countryText);
-            }else{
-                countryValidation=true;
-            }
-            if(address.getPostalCode()!=""){
-                String postalCodeText = getAtribute(By.cssSelector(addressPostalCodeField(group)),"value");
-                postalCodeValidation = address.getPostalCode().equals(postalCodeText);
-            }else{
-                postalCodeValidation=true;
-            }
-            if(address.getGeomarket()!=""){
-                String geomarketText = getText(By.cssSelector(addressGeomarketElement(group)));
-                geomarketValidation = address.getGeomarket().equals(geomarketText);
-            }else{
-                geomarketValidation=true;
-            }
-            if(address.getAddressType()!=""){
-                String addressTypeText = getText(By.cssSelector(addressTypeElement(group)));
-                addressTypeValidation = address.getAddressType().equals(addressTypeText);
-            }else{
-                addressTypeValidation=true;
-            }
-            if(address.getEducationNeighborhood()!=""){
-                String educationNeighborhoodText = getText(By.cssSelector(addressNeighborhoodElement(group)));
-                educationNeighborhoodValidation = address.getEducationNeighborhood().equals(educationNeighborhoodText);
-            }else{
-                educationNeighborhoodValidation=true;
-            }
-            if(address.getAddressComments()!=""){
-                String addressCommentsText = getAtribute(By.cssSelector(addressCommentsField(group)),"value");
-                addressCommentsValidation = address.getAddressComments().equals(addressCommentsText);
-            }else{
-                addressCommentsValidation=true;
-            }
-            if(address.getActive()!=""){
-                switch (address.getActive()){
-                    case "1":
-                        activeValidation = checkBoxIsActive(By.cssSelector(addressActiveCheckbox(group)));
-                        break;
-                    case "0":
-                        activeValidation = !checkBoxIsActive(By.cssSelector(addressActiveCheckbox(group)));
-                        break;
-                    default: throw new IllegalArgumentException("Active Checkbox not verified");
-                }
-            }
-            if(address.getPrimary()!=""){
-                switch (address.getPrimary()){
-                    case "1":
-                        primaryValidation = checkBoxIsActive(By.cssSelector(addressPrimaryCheckbox(group)));
-                        break;
-                    case "0":
-                        primaryValidation = !checkBoxIsActive(By.cssSelector(addressPrimaryCheckbox(group)));
-                        break;
-                    default: throw new IllegalArgumentException("Active Checkbox not verified");
-                }
-            }
-            if(address1Validation
-                    && address2Validation
-                    && address3Validation
-                    && address4Validation
-                    && cityValidation
-                    && countyValidation
-                    && stateValidation
-                    && regionValidation
-                    && countryValidation
-                    && postalCodeValidation
-                    && geomarketValidation
-                    && addressTypeValidation
-                    && educationNeighborhoodValidation
-                    && addressCommentsValidation
-                    && activeValidation
-                    && primaryValidation
-            ){
+            if(MainPage.verifyGetAttribute(By.cssSelector(address1Field(group)),address.getAddress1())
+                    && MainPage.verifyGetAttribute(By.cssSelector(address2Field(group)),address.getAddress2())
+                    && MainPage.verifyGetAttribute(By.cssSelector(address3Field(group)),address.getAddress3())
+                    && MainPage.verifyGetAttribute(By.cssSelector(address4Field(group)),address.getAddress4())
+                    && MainPage.verifyGetAttribute(By.cssSelector(addressCityField(group)),address.getCity())
+                    && MainPage.verifyGetAttribute(By.cssSelector(addressCountyField(group)),address.getCounty())
+                    && MainPage.verifyGetText(By.cssSelector(addressStateElement(group)),address.getState())
+                    && MainPage.verifyGetAttribute(By.cssSelector(addressRegionField(group)),address.getRegion())
+                    && MainPage.verifyGetText(By.cssSelector(addressCountryElement(group)),address.getCountry())
+                    && MainPage.verifyGetAttribute(By.cssSelector(addressPostalCodeField(group)),address.getPostalCode())
+                    && MainPage.verifyGetText(By.cssSelector(addressGeomarketElement(group)),address.getGeomarket())
+                    && MainPage.verifyGetText(By.cssSelector(addressTypeElement(group)),address.getAddressType())
+                    && MainPage.verifyGetText(By.cssSelector(addressNeighborhoodElement(group)),address.getEducationNeighborhood())
+                    && MainPage.verifyGetAttribute(By.cssSelector(addressCommentsField(group)),address.getAddressComments())
+                    && MainPage.verifyCheckboxActiveOrNot(By.cssSelector(addressActiveCheckbox(group)),address.getActive())
+                    && MainPage.verifyCheckboxActiveOrNot(By.cssSelector(addressPrimaryCheckbox(group)),address.getPrimary())){
                 ExtentReportsSetUp.testingPass(passMessage);
             }else{
                 FailureDelegatePage.handlePageException(failMessage);
@@ -233,10 +110,7 @@ public class PersonContactAddressPage extends BasePage{
 
     public static void addAddress(String group){
         try {
-            scrollToElement(By.cssSelector(emailAddressAddButton(group)));
-            scrollTo("-100");
-            waitUntilElementToBeSelected(By.cssSelector(emailAddressAddButton(group)),20);
-            click(By.cssSelector(emailAddressAddButton(group)));
+            MainPage.addDeleteWithPlusButton(By.cssSelector(emailAddressAddButton(group)));
             ExtentReportsSetUp.testingPass(LogPage.ADD_ADDRESS_PASS);
         } catch (Exception e) {
             FailureDelegatePage.handlePageException(LogPage.ADD_ADDRESS_FAIL);
@@ -244,87 +118,54 @@ public class PersonContactAddressPage extends BasePage{
     }
 
     public static void createAddress(ContactAddressBean address, String group){
-        int createAddressDelay = 20;
-
         try {
             if(address.getAddress1()!=""){
-                scrollToElement(By.cssSelector(emailAddressAddButton(group)));
-                waitElementBy(By.cssSelector(address1Field(group)),createAddressDelay);
-                write(By.cssSelector(address1Field(group)),address.getAddress1());
-
+                MainPage.fillField(By.cssSelector(address1Field(group)), address.getAddress1());
             }
             if(address.getAddress2()!=""){
-                scrollToElement(By.cssSelector(emailAddressAddButton(group)));
-                waitElementBy(By.cssSelector(address2Field(group)),createAddressDelay);
-                write(By.cssSelector(address2Field(group)),address.getAddress2());
+                MainPage.fillField(By.cssSelector(address2Field(group)), address.getAddress2());
             }
             if(address.getAddress3()!=""){
-                scrollToElement(By.cssSelector(emailAddressAddButton(group)));
-                waitElementBy(By.cssSelector(address1Field(group)),createAddressDelay);
-                write(By.cssSelector(address3Field(group)),address.getAddress3());
+                MainPage.fillField(By.cssSelector(address3Field(group)), address.getAddress3());
             }
             if(address.getAddress4()!=""){
-                scrollToElement(By.cssSelector(emailAddressAddButton(group)));
-                waitElementBy(By.cssSelector(address4Field(group)),createAddressDelay);
-                write(By.cssSelector(address4Field(group)),address.getAddress4());
+                MainPage.fillField(By.cssSelector(address4Field(group)), address.getAddress4());
             }
             if(address.getCity()!=""){
-                scrollToElement(By.cssSelector(emailAddressAddButton(group)));
-                waitElementBy(By.cssSelector(addressCityField(group)),createAddressDelay);
-                write(By.cssSelector(addressCityField(group)),address.getCity());
+                MainPage.fillField(By.cssSelector(addressCityField(group)), address.getCity());
             }
             if(address.getState()!=""){
-                scrollToElement(By.cssSelector(addressCityField(group)));
-                waitElementBy(By.cssSelector(addressStateElement(group)),createAddressDelay);
-                BasePage.click(By.cssSelector(addressStateElement(group)));
-                waitElementBy(By.cssSelector(addressStateElementList(group)),createAddressDelay);
-                write(By.cssSelector(addressStateSearch(group)),address.getState());
-                wait(1000);
-                BasePage.selectElementsList(By.cssSelector(addressStateElementList(group)), "a");
-                clickOnListOfElements(address.getState());
-                wait(1000);
+                MainPage.clickOptionList(By.cssSelector(addressStateElement(group)),
+                        address.getState(),
+                        By.cssSelector(addressStateElementList(group)),
+                        "a");
             }
             if(address.getRegion()!=""){
-                scrollToElement(By.cssSelector(emailAddressAddButton(group)));
-                waitElementBy(By.cssSelector(addressRegionField(group)),createAddressDelay);
-                write(By.cssSelector(addressRegionField(group)),address.getRegion());
+                MainPage.fillField(By.cssSelector(addressRegionField(group)), address.getRegion());
             }
             if(address.getCountry()!=""){
-                scrollToElement(By.cssSelector(addressCityField(group)));
-                waitElementBy(By.cssSelector(addressCountryElement(group)),createAddressDelay);
-                BasePage.click(By.cssSelector(addressCountryElement(group)));
-                wait(1000);
-                BasePage.selectElementsList(By.cssSelector(addressCountryElementList(group)), "a");
-                clickOnListOfElements(address.getCountry());
-                wait(1000);
+                MainPage.clickOptionList(By.cssSelector(addressCountryElement(group)),
+                        address.getCountry(),
+                        By.cssSelector(addressCountryElementList(group)),
+                        "a");
             }
             if(address.getPostalCode()!=""){
-                scrollToElement(By.cssSelector(emailAddressAddButton(group)));
-                waitElementBy(By.cssSelector(addressPostalCodeField(group)),createAddressDelay);
-                write(By.cssSelector(addressPostalCodeField(group)),address.getPostalCode());
+                MainPage.fillField(By.cssSelector(addressPostalCodeField(group)), address.getPostalCode());
             }
             if(address.getAddressType()!=""){
-                scrollToElement(By.cssSelector(addressStateElement(group)));
-                waitElementBy(By.cssSelector(addressTypeElement(group)),createAddressDelay);
-                BasePage.click(By.cssSelector(addressTypeElement(group)));
-                wait(1000);
-                BasePage.selectElementsList(By.cssSelector(addressTypeElementList(group)), "a");
-                clickOnListOfElements(address.getAddressType());
-                wait(1000);
+                MainPage.clickOptionList(By.cssSelector(addressTypeElement(group)),
+                        address.getAddressType(),
+                        By.cssSelector(addressTypeElementList(group)),
+                        "a");
             }
             if(address.getEducationNeighborhood()!=""){
-                scrollToElement(By.cssSelector(addressStateElement(group)));
-                waitElementBy(By.cssSelector(addressNeighborhoodElement(group)),createAddressDelay);
-                BasePage.click(By.cssSelector(addressNeighborhoodElement(group)));
-                waitElementBy(By.cssSelector(addressNeighborhoodElementList(group)),createAddressDelay);
-                BasePage.selectElementsList(By.cssSelector(addressNeighborhoodElementList(group)), "a");
-                clickOnListOfElements(address.getEducationNeighborhood());
-                wait(1000);
+                MainPage.clickOptionList(By.cssSelector(addressNeighborhoodElement(group)),
+                        address.getEducationNeighborhood(),
+                        By.cssSelector(addressNeighborhoodElementList(group)),
+                        "a");
             }
             if(address.getAddressComments()!=""){
-                scrollToElement(By.cssSelector(addressCommentsField(group)));
-                waitElementBy(By.cssSelector(addressCommentsField(group)),createAddressDelay);
-                write(By.cssSelector(addressCommentsField(group)),address.getAddressComments());
+                MainPage.fillField(By.cssSelector(addressCommentsField(group)), address.getAddressComments());
             }
             if(address.getActive()!=""){
                 scrollToElement(By.cssSelector(emailAddressAddButton(group)));

@@ -141,10 +141,10 @@ public class SchoolPage extends BasePage{
                 MainPage.fillField(By.cssSelector(schoolComments(group)), educationSchoolBean.getSchoolComments());
             }
             if(educationSchoolBean.getActive()!=""){
-                MainPage.click(By.cssSelector(schoolActiveCheckbox(group)));
+                click(By.cssSelector(schoolActiveCheckbox(group)));
             }
             if(educationSchoolBean.getPrimary()!=""){
-                MainPage.click(By.cssSelector(schoolPrimaryCheckbox(group)));
+                click(By.cssSelector(schoolPrimaryCheckbox(group)));
             }
             ExtentReportsSetUp.testingPass(passMessage);
         } catch (Exception e) {

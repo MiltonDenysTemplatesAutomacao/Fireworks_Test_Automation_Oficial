@@ -121,10 +121,10 @@ public class OrgContactEmailPage extends BasePage {
                 MainPage.fillField(By.cssSelector(emailCommentsField(group)), email.getEmailComments());
             }
             if(email.getActive()!=""){
-                MainPage.click(By.cssSelector(emailActiveCheckbox(group)));
+                click(By.cssSelector(emailActiveCheckbox(group)));
             }
             if(email.getPrimary()!=""){
-                MainPage.click(By.cssSelector(emailPrimaryCheckbox(group)));
+                click(By.cssSelector(emailPrimaryCheckbox(group)));
             }
             ExtentReportsSetUp.testingPass(passMessage);
         } catch (Exception e) {

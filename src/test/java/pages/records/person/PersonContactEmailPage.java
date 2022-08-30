@@ -6,6 +6,7 @@ import org.openqa.selenium.By;
 import pages.BasePage;
 import pages.FailureDelegatePage;
 import pages.LogPage;
+import pages.MainPage;
 
 
 public class PersonContactEmailPage extends BasePage {
@@ -73,113 +74,23 @@ public class PersonContactEmailPage extends BasePage {
     }
 
     public static void verifyEmailPersonPageRecordParametersSteps(ContactEmailBean email , String group){
-        boolean emailAddressValidation = false;
-        boolean emailTypeValidation = false;
-        boolean emailOptInMethodValidation = false;
-        boolean emailOptInStatusValidation = false;
-        boolean emailOptInDateValidation = false;
-        boolean emailStatusValidation = false;
-        boolean emailCommentsValidation = false;
-        boolean emailActiveCheckboxLocator = false;
-        boolean emailPrymaryCheckboxLocator = false;
-
-        int verifyEmailPersonPageRecordParametersStepsDelay = 20;
-
         String passMessage = String.format(LogPage.VERIFY_EMAIL_PERSON_PAGE_RECORD_PASS,group);
         String failMessage = String.format(LogPage.VERIFY_EMAIL_PERSON_PAGE_RECORD_FAIL,group);
 
         try {
-            scrollToElement(By.cssSelector(emailPlusSignElement(group)));
-            if (email.getEmailAddress() != "") {
-                waitElementBy(By.cssSelector(emailAddressField(group)),verifyEmailPersonPageRecordParametersStepsDelay);
-                String emailAddressText = getAtribute(By.cssSelector(emailAddressField(group)),"value");
-                emailAddressValidation = email.getEmailAddress().equals(emailAddressText);
-            }else{
-                emailAddressValidation = true;
-            }
-            if (email.getEmailType() != "") {
-                waitElementBy(By.cssSelector(emailTypeElement(group)),verifyEmailPersonPageRecordParametersStepsDelay);
-                String emailTypeText = getText(By.cssSelector(emailTypeElement(group)));
-                emailTypeValidation = email.getEmailType().equals(emailTypeText);
-            }else{
-                emailTypeValidation = true;
-            }
-            if (email.getEmailOptInMethod() != "") {
-                waitElementBy(By.cssSelector(emailOptInMethodElement(group)),verifyEmailPersonPageRecordParametersStepsDelay);
-                String emailOptInMethodText = getText(By.cssSelector(emailOptInMethodElement(group)));
-                emailOptInMethodValidation = email.getEmailOptInMethod().equals(emailOptInMethodText);
-            }else{
-                emailOptInMethodValidation = true;
-            }
-            if (email.getEmailOptInStatus() != "") {
-                waitElementBy(By.cssSelector(emailOptInStatusElement(group)),verifyEmailPersonPageRecordParametersStepsDelay);
-                String emailOptInStatusText = getText(By.cssSelector(emailOptInStatusElement(group)));
-                emailOptInStatusValidation = email.getEmailOptInStatus().equals(emailOptInStatusText);
-            }else{
-                emailOptInStatusValidation=true;
-            }
-            if (email.getEmailOptInDate() != "") {
-                waitElementBy(By.cssSelector(emailOptInDateField(group)),verifyEmailPersonPageRecordParametersStepsDelay);
-                emailOptInDateValidation = verifyDateFieldWithoutHour(By.cssSelector(emailOptInDateField(group)));
-            }else{
-                emailOptInDateValidation = true;
-            }
-            if (email.getEmailOptInStatus() != "") {
-                waitElementBy(By.cssSelector(emailStatusElement(group)),verifyEmailPersonPageRecordParametersStepsDelay);
-                String emailStatusText = getText(By.cssSelector(emailStatusElement(group)));
-                emailStatusValidation = email.getEmailOptInStatus().equals(emailStatusText);
-            }else{
-                emailStatusValidation = true;
-            }
-            if (email.getEmailComments() != "") {
-                waitElementBy(By.cssSelector(emailCommentsField(group)),verifyEmailPersonPageRecordParametersStepsDelay);
-                String emailCommentsText = getText(By.cssSelector(emailCommentsField(group)));
-                emailCommentsValidation = email.getEmailComments().equals(emailCommentsText);
-            }else{
-                emailCommentsValidation = true;
-            }
-
-            if(email.getActive() != ""){
-                switch (email.getActive()){
-                    case "1":
-                        emailActiveCheckboxLocator = checkBoxIsActive(By.cssSelector(emailActiveCheckbox(group)));
-                        break;
-                    case "0":
-                        emailActiveCheckboxLocator = !checkBoxIsActive(By.cssSelector(emailActiveCheckbox(group)));
-                        break;
-                    default: throw new IllegalArgumentException("Unhandled index. Update business logic");
-                }
-            }else{
-                emailActiveCheckboxLocator=true;
-            }
-
-            if(email.getPrimary() != ""){
-                switch (email.getPrimary()){
-                    case "1":
-                        emailPrymaryCheckboxLocator = checkBoxIsActive(By.cssSelector(emailPrimaryCheckbox(group)));
-                        break;
-                    case "0":
-                        emailPrymaryCheckboxLocator = !checkBoxIsActive(By.cssSelector(emailPrimaryCheckbox(group)));
-                        break;
-                    default: throw new IllegalArgumentException("Unhandled index. Update business logic");
-                }
-            }else{
-                emailPrymaryCheckboxLocator=true;
-            }
-
-            if(emailAddressValidation
-                    && emailTypeValidation
-                    && emailOptInMethodValidation
-                    && emailOptInStatusValidation
-                    && emailOptInDateValidation
-                    && emailStatusValidation
-                    && emailCommentsValidation
-                    && emailActiveCheckboxLocator
-                    && emailPrymaryCheckboxLocator){
-                ExtentReportsSetUp.testingPass(passMessage);
-            }else{
-                FailureDelegatePage.handlePageException(failMessage);
-            }
+            if(MainPage.verifyGetAttribute(By.cssSelector(emailAddressField(group)),email.getEmailAddress())
+                    && MainPage.verifyGetText(By.cssSelector(emailTypeElement(group)),email.getEmailType())
+                    && MainPage.verifyGetText(By.cssSelector(emailOptInMethodElement(group)),email.getEmailOptInMethod())
+                    && MainPage.verifyGetText(By.cssSelector(emailOptInStatusElement(group)),email.getEmailOptInStatus())
+                    && MainPage.verifyGetText(By.cssSelector(emailOptInDateField(group)),email.getEmailOptInDate())
+                    && MainPage.verifyGetText(By.cssSelector(emailStatusElement(group)),email.getEmailOptInStatus())
+                    && MainPage.verifyGetText(By.cssSelector(emailCommentsField(group)),email.getEmailComments())
+                    && MainPage.verifyCheckboxActiveOrNot(By.cssSelector(emailActiveCheckbox(group)),email.getActive())
+                    && MainPage.verifyCheckboxActiveOrNot(By.cssSelector(emailPrimaryCheckbox(group)),email.getPrimary())){
+            ExtentReportsSetUp.testingPass(passMessage);
+        }else{
+            FailureDelegatePage.handlePageException(failMessage);
+        }
         } catch (Exception e) {
             FailureDelegatePage.handlePageException(failMessage);
         }
@@ -204,50 +115,34 @@ public class PersonContactEmailPage extends BasePage {
         int createEmailDelay=20;
         try {
             if(email.getEmailAddress()!=""){
-                scrollToElement(By.cssSelector(emailPlusSignElement(group)));
-                waitElementBy(By.cssSelector(emailAddressField(group)),createEmailDelay);
-                write(By.cssSelector(emailAddressField(group)), email.getEmailAddress());
+                MainPage.fillField(By.cssSelector(emailAddressField(group)), email.getEmailAddress());
             }
             if(email.getEmailType()!=""){
-                scrollToElement(By.cssSelector(emailPlusSignElement(group)));
-                waitElementBy(By.cssSelector(emailTypeElement(group)),createEmailDelay);
-                BasePage.click(By.cssSelector(emailTypeElement(group)));
-                wait(1000);
-                BasePage.selectElementsList(By.cssSelector(emailTypeElementList(group)), "a");
-                wait(500);
-                clickOnListOfElements(email.getEmailType());
+                MainPage.clickOptionList(By.cssSelector(emailTypeElement(group)),
+                        email.getEmailType(),
+                        By.cssSelector(emailTypeElement(group)),
+                        "a");
             }
             if(email.getEmailStatus()!=""){
-                scrollToElement(By.cssSelector(emailPlusSignElement(group)));
-                waitElementBy(By.cssSelector(emailStatusElement(group)),createEmailDelay);
-                BasePage.click(By.cssSelector(emailStatusElement(group)));
-                wait(1000);
-                BasePage.selectElementsList(By.cssSelector(emailStatusElementList(group)), "a");
-                wait(500);
-                clickOnListOfElements(email.getEmailStatus());
+                MainPage.clickOptionList(By.cssSelector(emailStatusElement(group)),
+                        email.getEmailStatus(),
+                        By.cssSelector(emailStatusElementList(group)),
+                        "a");
             }
             if(email.getEmailOptInMethod()!=""){
-                scrollToElement(By.cssSelector(emailPlusSignElement(group)));
-                waitElementBy(By.cssSelector(emailOptInMethodElement(group)),createEmailDelay);
-                BasePage.click(By.cssSelector(emailOptInMethodElement(group)));
-                wait(1000);
-                BasePage.selectElementsList(By.cssSelector(selectEmailOptInMethodList(group)), "a");
-                wait(500);
-                clickOnListOfElements(email.getEmailOptInMethod());
+                MainPage.clickOptionList(By.cssSelector(emailOptInMethodElement(group)),
+                        email.getEmailOptInMethod(),
+                        By.cssSelector(selectEmailOptInMethodList(group)),
+                        "a");
             }
             if(email.getEmailOptInStatus()!=""){
-                scrollToElement(By.cssSelector(emailPlusSignElement(group)));
-                waitElementBy(By.cssSelector(emailOptInStatusElement(group)),createEmailDelay);
-                BasePage.click(By.cssSelector(emailOptInStatusElement(group)));
-                wait(1000);
-                BasePage.selectElementsList(By.cssSelector(emailOptInStatusElementList(group)), "a");
-                wait(500);
-                clickOnListOfElements(email.getEmailOptInStatus());
+                MainPage.clickOptionList(By.cssSelector(emailOptInStatusElement(group)),
+                        email.getEmailOptInStatus(),
+                        By.cssSelector(emailOptInStatusElementList(group)),
+                        "a");
             }
             if(email.getEmailComments()!=""){
-                scrollToElement(By.cssSelector(emailPlusSignElement(group)));
-                waitElementBy(By.cssSelector(emailCommentsField(group)),createEmailDelay);
-                write(By.cssSelector(emailCommentsField(group)), email.getEmailComments());
+                MainPage.fillField(By.cssSelector(emailCommentsField(group)), email.getEmailComments());
             }
             if(email.getActive()!=""){
                 scrollToElement(By.cssSelector(emailPlusSignElement(group)));
@@ -265,10 +160,7 @@ public class PersonContactEmailPage extends BasePage {
 
     public static void addEmail(String group){
         try {
-            scrollToElement(By.cssSelector(emailPlusSignElement(group)));
-            scrollTo("-100");
-            waitUntilElementToBeSelected(By.cssSelector(emailPlusSignElement(group)),20);
-            click(By.cssSelector(emailPlusSignElement(group)));
+            MainPage.addDeleteWithPlusButton(By.cssSelector(emailPlusSignElement(group)));
             ExtentReportsSetUp.testingPass(LogPage.ADD_EMAIL_PASS);
         } catch (Exception e) {
             FailureDelegatePage.handlePageException(LogPage.ADD_EMAIL_FAIL);
@@ -276,99 +168,20 @@ public class PersonContactEmailPage extends BasePage {
     }
     public static void verifyEmailPersonPageRecord(String index){
 
-        boolean emailAddressValidation = false;
-        boolean emailTypeValidation = false;
-        boolean emailOptInMethodValidation = false;
-        boolean emailOptInStatusValidation = false;
-        boolean emailOptInDateValidation = false;
-        boolean emailStatusValidation = false;
-        boolean emailCommentsValidation = false;
-        boolean emailActiveCheckboxLocator = false;
-        boolean emailPrymaryCheckboxLocator = false;
-
+        int indexInt = Integer.parseInt(index);
         String passMessage = String.format(LogPage.VERIFY_EMAIL_PERSON_PAGE_RECORD_PASS,index);
         String failMessage = String.format(LogPage.VERIFY_EMAIL_PERSON_PAGE_RECORD_FAIL,index);
 
         try {
-            scrollToElement(By.cssSelector(emailPlusSignElement(index)));
-            int indexInt = Integer.parseInt(index);
-            if (mass.get(indexInt).get("EmailAddress") != null) {
-                String test = mass.get(indexInt).get("EmailAddress");
-                String emailAddress = getAtribute(By.cssSelector(emailAddressField(index)),"value");
-                emailAddressValidation = emailAddress.equals(mass.get(indexInt).get("EmailAddress"));
-            }else{
-                emailAddressValidation = true;
-            }
-            if (mass.get(indexInt).get("EmailType") != null) {
-                String emailType = getText(By.cssSelector(emailTypeElement(index)));
-                emailTypeValidation = emailType.equals(mass.get(indexInt).get("EmailType"));
-            }else{
-                emailTypeValidation = true;
-            }
-            if (mass.get(indexInt).get("EmailOptInMethod") != null) {
-                String emailOptInMethod = getText(By.cssSelector(emailOptInMethodElement(index)));
-                emailOptInMethodValidation = emailOptInMethod.equals(mass.get(indexInt).get("EmailOptInMethod"));
-            }else{
-                emailOptInMethodValidation = true;
-            }
-            if (mass.get(indexInt).get("EmailOptInStatus") != null) {
-                String emailOptInStatus = getText(By.cssSelector(emailOptInStatusElement(index)));
-                emailOptInStatusValidation = emailOptInStatus.equals(mass.get(indexInt).get("EmailOptInStatus"));
-            }else{
-                emailOptInStatusValidation=true;
-            }
-            if (mass.get(indexInt).get("EmailOptInDate") != null) {
-                String emailOptInDate = getAtribute(By.cssSelector(emailOptInDateField(index)),"value");
-                emailOptInDateValidation = emailOptInDate.equals(mass.get(indexInt).get("EmailOptInDate"));
-            }else{
-                emailOptInDateValidation = true;
-            }
-            if (mass.get(indexInt).get("EmailStatus") != null) {
-                String emailStatus = getText(By.cssSelector(emailStatusElement(index)));
-                emailStatusValidation = emailStatus.equals(mass.get(indexInt).get("EmailStatus"));
-            }else{
-                emailStatusValidation = true;
-            }
-            if (mass.get(indexInt).get("EmailComments") != null) {
-                String emailComments = getText(By.cssSelector(emailCommentsField(index)));
-                emailCommentsValidation = emailComments.equals(mass.get(indexInt).get("EmailComments"));
-            }else{
-                emailCommentsValidation = true;
-            }
-            if(mass.get(indexInt).get("Active") != null){
-                switch (mass.get(indexInt).get("Active")){
-                    case "1":
-                        emailActiveCheckboxLocator = checkBoxIsActive(By.cssSelector(emailActiveCheckbox(index)));
-                        break;
-                    case "0":
-                        emailActiveCheckboxLocator = !checkBoxIsActive(By.cssSelector(emailActiveCheckbox(index)));
-                        break;
-                    default: throw new IllegalArgumentException("Unhandled index. Update business logic");
-                }
-            }
-
-            if(mass.get(indexInt).get("Primary") != null){
-                switch (mass.get(indexInt).get("Primary")){
-                    case "1":
-                        emailPrymaryCheckboxLocator = checkBoxIsActive(By.cssSelector(emailPrimaryCheckbox(index)));
-                        break;
-                    case "0":
-                        emailPrymaryCheckboxLocator = !checkBoxIsActive(By.cssSelector(emailPrimaryCheckbox(index)));
-                        break;
-                    default: throw new IllegalArgumentException("Unhandled index. Update business logic");
-                }
-            }
-
-
-            if(emailAddressValidation
-                    && emailTypeValidation
-                    && emailOptInMethodValidation
-                    && emailOptInStatusValidation
-                    && emailOptInDateValidation
-                    && emailStatusValidation
-                    && emailCommentsValidation
-                    && emailActiveCheckboxLocator
-                    && emailPrymaryCheckboxLocator){
+            if(MainPage.verifyGetAttribute(By.cssSelector(emailAddressField(index)),mass.get(indexInt).get("EmailAddress"))
+                    && MainPage.verifyGetText(By.cssSelector(emailTypeElement(index)),mass.get(indexInt).get("EmailType"))
+                    && MainPage.verifyGetText(By.cssSelector(emailOptInMethodElement(index)),mass.get(indexInt).get("EmailOptInMethod"))
+                    && MainPage.verifyGetText(By.cssSelector(emailOptInStatusElement(index)),mass.get(indexInt).get("EmailOptInStatus"))
+                    && MainPage.verifyGetAttribute(By.cssSelector(emailOptInDateField(index)),mass.get(indexInt).get("EmailOptInDate"))
+                    && MainPage.verifyGetText(By.cssSelector(emailStatusElement(index)),mass.get(indexInt).get("EmailStatus"))
+                    && MainPage.verifyGetText(By.cssSelector(emailCommentsField(index)),mass.get(indexInt).get("EmailComments"))
+                    && MainPage.verifyCheckboxActiveOrNot(By.cssSelector(emailActiveCheckbox(index)),mass.get(indexInt).get("Active"))
+                    && MainPage.verifyCheckboxActiveOrNot(By.cssSelector(emailPrimaryCheckbox(index)),mass.get(indexInt).get("Primary"))){
                 ExtentReportsSetUp.testingPass(passMessage);
             }else{
                 FailureDelegatePage.handlePageException(failMessage);

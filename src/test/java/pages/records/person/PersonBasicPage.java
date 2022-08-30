@@ -7,7 +7,7 @@ import pages.BasePage;
 import pages.FailureDelegatePage;
 import pages.LogPage;
 import pages.PersonPage;
-
+import pages.MainPage;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -81,29 +81,9 @@ public class PersonBasicPage extends BasePage {
     private static final String HIGH_SCORE_FIELD = "#high_score";
 
     public static void verifySystemGeneratedValues(String fireworksID,String highScore){
-        boolean fireworksIDValidation = false;
-        boolean highScoreValidation = false;
-
         try {
-            if(fireworksID!=""){
-                waitElementBy(By.cssSelector(FIREWORKS_ID),10);
-                scrollToElement(By.cssSelector(FIREWORKS_ID));
-                scrollTo("-150");
-                String fireworksIDText = getText(By.cssSelector(FIREWORKS_ID));
-                fireworksIDValidation = fireworksIDText.contains(fireworksID);
-            }else{
-                fireworksIDValidation=true;
-            }
-            if(highScore!=""){
-                waitElementBy(By.cssSelector(HIGH_SCORE_FIELD),10);
-                scrollToElement(By.cssSelector(HIGH_SCORE_FIELD));
-                scrollTo("-150");
-                String highScoreText = getAtribute(By.cssSelector(HIGH_SCORE_FIELD),"value");
-                highScoreValidation = highScoreText.contains(highScore);
-            }else{
-                highScoreValidation=true;
-            }
-            if(fireworksIDValidation && highScoreValidation){
+            if(MainPage.verifyGetText(By.cssSelector(FIREWORKS_ID),fireworksID)
+                && MainPage.verifyGetAttribute(By.cssSelector(HIGH_SCORE_FIELD),highScore)){
                 ExtentReportsSetUp.testingPass(LogPage.VERIFY_SYSTEM_GENERATED_VALUES_PASS);
             }else{
                 FailureDelegatePage.handlePageException(LogPage.VERIFY_SYSTEM_GENERATED_VALUES_FAIL);
@@ -114,20 +94,20 @@ public class PersonBasicPage extends BasePage {
     }
     public static void updateCitizenshipValues(String citizenshipType,String countryOfCitizenship,String ssn){
         try {
-            waitElementBy(By.cssSelector(CITIZENSHIP_TYPE_DROPDOWN),20);
             if (citizenshipType != "") {
-                scrollToElement(By.cssSelector(BIRTH_CITY_FIELD));
-                BasePage.click(By.cssSelector(CITIZENSHIP_TYPE_DROPDOWN));
-                BasePage.selectElementsList(By.cssSelector(CITIZENSHIP_TYPE_DROPDOWN_LIST), "a");
-                clickOnListOfElements(citizenshipType);
+                MainPage.clickOptionList(By.cssSelector(CITIZENSHIP_TYPE_DROPDOWN),
+                        citizenshipType,
+                        By.cssSelector(CITIZENSHIP_TYPE_DROPDOWN_LIST),
+                        "a");
             }
             if (countryOfCitizenship != "") {
-                BasePage.click(By.cssSelector(CITIZENSHIP_COUNTRY_DROPDOWN));
-                BasePage.selectElementsList(By.cssSelector(CITIZENSHIP_COUNTRY_DROPDOWN_LIST), "a");
-                clickOnListOfElements(countryOfCitizenship);
+                MainPage.clickOptionList(By.cssSelector(CITIZENSHIP_COUNTRY_DROPDOWN),
+                        countryOfCitizenship,
+                        By.cssSelector(CITIZENSHIP_COUNTRY_DROPDOWN_LIST),
+                        "a");
             }
             if (ssn != "") {
-                BasePage.write(By.cssSelector(SOCIAL_SECURITY_NUMBER_FIELD), ssn);
+                MainPage.fillField(By.cssSelector(SOCIAL_SECURITY_NUMBER_FIELD), ssn);
             }
             ExtentReportsSetUp.testingPass(LogPage.UPDATE_CITIZENSHIP_PASS);
         } catch (Exception e) {
@@ -138,8 +118,6 @@ public class PersonBasicPage extends BasePage {
     public static void verifyRecordFlags(String deceased,String studentFlag,String firstGeneration,String internationalStudent,String legacy,String stateResident,String veteran){
 
         try {
-            int verifyRecordFlagsDelay=20;
-
             boolean deceasedValidation = false;
             boolean studentFlagValidation = false;
             boolean firstGenerationValidation = false;
@@ -224,47 +202,10 @@ public class PersonBasicPage extends BasePage {
 
     public static void verifyContextValues(String originalGeomarket, String timeZone, String classOf,String currentGrade){
         try {
-            int verifyContextValuesDelay=20;
-            boolean originalGeomarketValidation = false;
-            boolean timeZoneValidation = false;
-            boolean classOfValidation = false;
-            boolean currentGradeValidation = false;
-            scrollToElement(By.cssSelector(INITIAL_CATEGORY_DROPDOWN));
-
-            String originalGeomarketText = getText(By.cssSelector(ORIGINAL_GEOMARKET_DROPDOWN));
-            String timeZoneText = getText(By.cssSelector(TIME_ZONE_DROPDOWN));
-            String classOfText = getText(By.cssSelector(CLASS_OF_DROPDOWN));
-            String currentGradeText = getText(By.cssSelector(CURRENT_GRADE_DROPDOWN));
-
-            if(originalGeomarket!=""){
-                waitElementBy(By.cssSelector(ORIGINAL_GEOMARKET_DROPDOWN),verifyContextValuesDelay);
-                originalGeomarketValidation = originalGeomarketText.equals(originalGeomarket);
-            }else{
-                originalGeomarketValidation=true;
-            }
-            if(timeZone !=""){
-                waitElementBy(By.cssSelector(INITIAL_CATEGORY_DROPDOWN),verifyContextValuesDelay);
-                timeZoneValidation = timeZoneText.equals(timeZone);
-            }else{
-                timeZoneValidation=true;
-            }
-            if(classOf !=""){
-                waitElementBy(By.cssSelector(CLASS_OF_DROPDOWN),verifyContextValuesDelay);
-                classOfValidation = classOfText.equals(classOf);
-            }else{
-                classOfValidation=true;
-            }
-            if(currentGrade !=""){
-                waitElementBy(By.cssSelector(CURRENT_GRADE_DROPDOWN),verifyContextValuesDelay);
-                currentGradeValidation = currentGradeText.equals(currentGrade);
-            }else{
-                currentGradeValidation=true;
-            }
-            if(timeZoneValidation
-                    && originalGeomarketValidation
-                    && classOfValidation
-                    && currentGradeValidation
-            ){
+            if(MainPage.verifyGetText(By.cssSelector(ORIGINAL_GEOMARKET_DROPDOWN),originalGeomarket)
+                    && MainPage.verifyGetText(By.cssSelector(TIME_ZONE_DROPDOWN),timeZone)
+                    && MainPage.verifyGetText(By.cssSelector(CLASS_OF_DROPDOWN),classOf)
+                    && MainPage.verifyGetText(By.cssSelector(CURRENT_GRADE_DROPDOWN),currentGrade)){
                 ExtentReportsSetUp.testingPass(LogPage.VERIFY_CONTEXT_VALUES_PASS);
             }else{
                 FailureDelegatePage.handlePageException(LogPage.VERIFY_CONTEXT_VALUES_FAIL);
@@ -275,29 +216,8 @@ public class PersonBasicPage extends BasePage {
     }
     public static void verifyInitialSourceValues(String initialCategory, String initialSource){
         try {
-            int verifyInitialSourceValuesDelay=20;
-            boolean initialCategoryValidation = false;
-            boolean sourceTextValidation = false;
-            scrollToElement(By.cssSelector(PRIMARY_LANGUAGE_DROPDOWN));
-
-            String initialCategoryText = getText(By.cssSelector(INITIAL_CATEGORY_DROPDOWN));
-            String initialSourceText = getText(By.cssSelector(INITIAL_SOURCE_DROPDOWN));
-
-            if(initialCategory !=""){
-                waitElementBy(By.cssSelector(INITIAL_CATEGORY_DROPDOWN),verifyInitialSourceValuesDelay);
-                initialCategoryValidation = initialCategoryText.equals(initialCategory);
-            }else{
-                initialCategoryValidation=true;
-            }
-            if(initialSource !=""){
-                waitElementBy(By.cssSelector(INITIAL_SOURCE_DROPDOWN),verifyInitialSourceValuesDelay);
-                sourceTextValidation = initialSourceText.equals(initialSource);
-            }else{
-                sourceTextValidation=true;
-            }
-            if(initialCategoryValidation
-                    && sourceTextValidation
-            ){
+            if(MainPage.verifyGetText(By.cssSelector(INITIAL_CATEGORY_DROPDOWN),initialCategory)
+                    && MainPage.verifyGetText(By.cssSelector(INITIAL_SOURCE_DROPDOWN),initialSource)){
                 ExtentReportsSetUp.testingPass(LogPage.VERIFY_INITIAL_SOURCE_VALUES_PASS);
             }else{
                 FailureDelegatePage.handlePageException(LogPage.VERIFY_INITIAL_SOURCE_VALUES_FAIL);
@@ -309,67 +229,12 @@ public class PersonBasicPage extends BasePage {
 
     public static void verifyCultureValues(String ethnicity,String race,String gender,String maritalStatus,String primaryLanguage, String religion){
         try {
-            int verifyCultureValuesDelay = 20;
-            boolean ethnicityValidation = false;
-            boolean raceValidation = false;
-            boolean genderValidation = false;
-            boolean maritalStatusValidation = false;
-            boolean primaryLanguageValidation = false;
-            boolean religionValidation = false;
-
-            scrollToElement(By.cssSelector(SOCIAL_SECURITY_NUMBER_FIELD));
-
-            String ethnicityText = getText(By.cssSelector(ETHNICITY_DROPDOWN));
-            String raceText = getText(By.xpath(RACE_FIELD));
-            String genderText = getText(By.cssSelector(GENDER_DROPDOWN));
-            String maritalStatusText = getText(By.cssSelector(MARITAL_STATUS_DROPDOWN));
-            String primaryLanguageText = getText(By.cssSelector(PRIMARY_LANGUAGE_DROPDOWN));
-            String religionText = getText(By.cssSelector(RELIGION_DROPDOWN));
-
-
-            if(ethnicity !=""){
-                waitElementBy(By.cssSelector(ETHNICITY_DROPDOWN),verifyCultureValuesDelay);
-                ethnicityValidation = ethnicityText.contains(ethnicity);
-            }else{
-                ethnicityValidation=true;
-            }
-            if(race !=""){
-                waitElementBy(By.xpath(RACE_FIELD),verifyCultureValuesDelay);
-                raceValidation = raceText.contains(race);
-            }else{
-                raceValidation =true;
-            }
-            if(gender !=""){
-                waitElementBy(By.cssSelector(GENDER_DROPDOWN),verifyCultureValuesDelay);
-                genderValidation = genderText.contains(gender);
-            }else{
-                genderValidation=true;
-            }
-            if(maritalStatus !=""){
-                waitElementBy(By.cssSelector(MARITAL_STATUS_DROPDOWN),verifyCultureValuesDelay);
-                maritalStatusValidation = maritalStatusText.contains(maritalStatus);
-            }else{
-                maritalStatusValidation=true;
-            }
-            if(primaryLanguage !=""){
-                waitElementBy(By.cssSelector(PRIMARY_LANGUAGE_DROPDOWN),verifyCultureValuesDelay);
-                primaryLanguageValidation = primaryLanguageText.contains(primaryLanguage);
-            }else{
-                primaryLanguageValidation=true;
-            }
-            if(religion !=""){
-                waitElementBy(By.cssSelector(RELIGION_DROPDOWN),verifyCultureValuesDelay);
-                religionValidation = religionText.contains(religion);
-            }else{
-                religionValidation=true;
-            }
-
-            if(ethnicityValidation
-                    && raceValidation
-                    && genderValidation
-                    && maritalStatusValidation
-                    && primaryLanguageValidation
-                    && religionValidation){
+            if(MainPage.verifyGetText(By.cssSelector(ETHNICITY_DROPDOWN),ethnicity)
+                    && MainPage.verifyGetText(By.xpath(RACE_FIELD),race)
+                    && MainPage.verifyGetText(By.cssSelector(GENDER_DROPDOWN),gender)
+                    && MainPage.verifyGetText(By.cssSelector(MARITAL_STATUS_DROPDOWN),maritalStatus)
+                    && MainPage.verifyGetText(By.cssSelector(PRIMARY_LANGUAGE_DROPDOWN),primaryLanguage)
+                    && MainPage.verifyGetText(By.cssSelector(RELIGION_DROPDOWN),religion)){
                 ExtentReportsSetUp.testingPass(LogPage.VERIFY_CULTURE_VALUES_PASS);
             }else{
                 FailureDelegatePage.handlePageException(LogPage.VERIFY_CULTURE_VALUES_FAIL);
@@ -381,36 +246,10 @@ public class PersonBasicPage extends BasePage {
 
     public static void verifyCitizenship(String citizenshipType,String countryOfCitizenship,String ssn){
         try {
-            int verifyCitizenshipDelay = 20;
-            boolean citizenshipTypeValidation = false;
-            boolean countryOfCitizenshipValidation = false;
-            boolean ssnValidation = false;
-
-            String citizenshipTypeText = getText(By.cssSelector(CITIZENSHIP_TYPE_DROPDOWN));
-            String countryOfCitizenshipText = getText(By.cssSelector(CITIZENSHIP_COUNTRY_DROPDOWN));
-            String ssnText = getAtribute(By.cssSelector(SOCIAL_SECURITY_NUMBER_FIELD),"value");
-            scrollToElement(By.cssSelector(BIRTH_CITY_FIELD));
-
-            if(citizenshipType !=""){
-                waitElementBy(By.cssSelector(CITIZENSHIP_TYPE_DROPDOWN),verifyCitizenshipDelay);
-                citizenshipTypeValidation = citizenshipTypeText.contains(citizenshipType);
-            }else{
-                citizenshipTypeValidation=true;
-            }
-            if(countryOfCitizenship!=""){
-                waitElementBy(By.cssSelector(CITIZENSHIP_COUNTRY_DROPDOWN),verifyCitizenshipDelay);
-                countryOfCitizenshipValidation = countryOfCitizenshipText.contains(countryOfCitizenship);
-            }else{
-                countryOfCitizenshipValidation=true;
-            }
-            if(ssn!=""){
-                waitElementBy(By.cssSelector(SOCIAL_SECURITY_NUMBER_FIELD),verifyCitizenshipDelay);
-                ssnValidation = ssnText.equals(ssn);
-            }else{
-                ssnValidation=true;
-            }
-            if(citizenshipTypeValidation && countryOfCitizenshipValidation && ssnValidation){
-                ExtentReportsSetUp.testingPass(LogPage.VERIFY_CITIZENSHIP_PASS);
+            if(MainPage.verifyGetText(By.cssSelector(CITIZENSHIP_TYPE_DROPDOWN),citizenshipType)
+                    && MainPage.verifyGetText(By.cssSelector(CITIZENSHIP_COUNTRY_DROPDOWN),countryOfCitizenship)
+                    && MainPage.verifyGetAttribute(By.cssSelector(SOCIAL_SECURITY_NUMBER_FIELD),ssn)){
+                ExtentReportsSetUp.testingPass(LogPage.VERIFY_CITIZENSHIP_FAIL);
             }else{
                 FailureDelegatePage.handlePageException(LogPage.VERIFY_CITIZENSHIP_FAIL);
             }
@@ -421,41 +260,10 @@ public class PersonBasicPage extends BasePage {
 
     public static void verifyBirthValues(String date,String country,String city,String state){
         try {
-            int verifyBirthValuesDelay = 20;
-            boolean dateValidation = false;
-            boolean countryValidation = false;
-            boolean cityValidation = false;
-            boolean stateValidation = false;
-
-            String dateText = getAtribute(By.cssSelector(BIRTH_DATE),"value");
-            String countryText = getText(By.cssSelector(BIRTH_COUNTRY_DROPDOWN));
-            String cityText = getAtribute(By.cssSelector(BIRTH_CITY_FIELD),"value");
-            String stateText = getText(By.cssSelector(BIRTH_STATE_DROPDOWN));
-            if(date!=""){
-                waitElementBy(By.cssSelector(BIRTH_DATE),verifyBirthValuesDelay);
-                dateValidation = dateText.equals(date);
-            }else{
-                dateValidation=true;
-            }
-            if(country!=""){
-                waitElementBy(By.cssSelector(BIRTH_COUNTRY_DROPDOWN),verifyBirthValuesDelay);
-                countryValidation = countryText.equals(country);
-            }else{
-                countryValidation=true;
-            }
-            if(city!=""){
-                waitElementBy(By.cssSelector(BIRTH_CITY_FIELD),verifyBirthValuesDelay);
-                cityValidation = cityText.equals(city);
-            }else{
-                cityValidation=true;
-            }
-            if(state!=""){
-                waitElementBy(By.cssSelector(BIRTH_STATE_DROPDOWN),verifyBirthValuesDelay);
-                stateValidation = stateText.equals(state);
-            }else{
-                stateValidation=true;
-            }
-            if(dateValidation && countryValidation && cityValidation && stateValidation){
+            if(MainPage.verifyGetAttribute(By.cssSelector(BIRTH_DATE),date)
+                    && MainPage.verifyGetText(By.cssSelector(BIRTH_COUNTRY_DROPDOWN),country)
+                    && MainPage.verifyGetAttribute(By.cssSelector(BIRTH_CITY_FIELD),city)
+                    && MainPage.verifyGetText(By.cssSelector(BIRTH_STATE_DROPDOWN),state)){
                 ExtentReportsSetUp.testingPass(LogPage.VERIFY_BIRTH_VALUES_PASS);
             }else{
                 FailureDelegatePage.handlePageException(LogPage.VERIFY_BIRTH_VALUES_FAIL);
@@ -499,26 +307,22 @@ public class PersonBasicPage extends BasePage {
         int updateContextValuesDelay = 20;
         try {
             if(timeZone!=""){
-                scrollToElement(By.cssSelector(INITIAL_CATEGORY_DROPDOWN));
-                waitElementBy(By.cssSelector(TIME_ZONE_DROPDOWN),updateContextValuesDelay);
-                BasePage.click(By.cssSelector(TIME_ZONE_DROPDOWN));
-                BasePage.selectElementsList(By.cssSelector(PersonPage.SELECT_DROP), "a");
-                wait(1000);
-                clickOnListOfElements(timeZone);
+                MainPage.clickOptionList(By.cssSelector(TIME_ZONE_DROPDOWN),
+                        timeZone,
+                        By.cssSelector(PersonPage.SELECT_DROP),
+                        "a");
             }
             if(classOf!=""){
-                waitElementBy(By.cssSelector(CLASS_OF_DROPDOWN),updateContextValuesDelay);
-                BasePage.click(By.cssSelector(CLASS_OF_DROPDOWN));
-                BasePage.selectElementsList(By.cssSelector(PersonPage.SELECT_DROP), "a");
-                wait(1000);
-                clickOnListOfElements(classOf);
+                MainPage.clickOptionList(By.cssSelector(CLASS_OF_DROPDOWN),
+                        classOf,
+                        By.cssSelector(PersonPage.SELECT_DROP),
+                        "a");
             }
             if(currentGrade!=""){
-                waitElementBy(By.cssSelector(CURRENT_GRADE_DROPDOWN),updateContextValuesDelay);
-                BasePage.click(By.cssSelector(CURRENT_GRADE_DROPDOWN));
-                BasePage.selectElementsList(By.cssSelector(PersonPage.SELECT_DROP), "a");
-                wait(1000);
-                clickOnListOfElements(currentGrade);
+                MainPage.clickOptionList(By.cssSelector(CURRENT_GRADE_DROPDOWN),
+                        currentGrade,
+                        By.cssSelector(PersonPage.SELECT_DROP),
+                        "a");
             }
             ExtentReportsSetUp.testingPass(LogPage.UPDATE_CONTEXT_VALUES_PASS);
         } catch (Exception e) {
@@ -529,19 +333,16 @@ public class PersonBasicPage extends BasePage {
     public static void updateInitialSourceValues(String initialCategory, String sourceText){
         try {
             if(initialCategory != ""){
-                scrollToElement(By.cssSelector(PRIMARY_LANGUAGE_DROPDOWN));
-                waitElementBy(By.cssSelector(INITIAL_CATEGORY_DROPDOWN),20);
-                BasePage.click(By.cssSelector(INITIAL_CATEGORY_DROPDOWN));
-                BasePage.selectElementsList(By.cssSelector(PersonPage.SELECT_DROP), "a");
-                wait(1000);
-                clickOnListOfElements(initialCategory);
+                MainPage.clickOptionList(By.cssSelector(INITIAL_CATEGORY_DROPDOWN),
+                        initialCategory,
+                        By.cssSelector(PersonPage.SELECT_DROP),
+                        "a");
             }
             if(sourceText != ""){
-                waitElementBy(By.cssSelector(INITIAL_SOURCE_DROPDOWN),20);
-                BasePage.click(By.cssSelector(INITIAL_SOURCE_DROPDOWN));
-                BasePage.selectElementsList(By.cssSelector(PersonPage.SELECT_DROP), "a");
-                wait(1000);
-                clickOnListOfElements(sourceText);
+                MainPage.clickOptionList(By.cssSelector(INITIAL_SOURCE_DROPDOWN),
+                        sourceText,
+                        By.cssSelector(PersonPage.SELECT_DROP),
+                        "a");
             }
             ExtentReportsSetUp.testingPass(LogPage.UPDATE_INITIAL_SOURCE_VALUES_PASS);
         } catch (Exception e) {
@@ -550,9 +351,7 @@ public class PersonBasicPage extends BasePage {
     }
     public static void saveChangesBtnPersonBasic(){
         try {
-            waitElementBy(By.id(PERSON_BASIC_SAVE_CHANGES_BUTTON),20);
-            BasePage.scrollToElement(By.id(PERSON_BASIC_SAVE_CHANGES_BUTTON));
-            BasePage.click(By.id(PERSON_BASIC_SAVE_CHANGES_BUTTON));
+            MainPage.clickOption(By.id(PERSON_BASIC_SAVE_CHANGES_BUTTON));
             ExtentReportsSetUp.testingPass(LogPage.SAVE_CHANGES_PASS);
         } catch (Exception e) {
             FailureDelegatePage.handlePageException(LogPage.SAVE_CHANGES_FAIL);
@@ -563,84 +362,68 @@ public class PersonBasicPage extends BasePage {
 
         try {
             if (ethnicity != ""){
-                scrollToElement(By.cssSelector(BIRTH_STATE_DROPDOWN));
-                waitElementBy(By.cssSelector(ETHNICITY_DROPDOWN),updateCultureValuesDelay);
-                BasePage.click(By.cssSelector(ETHNICITY_DROPDOWN));
-                BasePage.selectElementsList(By.cssSelector(PersonPage.SELECT_DROP), "a");
-                wait(1000);
-                clickOnListOfElements(ethnicity);
+                MainPage.clickOptionList(By.cssSelector(ETHNICITY_DROPDOWN),
+                        ethnicity,
+                        By.cssSelector(ETHNICITY_DROPDOWN),
+                        "a");
             }
             if (race != ""){
-                waitElementBy(By.xpath(RACE_DROPDOWN),updateCultureValuesDelay);
-                BasePage.click(By.xpath(RACE_DROPDOWN));
-                BasePage.selectElementsList(By.cssSelector(PersonPage.SELECT_DROP), "a");
-                wait(1000);
-                clickOnListOfElements(race);
+                MainPage.clickOptionList(By.cssSelector(RACE_DROPDOWN),
+                        race,
+                        By.cssSelector(ETHNICITY_DROPDOWN),
+                        "a");
             }
             if (gender != ""){
-                waitElementBy(By.cssSelector(GENDER_DROPDOWN),updateCultureValuesDelay);
-                BasePage.click(By.cssSelector(GENDER_DROPDOWN));
-                BasePage.selectElementsList(By.cssSelector(PersonPage.SELECT_DROP), "a");
-                wait(1000);
-                clickOnListOfElements(gender);
+                MainPage.clickOptionList(By.cssSelector(GENDER_DROPDOWN),
+                        gender,
+                        By.cssSelector(PersonPage.SELECT_DROP),
+                        "a");
             }
             if (maritalStatus != ""){
-                waitElementBy(By.cssSelector(MARITAL_STATUS_DROPDOWN),updateCultureValuesDelay);
-                BasePage.click(By.cssSelector(MARITAL_STATUS_DROPDOWN));
-                BasePage.selectElementsList(By.cssSelector(PersonPage.SELECT_DROP), "a");
-                wait(1000);
-                clickOnListOfElements(maritalStatus);
+                MainPage.clickOptionList(By.cssSelector(MARITAL_STATUS_DROPDOWN),
+                        maritalStatus,
+                        By.cssSelector(PersonPage.SELECT_DROP),
+                        "a");
             }
             if (primaryLanguage != ""){
-                scrollToElement(By.cssSelector(ETHNICITY_DROPDOWN));
-                waitElementBy(By.cssSelector(PRIMARY_LANGUAGE_DROPDOWN),updateCultureValuesDelay);
-                BasePage.click(By.cssSelector(PRIMARY_LANGUAGE_DROPDOWN));
-                BasePage.selectElementsList(By.cssSelector(PersonPage.SELECT_DROP), "a");
-                wait(1000);
-                clickOnListOfElements(primaryLanguage);
+                MainPage.clickOptionList(By.cssSelector(PRIMARY_LANGUAGE_DROPDOWN),
+                        primaryLanguage,
+                        By.cssSelector(PersonPage.SELECT_DROP),
+                        "a");
             }
             if (religion != ""){
-                waitElementBy(By.cssSelector(RELIGION_DROPDOWN),updateCultureValuesDelay);
-                BasePage.click(By.cssSelector(RELIGION_DROPDOWN));
-                BasePage.selectElementsList(By.cssSelector(PersonPage.SELECT_DROP), "a");
-                wait(1000);
-                clickOnListOfElements(religion);
+                MainPage.clickOptionList(By.cssSelector(RELIGION_DROPDOWN),
+                        religion,
+                        By.cssSelector(PersonPage.SELECT_DROP),
+                        "a");
             }
             ExtentReportsSetUp.testingPass(LogPage.UPDATE_CULTURE_VALUES_PASS);
         } catch (Exception e) {
             FailureDelegatePage.handlePageException(LogPage.UPDATE_CULTURE_VALUES_FAIL);
-
         }
     }
 
     public static void updateBirthValues(String date,String country,String city,String state) {
-
-        int updateBirthValuesDelay = 20;
         try {
             if (date != "") {
-                waitElementBy(By.cssSelector(BIRTH_DATE), updateBirthValuesDelay);
-                write(By.cssSelector(BIRTH_DATE), date);
+                MainPage.fillField(By.cssSelector(BIRTH_DATE), date);
             }
             if (country != "") {
-                waitElementBy(By.cssSelector(BIRTH_COUNTRY_DROPDOWN), updateBirthValuesDelay);
-                BasePage.click(By.cssSelector(BIRTH_COUNTRY_DROPDOWN));
-                BasePage.selectElementsList(By.cssSelector(PersonPage.SELECT_DROP), "a");
-                wait(1000);
-                clickOnListOfElements(country);
+                MainPage.clickOptionList(By.cssSelector(BIRTH_COUNTRY_DROPDOWN),
+                        country,
+                        By.cssSelector(PersonPage.SELECT_DROP),
+                        "a");
             }
             if (city != "") {
-                waitElementBy(By.cssSelector(BIRTH_CITY_FIELD), updateBirthValuesDelay);
-                write(By.cssSelector(BIRTH_CITY_FIELD), city);
+                MainPage.fillField(By.cssSelector(BIRTH_CITY_FIELD), city);
             }
             if (state != "") {
-                waitElementBy(By.cssSelector(BIRTH_STATE_DROPDOWN), updateBirthValuesDelay);
-                BasePage.click(By.cssSelector(BIRTH_STATE_DROPDOWN));
-                BasePage.selectElementsList(By.cssSelector(PersonPage.SELECT_DROP), "a");
-                wait(1000);
-                clickOnListOfElements(state);
+                MainPage.clickOptionList(By.cssSelector(BIRTH_STATE_DROPDOWN),
+                        state,
+                        By.cssSelector(PersonPage.SELECT_DROP),
+                        "a");
             }
             ExtentReportsSetUp.testingPass(LogPage.UPDATE_BIRTH_VALUES_PASS);
-
         } catch (Exception e) {
             FailureDelegatePage.handlePageException(LogPage.UPDATE_BIRTH_VALUES_FAIL);
         }

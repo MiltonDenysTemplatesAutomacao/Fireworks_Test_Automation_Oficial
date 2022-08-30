@@ -82,7 +82,7 @@ public class IdTypesPage extends BasePage {
                 MainPage.fillField(By.xpath(comments(index)), mass.get(person).get("Comments"));
             }
             if (mass.get(person).get("Primary") != null) {
-                MainPage.click(By.cssSelector(idTypePrimaryCheckbox(index)));
+                click(By.cssSelector(idTypePrimaryCheckbox(index)));
             }
             ExtentReportsSetUp.testingPass(passMessage);
         } catch (Exception e) {

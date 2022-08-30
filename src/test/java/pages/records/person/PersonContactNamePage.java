@@ -6,6 +6,7 @@ import org.openqa.selenium.By;
 import pages.BasePage;
 import pages.FailureDelegatePage;
 import pages.LogPage;
+import pages.MainPage;
 
 public class PersonContactNamePage extends BasePage {
 
@@ -49,42 +50,28 @@ public class PersonContactNamePage extends BasePage {
         int createNameDelay=20;
         try {
             if(name.getFirstName()!=""){
-                scrollToElement(By.cssSelector(namePlusSignElement(group)));
-                waitElementBy(By.cssSelector(firstNameField(group)),createNameDelay);
-                write(By.cssSelector(firstNameField(group)), name.getFirstName());
+                MainPage.fillField(By.cssSelector(firstNameField(group)), name.getFirstName());
             }
             if(name.getLastName()!=""){
-                scrollToElement(By.cssSelector(namePlusSignElement(group)));
-                waitElementBy(By.cssSelector(lastNameField(group)),createNameDelay);
-                write(By.cssSelector(lastNameField(group)), name.getLastName());
+                MainPage.fillField(By.cssSelector(lastNameField(group)), name.getLastName());
             }
             if(name.getMiddleName()!=""){
-                scrollToElement(By.cssSelector(namePlusSignElement(group)));
-                waitElementBy(By.cssSelector(middleNameField(group)),createNameDelay);
-                write(By.cssSelector(middleNameField(group)), name.getMiddleName());
+                MainPage.fillField(By.cssSelector(middleNameField(group)), name.getMiddleName());
             }
             if(name.getPreferredName()!=""){
-                scrollToElement(By.cssSelector(namePlusSignElement(group)));
-                waitElementBy(By.cssSelector(preferredNameField(group)),createNameDelay);
-                write(By.cssSelector(preferredNameField(group)), name.getPreferredName());
+                MainPage.fillField(By.cssSelector(preferredNameField(group)), name.getPreferredName());
             }
             if(name.getSuffix()!=""){
-                scrollToElement(By.cssSelector(namePlusSignElement(group)));
-                waitElementBy(By.cssSelector(suffixElement(group)),createNameDelay);
-                BasePage.click(By.cssSelector(suffixElement(group)));
-                wait(1000);
-                BasePage.selectElementsList(By.cssSelector(suffixElementList(group)), "a");
-                wait(500);
-                clickOnListOfElements(name.getSuffix());
+                MainPage.clickOptionList(By.cssSelector(suffixElement(group)),
+                        name.getSuffix(),
+                        By.cssSelector(suffixElementList(group)),
+                        "a");
             }
             if(name.getSalutation()!=""){
-                scrollToElement(By.cssSelector(namePlusSignElement(group)));
-                waitElementBy(By.cssSelector(salutationElement(group)),createNameDelay);
-                BasePage.click(By.cssSelector(salutationElement(group)));
-                wait(1000);
-                BasePage.selectElementsList(By.cssSelector(salutationElementList(group)), "a");
-                wait(500);
-                clickOnListOfElements(name.getSalutation());
+                MainPage.clickOptionList(By.cssSelector(suffixElement(group)),
+                        name.getSalutation(),
+                        By.cssSelector(salutationElementList(group)),
+                        "a");
             }
             if(name.getActive()!=""){
                 scrollToElement(By.cssSelector(namePlusSignElement(group)));
@@ -101,99 +88,24 @@ public class PersonContactNamePage extends BasePage {
     }
     public static void addName(String group){
         try {
-            scrollToElement(By.cssSelector(namePlusSignElement(group)));
-            scrollTo("-100");
-            waitUntilElementToBeSelected(By.cssSelector(namePlusSignElement(group)),20);
-            click(By.cssSelector(namePlusSignElement(group)));
+            MainPage.addDeleteWithPlusButton(By.cssSelector(namePlusSignElement(group)));
             ExtentReportsSetUp.testingPass(LogPage.ADD_NAME_PASS);
         } catch (Exception e) {
             FailureDelegatePage.handlePageException(LogPage.ADD_NAME_FAIL);
         }
     }
     public static void verifyName(ContactNameBean name,String group){
-        boolean firstNameValidation = false;
-        boolean lastNameValidation = false;
-        boolean middleNameValidation = false;
-        boolean preferredNameValidation = false;
-        boolean suffixValidation = false;
-        boolean salutationValidation = false;
-        boolean activeCheckboxValidation = false;
-        boolean primaryCheckboxValidation = false;
         String passMessage = String.format(LogPage.VERIFY_NAME_PASS,group);
         String failMessage = String.format(LogPage.VERIFY_NAME_FAIL,group);
         try {
-            scrollToElement(By.cssSelector(namePlusSignElement(group)));
-
-            if(name.getFirstName()!=""){
-                String firstNameText = getAtribute(By.cssSelector(firstNameField(group)),"value");
-                firstNameValidation = name.getFirstName().equals(firstNameText);
-            }else{
-                firstNameValidation=true;
-            }
-            if(name.getLastName()!=""){
-                String lastNameText = getAtribute(By.cssSelector(lastNameField(group)),"value");
-                lastNameValidation = name.getLastName().equals(lastNameText);
-            }else{
-                lastNameValidation=true;
-            }
-            if(name.getMiddleName()!=""){
-                String middleNameText = getAtribute(By.cssSelector(middleNameField(group)),"value");
-                middleNameValidation = name.getMiddleName().equals(middleNameText);
-            }else{
-                middleNameValidation=true;
-            }
-            if(name.getPreferredName()!=""){
-                String preferredNameText = getAtribute(By.cssSelector(preferredNameField(group)),"value");
-                preferredNameValidation = name.getPreferredName().equals(preferredNameText);
-            }else{
-                preferredNameValidation=true;
-            }
-            if(name.getSuffix()!=""){
-                String suffixText = getText(By.cssSelector(suffixElement(group)));
-                suffixValidation = name.getSuffix().equals(suffixText);
-            }else{
-                suffixValidation=true;
-            }
-            if(name.getSalutation()!=""){
-                String salutationText = getText(By.cssSelector(salutationElement(group)));
-                salutationValidation = name.getSalutation().equals(salutationText);
-            }else{
-                salutationValidation=true;
-            }
-            if(name.getActive()!=""){
-                switch (name.getActive()){
-                    case "1":
-                        activeCheckboxValidation = checkBoxIsActive(By.cssSelector(nameActiveCheckbox(group)));
-                        break;
-                    case "0":
-                        activeCheckboxValidation = !checkBoxIsActive(By.cssSelector(nameActiveCheckbox(group)));
-                        break;
-                    default: throw new IllegalArgumentException("Active Checkbox not verified");
-                }
-            }else{
-                activeCheckboxValidation=true;
-            }
-            if(name.getPrimary()!=""){
-                switch (name.getPrimary()){
-                    case "1":
-                        primaryCheckboxValidation = checkBoxIsActive(By.cssSelector(namePrimaryCheckbox(group)));
-                        break;
-                    case "0":
-                        primaryCheckboxValidation = !checkBoxIsActive(By.cssSelector(namePrimaryCheckbox(group)));
-                        break;
-                    default: throw new IllegalArgumentException("Primary Checkbox not verified");
-                }
-            }else{
-                primaryCheckboxValidation=true;
-            }
-            if(firstNameValidation
-            && lastNameValidation
-            && middleNameValidation
-            && preferredNameValidation
-            && suffixValidation
-            && salutationValidation
-            && activeCheckboxValidation
-            && primaryCheckboxValidation){
+            if(MainPage.verifyGetAttribute(By.cssSelector(firstNameField(group)),name.getFirstName())
+                    && MainPage.verifyGetAttribute(By.cssSelector(lastNameField(group)),name.getLastName())
+                    && MainPage.verifyGetAttribute(By.cssSelector(middleNameField(group)),name.getMiddleName())
+                    && MainPage.verifyGetAttribute(By.cssSelector(preferredNameField(group)),name.getPreferredName())
+                    && MainPage.verifyGetText(By.cssSelector(suffixElement(group)),name.getSuffix())
+                    && MainPage.verifyGetText(By.cssSelector(salutationElement(group)),name.getSalutation())
+                    && MainPage.verifyCheckboxActiveOrNot(By.cssSelector(nameActiveCheckbox(group)),name.getActive())
+                    && MainPage.verifyCheckboxActiveOrNot(By.cssSelector(namePrimaryCheckbox(group)),name.getPrimary())){
                 ExtentReportsSetUp.testingPass(passMessage);
             }else{
                 FailureDelegatePage.handlePageException(failMessage);
@@ -202,5 +114,4 @@ public class PersonContactNamePage extends BasePage {
             FailureDelegatePage.handlePageException(failMessage);
         }
     }
-
 }
