@@ -30,58 +30,15 @@ public class ApplicationReviewsPage extends BasePage {
      */
     public static void verifyApplicationReview(ApplicationReviewBean applicationReviewBean, String application, String review){
 
-        boolean reviewFactorValidation = false;
-        boolean ratingValidation = false;
-        boolean readerValidation = false;
-        boolean reviewDateValidation = false;
-        boolean commentsValidation = false;
-
         String passMessage = String.format(LogPage.VERIFY_APPLICATION_REVIEW_PASS,application,review);
         String failMessage = String.format(LogPage.VERIFY_APPLICATION_REVIEW_FAIL,application,review);
-
+        String campusTimeZoneDate = currentDateTimeWithoutHour();
         try {
-            if(applicationReviewBean.getReviewFactor()!=""){
-                scrollToElement(By.cssSelector(reviewAddButton(application,review)));
-                String reviewFactorText = getText(By.cssSelector(reviewFactorElement(application,review)));
-                reviewFactorValidation = reviewFactorText.contains(applicationReviewBean.getReviewFactor());
-            }else{
-                reviewFactorValidation=true;
-            }
-            if(applicationReviewBean.getRating()!=""){
-                scrollToElement(By.cssSelector(reviewAddButton(application,review)));
-                String reviewFactorText = getText(By.cssSelector(reviewRatingElement(application,review)));
-                ratingValidation = reviewFactorText.contains(applicationReviewBean.getRating());
-            }else{
-                ratingValidation=true;
-            }
-            if(applicationReviewBean.getReader()!=""){
-                scrollToElement(By.cssSelector(reviewAddButton(application,review)));
-                String readerText = getText(By.cssSelector(reviewReaderElement(application,review)));
-                readerValidation = readerText.contains(applicationReviewBean.getReader());
-            }else{
-                readerValidation=true;
-            }
-            if(applicationReviewBean.getReviewDate()!=""){
-                String campusTimeZoneDate = currentDateTimeWithoutHour();
-                scrollToElement(By.cssSelector(reviewAddButton(application,review)));
-                String reviewDateText = getAtribute(By.cssSelector(reviewDateField(application,review)),"value");
-                reviewDateValidation = reviewDateText.contains(campusTimeZoneDate);
-            }else{
-                reviewDateValidation=true;
-            }
-            if(applicationReviewBean.getComments()!=""){
-                scrollToElement(By.cssSelector(reviewAddButton(application,review)));
-                String commentsText = getText(By.cssSelector(reviewCommentsField(application,review)));
-                commentsValidation = commentsText.contains(applicationReviewBean.getComments());
-            }else{
-                commentsValidation=true;
-            }
-
-            if(reviewFactorValidation
-            && ratingValidation
-            && readerValidation
-            && reviewDateValidation
-            && commentsValidation){
+            if(MainPage.verifyGetText(By.cssSelector(reviewFactorElement(application,review)),applicationReviewBean.getReviewFactor())
+                && MainPage.verifyGetText(By.cssSelector(reviewRatingElement(application,review)),applicationReviewBean.getRating())
+                && MainPage.verifyGetText(By.cssSelector(reviewReaderElement(application,review)),applicationReviewBean.getReader())
+                && MainPage.verifyGetAttribute(By.cssSelector(reviewDateField(application,review)),campusTimeZoneDate)
+                && MainPage.verifyGetText(By.cssSelector(reviewCommentsField(application,review)),applicationReviewBean.getComments())){
                 ExtentReportsSetUp.testingPass(passMessage);
             }else{
                 FailureDelegatePage.handlePageException(failMessage);
@@ -96,44 +53,31 @@ public class ApplicationReviewsPage extends BasePage {
     public static void updateApplicationReview(ApplicationReviewBean applicationReviewBean, String application, String review){
         String passMessage = String.format(LogPage.UPDATE_APPLICATION_REVIEW_PASS,application,review);
         String failMessage = String.format(LogPage.UPDATE_APPLICATION_REVIEW_FAIL,application,review);
-        int updateApplicationReviewDelay=10;
         try {
             if(applicationReviewBean.getReviewFactor()!=""){
-                scrollToElement(By.cssSelector(reviewAddButton(application,review)));
-                waitElementBy(By.cssSelector(reviewFactorElement(application,review)),updateApplicationReviewDelay);
-                BasePage.click(By.cssSelector(reviewFactorElement(application,review)));
-                BasePage.selectElementsList(By.cssSelector(PersonPage.SELECT_DROP), "a");
-                clickOnListOfElements(applicationReviewBean.getReviewFactor());
+                MainPage.clickOptionList(By.cssSelector(reviewFactorElement(application,review)),
+                        applicationReviewBean.getReviewFactor(),
+                        By.cssSelector(PersonPage.SELECT_DROP),
+                        "a");
             }
             if(applicationReviewBean.getRating()!=""){
-                scrollToElement(By.cssSelector(reviewAddButton(application,review)));
-                waitElementBy(By.cssSelector(reviewRatingElement(application,review)),updateApplicationReviewDelay);
-                BasePage.click(By.cssSelector(reviewRatingElement(application,review)));
-                BasePage.selectElementsList(By.cssSelector(PersonPage.SELECT_DROP), "a");
-                clickOnListOfElements(applicationReviewBean.getRating());
+                MainPage.clickOptionList(By.cssSelector(reviewRatingElement(application,review)),
+                        applicationReviewBean.getRating(),
+                        By.cssSelector(PersonPage.SELECT_DROP),
+                        "a");
             }
             if(applicationReviewBean.getReader()!=""){
-                scrollToElement(By.cssSelector(reviewAddButton(application,review)));
-                waitElementBy(By.cssSelector(reviewReaderElement(application,review)),updateApplicationReviewDelay);
-                BasePage.click(By.cssSelector(reviewReaderElement(application,review)));
-                BasePage.selectElementsList(By.cssSelector(PersonPage.SELECT_DROP), "a");
-                clickOnListOfElements(applicationReviewBean.getReader());
+                MainPage.clickOptionList(By.cssSelector(reviewReaderElement(application,review)),
+                        applicationReviewBean.getReader(),
+                        By.cssSelector(PersonPage.SELECT_DROP),
+                        "a");
             }
             if(applicationReviewBean.getReviewDate()!=""){
                 String campusTimeZoneDate = currentDateTimeWithoutHour();
-                waitElementBy(By.cssSelector(reviewAddButton(application,review)),updateApplicationReviewDelay);
-                scrollToElement(By.cssSelector(reviewAddButton(application,review)));
-                waitElementBy(By.cssSelector(reviewDateField(application,review)),updateApplicationReviewDelay);
-                KeyPage.erase(By.cssSelector(reviewDateField(application,review)));
-                wait(1000);
-                BasePage.write(By.cssSelector(reviewDateField(application,review)),campusTimeZoneDate);
-                wait(1000);
-                KeyPage.pressKey(By.cssSelector(reviewDateField(application,review)), "Enter");
+                MainPage.fillDateField(By.cssSelector(reviewDateField(application,review)), campusTimeZoneDate);
             }
             if(applicationReviewBean.getComments()!=""){
-                scrollToElement(By.cssSelector(reviewAddButton(application,review)));
-                waitElementBy(By.cssSelector(reviewCommentsField(application,review)),updateApplicationReviewDelay);
-                BasePage.write(By.cssSelector(reviewCommentsField(application,review)),applicationReviewBean.getComments());
+                MainPage.fillField(By.cssSelector(reviewCommentsField(application,review)), applicationReviewBean.getComments());
             }
             ExtentReportsSetUp.testingPass(passMessage);
         } catch (Exception e) {
@@ -144,10 +88,7 @@ public class ApplicationReviewsPage extends BasePage {
         String passMessage = String.format(LogPage.ADD_REVIEW_PASS,app,review);
         String failMessage = String.format(LogPage.ADD_REVIEW_FAIL,app,review);
         try {
-            scrollToElement(By.cssSelector(reviewAddButton(app,review)));
-            scrollTo("-150");
-            waitUntilElementToBeSelected(By.cssSelector(reviewAddButton(app,review)),10);
-            click(By.cssSelector(reviewAddButton(app,review)));
+            MainPage.addDeleteWithPlusButton(By.cssSelector(reviewAddButton(app,review)));
             ExtentReportsSetUp.testingPass(passMessage);
         } catch (Exception e) {
             FailureDelegatePage.handlePageException(failMessage);

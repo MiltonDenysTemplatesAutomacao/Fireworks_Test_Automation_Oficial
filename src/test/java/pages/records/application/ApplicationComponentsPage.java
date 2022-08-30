@@ -77,49 +77,36 @@ public class ApplicationComponentsPage extends BasePage {
         String failMessage = String.format(LogPage.UPDATE_APPLICATION_COMPONENT_FAIL,group,component);
         try {
             if(applicationComponentBean.getComponentItem()!=""){
-                waitElementBy(By.cssSelector(componentAddButton(component,group)),updateApplicationComponentDelay);
-                scrollToElement(By.cssSelector(componentAddButton(component,group)));
-                click(By.cssSelector(componentElement(component,group)));
-                waitElementBy(By.xpath(ApplicationsPage.INPUT_FIELD),updateApplicationComponentDelay);
-                write(By.xpath(ApplicationsPage.INPUT_FIELD),applicationComponentBean.getComponentItem());
-                KeyPage.pressKey(By.xpath(ApplicationsPage.INPUT_FIELD),"Enter");
+                MainPage.selectOptionList(By.cssSelector(componentElement(component,group)),
+                        applicationComponentBean.getComponentItem(),
+                        By.xpath(ApplicationsPage.INPUT_FIELD));
             }
             if(applicationComponentBean.getReceivedValue()!=""){
-                waitElementBy(By.cssSelector(componentAddButton(component,group)),updateApplicationComponentDelay);
-                scrollToElement(By.cssSelector(componentAddButton(component,group)));
-                click(By.cssSelector(receivedElement(component,group)));
-                waitElementBy(By.cssSelector(PersonPage.SELECT_DROP),updateApplicationComponentDelay);
-                BasePage.selectElementsList(By.cssSelector(PersonPage.SELECT_DROP), "a");
-                clickOnListOfElements(applicationComponentBean.getReceivedValue());
-                wait(2000);
+                MainPage.clickOptionList(By.cssSelector(receivedElement(component,group)),
+                        applicationComponentBean.getReceivedValue(),
+                        By.cssSelector(PersonPage.SELECT_DROP),
+                        "a");
             }
             if(applicationComponentBean.getReceivedDate()!=""){
                 String campusTimeZoneDate = currentDateTimeWithoutHour();
-                waitElementBy(By.cssSelector(componentAddButton(component,group)),updateApplicationComponentDelay);
-                scrollToElement(By.cssSelector(componentAddButton(component,group)));
-                waitElementBy(By.cssSelector(componentReceivedDateField(component,group)),updateApplicationComponentDelay);
-                KeyPage.erase(By.cssSelector(componentReceivedDateField(component,group)));
-                wait(1000);
-                write(By.cssSelector(componentReceivedDateField(component,group)),campusTimeZoneDate);
-                wait(1000);
-                KeyPage.pressKey(By.cssSelector(componentReceivedDateField(component,group)), "Enter");
+                MainPage.fillDateField(By.cssSelector(componentReceivedDateField(component,group)), campusTimeZoneDate);
             }
             if(applicationComponentBean.getRequiredValue()!=""){
-                waitElementBy(By.cssSelector(componentAddButton(component,group)),updateApplicationComponentDelay);
-                scrollToElement(By.cssSelector(componentAddButton(component,group)));
-                click(By.cssSelector(receivedElement(component,group)));
-                waitElementBy(By.cssSelector(PersonPage.SELECT_DROP),updateApplicationComponentDelay);
-                BasePage.selectElementsList(By.cssSelector(PersonPage.SELECT_DROP), "a");
-                clickOnListOfElements(applicationComponentBean.getRequiredValue());
+                MainPage.clickOptionList(By.cssSelector(receivedElement(component,group)),
+                        applicationComponentBean.getRequiredValue(),
+                        By.cssSelector(PersonPage.SELECT_DROP),
+                        "a");
             }
             if(applicationComponentBean.getRecommender()!=""){
-                wait(1000);
-                pickRecommender(applicationComponentBean.getRecommender(),component,group);
+                MainPage.picker(By.cssSelector(recommenderPickerButton(component,group)),
+                        By.cssSelector(PERSON_PICKER_MODAL_SEARCH_FIELD),
+                        By.cssSelector(PERSON_PICKER_MODAL_TABLE_ROW1),
+                        By.cssSelector(PERSON_PICKER_MODAL_TABLE_ROW1_CHECKBOX),
+                        By.id(PERSON_PICKER_MODAL_CHOOSE_BUTTON),
+                        applicationComponentBean.getRecommender());
             }
             if(applicationComponentBean.getComment()!=""){
-                waitElementBy(By.cssSelector(componentAddButton(component,group)),updateApplicationComponentDelay);
-                scrollToElement(By.cssSelector(componentAddButton(component,group)));
-                BasePage.write(By.cssSelector(componentCommentField(component,group)),applicationComponentBean.getComment());
+                MainPage.fillField(By.cssSelector(componentAddButton(component,group)), applicationComponentBean.getComment());
             }
             ExtentReportsSetUp.testingPass(passMessage);
         } catch (Exception e) {
@@ -130,65 +117,16 @@ public class ApplicationComponentsPage extends BasePage {
      * to verify Received Date it is necessary to put any string on Received Date field on step, I selected "1" as a pattern
      */
     public static void verifyApplicationComponent(ApplicationComponentBean applicationComponentBean, String group,String component){
-        boolean componentItemValidation = false;
-        boolean receivedValueValidation = false;
-        boolean receivedDateValidation = false;
-        boolean requiredValueValidation = false;
-        boolean recommenderValidation = false;
-        boolean commentValidation = false;
+        String campusTimeZoneDate = currentDateTimeWithoutHour();
         String passMessage = String.format(LogPage.VERIFY_APPLICATION_COMPONENT_PASS,group,component);
         String failMessage = String.format(LogPage.VERIFY_APPLICATION_COMPONENT_FAIL,group,component);
         try {
-            if(applicationComponentBean.getComponentItem()!=""){
-                scrollToElement(By.cssSelector(componentAddButton(component,group)));
-                String componentItemText = getText(By.cssSelector(componentElement(component,group)));
-                componentItemValidation = componentItemText.contains(applicationComponentBean.getComponentItem());
-            }else{
-                componentItemValidation=true;
-            }
-            if(applicationComponentBean.getReceivedValue()!=""){
-                scrollToElement(By.cssSelector(componentAddButton(component,group)));
-                String receivedValueText = getText(By.cssSelector(receivedElement(component,group)));
-                receivedValueValidation = receivedValueText.contains(applicationComponentBean.getReceivedValue());
-            }else{
-                receivedValueValidation=true;
-            }
-            if(applicationComponentBean.getReceivedDate()!=""){
-                String campusTimeZoneDate = currentDateTimeWithoutHour();
-                scrollToElement(By.cssSelector(componentAddButton(component,group)));
-                String receivedDateText = getAtribute(By.cssSelector(componentReceivedDateField(component,group)),"value");
-                receivedDateValidation = receivedDateText.contains(campusTimeZoneDate);
-            }else{
-                receivedDateValidation=true;
-            }
-            if(applicationComponentBean.getRequiredValue()!=""){
-                scrollToElement(By.cssSelector(componentAddButton(component,group)));
-                String requiredValueText = getText(By.cssSelector(requiredElement(component,group)));
-                requiredValueValidation = requiredValueText.contains(applicationComponentBean.getRequiredValue());
-            }else{
-                requiredValueValidation=true;
-            }
-            if(applicationComponentBean.getRecommender()!=""){
-                scrollToElement(By.cssSelector(componentAddButton(component,group)));
-                String recommenderText = getAtribute(By.cssSelector(recommenderElement(component,group)),"value");
-                recommenderValidation = recommenderText.contains(applicationComponentBean.getRecommender());
-            }else{
-                recommenderValidation=true;
-            }
-            if(applicationComponentBean.getComment()!=""){
-                scrollToElement(By.cssSelector(componentAddButton(component,group)));
-                String commentsText = getText(By.cssSelector(componentCommentField(component,group)));
-                commentValidation = commentsText.contains(applicationComponentBean.getComment());
-            }else{
-                commentValidation=true;
-            }
-
-            if(componentItemValidation
-            && receivedValueValidation
-            && receivedDateValidation
-            && requiredValueValidation
-            && recommenderValidation
-            && commentValidation){
+            if(MainPage.verifyGetText(By.cssSelector(componentElement(component,group)),applicationComponentBean.getComponentItem())
+                    && MainPage.verifyGetText(By.cssSelector(receivedElement(component,group)),applicationComponentBean.getReceivedValue())
+                    && MainPage.verifyGetAttribute(By.cssSelector(componentReceivedDateField(component,group)),campusTimeZoneDate)
+                    && MainPage.verifyGetText(By.cssSelector(requiredElement(component,group)),applicationComponentBean.getRequiredValue())
+                    && MainPage.verifyGetAttribute(By.cssSelector(recommenderElement(component,group)),applicationComponentBean.getRecommender())
+                    && MainPage.verifyGetText(By.cssSelector(componentCommentField(component,group)),applicationComponentBean.getComment())){
                 ExtentReportsSetUp.testingPass(passMessage);
             }else{
                 FailureDelegatePage.handlePageException(failMessage);
