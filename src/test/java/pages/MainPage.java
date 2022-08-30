@@ -135,7 +135,7 @@ public class MainPage extends BasePage{
         scrollTo("-150");
         waitElementBy(by,delay);
         click(by);
-        waitElementBy(dropDownList,delay);
+        wait(1000);
         BasePage.selectElementsList(dropDownList, tag);
         wait(2000);
         clickOnListOfElements(value);

@@ -6,7 +6,7 @@ import org.openqa.selenium.By;
 import pages.BasePage;
 import pages.FailureDelegatePage;
 import pages.LogPage;
-import pages.records.person.PersonContactPhonePage;
+import pages.MainPage;
 
 public class OrgContactPhone extends BasePage {
 
@@ -34,82 +34,17 @@ public class OrgContactPhone extends BasePage {
     }
 
     public static void verifyPhoneContactOrg(ContactPhoneBean phone,String group){
-        boolean phoneNumberValidation = false;
-        boolean phoneTypeValidation = false;
-        boolean timeZoneValidation = false;
-        boolean phoneStatusValidation = false;
-        boolean phoneCommentsValidation = false;
-        boolean activeCheckboxValidation = false;
-        boolean primaryCheckboxValidation = false;
 
         String passMessage = String.format(LogPage.VERIFY_PHONE_CONTACT_ORG_PASS,group);
         String failMessage = String.format(LogPage.VERIFY_PHONE_CONTACT_ORG_FAIL,group);
         try {
-            scrollToElement(By.cssSelector(PersonContactPhonePage.phonePlusSignElement(group)));
-
-            if(phone.getPhoneNumber()!=""){
-                String phoneNumberText = getAtribute(By.cssSelector(phoneNumberField(group)),"value");
-                phoneNumberValidation = phone.getPhoneNumber().equals(phoneNumberText);
-            }else{
-                phoneNumberValidation=true;
-            }
-            if(phone.getPhoneType()!=""){
-                String phoneTypeText = getText(By.cssSelector(phoneTypeElement(group)));
-                phoneTypeValidation = phone.getPhoneType().equals(phoneTypeText);
-            }else{
-                phoneTypeValidation=true;
-            }
-            if(phone.getPhoneStatus()!=""){
-                String phoneStatusText = getText(By.cssSelector(phoneStatusElement(group)));
-                phoneStatusValidation = phone.getPhoneStatus().equals(phoneStatusText);
-            }else{
-                phoneStatusValidation=true;
-            }
-            if(phone.getPhoneTimeZone()!=""){
-                String timeZoneText = getText(By.cssSelector(phoneTimeZoneElement(group)));
-                timeZoneValidation = phone.getPhoneTimeZone().equals(timeZoneText);
-            }else{
-                timeZoneValidation=true;
-            }
-            if(phone.getPhoneComments()!=""){
-                String phoneCommentsText = getAtribute(By.cssSelector(phoneCommentsField(group)),"value");
-                phoneCommentsValidation = phone.getPhoneComments().equals(phoneCommentsText);
-            }else{
-                phoneCommentsValidation=true;
-            }
-            if(phone.getActive()!=""){
-                switch (phone.getActive()){
-                    case "1":
-                        activeCheckboxValidation = checkBoxIsActive(By.cssSelector(phoneActiveCheckbox(group)));
-                        break;
-                    case "0":
-                        activeCheckboxValidation = !checkBoxIsActive(By.cssSelector(phoneActiveCheckbox(group)));
-                        break;
-                    default: throw new IllegalArgumentException("Active Checkbox not verified");
-                }
-            }else{
-                activeCheckboxValidation=true;
-            }
-            if(phone.getPrimary()!=""){
-                switch (phone.getPrimary()){
-                    case "1":
-                        primaryCheckboxValidation = checkBoxIsActive(By.cssSelector(phonePrimaryCheckbox(group)));
-                        break;
-                    case "0":
-                        primaryCheckboxValidation = !checkBoxIsActive(By.cssSelector(phonePrimaryCheckbox(group)));
-                        break;
-                    default: throw new IllegalArgumentException("Primary Checkbox not verified");
-                }
-            }else{
-                primaryCheckboxValidation=true;
-            }
-            if(phoneNumberValidation
-                    && phoneTypeValidation
-                    && timeZoneValidation
-                    && phoneStatusValidation
-                    && phoneCommentsValidation
-                    && activeCheckboxValidation
-                    && primaryCheckboxValidation){
+            if(MainPage.verifyGetAttribute(By.cssSelector(phoneNumberField(group)),phone.getPhoneNumber())
+                && MainPage.verifyGetText(By.cssSelector(phoneTypeElement(group)),phone.getPhoneType())
+                && MainPage.verifyGetText(By.cssSelector(phoneStatusElement(group)),phone.getPhoneStatus())
+                && MainPage.verifyGetText(By.cssSelector(phoneTimeZoneElement(group)),phone.getPhoneTimeZone())
+                && MainPage.verifyGetAttribute(By.cssSelector(phoneCommentsField(group)),phone.getPhoneComments())
+                && MainPage.verifyCheckboxActiveOrNot(By.cssSelector(phoneActiveCheckbox(group)),phone.getActive())
+                && MainPage.verifyCheckboxActiveOrNot(By.cssSelector(phonePrimaryCheckbox(group)),phone.getPrimary())){
                 ExtentReportsSetUp.testingPass(passMessage);
             }else{
                 FailureDelegatePage.handlePageException(failMessage);
@@ -118,7 +53,5 @@ public class OrgContactPhone extends BasePage {
             FailureDelegatePage.handlePageException(failMessage);
         }
     }
-
-
     }
 
