@@ -70,6 +70,7 @@ public class ApplicationsPage extends BasePage {
 
     public static void clickSaveChanges(){
         try {
+            wait(1000);
             scrollToTheBottom();
             waitElementBy(By.cssSelector(APPLICATIONS_SAVE_CHANGES_BUTTON),20);
             click(By.cssSelector(APPLICATIONS_SAVE_CHANGES_BUTTON));

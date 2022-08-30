@@ -72,7 +72,6 @@ public class ApplicationComponentsPage extends BasePage {
      * to update Received Date it is necessary to put any string on Received Date field on step, I selected "1" as a pattern
      */
     public static void updateApplicationComponent(ApplicationComponentBean applicationComponentBean, String group,String component){
-        int updateApplicationComponentDelay = 10;
         String passMessage = String.format(LogPage.UPDATE_APPLICATION_COMPONENT_PASS,group,component);
         String failMessage = String.format(LogPage.UPDATE_APPLICATION_COMPONENT_FAIL,group,component);
         try {
@@ -102,7 +101,7 @@ public class ApplicationComponentsPage extends BasePage {
                         By.cssSelector(PERSON_PICKER_MODAL_SEARCH_FIELD),
                         By.cssSelector(PERSON_PICKER_MODAL_TABLE_ROW1),
                         By.cssSelector(PERSON_PICKER_MODAL_TABLE_ROW1_CHECKBOX),
-                        By.id(PERSON_PICKER_MODAL_CHOOSE_BUTTON),
+                        By.cssSelector(PERSON_PICKER_MODAL_CHOOSE_BUTTON),
                         applicationComponentBean.getRecommender());
             }
             if(applicationComponentBean.getComment()!=""){

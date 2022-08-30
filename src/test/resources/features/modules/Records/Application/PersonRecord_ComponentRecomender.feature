@@ -39,7 +39,7 @@ Feature: Application Components and Recommenders
     And I click on save changes on Application
     And I close alert if return this message "Person has been updated."
     #to verify the Application and Components
-    And I verify application "Fall 2019", "Accounting", "In Progress", "Early Action", "Universal Application", "06/22/2018 7:30 PM", "", "", "", "", "", "", "", "" group "0"
+    And I verify application "Fall 2019", "Accounting", "In Progress", "Early Action", "Online", "06/22/2018 7:30 PM", "", "", "", "", "", "", "", "" group "0"
     And I verify application component "Application Form", "Yes", "1", "Yes", "Midge Klump", "" component "0" group "0"
     And I verify application component "Essay", "Yes", "1", "Yes", "", "" component "1" group "0"
     And I verify application component "Personal Statement", "Yes", "1", "Yes", "", "" component "2" group "0"
