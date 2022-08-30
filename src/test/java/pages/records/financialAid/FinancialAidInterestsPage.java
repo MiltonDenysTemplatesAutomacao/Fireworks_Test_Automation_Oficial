@@ -27,43 +27,11 @@ public class FinancialAidInterestsPage extends BasePage {
     public static void verifyFinancialAidInterest(FinancialAidInterestBean financialAidInterestBean,String group){
         String passMessage = String.format(LogPage.VERIFY_FINANCIAL_AID_INTEREST_PASS,group);
         String failMessage = String.format(LogPage.VERIFY_FINANCIAL_AID_INTEREST_FAIL,group);
-        boolean aidInterestCategoryValidation = false;
-        boolean aidInterestTypeValidation = false;
-        boolean expressedInterestValidation = false;
-        boolean expressedInterestDateValidation = false;
         try {
-            if(financialAidInterestBean.getAidInterestCategory()!=""){
-                scrollToElement(By.cssSelector(financialAidInterestsPlusButton(group)));
-                String aidInterestCategoryText = getText(By.cssSelector(aidInterestCategoryDropdownLocator(group)));
-                aidInterestCategoryValidation = aidInterestCategoryText.contains(financialAidInterestBean.getAidInterestCategory());
-            }else{
-                aidInterestCategoryValidation = true;
-            }
-            if(financialAidInterestBean.getAidInterestType()!=""){
-                scrollToElement(By.cssSelector(financialAidInterestsPlusButton(group)));
-                String aidInterestTypeText = getText(By.cssSelector(aidInterestTypeDropdownLocator(group)));
-                aidInterestTypeValidation = aidInterestTypeText.contains(financialAidInterestBean.getAidInterestType());
-            }else{
-                aidInterestTypeValidation = true;
-            }
-            if(financialAidInterestBean.getExpressedInterest()!=""){
-                scrollToElement(By.cssSelector(financialAidInterestsPlusButton(group)));
-                String expressedInterestText = getText(By.cssSelector(expressedInterestDropdownLocator(group)));
-                expressedInterestValidation = expressedInterestText.contains(financialAidInterestBean.getExpressedInterest());
-            }else{
-                expressedInterestValidation = true;
-            }
-            if(financialAidInterestBean.getExpressedInterestDate()!=""){
-                scrollToElement(By.cssSelector(financialAidInterestsPlusButton(group)));
-                String expressedInterestText = getAtribute(By.cssSelector(expressedInterestDateField(group)),"value");
-                expressedInterestDateValidation = expressedInterestText.contains(financialAidInterestBean.getExpressedInterestDate());
-            }else{
-                expressedInterestDateValidation = true;
-            }
-            if(aidInterestCategoryValidation
-            && aidInterestTypeValidation
-            && expressedInterestValidation
-            && expressedInterestDateValidation){
+            if(MainPage.verifyGetText(By.cssSelector(aidInterestCategoryDropdownLocator(group)),financialAidInterestBean.getAidInterestCategory())
+                    && MainPage.verifyGetText(By.cssSelector(aidInterestTypeDropdownLocator(group)),financialAidInterestBean.getAidInterestType())
+                    && MainPage.verifyGetText(By.cssSelector(expressedInterestDropdownLocator(group)),financialAidInterestBean.getExpressedInterest())
+                    && MainPage.verifyGetAttribute(By.cssSelector(expressedInterestDateField(group)),financialAidInterestBean.getExpressedInterestDate())){
                 ExtentReportsSetUp.testingPass(passMessage);
             }else{
                 FailureDelegatePage.handlePageException(failMessage);
@@ -76,40 +44,27 @@ public class FinancialAidInterestsPage extends BasePage {
 
         String passMessage = String.format(LogPage.UPDATE_FINANCIAL_AID_INTEREST_PASS,group);
         String failMessage = String.format(LogPage.UPDATE_FINANCIAL_AID_INTEREST_FAIL,group);
-        int updateFinancialAidInterestDelay = 10;
         try {
             if(financialAidInterestBean.getAidInterestCategory()!=""){
-                scrollToElement(By.cssSelector(financialAidInterestsPlusButton(group)));
-                waitElementBy(By.cssSelector(aidInterestCategoryDropdownLocator(group)), updateFinancialAidInterestDelay);
-                click(By.cssSelector(aidInterestCategoryDropdownLocator(group)));
-                waitElementBy(By.cssSelector(PersonPage.SELECT_DROP), updateFinancialAidInterestDelay);
-                BasePage.selectElementsList(By.cssSelector(PersonPage.SELECT_DROP), "a");
-                clickOnListOfElements(financialAidInterestBean.getAidInterestCategory());
+                MainPage.clickOptionList(By.cssSelector(aidInterestCategoryDropdownLocator(group)),
+                        financialAidInterestBean.getAidInterestCategory(),
+                        By.cssSelector(PersonPage.SELECT_DROP),
+                        "a");
             }
             if(financialAidInterestBean.getAidInterestType()!=""){
-                scrollToElement(By.cssSelector(financialAidInterestsPlusButton(group)));
-                waitElementBy(By.cssSelector(aidInterestTypeDropdownLocator(group)), updateFinancialAidInterestDelay);
-                click(By.cssSelector(aidInterestTypeDropdownLocator(group)));
-                waitElementBy(By.cssSelector(PersonPage.SELECT_DROP), updateFinancialAidInterestDelay);
-                BasePage.selectElementsList(By.cssSelector(PersonPage.SELECT_DROP), "a");
-                clickOnListOfElements(financialAidInterestBean.getAidInterestType());
-
+                MainPage.clickOptionList(By.cssSelector(aidInterestTypeDropdownLocator(group)),
+                        financialAidInterestBean.getAidInterestType(),
+                        By.cssSelector(PersonPage.SELECT_DROP),
+                        "a");
             }
             if(financialAidInterestBean.getExpressedInterest()!=""){
-                scrollToElement(By.cssSelector(financialAidInterestsPlusButton(group)));
-                waitElementBy(By.cssSelector(expressedInterestDropdownLocator(group)), updateFinancialAidInterestDelay);
-                click(By.cssSelector(expressedInterestDropdownLocator(group)));
-                waitElementBy(By.cssSelector(PersonPage.SELECT_DROP), updateFinancialAidInterestDelay);
-                BasePage.selectElementsList(By.cssSelector(PersonPage.SELECT_DROP), "a");
-                clickOnListOfElements(financialAidInterestBean.getExpressedInterest());
+                MainPage.clickOptionList(By.cssSelector(expressedInterestDropdownLocator(group)),
+                        financialAidInterestBean.getExpressedInterest(),
+                        By.cssSelector(PersonPage.SELECT_DROP),
+                        "a");
             }
             if(financialAidInterestBean.getExpressedInterestDate()!=""){
-                scrollToElement(By.cssSelector(financialAidInterestsPlusButton(group)));
-                waitElementBy(By.cssSelector(expressedInterestDateField(group)), updateFinancialAidInterestDelay);
-                KeyPage.erase(By.cssSelector(expressedInterestDateField(group)));
-                waitElementBy(By.cssSelector(expressedInterestDateField(group)), updateFinancialAidInterestDelay);
-                write(By.cssSelector(expressedInterestDateField(group)),financialAidInterestBean.getExpressedInterestDate());
-                KeyPage.pressKey(By.cssSelector(expressedInterestDateField(group)),"Enter");
+                MainPage.fillDateField(By.cssSelector(expressedInterestDateField(group)), financialAidInterestBean.getExpressedInterestDate());
             }
             ExtentReportsSetUp.testingPass(passMessage);
         } catch (Exception e) {

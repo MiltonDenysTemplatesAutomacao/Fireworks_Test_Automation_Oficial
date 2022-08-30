@@ -47,50 +47,34 @@ public class FinancialComponentsAidPage extends BasePage {
     public static void updateAidComponent(FinancialAidBean financialAidBean, String fin,String aid){
         String passMessage = String.format(LogPage.UPDATE_AID_COMPONENT_PASS,fin,aid);
         String failMessage = String.format(LogPage.UPDATE_AID_COMPONENT_FAIL,fin,aid);
-        int updateAidComponentDelay=10;
         try {
             if(financialAidBean.getAidComponentType()!=""){
-                scrollToElement(By.cssSelector(financialAidPaymentPlusButton(fin,aid)));
-                waitElementBy(By.cssSelector(aidComponentTypeElement(fin,aid)),updateAidComponentDelay);
-                click(By.cssSelector(aidComponentTypeElement(fin,aid)));
-                waitElementBy(By.cssSelector(PersonPage.SELECT_DROP),updateAidComponentDelay);
-                BasePage.selectElementsList(By.cssSelector(PersonPage.SELECT_DROP), "a");
-                clickOnListOfElements(financialAidBean.getAidComponentType());
+                MainPage.clickOptionList(By.cssSelector(aidComponentTypeElement(fin,aid)),
+                        financialAidBean.getAidComponentType(),
+                        By.cssSelector(PersonPage.SELECT_DROP),
+                        "a");
             }
             if(financialAidBean.getAidComponentRcvd()!=""){
-                scrollToElement(By.cssSelector(financialAidPaymentPlusButton(fin,aid)));
-                waitElementBy(By.cssSelector(aidComponentReceivedElement(fin,aid)),updateAidComponentDelay);
-                click(By.cssSelector(aidComponentReceivedElement(fin,aid)));
-                waitElementBy(By.cssSelector(PersonPage.SELECT_DROP),updateAidComponentDelay);
-                BasePage.selectElementsList(By.cssSelector(PersonPage.SELECT_DROP), "a");
-                clickOnListOfElements(financialAidBean.getAidComponentRcvd());
+                MainPage.clickOptionList(By.cssSelector(aidComponentReceivedElement(fin,aid)),
+                        financialAidBean.getAidComponentRcvd(),
+                        By.cssSelector(PersonPage.SELECT_DROP),
+                        "a");
             }
             if(financialAidBean.getAidComponentRcvdDate()!=""){
-                scrollToElement(By.cssSelector(financialAidPaymentPlusButton(fin,aid)));
-                waitElementBy(By.cssSelector(aidComponentReceivedDateField(fin,aid)),updateAidComponentDelay);
-                KeyPage.erase(By.cssSelector(aidComponentReceivedDateField(fin,aid)));
-                write(By.cssSelector(aidComponentReceivedDateField(fin,aid)),financialAidBean.getAidComponentRcvdDate());
-                waitElementBy(By.cssSelector(aidComponentReceivedDateField(fin,aid)),updateAidComponentDelay);
-                KeyPage.pressKey(By.cssSelector(aidComponentReceivedDateField(fin,aid)),"Enter");
+                MainPage.fillDateField(By.cssSelector(aidComponentReceivedDateField(fin,aid)),financialAidBean.getAidComponentRcvdDate());
             }
             if(financialAidBean.getAidComponentReqd()!=""){
-                scrollToElement(By.cssSelector(financialAidPaymentPlusButton(fin,aid)));
-                waitElementBy(By.cssSelector(aidComponentRequiredElement(fin,aid)),updateAidComponentDelay);
-                click(By.cssSelector(aidComponentRequiredElement(fin,aid)));
-                waitElementBy(By.cssSelector(PersonPage.SELECT_DROP),updateAidComponentDelay);
-                BasePage.selectElementsList(By.cssSelector(PersonPage.SELECT_DROP), "a");
-                clickOnListOfElements(financialAidBean.getAidComponentReqd());
+                MainPage.clickOptionList(By.cssSelector(aidComponentRequiredElement(fin,aid)),
+                        financialAidBean.getAidComponentReqd(),
+                        By.cssSelector(PersonPage.SELECT_DROP),
+                        "a");
             }
             if(financialAidBean.getAidComponentComments()!=""){
-                scrollToElement(By.cssSelector(financialAidPaymentPlusButton(fin,aid)));
-                waitElementBy(By.cssSelector(aidComponentCommentsField(fin,aid)),updateAidComponentDelay);
-                write(By.cssSelector(aidComponentCommentsField(fin,aid)),financialAidBean.getAidComponentComments());
+                MainPage.fillField(By.cssSelector(aidComponentCommentsField(fin,aid)),financialAidBean.getAidComponentComments());
             }
             ExtentReportsSetUp.testingPass(passMessage);
         } catch (Exception e) {
             FailureDelegatePage.handlePageException(failMessage);
         }
     }
-
-
 }

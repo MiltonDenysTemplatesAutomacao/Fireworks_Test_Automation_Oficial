@@ -74,41 +74,21 @@ public class FinancialAidPage extends BasePage {
     public static void verifyFinancialAidActivePrimaryCheckbox(String checkboxName,String fin,String checkbox){
         String passMessage = String.format(LogPage.VERIFY_FINANCIAL_AID_ACTIVE_PRIMARY_CHECKBOX_PASS,checkboxName,fin);
         String failMessage = String.format(LogPage.VERIFY_FINANCIAL_AID_ACTIVE_PRIMARY_CHECKBOX_FAIL,checkboxName,fin);
-        boolean activeValidation = false;
-        boolean primaryValidation = false;
 
         try {
-            if(checkbox=="Active"){
-                switch (checkbox){
-                    case "1":
-                        activeValidation = checkBoxIsActive(By.cssSelector(financialAidActiveCheckbox(fin)));
-                        break;
-                    case "0":
-                        activeValidation = !checkBoxIsActive(By.cssSelector(financialAidActiveCheckbox(fin)));
-                        break;
-                    default:
-                        throw new IllegalArgumentException("Unhandled index. Update business logic");
+            if(checkbox=="Active") {
+                if (MainPage.verifyCheckboxActiveOrNot(By.cssSelector(financialAidActiveCheckbox(fin)),checkbox)){
+                    ExtentReportsSetUp.testingPass(passMessage);
+                } else {
+                    FailureDelegatePage.handlePageException(failMessage);
                 }
-            }else{
-                activeValidation=true;
             }
-
-            if(checkbox=="Primary"){
-                switch (checkbox){
-                    case "1":
-                        activeValidation = checkBoxIsActive(By.cssSelector(financialAidPrimaryCheckbox(fin)));
-                        break;
-                    case "0":
-                        activeValidation = !checkBoxIsActive(By.cssSelector(financialAidPrimaryCheckbox(fin)));
-                        break;
-                    default:
-                        throw new IllegalArgumentException("Unhandled index. Update business logic");
+            if(checkbox=="Primary") {
+                if (MainPage.verifyCheckboxActiveOrNot(By.cssSelector(financialAidPrimaryCheckbox(fin)),checkbox)){
+                    ExtentReportsSetUp.testingPass(passMessage);
+                } else {
+                    FailureDelegatePage.handlePageException(failMessage);
                 }
-            }else{
-                primaryValidation=true;
-            }
-            if(activeValidation && primaryValidation){
-                ExtentReportsSetUp.testingPass(passMessage);
             }
         } catch (Exception e) {
             FailureDelegatePage.handlePageException(failMessage);
@@ -118,9 +98,7 @@ public class FinancialAidPage extends BasePage {
         String passMessage = String.format(LogPage.CLICK_FINANCIAL_AID_ACTIVE_PASS,fin);
         String failMessage = String.format(LogPage.CLICK_FINANCIAL_AID_ACTIVE_FAIL,fin);
         try {
-            scrollToElement(By.cssSelector(financialAidPlusButton(fin)));
-            scrollTo("-150");
-            click(By.cssSelector(financialAidActiveCheckbox(fin)));
+            MainPage.clickOption(By.cssSelector(financialAidActiveCheckbox(fin)));
             ExtentReportsSetUp.testingPass(passMessage);
         } catch (Exception e) {
             FailureDelegatePage.handlePageException(failMessage);
@@ -130,9 +108,7 @@ public class FinancialAidPage extends BasePage {
         String passMessage = String.format(LogPage.ADD_FINANCIAL_AID_PASS,fin);
         String failMessage = String.format(LogPage.ADD_FINANCIAL_AID_FAIL,fin);
         try {
-            scrollToElement(By.cssSelector(financialAidPlusButton(fin)));
-            scrollTo("-150");
-            click(By.cssSelector(financialAidPlusButton(fin)));
+            MainPage.addDeleteWithPlusButton(By.cssSelector(financialAidPlusButton(fin)));
             ExtentReportsSetUp.testingPass(passMessage);
         } catch (Exception e) {
             FailureDelegatePage.handlePageException(failMessage);

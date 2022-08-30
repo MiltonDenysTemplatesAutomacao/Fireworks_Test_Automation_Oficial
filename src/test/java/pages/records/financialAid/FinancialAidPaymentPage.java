@@ -33,63 +33,14 @@ public class FinancialAidPaymentPage extends BasePage {
         String passMessage = String.format(LogPage.VERIFY_FINANCIAL_AID_PAYMENT_PASS,group);
         String failMessage = String.format(LogPage.VERIFY_FINANCIAL_AID_PAYMENT_FAIL,group);
 
-        boolean paymentDateValidation = false;
-        boolean paymentAmountValidation = false;
-        boolean paymentPurposeValidation = false;
-        boolean paymentTypeValidation = false;
-        boolean paymentWhoAddedValidation = false;
-        boolean paymentCommentValidation = false;
 
         try {
-            if(financialAidPaymentBean.getPaymentDate()!=""){
-                scrollToElement(By.cssSelector(financialAidPaymentPlusButton(group)));
-                String paymentDateText = getAtribute(By.cssSelector(paymentDateField(group)),"value");
-                paymentDateValidation = paymentDateText.contains(financialAidPaymentBean.getPaymentDate());
-            }else{
-                paymentDateValidation=true;
-            }
-            if(financialAidPaymentBean.getPaymentAmount()!=""){
-                scrollToElement(By.cssSelector(financialAidPaymentPlusButton(group)));
-                String paymentAmountText = getAtribute(By.cssSelector(paymentAmountField(group)),"value");
-                paymentAmountValidation = paymentAmountText.contains(financialAidPaymentBean.getPaymentAmount());
-            }else{
-                paymentAmountValidation=true;
-            }
-            if(financialAidPaymentBean.getPaymentPurpose()!=""){
-                scrollToElement(By.cssSelector(financialAidPaymentPlusButton(group)));
-                String paymentPurposeText = getText(By.cssSelector(paymentPurposeDropdown(group)));
-                paymentPurposeValidation = paymentPurposeText.contains(financialAidPaymentBean.getPaymentPurpose());
-            }else{
-                paymentPurposeValidation=true;
-            }
-            if(financialAidPaymentBean.getPaymentType()!=""){
-                scrollToElement(By.cssSelector(financialAidPaymentPlusButton(group)));
-                String paymentTypeText = getText(By.cssSelector(paymentTypeDropdown(group)));
-                paymentTypeValidation = paymentTypeText.contains(financialAidPaymentBean.getPaymentType());
-            }else{
-                paymentTypeValidation=true;
-            }
-            if(financialAidPaymentBean.getPaymentWhoAdded()!=""){
-                scrollToElement(By.cssSelector(financialAidPaymentPlusButton(group)));
-                String paymentWhoAddedText = getText(By.cssSelector(paymentWhoAddedDropdown(group)));
-                paymentWhoAddedValidation = paymentWhoAddedText.contains(financialAidPaymentBean.getPaymentWhoAdded());
-            }else{
-                paymentWhoAddedValidation=true;
-            }
-            if(financialAidPaymentBean.getPaymentComment()!=""){
-                scrollToElement(By.cssSelector(financialAidPaymentPlusButton(group)));
-                String paymentCommentText = getAtribute(By.cssSelector(paymentCommentField(group)),"value");
-                paymentCommentValidation = paymentCommentText.contains(financialAidPaymentBean.getPaymentComment());
-
-            }else{
-                paymentCommentValidation=true;
-            }
-            if(paymentDateValidation
-            && paymentAmountValidation
-            && paymentPurposeValidation
-            && paymentTypeValidation
-            && paymentWhoAddedValidation
-            && paymentCommentValidation){
+            if(MainPage.verifyGetAttribute(By.cssSelector(paymentDateField(group)),financialAidPaymentBean.getPaymentDate())
+                && MainPage.verifyGetAttribute(By.cssSelector(paymentAmountField(group)),financialAidPaymentBean.getPaymentAmount())
+                && MainPage.verifyGetText(By.cssSelector(paymentPurposeDropdown(group)),financialAidPaymentBean.getPaymentPurpose())
+                && MainPage.verifyGetText(By.cssSelector(paymentTypeDropdown(group)),financialAidPaymentBean.getPaymentType())
+                && MainPage.verifyGetText(By.cssSelector(paymentWhoAddedDropdown(group)),financialAidPaymentBean.getPaymentWhoAdded())
+                && MainPage.verifyGetAttribute(By.cssSelector(paymentCommentField(group)),financialAidPaymentBean.getPaymentComment())){
                 ExtentReportsSetUp.testingPass(passMessage);
             }else{
                 FailureDelegatePage.handlePageException(failMessage);
@@ -100,51 +51,35 @@ public class FinancialAidPaymentPage extends BasePage {
     }
     public static void updateFinancialAidPayment(FinancialAidPaymentBean financialAidPaymentBean, String group){
 
-        int updateFinancialAidPaymentDelay=10;
         String passMessage = String.format(LogPage.UPDATE_FINANCIAL_AID_PAYMENT_PASS,group);
         String failMessage = String.format(LogPage.UPDATE_FINANCIAL_AID_PAYMENT_FAIL,group);
         try {
             if(financialAidPaymentBean.getPaymentDate()!=""){
-                scrollToElement(By.cssSelector(financialAidPaymentPlusButton(group)));
-                waitElementBy(By.cssSelector(paymentDateField(group)),updateFinancialAidPaymentDelay);
-                KeyPage.erase(By.cssSelector(paymentDateField(group)));
-                waitElementBy(By.cssSelector(paymentDateField(group)),updateFinancialAidPaymentDelay);
-                write(By.cssSelector(paymentDateField(group)),financialAidPaymentBean.getPaymentDate());
-                KeyPage.pressKey(By.cssSelector(paymentDateField(group)),"Enter");
+                MainPage.fillDateField(By.cssSelector(paymentDateField(group)), financialAidPaymentBean.getPaymentDate());
             }
             if(financialAidPaymentBean.getPaymentAmount()!=""){
-                scrollToElement(By.cssSelector(financialAidPaymentPlusButton(group)));
-                waitElementBy(By.cssSelector(paymentAmountField(group)),updateFinancialAidPaymentDelay);
-                write(By.cssSelector(paymentAmountField(group)),financialAidPaymentBean.getPaymentAmount());
+                MainPage.fillField(By.cssSelector(paymentAmountField(group)), financialAidPaymentBean.getPaymentAmount());
             }
             if(financialAidPaymentBean.getPaymentPurpose()!=""){
-                scrollToElement(By.cssSelector(financialAidPaymentPlusButton(group)));
-                waitElementBy(By.cssSelector(paymentPurposeDropdown(group)),updateFinancialAidPaymentDelay);
-                click(By.cssSelector(paymentPurposeDropdown(group)));
-                waitElementBy(By.cssSelector(PersonPage.SELECT_DROP),updateFinancialAidPaymentDelay);
-                BasePage.selectElementsList(By.cssSelector(PersonPage.SELECT_DROP), "a");
-                clickOnListOfElements(financialAidPaymentBean.getPaymentPurpose());
+                MainPage.clickOptionList(By.cssSelector(paymentPurposeDropdown(group)),
+                        financialAidPaymentBean.getPaymentPurpose(),
+                        By.cssSelector(PersonPage.SELECT_DROP),
+                        "a");
             }
             if(financialAidPaymentBean.getPaymentType()!=""){
-                scrollToElement(By.cssSelector(financialAidPaymentPlusButton(group)));
-                waitElementBy(By.cssSelector(paymentTypeDropdown(group)),updateFinancialAidPaymentDelay);
-                click(By.cssSelector(paymentTypeDropdown(group)));
-                waitElementBy(By.cssSelector(PersonPage.SELECT_DROP),updateFinancialAidPaymentDelay);
-                BasePage.selectElementsList(By.cssSelector(PersonPage.SELECT_DROP), "a");
-                clickOnListOfElements(financialAidPaymentBean.getPaymentType());
+                MainPage.clickOptionList(By.cssSelector(paymentTypeDropdown(group)),
+                        financialAidPaymentBean.getPaymentType(),
+                        By.cssSelector(PersonPage.SELECT_DROP),
+                        "a");
             }
             if(financialAidPaymentBean.getPaymentWhoAdded()!=""){
-                scrollToElement(By.cssSelector(financialAidPaymentPlusButton(group)));
-                waitElementBy(By.cssSelector(paymentWhoAddedDropdown(group)),updateFinancialAidPaymentDelay);
-                click(By.cssSelector(paymentWhoAddedDropdown(group)));
-                waitElementBy(By.cssSelector(PersonPage.SELECT_DROP),updateFinancialAidPaymentDelay);
-                BasePage.selectElementsList(By.cssSelector(PersonPage.SELECT_DROP), "a");
-                clickOnListOfElements(financialAidPaymentBean.getPaymentWhoAdded());
+                MainPage.clickOptionList(By.cssSelector(paymentWhoAddedDropdown(group)),
+                        financialAidPaymentBean.getPaymentWhoAdded(),
+                        By.cssSelector(PersonPage.SELECT_DROP),
+                        "a");
             }
             if(financialAidPaymentBean.getPaymentComment()!=""){
-                scrollToElement(By.cssSelector(financialAidPaymentPlusButton(group)));
-                waitElementBy(By.cssSelector(paymentCommentField(group)),updateFinancialAidPaymentDelay);
-                write(By.cssSelector(paymentCommentField(group)),financialAidPaymentBean.getPaymentComment());
+                MainPage.fillField(By.cssSelector(paymentCommentField(group)), financialAidPaymentBean.getPaymentComment());
             }
             ExtentReportsSetUp.testingPass(passMessage);
         } catch (Exception e) {
