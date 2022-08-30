@@ -15,6 +15,9 @@ public class MainPage extends BasePage{
         BasePage.click(by);
     }
     public static boolean verifyIfElementIsVisible(By by)throws Exception{
+        scrollToElement(by);
+        scrollTo("-150");
+        waitElementBy(by,10);
         return checkIfElementIsVisible(by);
     }
     public static boolean verifyCheckboxActiveOrNot(By by,String value)throws Exception{

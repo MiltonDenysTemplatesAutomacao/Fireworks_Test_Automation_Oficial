@@ -61,16 +61,12 @@ public class TasksPage extends BasePage{
         } catch (Exception e) {
         }
     }
-
-
     /*
      * Method to click on Yes button on delete task modal
      */
     public static void validateTaskNotDisplayed(){
         try {
-            wait(2000);
-            String task = getText(By.cssSelector(TASK_MANAGER_TABLE_ROW1_COL0));
-            if(task.equals("No search results to display.")){
+            if(MainPage.verifyGetText(By.cssSelector(TASK_MANAGER_TABLE_ROW1_COL0),"No search results to display.")){
                 ExtentReportsSetUp.testingPass(LogPage.VALIDATE_TASK_NOT_DISPLAYED_PASS);
             }else{
                 FailureDelegatePage.handlePageException(LogPage.VALIDATE_TASK_NOT_DISPLAYED_FAIL);
@@ -84,9 +80,7 @@ public class TasksPage extends BasePage{
      */
     public static void validateDeleteButtonNotDisplayed(){
         try {
-            waitUntilElementToBeSelected(By.id(TASK_NAME_FIELD),20);
-            waitUntilElementToBeSelected(By.id(TASK_SAVE_CHANGES_BUTTON),20);
-            if (!checkIfElementIsVisible(By.id(DELETE_TASK_BUTTON))){
+            if (!MainPage.verifyIfElementIsVisible(By.id(DELETE_TASK_BUTTON))){
                 ExtentReportsSetUp.testingPass(LogPage.DELETE_BUTTON_NOT_DISPLAYED_PASS);
             }else{
                 FailureDelegatePage.handlePageException(LogPage.DELETE_BUTTON_NOT_DISPLAYED_FAIL);
@@ -100,9 +94,7 @@ public class TasksPage extends BasePage{
      */
     public static void validateArchiveAndActivateButtonsNotDisplayed(){
         try {
-            waitUntilElementToBeSelected(By.id(TASK_NAME_FIELD),20);
-            waitUntilElementToBeSelected(By.id(TASK_SAVE_CHANGES_BUTTON),20);
-            if (!checkIfElementIsVisible(By.id(ACTIVATE_TASK_BUTTON))||
+            if (!MainPage.verifyIfElementIsVisible(By.id(ACTIVATE_TASK_BUTTON))||
                     !checkIfElementIsVisible(By.id(ARCHIVE_TASK_BUTTON))){
                 ExtentReportsSetUp.testingPass(LogPage.VALIDATE_ARCHIVE_AND_ACTIVATE_BUTTON_NOT_DISPLAYED_PASS);
             }else{
@@ -120,7 +112,6 @@ public class TasksPage extends BasePage{
         try {
             waitUntilElementToBeSelected(By.cssSelector(TASK_MANAGER_TABLE_FILTER_BUTTON),20);
             click(By.cssSelector(TASK_MANAGER_TABLE_FILTER_BUTTON));
-
             switch (status) {
                 case "Yes":
                     click(By.id(TASK_MANAGER_TABLE_FILTER_BUTTON_YES));
@@ -138,7 +129,6 @@ public class TasksPage extends BasePage{
      * Method to validate if task is not read-only
      */
     public static void validateTaskIsNotReadOnly(){
-
         try {
             if(checkIfElementIsVisible(By.id(TASK_NAME_FIELD))&&
                     checkIfElementIsVisible(By.cssSelector(TASK_TYPE_DROPDOWN))&&
@@ -173,12 +163,10 @@ public class TasksPage extends BasePage{
      */
     public static void validateDeletedTask(){
         try {
-            waitElementBy(By.cssSelector(TASK_MANAGER_TABLE_ROW1_COL0),20);
-            String task = getText(By.cssSelector(TASK_MANAGER_TABLE_ROW1_COL0));
-            if(task != mass.get(0).get("Name")){
-                ExtentReportsSetUp.testingPass(LogPage.VALIDATE_DELETED_TASK_PASS);
+            if(MainPage.verifyGetText(By.cssSelector(TASK_MANAGER_TABLE_ROW1_COL0),mass.get(0).get("Name"))){
+
             }else{
-                FailureDelegatePage.handlePageException(LogPage.VALIDATE_DELETED_TASK_FAIL);
+
             }
         } catch (Exception e) {
             FailureDelegatePage.handlePageException(LogPage.VALIDATE_DELETED_TASK_FAIL);
@@ -271,7 +259,6 @@ public class TasksPage extends BasePage{
         }
     }
 
-
     /*
      * Method to validate alert message
      */
@@ -279,15 +266,13 @@ public class TasksPage extends BasePage{
         String errorMessage = String.format(LogPage.ALERT_MESSAGE_FAIL,alertMessage);
         String passMessage = String.format(LogPage.ALERT_MESSAGE_PASS,alertMessage);
         try {
-            waitElementBy(By.id("pageValidationAlertMessageClose"), 10);
-            String fullNameReturn = BasePage.getText(By.id("pageAlertMessages"));
-            if (alertMessageContains(By.id("pageAlertMessages"), alertMessage)) {
+            if(MainPage.verifyGetText(By.id("pageAlertMessages"),alertMessage)){
                 ExtentReportsSetUp.testingPass(passMessage);
-            } else {
+            }else{
                 FailureDelegatePage.handlePageException(errorMessage);
             }
         } catch (Exception e) {
-            System.err.println(errorMessage);
+            FailureDelegatePage.handlePageException(errorMessage);
         }
     }
     /*
@@ -380,38 +365,15 @@ public class TasksPage extends BasePage{
      */
     public static void pickSmartSearch(String smartSearch){
         try {
-            waitElementBy(By.id(SMART_SEARCH_PICKER_BUTTON),20);
-            BasePage.click(By.id(SMART_SEARCH_PICKER_BUTTON));
-            searchSmartSearchPicker(smartSearch);
-            smartSearchPickerModalChooseButton();
+            MainPage.picker(By.id(SMART_SEARCH_PICKER_BUTTON),
+                    By.id(SMART_SEARCH_PICKER_MODAL_SEARCH_FIELD),
+                    By.id(SMART_SEARCH_PICKER_MODAL_TABLE_ROW1_COL1),
+                    By.cssSelector(SMART_SEARCH_PICKER_MODAL_ROW1_CHECKBOX),
+                    By.id(SMART_SEARCH_PICKER_MODAL_CHOOSE_BUTTON),
+                    smartSearch);
         } catch (Exception e) {
             FailureDelegatePage.handlePageException(LogPage.PICK_SMART_SEARCH_FAIL);
         }
-
-    }
-    /*
-     * Method to search a smart search and validate if it is corrected with the one searched
-     */
-    public static void searchSmartSearchPicker (String searchName)throws Exception{
-        try {
-            waitElementBy(By.id(SMART_SEARCH_PICKER_MODAL_SEARCH_FIELD),20);
-            BasePage.write(By.id(SMART_SEARCH_PICKER_MODAL_SEARCH_FIELD), searchName);
-            if(verifySmartSearchFound(searchName)){
-                waitElementBy(By.cssSelector(SMART_SEARCH_PICKER_MODAL_ROW1_CHECKBOX),20);
-                BasePage.click(By.cssSelector(SMART_SEARCH_PICKER_MODAL_ROW1_CHECKBOX));
-            }else{
-                FailureDelegatePage.handlePageException(LogPage.SEARCH_SMART_SEARCH_PICKER_FAIL);
-            }
-        } catch (Exception e) {
-            FailureDelegatePage.handlePageException(LogPage.SEARCH_SMART_SEARCH_PICKER_FAIL);
-        }
-    }
-    /*
-     * Method to validate a smart search
-     */
-    public static boolean verifySmartSearchFound (String searchName)throws Exception{
-        String text = getText(By.cssSelector(SMART_SEARCH_PICKER_MODAL_TABLE_ROW1_COL1));
-        return text.equals(searchName);
     }
     /*
      * Method to create task
@@ -434,64 +396,91 @@ public class TasksPage extends BasePage{
             wait(2000);
             BasePage.scrollToElement(By.id(TASK_NAME_FIELD));
             if (mass.get(0).get("Name") != null) {
-                waitElementBy(By.id(TASK_NAME_FIELD),updateTaskFieldsDelay);
-                BasePage.write(By.id(TASK_NAME_FIELD), mass.get(0).get("Name"));
+                MainPage.fillField(By.id(TASK_NAME_FIELD), mass.get(0).get("Name"));
+
+//                waitElementBy(By.id(TASK_NAME_FIELD),updateTaskFieldsDelay);
+//                BasePage.write(By.id(TASK_NAME_FIELD), mass.get(0).get("Name"));
             }
             if (mass.get(0).get("Description") != null) {
-                waitElementBy(By.id(TASK_DESCRIPTION_FIELD),updateTaskFieldsDelay);
-                BasePage.write(By.id(TASK_DESCRIPTION_FIELD), mass.get(0).get("Description"));
+                MainPage.fillField(By.id(TASK_DESCRIPTION_FIELD), mass.get(0).get("Description"));
+
+//                waitElementBy(By.id(TASK_DESCRIPTION_FIELD),updateTaskFieldsDelay);
+//                BasePage.write(By.id(TASK_DESCRIPTION_FIELD), mass.get(0).get("Description"));
             }
-            BasePage.scrollToElement(By.id(TASK_DESCRIPTION_FIELD));
+//            BasePage.scrollToElement(By.id(TASK_DESCRIPTION_FIELD));
             if (mass.get(0).get("Type") != null) {
-                waitElementBy(By.cssSelector(TASK_TYPE_DROPDOWN),updateTaskFieldsDelay);
-                BasePage.click(By.cssSelector(TASK_TYPE_DROPDOWN));
-                BasePage.selectElementsList(By.cssSelector(TASK_TYPE_DROPDOWN_LIST), "a");
-                wait(2000);
-                clickOnListOfElements(mass.get(0).get("Type"));
+                MainPage.clickOptionList(By.cssSelector(TASK_TYPE_DROPDOWN),
+                        mass.get(0).get("Type"),
+                        By.cssSelector(TASK_TYPE_DROPDOWN_LIST),
+                        "a");
+
+//                waitElementBy(By.cssSelector(TASK_TYPE_DROPDOWN),updateTaskFieldsDelay);
+//                BasePage.click(By.cssSelector(TASK_TYPE_DROPDOWN));
+//                BasePage.selectElementsList(By.cssSelector(TASK_TYPE_DROPDOWN_LIST), "a");
+//                wait(2000);
+//                clickOnListOfElements(mass.get(0).get("Type"));
             }
             if (mass.get(0).get("SmartSearch") != null) {
                 pickSmartSearch(mass.get(0).get("SmartSearch"));
             }
-            BasePage.scrollToElement(By.id(SMART_SEARCH_PICKER_BUTTON));
+//            BasePage.scrollToElement(By.id(SMART_SEARCH_PICKER_BUTTON));
 
             if (mass.get(0).get("AssignTo") != null) {
-                wait(2000);
-                waitElementBy(By.cssSelector(ASSIGN_TO_DROPDOWN),updateTaskFieldsDelay);
-                BasePage.click(By.cssSelector(ASSIGN_TO_DROPDOWN));
-                BasePage.selectElementsList(By.cssSelector(ASSIGN_TO_DROPDOWN_LIST), "a");
-                clickOnListOfElements(mass.get(0).get("AssignTo"));
+                MainPage.clickOptionList(By.cssSelector(ASSIGN_TO_DROPDOWN),
+                        mass.get(0).get("AssignTo"),
+                        By.cssSelector(ASSIGN_TO_DROPDOWN_LIST),
+                        "a");
+//                wait(2000);
+//                waitElementBy(By.cssSelector(ASSIGN_TO_DROPDOWN),updateTaskFieldsDelay);
+//                BasePage.click(By.cssSelector(ASSIGN_TO_DROPDOWN));
+//                BasePage.selectElementsList(By.cssSelector(ASSIGN_TO_DROPDOWN_LIST), "a");
+//                clickOnListOfElements(mass.get(0).get("AssignTo"));
             }
             if (mass.get(0).get("DueDate") != null) {
-                waitElementBy(By.id(DUE_DATE_FIELD),updateTaskFieldsDelay);
-                BasePage.write(By.id(DUE_DATE_FIELD), mass.get(0).get("DueDate"));
-                KeyPage.erase(By.id(DUE_DATE_FIELD));
-                waitElementBy(By.id(DUE_DATE_FIELD),updateTaskFieldsDelay);
-                BasePage.write(By.id(DUE_DATE_FIELD), mass.get(0).get("DueDate"));
-                KeyPage.pressKey(By.id(DUE_DATE_FIELD),"Enter");
+                MainPage.fillDateField(By.id(DUE_DATE_FIELD), mass.get(0).get("DueDate"));
+
+//                waitElementBy(By.id(DUE_DATE_FIELD),updateTaskFieldsDelay);
+//                BasePage.write(By.id(DUE_DATE_FIELD), mass.get(0).get("DueDate"));
+//                KeyPage.erase(By.id(DUE_DATE_FIELD));
+//                waitElementBy(By.id(DUE_DATE_FIELD),updateTaskFieldsDelay);
+//                BasePage.write(By.id(DUE_DATE_FIELD), mass.get(0).get("DueDate"));
+//                KeyPage.pressKey(By.id(DUE_DATE_FIELD),"Enter");
             }
             if (mass.get(0).get("DueTime") != null) {
-                waitElementBy(By.id(DUE_DATE_FIELD),updateTaskFieldsDelay);
-                BasePage.click(By.id(DUE_TIME_FIELD));
-                waitElementBy(By.id(DUE_TIME_FIELD),updateTaskFieldsDelay);
-                BasePage.write(By.id(DUE_TIME_FIELD), mass.get(0).get("DueTime"));
+                MainPage.fillField(By.id(DUE_DATE_FIELD), mass.get(0).get("DueTime"));
+
+//                waitElementBy(By.id(DUE_DATE_FIELD),updateTaskFieldsDelay);
+//                BasePage.click(By.id(DUE_TIME_FIELD));
+//                waitElementBy(By.id(DUE_TIME_FIELD),updateTaskFieldsDelay);
+//                BasePage.write(By.id(DUE_TIME_FIELD), mass.get(0).get("DueTime"));
             }
             if (mass.get(0).get("Priority") != null) {
-                waitElementBy(By.cssSelector(PRIORITY_DROPDOWN),updateTaskFieldsDelay);
-                BasePage.click(By.cssSelector(PRIORITY_DROPDOWN));
-                BasePage.selectElementsList(By.cssSelector(PRIORITY_DROPDOWN_LIST), "a");
-                wait(2000);
-                clickOnListOfElements(mass.get(0).get("Priority"));
+                MainPage.clickOptionList(By.cssSelector(PRIORITY_DROPDOWN),
+                        mass.get(0).get("Priority"),
+                        By.cssSelector(PRIORITY_DROPDOWN_LIST),
+                        "a");
+//                waitElementBy(By.cssSelector(PRIORITY_DROPDOWN),updateTaskFieldsDelay);
+//                BasePage.click(By.cssSelector(PRIORITY_DROPDOWN));
+//                BasePage.selectElementsList(By.cssSelector(PRIORITY_DROPDOWN_LIST), "a");
+//                wait(2000);
+//                clickOnListOfElements(mass.get(0).get("Priority"));
             }
             if (mass.get(0).get("Status") != null) {
-                waitElementBy(By.cssSelector(STATUS_DROPDOWN),updateTaskFieldsDelay);
-                BasePage.click(By.cssSelector(STATUS_DROPDOWN));
-                BasePage.selectElementsList(By.cssSelector(STATUS_DROPDOWN_LIST), "a");
-                wait(2000);
-                clickOnListOfElements(mass.get(0).get("Status"));
+                MainPage.clickOptionList(By.cssSelector(STATUS_DROPDOWN),
+                        mass.get(0).get("Status"),
+                        By.cssSelector(STATUS_DROPDOWN_LIST),
+                        "a");
+//                waitElementBy(By.cssSelector(STATUS_DROPDOWN),updateTaskFieldsDelay);
+//                BasePage.click(By.cssSelector(STATUS_DROPDOWN));
+//                BasePage.selectElementsList(By.cssSelector(STATUS_DROPDOWN_LIST), "a");
+//                wait(2000);
+//                clickOnListOfElements(mass.get(0).get("Status"));
             }
             if (mass.get(0).get("Comments") != null) {
-                waitElementBy(By.id(COMMENTS_FIELD),updateTaskFieldsDelay);
-                BasePage.write(By.id(COMMENTS_FIELD), mass.get(0).get("Comments"));
+                MainPage.fillField(By.id(COMMENTS_FIELD), mass.get(0).get("Comments"));
+
+//                waitElementBy(By.id(COMMENTS_FIELD),updateTaskFieldsDelay);
+//                BasePage.write(By.id(COMMENTS_FIELD), mass.get(0).get("Comments"));
             }
             ExtentReportsSetUp.testingPass(LogPage.UPDATE_FIELDS_TASK_PASS);
         } catch (Exception e) {
@@ -633,53 +622,20 @@ public class TasksPage extends BasePage{
      */
     public static void validateClearChanges(){
         try {
-            wait(2000);
-
-            if (mass.get(1).get("Name") != null) {
-               String text = BasePage.getAtribute(By.id(TASK_NAME_FIELD),"value");
-               Assert.assertEquals(text,mass.get(1).get("Name"));
+            if(MainPage.verifyGetAttribute(By.id(TASK_NAME_FIELD),mass.get(1).get("Name"))
+                    && MainPage.verifyGetAttribute(By.id(TASK_DESCRIPTION_FIELD),mass.get(1).get("Description"))
+                    && MainPage.verifyGetText(By.xpath(TASK_TYPE_DISABLED_DROPDOWN),mass.get(1).get("Type"))
+                    && MainPage.verifyGetAttribute(By.cssSelector(SMART_SEARCH_ELEMENT),mass.get(1).get("SmartSearch"))
+                    && MainPage.verifyGetText(By.cssSelector(ASSIGN_TO_DROPDOWN),mass.get(1).get("AssignTo"))
+                    && MainPage.verifyGetAttribute(By.id(DUE_DATE_FIELD),mass.get(1).get("DueDate"))
+                    && MainPage.verifyGetAttribute(By.id(DUE_TIME_FIELD),mass.get(1).get("DueTime"))
+                    && MainPage.verifyGetText(By.cssSelector(PRIORITY_DROPDOWN),mass.get(1).get("Priority"))
+                    && MainPage.verifyGetText(By.cssSelector(STATUS_DROPDOWN),mass.get(1).get("Status"))
+                    && MainPage.verifyGetText(By.id(COMMENTS_FIELD),mass.get(1).get("Comments"))){
+                    ExtentReportsSetUp.testingPass(LogPage.VALIDATE_CLEAR_CHANGES_PASS);
+            }else{
+                FailureDelegatePage.handlePageException(LogPage.VALIDATE_CLEAR_CHANGES_FAIL);
             }
-            if (mass.get(1).get("Description") != null) {
-                String text = BasePage.getAtribute(By.id(TASK_DESCRIPTION_FIELD),"value");
-                Assert.assertEquals(text,mass.get(1).get("Description"));
-            }
-            BasePage.scrollToElement(By.id(TASK_DESCRIPTION_FIELD));
-            if (mass.get(1).get("Type") != null) {
-                String text = BasePage.getText(By.xpath(TASK_TYPE_DISABLED_DROPDOWN));
-                Assert.assertEquals(text,mass.get(1).get("Type"));
-            }
-            if (mass.get(1).get("SmartSearch") != null) {
-                String text = BasePage.getAtribute(By.cssSelector(SMART_SEARCH_ELEMENT),"value");
-                Assert.assertEquals(text,mass.get(1).get("SmartSearch"));
-            }
-            BasePage.scrollToElement(By.id(SMART_SEARCH_PICKER_BUTTON));
-
-            if (mass.get(1).get("AssignTo") != null) {
-                String text = BasePage.getText(By.cssSelector(ASSIGN_TO_DROPDOWN));
-                Assert.assertEquals(text,mass.get(1).get("AssignTo"));
-            }
-            if (mass.get(1).get("DueDate") != null) {
-                String text = BasePage.getAtribute(By.id(DUE_DATE_FIELD),"value");
-                Assert.assertEquals(text,mass.get(1).get("DueDate"));
-            }
-            if (mass.get(1).get("DueTime") != null) {
-                String text = BasePage.getAtribute(By.id(DUE_TIME_FIELD),"value");
-                Assert.assertEquals(text,mass.get(1).get("DueTime"));
-            }
-            if (mass.get(1).get("Priority") != null) {
-                String text = BasePage.getText(By.cssSelector(PRIORITY_DROPDOWN));
-                Assert.assertEquals(text,mass.get(1).get("Priority"));
-
-            }
-            if (mass.get(1).get("Status") != null) {
-                String text = BasePage.getText(By.cssSelector(STATUS_DROPDOWN));
-                Assert.assertEquals(text,mass.get(1).get("Status"));
-            }
-            if (mass.get(1).get("Comments") != null) {
-                String text = BasePage.getAtribute(By.id(COMMENTS_FIELD),"value");
-                Assert.assertEquals(text,mass.get(1).get("Comments"));
-            }
-            ExtentReportsSetUp.testingPass(LogPage.VALIDATE_CLEAR_CHANGES_PASS);
         } catch (Exception e) {
             FailureDelegatePage.handlePageException(LogPage.VALIDATE_CLEAR_CHANGES_FAIL);
         }
@@ -766,11 +722,13 @@ public class TasksPage extends BasePage{
      */
     public static void verifyTaskIsDisplayed(String name){
         try {
-            String text = BasePage.getText(By.cssSelector(TASK_MANAGER_TABLE_ROW1_COL0));
-            ExtentReportsSetUp.testingPass(LogPage.VALIDATE_MANAGER_DATA_TABLE_PASS);
+            if(MainPage.verifyGetText(By.cssSelector(TASK_MANAGER_TABLE_ROW1_COL0),name)){
+                ExtentReportsSetUp.testingPass(LogPage.VALIDATE_MANAGER_DATA_TABLE_PASS);
+            }else{
+                FailureDelegatePage.handlePageException(LogPage.VALIDATE_MANAGER_DATA_TABLE_FAIL);
+            }
         } catch (Exception e) {
             FailureDelegatePage.handlePageException(LogPage.VALIDATE_MANAGER_DATA_TABLE_FAIL);
         }
     }
-
 }
