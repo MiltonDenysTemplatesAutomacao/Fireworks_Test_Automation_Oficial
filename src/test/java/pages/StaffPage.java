@@ -94,85 +94,49 @@ public class StaffPage extends BasePage{
     }
     public static void createContactStaffAddress(ContactAddressBean address,String group){
 
-        int createContactStaffAddressDelay = 0;
         String passMessage = String.format(LogPage.CREATE_CONTACT_STAFF_ADDRESS_PASS,group);
         String failMessage = String.format(LogPage.CREATE_CONTACT_STAFF_ADDRESS_FAIL,group);
         try {
             if(address.getAddress1()!=""){
-                scrollToElement(By.cssSelector(contactAddress1Field(group)));
-                scrollTo("-150");
-                waitElementBy(By.cssSelector(contactAddress1Field(group)),createContactStaffAddressDelay);
-                write(By.cssSelector(contactAddress1Field(group)),address.getAddress1());
+                MainPage.fillField(By.cssSelector(contactAddress1Field(group)), address.getAddress1());
             }
             if(address.getAddress2()!=""){
-                scrollToElement(By.cssSelector(contactAddress2Field(group)));
-                scrollTo("-150");
-                waitElementBy(By.cssSelector(contactAddress2Field(group)),createContactStaffAddressDelay);
-                write(By.cssSelector(contactAddress2Field(group)),address.getAddress2());
+                MainPage.fillField(By.cssSelector(contactAddress2Field(group)), address.getAddress2());
             }
             if(address.getAddress3()!=""){
-                scrollToElement(By.cssSelector(contactAddress1Field(group)));
-                scrollTo("-150");
-                waitElementBy(By.cssSelector(contactAddress3Field(group)),createContactStaffAddressDelay);
-                write(By.cssSelector(contactAddress3Field(group)),address.getAddress3());
+                MainPage.fillField(By.cssSelector(contactAddress3Field(group)), address.getAddress3());
             }
             if(address.getAddress4()!=""){
-                scrollToElement(By.cssSelector(contactAddress1Field(group)));
-                scrollTo("-150");
-                waitElementBy(By.cssSelector(contactAddress4Field(group)),createContactStaffAddressDelay);
-                write(By.cssSelector(contactAddress4Field(group)),address.getAddress4());
+                MainPage.fillField(By.cssSelector(contactAddress4Field(group)), address.getAddress4());
             }
             if(address.getCity()!=""){
-                scrollToElement(By.cssSelector(contactAddress1Field(group)));
-                waitElementBy(By.cssSelector(contactCityField(group)),createContactStaffAddressDelay);
-                write(By.cssSelector(contactCityField(group)),address.getCity());
+                MainPage.fillField(By.cssSelector(contactCityField(group)), address.getCity());
             }
 
             if(address.getState()!=""){
-                scrollToElement(By.cssSelector(contactAddress1Field(group)));
-                waitElementBy(By.cssSelector(contactStateDropdown(group)),createContactStaffAddressDelay);
-                BasePage.click(By.cssSelector(contactStateDropdown(group)));
-                waitElementBy(By.cssSelector(CONTACT_STATE_DROPDOWN_LIST),createContactStaffAddressDelay);
-                write(By.cssSelector(STATE_SEARCH_FIELD),address.getState());
-                wait(1000);
-                BasePage.selectElementsList(By.cssSelector(CONTACT_STATE_DROPDOWN_LIST), "a");
-                clickOnListOfElements(address.getState());
-                wait(1000);
+                MainPage.inputOptionField(By.cssSelector(contactStateDropdown(group)),
+                        address.getState(),
+                        By.cssSelector(STATE_SEARCH_FIELD));
             }
             if(address.getRegion()!=""){
-                scrollToElement(By.cssSelector(contactAddress1Field(group)));
-                waitElementBy(By.cssSelector(contactRegionField(group)),createContactStaffAddressDelay);
-                write(By.cssSelector(contactRegionField(group)),address.getRegion());
+                MainPage.fillField(By.cssSelector(contactRegionField(group)), address.getRegion());
             }
             if(address.getCountry()!=""){
-                scrollToElement(By.cssSelector(contactAddress1Field(group)));
-                waitElementBy(By.cssSelector(contactCountryDropdown(group)),createContactStaffAddressDelay);
-                BasePage.click(By.cssSelector(contactCountryDropdown(group)));
-                waitElementBy(By.cssSelector(CONTACT_COUNTRY_DROPDOWN_LIST),createContactStaffAddressDelay);
-                write(By.cssSelector(COUNTRY_SEARCH_FIELD),address.getCountry());
-                wait(1000);
-                BasePage.selectElementsList(By.cssSelector(CONTACT_COUNTRY_DROPDOWN_LIST), "a");
-                clickOnListOfElements(address.getCountry());
-                wait(1000);
+                MainPage.inputOptionField(By.cssSelector(contactCountryDropdown(group)),
+                        address.getCountry(),
+                        By.cssSelector(COUNTRY_SEARCH_FIELD));
             }
             if(address.getPostalCode()!=""){
-                scrollToElement(By.cssSelector(contactAddress1Field(group)));
-                waitElementBy(By.cssSelector(contactPostalCodeField(group)),createContactStaffAddressDelay);
-                write(By.cssSelector(contactPostalCodeField(group)),address.getPostalCode());
+                MainPage.fillField(By.cssSelector(contactPostalCodeField(group)), address.getPostalCode());
             }
             if(address.getAddressType()!=""){
-                scrollToElement(By.cssSelector(contactAddress1Field(group)));
-                waitElementBy(By.cssSelector(contactAddressTypeDropdown(group)),createContactStaffAddressDelay);
-                BasePage.click(By.cssSelector(contactAddressTypeDropdown(group)));
-                waitElementBy(By.cssSelector(CONTACT_ADDRESS_FIELD_DROPDOWN_LIST),createContactStaffAddressDelay);
-                BasePage.selectElementsList(By.cssSelector(CONTACT_ADDRESS_FIELD_DROPDOWN_LIST), "a");
-                clickOnListOfElements(address.getAddressType());
-                wait(1000);
+                MainPage.clickOptionList(By.cssSelector(contactAddressTypeDropdown(group)),
+                        address.getAddressType(),
+                        By.cssSelector(CONTACT_ADDRESS_FIELD_DROPDOWN_LIST),
+                        "a");
             }
             if(address.getAddressComments()!=""){
-                scrollToElement(By.cssSelector(contactAddress1Field(group)));
-                waitElementBy(By.cssSelector(contactAddressCommentsField(group)),createContactStaffAddressDelay);
-                write(By.cssSelector(contactAddressCommentsField(group)),address.getAddressComments());
+                MainPage.fillField(By.cssSelector(contactAddressCommentsField(group)), address.getAddressComments());
             }
             ExtentReportsSetUp.testingPass(passMessage);
         } catch (Exception e) {
@@ -193,60 +157,18 @@ public class StaffPage extends BasePage{
         String errorMessage = String.format(LogPage.VALIDATE_ID_TYPES_FAIL, index,person);
         String passMessage = String.format(LogPage.VALIDATE_ID_TYPES_PASS, index,person);
 
-        boolean idTypeValidation = false;
-        boolean idTypePrymaryCheckboxLocator = false;
-        boolean idNumberValidation = false;
-        boolean idRecordedDateValidation = false;
-        boolean commentsValidation = false;
-
         try {
-
-            scrollToElement(By.cssSelector(statusPlusSignElement(index)));
-            if (mass.get(person).get("IDType") != null) {
-                String idType = getText(By.cssSelector(typeDropdown(index)));
-                idTypeValidation = idType.contains(mass.get(person).get("IDType"));
+            if(MainPage.verifyGetText(By.cssSelector(typeDropdown(index)),mass.get(person).get("IDType"))
+                    && MainPage.verifyGetAttribute(By.cssSelector(idNumber(index)),mass.get(person).get("IDNumber"))
+                    && MainPage.verifyGetAttribute(By.cssSelector(idRecordedDate(index)),mass.get(person).get("IdRecordedDate"))
+                    && MainPage.verifyGetText(By.cssSelector(comments(index)),mass.get(person).get("Comments"))
+                    && MainPage.verifyCheckboxActiveOrNot(By.cssSelector(idTypePrimaryCheckbox(index)),mass.get(person).get("Primary"))){
+                ExtentReportsSetUp.testingPass(passMessage);
             }else{
-                idTypeValidation = true;
+                FailureDelegatePage.handlePageException(errorMessage);
             }
-            if (mass.get(person).get("IDNumber") != null) {
-                String idNumber = getAtribute(By.cssSelector(idNumber(index)),"value");
-                idNumberValidation = idNumber.contains(mass.get(person).get("IDNumber"));
-            }else{
-                idNumberValidation = true;
-            }
-            if (mass.get(person).get("IdRecordedDate") != null) {
-                String idRecordedDate = getAtribute(By.cssSelector(idRecordedDate(index)),"value");
-                idRecordedDateValidation = idRecordedDate.contains(mass.get(person).get("IdRecordedDate"));
-            }else{
-                idRecordedDateValidation = true;
-            }
-            if (mass.get(person).get("Comments") != null) {
-                String comments = getText(By.cssSelector(comments(index)));
-                commentsValidation = comments.contains(mass.get(person).get("Comments"));
-            }else{
-                commentsValidation = true;
-            }
-            switch (mass.get(person).get("Primary")) {
-                case "1":
-                    idTypePrymaryCheckboxLocator = checkBoxIsActive(By.cssSelector(idTypePrimaryCheckbox(index)));
-                    break;
-                case "0":
-                    idTypePrymaryCheckboxLocator = !checkBoxIsActive(By.cssSelector(idTypePrimaryCheckbox(index)));
-                    break;
-                default:
-                    throw new IllegalArgumentException("Unhandled index. Update business logic");
-            }
-                    if(idTypeValidation
-                            && idTypePrymaryCheckboxLocator
-                            && idNumberValidation
-                            && idRecordedDateValidation
-                            && commentsValidation){
-                        ExtentReportsSetUp.testingPass(passMessage);
-                    }else{
-                        FailureDelegatePage.handlePageException(errorMessage);
-                    }
         } catch (Exception e) {
-            FailureDelegatePage.handlePageException(errorMessage);
+                FailureDelegatePage.handlePageException(errorMessage);
         }
     }
 
@@ -255,37 +177,28 @@ public class StaffPage extends BasePage{
         String passMessage = String.format(LogPage.UPDATE_ID_TYPES_ORG_PASS, index,person);
         try {
             if (mass.get(person).get("IDType") != null) {
-                scrollToElement(By.cssSelector(statusPlusSignElement(index)));
-                waitUntilElementToBeSelected(By.cssSelector(typeDropdown(index)),20);
-                BasePage.click(By.cssSelector(typeDropdown(index)));
-                BasePage.selectElementsList(By.cssSelector(PersonPage.SELECT_DROP), "a");
-                clickOnListOfElements(mass.get(person).get("IDType"));
+                MainPage.clickOptionList(By.cssSelector(typeDropdown(index)),
+                        mass.get(person).get("IDType"),
+                        By.cssSelector(PersonPage.SELECT_DROP),
+                        "a");
             }
             if (mass.get(person).get("IDNumber") != null) {
-                scrollToElement(By.cssSelector(statusPlusSignElement(index)));
-                waitElementBy(By.cssSelector(idNumber(index)),20);
-                BasePage.write(By.cssSelector(idNumber(index)),mass.get(person).get("IDNumber"));
+                MainPage.fillField(By.cssSelector(idNumber(index)), mass.get(person).get("IDNumber"));
             }
             if (mass.get(person).get("IdRecordedDate") != null) {
-                scrollToElement(By.cssSelector(statusPlusSignElement(index)));
-                waitElementBy(By.cssSelector(idRecordedDate(index)),20);
-                BasePage.write(By.cssSelector(idRecordedDate(index)),mass.get(person).get("IdRecordedDate"));
+                MainPage.fillDateField(By.cssSelector(idRecordedDate(index)), mass.get(person).get("IdRecordedDate"));
             }
             if (mass.get(person).get("WhoAddedID") != null) {
-                scrollToElement(By.cssSelector(statusPlusSignElement(index)));
-                BasePage.click(By.cssSelector(whoAddedID(index)));
-                BasePage.selectElementsList(By.cssSelector(PersonPage.SELECT_DROP), "a");
-                clickOnListOfElements(mass.get(0).get("WhoAddedID"));
+                MainPage.clickOptionList(By.cssSelector(whoAddedID(index)),
+                        mass.get(person).get("WhoAddedID"),
+                        By.cssSelector(PersonPage.SELECT_DROP),
+                        "a");
             }
             if (mass.get(person).get("Comments") != null) {
-                scrollToElement(By.cssSelector(statusPlusSignElement(index)));
-                waitElementBy(By.cssSelector(comments(index)),20);
-                BasePage.write(By.cssSelector(comments(index)),mass.get(person).get("Comments"));
+                MainPage.fillField(By.cssSelector(comments(index)), mass.get(person).get("Comments"));
             }
             if (mass.get(person).get("Primary") != null) {
-                scrollToElement(By.cssSelector(statusPlusSignElement(index)));
-                waitUntilElementPresence(By.cssSelector(idTypePrimaryCheckbox(index)),20);
-                BasePage.click(By.cssSelector(idTypePrimaryCheckbox(index)));
+                MainPage.clickOption(By.cssSelector(idTypePrimaryCheckbox(index)));
             }
             ExtentReportsSetUp.testingPass(passMessage);
         } catch (Exception e) {
@@ -308,9 +221,7 @@ public class StaffPage extends BasePage{
         String errorMessage = String.format(LogPage.VALIDATE_QUICK_SEARCH_EMPTY_FAIL, message);
         String passMessage = String.format(LogPage.VALIDATE_QUICK_SEARCH_EMPTY_PASS, message);
         try {
-            wait(2000);
-            String messageQuickSearchEmpty = getText(By.id(VALIDATE_STAFF_MANGER_DATATABLE_MESSAGE));
-            if(messageQuickSearchEmpty.equals(message)){
+            if(MainPage.verifyGetText(By.id(VALIDATE_STAFF_MANGER_DATATABLE_MESSAGE),message)){
                 ExtentReportsSetUp.testingPass(passMessage);
             }else{
                 FailureDelegatePage.handlePageException(errorMessage);
@@ -345,15 +256,13 @@ public class StaffPage extends BasePage{
 
     public static void validateBasicElementIsVisible(){
         try {
-            String basicReturn = getText(By.cssSelector(BASIC_PANEL_HEADING_ELEMENT));
-            if(basicReturn.equals("Basic")){
+            if(MainPage.verifyGetText(By.cssSelector(BASIC_PANEL_HEADING_ELEMENT),"Basic")){
                 ExtentReportsSetUp.testingPass(LogPage.VALIDATE_BASIC_ELEMENT_IS_VISIBLE_PASS);
             }else{
                 FailureDelegatePage.handlePageException(LogPage.VALIDATE_BASIC_ELEMENT_IS_VISIBLE_FAIL);
             }
         } catch (Exception e) {
             FailureDelegatePage.handlePageException(LogPage.VALIDATE_BASIC_ELEMENT_IS_VISIBLE_FAIL);
-
         }
     }
 
@@ -362,9 +271,7 @@ public class StaffPage extends BasePage{
         String passMessage = String.format(LogPage.VERIFY_HEADER_RECORD_STATUS_PASS, status);
         String failMessage = String.format(LogPage.VERIFY_HEADER_RECORD_STATUS_FAIL, status);
         try {
-            waitUntilElementPresence(By.id(STAFF_STATUS_RECORD),20);
-            String studentTypeText = getText(By.id(STAFF_STATUS_RECORD));
-            if(studentTypeText.contains(status)){
+            if(MainPage.verifyGetText(By.id(STAFF_STATUS_RECORD),status)){
                 ExtentReportsSetUp.testingPass(passMessage);
             }else{
                 FailureDelegatePage.handlePageException(failMessage);
@@ -377,9 +284,7 @@ public class StaffPage extends BasePage{
         String passMessage = String.format(LogPage.VERIFY_HEADER_PERMISSIONS_PASS, permission);
         String failMessage = String.format(LogPage.VERIFY_HEADER_PERMISSIONS_FAIL, permission);
         try {
-            waitUntilElementPresence(By.xpath(STAFF_PERMISSION_RECORD),20);
-            String studentTypeText = getText(By.xpath(STAFF_PERMISSION_RECORD));
-            if(studentTypeText.contains(permission)){
+            if(MainPage.verifyGetText(By.xpath(STAFF_PERMISSION_RECORD),permission)){
                 ExtentReportsSetUp.testingPass(passMessage);
             }else{
                 FailureDelegatePage.handlePageException(failMessage);
@@ -393,15 +298,16 @@ public class StaffPage extends BasePage{
         try {
             waitElementBy(By.id(CONTACT_PHONE_NUMBER_FIELD),20);
             if (phone.getPhoneNumber() !="") {
-                BasePage.write(By.id(CONTACT_PHONE_NUMBER_FIELD), phone.getPhoneNumber());
+                MainPage.fillField(By.id(CONTACT_PHONE_NUMBER_FIELD), phone.getPhoneNumber());
             }
             if (phone.getPhoneType() !="") {
-                BasePage.click(By.id(CONTACT_PHONE_TYPE_DROPDOWN));
-                BasePage.selectElementsList(By.cssSelector(PersonPage.SELECT_DROP), "a");
-                clickOnListOfElements(phone.getPhoneType());
+                MainPage.clickOptionList(By.id(CONTACT_PHONE_TYPE_DROPDOWN),
+                        phone.getPhoneType(),
+                        By.cssSelector(PersonPage.SELECT_DROP),
+                        "a");
             }
             if (phone.getPhoneComments() !="") {
-                BasePage.write(By.id(CONTACT_PHONE_COMMENTS_FIELD), phone.getPhoneComments());
+                MainPage.fillField(By.id(CONTACT_PHONE_COMMENTS_FIELD), phone.getPhoneComments());
             }
             ExtentReportsSetUp.testingPass(LogPage.UPDATE_PHONE_NUMBER_PASS);
         } catch (Exception e) {
