@@ -358,19 +358,17 @@ public class PersonBasicPage extends BasePage {
         }
     }
     public static void updateCultureValues(String ethnicity,String race,String gender,String maritalStatus,String primaryLanguage, String religion){
-        int updateCultureValuesDelay=20;
-
         try {
             if (ethnicity != ""){
                 MainPage.clickOptionList(By.cssSelector(ETHNICITY_DROPDOWN),
                         ethnicity,
-                        By.cssSelector(ETHNICITY_DROPDOWN),
+                        By.cssSelector(PersonPage.SELECT_DROP),
                         "a");
             }
             if (race != ""){
-                MainPage.clickOptionList(By.cssSelector(RACE_DROPDOWN),
+                MainPage.clickOptionList(By.xpath(RACE_DROPDOWN),
                         race,
-                        By.cssSelector(ETHNICITY_DROPDOWN),
+                        By.cssSelector(PersonPage.SELECT_DROP),
                         "a");
             }
             if (gender != ""){

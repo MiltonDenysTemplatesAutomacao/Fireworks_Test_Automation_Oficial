@@ -116,10 +116,16 @@ public class ApplicationComponentsPage extends BasePage {
      * to verify Received Date it is necessary to put any string on Received Date field on step, I selected "1" as a pattern
      */
     public static void verifyApplicationComponent(ApplicationComponentBean applicationComponentBean, String group,String component){
-        String campusTimeZoneDate = currentDateTimeWithoutHour();
+        String campusTimeZoneDate = "";
         String passMessage = String.format(LogPage.VERIFY_APPLICATION_COMPONENT_PASS,group,component);
         String failMessage = String.format(LogPage.VERIFY_APPLICATION_COMPONENT_FAIL,group,component);
+
         try {
+            if(applicationComponentBean.getReceivedDate()!=""){
+                campusTimeZoneDate = currentDateTimeWithoutHour();
+            }else{
+                campusTimeZoneDate= "";
+            }
             if(MainPage.verifyGetText(By.cssSelector(componentElement(component,group)),applicationComponentBean.getComponentItem())
                     && MainPage.verifyGetText(By.cssSelector(receivedElement(component,group)),applicationComponentBean.getReceivedValue())
                     && MainPage.verifyGetAttribute(By.cssSelector(componentReceivedDateField(component,group)),campusTimeZoneDate)

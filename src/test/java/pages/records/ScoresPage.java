@@ -135,7 +135,9 @@ public class ScoresPage extends BasePage {
 
         try {
             if(scoreBean.getScoreType()!=""){
-                MainPage.inputOptionField(By.cssSelector(scoreTypeElement(group)),scoreBean.getScoreType(),By.xpath(SCORE_TYPE_ELEMENT_FIELD));
+                MainPage.inputOptionField(By.cssSelector(scoreTypeElement(group)),
+                        scoreBean.getScoreType(),
+                        By.xpath(SCORE_TYPE_ELEMENT_FIELD));
             }
             if(scoreBean.getScore()!=""){
                 MainPage.fillField(By.cssSelector(scoreField(group)), scoreBean.getScore());

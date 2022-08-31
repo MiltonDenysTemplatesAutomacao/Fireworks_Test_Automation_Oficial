@@ -2,6 +2,7 @@ package pages;
 
 import config.extent_reports.ExtentReportsSetUp;
 import org.openqa.selenium.By;
+import org.openqa.selenium.support.ui.Wait;
 
 public class AdminPanelPage extends BasePage{
 
@@ -43,6 +44,7 @@ public class AdminPanelPage extends BasePage{
                     satr2016HighScore,
                     By.cssSelector(PersonPage.SELECT_DROP),
                     "a");
+            wait(1000);
             click(By.cssSelector(CHANGE_HIGH_SCORE_YES_CHANGE_BUTTON));
             ExtentReportsSetUp.testingPass(LogPage.UPDATE_SAT_R2016_HIGH_SCORE_PASS);
             wait(5000);

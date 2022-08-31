@@ -111,6 +111,7 @@ public class ActionsPage extends BasePage {
     }
     public static void deleteAction(){
         try {
+            scrollToTheTop();
             waitUntilElementToBeSelected(By.cssSelector(DELETE_ACTION_BUTTON),20);
             click(By.cssSelector(DELETE_ACTION_BUTTON));
             waitUntilElementToBeSelected(By.cssSelector(DELETE_ACTION_YES_DELETE_BUTTON),20);
@@ -310,6 +311,8 @@ public class ActionsPage extends BasePage {
 
     public static void updateAction(String person){
         int personNumber = Integer.parseInt(person);
+        String passMessage = String.format(LogPage.UPDATE_ACTION_PASS,person);
+        String failMessage = String.format(LogPage.UPDATE_ACTION_FAIL,person);
         try {
             if (mass.get(personNumber).get("Category") != null) {
                 MainPage.clickOptionList(By.id(ACTION_CATEGORY_DROPDOWN),
@@ -335,14 +338,15 @@ public class ActionsPage extends BasePage {
             if (mass.get(personNumber).get("Comments") != null) {
                 MainPage.fillField(By.id(ACTION_COMMENTS_FIELD),mass.get(personNumber).get("Comments"));
             }
-            ExtentReportsSetUp.testingPass(LogPage.UPDATE_ACTION_PASS);
+            ExtentReportsSetUp.testingPass(passMessage);
         } catch (Exception e) {
-            FailureDelegatePage.handlePageException(LogPage.UPDATE_ACTION_FAIL);
+            FailureDelegatePage.handlePageException(failMessage);
         }
     }
 
     public static void clickSaveChangesActions(){
         try {
+            scrollToTheBottom();
             wait(2000);
             click(By.id(ACTION_SAVE_CHANGES_BUTTON));
             ExtentReportsSetUp.testingPass(LogPage.SAVE_CHANGES_PASS);

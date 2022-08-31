@@ -262,8 +262,8 @@ public class LogPage {
     public static final String NAVIGATE_TO_ACTIONS_FAIL = "Fail while trying to navigate to Actions";
     public static final String CREATE_ACTION_PASS = "I click on add action button";
     public static final String CREATE_ACTION_FAIL = "Fail while trying to click on add action button";
-    public static final String UPDATE_ACTION_PASS = "I update action person";
-    public static final String UPDATE_ACTION_FAIL = "Fail while trying to update action person";
+    public static final String UPDATE_ACTION_PASS = "I update action person '%s'";
+    public static final String UPDATE_ACTION_FAIL = "Fail while trying to update action person '%s'";
     public static final String VERIFY_ACTION_DATA_TABLE_VALUES_PASS = "I verify action Datatable values";
     public static final String VERIFY_ACTION_DATA_TABLE_VALUES_FAIL = "Fail while trying verify action Datatable values";
     public static final String UPDATE_ORG_ACTION_PASS = "I update action organization";

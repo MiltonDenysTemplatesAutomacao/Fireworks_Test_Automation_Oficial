@@ -219,7 +219,6 @@ public class TranscriptPage extends BasePage {
 
     public static void createTranscript(String person,String group){
         int personIndex = Integer.parseInt(person);
-        int updateTranscriptDelay = 20;
         TranscriptBean transcriptBean = new TranscriptBean();
         transcriptBean.setType(mass.get(personIndex).get("TranscriptType"));
         transcriptBean.setTranscriptDate(mass.get(personIndex).get("TranscriptDate"));
@@ -261,13 +260,13 @@ public class TranscriptPage extends BasePage {
                 MainPage.fillDateField(By.cssSelector(transcriptDateField(group)), transcriptBean.getTranscriptDate());
             }
             if(transcriptBean.getStartDate()!=null){
-                MainPage.fillDateField(By.cssSelector(transcriptDateField(group)), transcriptBean.getStartDate());
+                MainPage.fillDateField(By.cssSelector(transcriptStartDateField(group)), transcriptBean.getStartDate());
             }
             if(transcriptBean.getEndDate()!=null){
-                MainPage.fillDateField(By.cssSelector(transcriptDateField(group)), transcriptBean.getEndDate());
+                MainPage.fillDateField(By.cssSelector(transcriptEndDateField(group)), transcriptBean.getEndDate());
             }
             if(transcriptBean.getGraduationDate()!=null){
-                MainPage.fillDateField(By.cssSelector(transcriptDateField(group)), transcriptBean.getGraduationDate());
+                MainPage.fillDateField(By.cssSelector(transcriptGraduationDateField(group)), transcriptBean.getGraduationDate());
             }
             if(transcriptBean.getGed()!=null){
                 MainPage.clickOptionList(By.cssSelector(transcriptGEDElement(group)),
@@ -300,7 +299,7 @@ public class TranscriptPage extends BasePage {
                         "a");
             }
             if(transcriptBean.getDegreeLevel()!=null){
-                MainPage.clickOptionList(By.cssSelector(transcriptDegreeLevelElement(group)),
+                MainPage.clickOptionListContains(By.cssSelector(transcriptDegreeLevelElement(group)),
                         transcriptBean.getDegreeLevel(),
                         By.cssSelector(PersonPage.SELECT_DROP),
                         "a");

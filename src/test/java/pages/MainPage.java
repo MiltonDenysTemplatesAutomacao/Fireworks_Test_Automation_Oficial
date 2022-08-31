@@ -17,7 +17,6 @@ public class MainPage extends BasePage{
     public static boolean verifyIfElementIsVisible(By by)throws Exception{
         scrollToElement(by);
         scrollTo("-150");
-        waitElementBy(by,10);
         return checkIfElementIsVisible(by);
     }
     public static boolean verifyCheckboxActiveOrNot(By by,String value)throws Exception{
@@ -139,6 +138,18 @@ public class MainPage extends BasePage{
         BasePage.selectElementsList(dropDownList, tag);
         wait(2000);
         clickOnListOfElements(value);
+    }
+    public static void clickOptionListContains(By by, String value, By dropDownList, String tag)throws Exception{
+        int delay = 10;
+        wait(1000);
+        scrollToElement(by);
+        scrollTo("-150");
+        waitElementBy(by,delay);
+        click(by);
+        wait(1000);
+        BasePage.selectElementsList(dropDownList, tag);
+        wait(2000);
+        clickOnListOfElementsContains(value);
     }
 
     public static void fillDateField(By by,String value)throws Exception{

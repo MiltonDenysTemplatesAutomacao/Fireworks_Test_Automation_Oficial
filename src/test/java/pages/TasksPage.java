@@ -367,7 +367,7 @@ public class TasksPage extends BasePage{
         try {
             MainPage.picker(By.id(SMART_SEARCH_PICKER_BUTTON),
                     By.id(SMART_SEARCH_PICKER_MODAL_SEARCH_FIELD),
-                    By.id(SMART_SEARCH_PICKER_MODAL_TABLE_ROW1_COL1),
+                    By.cssSelector(SMART_SEARCH_PICKER_MODAL_TABLE_ROW1_COL1),
                     By.cssSelector(SMART_SEARCH_PICKER_MODAL_ROW1_CHECKBOX),
                     By.id(SMART_SEARCH_PICKER_MODAL_CHOOSE_BUTTON),
                     smartSearch);
@@ -391,96 +391,49 @@ public class TasksPage extends BasePage{
      * Method to update task
      */
     public static void updateTaskFields(){
-        int updateTaskFieldsDelay = 20;
         try {
-            wait(2000);
             BasePage.scrollToElement(By.id(TASK_NAME_FIELD));
             if (mass.get(0).get("Name") != null) {
                 MainPage.fillField(By.id(TASK_NAME_FIELD), mass.get(0).get("Name"));
-
-//                waitElementBy(By.id(TASK_NAME_FIELD),updateTaskFieldsDelay);
-//                BasePage.write(By.id(TASK_NAME_FIELD), mass.get(0).get("Name"));
             }
             if (mass.get(0).get("Description") != null) {
                 MainPage.fillField(By.id(TASK_DESCRIPTION_FIELD), mass.get(0).get("Description"));
-
-//                waitElementBy(By.id(TASK_DESCRIPTION_FIELD),updateTaskFieldsDelay);
-//                BasePage.write(By.id(TASK_DESCRIPTION_FIELD), mass.get(0).get("Description"));
             }
-//            BasePage.scrollToElement(By.id(TASK_DESCRIPTION_FIELD));
             if (mass.get(0).get("Type") != null) {
                 MainPage.clickOptionList(By.cssSelector(TASK_TYPE_DROPDOWN),
                         mass.get(0).get("Type"),
                         By.cssSelector(TASK_TYPE_DROPDOWN_LIST),
                         "a");
-
-//                waitElementBy(By.cssSelector(TASK_TYPE_DROPDOWN),updateTaskFieldsDelay);
-//                BasePage.click(By.cssSelector(TASK_TYPE_DROPDOWN));
-//                BasePage.selectElementsList(By.cssSelector(TASK_TYPE_DROPDOWN_LIST), "a");
-//                wait(2000);
-//                clickOnListOfElements(mass.get(0).get("Type"));
             }
             if (mass.get(0).get("SmartSearch") != null) {
                 pickSmartSearch(mass.get(0).get("SmartSearch"));
             }
-//            BasePage.scrollToElement(By.id(SMART_SEARCH_PICKER_BUTTON));
-
             if (mass.get(0).get("AssignTo") != null) {
                 MainPage.clickOptionList(By.cssSelector(ASSIGN_TO_DROPDOWN),
                         mass.get(0).get("AssignTo"),
                         By.cssSelector(ASSIGN_TO_DROPDOWN_LIST),
                         "a");
-//                wait(2000);
-//                waitElementBy(By.cssSelector(ASSIGN_TO_DROPDOWN),updateTaskFieldsDelay);
-//                BasePage.click(By.cssSelector(ASSIGN_TO_DROPDOWN));
-//                BasePage.selectElementsList(By.cssSelector(ASSIGN_TO_DROPDOWN_LIST), "a");
-//                clickOnListOfElements(mass.get(0).get("AssignTo"));
             }
             if (mass.get(0).get("DueDate") != null) {
                 MainPage.fillDateField(By.id(DUE_DATE_FIELD), mass.get(0).get("DueDate"));
-
-//                waitElementBy(By.id(DUE_DATE_FIELD),updateTaskFieldsDelay);
-//                BasePage.write(By.id(DUE_DATE_FIELD), mass.get(0).get("DueDate"));
-//                KeyPage.erase(By.id(DUE_DATE_FIELD));
-//                waitElementBy(By.id(DUE_DATE_FIELD),updateTaskFieldsDelay);
-//                BasePage.write(By.id(DUE_DATE_FIELD), mass.get(0).get("DueDate"));
-//                KeyPage.pressKey(By.id(DUE_DATE_FIELD),"Enter");
             }
             if (mass.get(0).get("DueTime") != null) {
-                MainPage.fillField(By.id(DUE_DATE_FIELD), mass.get(0).get("DueTime"));
-
-//                waitElementBy(By.id(DUE_DATE_FIELD),updateTaskFieldsDelay);
-//                BasePage.click(By.id(DUE_TIME_FIELD));
-//                waitElementBy(By.id(DUE_TIME_FIELD),updateTaskFieldsDelay);
-//                BasePage.write(By.id(DUE_TIME_FIELD), mass.get(0).get("DueTime"));
+                MainPage.fillField(By.id(DUE_TIME_FIELD), mass.get(0).get("DueTime"));
             }
             if (mass.get(0).get("Priority") != null) {
                 MainPage.clickOptionList(By.cssSelector(PRIORITY_DROPDOWN),
                         mass.get(0).get("Priority"),
                         By.cssSelector(PRIORITY_DROPDOWN_LIST),
                         "a");
-//                waitElementBy(By.cssSelector(PRIORITY_DROPDOWN),updateTaskFieldsDelay);
-//                BasePage.click(By.cssSelector(PRIORITY_DROPDOWN));
-//                BasePage.selectElementsList(By.cssSelector(PRIORITY_DROPDOWN_LIST), "a");
-//                wait(2000);
-//                clickOnListOfElements(mass.get(0).get("Priority"));
             }
             if (mass.get(0).get("Status") != null) {
                 MainPage.clickOptionList(By.cssSelector(STATUS_DROPDOWN),
                         mass.get(0).get("Status"),
                         By.cssSelector(STATUS_DROPDOWN_LIST),
                         "a");
-//                waitElementBy(By.cssSelector(STATUS_DROPDOWN),updateTaskFieldsDelay);
-//                BasePage.click(By.cssSelector(STATUS_DROPDOWN));
-//                BasePage.selectElementsList(By.cssSelector(STATUS_DROPDOWN_LIST), "a");
-//                wait(2000);
-//                clickOnListOfElements(mass.get(0).get("Status"));
             }
             if (mass.get(0).get("Comments") != null) {
                 MainPage.fillField(By.id(COMMENTS_FIELD), mass.get(0).get("Comments"));
-
-//                waitElementBy(By.id(COMMENTS_FIELD),updateTaskFieldsDelay);
-//                BasePage.write(By.id(COMMENTS_FIELD), mass.get(0).get("Comments"));
             }
             ExtentReportsSetUp.testingPass(LogPage.UPDATE_FIELDS_TASK_PASS);
         } catch (Exception e) {

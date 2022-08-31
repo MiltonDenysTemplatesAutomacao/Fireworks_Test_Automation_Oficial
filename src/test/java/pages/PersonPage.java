@@ -180,18 +180,11 @@ public class PersonPage extends BasePage{
         String passMessage = String.format(LogPage.VERIFY_STUDENT_STATUS_LABEL_PASS, studentStatusLabel);
         String failMessage = String.format(LogPage.VERIFY_STUDENT_STATUS_LABEL_FAIL, studentStatusLabel);
         try {
-//            waitUntilElementPresence(By.cssSelector(HEADER_STUDENT_STATUS_DISPLAY),20);
-//            String studentStatusLabelText = getText(By.cssSelector(HEADER_STUDENT_STATUS_DISPLAY));
             if(MainPage.verifyGetText(By.cssSelector(summaryList(HEADER_STUDENT_STATUS_DISPLAY)),studentStatusLabel)){
                 ExtentReportsSetUp.testingPass(passMessage);
             }else{
                 FailureDelegatePage.handlePageException(failMessage);
             }
-//            if(studentStatusLabelText.contains(studentStatusLabel)){
-//                ExtentReportsSetUp.testingPass(passMessage);
-//            }else{
-//                FailureDelegatePage.handlePageException(failMessage);
-//            }
         } catch (Exception e) {
             FailureDelegatePage.handlePageException(failMessage);
         }
