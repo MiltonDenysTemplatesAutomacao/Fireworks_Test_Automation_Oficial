@@ -17,5 +17,9 @@ public class IdTypesSteps {
     public static void validateVisaNumber() {
         IdTypesPage.validateVisaNumber();
     }
+    @When("I update visa {string}, {string}, {string} group {string}")
+    public static void updateVisa(String entryTerm,String country,String visaType,String group) {
+        IdTypesPage.updateVisa(entryTerm,country,visaType,group);
+    }
 
 }

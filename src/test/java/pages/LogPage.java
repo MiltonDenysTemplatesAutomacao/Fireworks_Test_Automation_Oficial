@@ -604,5 +604,7 @@ public class LogPage {
     public static final String VERIFY_EMPLOYMENT_FAIL = "Fail while trying to verify employment group '%s'";
     public static final String ADD_EMPLOYMENT_PASS = "I add Employment group '%s'";
     public static final String ADD_EMPLOYMENT_FAIL = "Fail while trying to add Employment group '%s'";
+    public static final String UPDATE_VISA_PASS = "I update visa group '%s'";
+    public static final String UPDATE_VISA_FAIL = "Fail while trying to update visa group '%s'";
 
 }
