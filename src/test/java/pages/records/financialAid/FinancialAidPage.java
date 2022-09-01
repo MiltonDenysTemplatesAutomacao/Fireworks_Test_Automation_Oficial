@@ -3,7 +3,11 @@ package pages.records.financialAid;
 import bean.FinancialAidBean;
 import config.extent_reports.ExtentReportsSetUp;
 import org.openqa.selenium.By;
-import pages.*;
+import pages.BasePage;
+import pages.FailureDelegatePage;
+import pages.LogPage;
+import pages.MainPage;
+import pages.PersonPage;
 import pages.records.application.ApplicationsPage;
 
 public class FinancialAidPage extends BasePage {

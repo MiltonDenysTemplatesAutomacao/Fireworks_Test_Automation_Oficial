@@ -3,8 +3,11 @@ package pages.records.application;
 import bean.ApplicationReviewBean;
 import config.extent_reports.ExtentReportsSetUp;
 import org.openqa.selenium.By;
-import pages.*;
-
+import pages.BasePage;
+import pages.FailureDelegatePage;
+import pages.LogPage;
+import pages.MainPage;
+import pages.PersonPage;
 public class ApplicationReviewsPage extends BasePage {
 
     private static String reviewAddButton(String app,String review){

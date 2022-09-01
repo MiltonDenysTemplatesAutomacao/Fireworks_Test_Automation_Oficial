@@ -3,7 +3,11 @@ package pages.records.application;
 import bean.ApplicationBean;
 import config.extent_reports.ExtentReportsSetUp;
 import org.openqa.selenium.By;
-import pages.*;
+import pages.BasePage;
+import pages.FailureDelegatePage;
+import pages.LogPage;
+import pages.PersonPage;
+import pages.MainPage;
 
 public class ApplicationsPage extends BasePage {
 

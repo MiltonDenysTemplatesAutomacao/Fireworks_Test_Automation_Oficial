@@ -180,7 +180,7 @@ public class PersonPage extends BasePage{
         String passMessage = String.format(LogPage.VERIFY_STUDENT_STATUS_LABEL_PASS, studentStatusLabel);
         String failMessage = String.format(LogPage.VERIFY_STUDENT_STATUS_LABEL_FAIL, studentStatusLabel);
         try {
-            if(MainPage.verifyGetText(By.cssSelector(summaryList(HEADER_STUDENT_STATUS_DISPLAY)),studentStatusLabel)){
+            if(MainPage.verifyGetText(By.cssSelector(HEADER_STUDENT_STATUS_DISPLAY),studentStatusLabel)){
                 ExtentReportsSetUp.testingPass(passMessage);
             }else{
                 FailureDelegatePage.handlePageException(failMessage);
@@ -193,18 +193,11 @@ public class PersonPage extends BasePage{
         String passMessage = String.format(LogPage.VERIFY_ENTRY_TERM_LABEL_PASS, entryTermLabel);
         String failMessage = String.format(LogPage.VERIFY_ENTRY_TERM_LABEL_FAIL, entryTermLabel);
         try {
-            if(MainPage.verifyGetText(By.cssSelector(summaryList(HEADER_ENTRY_TERM_DISPLAY)),entryTermLabel)){
+            if(MainPage.verifyGetText(By.cssSelector(HEADER_ENTRY_TERM_DISPLAY),entryTermLabel)){
                 ExtentReportsSetUp.testingPass(passMessage);
             }else{
                 FailureDelegatePage.handlePageException(failMessage);
             }
-//            waitUntilElementPresence(By.cssSelector(HEADER_ENTRY_TERM_DISPLAY),20);
-//            String entryTermLabelText = getText(By.cssSelector(HEADER_ENTRY_TERM_DISPLAY));
-//            if(entryTermLabelText.contains(entryTermLabel)){
-//                ExtentReportsSetUp.testingPass(passMessage);
-//            }else{
-//                FailureDelegatePage.handlePageException(failMessage);
-//            }
         } catch (Exception e) {
             FailureDelegatePage.handlePageException(failMessage);
         }

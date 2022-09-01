@@ -29,6 +29,7 @@ Feature: Actions Required Fields
     And I validate if "The Staff field is required." message required for person record is correct
     And I validate if "The Date field is required." message required for person record is correct
     And I update action person "1"
+    And I click on close button on modal
     And I click on Save Changes button in Actions
     #the remaining required fields are validated'
     Then I validate if "The Category field is required." message required for person record is correct

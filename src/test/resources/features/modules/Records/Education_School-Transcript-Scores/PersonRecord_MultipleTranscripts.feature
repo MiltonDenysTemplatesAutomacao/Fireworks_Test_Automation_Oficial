@@ -58,7 +58,7 @@ Feature: Multiples Transcripts
     And I open a people record by "Danny"
     And I validate if "Danny"summary opened properly
     And I navigate to Education
-    And I update school in education for person "Chaminade College Preparatory", "", "", "", "", "", "" group "0"
+    And I update school in education for person "Chaminade", "", "", "", "", "", "" group "0"
     When I update transcript person "0" group "0"
     And I add a transcript "0"
     When I update transcript person "0" group "1"

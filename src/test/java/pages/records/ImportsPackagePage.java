@@ -2,8 +2,12 @@ package pages.records;
 
 import config.extent_reports.ExtentReportsSetUp;
 import org.openqa.selenium.By;
-import pages.*;
-
+import pages.BasePage;
+import pages.FailureDelegatePage;
+import pages.LogPage;
+import pages.PersonPage;
+import pages.KeyPage;
+import pages.LettersPage;
 public class ImportsPackagePage extends BasePage {
 
     private static final String CREATE_NEW_PACKAGE_BUTTON = "#top-controls-create-new-package";

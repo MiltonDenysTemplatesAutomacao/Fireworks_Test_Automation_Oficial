@@ -2,8 +2,10 @@ package pages.records;
 
 import config.extent_reports.ExtentReportsSetUp;
 import org.openqa.selenium.By;
-import pages.*;
-
+import pages.BasePage;
+import pages.FailureDelegatePage;
+import pages.LogPage;
+import pages.MainPage;
 public class ImportRunPage extends BasePage {
 
     private static final String UPDATE_ACTION_CATEGORY = "#s2id_person_import_composer_action_category_id";

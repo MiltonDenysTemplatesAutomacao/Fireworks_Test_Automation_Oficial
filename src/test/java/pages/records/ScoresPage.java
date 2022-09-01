@@ -3,7 +3,10 @@ package pages.records;
 import bean.ScoreBean;
 import config.extent_reports.ExtentReportsSetUp;
 import org.openqa.selenium.By;
-import pages.*;
+import pages.BasePage;
+import pages.FailureDelegatePage;
+import pages.LogPage;
+import pages.MainPage;
 
 public class ScoresPage extends BasePage {
     private static final String SCORE_TYPE_ELEMENT_FIELD = "//input[starts-with(@aria-activedescendant, 'select2-result-label-')]";
@@ -117,13 +120,13 @@ public class ScoresPage extends BasePage {
                 MainPage.fillField(By.cssSelector(componentScoreField(group,"1")), scoreBean.getComponent2Score());
             }
             if(scoreBean.getComponent3Score()!=""){
-                MainPage.fillField(By.cssSelector(componentScoreField(group,"2")), scoreBean.getComponent2Score());
+                MainPage.fillField(By.cssSelector(componentScoreField(group,"2")), scoreBean.getComponent3Score());
             }
             if(scoreBean.getComponent4Score()!=""){
-                MainPage.fillField(By.cssSelector(componentScoreField(group,"3")), scoreBean.getComponent2Score());
+                MainPage.fillField(By.cssSelector(componentScoreField(group,"3")), scoreBean.getComponent4Score());
             }
             if(scoreBean.getComponent5Score()!=""){
-                MainPage.fillField(By.cssSelector(componentScoreField(group,"4")), scoreBean.getComponent2Score());
+                MainPage.fillField(By.cssSelector(componentScoreField(group,"4")), scoreBean.getComponent5Score());
             }
         } catch (Exception e) {
             FailureDelegatePage.handlePageException(failMessage);

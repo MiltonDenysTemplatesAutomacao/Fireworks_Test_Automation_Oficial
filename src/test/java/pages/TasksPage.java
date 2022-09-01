@@ -584,7 +584,7 @@ public class TasksPage extends BasePage{
                     && MainPage.verifyGetAttribute(By.id(DUE_TIME_FIELD),mass.get(1).get("DueTime"))
                     && MainPage.verifyGetText(By.cssSelector(PRIORITY_DROPDOWN),mass.get(1).get("Priority"))
                     && MainPage.verifyGetText(By.cssSelector(STATUS_DROPDOWN),mass.get(1).get("Status"))
-                    && MainPage.verifyGetText(By.id(COMMENTS_FIELD),mass.get(1).get("Comments"))){
+                    && MainPage.verifyGetAttribute(By.id(COMMENTS_FIELD),mass.get(1).get("Comments"))){
                     ExtentReportsSetUp.testingPass(LogPage.VALIDATE_CLEAR_CHANGES_PASS);
             }else{
                 FailureDelegatePage.handlePageException(LogPage.VALIDATE_CLEAR_CHANGES_FAIL);

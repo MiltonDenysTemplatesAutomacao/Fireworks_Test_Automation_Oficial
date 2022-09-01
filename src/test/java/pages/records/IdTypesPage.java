@@ -2,8 +2,11 @@ package pages.records;
 
 import config.extent_reports.ExtentReportsSetUp;
 import org.openqa.selenium.By;
-import pages.*;
-
+import pages.BasePage;
+import pages.FailureDelegatePage;
+import pages.LogPage;
+import pages.MainPage;
+import pages.PersonPage;
 public class IdTypesPage extends BasePage {
 
     private static final String PERSON_EXTERNAL_ID_TYPES_SAVE_CHANGES_BUTTON = "//button[contains(@id, 'saveChangesBtn')]";
