@@ -1,10 +1,10 @@
 #Author: Milton Silva
 #Regression testcase TL-312: ID Types: Visa Number
 
-@DisplayFields
+@IDTypesVisaNumber
 Feature: ID Types: Visa Number
 
-  @IDTypesVisaNumber @Done @IDTypes
+  @IDTypesVisaNumberScenarios @Done @IDTypes
   Scenario: Record - ID Types - visa ID required fields
     Given I login as "firestarterUsername", "firestarterPassword", "firestarterFullName"
     And I create a person
