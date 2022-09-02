@@ -608,5 +608,15 @@ public class LogPage {
     public static final String UPDATE_VISA_FAIL = "Fail while trying to update visa group '%s'";
     public static final String ADD_EXTERNAL_ID_PASS = "I add an External ID '%s'";
     public static final String ADD_EXTERNAL_ID_FAIL = "Fail while trying to add an External ID '%s'";
+    public static final String CREATE_RELATIONSHIP_PASS = "I create a relationship";
+    public static final String CREATE_RELATIONSHIP_FAIL = "Fail while trying to create a relationship";
+    public static final String OPEN_RECORD_PICKER_PASS = "I open a record picker '%s'";
+    public static final String OPEN_RECORD_PICKER_FAIL = "Fail while trying to open a record picker '%s'";
+    public static final String UPDATE_RELATIONSHIP_VALUES_PASS = "I update relationship";
+    public static final String UPDATE_RELATIONSHIP_VALUES_FAIL = "Fail while trying to update relationship";
+    public static final String SAVE_CHANGES_RELATIONSHIP_PASS = "I click on save changes on Relationships";
+    public static final String SAVE_CHANGES_RELATIONSHIP_FAIL = "Fail while trying to click on save changes on Relationships";
+    public static final String SELECT_FROM_ORG_PICKER_PASS = "I open an organization record picker '%s'";
+    public static final String SELECT_FROM_ORG_PICKER_FAIL = "Fail while trying to open an organization record picker '%s'";
 
 }

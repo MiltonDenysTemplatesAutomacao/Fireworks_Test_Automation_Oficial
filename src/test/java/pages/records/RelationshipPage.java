@@ -4,17 +4,14 @@ import bean.RelationshipBean;
 import config.extent_reports.ExtentReportsSetUp;
 import org.openqa.selenium.By;
 import org.testng.reporters.jq.Main;
-import pages.BasePage;
-import pages.FailureDelegatePage;
-import pages.LogPage;
-import pages.MainPage;
+import pages.*;
 
 public class RelationshipPage extends BasePage {
     private static final String RELATIONSHIP_MANAGER_SEARCH_FIELD = "#personRelationshipsManagerTableControlsTableSearch";
     private static final String ORG_RELATIONSHIP_MANAGER_SEARCH_FIELD = "#organizationRelationshipsManagerTableControlsTableSearch";
     private static final String RELATIONSHIP_MANAGER_TABLE_ROW1_COL1_ELEMENT = "#personRelationshipsManagerTable_row_0_col_0";
     private static final String RELATIONSHIP_TARGET_FIELD = "#entity_relationship_0_relationship_entity_out";
-    private static final String RELATIONSHIP_TARGET_ROLE_DROPDOWN = "#s2id_entity_relationship_0_relationship_out.select2-container.form-control.select2 a.select2-choice";
+    private static final String RELATIONSHIP_TARGET_ROLE_DROPDOWN = "#s2id_entity_relationship_0_relationship_out";
     private static final String ROLE_OF_IN_RELATIONSHIP_DROPDOWN = "#s2id_entity_relationship_0_relationship_in.select2-container.form-control.select2 a";
     private static final String RELATIONSHIPS_COMMENTS_FIELD = "#entity_relationship_0_relationship_comments";
     private static final String RELATIONSHIP_ACTIVE_CHECKBOX = "#entity_relationship_0_active";
@@ -23,7 +20,87 @@ public class RelationshipPage extends BasePage {
     private static final String ROLE_OF_IN_RELATIONSHIP_DISABLED_DROPDOWN = "#s2id_entity_relationship_0_relationship_in.select2-container.select2-container-disabled.form-control.parentSelect.entity_relationship.select2.required";
     private static final String RELATIONSHIPS_COMMENTS_DISABLED_FIELD = "#entity_relationship_0_relationship_comments[readonly]";
     private static final String ORG_RELATIONSHIP_MANAGER_TABLE_ROW1_COL1_ELEMENT = "#organizationRelationshipsManagerTable_row_0_col_0";
+    private static final String CREATE_RELATIONSHIP_BUTTON = "#top-controls-create-new-relationship";
+    private static final String RELATIONSHIP_TARGET_PICK_BUTTON = "#entity_relationship_0_recordPickerTrigger";
+    private static final String RECORD_PICKER_SEARCH_FIELD = "#personPickerModalTableControlsTableSearch";
+    private static final String PERSON_PICKER_MODAL_TABLE_ROW1 = "#personPickerModalTable_row_0";
+    private static final String PERSON_PICKER_MODAL_TABLE_ROW1_CHECKBOX = "//table[@id='personPickerModalTable']/tbody/tr/th/div/input";
+    private static final String RECORD_PICKER_MODAL_CHOOSE_BUTTON = "#entityPickerSubmit";
+    private static final String PERSON_RELATIONSHIP_SAVE_CHANGES_BUTTON = "#saveChangesBtnPeopleRelationship";
+    private static final String ORGANIZATION_TAB = "#navEntityOrg";
+    private static final String ORG_PICKER_SEARCH_FIELD = "#orgPickerModalTableControlsTableSearch";
+    private static final String ORG_PICKER_MODAL_TABLE_ROW1 = "#orgPickerModalTable_row_0";
+    private static final String ORG_PICKER_MODAL_TABLE_ROW1_CHECKBOX = "//table[@id='orgPickerModalTable']/tbody/tr/th/div/input";
 
+    public static void selectFromOrgPicker(String recordPicker){
+        String passMessage = String.format(LogPage.SELECT_FROM_ORG_PICKER_PASS,recordPicker);
+        String failMessage = String.format(LogPage.SELECT_FROM_ORG_PICKER_FAIL,recordPicker);
+        try {
+            waitElementBy(By.cssSelector(RELATIONSHIP_TARGET_PICK_BUTTON),10);
+            MainPage.pickerButtonClick(By.cssSelector(RELATIONSHIP_TARGET_PICK_BUTTON));
+            waitElementBy(By.cssSelector(ORGANIZATION_TAB),10);
+            click(By.cssSelector(ORGANIZATION_TAB));
+            MainPage.searchPicker(By.cssSelector(ORG_PICKER_SEARCH_FIELD),
+                    By.cssSelector(ORG_PICKER_MODAL_TABLE_ROW1),
+                    By.xpath(ORG_PICKER_MODAL_TABLE_ROW1_CHECKBOX),
+                    recordPicker);
+            MainPage.modalChooseButton(By.cssSelector(RECORD_PICKER_MODAL_CHOOSE_BUTTON));
+            ExtentReportsSetUp.testingPass(passMessage);
+        } catch (Exception e) {
+            FailureDelegatePage.handlePageException(failMessage);
+        }
+    }
+    public static void saveChangesRelationship(){
+        try {
+            MainPage.clickOption(By.cssSelector(PERSON_RELATIONSHIP_SAVE_CHANGES_BUTTON));
+            ExtentReportsSetUp.testingPass(LogPage.SAVE_CHANGES_RELATIONSHIP_PASS);
+        } catch (Exception e) {
+            FailureDelegatePage.handlePageException(LogPage.SAVE_CHANGES_RELATIONSHIP_FAIL);
+        }
+    }
+    public static void updateRelationshipValues(String targetRole,String roleInRelationship,String comments){
+        try {
+            if(targetRole!=""){
+                MainPage.clickOptionList(By.cssSelector(RELATIONSHIP_TARGET_ROLE_DROPDOWN),
+                        targetRole,
+                        By.cssSelector(PersonPage.SELECT_DROP));        }
+            if(roleInRelationship!=""){
+                MainPage.clickOptionList(By.cssSelector(ROLE_OF_IN_RELATIONSHIP_DROPDOWN),
+                        roleInRelationship,
+                        By.cssSelector(PersonPage.SELECT_DROP));
+            }
+            if(comments!=""){
+                MainPage.fillField(By.cssSelector(RELATIONSHIPS_COMMENTS_FIELD), comments);
+            }
+            ExtentReportsSetUp.testingPass(LogPage.UPDATE_RELATIONSHIP_VALUES_PASS);
+        } catch (Exception e) {
+            FailureDelegatePage.handlePageException(LogPage.UPDATE_RELATIONSHIP_VALUES_FAIL);
+        }
+    }
+    public static void openRecordPicker(String recordPicker){
+        String passMessage = String.format(LogPage.OPEN_RECORD_PICKER_PASS,recordPicker);
+        String failMessage = String.format(LogPage.OPEN_RECORD_PICKER_FAIL,recordPicker);
+        try {
+            MainPage.picker(By.cssSelector(RELATIONSHIP_TARGET_PICK_BUTTON),
+                    By.cssSelector(RECORD_PICKER_SEARCH_FIELD),
+                    By.cssSelector(PERSON_PICKER_MODAL_TABLE_ROW1),
+                    By.xpath(PERSON_PICKER_MODAL_TABLE_ROW1_CHECKBOX),
+                    By.cssSelector(RECORD_PICKER_MODAL_CHOOSE_BUTTON),
+                    recordPicker);
+            ExtentReportsSetUp.testingPass(passMessage);
+        } catch (Exception e) {
+            FailureDelegatePage.handlePageException(failMessage);
+        }
+    }
+    public static void createRelationship(){
+        try {
+            wait(2000);
+            MainPage.clickOption(By.cssSelector(CREATE_RELATIONSHIP_BUTTON));
+            ExtentReportsSetUp.testingPass(LogPage.CREATE_RELATIONSHIP_PASS);
+        } catch (Exception e) {
+            FailureDelegatePage.handlePageException(LogPage.CREATE_RELATIONSHIP_FAIL);
+        }
+    }
     public static void verifyRelationshipTextResults(String resultText){
         String passMessage = String.format(LogPage.VERIFY_RELATIONSHIP_TEXT_RESULTS_PASS,resultText);
         String failMessage = String.format(LogPage.VERIFY_RELATIONSHIP_TEXT_RESULTS_FAIL,resultText);
