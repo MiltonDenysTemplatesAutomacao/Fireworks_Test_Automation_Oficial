@@ -33,7 +33,7 @@ Feature: Search by phone number
     And I navigate to tasks
     And I open task "PreviousName"
     When I update task fields
-    And I clear changes
+    And I click on clear changes
     And I validate if clear changes worked
     And I create a task
     Then I validate if "Task has been updated" message is correct

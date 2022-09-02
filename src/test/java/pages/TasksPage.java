@@ -314,41 +314,6 @@ public class TasksPage extends BasePage{
         }
     }
     /*
-     * Method to clear changes
-     */
-    public static void clearChanges(){
-        try {
-            clickClearChanges();
-            affirmClearChanges();
-            ExtentReportsSetUp.testingPass(LogPage.CLEAR_CHANGES_PASS);
-
-        } catch (Exception e) {
-            FailureDelegatePage.handlePageException(LogPage.CLEAR_CHANGES_FAIL);
-
-        }
-    }
-    /*
-     * Method to click on clear changes button
-     */
-    public static void clickClearChanges()throws Exception{
-        BasePage.scrollToElement(By.id(COMMENTS_FIELD));
-        waitElementBy(By.id(CLEAR_CHANGES_BUTTON),20);
-        BasePage.click(By.id(CLEAR_CHANGES_BUTTON));
-    }
-    /*
-     * Method to affirm clear changes
-     */
-    public static void affirmClearChanges()throws Exception{
-        waitElementBy(By.id(MODAL_CLEAR_CHANGES_CONFIRMATION_BUTTON),20);
-        BasePage.click(By.id(MODAL_CLEAR_CHANGES_CONFIRMATION_BUTTON));
-    }
-    /*
-     * Method to click on choose button on smart search picker modal
-     */
-    public static void smartSearchPickerModalChooseButton()throws Exception{
-            BasePage.click(By.id(SMART_SEARCH_PICKER_MODAL_CHOOSE_BUTTON));
-    }
-    /*
      * Method to click on create task button
      */
     public static void clickCreateTaskButton(){

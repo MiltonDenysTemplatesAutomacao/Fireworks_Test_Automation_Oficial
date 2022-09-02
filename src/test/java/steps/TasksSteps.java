@@ -118,10 +118,7 @@ public class TasksSteps {
     public static void validateTaskDataTable( ) {
         TasksPage.validateTaskDataTable();
     }
-    @When("I clear changes")
-    public static void clickClearChanges( ) {
-        TasksPage.clearChanges();
-    }@When("I validate if clear changes worked")
+    @When("I validate if clear changes worked")
     public static void validateClearChanges( ) {
         TasksPage.validateClearChanges();
     }

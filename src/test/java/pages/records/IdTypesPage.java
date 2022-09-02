@@ -46,7 +46,16 @@ public class IdTypesPage extends BasePage {
     private static String visaVisaTypeDropdown(String index){
         return String.format("#s2id_person_visa_0_visa_type.select2-container.form-control.person_visa.select2 a.select2-choice",index);
     }
-
+    public static void addExternalID(String group){
+        String passMessage = String.format(LogPage.ADD_EXTERNAL_ID_PASS,group);
+        String failMessage = String.format(LogPage.ADD_EXTERNAL_ID_FAIL,group);
+        try {
+            MainPage.addDeleteWithPlusButton(By.cssSelector(externalIdPlusSignElement(group)));
+            ExtentReportsSetUp.testingPass(passMessage);
+        } catch (Exception e) {
+            FailureDelegatePage.handlePageException(failMessage);
+        }
+    }
     public static void updateVisa(String entryTerm,String country,String visaType,String group){
         String passMessage = String.format(LogPage.UPDATE_VISA_PASS,group);
         String failMessage = String.format(LogPage.UPDATE_VISA_FAIL,group);

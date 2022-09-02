@@ -9,6 +9,10 @@ public class IdTypesSteps {
     public static void updateExternalId(String index, int person) {
         IdTypesPage.updateExternalId(index,person);
     }
+    @When("I add an External ID {string}")
+    public static void addExternalID(String group) {
+        IdTypesPage.addExternalID(group);
+    }
     @When("I click on external ID SaveChanges button")
     public static void saveChangesBtnIdTypes() {
         IdTypesPage.saveChangesBtnIdTypes();
