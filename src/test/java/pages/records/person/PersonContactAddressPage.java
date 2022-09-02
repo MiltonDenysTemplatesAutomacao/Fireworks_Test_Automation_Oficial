@@ -137,8 +137,7 @@ public class PersonContactAddressPage extends BasePage{
             if(address.getState()!=""){
                 MainPage.clickOptionList(By.cssSelector(addressStateElement(group)),
                         address.getState(),
-                        By.cssSelector(addressStateElementList(group)),
-                        "a");
+                        By.cssSelector(addressStateElementList(group)));
             }
             if(address.getRegion()!=""){
                 MainPage.fillField(By.cssSelector(addressRegionField(group)), address.getRegion());
@@ -146,8 +145,7 @@ public class PersonContactAddressPage extends BasePage{
             if(address.getCountry()!=""){
                 MainPage.clickOptionList(By.cssSelector(addressCountryElement(group)),
                         address.getCountry(),
-                        By.cssSelector(addressCountryElementList(group)),
-                        "a");
+                        By.cssSelector(addressCountryElementList(group)));
             }
             if(address.getPostalCode()!=""){
                 MainPage.fillField(By.cssSelector(addressPostalCodeField(group)), address.getPostalCode());
@@ -155,14 +153,12 @@ public class PersonContactAddressPage extends BasePage{
             if(address.getAddressType()!=""){
                 MainPage.clickOptionList(By.cssSelector(addressTypeElement(group)),
                         address.getAddressType(),
-                        By.cssSelector(addressTypeElementList(group)),
-                        "a");
+                        By.cssSelector(addressTypeElementList(group)));
             }
             if(address.getEducationNeighborhood()!=""){
                 MainPage.clickOptionList(By.cssSelector(addressNeighborhoodElement(group)),
                         address.getEducationNeighborhood(),
-                        By.cssSelector(addressNeighborhoodElementList(group)),
-                        "a");
+                        By.cssSelector(addressNeighborhoodElementList(group)));
             }
             if(address.getAddressComments()!=""){
                 MainPage.fillField(By.cssSelector(addressCommentsField(group)), address.getAddressComments());

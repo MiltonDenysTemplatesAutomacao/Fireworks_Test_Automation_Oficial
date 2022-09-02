@@ -63,20 +63,17 @@ public class IdTypesPage extends BasePage {
             if(entryTerm!=""){
                 MainPage.clickOptionList(By.cssSelector(visaEntryTermDropdown(group)),
                         entryTerm,
-                        By.cssSelector(VISA_ENTRY_TERM_DROPDOWN_LIST),
-                        "a");
+                        By.cssSelector(VISA_ENTRY_TERM_DROPDOWN_LIST));
             }
             if(country!=""){
                 MainPage.clickOptionList(By.cssSelector(visaCountryDropdown(group)),
                         country,
-                        By.cssSelector(VISA_COUNTRY_DROPDOWN_LIST),
-                        "a");
+                        By.cssSelector(VISA_COUNTRY_DROPDOWN_LIST));
             }
             if(visaType!=""){
                 MainPage.clickOptionList(By.cssSelector(visaVisaTypeDropdown(group)),
                         visaType,
-                        By.cssSelector(VISA_VISA_TYPE_DROPDOWN_LIST),
-                        "a");
+                        By.cssSelector(VISA_VISA_TYPE_DROPDOWN_LIST));
             }
             ExtentReportsSetUp.testingPass(passMessage);
         } catch (Exception e) {
@@ -114,8 +111,7 @@ public class IdTypesPage extends BasePage {
             if (mass.get(person).get("IDType") != null) {
                 MainPage.clickOptionList(By.xpath(typeDropdown(index)),
                         mass.get(person).get("IDType"),
-                        By.cssSelector(PersonPage.SELECT_DROP),
-                        "a");
+                        By.cssSelector(PersonPage.SELECT_DROP));
             }
             if (mass.get(person).get("IDNumber") != null) {
                 MainPage.fillField(By.xpath(idNumber(index)), mass.get(person).get("IDNumber"));
@@ -126,8 +122,7 @@ public class IdTypesPage extends BasePage {
             if (mass.get(person).get("WhoAddedID") != null) {
                 MainPage.clickOptionList(By.xpath(whoAddedID(index)),
                         mass.get(person).get("WhoAddedID"),
-                        By.cssSelector(PersonPage.SELECT_DROP),
-                        "a");
+                        By.cssSelector(PersonPage.SELECT_DROP));
             }
             if (mass.get(person).get("Comments") != null) {
                 MainPage.fillField(By.xpath(comments(index)), mass.get(person).get("Comments"));

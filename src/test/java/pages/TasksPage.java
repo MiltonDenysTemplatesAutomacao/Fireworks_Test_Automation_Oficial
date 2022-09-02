@@ -367,8 +367,7 @@ public class TasksPage extends BasePage{
             if (mass.get(0).get("Type") != null) {
                 MainPage.clickOptionList(By.cssSelector(TASK_TYPE_DROPDOWN),
                         mass.get(0).get("Type"),
-                        By.cssSelector(TASK_TYPE_DROPDOWN_LIST),
-                        "a");
+                        By.cssSelector(TASK_TYPE_DROPDOWN_LIST));
             }
             if (mass.get(0).get("SmartSearch") != null) {
                 pickSmartSearch(mass.get(0).get("SmartSearch"));
@@ -376,8 +375,7 @@ public class TasksPage extends BasePage{
             if (mass.get(0).get("AssignTo") != null) {
                 MainPage.clickOptionList(By.cssSelector(ASSIGN_TO_DROPDOWN),
                         mass.get(0).get("AssignTo"),
-                        By.cssSelector(ASSIGN_TO_DROPDOWN_LIST),
-                        "a");
+                        By.cssSelector(ASSIGN_TO_DROPDOWN_LIST));
             }
             if (mass.get(0).get("DueDate") != null) {
                 MainPage.fillDateField(By.id(DUE_DATE_FIELD), mass.get(0).get("DueDate"));
@@ -388,14 +386,12 @@ public class TasksPage extends BasePage{
             if (mass.get(0).get("Priority") != null) {
                 MainPage.clickOptionList(By.cssSelector(PRIORITY_DROPDOWN),
                         mass.get(0).get("Priority"),
-                        By.cssSelector(PRIORITY_DROPDOWN_LIST),
-                        "a");
+                        By.cssSelector(PRIORITY_DROPDOWN_LIST));
             }
             if (mass.get(0).get("Status") != null) {
                 MainPage.clickOptionList(By.cssSelector(STATUS_DROPDOWN),
                         mass.get(0).get("Status"),
-                        By.cssSelector(STATUS_DROPDOWN_LIST),
-                        "a");
+                        By.cssSelector(STATUS_DROPDOWN_LIST));
             }
             if (mass.get(0).get("Comments") != null) {
                 MainPage.fillField(By.id(COMMENTS_FIELD), mass.get(0).get("Comments"));

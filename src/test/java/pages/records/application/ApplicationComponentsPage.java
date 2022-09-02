@@ -86,8 +86,7 @@ public class ApplicationComponentsPage extends BasePage {
             if(applicationComponentBean.getReceivedValue()!=""){
                 MainPage.clickOptionList(By.cssSelector(receivedElement(component,group)),
                         applicationComponentBean.getReceivedValue(),
-                        By.cssSelector(PersonPage.SELECT_DROP),
-                        "a");
+                        By.cssSelector(PersonPage.SELECT_DROP));
             }
             if(applicationComponentBean.getReceivedDate()!=""){
                 String campusTimeZoneDate = currentDateTimeWithoutHour();
@@ -96,8 +95,7 @@ public class ApplicationComponentsPage extends BasePage {
             if(applicationComponentBean.getRequiredValue()!=""){
                 MainPage.clickOptionList(By.cssSelector(receivedElement(component,group)),
                         applicationComponentBean.getRequiredValue(),
-                        By.cssSelector(PersonPage.SELECT_DROP),
-                        "a");
+                        By.cssSelector(PersonPage.SELECT_DROP));
             }
             if(applicationComponentBean.getRecommender()!=""){
                 MainPage.picker(By.cssSelector(recommenderPickerButton(component,group)),
@@ -126,8 +124,6 @@ public class ApplicationComponentsPage extends BasePage {
         try {
             if(applicationComponentBean.getReceivedDate()!=""){
                 campusTimeZoneDate = currentDateTimeWithoutHour();
-            }else{
-                campusTimeZoneDate= "";
             }
             if(MainPage.verifyGetText(By.cssSelector(componentElement(component,group)),applicationComponentBean.getComponentItem())
                     && MainPage.verifyGetText(By.cssSelector(receivedElement(component,group)),applicationComponentBean.getReceivedValue())

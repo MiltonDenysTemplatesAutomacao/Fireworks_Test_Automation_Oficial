@@ -132,8 +132,7 @@ public class StaffPage extends BasePage{
             if(address.getAddressType()!=""){
                 MainPage.clickOptionList(By.cssSelector(contactAddressTypeDropdown(group)),
                         address.getAddressType(),
-                        By.cssSelector(CONTACT_ADDRESS_FIELD_DROPDOWN_LIST),
-                        "a");
+                        By.cssSelector(CONTACT_ADDRESS_FIELD_DROPDOWN_LIST));
             }
             if(address.getAddressComments()!=""){
                 MainPage.fillField(By.cssSelector(contactAddressCommentsField(group)), address.getAddressComments());
@@ -179,8 +178,7 @@ public class StaffPage extends BasePage{
             if (mass.get(person).get("IDType") != null) {
                 MainPage.clickOptionList(By.cssSelector(typeDropdown(index)),
                         mass.get(person).get("IDType"),
-                        By.cssSelector(PersonPage.SELECT_DROP),
-                        "a");
+                        By.cssSelector(PersonPage.SELECT_DROP));
             }
             if (mass.get(person).get("IDNumber") != null) {
                 MainPage.fillField(By.cssSelector(idNumber(index)), mass.get(person).get("IDNumber"));
@@ -191,8 +189,7 @@ public class StaffPage extends BasePage{
             if (mass.get(person).get("WhoAddedID") != null) {
                 MainPage.clickOptionList(By.cssSelector(whoAddedID(index)),
                         mass.get(person).get("WhoAddedID"),
-                        By.cssSelector(PersonPage.SELECT_DROP),
-                        "a");
+                        By.cssSelector(PersonPage.SELECT_DROP));
             }
             if (mass.get(person).get("Comments") != null) {
                 MainPage.fillField(By.cssSelector(comments(index)), mass.get(person).get("Comments"));
@@ -303,8 +300,7 @@ public class StaffPage extends BasePage{
             if (phone.getPhoneType() !="") {
                 MainPage.clickOptionList(By.id(CONTACT_PHONE_TYPE_DROPDOWN),
                         phone.getPhoneType(),
-                        By.cssSelector(PersonPage.SELECT_DROP),
-                        "a");
+                        By.cssSelector(PersonPage.SELECT_DROP));
             }
             if (phone.getPhoneComments() !="") {
                 MainPage.fillField(By.id(CONTACT_PHONE_COMMENTS_FIELD), phone.getPhoneComments());

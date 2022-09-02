@@ -97,14 +97,12 @@ public class PersonBasicPage extends BasePage {
             if (citizenshipType != "") {
                 MainPage.clickOptionList(By.cssSelector(CITIZENSHIP_TYPE_DROPDOWN),
                         citizenshipType,
-                        By.cssSelector(CITIZENSHIP_TYPE_DROPDOWN_LIST),
-                        "a");
+                        By.cssSelector(CITIZENSHIP_TYPE_DROPDOWN_LIST));
             }
             if (countryOfCitizenship != "") {
                 MainPage.clickOptionList(By.cssSelector(CITIZENSHIP_COUNTRY_DROPDOWN),
                         countryOfCitizenship,
-                        By.cssSelector(CITIZENSHIP_COUNTRY_DROPDOWN_LIST),
-                        "a");
+                        By.cssSelector(CITIZENSHIP_COUNTRY_DROPDOWN_LIST));
             }
             if (ssn != "") {
                 MainPage.fillField(By.cssSelector(SOCIAL_SECURITY_NUMBER_FIELD), ssn);
@@ -309,20 +307,17 @@ public class PersonBasicPage extends BasePage {
             if(timeZone!=""){
                 MainPage.clickOptionList(By.cssSelector(TIME_ZONE_DROPDOWN),
                         timeZone,
-                        By.cssSelector(PersonPage.SELECT_DROP),
-                        "a");
+                        By.cssSelector(PersonPage.SELECT_DROP));
             }
             if(classOf!=""){
                 MainPage.clickOptionList(By.cssSelector(CLASS_OF_DROPDOWN),
                         classOf,
-                        By.cssSelector(PersonPage.SELECT_DROP),
-                        "a");
+                        By.cssSelector(PersonPage.SELECT_DROP));
             }
             if(currentGrade!=""){
                 MainPage.clickOptionList(By.cssSelector(CURRENT_GRADE_DROPDOWN),
                         currentGrade,
-                        By.cssSelector(PersonPage.SELECT_DROP),
-                        "a");
+                        By.cssSelector(PersonPage.SELECT_DROP));
             }
             ExtentReportsSetUp.testingPass(LogPage.UPDATE_CONTEXT_VALUES_PASS);
         } catch (Exception e) {
@@ -335,14 +330,12 @@ public class PersonBasicPage extends BasePage {
             if(initialCategory != ""){
                 MainPage.clickOptionList(By.cssSelector(INITIAL_CATEGORY_DROPDOWN),
                         initialCategory,
-                        By.cssSelector(PersonPage.SELECT_DROP),
-                        "a");
+                        By.cssSelector(PersonPage.SELECT_DROP));
             }
             if(sourceText != ""){
                 MainPage.clickOptionList(By.cssSelector(INITIAL_SOURCE_DROPDOWN),
                         sourceText,
-                        By.cssSelector(PersonPage.SELECT_DROP),
-                        "a");
+                        By.cssSelector(PersonPage.SELECT_DROP));
             }
             ExtentReportsSetUp.testingPass(LogPage.UPDATE_INITIAL_SOURCE_VALUES_PASS);
         } catch (Exception e) {
@@ -362,38 +355,32 @@ public class PersonBasicPage extends BasePage {
             if (ethnicity != ""){
                 MainPage.clickOptionList(By.cssSelector(ETHNICITY_DROPDOWN),
                         ethnicity,
-                        By.cssSelector(PersonPage.SELECT_DROP),
-                        "a");
+                        By.cssSelector(PersonPage.SELECT_DROP));
             }
             if (race != ""){
                 MainPage.clickOptionList(By.xpath(RACE_DROPDOWN),
                         race,
-                        By.cssSelector(PersonPage.SELECT_DROP),
-                        "a");
+                        By.cssSelector(PersonPage.SELECT_DROP));
             }
             if (gender != ""){
                 MainPage.clickOptionList(By.cssSelector(GENDER_DROPDOWN),
                         gender,
-                        By.cssSelector(PersonPage.SELECT_DROP),
-                        "a");
+                        By.cssSelector(PersonPage.SELECT_DROP));
             }
             if (maritalStatus != ""){
                 MainPage.clickOptionList(By.cssSelector(MARITAL_STATUS_DROPDOWN),
                         maritalStatus,
-                        By.cssSelector(PersonPage.SELECT_DROP),
-                        "a");
+                        By.cssSelector(PersonPage.SELECT_DROP));
             }
             if (primaryLanguage != ""){
                 MainPage.clickOptionList(By.cssSelector(PRIMARY_LANGUAGE_DROPDOWN),
                         primaryLanguage,
-                        By.cssSelector(PersonPage.SELECT_DROP),
-                        "a");
+                        By.cssSelector(PersonPage.SELECT_DROP));
             }
             if (religion != ""){
                 MainPage.clickOptionList(By.cssSelector(RELIGION_DROPDOWN),
                         religion,
-                        By.cssSelector(PersonPage.SELECT_DROP),
-                        "a");
+                        By.cssSelector(PersonPage.SELECT_DROP));
             }
             ExtentReportsSetUp.testingPass(LogPage.UPDATE_CULTURE_VALUES_PASS);
         } catch (Exception e) {
@@ -409,8 +396,7 @@ public class PersonBasicPage extends BasePage {
             if (country != "") {
                 MainPage.clickOptionList(By.cssSelector(BIRTH_COUNTRY_DROPDOWN),
                         country,
-                        By.cssSelector(PersonPage.SELECT_DROP),
-                        "a");
+                        By.cssSelector(PersonPage.SELECT_DROP));
             }
             if (city != "") {
                 MainPage.fillField(By.cssSelector(BIRTH_CITY_FIELD), city);
@@ -418,8 +404,7 @@ public class PersonBasicPage extends BasePage {
             if (state != "") {
                 MainPage.clickOptionList(By.cssSelector(BIRTH_STATE_DROPDOWN),
                         state,
-                        By.cssSelector(PersonPage.SELECT_DROP),
-                        "a");
+                        By.cssSelector(PersonPage.SELECT_DROP));
             }
             ExtentReportsSetUp.testingPass(LogPage.UPDATE_BIRTH_VALUES_PASS);
         } catch (Exception e) {

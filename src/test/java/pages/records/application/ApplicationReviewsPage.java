@@ -60,20 +60,17 @@ public class ApplicationReviewsPage extends BasePage {
             if(applicationReviewBean.getReviewFactor()!=""){
                 MainPage.clickOptionList(By.cssSelector(reviewFactorElement(application,review)),
                         applicationReviewBean.getReviewFactor(),
-                        By.cssSelector(PersonPage.SELECT_DROP),
-                        "a");
+                        By.cssSelector(PersonPage.SELECT_DROP));
             }
             if(applicationReviewBean.getRating()!=""){
                 MainPage.clickOptionList(By.cssSelector(reviewRatingElement(application,review)),
                         applicationReviewBean.getRating(),
-                        By.cssSelector(PersonPage.SELECT_DROP),
-                        "a");
+                        By.cssSelector(PersonPage.SELECT_DROP));
             }
             if(applicationReviewBean.getReader()!=""){
                 MainPage.clickOptionList(By.cssSelector(reviewReaderElement(application,review)),
                         applicationReviewBean.getReader(),
-                        By.cssSelector(PersonPage.SELECT_DROP),
-                        "a");
+                        By.cssSelector(PersonPage.SELECT_DROP));
             }
             if(applicationReviewBean.getReviewDate()!=""){
                 String campusTimeZoneDate = currentDateTimeWithoutHour();

@@ -89,26 +89,22 @@ public class PersonContactPhonePage extends BasePage {
             if(phone.getPhoneType()!=""){
                 MainPage.clickOptionList(By.cssSelector(phoneTypeElement(group)),
                         phone.getPhoneType(),
-                        By.cssSelector(phoneTypeElementList(group)),
-                        "a");
+                        By.cssSelector(phoneTypeElementList(group)));
             }
             if(phone.getPhoneStatus()!=""){
                 MainPage.clickOptionList(By.cssSelector(phoneStatusElement(group)),
                         phone.getPhoneStatus(),
-                        By.cssSelector(phoneStatusElementList(group)),
-                        "a");
+                        By.cssSelector(phoneStatusElementList(group)));
             }
             if(phone.getPhoneOptInMethod()!=""){
                 MainPage.clickOptionList(By.cssSelector(phoneOptInMethodElement(group)),
                         phone.getPhoneOptInMethod(),
-                        By.cssSelector(phoneOptInMethodElementList(group)),
-                        "a");
+                        By.cssSelector(phoneOptInMethodElementList(group)));
             }
             if(phone.getPhoneOptInStatus()!=""){
                 MainPage.clickOptionList(By.cssSelector(phoneOptInStatusElement(group)),
                         phone.getPhoneOptInStatus(),
-                        By.cssSelector(phoneOptInStatusElementList(group)),
-                        "a");
+                        By.cssSelector(phoneOptInStatusElementList(group)));
             }
             if(phone.getPhoneComments()!=""){
                 MainPage.fillField(By.cssSelector(phoneCommentsField(group)), phone.getPhoneComments());

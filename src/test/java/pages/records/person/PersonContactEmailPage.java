@@ -120,26 +120,22 @@ public class PersonContactEmailPage extends BasePage {
             if(email.getEmailType()!=""){
                 MainPage.clickOptionList(By.cssSelector(emailTypeElement(group)),
                         email.getEmailType(),
-                        By.cssSelector(emailTypeElement(group)),
-                        "a");
+                        By.cssSelector(emailTypeElement(group)));
             }
             if(email.getEmailStatus()!=""){
                 MainPage.clickOptionList(By.cssSelector(emailStatusElement(group)),
                         email.getEmailStatus(),
-                        By.cssSelector(emailStatusElementList(group)),
-                        "a");
+                        By.cssSelector(emailStatusElementList(group)));
             }
             if(email.getEmailOptInMethod()!=""){
                 MainPage.clickOptionList(By.cssSelector(emailOptInMethodElement(group)),
                         email.getEmailOptInMethod(),
-                        By.cssSelector(selectEmailOptInMethodList(group)),
-                        "a");
+                        By.cssSelector(selectEmailOptInMethodList(group)));
             }
             if(email.getEmailOptInStatus()!=""){
                 MainPage.clickOptionList(By.cssSelector(emailOptInStatusElement(group)),
                         email.getEmailOptInStatus(),
-                        By.cssSelector(emailOptInStatusElementList(group)),
-                        "a");
+                        By.cssSelector(emailOptInStatusElementList(group)));
             }
             if(email.getEmailComments()!=""){
                 MainPage.fillField(By.cssSelector(emailCommentsField(group)), email.getEmailComments());

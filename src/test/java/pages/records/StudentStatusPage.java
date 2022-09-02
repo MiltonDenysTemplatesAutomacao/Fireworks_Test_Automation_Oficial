@@ -73,14 +73,12 @@ public class StudentStatusPage extends BasePage {
             if (mass.get(person).get("StudentStatusCategory") != null) {
                 MainPage.clickOptionList(By.cssSelector(categoryElement(index)),
                                     mass.get(person).get("StudentStatusCategory"),
-                                    By.cssSelector(PersonPage.SELECT_DROP),
-                                    "a");
+                                    By.cssSelector(PersonPage.SELECT_DROP));
             }
             if (mass.get(person).get("StudentStatus") != null) {
                 MainPage.clickOptionList(By.cssSelector(statusElement(index)),
                         mass.get(person).get("StudentStatus"),
-                        By.cssSelector(PersonPage.SELECT_DROP),
-                        "a");
+                        By.cssSelector(PersonPage.SELECT_DROP));
             }
             if (mass.get(person).get("StudentStatusDate") != null) {
                 MainPage.fillDateField(By.cssSelector(statusDateField(index)),mass.get(person).get("StudentStatusDate"));
@@ -88,8 +86,7 @@ public class StudentStatusPage extends BasePage {
             if (mass.get(person).get("EntryTerm") != null) {
                 MainPage.clickOptionList(By.cssSelector(entryTermElement(index)),
                         mass.get(person).get("EntryTerm"),
-                        By.cssSelector(PersonPage.SELECT_DROP),
-                        "a");
+                        By.cssSelector(PersonPage.SELECT_DROP));
             }
             if (mass.get(person).get("Comments") != null) {
                 MainPage.fillField(By.cssSelector(statusCommentsField(index)),mass.get(person).get("Comments"));

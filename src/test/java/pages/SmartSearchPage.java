@@ -56,8 +56,7 @@ public class SmartSearchPage extends BasePage{
         try {
             MainPage.clickOptionList(By.cssSelector(operatorDropdown(index)),
                     search,
-                    By.cssSelector(PersonPage.SELECT_DROP),
-                    "a");
+                    By.cssSelector(PersonPage.SELECT_DROP));
             ExtentReportsSetUp.testingPass(passMessage);
         } catch (Exception e) {
             FailureDelegatePage.handlePageException(failMessage);
@@ -70,8 +69,7 @@ public class SmartSearchPage extends BasePage{
         try {
             MainPage.clickOptionList(By.cssSelector(groupConditionFieldDropdown(index)),
                     search,
-                    By.cssSelector(PersonPage.SELECT_DROP),
-                    "a");
+                    By.cssSelector(PersonPage.SELECT_DROP));
             ExtentReportsSetUp.testingPass(passMessage);
         } catch (Exception e) {
             FailureDelegatePage.handlePageException(failMessage);

@@ -116,20 +116,17 @@ public class InterestsActivitiesPage extends BasePage {
             if (mass.get(person).get("ActivityCategory") != null) {
                 MainPage.clickOptionList(By.id(activityCategory(index)),
                         mass.get(person).get("ActivityCategory"),
-                        By.cssSelector(PersonPage.SELECT_DROP),
-                        "a");
+                        By.cssSelector(PersonPage.SELECT_DROP));
             }
             if (mass.get(person).get("ActivityName") != null) {
                 MainPage.clickOptionList(By.id(activityName(index)),
                         mass.get(person).get("ActivityName"),
-                        By.cssSelector(PersonPage.SELECT_DROP),
-                        "a");
+                        By.cssSelector(PersonPage.SELECT_DROP));
             }
             if (mass.get(person).get("ActivityWhoAdded") != null) {
                 MainPage.clickOptionList(By.id(activityWhoAdded(index)),
                         mass.get(person).get("ActivityWhoAdded"),
-                        By.cssSelector(PersonPage.SELECT_DROP),
-                        "a");
+                        By.cssSelector(PersonPage.SELECT_DROP));
             }
             if (mass.get(person).get("ActivityDateAdded") != null) {
                 MainPage.fillDateField(By.id(activityDateAdded(index)),mass.get(person).get("ActivityDateAdded"));
@@ -137,14 +134,12 @@ public class InterestsActivitiesPage extends BasePage {
             if (mass.get(person).get("ActivitySource") != null) {
                 MainPage.clickOptionList(By.id(activitiesSource(index)),
                         mass.get(person).get("ActivitySource"),
-                        By.cssSelector(PersonPage.SELECT_DROP),
-                        "a");
+                        By.cssSelector(PersonPage.SELECT_DROP));
             }
             if (mass.get(person).get("ActivityParticipate") != null) {
                 MainPage.clickOptionList(By.id(activityParticipate(index)),
                         mass.get(person).get("ActivityParticipate"),
-                        By.cssSelector(PersonPage.SELECT_DROP),
-                        "a");
+                        By.cssSelector(PersonPage.SELECT_DROP));
             }
             if (mass.get(person).get("ActivityComments") != null) {
                 MainPage.fillField(By.id(activityComments(index)),mass.get(person).get("ActivityComments"));
@@ -164,20 +159,17 @@ public class InterestsActivitiesPage extends BasePage {
             if (mass.get(person).get("InterestCategory") != null) {
                 MainPage.clickOptionList(By.id(interestCategory(index)),
                         mass.get(person).get("InterestCategory"),
-                        By.cssSelector(PersonPage.SELECT_DROP),
-                        "a");
+                        By.cssSelector(PersonPage.SELECT_DROP));
             }
             if (mass.get(person).get("InterestName") != null) {
                 MainPage.clickOptionList(By.id(interestName(index)),
                         mass.get(person).get("InterestName"),
-                        By.cssSelector(PersonPage.SELECT_DROP),
-                        "a");
+                        By.cssSelector(PersonPage.SELECT_DROP));
             }
             if (mass.get(person).get("InterestWhoAdded") != null) {
                 MainPage.clickOptionList(By.id(interestWhoAdded(index)),
                         mass.get(person).get("InterestWhoAdded"),
-                        By.cssSelector(PersonPage.SELECT_DROP),
-                        "a");
+                        By.cssSelector(PersonPage.SELECT_DROP));
             }
             if (mass.get(person).get("InterestDateAdded") != null) {
                 MainPage.fillField(By.id(interestDateAdded(index)), mass.get(person).get("InterestDateAdded"));
@@ -185,8 +177,7 @@ public class InterestsActivitiesPage extends BasePage {
             if (mass.get(person).get("InterestSource") != null) {
                 MainPage.clickOptionList(By.id(interestSource(index)),
                         mass.get(person).get("InterestSource"),
-                        By.cssSelector(PersonPage.SELECT_DROP),
-                        "a");
+                        By.cssSelector(PersonPage.SELECT_DROP));
             }
             if (mass.get(person).get("InterestComments") != null) {
                 MainPage.fillField(By.id(interestComments(index)), mass.get(person).get("InterestComments"));

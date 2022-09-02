@@ -139,6 +139,18 @@ public class MainPage extends BasePage{
         wait(2000);
         clickOnListOfElements(value);
     }
+    public static void clickOptionList(By by, String value, By dropDownList)throws Exception{
+        int delay = 10;
+        wait(1000);
+        scrollToElement(by);
+        scrollTo("-150");
+        waitElementBy(by,delay);
+        click(by);
+        wait(1000);
+        BasePage.selectElementsList(dropDownList, "a");
+        wait(2000);
+        clickOnListOfElements(value);
+    }
     public static void clickOptionListContains(By by, String value, By dropDownList, String tag)throws Exception{
         int delay = 10;
         wait(1000);
@@ -148,6 +160,18 @@ public class MainPage extends BasePage{
         click(by);
         wait(1000);
         BasePage.selectElementsList(dropDownList, tag);
+        wait(2000);
+        clickOnListOfElementsContains(value);
+    }
+    public static void clickOptionListContains(By by, String value, By dropDownList)throws Exception{
+        int delay = 10;
+        wait(1000);
+        scrollToElement(by);
+        scrollTo("-150");
+        waitElementBy(by,delay);
+        click(by);
+        wait(1000);
+        BasePage.selectElementsList(dropDownList, "a");
         wait(2000);
         clickOnListOfElementsContains(value);
     }

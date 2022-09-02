@@ -99,8 +99,7 @@ public class LettersPage extends BasePage{
             if (mass.get(index).get("SmartSearch") != null) {
                 MainPage.clickOptionList(By.cssSelector(SMART_SEARCH_DROPDOWN),
                         mass.get(index).get("SmartSearch"),
-                        By.cssSelector(SMART_SEARCH_DROPDOWN_LIST),
-                        "a");
+                        By.cssSelector(SMART_SEARCH_DROPDOWN_LIST));
             }
             if (mass.get(0).get("SingleRecipient") != null) {
                 MainPage.picker(By.cssSelector(SINGLE_RECIPIENT_PICKER_BUTTON),
@@ -210,26 +209,22 @@ public class LettersPage extends BasePage{
             if (mass.get(index).get("Category") != null) {
                 MainPage.clickOptionList(By.cssSelector(ACTION_CATEGORY_DROPDOWN),
                         mass.get(index).get("Category"),
-                        By.id(ACTION_CATEGORY_DROPDOWN_LIST),
-                        "a");
+                        By.id(ACTION_CATEGORY_DROPDOWN_LIST));
             }
             if (mass.get(index).get("Action") != null) {
                 MainPage.clickOptionList(By.cssSelector(ACTION_DROPDOWN),
                         mass.get(index).get("Action"),
-                        By.id(ACTION_DROPDOWN_LIST),
-                        "a");
+                        By.id(ACTION_DROPDOWN_LIST));
             }
             if (mass.get(index).get("Staff") != null) {
                 MainPage.clickOptionList(By.cssSelector(ACTION_STAFF_DROPDOWN),
                         mass.get(index).get("Staff"),
-                        By.cssSelector(ACTION_STAFF_DROPDOWN),
-                        "a");
+                        By.cssSelector(ACTION_STAFF_DROPDOWN));
             }
             if (mass.get(index).get("Visibility") != null) {
                 MainPage.clickOptionList(By.cssSelector(ACTION_VISIBILITY),
                         mass.get(index).get("Visibility"),
-                        By.id(ACTION_VISIBILITY_LIST),
-                        "a");
+                        By.id(ACTION_VISIBILITY_LIST));
             }
             if (mass.get(index).get("Comments") != null) {
                 MainPage.fillField(By.cssSelector(ACTION_COMMENTS_FIELD), mass.get(index).get("Comments"));

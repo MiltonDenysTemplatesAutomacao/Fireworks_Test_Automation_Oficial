@@ -47,15 +47,6 @@ public class SchoolPage extends BasePage{
         return String.format("#person_school_%s_remove",index);
     }
 
-    public static void clickChooseButton(){
-        try {
-            waitUntilElementToBeSelected(By.cssSelector(SCHOOL_PICKER_MODAL_CHOOSE_BUTTON),20);
-            click(By.cssSelector(SCHOOL_PICKER_MODAL_CHOOSE_BUTTON));
-            ExtentReportsSetUp.testingPass(LogPage.CLICK_CHOOSE_BUTTON_PASS);
-        } catch (Exception e) {
-            FailureDelegatePage.handlePageException(LogPage.CLICK_CHOOSE_BUTTON_FAIL);
-        }
-    }
     public static void searchPickerSchool(String school, String group){
         String passMessage = String.format(LogPage.SEARCH_PICKER_SCHOOL_PASS,school,group);
         String failMessage = String.format(LogPage.SEARCH_PICKER_SCHOOL_FAIL,school,group);
@@ -134,8 +125,7 @@ public class SchoolPage extends BasePage{
             if(educationSchoolBean.getSchoolState()!=""){
                 MainPage.clickOptionList(By.cssSelector(schoolState(group)),
                         educationSchoolBean.getSchoolState(),
-                        By.cssSelector(SCHOOL_STATE_LIST),
-                        "a");
+                        By.cssSelector(SCHOOL_STATE_LIST));
             }
             if(educationSchoolBean.getSchoolComments()!=""){
                 MainPage.fillField(By.cssSelector(schoolComments(group)), educationSchoolBean.getSchoolComments());

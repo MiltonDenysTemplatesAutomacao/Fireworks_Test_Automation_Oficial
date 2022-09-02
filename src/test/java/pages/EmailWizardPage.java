@@ -46,20 +46,17 @@ public class EmailWizardPage extends BasePage{
             if (category != ""){
                 MainPage.clickOptionList(By.cssSelector(ACTION_CATEGORY_DROPDOWN),
                         category,
-                        By.cssSelector(PersonPage.SELECT_DROP),
-                        "a");
+                        By.cssSelector(PersonPage.SELECT_DROP));
             }
             if (action != ""){
                 MainPage.clickOptionList(By.cssSelector(ACTION_DROPDOWN),
                         action,
-                        By.cssSelector(PersonPage.SELECT_DROP),
-                        "a");
+                        By.cssSelector(PersonPage.SELECT_DROP));
             }
             if (staff != ""){
                 MainPage.clickOptionList(By.cssSelector(ACTION_STAFF_DROPDOWN),
                         staff,
-                        By.cssSelector(PersonPage.SELECT_DROP),
-                        "a");
+                        By.cssSelector(PersonPage.SELECT_DROP));
             }
             if (actionDateTime != ""){
                 MainPage.fillDateField(By.cssSelector(ACTION_DATE_FIELD), actionDateTime);

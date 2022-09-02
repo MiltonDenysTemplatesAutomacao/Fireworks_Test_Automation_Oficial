@@ -64,14 +64,12 @@ public class FinancialAidAwardComponentsPage extends BasePage {
             if(financialAidBean.getAwardComponentCategory()!=""){
                 MainPage.clickOptionList(By.cssSelector(awardCategoryElement(fin,awardComponent)),
                         financialAidBean.getAwardComponentCategory(),
-                        By.cssSelector(PersonPage.SELECT_DROP),
-                        "a");
+                        By.cssSelector(PersonPage.SELECT_DROP));
             }
             if(financialAidBean.getAwardComponentType()!=""){
                 MainPage.clickOptionList(By.cssSelector(awardTypeElement(fin,awardComponent)),
                         financialAidBean.getAwardComponentType(),
-                        By.cssSelector(PersonPage.SELECT_DROP),
-                        "a");
+                        By.cssSelector(PersonPage.SELECT_DROP));
             }
             if(financialAidBean.getAwardComponentComments()!=""){
                 MainPage.fillField(By.cssSelector(awardCommentsField(fin,awardComponent)), financialAidBean.getAwardComponentComments());

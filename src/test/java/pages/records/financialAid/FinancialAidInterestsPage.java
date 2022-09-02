@@ -51,20 +51,17 @@ public class FinancialAidInterestsPage extends BasePage {
             if(financialAidInterestBean.getAidInterestCategory()!=""){
                 MainPage.clickOptionList(By.cssSelector(aidInterestCategoryDropdownLocator(group)),
                         financialAidInterestBean.getAidInterestCategory(),
-                        By.cssSelector(PersonPage.SELECT_DROP),
-                        "a");
+                        By.cssSelector(PersonPage.SELECT_DROP));
             }
             if(financialAidInterestBean.getAidInterestType()!=""){
                 MainPage.clickOptionList(By.cssSelector(aidInterestTypeDropdownLocator(group)),
                         financialAidInterestBean.getAidInterestType(),
-                        By.cssSelector(PersonPage.SELECT_DROP),
-                        "a");
+                        By.cssSelector(PersonPage.SELECT_DROP));
             }
             if(financialAidInterestBean.getExpressedInterest()!=""){
                 MainPage.clickOptionList(By.cssSelector(expressedInterestDropdownLocator(group)),
                         financialAidInterestBean.getExpressedInterest(),
-                        By.cssSelector(PersonPage.SELECT_DROP),
-                        "a");
+                        By.cssSelector(PersonPage.SELECT_DROP));
             }
             if(financialAidInterestBean.getExpressedInterestDate()!=""){
                 MainPage.fillDateField(By.cssSelector(expressedInterestDateField(group)), financialAidInterestBean.getExpressedInterestDate());

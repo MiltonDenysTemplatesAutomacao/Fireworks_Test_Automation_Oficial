@@ -119,32 +119,27 @@ public class ApplicationsPage extends BasePage {
             if(applicationBean.getEntryTerm()!=""){
                 MainPage.clickOptionList(By.cssSelector(entryTermElement(group)),
                         applicationBean.getEntryTerm(),
-                        By.cssSelector(PersonPage.SELECT_DROP),
-                        "a");
+                        By.cssSelector(PersonPage.SELECT_DROP));
             }
             if(applicationBean.getMajor1()!=""){
                 MainPage.clickOptionList(By.cssSelector(major1ElementLocator(group)),
                         applicationBean.getMajor1(),
-                        By.cssSelector(PersonPage.SELECT_DROP),
-                        "a");
+                        By.cssSelector(PersonPage.SELECT_DROP));
             }
             if(applicationBean.getComponentStatus()!=""){
                 MainPage.clickOptionList(By.cssSelector(componentStatusElement(group)),
                         applicationBean.getComponentStatus(),
-                        By.cssSelector(PersonPage.SELECT_DROP),
-                        "a");
+                        By.cssSelector(PersonPage.SELECT_DROP));
             }
             if(applicationBean.getApplicationType()!=""){
                 MainPage.clickOptionList(By.cssSelector(applicationTypeElement(group)),
                         applicationBean.getApplicationType(),
-                        By.cssSelector(PersonPage.SELECT_DROP),
-                        "a");
+                        By.cssSelector(PersonPage.SELECT_DROP));
             }
             if(applicationBean.getSource()!=""){
                 MainPage.clickOptionList(By.cssSelector(sourceElement(group)),
                         applicationBean.getSource(),
-                        By.cssSelector(PersonPage.SELECT_DROP),
-                        "a");
+                        By.cssSelector(PersonPage.SELECT_DROP));
             }
             if(applicationBean.getReceivedDate()!=""){
                 MainPage.fillDateField(By.cssSelector(receivedDateField(group)), applicationBean.getReceivedDate());
@@ -152,44 +147,37 @@ public class ApplicationsPage extends BasePage {
             if(applicationBean.getMajor2()!=""){
                 MainPage.clickOptionList(By.cssSelector(major2ElementLocator(group)),
                         applicationBean.getMajor2(),
-                        By.cssSelector(PersonPage.SELECT_DROP),
-                        "a");
+                        By.cssSelector(PersonPage.SELECT_DROP));
             }
             if(applicationBean.getMajor3()!=""){
                 MainPage.clickOptionList(By.cssSelector(major3ElementLocator(group)),
                         applicationBean.getMajor3(),
-                        By.cssSelector(PersonPage.SELECT_DROP),
-                        "a");
+                        By.cssSelector(PersonPage.SELECT_DROP));
             }
             if(applicationBean.getAppliedGrade()!=""){
                 MainPage.clickOptionList(By.cssSelector(appliedGrade(group)),
                         applicationBean.getAppliedGrade(),
-                        By.cssSelector(PersonPage.SELECT_DROP),
-                        "a");
+                        By.cssSelector(PersonPage.SELECT_DROP));
             }
             if(applicationBean.getConcentration()!=""){
                 MainPage.clickOptionList(By.cssSelector(concentrationElement(group)),
                         applicationBean.getConcentration(),
-                        By.cssSelector(PersonPage.SELECT_DROP),
-                        "a");
+                        By.cssSelector(PersonPage.SELECT_DROP));
             }
             if(applicationBean.getHousing()!=""){
                 MainPage.clickOptionList(By.cssSelector(housingElement(group)),
                         applicationBean.getHousing(),
-                        By.cssSelector(PersonPage.SELECT_DROP),
-                        "a");
+                        By.cssSelector(PersonPage.SELECT_DROP));
             }
             if(applicationBean.getMinor()!=""){
                 MainPage.clickOptionList(By.cssSelector(minorElement(group)),
                         applicationBean.getMinor(),
-                        By.cssSelector(PersonPage.SELECT_DROP),
-                        "a");
+                        By.cssSelector(PersonPage.SELECT_DROP));
             }
             if(applicationBean.getCompletionDate()!=""){
                 MainPage.clickOptionList(By.cssSelector(completionDateField(group)),
                         applicationBean.getCompletionDate(),
-                        By.cssSelector(PersonPage.SELECT_DROP),
-                        "a");
+                        By.cssSelector(PersonPage.SELECT_DROP));
             }
             if(applicationBean.getComments()!=""){
                 MainPage.fillField(By.cssSelector(major2ElementLocator(group)), applicationBean.getComments());

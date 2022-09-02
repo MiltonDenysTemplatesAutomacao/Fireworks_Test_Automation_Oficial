@@ -45,14 +45,12 @@ public class LetterTemplatePage extends BasePage{
             if (mass.get(person).get("RecordType") != null) {
                 MainPage.clickOptionList(By.cssSelector(TEMPLATE_RECORD_TYPE_DROPDOWN),
                         mass.get(person).get("RecordType"),
-                        By.cssSelector(PersonPage.SELECT_DROP),
-                        "a");
+                        By.cssSelector(PersonPage.SELECT_DROP));
             }
             if (mass.get(person).get("LetterFormat") != null) {
                 MainPage.clickOptionList(By.cssSelector(LETTER_FORMAT_DROPDOWN),
                         mass.get(person).get("LetterFormat"),
-                        By.cssSelector(PersonPage.SELECT_DROP),
-                        "a");
+                        By.cssSelector(PersonPage.SELECT_DROP));
             }
             if (mass.get(person).get("LetterContent") != null) {
                 switchToIFrame(LETTER_CONTENT_IFRAME_ELEMENT);

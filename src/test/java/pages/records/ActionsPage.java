@@ -321,20 +321,17 @@ public class ActionsPage extends BasePage {
             if (mass.get(personNumber).get("Category") != null) {
                 MainPage.clickOptionList(By.id(ACTION_CATEGORY_DROPDOWN),
                         mass.get(personNumber).get("Category"),
-                        By.cssSelector(PersonPage.SELECT_DROP),
-                        "a");
+                        By.cssSelector(PersonPage.SELECT_DROP));
             }
             if (mass.get(personNumber).get("Action") != null) {
                 MainPage.clickOptionList(By.id(ACTION_DROPDOWN),
                         mass.get(personNumber).get("Action"),
-                        By.cssSelector(PersonPage.SELECT_DROP),
-                        "a");
+                        By.cssSelector(PersonPage.SELECT_DROP));
             }
             if (mass.get(personNumber).get("Staff") != null) {
                 MainPage.clickOptionList(By.id(ACTION_STAFF_DROPDOWN),
                         mass.get(personNumber).get("Staff"),
-                        By.cssSelector(PersonPage.SELECT_DROP),
-                        "a");
+                        By.cssSelector(PersonPage.SELECT_DROP));
             }
             if (mass.get(personNumber).get("ActionDateField") != null) {
                 MainPage.fillDateField(By.cssSelector(ACTION_DATE_FIELD),mass.get(personNumber).get("ActionDateField"));

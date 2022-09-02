@@ -257,8 +257,7 @@ public class TranscriptPage extends BasePage {
             if(transcriptBean.getType()!=null){
                 MainPage.clickOptionList(By.cssSelector(transcriptTypeElement(group)),
                         transcriptBean.getType(),
-                        By.cssSelector(PersonPage.SELECT_DROP),
-                        "a");
+                        By.cssSelector(PersonPage.SELECT_DROP));
             }
             if(transcriptBean.getTranscriptDate()!=null){
                 MainPage.fillDateField(By.cssSelector(transcriptDateField(group)), transcriptBean.getTranscriptDate());
@@ -275,44 +274,37 @@ public class TranscriptPage extends BasePage {
             if(transcriptBean.getGed()!=null){
                 MainPage.clickOptionList(By.cssSelector(transcriptGEDElement(group)),
                         transcriptBean.getGed(),
-                        By.cssSelector(PersonPage.SELECT_DROP),
-                        "a");
+                        By.cssSelector(PersonPage.SELECT_DROP));
             }
             if(transcriptBean.getDiplomaReceived()!=null){
                 MainPage.clickOptionList(By.cssSelector(transcriptDiplomaReceivedElement(group)),
                         transcriptBean.getDiplomaReceived(),
-                        By.cssSelector(PersonPage.SELECT_DROP),
-                        "a");
+                        By.cssSelector(PersonPage.SELECT_DROP));
             }
             if(transcriptBean.getOfficialTranscript()!=null){
                 MainPage.clickOptionList(By.cssSelector(transcriptOfficialTranscriptElement(group)),
                         transcriptBean.getOfficialTranscript(),
-                        By.cssSelector(PersonPage.SELECT_DROP),
-                        "a");
+                        By.cssSelector(PersonPage.SELECT_DROP));
             }
             if(transcriptBean.getMajor()!=null){
                 MainPage.clickOptionList(By.cssSelector(transcriptMajorElement(group)),
                         transcriptBean.getMajor(),
-                        By.cssSelector(PersonPage.SELECT_DROP),
-                        "a");
+                        By.cssSelector(PersonPage.SELECT_DROP));
             }
             if(transcriptBean.getDegree()!=null){
                 MainPage.clickOptionList(By.cssSelector(transcriptDegreeElement(group)),
                         transcriptBean.getDegree(),
-                        By.cssSelector(PersonPage.SELECT_DROP),
-                        "a");
+                        By.cssSelector(PersonPage.SELECT_DROP));
             }
             if(transcriptBean.getDegreeLevel()!=null){
                 MainPage.clickOptionListContains(By.cssSelector(transcriptDegreeLevelElement(group)),
                         transcriptBean.getDegreeLevel(),
-                        By.cssSelector(PersonPage.SELECT_DROP),
-                        "a");
+                        By.cssSelector(PersonPage.SELECT_DROP));
             }
             if(transcriptBean.getDegreeEarned()!=null){
                 MainPage.clickOptionList(By.cssSelector(transcriptDegreeEarnedElement(group)),
                         transcriptBean.getDegreeEarned(),
-                        By.cssSelector(PersonPage.SELECT_DROP),
-                        "a");
+                        By.cssSelector(PersonPage.SELECT_DROP));
             }
             if(transcriptBean.getDegreeDate()!=null){
                 MainPage.fillField(By.cssSelector(transcriptDegreeDateField(group)), transcriptBean.getDegreeDate());
@@ -320,14 +312,12 @@ public class TranscriptPage extends BasePage {
             if(transcriptBean.getMinor()!=null){
                 MainPage.clickOptionList(By.cssSelector(transcriptMinorElement(group)),
                         transcriptBean.getMinor(),
-                        By.cssSelector(PersonPage.SELECT_DROP),
-                        "a");
+                        By.cssSelector(PersonPage.SELECT_DROP));
             }
             if(transcriptBean.getConcentration()!=null){
                 MainPage.clickOptionList(By.cssSelector(transcriptConcentrationElement(group)),
                         transcriptBean.getConcentration(),
-                        By.cssSelector(PersonPage.SELECT_DROP),
-                        "a");
+                        By.cssSelector(PersonPage.SELECT_DROP));
             }
             if(transcriptBean.getCreditHours()!=null){
                 MainPage.fillField(By.cssSelector(transcriptCreditHoursField(group)), transcriptBean.getCreditHours());
@@ -351,8 +341,7 @@ public class TranscriptPage extends BasePage {
             if(transcriptBean.getWeighted()!=null){
                 MainPage.clickOptionList(By.cssSelector(transcriptWeightedElement(group)),
                         transcriptBean.getWeighted(),
-                        By.cssSelector(PersonPage.SELECT_DROP),
-                        "a");
+                        By.cssSelector(PersonPage.SELECT_DROP));
             }
             if(transcriptBean.getPercentile()!=null){
                 MainPage.fillField(By.cssSelector(transcriptPercentileField(group)), transcriptBean.getPercentile());
@@ -360,20 +349,17 @@ public class TranscriptPage extends BasePage {
             if(transcriptBean.getRankUnavailable()!=null){
                 MainPage.clickOptionList(By.cssSelector(transcriptRankUnavailableElement(group)),
                         transcriptBean.getRankUnavailable(),
-                        By.cssSelector(PersonPage.SELECT_DROP),
-                        "a");
+                        By.cssSelector(PersonPage.SELECT_DROP));
             }
             if(transcriptBean.getRankWeighted()!=null){
                 MainPage.clickOptionList(By.cssSelector(transcriptRankWeightedElement(group)),
                         transcriptBean.getRankWeighted(),
-                        By.cssSelector(PersonPage.SELECT_DROP),
-                        "a");
+                        By.cssSelector(PersonPage.SELECT_DROP));
             }
             if(transcriptBean.getSelfReported()!=null){
                 MainPage.clickOptionList(By.cssSelector(transcriptSelfReportedElement(group)),
                         transcriptBean.getSelfReported(),
-                        By.cssSelector(PersonPage.SELECT_DROP),
-                        "a");
+                        By.cssSelector(PersonPage.SELECT_DROP));
             }
             if(transcriptBean.getComments()!=null){
                 MainPage.fillField(By.cssSelector(transcriptCommentsField(group)), transcriptBean.getComments());

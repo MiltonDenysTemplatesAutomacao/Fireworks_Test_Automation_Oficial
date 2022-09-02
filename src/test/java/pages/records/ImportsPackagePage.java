@@ -2,12 +2,13 @@ package pages.records;
 
 import config.extent_reports.ExtentReportsSetUp;
 import org.openqa.selenium.By;
+import pages.MainPage;
 import pages.BasePage;
+import pages.LettersPage;
+import pages.PersonPage;
 import pages.FailureDelegatePage;
 import pages.LogPage;
-import pages.PersonPage;
-import pages.KeyPage;
-import pages.LettersPage;
+
 public class ImportsPackagePage extends BasePage {
 
     private static final String CREATE_NEW_PACKAGE_BUTTON = "#top-controls-create-new-package";
@@ -24,30 +25,15 @@ public class ImportsPackagePage extends BasePage {
     }
 
     public static void updatePackageActions(String category,String action,String comments){
-        int updatePackageActionsDelay=10;
         try {
             if(category!=""){
-                scrollToElement(By.cssSelector(UPDATE_ACTION_CATEGORY));
-                scrollTo("-150");
-                waitUntilElementToBeSelected(By.cssSelector(UPDATE_ACTION_CATEGORY),updatePackageActionsDelay);
-                click(By.cssSelector(UPDATE_ACTION_CATEGORY));
-                waitElementBy(By.id(LettersPage.DROPDOWN_INPUT_FIELD_ELEMENT),updatePackageActionsDelay);
-                write(By.id(LettersPage.DROPDOWN_INPUT_FIELD_ELEMENT),category);
-                KeyPage.pressKey(By.id(LettersPage.DROPDOWN_INPUT_FIELD_ELEMENT),"Enter");
-
+                MainPage.selectOptionList(By.cssSelector(UPDATE_ACTION_CATEGORY),category,By.id(LettersPage.DROPDOWN_INPUT_FIELD_ELEMENT));
             }
             if(action!=""){
-                scrollToElement(By.cssSelector(UPDATE_ACTION));
-                scrollTo("-150");
-                waitUntilElementToBeSelected(By.cssSelector(UPDATE_ACTION),updatePackageActionsDelay);
-                click(By.cssSelector(UPDATE_ACTION));
-                BasePage.selectElementsList(By.cssSelector(PersonPage.SELECT_DROP), "a");
-                clickOnListOfElements(action);
+                MainPage.clickOptionList(By.cssSelector(UPDATE_ACTION),action,By.cssSelector(PersonPage.SELECT_DROP));
             }
             if(comments!=""){
-                scrollToElement(By.cssSelector(UPDATE_ACTION_COMMENTS));
-                scrollTo("-150");
-                write(By.cssSelector(UPDATE_ACTION_COMMENTS),comments);
+                MainPage.fillField(By.cssSelector(UPDATE_ACTION_COMMENTS),comments);
             }
             ExtentReportsSetUp.testingPass(LogPage.UPDATE_PACKAGE_ACTIONS_PASS);
         } catch (Exception e) {
@@ -69,17 +55,12 @@ public class ImportsPackagePage extends BasePage {
     }
     public static void updatePackageStartTab(String name,String description,String sourceFile,String recordType){
 
-        int updatePackageStartTab=10;
         try {
             if(name!=""){
-                scrollToElement(By.cssSelector(PACKAGE_NAME_FIELD));
-                scrollTo("-150");
-                write(By.cssSelector(PACKAGE_NAME_FIELD),name);
+                MainPage.fillField(By.cssSelector(PACKAGE_NAME_FIELD),name);
             }
             if(description!=""){
-                scrollToElement(By.cssSelector(PACKAGE_DESCRIPTION));
-                scrollTo("-150");
-                write(By.cssSelector(PACKAGE_DESCRIPTION),description);
+                MainPage.fillField(By.cssSelector(PACKAGE_DESCRIPTION),description);
             }
             if(sourceFile!=""){
                 String filePath = getFile(sourceFile);
@@ -92,11 +73,7 @@ public class ImportsPackagePage extends BasePage {
                 wait(1000);
             }
             if(recordType!=""){
-                scrollToElement(By.cssSelector(PACKAGE_RECORD_TYPE_DROPDOWN));
-                scrollTo("-150");
-                click(By.cssSelector(PACKAGE_RECORD_TYPE_DROPDOWN));
-                BasePage.selectElementsList(By.cssSelector(PersonPage.SELECT_DROP), "a");
-                clickOnListOfElements(recordType);
+                MainPage.clickOptionList(By.cssSelector(PACKAGE_RECORD_TYPE_DROPDOWN),recordType,By.cssSelector(PersonPage.SELECT_DROP));
             }
             ExtentReportsSetUp.testingPass(LogPage.UPDATE_PACKAGE_START_TAB_PASS);
         } catch (Exception e) {

@@ -64,14 +64,12 @@ public class PersonContactNamePage extends BasePage {
             if(name.getSuffix()!=""){
                 MainPage.clickOptionList(By.cssSelector(suffixElement(group)),
                         name.getSuffix(),
-                        By.cssSelector(suffixElementList(group)),
-                        "a");
+                        By.cssSelector(suffixElementList(group)));
             }
             if(name.getSalutation()!=""){
                 MainPage.clickOptionList(By.cssSelector(suffixElement(group)),
                         name.getSalutation(),
-                        By.cssSelector(salutationElementList(group)),
-                        "a");
+                        By.cssSelector(salutationElementList(group)));
             }
             if(name.getActive()!=""){
                 scrollToElement(By.cssSelector(namePlusSignElement(group)));

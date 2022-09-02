@@ -67,20 +67,17 @@ public class FinancialAidPaymentPage extends BasePage {
             if(financialAidPaymentBean.getPaymentPurpose()!=""){
                 MainPage.clickOptionList(By.cssSelector(paymentPurposeDropdown(group)),
                         financialAidPaymentBean.getPaymentPurpose(),
-                        By.cssSelector(PersonPage.SELECT_DROP),
-                        "a");
+                        By.cssSelector(PersonPage.SELECT_DROP));
             }
             if(financialAidPaymentBean.getPaymentType()!=""){
                 MainPage.clickOptionList(By.cssSelector(paymentTypeDropdown(group)),
                         financialAidPaymentBean.getPaymentType(),
-                        By.cssSelector(PersonPage.SELECT_DROP),
-                        "a");
+                        By.cssSelector(PersonPage.SELECT_DROP));
             }
             if(financialAidPaymentBean.getPaymentWhoAdded()!=""){
                 MainPage.clickOptionList(By.cssSelector(paymentWhoAddedDropdown(group)),
                         financialAidPaymentBean.getPaymentWhoAdded(),
-                        By.cssSelector(PersonPage.SELECT_DROP),
-                        "a");
+                        By.cssSelector(PersonPage.SELECT_DROP));
             }
             if(financialAidPaymentBean.getPaymentComment()!=""){
                 MainPage.fillField(By.cssSelector(paymentCommentField(group)), financialAidPaymentBean.getPaymentComment());

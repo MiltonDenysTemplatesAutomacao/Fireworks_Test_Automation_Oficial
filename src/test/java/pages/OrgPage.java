@@ -119,14 +119,12 @@ public class OrgPage extends BasePage{
             if(orgTimeZone!=""){
                 MainPage.clickOptionList(By.cssSelector(BASIC_ORG_TIME_ZONE_DROPDOWN),
                         orgTimeZone,
-                        By.cssSelector(PersonPage.SELECT_DROP),
-                        "a");
+                        By.cssSelector(PersonPage.SELECT_DROP));
             }
             if(assignedCounselor!=""){
                 MainPage.clickOptionList(By.cssSelector(BASIC_ORG_ASSIGNED_COUNSELOR_DROPDOWN),
                         assignedCounselor,
-                        By.cssSelector(PersonPage.SELECT_DROP),
-                        "a");
+                        By.cssSelector(PersonPage.SELECT_DROP));
             }
             ExtentReportsSetUp.testingPass(LogPage.UPDATE_BASIC_CONTEXT_VALUES_PASS);
         } catch (Exception e) {
@@ -139,14 +137,12 @@ public class OrgPage extends BasePage{
             if(role!=""){
                 MainPage.clickOptionList(By.cssSelector(BASIC_ORG_ROLE_DROPDOWN),
                         role,
-                        By.cssSelector(PersonPage.SELECT_DROP),
-                        "a");
+                        By.cssSelector(PersonPage.SELECT_DROP));
             }
             if(orgType!=""){
                 MainPage.clickOptionList(By.cssSelector(BASIC_ORG_TYPE_DROPDOWN),
                         orgType,
-                        By.cssSelector(PersonPage.SELECT_DROP),
-                        "a");
+                        By.cssSelector(PersonPage.SELECT_DROP));
             }
             if(website!=""){
                 MainPage.fillField(By.cssSelector(BASIC_ORG_WEBSITE_FIELD), website);
@@ -219,20 +215,17 @@ public class OrgPage extends BasePage{
             if (mass.get(organizationIndex).get("Category") != null) {
                 MainPage.clickOptionList(By.id(ORG_ACTION_CATEGORY_DROPDOWN),
                         mass.get(organizationIndex).get("Category"),
-                        By.cssSelector(PersonPage.SELECT_DROP),
-                        "a");
+                        By.cssSelector(PersonPage.SELECT_DROP));
             }
             if (mass.get(organizationIndex).get("Action") != null) {
                 MainPage.clickOptionList(By.id(ORG_ACTION_DROPDOWN),
                         mass.get(organizationIndex).get("Action"),
-                        By.cssSelector(PersonPage.SELECT_DROP),
-                        "a");
+                        By.cssSelector(PersonPage.SELECT_DROP));
             }
             if (mass.get(organizationIndex).get("Staff") != null) {
                 MainPage.clickOptionList(By.id(ORG_ACTION_STAFF_DROPDOWN),
                         mass.get(organizationIndex).get("Staff"),
-                        By.cssSelector(PersonPage.SELECT_DROP),
-                        "a");
+                        By.cssSelector(PersonPage.SELECT_DROP));
             }
             if (mass.get(organizationIndex).get("ActionDateField") != null) {
                 MainPage.fillDateField(By.cssSelector(ORG_ACTION_DATE_FIELD), mass.get(organizationIndex).get("ActionDateField"));
@@ -410,8 +403,7 @@ public class OrgPage extends BasePage{
             if (mass.get(person).get("OrgStatus") != null) {
                 MainPage.clickOptionList(By.cssSelector(orgStatusStatusDropdown(index)),
                         mass.get(person).get("OrgStatus"),
-                        By.cssSelector(PersonPage.SELECT_DROP),
-                        "a");
+                        By.cssSelector(PersonPage.SELECT_DROP));
             }
             if (mass.get(person).get("OrgStatusDate") != null) {
                 MainPage.fillDateField(By.cssSelector(orgStatusStatusDate(index)), mass.get(person).get("OrgStatusDate"));
@@ -450,14 +442,12 @@ public class OrgPage extends BasePage{
             if (mass.get(0).get(emailType) != null) {
                 MainPage.clickOptionList(By.cssSelector(EMAIL_TYPE_DROP_DOWN),
                         mass.get(0).get(emailType),
-                        By.cssSelector(EMAIL_TYPE_DROP_DOWN_LIST),
-                        "a");
+                        By.cssSelector(EMAIL_TYPE_DROP_DOWN_LIST));
             }
             if (mass.get(0).get(emailOpt) != null) {
                 MainPage.clickOptionList(By.cssSelector(EMAIL_OPT_DROP_DOWN),
                         mass.get(0).get(emailOpt),
-                        By.cssSelector(EMAIL_OPT_DROP_DOWN_LIST),
-                        "a");
+                        By.cssSelector(EMAIL_OPT_DROP_DOWN_LIST));
             }
             saveChangesBtnOrgContact();
             ExtentReportsSetUp.testingPass(LogPage.UPDATE_EMAIL_ADDRESS_PASS);
@@ -487,8 +477,7 @@ public class OrgPage extends BasePage{
             if (mass.get(0).get(type) != null) {
                 MainPage.clickOptionList(By.cssSelector(TYPE_DROPDOWN),
                         mass.get(0).get(type),
-                        By.cssSelector(PersonPage.SELECT_DROP),
-                        "a");
+                        By.cssSelector(PersonPage.SELECT_DROP));
             }
             if (mass.get(0).get(idNumber) != null) {
                 MainPage.fillField(By.cssSelector(ID_NUMBER_FIELD), mass.get(0).get(idNumber));
@@ -499,8 +488,7 @@ public class OrgPage extends BasePage{
             if (mass.get(0).get(whoAddedId) != null) {
                 MainPage.clickOptionList(By.cssSelector(WHO_ADDED_ID_DROPDOWN),
                         mass.get(0).get(whoAddedId),
-                        By.cssSelector(PersonPage.SELECT_DROP),
-                        "a");
+                        By.cssSelector(PersonPage.SELECT_DROP));
             }
             if (mass.get(0).get(comments) != null) {
                 MainPage.fillField(By.cssSelector(COMMENTS_FIELD), mass.get(0).get(comments));

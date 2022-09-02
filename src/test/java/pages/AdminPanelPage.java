@@ -2,7 +2,6 @@ package pages;
 
 import config.extent_reports.ExtentReportsSetUp;
 import org.openqa.selenium.By;
-import org.openqa.selenium.support.ui.Wait;
 
 public class AdminPanelPage extends BasePage{
 
@@ -28,8 +27,7 @@ public class AdminPanelPage extends BasePage{
         try {
             MainPage.clickOptionList(By.cssSelector(HIGH_SCORE_DISPLAY_DROPDOWN),
                     highScore,
-                    By.cssSelector(PersonPage.SELECT_DROP),
-                    "a");
+                    By.cssSelector(PersonPage.SELECT_DROP));
             waitElementBy(By.cssSelector(CHANGE_HIGH_SCORE_YES_CHANGE_BUTTON),20);
             click(By.cssSelector(CHANGE_HIGH_SCORE_YES_CHANGE_BUTTON));
             ExtentReportsSetUp.testingPass(LogPage.UPDATE_HIGH_SCORE_DISPLAY_PASS);
@@ -42,8 +40,7 @@ public class AdminPanelPage extends BasePage{
         try {
             MainPage.clickOptionList(By.cssSelector(SAT_R2016_HIGH_SCORE_DROPDOWN),
                     satr2016HighScore,
-                    By.cssSelector(PersonPage.SELECT_DROP),
-                    "a");
+                    By.cssSelector(PersonPage.SELECT_DROP));
             wait(1000);
             click(By.cssSelector(CHANGE_HIGH_SCORE_YES_CHANGE_BUTTON));
             ExtentReportsSetUp.testingPass(LogPage.UPDATE_SAT_R2016_HIGH_SCORE_PASS);
