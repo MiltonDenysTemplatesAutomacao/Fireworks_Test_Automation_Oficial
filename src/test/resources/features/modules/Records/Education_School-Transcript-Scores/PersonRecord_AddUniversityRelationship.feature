@@ -44,3 +44,4 @@ Feature: Add University Relationship
     And I open an organization relationship "Teshigahara"
     And I verify relationship values "Hiroshi Teshigahara", "Student", "College/University", "School comment visible in Relationship", ""
     And I validate relationship readonly
+    And I open an organization relationship "Teshigahara"

@@ -421,8 +421,9 @@ public class PersonPage extends BasePage{
         searchPeopleManager(search);
         String passMessage = String.format(LogPage.OPEN_PEOPLE_RECORD_PASS, search);
         String failMessage = String.format(LogPage.OPEN_PEOPLE_RECORD_FAIL, search);
+        wait(1000);
         try {
-            waitElementBy(By.cssSelector(PEOPLE_MANAGER_TABLE_ROW1_COL1_LINK),20);
+            waitElementBy(By.cssSelector(PEOPLE_MANAGER_TABLE_ROW1_COL1_LINK),10);
             click(By.cssSelector(PEOPLE_MANAGER_TABLE_ROW1_COL1_LINK));
             ExtentReportsSetUp.testingPass(passMessage);
         } catch (Exception e) {
@@ -434,7 +435,7 @@ public class PersonPage extends BasePage{
         String passMessage = String.format(LogPage.SEARCH_PEOPLE_MANAGER_PASS, search);
         String failMessage = String.format(LogPage.SEARCH_PEOPLE_MANAGER_FAIL, search);
         try {
-            waitElementBy(By.cssSelector(PEOPLE_MANAGER_TABLE),20);
+            waitElementBy(By.cssSelector(PEOPLE_MANAGER_TABLE_SEARCH_FIELD),20);
             write(By.cssSelector(PEOPLE_MANAGER_TABLE_SEARCH_FIELD),search);
             wait(5000);
             ExtentReportsSetUp.testingPass(passMessage);

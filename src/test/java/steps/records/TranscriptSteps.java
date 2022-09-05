@@ -6,7 +6,7 @@ import pages.records.TranscriptPage;
 public class TranscriptSteps {
 
     @And("I update transcript person {string} group {string}")
-    public static void updateSchool(String person,String group) {
+    public static void createTranscript(String person,String group) {
         TranscriptPage.createTranscript(person,group);
     }
     @And("I add a transcript {string}")

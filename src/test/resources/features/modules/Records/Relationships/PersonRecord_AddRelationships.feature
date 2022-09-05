@@ -1,12 +1,14 @@
 #Author: Milton Silva
 #Regression testcase - Person Relationship can be created
 #Regression testcase TL-88 (1 of 2): School Relationships May be Created
+#Regression testcase TL-88 (2 of 2): Education Relationships May be Created
+#Regression testcase TL-1082: Enter value into GPA field manually
 
 @AddRelationships
 Feature: Add Relationships
 
   @PersonRelationshipCanBeCreated @Done @Relationships
-  Scenario: Record - ID Types - verify relationships can be created
+  Scenario: Record - Relationships - verify relationships can be created
     Given I login as "firestarterUsername", "firestarterPassword", "firestarterFullName"
     And I create a person
       |FirstName |LastName |EmailAddress               |EmailType  |EmailOptInMethod  |Role1           |
@@ -43,5 +45,13 @@ Feature: Add Relationships
     And I open a relationship "Silencio"
     And I verify relationship values "Silencio High School", "High School", "Son", "Student", ""
     #to verify the relationship from the parent record
-
-
+    And I navigate to people on records
+    And I open a people record by "Wally"
+    And I validate if "Wally Brown"summary opened properly
+    And I navigate to Relationship
+    And I open a relationship "Jimmy Katz"
+    And I verify relationship values "Jimmy Jimmy", "High School", "Son", "Father", ""
+    #to verify the relationship from the Organization record
+    And I navigate to organization on Records
+    And I open an organization record by "Silencio High School"
+    And I verify the record header for organization "Silencio High School", "OK to Contact: Yes", "Record Status: Active" and "Organization Category: School"
