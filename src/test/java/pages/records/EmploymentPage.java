@@ -41,7 +41,20 @@ public class EmploymentPage extends BasePage {
     private static String employmentPlusSignButton(String index){
         return String.format("#person_employment_%s_add",index);
     }
+    private static String employmentDeleteButton(String index){
+        return String.format("#person_employment_%s_remove",index);
+    }
 
+    public static void deleteEmployment(String group){
+        String passMessage = String.format(LogPage.DELETE_EMPLOYMENT_PASS,group);
+        String failMessage = String.format(LogPage.DELETE_EMPLOYMENT_FAIL,group);
+        try {
+            MainPage.addDeleteWithPlusButton(By.cssSelector(employmentDeleteButton(group)));
+            ExtentReportsSetUp.testingPass(passMessage);
+        } catch (Exception e) {
+            FailureDelegatePage.handlePageException(failMessage);
+        }
+    }
     public static void addEmployment(String group){
         String passMessage = String.format(LogPage.ADD_EMPLOYMENT_PASS,group);
         String failMessage = String.format(LogPage.ADD_EMPLOYMENT_FAIL,group);

@@ -220,9 +220,10 @@ public class MainPage extends BasePage{
         String errorMessage = String.format(LogPage.CLICK_ELEMENT_BY_TEXT_FAIL, text);
         String passMessage = String.format(LogPage.CLICK_ELEMENT_BY_TEXT_PASS, text);
         try {
-            waitElementBy(By.xpath(getElementByText(text)),20);
+            waitUntilElementToBeSelected(By.xpath(getElementByText(text)),10);
             scrollToElement(By.xpath(getElementByText(text)));
             scrollTo("-150");
+            wait(1000);
             BasePage.click(By.xpath(getElementByText(text)));
             ExtentReportsSetUp.testingPass(passMessage);
         } catch (Exception e) {

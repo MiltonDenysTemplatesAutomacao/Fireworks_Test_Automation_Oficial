@@ -618,5 +618,7 @@ public class LogPage {
     public static final String SAVE_CHANGES_RELATIONSHIP_FAIL = "Fail while trying to click on save changes on Relationships";
     public static final String SELECT_FROM_ORG_PICKER_PASS = "I open an organization record picker '%s'";
     public static final String SELECT_FROM_ORG_PICKER_FAIL = "Fail while trying to open an organization record picker '%s'";
+    public static final String DELETE_EMPLOYMENT_PASS = "I delete an employment '%s'";
+    public static final String DELETE_EMPLOYMENT_FAIL = "Fail while trying to open delete an employment '%s'";
 
 }

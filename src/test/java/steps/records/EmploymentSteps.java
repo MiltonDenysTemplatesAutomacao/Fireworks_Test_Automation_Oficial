@@ -20,4 +20,8 @@ public class EmploymentSteps {
     public static void addEmployment(String group) {
         EmploymentPage.addEmployment(group);
     }
+    @Then("I delete an employment {string}")
+    public static void deleteEmployment(String group) {
+        EmploymentPage.deleteEmployment(group);
+    }
 }
