@@ -46,6 +46,10 @@ public class RelationshipSteps {
     public static void createRelationship() {
         RelationshipPage.createRelationship();
     }
+    @Then("I delete a relationship")
+    public static void deleteRelationship() {
+        RelationshipPage.deleteRelationship();
+    }
     @Then("I open an organization record picker {string}")
     public static void selectFromOrgPicker(String recordPicker) {
         RelationshipPage.selectFromOrgPicker(recordPicker);

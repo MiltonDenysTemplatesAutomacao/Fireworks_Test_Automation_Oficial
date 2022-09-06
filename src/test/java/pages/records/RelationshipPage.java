@@ -33,6 +33,7 @@ public class RelationshipPage extends BasePage {
     private static final String ORG_PICKER_SEARCH_FIELD = "#orgPickerModalTableControlsTableSearch";
     private static final String ORG_PICKER_MODAL_TABLE_ROW1 = "#orgPickerModalTable_row_0";
     private static final String ORG_PICKER_MODAL_TABLE_ROW1_CHECKBOX = "//table[@id='orgPickerModalTable']/tbody/tr/th/div/input";
+    private static final String DELETE_RELATIONSHIP_BUTTON = "#deleteRelationshipButton";
 
     public static void selectFromOrgPicker(String recordPicker){
         String passMessage = String.format(LogPage.SELECT_FROM_ORG_PICKER_PASS,recordPicker);
@@ -58,6 +59,14 @@ public class RelationshipPage extends BasePage {
             ExtentReportsSetUp.testingPass(LogPage.SAVE_CHANGES_RELATIONSHIP_PASS);
         } catch (Exception e) {
             FailureDelegatePage.handlePageException(LogPage.SAVE_CHANGES_RELATIONSHIP_FAIL);
+        }
+    }
+    public static void deleteRelationship(){
+        try {
+            MainPage.clickOption(By.cssSelector(DELETE_RELATIONSHIP_BUTTON));
+            ExtentReportsSetUp.testingPass(LogPage.DELETE_RELATIONSHIP_BUTTON_PASS);
+        } catch (Exception e) {
+            FailureDelegatePage.handlePageException(LogPage.DELETE_RELATIONSHIP_BUTTON_FAIL);
         }
     }
     public static void updateRelationshipValues(String targetRole,String roleInRelationship,String comments){
