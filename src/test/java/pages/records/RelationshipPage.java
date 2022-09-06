@@ -126,8 +126,8 @@ public class RelationshipPage extends BasePage {
 
     }
     public static void verifyRelationshipReadOnlyWithParameters(String relationship){
-        String passMessage = String.format(LogPage.VERIFY_RELATIONSHIP_READ_ONLY_PASS,relationship);
-        String failMessage = String.format(LogPage.VERIFY_RELATIONSHIP_READ_ONLY_FAIL,relationship);
+        String passMessage = String.format(LogPage.VERIFY_RELATIONSHIP_READ_ONLY_WITH_PARAMETERS_PASS,relationship);
+        String failMessage = String.format(LogPage.VERIFY_RELATIONSHIP_READ_ONLY_WITH_PARAMETERS_FAIL,relationship);
         try {
             if(MainPage.verifyIfElementIsVisible(By.cssSelector(relationshioReadOnlyList(relationship)))){
                 ExtentReportsSetUp.testingPass(passMessage);
@@ -135,7 +135,7 @@ public class RelationshipPage extends BasePage {
                 FailureDelegatePage.handlePageException(failMessage);
             }
         } catch (Exception e) {
-            FailureDelegatePage.handlePageException(LogPage.VERIFY_RELATIONSHIP_READ_ONLY_FAIL);
+            FailureDelegatePage.handlePageException(LogPage.VERIFY_RELATIONSHIP_READ_ONLY_WITH_PARAMETERS_FAIL);
         }
     }
     public static void verifyRelationshipReadOnly(){

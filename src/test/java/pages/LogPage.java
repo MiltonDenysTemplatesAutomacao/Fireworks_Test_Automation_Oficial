@@ -463,8 +463,10 @@ public class LogPage {
     public static final String SEARCH_ORG_RELATIONSHIP_TABLE_PASS = "I search an organization relationship '%s'";
     public static final String VERIFY_RELATIONSHIP_VALUES_PASS = "I verify relationship values";
     public static final String VERIFY_RELATIONSHIP_VALUES_FAIL = "Fail while trying to verify relationship values";
-    public static final String VERIFY_RELATIONSHIP_READ_ONLY_PASS = "I validate relationship '%s' field is readonly";
-    public static final String VERIFY_RELATIONSHIP_READ_ONLY_FAIL = "Fail while trying to validate relationship '%s' field is readonly";
+    public static final String VERIFY_RELATIONSHIP_READ_ONLY_WITH_PARAMETERS_PASS = "I validate relationship '%s' field is readonly";
+    public static final String VERIFY_RELATIONSHIP_READ_ONLY_WITH_PARAMETERS_FAIL = "Fail while trying to validate relationship '%s' field is readonly";
+    public static final String VERIFY_RELATIONSHIP_READ_ONLY_PASS = "I validate if field is readonly";
+    public static final String VERIFY_RELATIONSHIP_READ_ONLY_FAIL = "Fail while trying to validate if field is readonly";
     public static final String DELETE_SCHOOL_PASS = "I delete a school '%s'";
     public static final String DELETE_SCHOOL_FAIL = "Fail while trying to delete a school '%s'";
     public static final String VERIFY_RELATIONSHIP_TEXT_RESULTS_PASS = "I verify relationships results message is correct '%s'";
