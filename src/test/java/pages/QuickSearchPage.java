@@ -41,14 +41,16 @@ public class QuickSearchPage extends BasePage{
      * validate if opened corrected summary
      */
     public static void validateIfOpenedSummaryProperly(String parameter) {
+        String passMessage = String.format(LogPage.VALIDATE_IF_OPENED_SUMMARY_PROPERLY_PASS,parameter);
+        String failMessage = String.format(LogPage.VALIDATE_IF_OPENED_SUMMARY_PROPERLY_FAIL,parameter);
         try {
             if (MainPage.verifyGetText(By.id(OBJECT_TITLE_ELEMENT),mass.get(0).get(parameter))){
-                ExtentReportsSetUp.testingPass(LogPage.VALIDATE_IF_OPENED_SUMMARY_PROPERLY_PASS);
+                ExtentReportsSetUp.testingPass(passMessage);
             } else {
-                FailureDelegatePage.handlePageException(LogPage.VALIDATE_IF_OPENED_SUMMARY_PROPERLY_FAIL);
+                FailureDelegatePage.handlePageException(failMessage);
             }
         } catch (Exception e) {
-            FailureDelegatePage.handlePageException(LogPage.VALIDATE_IF_OPENED_SUMMARY_PROPERLY_FAIL);
+            FailureDelegatePage.handlePageException(failMessage);
         }
     }
 }

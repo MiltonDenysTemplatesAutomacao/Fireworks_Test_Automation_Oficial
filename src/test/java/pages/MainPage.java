@@ -87,9 +87,9 @@ public class MainPage extends BasePage{
         int delay = 10;
         waitElementBy(searchField,delay);
         write(searchField,value);
-        wait(3000);
+        wait(4000);
         if(verifyIfContains(recordPickerModalTableRow1,value)){
-            wait(1000);
+            wait(2000);
             click(orgPickerModalTableRow1Checkbox);
         }else{
             FailureDelegatePage.handlePageException(LogPage.SEARCH_PICKER_FAIL);

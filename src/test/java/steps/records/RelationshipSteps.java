@@ -26,6 +26,10 @@ public class RelationshipSteps {
     public static void verifyRelationshipReadOnly() {
         RelationshipPage.verifyRelationshipReadOnly();
     }
+    @Then("I validate relationship readonly field {string}")
+    public static void verifyRelationshipReadOnlyWithParameters(String relationship) {
+        RelationshipPage.verifyRelationshipReadOnlyWithParameters(relationship);
+    }
     @Then("I search a relationship {string}")
     public static void searchRelationshipTable(String relationship) {
         RelationshipPage.searchRelationshipTable(relationship);

@@ -659,6 +659,19 @@ public class GlobalNavPage extends BasePage {
             FailureDelegatePage.handlePageException(errorMessage);
         }
     }
+    public static void quickSearchByParameter(String parameter) {
+        String errorMessage = String.format(LogPage.QUICK_SEARCH_ONE_PARAMETER_FAIL, parameter);
+        String passMessage = String.format(LogPage.QUICK_SEARCH_ONE_PARAMETER_PASS, parameter);
+        try {
+            waitElementBy(By.cssSelector(HOME_QUICK_SEARCH_FIELD),10);
+            BasePage.write(By.cssSelector(HOME_QUICK_SEARCH_FIELD), parameter);
+            BasePage.click(By.cssSelector(HOME_QUICK_SEARCH_BUTTON));
+            wait(2000);
+            ExtentReportsSetUp.testingPass(passMessage);
+        } catch (Exception e) {
+            FailureDelegatePage.handlePageException(errorMessage);
+        }
+    }
 
     /*
      * Method to quick search from home page partial

@@ -67,8 +67,8 @@ public class LogPage {
     public static final String LOGIN_AS_FAIL = "FAILED to login as %s";
     public static final String OPEN_RECORD_PASS = "I click on a record";
     public static final String OPEN_RECORD_FAIL = "Error while clicking on a record";
-    public static final String VALIDATE_IF_OPENED_SUMMARY_PROPERLY_PASS = "I validate if opened corrected summary";
-    public static final String VALIDATE_IF_OPENED_SUMMARY_PROPERLY_FAIL = "Error while validating if opened summary from a record correctly";
+    public static final String VALIDATE_IF_OPENED_SUMMARY_PROPERLY_PASS = "I validate if '%s' opened summary properly";
+    public static final String VALIDATE_IF_OPENED_SUMMARY_PROPERLY_FAIL = "Error while validating if '%s' opened summary properly";
     public static final String ALERT_MESSAGE_FAIL = "FAILED to recieve '%s' alert message";
     public static final String ALERT_MESSAGE_PASS = "I received '%s' alert message";
     public static final String VALIDATE_REQUIRED_FIELDS_MESSAGE_PASS = "I validate if '%s' message alert required is correct";
@@ -463,8 +463,8 @@ public class LogPage {
     public static final String SEARCH_ORG_RELATIONSHIP_TABLE_PASS = "I search an organization relationship '%s'";
     public static final String VERIFY_RELATIONSHIP_VALUES_PASS = "I verify relationship values";
     public static final String VERIFY_RELATIONSHIP_VALUES_FAIL = "Fail while trying to verify relationship values";
-    public static final String VERIFY_RELATIONSHIP_READ_ONLY_PASS = "I validate relationship readonly";
-    public static final String VERIFY_RELATIONSHIP_READ_ONLY_FAIL = "Fail while trying to validate relationship readonly";
+    public static final String VERIFY_RELATIONSHIP_READ_ONLY_PASS = "I validate relationship '%s' field is readonly";
+    public static final String VERIFY_RELATIONSHIP_READ_ONLY_FAIL = "Fail while trying to validate relationship '%s' field is readonly";
     public static final String DELETE_SCHOOL_PASS = "I delete a school '%s'";
     public static final String DELETE_SCHOOL_FAIL = "Fail while trying to delete a school '%s'";
     public static final String VERIFY_RELATIONSHIP_TEXT_RESULTS_PASS = "I verify relationships results message is correct '%s'";

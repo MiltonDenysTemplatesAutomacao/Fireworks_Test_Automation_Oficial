@@ -6,6 +6,8 @@ import org.openqa.selenium.By;
 import org.testng.reporters.jq.Main;
 import pages.*;
 
+import java.util.HashMap;
+
 public class RelationshipPage extends BasePage {
     private static final String RELATIONSHIP_MANAGER_SEARCH_FIELD = "#personRelationshipsManagerTableControlsTableSearch";
     private static final String ORG_RELATIONSHIP_MANAGER_SEARCH_FIELD = "#organizationRelationshipsManagerTableControlsTableSearch";
@@ -114,7 +116,28 @@ public class RelationshipPage extends BasePage {
             FailureDelegatePage.handlePageException(failMessage);
         }
     }
+    private static String relationshioReadOnlyList(String relationship) {
+        HashMap<String, String> relationshipFields = new HashMap<>();
+        relationshipFields.put("Relationship Target", RELATIONSHIP_TARGET_DISABLED_FIELD);
+        relationshipFields.put("Role", RELATIONSHIP_TARGET_ROLE_DISABLED_DROPDOWN);
+        relationshipFields.put("Role in Relationship", ROLE_OF_IN_RELATIONSHIP_DISABLED_DROPDOWN);
+        relationshipFields.put("Comments", RELATIONSHIPS_COMMENTS_DISABLED_FIELD);
+        return relationshipFields.get(relationship);
 
+    }
+    public static void verifyRelationshipReadOnlyWithParameters(String relationship){
+        String passMessage = String.format(LogPage.VERIFY_RELATIONSHIP_READ_ONLY_PASS,relationship);
+        String failMessage = String.format(LogPage.VERIFY_RELATIONSHIP_READ_ONLY_FAIL,relationship);
+        try {
+            if(MainPage.verifyIfElementIsVisible(By.cssSelector(relationshioReadOnlyList(relationship)))){
+                ExtentReportsSetUp.testingPass(passMessage);
+            }else{
+                FailureDelegatePage.handlePageException(failMessage);
+            }
+        } catch (Exception e) {
+            FailureDelegatePage.handlePageException(LogPage.VERIFY_RELATIONSHIP_READ_ONLY_FAIL);
+        }
+    }
     public static void verifyRelationshipReadOnly(){
         try {
             if(MainPage.verifyIfElementIsVisible(By.cssSelector(RELATIONSHIP_TARGET_DISABLED_FIELD))

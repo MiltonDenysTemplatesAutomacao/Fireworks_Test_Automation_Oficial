@@ -3,6 +3,7 @@ package pages;
 import config.extent_reports.ExtentReportsSetUp;
 import org.openqa.selenium.By;
 import pages.records.ActionsPage;
+import pages.records.application.ApplicationComponentsPage;
 
 import java.util.HashMap;
 
@@ -58,6 +59,7 @@ public class OrgPage extends BasePage{
     private static final String BASIC_ORG_TYPE_DROPDOWN = "div#s2id_org_type.select2-container.form-control.select2 a.select2-choice";
     private static final String BASIC_ORG_WEBSITE_FIELD = "#org_website";
     private static final String BASIC_PRIMARY_CONTACT_PICK_BUTTON = "#recordPickerTrigger_0";
+    private static final String BASIC_PRIMARY_CONTACT_FIELD = "#org_primary_contact_reltn_id";
     private static final String PERSON_PICKER_MODAL_SEARCH_FIELD = "#personPickerModalTableControlsTableSearch";
     private static final String PERSON_PICKER_MODAL_ROW1_LAST_NAME = "#personPickerModalTable_row_0_col_1_link_0";
     private static final String PERSON_PICKER_MODAL_ROW1_CHECKBOX = "#personPickerModalTable_row_0_col_0 div.checkbox.checkbox-primary-color input.rowSelectCheckbox";
@@ -95,7 +97,7 @@ public class OrgPage extends BasePage{
             if(MainPage.verifyGetText(By.cssSelector(BASIC_ORG_ROLE_DROPDOWN),role)
                 && MainPage.verifyGetText(By.cssSelector(BASIC_ORG_TYPE_DROPDOWN),orgType)
                 && MainPage.verifyGetAttribute(By.cssSelector(BASIC_ORG_WEBSITE_FIELD),website)
-                && MainPage.verifyGetText(By.cssSelector(BASIC_PRIMARY_CONTACT_PICK_BUTTON),primaryContact)){
+                && MainPage.verifyGetAttribute(By.cssSelector(BASIC_PRIMARY_CONTACT_FIELD),primaryContact)){
                 ExtentReportsSetUp.testingPass(LogPage.VERIFY_BASIC_IDENTIFICATION_VALUES_PASS);
             }else{
                 FailureDelegatePage.handlePageException(LogPage.VERIFY_BASIC_IDENTIFICATION_VALUES_FAIL);
@@ -106,8 +108,9 @@ public class OrgPage extends BasePage{
     }
     public static void basicSaveChangesButtonForOrganization(){
         try {
-            waitElementBy(By.id(BASIC_SAVE_CHANGES_BUTTON_FOR_ORGANIZATION),20);
+            waitElementBy(By.id(BASIC_SAVE_CHANGES_BUTTON_FOR_ORGANIZATION),10);
             scrollToTheBottom();
+            waitUntilElementToBeSelected(By.id(BASIC_SAVE_CHANGES_BUTTON_FOR_ORGANIZATION),10);
             BasePage.click(By.id(BASIC_SAVE_CHANGES_BUTTON_FOR_ORGANIZATION));
             ExtentReportsSetUp.testingPass(LogPage.SAVE_CHANGES_PASS);
         } catch (Exception e) {
@@ -132,7 +135,6 @@ public class OrgPage extends BasePage{
         }
     }
     public static void updateBasicIdentificationValues(String role,String orgType,String website,String primaryContact){
-        int updateBasicIdentificationValuesDelay=20;
         try {
             if(role!=""){
                 MainPage.clickOptionList(By.cssSelector(BASIC_ORG_ROLE_DROPDOWN),
@@ -148,29 +150,16 @@ public class OrgPage extends BasePage{
                 MainPage.fillField(By.cssSelector(BASIC_ORG_WEBSITE_FIELD), website);
             }
             if(primaryContact!=""){
-                waitElementBy(By.cssSelector(BASIC_PRIMARY_CONTACT_PICK_BUTTON),updateBasicIdentificationValuesDelay);
-                click(By.cssSelector(BASIC_PRIMARY_CONTACT_PICK_BUTTON));
-                searchForPrimaryContact(primaryContact);
+                MainPage.picker(By.cssSelector(BASIC_PRIMARY_CONTACT_PICK_BUTTON),
+                        By.cssSelector(PERSON_PICKER_MODAL_SEARCH_FIELD),
+                        By.cssSelector(PERSON_PICKER_MODAL_ROW1_LAST_NAME),
+                        By.cssSelector(PERSON_PICKER_MODAL_ROW1_CHECKBOX),
+                        By.cssSelector(ApplicationComponentsPage.PERSON_PICKER_MODAL_CHOOSE_BUTTON),
+                        primaryContact);
             }
             ExtentReportsSetUp.testingPass(LogPage.UPDATE_BASIC_IDENTIFICATION_VALUES_PASS);
         } catch (Exception e) {
             FailureDelegatePage.handlePageException(LogPage.UPDATE_BASIC_IDENTIFICATION_VALUES_FAIL);
-        }
-    }
-    public static void searchForPrimaryContact(String contactLastName){
-        try {
-            waitElementBy(By.cssSelector(PERSON_PICKER_MODAL_SEARCH_FIELD),20);
-            write(By.cssSelector(PERSON_PICKER_MODAL_SEARCH_FIELD),contactLastName);
-            waitElementBy(By.cssSelector(PERSON_PICKER_MODAL_ROW1_LAST_NAME),20);
-            String contactLastNameText = getText(By.cssSelector(PERSON_PICKER_MODAL_ROW1_LAST_NAME));
-            if(contactLastNameText.equals(contactLastName)){
-                waitElementBy(By.cssSelector(PERSON_PICKER_MODAL_ROW1_CHECKBOX),20);
-                click(By.cssSelector(PERSON_PICKER_MODAL_ROW1_CHECKBOX));
-            }else{
-                FailureDelegatePage.handlePageException(LogPage.SEARCH_FOR_PRIMARY_CONTACT_FAIL);
-            }
-        } catch (Exception e) {
-            FailureDelegatePage.handlePageException(LogPage.SEARCH_FOR_PRIMARY_CONTACT_FAIL);
         }
     }
     public static void verifyOrgActionValues(int organizationIndex){

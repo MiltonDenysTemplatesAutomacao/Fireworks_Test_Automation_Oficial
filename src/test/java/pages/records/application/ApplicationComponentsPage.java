@@ -9,11 +9,10 @@ import pages.LogPage;
 import pages.MainPage;
 import pages.PersonPage;
 public class ApplicationComponentsPage extends BasePage {
-
+    public static final String PERSON_PICKER_MODAL_CHOOSE_BUTTON = "#modalSubmitButtonpersonPicker";
     private static final String PERSON_PICKER_MODAL_SEARCH_FIELD = "#personPickerModalTableControlsTableSearch";
     private static final String PERSON_PICKER_MODAL_TABLE_ROW1 = "#personPickerModalTable_row_0";
     private static final String PERSON_PICKER_MODAL_TABLE_ROW1_CHECKBOX = "#personPickerModalTable_row_0_col_0";
-    private static final String PERSON_PICKER_MODAL_CHOOSE_BUTTON = "#modalSubmitButtonpersonPicker";
 
     private static String componentAddButton(String component,String group){
         return String.format("#person_application_%s_person_application_component_%s_add",component,group);
