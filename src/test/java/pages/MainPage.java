@@ -140,16 +140,7 @@ public class MainPage extends BasePage{
         clickOnListOfElements(value);
     }
     public static void clickOptionList(By by, String value, By dropDownList)throws Exception{
-        int delay = 10;
-        wait(1000);
-        scrollToElement(by);
-        scrollTo("-150");
-        waitElementBy(by,delay);
-        click(by);
-        wait(1000);
-        BasePage.selectElementsList(dropDownList, "a");
-        wait(2000);
-        clickOnListOfElements(value);
+        clickOptionList(by,value,dropDownList,"a");
     }
     public static void clickOptionListContains(By by, String value, By dropDownList, String tag)throws Exception{
         int delay = 10;
@@ -164,16 +155,7 @@ public class MainPage extends BasePage{
         clickOnListOfElementsContains(value);
     }
     public static void clickOptionListContains(By by, String value, By dropDownList)throws Exception{
-        int delay = 10;
-        wait(1000);
-        scrollToElement(by);
-        scrollTo("-150");
-        waitElementBy(by,delay);
-        click(by);
-        wait(1000);
-        BasePage.selectElementsList(dropDownList, "a");
-        wait(2000);
-        clickOnListOfElementsContains(value);
+        clickOptionListContains(by,value,dropDownList,"a");
     }
 
     public static void fillDateField(By by,String value)throws Exception{
