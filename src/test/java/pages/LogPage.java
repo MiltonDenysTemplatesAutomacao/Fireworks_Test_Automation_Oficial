@@ -624,5 +624,17 @@ public class LogPage {
     public static final String DELETE_EMPLOYMENT_FAIL = "Fail while trying to open delete an employment '%s'";
     public static final String DELETE_RELATIONSHIP_BUTTON_PASS = "I delete a relationship";
     public static final String DELETE_RELATIONSHIP_BUTTON_FAIL = "Fail while trying to delete a relationship";
+    public static final String NAVIGATE_TO_DOCUMENTS_PASS = "I navigate to Documents";
+    public static final String NAVIGATE_TO_DOCUMENTS_FAIL = "Fail while trying to navigate to Documents";
+    public static final String CREATE_DOCUMENT_PASS = "I create a document";
+    public static final String CREATE_DOCUMENT_FAIL = "Fail while trying to create a document";
+    public static final String UPDATE_DOCUMENT_PASS = "I update document";
+    public static final String UPDATE_DOCUMENT_FAIL = "Fail while trying to update document";
+    public static final String VERIFY_DOCUMENT_PASS = "I verify document";
+    public static final String VERIFY_DOCUMENT_FAIL = "Fail while trying to verify document";
+    public static final String SEARCH_DOCUMENT_TABLE_PASS = "I search a document '%s'";
+    public static final String SEARCH_DOCUMENT_TABLE_FAIL = "Fail while trying to search a document '%s'";
+    public static final String CONFIRM_REPLACE_FILE_PASS = "I confirm replace file";
+    public static final String CONFIRM_REPLACE_FILE_FAIL = "Fail while trying to confirm replace file";
 
 }

@@ -8,6 +8,17 @@ import static pages.GlobalNavPage.QUICK_ADD_PERSON_OPT_IN_METHOD_DROPDOWN;
 import static pages.GlobalNavPage.QUICK_ADD_PERSON_OPT_IN_METHOD_DROPDOWN_LIST;
 
 public class MainPage extends BasePage{
+
+    public static void attachFile(String sourceFile, By by)throws Exception{
+        String filePath = getFile(sourceFile);
+        scrollToElement(by);
+        scrollTo("-150");
+        click(by);
+        wait(1000);
+        copyToTheClipboard(filePath);
+        attachFile();
+        wait(1000);
+    }
     public static void navigateToFeature(By by)throws Exception{
         scrollToElement(by);
         scrollTo("-150");

@@ -15,7 +15,16 @@ public class PersonNavPage extends BasePage{
     private static final String FINANCIAL_AID_TAB = "#recordNavTab_financial_affairs";
     private static final String EMPLOYMENT_TAB = "#recordNavTab_employment";
     private static final String RECORD_NAV_TAB_BASIC = "recordNavTab_basic";
+    private static final String DOCUMENTS_TAB = "#recordNavTab_documents";
 
+    public static void navigateToDocuments(){
+        try {
+            MainPage.navigateToFeature(By.cssSelector(DOCUMENTS_TAB));
+            ExtentReportsSetUp.testingPass(LogPage.NAVIGATE_TO_DOCUMENTS_PASS);
+        } catch (Exception e) {
+            FailureDelegatePage.handlePageException(LogPage.NAVIGATE_TO_DOCUMENTS_FAIL);
+        }
+    }
     public static void navigateToEmployment(){
         try {
             MainPage.navigateToFeature(By.cssSelector(EMPLOYMENT_TAB));

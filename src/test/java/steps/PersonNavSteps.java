@@ -44,6 +44,10 @@ public class PersonNavSteps {
     public static void navigateToBasic() {
         PersonNavPage.navigateToBasic();
     }
+    @Then("I navigate to Documents")
+    public static void navigateToDocuments() {
+        PersonNavPage.navigateToDocuments();
+    }
 
 
 }
