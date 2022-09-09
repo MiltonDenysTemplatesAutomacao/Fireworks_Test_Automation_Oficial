@@ -3,9 +3,11 @@ package pages.records;
 import bean.RelationshipBean;
 import config.extent_reports.ExtentReportsSetUp;
 import org.openqa.selenium.By;
-import org.testng.reporters.jq.Main;
-import pages.*;
-
+import pages.BasePage;
+import pages.FailureDelegatePage;
+import pages.LogPage;
+import pages.MainPage;
+import pages.PersonPage;
 import java.util.HashMap;
 
 public class RelationshipPage extends BasePage {
