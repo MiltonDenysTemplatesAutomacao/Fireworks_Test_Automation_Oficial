@@ -10,7 +10,7 @@ Feature: Document fields validation
     When I create a person
       |FirstName  |LastName |Role1    |EmailAddress      |EmailType  |EmailOptInMethod|
       |Rainier    |Grimaldi |Person   |prince@monaco.com |Personal   |Inquiry         |
-    #And I validate if "Person has been created." message is correct
+    And I validate if "Person has been created." message is correct
     #to save a new document with no data added
     And I navigate to people on records
     And I open a people record by "Rainier"
