@@ -2,6 +2,7 @@
 #Regression testcase TL-205: Exact match auto-merge on rule 3: SSN-LastName
 #Regression testcase TL-205: Exact match auto-merge on rule 6: IDType-ID-FN(first3)
 #Regression testcase TL-806: Relationships are not lost in record merges
+#Regression testcase TL-205: Exact match auto-merge on rule 10: FN-LN-Phone-Email-Role
 
 @ExactMatchAutoMergeOnrule
 Feature: Auto-Merge: Person: Standard Matching Rules
@@ -85,3 +86,30 @@ Feature: Auto-Merge: Person: Standard Matching Rules
     And I navigate to Relationship
     And I open a relationship "Yoshifumi"
     And I verify relationship values "Yoshifumi Kondo", "Father", "Son", "", ""
+
+  @ExactMatchAutoMergeExactMatchPersonRule10 @Done @DupManager
+  Scenario: Record - DupManager - verify an exact match occurs based on first last phone email and role
+    Given I login as "firestarterUsername", "firestarterPassword", "firestarterFullName"
+    When I create a person
+      |FirstName  |LastName |Role1 |EmailAddress               |EmailType  |EmailOptInMethod|Phone        |PhoneType|
+      |Rudolf     |Agricola |Donor |RAgricola@germanauthors.com|Personal   |Inquiry         |555-555-5559 |Home     |
+    And I validate if "Person has been created." message is correct
+    When I create a person
+      |FirstName  |LastName |Role1 |EmailAddress               |EmailType  |EmailOptInMethod|Phone        |PhoneType|
+      |Rudolf     |Agricola |Donor |RAgricola@germanauthors.com|Personal   |Inquiry         |555-555-5559 |Home     |
+    And I close alert if return this message "A duplicate Person record was found and automatically merged with the new record."
+
+  @ExactMatchAutoMergeExclusionsCanExactMatchRule10 @Done @DupManager
+  Scenario: Record - DupManager - verify suspended records which are made active can be exact match merged
+    Given I login as "firestarterUsername", "firestarterPassword", "firestarterFullName"
+    When I create a person
+      |FirstName  |LastName  |Role1   |EmailAddress                           |EmailType  |EmailOptInMethod|Phone         |PhoneType|StudentType|StudentStatus  |StudentStatusCategory|StudentStatusDate|EntryTerm|
+      |Koji       |Wakamatsu |Student |KWakamatsu@japanesenewwavedirectors.net|Personal   |Inquiry         |(516) 453-3612|Home     |Freshman   |Inquiry-Active |Inquiry              |01/25/2020       |Fall 2021|
+    And I validate if "Person has been created." message is correct
+    #to add a second record that potentially matches based on name and phone number
+    When I create a person
+      |FirstName  |LastName  |Role1   |EmailAddress                             |EmailType  |EmailOptInMethod|Phone         |PhoneType|StudentType|StudentStatus  |StudentStatusCategory|StudentStatusDate|EntryTerm|
+      |Koji       |Wakamatsu |Student |KWakamatsu2@japanesenewwavedirectors.net |Personal   |Inquiry         |(516) 453-3612|Home     |Freshman   |Inquiry-Active |Inquiry              |01/25/2020       |Fall 2021|
+    And I validate if "A potential duplicate Student record was found while creating this record; it has been placed in the Duplicate Manager for review." message is correct
+    #to verify content of Suspended Record and the First Match then make the record Active
+    And I verify content of the suspended record

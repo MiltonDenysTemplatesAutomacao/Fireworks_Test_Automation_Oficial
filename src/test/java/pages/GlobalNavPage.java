@@ -455,9 +455,7 @@ public class GlobalNavPage extends BasePage {
                 wait(500);
             }
             if (mass.get(0).get("StudentStatusDate") != null) {
-                waitElementBy(By.cssSelector(QUICK_ADD_STUDENT_STATUS_DATE_FIELD),quickAddPersonDelay);
-                BasePage.write(By.cssSelector(QUICK_ADD_STUDENT_STATUS_DATE_FIELD), mass.get(0).get("StudentStatusDate"));
-                wait(500);
+                MainPage.fillDateField(By.cssSelector(QUICK_ADD_STUDENT_STATUS_DATE_FIELD),mass.get(0).get("StudentStatusDate"));
             }
             if (mass.get(0).get("EntryTerm") != null) {
                 wait(500);

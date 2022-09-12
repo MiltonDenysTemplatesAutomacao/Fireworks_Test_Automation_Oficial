@@ -176,46 +176,23 @@ public class DuplicatesPage extends BasePage{
     public static void verifyContentOfSuspendedRecord(){
 
         try {
-            BasePage.waitElementBy(By.cssSelector(SUSPENDED_RECORD_NAME), 20);
-            String suspendedRecordNameText = getText(By.cssSelector(SUSPENDED_RECORD_NAME));
-            String suspendedRecordPreferredNameText = getText(By.cssSelector(SUSPENDED_RECORD_PREFERRED_NAME));
-            String suspendedRecordRoleText = getText(By.cssSelector(SUSPENDED_RECORD_ROLE));
-            String suspendedRecordBirthDataText = getText(By.cssSelector(SUSPENDED_RECORD_BIRTH_DATE));
-            String suspendedRecordSSNText = getText(By.cssSelector(SUSPENDED_RECORD_SSN));
-            String suspendedRecordEmailText = getText(By.cssSelector(SUSPENDED_RECORD_EMAIL));
-            String suspendedRecordAddress1Text = getText(By.cssSelector(SUSPENDED_RECORD_ADDRESS1));
-            String suspendedRecordAddress2Text = getText(By.cssSelector(SUSPENDED_RECORD_ADDRESS2));
-            String suspendedRecordAddress3Text = getText(By.cssSelector(SUSPENDED_RECORD_ADDRESS3));
-            String suspendedRecordCityText = getText(By.cssSelector(SUSPENDED_RECORD_CITY));
-            String suspendedRecordStateText = getText(By.cssSelector(SUSPENDED_RECORD_STATE));
-            String suspendedRecordPostaCodeText = getText(By.cssSelector(SUSPENDED_RECORD_POSTAL_CODE));
-            String suspendedRecordCountryText = getText(By.cssSelector(SUSPENDED_RECORD_COUNTRY));
-            String suspendedRecordPhoneText = getText(By.cssSelector(SUSPENDED_RECORD_PHONE));
-            String suspendedRecordDateAddedText = getText(By.cssSelector(SUSPENDED_RECORD_DATE_ADDED));
-
-            boolean validateFields = false;
-            if(suspendedRecordNameText.equals(mass.get(0).get("Fullname"))
-                && suspendedRecordRoleText.contains(mass.get(0).get("Role2"))
-                && suspendedRecordRoleText.contains(mass.get(0).get("Role1"))
-                && suspendedRecordEmailText.equals(mass.get(0).get("EmailAddress"))
-                && suspendedRecordAddress1Text.equals(mass.get(0).get("Address1"))
-                && suspendedRecordCityText.equals(mass.get(0).get("City"))
-                && suspendedRecordStateText.equals(mass.get(0).get("State"))
-                && suspendedRecordPostaCodeText.equals(mass.get(0).get("PostalCode"))
-                && suspendedRecordCountryText.equals(mass.get(0).get("Country"))
-                && suspendedRecordPhoneText.equals(mass.get(0).get("Phone"))
-                && suspendedRecordDateAddedText.equals(mass.get(0).get("StudentStatusDate"))){
-                validateFields=true;
-                }
-            boolean validateEmptyFields = false;
-            if(suspendedRecordPreferredNameText.isEmpty()
-            && suspendedRecordBirthDataText.isEmpty()
-            && suspendedRecordSSNText.isEmpty()
-            && suspendedRecordAddress2Text.isEmpty()
-            && suspendedRecordAddress3Text.isEmpty()){
-                validateEmptyFields=true;
-            }
-            if(validateFields && validateEmptyFields){
+            if(MainPage.verifyGetText(By.cssSelector(SUSPENDED_RECORD_NAME),mass.get(0).get("FullName"))
+                && MainPage.verifyGetText(By.cssSelector(SUSPENDED_RECORD_ROLE),mass.get(0).get("Role2"))
+                && MainPage.verifyGetText(By.cssSelector(SUSPENDED_RECORD_ROLE),mass.get(0).get("Role1"))
+                && MainPage.verifyGetText(By.cssSelector(SUSPENDED_RECORD_EMAIL),mass.get(0).get("EmailAddress"))
+                && MainPage.verifyGetText(By.cssSelector(SUSPENDED_RECORD_ADDRESS1),mass.get(0).get("Address1"))
+                && MainPage.verifyGetText(By.cssSelector(SUSPENDED_RECORD_CITY),mass.get(0).get("City"))
+                && MainPage.verifyGetText(By.cssSelector(SUSPENDED_RECORD_STATE),mass.get(0).get("State"))
+                && MainPage.verifyGetText(By.cssSelector(SUSPENDED_RECORD_POSTAL_CODE),mass.get(0).get("PostalCode"))
+                && MainPage.verifyGetText(By.cssSelector(SUSPENDED_RECORD_COUNTRY),mass.get(0).get("Country"))
+                && MainPage.verifyGetText(By.cssSelector(SUSPENDED_RECORD_PHONE),mass.get(0).get("Phone"))
+                && MainPage.verifyGetText(By.cssSelector(SUSPENDED_RECORD_PREFERRED_NAME),mass.get(0).get("PreferredName"))
+                && MainPage.verifyGetText(By.cssSelector(SUSPENDED_RECORD_BIRTH_DATE),mass.get(0).get("BirthDate"))
+                && MainPage.verifyGetText(By.cssSelector(SUSPENDED_RECORD_SSN),mass.get(0).get("SNN"))
+                && MainPage.verifyGetText(By.cssSelector(SUSPENDED_RECORD_ADDRESS2),mass.get(0).get("Address2"))
+                && MainPage.verifyGetText(By.cssSelector(SUSPENDED_RECORD_ADDRESS3),mass.get(0).get("Address3"))
+                && MainPage.verifyGetText(By.cssSelector(SUSPENDED_RECORD_DATE_ADDED),mass.get(0).get("StudentStatusDate"))
+            ){
                 ExtentReportsSetUp.testingPass(LogPage.VERIFY_CONTENT_OF_SUSPENDED_RECORD_PASS);
             }else{
                 FailureDelegatePage.handlePageException(LogPage.VERIFY_CONTENT_OF_SUSPENDED_RECORD_FAIL);
