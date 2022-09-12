@@ -1,10 +1,12 @@
 #Author: Milton Silva
 #Regression testcase TL-205: Exact match auto-merge on rule 3: SSN-LastName
+#Regression testcase TL-205: Exact match auto-merge on rule 6: IDType-ID-FN(first3)
+#Regression testcase TL-806: Relationships are not lost in record merges
 
-@ExactMatchAutoMergeOnrule3SSNLastName
-Feature: Exact match auto-merge on rule 3: SSN-LastName
+@ExactMatchAutoMergeOnrule
+Feature: Auto-Merge: Person: Standard Matching Rules
 
-  @ExactMatchAutoMergeOnrule3SSNLastNameScenario @Done @DupManager
+  @ExactMatchAutoMergeOnrule3 @Done @DupManager
   Scenario: Record - DupManager - Exact match - SSN + Last Name
     Given I login as "firestarterUsername", "firestarterPassword", "firestarterFullName"
     When I create a person
@@ -37,3 +39,49 @@ Feature: Exact match auto-merge on rule 3: SSN-LastName
     And I verify name on contact for person "Hannes", "Kolehmainen", "", "", "", "", "1", "0" group "1"
     And I verify email address "0" fields
     And I verify phone number on contact for person "(401) 619-4444", "Home", "", "", "", "", "", "", "1", "1", group "0"
+
+  @ExactMatchAutoMergeOnrule6 @Done @DupManager
+  Scenario: Record - DupManager - verify that relationships are maintained after a merge on person records
+    Given I login as "firestarterUsername", "firestarterPassword", "firestarterFullName"
+    When I create a person
+      |FirstName  |LastName |Role1     |EmailAddress                 |EmailType  |EmailOptInMethod|
+      |Yoshifumi  |Kondo    |Person    |yKondo@japanesedirectors.com |Personal   |Inquiry         |
+    And I validate if "Person has been created." message is correct
+    When I create a person
+      |FirstName |LastName |Role1     |EmailAddress                  |EmailType  |EmailOptInMethod|
+      |Hiroyuki  |Morita   |Person    |hMorita@japanesedirectors.com |Personal   |Inquiry         |
+    And I validate if "Person has been created." message is correct
+    When I create a person
+      |FirstName |LastName    |Role1     |EmailAddress                       |EmailType  |EmailOptInMethod|
+      |Hiromasa  |Yonebayashi |Person    |hYonebayashi@japanesedirectors.com |Personal   |Inquiry         |
+    And I validate if "Person has been created." message is correct
+    #to create a relationship between person1 and person2
+    And I navigate to people on records
+    And I open a people record by "Yoshifumi"
+    And I validate if "Yoshifumi"summary opened properly
+    And I navigate to Relationship
+    When I create a relationship
+    And I open a record picker "Hiroyuki"
+    And I update relationship "Son", "Father", ""
+    And I click on save changes on Relationships
+    And I close alert if return this message "Relationship has been created"
+    #to add the same external id to person2 and person3 to auto-merge the records
+    And I navigate to people on records
+    And I open a people record by "Hiroyuki"
+    And I validate if "Hiroyuki"summary opened properly
+    And I navigate to ID Types
+    And I use datatable
+    |IDType|IDNumber|RecordedDate|WhoAddedID    |Comments   |
+    |TOEFL |72918   |01/15/2016  |Fire Starter  |ID Comment |
+    When I update "IDType", "IDNumber", "RecordedDate", "WhoAddedID", and "Comments" to update external ID Types for person
+    And I close alert if return this message "Person has been updated."
+    And I navigate to people on records
+    And I open a people record by "Hiromasa"
+    And I validate if "Hiromasa"summary opened properly
+    And I navigate to ID Types
+    When I update "IDType", "IDNumber", "RecordedDate", "WhoAddedID", and "Comments" to update external ID Types for person
+    And I close alert if return this message "A duplicate Person record was found and automatically merged with the new record."
+    #person3 now shows a relationship to person1
+    And I navigate to Relationship
+    And I open a relationship "Yoshifumi"
+    And I verify relationship values "Yoshifumi Kondo", "Father", "Son", "", ""

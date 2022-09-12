@@ -187,6 +187,7 @@ public class MainPage extends BasePage{
         scrollTo("-150");
         waitElementBy(by,delay);
         write(by,value);
+
     }
     public static void toUseDatatable(DataTable data){
         createDatatable(data);
