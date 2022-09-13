@@ -5,13 +5,17 @@ import pages.DuplicatesPage;
 
 public class DuplicatesSteps {
 
-    @Then("I verify content of the suspended record")
-    public static void verifyContentOfSuspendedRecord() {
-        DuplicatesPage.verifyContentOfSuspendedRecord();
+    @Then("I verify content of the suspended record person {int}")
+    public static void verifyContentOfSuspendedRecord(int person) {
+        DuplicatesPage.verifyContentOfSuspendedRecord(person);
     }
-    @Then("I verify content of the first possible match record")
-    public static void verifyContentOfFirstPossibleMatch() {
-        DuplicatesPage.verifyContentOfFirstPossibleMatch();
+    @Then("I make suspended record active")
+    public static void makeSuspendedRecordActive() {
+        DuplicatesPage.makeSuspendedRecordActive();
+    }
+    @Then("I verify content of the first possible match record person {int}")
+    public static void verifyContentOfFirstPossibleMatch(int person) {
+        DuplicatesPage.verifyContentOfFirstPossibleMatch(person);
     }
     @Then("I merge duplicates")
     public static void mergeDuplicates() {

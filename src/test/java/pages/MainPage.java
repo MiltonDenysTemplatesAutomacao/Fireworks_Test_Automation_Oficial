@@ -54,7 +54,19 @@ public class MainPage extends BasePage{
             wait(1000);
             click(by);
     }
-
+    public static boolean validateCurrentDateTimeWithoutHour(By by,String value)throws Exception{
+        boolean validation = false;
+        if(value!="" && value!= null){
+            wait(1000);
+            scrollToElement(by);
+            scrollTo("-150");
+            String currentDateTimeWithoutHour = currentDateTimeWithoutHour();
+            validation = currentDateTimeWithoutHour.contains(value);
+        }else{
+            validation=true;
+        }
+        return validation;
+    }
     public static boolean verifyGetText(By by,String value)throws Exception{
         boolean validation = false;
         if(value!="" && value!= null){

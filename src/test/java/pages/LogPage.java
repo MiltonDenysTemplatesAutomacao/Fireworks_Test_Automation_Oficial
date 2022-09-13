@@ -142,10 +142,10 @@ public class LogPage {
     public static final String VERIFY_RECORD_PANELS_FAIL = "Fail while trying to verify the record panels for a student record";
     public static final String VERIFY_STUDENT_BASIC_FIELDS_PASS = "I verify the Basic fields for a student record";
     public static final String VERIFY_STUDENT_BASIC_FIELDS_FAIL = "Fail while trying to verify the Basic fields for a student record";
-    public static final String VERIFY_CONTENT_OF_SUSPENDED_RECORD_PASS = "I verify content of the suspended record";
-    public static final String VERIFY_CONTENT_OF_SUSPENDED_RECORD_FAIL = "Fail while trying to verify content of the suspended record";
-    public static final String VERIFY_CONTENT_OF_FIRST_POSSIBLE_MATCH_PASS = "Fail while trying to verify content of the suspended record";
-    public static final String VERIFY_CONTENT_OF_FIRST_POSSIBLE_MATCH_FAIL = "Fail while trying to verify content of the suspended record";
+    public static final String VERIFY_CONTENT_OF_SUSPENDED_RECORD_PASS = "I verify content of the suspended record person '%s'";
+    public static final String VERIFY_CONTENT_OF_SUSPENDED_RECORD_FAIL = "Fail while trying to verify content of the suspended record person '%s'";
+    public static final String VERIFY_CONTENT_OF_FIRST_POSSIBLE_MATCH_PASS = "Fail while trying to verify content of the suspended record person '%s'";
+    public static final String VERIFY_CONTENT_OF_FIRST_POSSIBLE_MATCH_FAIL = "Fail while trying to verify content of the suspended record person '%s'";
     public static final String MERGE_DUPLICATES_PASS = "I merge duplicates";
     public static final String MERGE_DUPLICATES_FAIL = "Fail while trying to merge duplicates";
     public static final String VERIFY_MERGE_PREVIEW_PASS = "I verify merge preview";
@@ -636,5 +636,7 @@ public class LogPage {
     public static final String SEARCH_DOCUMENT_TABLE_FAIL = "Fail while trying to search a document '%s'";
     public static final String CONFIRM_REPLACE_FILE_PASS = "I confirm replace file";
     public static final String CONFIRM_REPLACE_FILE_FAIL = "Fail while trying to confirm replace file";
+    public static final String MAKE_SUSPENDED_RECORD_ACTIVE_PASS = "I make suspended record active";
+    public static final String MAKE_SUSPENDED_RECORD_ACTIVE_FAIL = "Fail while trying to make suspended record active";
 
 }

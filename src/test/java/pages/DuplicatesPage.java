@@ -60,8 +60,20 @@ public class DuplicatesPage extends BasePage{
     public static final String PREVIEW_MERGE_MATCH_COUNTRY = "#merge-preview [data-field-name='address_country']";
     public static final String PREVIEW_MERGE_MATCH_PHONE = "#merge-preview [data-field-name='phone_number']";
     public static final String PREVIEW_MERGE_MATCH_DATE_ADDED = "#merge-preview [data-field-name='created_at']";
+    public static final String MAKE_SUSPENDED_RECORD_ACTIVE_BUTTON = "make-suspended-record-active";
+    public static final String MAKE_SUSPENDED_ACTIVE_MODAL_CONFIRM_CREATE = "modalSubmitButtoncreateUnique";
 
 
+    public static void makeSuspendedRecordActive(){
+        try {
+            MainPage.clickOption(By.id(MAKE_SUSPENDED_RECORD_ACTIVE_BUTTON));
+            waitUntilElementToBeSelected(By.id(MAKE_SUSPENDED_ACTIVE_MODAL_CONFIRM_CREATE),10);
+            MainPage.clickOption(By.id(MAKE_SUSPENDED_ACTIVE_MODAL_CONFIRM_CREATE));
+            ExtentReportsSetUp.testingPass(LogPage.MAKE_SUSPENDED_RECORD_ACTIVE_PASS);
+        } catch (Exception e) {
+            FailureDelegatePage.handlePageException(LogPage.MAKE_SUSPENDED_RECORD_ACTIVE_FAIL);
+        }
+    }
     public static void searchDuplicateManager(String parameter){
         String passMessage = String.format(LogPage.SEARCH_DUPLICATE_MANAGER_PASS, parameter);
         String failMessage = String.format(LogPage.SEARCH_DUPLICATE_MANAGER_FAIL, parameter);
@@ -73,7 +85,6 @@ public class DuplicatesPage extends BasePage{
             FailureDelegatePage.handlePageException(failMessage);
         }
     }
-
 
     public static void verifyIfRecordNoLongerExistsOnDuplicatesPage(){
         try {
@@ -122,6 +133,7 @@ public class DuplicatesPage extends BasePage{
             String previewRecordCountryText = getText(By.cssSelector(PREVIEW_MERGE_MATCH_COUNTRY));
             String previewRecordPhoneText = getText(By.cssSelector(PREVIEW_MERGE_MATCH_PHONE));
             String previewRecordDateAddedText = getText(By.cssSelector(PREVIEW_MERGE_MATCH_DATE_ADDED));
+
 
             boolean validateFields = false;
                 if(previewRecordNameText.equals(mass.get(0).get("Fullname"))
@@ -173,84 +185,63 @@ public class DuplicatesPage extends BasePage{
     /*
      * Method to verify content of the suspended record
      */
-    public static void verifyContentOfSuspendedRecord(){
+    public static void verifyContentOfSuspendedRecord(int person){
+        String passMessage = String.format(LogPage.VERIFY_CONTENT_OF_SUSPENDED_RECORD_PASS,person);
+        String failMessage = String.format(LogPage.VERIFY_CONTENT_OF_SUSPENDED_RECORD_FAIL,person);
 
         try {
-            if(MainPage.verifyGetText(By.cssSelector(SUSPENDED_RECORD_NAME),mass.get(0).get("FullName"))
-                && MainPage.verifyGetText(By.cssSelector(SUSPENDED_RECORD_ROLE),mass.get(0).get("Role2"))
-                && MainPage.verifyGetText(By.cssSelector(SUSPENDED_RECORD_ROLE),mass.get(0).get("Role1"))
-                && MainPage.verifyGetText(By.cssSelector(SUSPENDED_RECORD_EMAIL),mass.get(0).get("EmailAddress"))
-                && MainPage.verifyGetText(By.cssSelector(SUSPENDED_RECORD_ADDRESS1),mass.get(0).get("Address1"))
-                && MainPage.verifyGetText(By.cssSelector(SUSPENDED_RECORD_CITY),mass.get(0).get("City"))
-                && MainPage.verifyGetText(By.cssSelector(SUSPENDED_RECORD_STATE),mass.get(0).get("State"))
-                && MainPage.verifyGetText(By.cssSelector(SUSPENDED_RECORD_POSTAL_CODE),mass.get(0).get("PostalCode"))
-                && MainPage.verifyGetText(By.cssSelector(SUSPENDED_RECORD_COUNTRY),mass.get(0).get("Country"))
-                && MainPage.verifyGetText(By.cssSelector(SUSPENDED_RECORD_PHONE),mass.get(0).get("Phone"))
-                && MainPage.verifyGetText(By.cssSelector(SUSPENDED_RECORD_PREFERRED_NAME),mass.get(0).get("PreferredName"))
-                && MainPage.verifyGetText(By.cssSelector(SUSPENDED_RECORD_BIRTH_DATE),mass.get(0).get("BirthDate"))
-                && MainPage.verifyGetText(By.cssSelector(SUSPENDED_RECORD_SSN),mass.get(0).get("SNN"))
-                && MainPage.verifyGetText(By.cssSelector(SUSPENDED_RECORD_ADDRESS2),mass.get(0).get("Address2"))
-                && MainPage.verifyGetText(By.cssSelector(SUSPENDED_RECORD_ADDRESS3),mass.get(0).get("Address3"))
-                && MainPage.verifyGetText(By.cssSelector(SUSPENDED_RECORD_DATE_ADDED),mass.get(0).get("StudentStatusDate"))
-            ){
-                ExtentReportsSetUp.testingPass(LogPage.VERIFY_CONTENT_OF_SUSPENDED_RECORD_PASS);
+            if(MainPage.verifyGetText(By.cssSelector(SUSPENDED_RECORD_NAME),mass.get(person).get("FullName"))
+                && MainPage.verifyGetText(By.cssSelector(SUSPENDED_RECORD_ROLE),mass.get(person).get("Role2"))
+                && MainPage.verifyGetText(By.cssSelector(SUSPENDED_RECORD_ROLE),mass.get(person).get("Role1"))
+                && MainPage.verifyGetText(By.cssSelector(SUSPENDED_RECORD_EMAIL),mass.get(person).get("EmailAddress"))
+                && MainPage.verifyGetText(By.cssSelector(SUSPENDED_RECORD_ADDRESS1),mass.get(person).get("Address1"))
+                && MainPage.verifyGetText(By.cssSelector(SUSPENDED_RECORD_CITY),mass.get(person).get("City"))
+                && MainPage.verifyGetText(By.cssSelector(SUSPENDED_RECORD_STATE),mass.get(person).get("State"))
+                && MainPage.verifyGetText(By.cssSelector(SUSPENDED_RECORD_POSTAL_CODE),mass.get(person).get("PostalCode"))
+                && MainPage.verifyGetText(By.cssSelector(SUSPENDED_RECORD_COUNTRY),mass.get(person).get("Country"))
+                && MainPage.verifyGetText(By.cssSelector(SUSPENDED_RECORD_PHONE),mass.get(person).get("Phone"))
+                && MainPage.verifyGetText(By.cssSelector(SUSPENDED_RECORD_PREFERRED_NAME),mass.get(person).get("PreferredName"))
+                && MainPage.verifyGetText(By.cssSelector(SUSPENDED_RECORD_BIRTH_DATE),mass.get(person).get("BirthDate"))
+                && MainPage.verifyGetText(By.cssSelector(SUSPENDED_RECORD_SSN),mass.get(person).get("SNN"))
+                && MainPage.verifyGetText(By.cssSelector(SUSPENDED_RECORD_ADDRESS2),mass.get(person).get("Address2"))
+                && MainPage.verifyGetText(By.cssSelector(SUSPENDED_RECORD_ADDRESS3),mass.get(person).get("Address3"))
+                && MainPage.validateCurrentDateTimeWithoutHour(By.cssSelector(SUSPENDED_RECORD_DATE_ADDED),mass.get(person).get("ActualDate"))){
+                ExtentReportsSetUp.testingPass(passMessage);
             }else{
-                FailureDelegatePage.handlePageException(LogPage.VERIFY_CONTENT_OF_SUSPENDED_RECORD_FAIL);
+                FailureDelegatePage.handlePageException(failMessage);
             }
         } catch (Exception e) {
-            FailureDelegatePage.handlePageException(LogPage.VERIFY_CONTENT_OF_SUSPENDED_RECORD_FAIL);
+            FailureDelegatePage.handlePageException(failMessage);
         }
     }
     /*
      * Method to verify content of the first possible match record
      */
-    public static void verifyContentOfFirstPossibleMatch() {
+    public static void verifyContentOfFirstPossibleMatch(int person) {
+        String passMessage = String.format(LogPage.VERIFY_CONTENT_OF_FIRST_POSSIBLE_MATCH_PASS,person);
+        String failMessage = String.format(LogPage.VERIFY_CONTENT_OF_FIRST_POSSIBLE_MATCH_FAIL,person);
         try {
-            BasePage.waitElementBy(By.cssSelector(FIRST_POSSIBLE_MATCH_NAME), 20);
-            String firstPossibleRecordNameText = getText(By.cssSelector(SUSPENDED_RECORD_NAME));
-            String firstPossibleRecordPreferredNameText = getText(By.cssSelector(FIRST_POSSIBLE_MATCH_PREFERRED_NAME));
-            String firstPossibleRecordRoleText = getText(By.cssSelector(FIRST_POSSIBLE_MATCH_ROLE));
-            String firstPossibleRecordBirthDataText = getText(By.cssSelector(FIRST_POSSIBLE_MATCH_BIRTH_DATE));
-            String firstPossibleRecordSSNText = getText(By.cssSelector(FIRST_POSSIBLE_MATCH_SSN));
-            String firstPossibleRecordEmailText = getText(By.cssSelector(FIRST_POSSIBLE_MATCH_EMAIL));
-            String firstPossibleRecordAddress1Text = getText(By.cssSelector(FIRST_POSSIBLE_MATCH_ADDRESS1));
-            String firstPossibleRecordAddress2Text = getText(By.cssSelector(FIRST_POSSIBLE_MATCH_ADDRESS2));
-            String firstPossibleRecordAddress3Text = getText(By.cssSelector(FIRST_POSSIBLE_MATCH_ADDRESS3));
-            String firstPossibleRecordCityText = getText(By.cssSelector(FIRST_POSSIBLE_MATCH_CITY));
-            String firstPossibleRecordStateText = getText(By.cssSelector(FIRST_POSSIBLE_MATCH_STATE));
-            String firstPossibleRecordPostaCodeText = getText(By.cssSelector(FIRST_POSSIBLE_MATCH_POSTAL_CODE));
-            String firstPossibleRecordCountryText = getText(By.cssSelector(FIRST_POSSIBLE_MATCH_COUNTRY));
-            String firstPossibleRecordPhoneText = getText(By.cssSelector(FIRST_POSSIBLE_MATCH_PHONE));
-            String firstPossibleRecordDateAddedText = getText(By.cssSelector(FIRST_POSSIBLE_MATCH_DATE_ADDED));
-
-            boolean validateFields = false;
-            if(firstPossibleRecordNameText.equals(mass.get(1).get("Fullname"))
-                    && firstPossibleRecordRoleText.contains(mass.get(1).get("Role1"))
-                    && firstPossibleRecordEmailText.equals(mass.get(1).get("EmailAddress"))
-                    && firstPossibleRecordAddress1Text.equals(mass.get(1).get("Address1"))
-                    && firstPossibleRecordCityText.equals(mass.get(1).get("City"))
-                    && firstPossibleRecordStateText.equals(mass.get(1).get("State"))
-                    && firstPossibleRecordPostaCodeText.equals(mass.get(1).get("PostalCode"))
-                    && firstPossibleRecordCountryText.equals(mass.get(1).get("Country"))
-                    && firstPossibleRecordPhoneText.equals(mass.get(1).get("Phone"))){
-                validateFields=true;
-            }
-            boolean validateEmptyFields = false;
-            if(firstPossibleRecordPreferredNameText.isEmpty()
-                    && firstPossibleRecordBirthDataText.isEmpty()
-                    && firstPossibleRecordSSNText.isEmpty()
-                    && firstPossibleRecordAddress2Text.isEmpty()
-                    && firstPossibleRecordAddress3Text.isEmpty()
-                    && firstPossibleRecordDateAddedText.isEmpty()){
-                validateEmptyFields=true;
-            }
-            if(validateFields && validateEmptyFields){
-                ExtentReportsSetUp.testingPass(LogPage.VERIFY_CONTENT_OF_FIRST_POSSIBLE_MATCH_PASS);
+            if(MainPage.verifyGetText(By.cssSelector(SUSPENDED_RECORD_NAME),mass.get(person).get("FullName"))
+                    && MainPage.verifyGetText(By.cssSelector(FIRST_POSSIBLE_MATCH_ROLE),mass.get(person).get("Role1"))
+                    && MainPage.verifyGetText(By.cssSelector(FIRST_POSSIBLE_MATCH_EMAIL),mass.get(person).get("EmailAddress"))
+                    && MainPage.verifyGetText(By.cssSelector(FIRST_POSSIBLE_MATCH_ADDRESS1),mass.get(person).get("Address1"))
+                    && MainPage.verifyGetText(By.cssSelector(FIRST_POSSIBLE_MATCH_CITY),mass.get(person).get("City"))
+                    && MainPage.verifyGetText(By.cssSelector(FIRST_POSSIBLE_MATCH_STATE),mass.get(person).get("State"))
+                    && MainPage.verifyGetText(By.cssSelector(FIRST_POSSIBLE_MATCH_POSTAL_CODE),mass.get(person).get("PostalCode"))
+                    && MainPage.verifyGetText(By.cssSelector(FIRST_POSSIBLE_MATCH_COUNTRY),mass.get(person).get("Country"))
+                    && MainPage.verifyGetText(By.cssSelector(FIRST_POSSIBLE_MATCH_PHONE),mass.get(person).get("Phone"))
+                    && MainPage.verifyGetText(By.cssSelector(FIRST_POSSIBLE_MATCH_PREFERRED_NAME),mass.get(person).get("PreferredName"))
+                    && MainPage.verifyGetText(By.cssSelector(FIRST_POSSIBLE_MATCH_BIRTH_DATE),mass.get(person).get("BirthDate"))
+                    && MainPage.verifyGetText(By.cssSelector(FIRST_POSSIBLE_MATCH_SSN),mass.get(person).get("SNN"))
+                    && MainPage.verifyGetText(By.cssSelector(FIRST_POSSIBLE_MATCH_ADDRESS2),mass.get(person).get("Address2"))
+                    && MainPage.verifyGetText(By.cssSelector(FIRST_POSSIBLE_MATCH_ADDRESS3),mass.get(person).get("Address3"))
+                    && MainPage.validateCurrentDateTimeWithoutHour(By.cssSelector(FIRST_POSSIBLE_MATCH_DATE_ADDED),mass.get(person).get("ActualDate"))){
+                    ExtentReportsSetUp.testingPass(passMessage);
             }else{
-                FailureDelegatePage.handlePageException(LogPage.VERIFY_CONTENT_OF_FIRST_POSSIBLE_MATCH_FAIL);
+                FailureDelegatePage.handlePageException(failMessage);
             }
         } catch (Exception e) {
-            FailureDelegatePage.handlePageException(LogPage.VERIFY_CONTENT_OF_FIRST_POSSIBLE_MATCH_FAIL);
+            FailureDelegatePage.handlePageException(failMessage);
         }
     }
 }
