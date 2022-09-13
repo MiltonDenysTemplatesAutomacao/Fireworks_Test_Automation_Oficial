@@ -110,7 +110,7 @@ Feature: Auto-Merge: Person: Standard Matching Rules
     When I create a person
       |FirstName  |LastName  |FullName        |Role1   |EmailAddress                             |EmailType  |EmailOptInMethod|Phone         |PhoneType|StudentType|StudentStatus  |StudentStatusCategory|StudentStatusDate|EntryTerm|
       |Koji       |Wakamatsu |Koji Wakamatsu  |Student |KWakamatsu2@japanesenewwavedirectors.net |Personal   |Inquiry         |(516) 453-3612|Home     |Freshman   |Inquiry-Active |Inquiry              |01/25/2020       |Fall 2021|
-      |           |          |Koji Wakamatsu  |Student |KWakamatsu@japanesenewwavedirectors.net  |           |                |(516) 453-3612|         |           |               |                     |                 |         |
+      |           |Wakamatsu |Koji Wakamatsu  |Student |KWakamatsu@japanesenewwavedirectors.net  |           |                |(516) 453-3612|         |           |               |                     |                 |         |
     And I validate if "A potential duplicate Student record was found while creating this record; it has been placed in the Duplicate Manager for review." message is correct
     #to verify content of Suspended Record and the First Match then make the record Active
     And I verify content of the suspended record person 0
@@ -118,4 +118,23 @@ Feature: Auto-Merge: Person: Standard Matching Rules
     And I make suspended record active
     And I close alert if return this message "Incoming record successfully activated."
     #to verify the record was removed from the Duplicates Page
-
+    And I navigate to duplicates
+    And I validate if "Koji Wakamatsu" record lo longer exists on the duplicates page
+    And I search "LastName" on duplicate manager person 1
+    And I validate if "Koji Wakamatsu" record lo longer exists on the duplicates page
+    And I navigate to people on records
+    And I open a people record by "Wakamatsu"
+    And I validate if "Wakamatsu"summary opened properly
+    And I navigate to contact
+    And I add a new email on contact for person group "0"
+    And I update email on contact for person "KWakamatsu@japanesenewwavedirectors.net", "School", "", "Inquiry", "", "", "1", "" and group "1"
+    And I click on save changes in contact for person
+    And I close alert if return this message "A duplicate Student record was found and automatically merged with the new record."
+    #an new incoming record can be matched to the previously suspended record
+    When I create a person
+      |FirstName  |LastName  |Role1   |EmailAddress                            |EmailType  |EmailOptInMethod|StudentType|StudentStatus  |StudentStatusCategory|StudentStatusDate|EntryTerm|
+      |Koji       |Wakamatsu |Student |KWakamatsu2@japanesenewwavedirectors.net|Personal   |Inquiry         |Freshman   |Inquiry-Active |Inquiry              |01/25/2020       |Fall 2021|
+      |Koji       |Wakamatsu |Student |KWakamatsu2@japanesenewwavedirectors.net|Personal   |Inquiry         |Freshman   |Inquiry-Active |Inquiry              |01/25/2020       |Fall 2021|
+    And I close alert if return this message "A potential duplicate Student record was found while creating this record; it has been placed in the Duplicate Manager for review."
+    And I verify content of the suspended record person 0
+    And I verify content of the first possible match record person 1

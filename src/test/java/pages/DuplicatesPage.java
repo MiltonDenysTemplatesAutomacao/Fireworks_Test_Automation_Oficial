@@ -74,22 +74,22 @@ public class DuplicatesPage extends BasePage{
             FailureDelegatePage.handlePageException(LogPage.MAKE_SUSPENDED_RECORD_ACTIVE_FAIL);
         }
     }
-    public static void searchDuplicateManager(String parameter){
+    public static void searchDuplicateManager(String parameter,int person){
         String passMessage = String.format(LogPage.SEARCH_DUPLICATE_MANAGER_PASS, parameter);
         String failMessage = String.format(LogPage.SEARCH_DUPLICATE_MANAGER_FAIL, parameter);
         try {
             waitElementBy(By.cssSelector(DUPLICATE_MANAGER_TABLE),20);
-            write(By.cssSelector(DUPLICATE_MANAGER_SEARCH_FIELD),mass.get(0).get(parameter));
+            write(By.cssSelector(DUPLICATE_MANAGER_SEARCH_FIELD),mass.get(person).get(parameter));
             ExtentReportsSetUp.testingPass(passMessage);
         } catch (Exception e) {
             FailureDelegatePage.handlePageException(failMessage);
         }
     }
 
-    public static void verifyIfRecordNoLongerExistsOnDuplicatesPage(){
+    public static void verifyIfRecordNoLongerExistsOnDuplicatesPage(String fullname){
         try {
             waitElementBy(By.cssSelector(DUPLICATE_MANAGER_TABLE),20);
-            if(!DUPLICATE_MANAGER_TABLE.contains(mass.get(0).get("Fullname"))){
+            if(!DUPLICATE_MANAGER_TABLE.contains(fullname)){
                 ExtentReportsSetUp.testingPass(LogPage.VERIFY_IF_RECORD_NO_LONGER_EXISTS_ON_DUPLICATES_PAGE_PASS);
             }else{
                 FailureDelegatePage.handlePageException(LogPage.VERIFY_IF_RECORD_NO_LONGER_EXISTS_ON_DUPLICATES_PAGE_FAIL);

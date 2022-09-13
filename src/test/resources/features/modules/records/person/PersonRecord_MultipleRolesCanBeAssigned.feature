@@ -25,9 +25,9 @@ Feature: Multiple roles can be assigned
     And I verify merge preview
     And I confirm merge and close
     And I navigate to duplicates
-    And I validate if the record lo longer exists on the duplicates page
-    And I search "LastName" on duplicate manager
-    And I validate if the record lo longer exists on the duplicates page
+    And I validate if "Isao Takahata" record lo longer exists on the duplicates page
+    And I search "LastName" on duplicate manager person 0
+    And I validate if "Isao Takahata" record lo longer exists on the duplicates page
     When I navigate to people on records
     And I open a people record by "Takahata"
     Then I validate if "Isao Takahata"summary opened properly

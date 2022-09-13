@@ -29,13 +29,13 @@ public class DuplicatesSteps {
     public static void confirmMergeAndClose() {
         DuplicatesPage.confirmMergeAndClose();
     }
-    @Then("I validate if the record lo longer exists on the duplicates page")
-    public static void verifyIfRecordNoLongerExistsOnDuplicatesPage() {
-        DuplicatesPage.verifyIfRecordNoLongerExistsOnDuplicatesPage();
+    @Then("I validate if {string} record lo longer exists on the duplicates page")
+    public static void verifyIfRecordNoLongerExistsOnDuplicatesPage(String fullname) {
+        DuplicatesPage.verifyIfRecordNoLongerExistsOnDuplicatesPage(fullname);
     }
-    @Then("I search {string} on duplicate manager")
-    public static void searchDuplicateManager(String parameter) {
-        DuplicatesPage.searchDuplicateManager(parameter);
+    @Then("I search {string} on duplicate manager person {int}")
+    public static void searchDuplicateManager(String parameter,int person) {
+        DuplicatesPage.searchDuplicateManager(parameter,person);
     }
 
 }
