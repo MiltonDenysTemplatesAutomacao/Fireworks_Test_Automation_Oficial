@@ -4,6 +4,8 @@
 #Regression testcase TL-806: Relationships are not lost in record merges
 #Regression testcase TL-205: Exact match auto-merge on rule 10: FN-LN-Phone-Email-Role
 #Regression testcase TL-371: Resolution Rules for Student data
+#TL-205: rule 11 - Auto Merge on FN-LN-StreetAddress(first 10)-PostalCode(first 5)-Email-Role
+#TL-205: rule 12 - Auto Merge on FN-LN-StreetAddress(first 10)-PostalCode(first 5)-Phone-Role
 
 @ExactMatchAutoMergeOnrule
 Feature: Auto-Merge: Person: Standard Matching Rules
@@ -140,7 +142,7 @@ Feature: Auto-Merge: Person: Standard Matching Rules
     And I verify content of the suspended record person 0
     And I verify content of the first possible match record person 1
 
-  @ResolutionRulesForStudentDataRule10 @Done @DupManager
+  @ResolutionRulesForStudentDataRule10 @Fix @DupManager
   Scenario: Record - DupManager - verify resolution rules for student data
     Given I login as "firestarterUsername", "firestarterPassword", "firestarterFullName"
     #to create an import package
@@ -173,3 +175,28 @@ Feature: Auto-Merge: Person: Standard Matching Rules
     Then I validate if "Completed" status is displayed for package "StudentStatus Update Test"
     #step above failing, need this step to go ahead
 
+  @VerifyExactDuplicatesRecordsAutomaticallyMergedRule10 @Done @DupManager
+  Scenario: Record - DupManager - verify that exact duplicates of student records are automatically merged
+    Given I login as "firestarterUsername", "firestarterPassword", "firestarterFullName"
+    When I create a person
+      |FirstName  |LastName  |Role1   |EmailAddress          |EmailType  |EmailOptInMethod|Phone     |PhoneType|StudentType|StudentStatus  |StudentStatusCategory|StudentStatusDate|EntryTerm|Address1            |City       |State         |PostalCode|Country      |
+      |Eric       |Liddell   |Student |ELiddell@sprinters.com|Personal   |Inquiry         |8437237166|Home     |Freshman   |Inquiry-Active |Inquiry              |01/15/2016       |Fall 2017|126 Wentworth Street|Charleston |South Carolina|29401     |United States|
+    And I validate if "Person has been created." message is correct
+    #adding a middle name to the existing record will not effect the matching rules
+    And I navigate to people on records
+    And I open a people record by "Eric"
+    And I validate if "Eric"summary opened properly
+    And I navigate to contact
+    When I create a name on contact for person "", "", "Henry", "", "", "", "", "" group "0"
+    And I click on save changes in contact for person
+    And I close alert if return this message "Person has been updated."
+    #to add a student record with matching FN-LN-StreetAddress(first 10)-PostalCode(first 5)-Email-Role
+    When I create a person
+      |FirstName  |LastName  |Role1   |EmailAddress          |EmailType  |EmailOptInMethod|StudentType|StudentStatus  |StudentStatusCategory|StudentStatusDate|EntryTerm|Address1            |City       |State         |PostalCode|Country      |
+      |Eric       |Liddell   |Student |ELiddell@sprinters.com|Personal   |Inquiry         |Freshman   |Inquiry-Active |Inquiry              |01/15/2016       |Fall 2017|126 Wentworth Street|Charleston |South Carolina|29401     |United States|
+    And I close alert if return this message "A duplicate Student record was found and automatically merged with the new record."
+    #to add a student record with matching FN-LN-StreetAddress(first 10)-PostalCode(first 5)-Phone-Role
+    When I create a person
+      |FirstName  |LastName  |Role1   |Phone     |PhoneType|StudentType|StudentStatus  |StudentStatusCategory|StudentStatusDate|EntryTerm|Address1            |City       |State         |PostalCode|Country      |
+      |Eric       |Liddell   |Student |8437237166|Home     |Freshman   |Inquiry-Active |Inquiry              |01/15/2016       |Fall 2017|126 Wentworth Street|Charleston |South Carolina|29401     |United States|
+    And I close alert if return this message "A duplicate Student record was found and automatically merged with the new record."
