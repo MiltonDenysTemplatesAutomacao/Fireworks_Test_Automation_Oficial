@@ -1,4 +1,4 @@
-package pages.records;
+package pages.records.imports;
 
 import config.extent_reports.ExtentReportsSetUp;
 import org.openqa.selenium.By;
@@ -306,17 +306,19 @@ public class ImportFieldsPage extends BasePage {
 
     public static String returnMapRequiredFields(String field){
         Map<String, String> fieldParameter = new HashMap<String, String>();
-        fieldParameter.put("STUDENT_TYPE", "student_type");
-        fieldParameter.put("STUDENT_CATEGORY", "student_status_category");
-        fieldParameter.put("STUDENT_STATUS", "student_status");
-        fieldParameter.put("ENTRY_TERM", "status_entry_term");
-        fieldParameter.put("STATUS_DATE", "student_status_date");
-        fieldParameter.put("ROLE", "person_role");
-        fieldParameter.put("FIRST_NAME", "name_first");
-        fieldParameter.put("LAST_NAME", "name_last");
-        fieldParameter.put("EMAIL_ADDRESS", "email_address");
-        fieldParameter.put("EMAIL_TYPE", "email_type");
-        fieldParameter.put("OPTIN", "opt_in_method_id");
+        fieldParameter.put("Student Type", "student_type");
+        fieldParameter.put("Student Status Category", "student_status_category");
+        fieldParameter.put("Student Status Field", "student_status");
+        fieldParameter.put("Entry Term", "status_entry_term");
+        fieldParameter.put("Student Status Date", "student_status_date");
+        fieldParameter.put("Role", "person_role");
+        fieldParameter.put("First Name", "name_first");
+        fieldParameter.put("Last Name", "name_last");
+        fieldParameter.put("Email Address", "email_address");
+        fieldParameter.put("Email Type", "email_type");
+        fieldParameter.put("Opt In Method", "opt_in_method_id");
+        fieldParameter.put("Phone Number", "phone_number");
+        fieldParameter.put("Phone Type", "phone_type");
         return fieldParameter.get(field);
     }
 

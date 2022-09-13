@@ -1,4 +1,4 @@
-package pages.records;
+package pages.records.imports;
 
 import config.extent_reports.ExtentReportsSetUp;
 import org.openqa.selenium.By;

@@ -1,7 +1,7 @@
-package steps.records;
+package steps.records.imports;
 
 import io.cucumber.java.en.And;
-import pages.records.ImportFieldsPage;
+import pages.records.imports.ImportFieldsPage;
 
 public class ImportFieldsSteps {
 

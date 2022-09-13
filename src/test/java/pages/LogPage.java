@@ -638,5 +638,9 @@ public class LogPage {
     public static final String CONFIRM_REPLACE_FILE_FAIL = "Fail while trying to confirm replace file";
     public static final String MAKE_SUSPENDED_RECORD_ACTIVE_PASS = "I make suspended record active";
     public static final String MAKE_SUSPENDED_RECORD_ACTIVE_FAIL = "Fail while trying to make suspended record active";
+    public static final String VERIFY_PACKAGE_SETTINGS_LOADED_PASS = "I verify if package settings were loaded";
+    public static final String VERIFY_PACKAGE_SETTINGS_LOADED_FAIL = "Fail while trying to verify if package settings were loaded";
+    public static final String CLICK_REVIEW_IMPORT_PASS = "I click on review import button";
+    public static final String CLICK_REVIEW_IMPORT_FAIL = "Fail while trying to click on review import button";
 
 }

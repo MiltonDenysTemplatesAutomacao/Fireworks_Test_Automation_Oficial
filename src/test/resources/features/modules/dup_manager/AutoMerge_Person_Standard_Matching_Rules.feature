@@ -3,6 +3,7 @@
 #Regression testcase TL-205: Exact match auto-merge on rule 6: IDType-ID-FN(first3)
 #Regression testcase TL-806: Relationships are not lost in record merges
 #Regression testcase TL-205: Exact match auto-merge on rule 10: FN-LN-Phone-Email-Role
+#Regression testcase TL-371: Resolution Rules for Student data
 
 @ExactMatchAutoMergeOnrule
 Feature: Auto-Merge: Person: Standard Matching Rules
@@ -138,3 +139,37 @@ Feature: Auto-Merge: Person: Standard Matching Rules
     And I close alert if return this message "A potential duplicate Student record was found while creating this record; it has been placed in the Duplicate Manager for review."
     And I verify content of the suspended record person 0
     And I verify content of the first possible match record person 1
+
+  @ResolutionRulesForStudentDataRule10 @Done @DupManager
+  Scenario: Record - DupManager - verify resolution rules for student data
+    Given I login as "firestarterUsername", "firestarterPassword", "firestarterFullName"
+    #to create an import package
+    When I navigate to ImportsPackagesPage
+    And I create a package
+    And I update PackageStartTab "StudentStatus Update Test", "", "ImportStudentStatusTest01Enrolled.zip", "Student"
+    And I click save and continue button "Start"
+    And I map required fields "Student Type"
+    And I map required fields "Student Status Category"
+    And I map required fields "Student Status Field"
+    And I map required fields "Entry Term"
+    And I map required fields "Student Status Date"
+    And I map required fields "Role"
+    And I map required fields "First Name"
+    And I map required fields "Last Name"
+    And I map required fields "Email Address"
+    And I map required fields "Email Type"
+    And I map required fields "Opt In Method"
+    And I map required fields "Phone Number"
+    And I map required fields "Phone Type"
+    And I click save and continue button "Required"
+    And I click on "Save & Continue"
+    And I update Package Actions "Campus Event", "Admitted Student Day: Attend", ""
+    And I click on "Save & Continue"
+    #to run the import
+    And I click on "Make Ready & Run"
+    And I verify if package settings were loaded "StudentStatus Update Test", "ImportStudentStatusTest01Enrolled.zip"
+    And I click on review import button
+    And I click on Run Import button
+    Then I validate if "Completed" status is displayed for package "StudentStatus Update Test"
+    #step above failing, need this step to go ahead
+

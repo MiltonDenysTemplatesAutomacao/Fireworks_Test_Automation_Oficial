@@ -1,7 +1,7 @@
-package steps.records;
+package steps.records.imports;
 
 import io.cucumber.java.en.When;
-import pages.records.ImportRunPage;
+import pages.records.imports.ImportRunPage;
 
 public class ImportRunSteps {
 
@@ -13,6 +13,14 @@ public class ImportRunSteps {
     @When("I click on Run Import button")
     public static void runImport() {
         ImportRunPage.runImport();
+    }
+    @When("I click on review import button")
+    public static void clickReviewImport() {
+        ImportRunPage.clickReviewImport();
+    }
+    @When("I verify if package settings were loaded {string}, {string}")
+    public static void verifyPackageSettingsLoaded(String packageName,String sourceFile) {
+        ImportRunPage.verifyPackageSettingsLoaded(packageName,sourceFile);
     }
 
 }

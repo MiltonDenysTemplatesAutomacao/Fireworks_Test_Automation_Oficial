@@ -133,6 +133,7 @@ public class MainPage extends BasePage{
         KeyPage.pressKey(inputField,"Enter");
     }
     public static void clickOption(By by)throws Exception{
+        waitUntilElementToBeSelected(by,10);
         scrollToElement(by);
         scrollTo("-150");
         waitUntilElementPresence(by,10);
@@ -146,8 +147,8 @@ public class MainPage extends BasePage{
         waitElementBy(by,delay);
         click(by);
         waitElementBy(dropDownList,delay);
-        write(by,value);
-        KeyPage.pressKey(by,"Enter");
+        write(dropDownList,value);
+        KeyPage.pressKey(dropDownList,"Enter");
 
     }
     public static void clickOptionList(By by, String value, By dropDownList, String tag)throws Exception{
