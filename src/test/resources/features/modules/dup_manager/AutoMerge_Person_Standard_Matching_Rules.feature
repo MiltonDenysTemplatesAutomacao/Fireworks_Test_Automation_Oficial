@@ -8,6 +8,7 @@
 #TL-205: rule 12 - Auto Merge on FN-LN-StreetAddress(first 10)-PostalCode(first 5)-Phone-Role
 #Regression testcase TL-186 (1 of 3): Comparison to Archived Records
 #Regression testcase TL-186 (2 of 3): Comparison to Archived Records
+#TL-205: Exact match auto-merge on rule 15: Transposed Name-Phone-BDate
 
 @ExactMatchAutoMergeOnrule
 Feature: Auto-Merge: Person: Standard Matching Rules
@@ -233,7 +234,7 @@ Feature: Auto-Merge: Person: Standard Matching Rules
     When I create a person
       |FirstName  |LastName |Role1   |Phone       |PhoneType|StudentType|StudentStatus  |StudentStatusCategory|StudentStatusDate|EntryTerm|Address1       |City           |State   |PostalCode|Country      |EmailAddress          |EmailType  |EmailOptInMethod  |
       |Harry      |Ruby     |Student |904-724-3398|Home     |Freshman   |Inquiry-Active |Inquiry              |11/25/2019       |Fall 2020|105 Virginia St|Fort Washington|Maryland|20744     |United States|HRuby@tinpanalley.com |Personal   |Inquiry           |
-    #And I validate if "Person has been created." message is correct
+    And I validate if "Person has been created." message is correct
     And I navigate to people on records
     And I open a people record by "Harry"
     And I validate if "Harry"summary opened properly
@@ -245,7 +246,7 @@ Feature: Auto-Merge: Person: Standard Matching Rules
     When I create a person
       |FirstName   |LastName |Role1   |StudentType|StudentStatus  |StudentStatusCategory|StudentStatusDate|EntryTerm|EmailAddress               |EmailType  |EmailOptInMethod  |
       |Harold      |Ruby     |Student |Freshman   |Inquiry-Active |Inquiry              |11/25/2019       |Fall 2020|HaroldRuby@tinpanalley.com |Personal   |Inquiry           |
-    #And I validate if "Person has been created." message is correct
+    And I validate if "Person has been created." message is correct
     And I navigate to people on records
     And I open a people record by "Harold"
     And I validate if "Harold"summary opened properly
@@ -258,3 +259,22 @@ Feature: Auto-Merge: Person: Standard Matching Rules
     And I close alert if return this message "A duplicate Student record was found and automatically merged with the new record."
     And I validate if "Harry"summary opened properly
     And I verify Header Record Status "Active" for person
+
+  @VerifyImportDetectsExactMatchesWithTransposedNameBirthDatePhoneNUmberRule15 @Done @DupManager
+  Scenario: Record - DupManager - verify import detects exact matches with transposed name and matching birth date and phone number
+    Given I login as "firestarterUsername", "firestarterPassword", "firestarterFullName"
+    When I create a person
+      |FirstName  |LastName |Role1   |Phone       |PhoneType|StudentType|StudentStatus  |StudentStatusCategory|StudentStatusDate|EntryTerm|
+      |Campbell   |Smith    |Student |842-156-9253|Home     |Freshman   |Inquiry-Active |Inquiry              |11/25/2019       |Fall 2020|
+    And I validate if "Person has been created." message is correct
+    And I navigate to people on records
+    And I open a people record by "Campbell"
+    And I validate if "Campbell"summary opened properly
+    And I navigate to basic
+    And I update birth values "02/21/1997", "United States", "Charleston", "South Carolina"
+    And I click on save changes on basic
+    And I close alert if return this message "Person has been updated."
+    And I navigate to contact
+    When I create a name on contact for person "", "", "", "Cam", "", "", "", "" group "0"
+    And I click on save changes on basic
+    And I close alert if return this message "Person has been updated."
