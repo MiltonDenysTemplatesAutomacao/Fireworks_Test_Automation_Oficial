@@ -228,6 +228,8 @@ public class LogPage {
     public static final String DELETE_ORGANIZATION_FAIL = "Fail while trying to delete an organization";
     public static final String VERIFY_HEADER_RECORD_STATUS_PASS = "I verify Header Record Status '%s'";
     public static final String VERIFY_HEADER_RECORD_STATUS_FAIL = "Fail while trying to verify Header Record Status '%s'";
+    public static final String UPDATE_HEADER_RECORD_STATUS_PASS = "I update Header Record Status '%s'";
+    public static final String UPDATE_HEADER_RECORD_STATUS_FAIL = "Fail while trying to update Header Record Status '%s'";
     public static final String VERIFY_HEADER_PERMISSIONS_PASS = "I verify Header Permission '%s'";
     public static final String VERIFY_HEADER_PERMISSIONS_FAIL = "Fail while trying to verify Header Permission '%s'";
     public static final String VALIDATE_STAFF_REQUIRED_FIELDS_MESSAGE_PASS = "I validate if '%s' message alert for staff required is correct";

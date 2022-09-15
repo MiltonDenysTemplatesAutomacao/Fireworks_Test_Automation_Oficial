@@ -96,5 +96,13 @@ public class PersonSteps {
     public static void deleteSummaryFields(String summaryField) {
         PersonPage.deleteSummaryFields(summaryField);
     }
+    @Then("I verify Header Record Status {string} for person")
+    public static void verifyHeaderRecordStatus(String status) {
+        PersonPage.verifyHeaderRecordStatus(status);
+    }
+    @Then("I update Header Record Status {string} for person")
+    public static void updateHeaderRecordStatus(String status) {
+        PersonPage.updateHeaderRecordStatus(status);
+    }
 
 }

@@ -84,6 +84,7 @@ public class PersonPage extends BasePage{
     private static final String HEADER_ROLE_ELEMENT_LIST = ".//*[@class='btn-group autoSubmit dropDownSelect open']//*[@class='dropdown-menu']";
     private static final String HEADER_STUDENT_TYPE_ELEMENT = "#personHeaderStudentTypeButton";
     private static final String HEADER_ASSIGNED_STAFF_ELEMENT = "#personHeaderAssignedStaffButton";
+    private static final String HEADER_RECORD_STATUS_ELEMENT = "#personHeaderRecordStatusButton";
     private static final String ACTIONS_LABEL = "recordNavTab_actions";
     private static final String BASIC_LABEL = "recordNavTab_basic";
     private static final String CONTACT_LABEL = "recordNavTab_contact";
@@ -109,7 +110,34 @@ public class PersonPage extends BasePage{
     private static final String CREATE_PERSON_BUTTON = "top-controls-create-new-person";
     private static final String COMPOSER_SAVE_CHANGES_BUTTON = "saveChangesBtnPersonCreate";
 
+    private static String recordStatusList(String status){
+        return String.format("//*[contains(text(),'%s')]",status);
+    }
 
+    public static void updateHeaderRecordStatus(String status){
+        String passMessage = String.format(LogPage.UPDATE_HEADER_RECORD_STATUS_PASS,status);
+        String failMessage = String.format(LogPage.UPDATE_HEADER_RECORD_STATUS_FAIL,status);
+        try {
+            MainPage.clickOption(By.cssSelector(HEADER_RECORD_STATUS_ELEMENT));
+            MainPage.clickOption(By.xpath(recordStatusList(status)));
+            ExtentReportsSetUp.testingPass(passMessage);
+        } catch (Exception e) {
+            FailureDelegatePage.handlePageException(failMessage);
+        }
+    }
+    public static void verifyHeaderRecordStatus(String status){
+        String passMessage = String.format(LogPage.VERIFY_HEADER_RECORD_STATUS_PASS,status);
+        String failMessage = String.format(LogPage.VERIFY_HEADER_RECORD_STATUS_FAIL,status);
+        try{
+            if(MainPage.verifyGetText(By.cssSelector(HEADER_RECORD_STATUS_ELEMENT),status)){
+                ExtentReportsSetUp.testingPass(passMessage);
+            }else{
+                FailureDelegatePage.handlePageException(failMessage);
+            }
+        }catch(Exception e){
+            FailureDelegatePage.handlePageException(failMessage);
+        }
+    }
     public static String emailComments(String index){
         return String.format("#entity_email_%s_email_comments",index);
     }
