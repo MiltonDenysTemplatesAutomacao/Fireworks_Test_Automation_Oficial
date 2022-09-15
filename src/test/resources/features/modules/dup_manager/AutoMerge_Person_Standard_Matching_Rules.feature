@@ -7,6 +7,7 @@
 #TL-205: rule 11 - Auto Merge on FN-LN-StreetAddress(first 10)-PostalCode(first 5)-Email-Role
 #TL-205: rule 12 - Auto Merge on FN-LN-StreetAddress(first 10)-PostalCode(first 5)-Phone-Role
 #Regression testcase TL-186 (1 of 3): Comparison to Archived Records
+#Regression testcase TL-186 (2 of 3): Comparison to Archived Records
 
 @ExactMatchAutoMergeOnrule
 Feature: Auto-Merge: Person: Standard Matching Rules
@@ -202,13 +203,13 @@ Feature: Auto-Merge: Person: Standard Matching Rules
       |Eric       |Liddell   |Student |8437237166|Home     |Freshman   |Inquiry-Active |Inquiry              |01/15/2016       |Fall 2017|126 Wentworth Street|Charleston |South Carolina|29401     |United States|
     And I close alert if return this message "A duplicate Student record was found and automatically merged with the new record."
 
-  @VerifyExactDuplicatesRecordsAutomaticallyMergedRule12 @Done @DupManager
+  @VerifyCreatedCctiveRecordsComparedAgainstArchivedRule12 @Done @DupManager
   Scenario: Record - DupManager - verify created active records are compared against archived records for exact matches
     Given I login as "firestarterUsername", "firestarterPassword", "firestarterFullName"
     When I create a person
       |FirstName  |LastName  |Role1   |Phone       |PhoneType|StudentType|StudentStatus  |StudentStatusCategory|StudentStatusDate|EntryTerm|Address1      |City        |State   |PostalCode|Country      |
       |Bernice    |Petkere   |Student |531-359-5638|Home     |Freshman   |Inquiry-Active |Inquiry              |11/25/2019       |Fall 2020|584 Sunbeam Dr|Centreville |Virginia|20120     |United States|
-    #And I validate if "Person has been created." message is correct
+    And I validate if "Person has been created." message is correct
     And I navigate to people on records
     And I open a people record by "Bernice"
     And I validate if "Bernice"summary opened properly
@@ -219,9 +220,41 @@ Feature: Auto-Merge: Person: Standard Matching Rules
     When I create a person
       |FirstName  |LastName  |Role1   |Phone       |PhoneType|StudentType|StudentStatus  |StudentStatusCategory  |StudentStatusDate|EntryTerm|Address1      |City        |State   |PostalCode|Country      |
       |Bernice    |Petkere   |Student |531-359-5638|Home     |Freshman   |Complete       |Applicant              |11/25/2019       |Fall 2020|584 Sunbeam Dr|Centreville |Virginia|20120     |United States|
-    #And I validate if "Person has been created." message is correct
+    And I validate if "Person has been created." message is correct
     And I close alert if return this message "A duplicate Student record was found and automatically merged with the new record."
     And I navigate to people on records
     And I open a people record by "Bernice"
     And I validate if "Bernice"summary opened properly
+    And I verify Header Record Status "Active" for person
+
+  @VerifyUpdatedActiveRecordsComparedAgainstArchivedRule12 @Done @DupManager
+  Scenario: Record - DupManager - verify updated active records are compared against archived records for exact matches
+    Given I login as "firestarterUsername", "firestarterPassword", "firestarterFullName"
+    When I create a person
+      |FirstName  |LastName |Role1   |Phone       |PhoneType|StudentType|StudentStatus  |StudentStatusCategory|StudentStatusDate|EntryTerm|Address1       |City           |State   |PostalCode|Country      |EmailAddress          |EmailType  |EmailOptInMethod  |
+      |Harry      |Ruby     |Student |904-724-3398|Home     |Freshman   |Inquiry-Active |Inquiry              |11/25/2019       |Fall 2020|105 Virginia St|Fort Washington|Maryland|20744     |United States|HRuby@tinpanalley.com |Personal   |Inquiry           |
+    #And I validate if "Person has been created." message is correct
+    And I navigate to people on records
+    And I open a people record by "Harry"
+    And I validate if "Harry"summary opened properly
+    And I verify Header Record Status "Active" for person
+    And I update Header Record Status "Archived" for person
+    And I close alert if return this message "Person has been updated."
+    And I verify Header Record Status "Archived" for person
+    #to create a new record then update the first name, phone, and address to match the archived record
+    When I create a person
+      |FirstName   |LastName |Role1   |StudentType|StudentStatus  |StudentStatusCategory|StudentStatusDate|EntryTerm|EmailAddress               |EmailType  |EmailOptInMethod  |
+      |Harold      |Ruby     |Student |Freshman   |Inquiry-Active |Inquiry              |11/25/2019       |Fall 2020|HaroldRuby@tinpanalley.com |Personal   |Inquiry           |
+    #And I validate if "Person has been created." message is correct
+    And I navigate to people on records
+    And I open a people record by "Harold"
+    And I validate if "Harold"summary opened properly
+    And I navigate to contact
+    When I update phone number in contact for person "904-724-3398", "Home", "", "", "", "", "", "" field group "0"
+    And I create address on contact for person "105 Virginia St", "", "", "", "Fort Washington", "Maryland", "", "United States", "20744", "Mailing", "", "", "", "", group "0"
+    When I create a name on contact for person "Harry", "", "", "", "", "", "", "" group "0"
+    And I click on save changes in contact for person
+    #to see the automatic merge and resulting record with an active status
+    And I close alert if return this message "A duplicate Student record was found and automatically merged with the new record."
+    And I validate if "Harry"summary opened properly
     And I verify Header Record Status "Active" for person
