@@ -10,7 +10,7 @@ Feature: Document fields validation
     When I create a person
       |FirstName  |LastName |Role1    |EmailAddress      |EmailType  |EmailOptInMethod|
       |Rainier    |Grimaldi |Person   |prince@monaco.com |Personal   |Inquiry         |
-    And I validate if "Person has been created." message is correct
+    #And I validate if "Person has been created." message is correct
     #to save a new document with no data added
     And I navigate to people on records
     And I open a people record by "Rainier"
@@ -28,6 +28,7 @@ Feature: Document fields validation
     And I close alert if return this message "Document has been created."
     #not to be able save the same document to this record again
     And I navigate to Documents
+    And I create a document
     When I update document "Headshot", "Essay", "", "", "", "DocTests-File1.jpg"
     And I click on "Save Changes"
     And I close alert if return this message "The Name or File Name must be different."
