@@ -278,3 +278,23 @@ Feature: Auto-Merge: Person: Standard Matching Rules
     When I create a name on contact for person "", "", "", "Cam", "", "", "", "" group "0"
     And I click on save changes on basic
     And I close alert if return this message "Person has been updated."
+    #to create a student import package
+    When I navigate to ImportsPackagesPage
+    And I create a package
+    And I update PackageStartTab "StudentStatus Update Test", "", "ImportStudentStatusTest01Enrolled.zip", "Student"
+    And I click save and continue button "Start"
+    And I map required fields "Student Type"
+    And I map required fields "Student Status Category"
+    And I map required fields "Student Status Field"
+    And I map required fields "Entry Term"
+    And I map required fields "Student Status Date"
+    And I map required fields "Role"
+    And I map required fields "First Name"
+    And I map required fields "Last Name"
+    And I map required fields "Phone Number"
+    And I map required fields "Phone Type"
+    And I click save and continue button "Required"
+    And I add Optional Field Group "0" name "Birth Date"
+    And I click on "Save & Continue"
+    And I update Package Actions "Campus Event", "Admitted Student Day: Attend", ""
+    And I click on "Save & Continue"
