@@ -33,6 +33,6 @@ Feature: Edits to Relationships
     And I click on "Save Changes"
     And I confirm replace file
     And I close alert if return this message "Document has been updated."
-    And I verify document data table values "Headshot", "Essay", "updateDocDescription", "02/03/2020", "docComment", "DocTests-File3.jpg"
+    Then I verify document "Headshot", "Essay", "", "", "docComment", ""
     And I navigate to Documents
     And I verify document data table values "Headshot", "Essay", "updateDocDescription", "02/03/2020", "docComment", "DocTests-File3.jpg"

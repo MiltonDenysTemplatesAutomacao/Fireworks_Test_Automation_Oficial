@@ -18,6 +18,7 @@ public class DocumentsPage extends BasePage {
     public static final String DOCUMENT_DATE_FIELD = "#document_date";
     public static final String COMMENTS_FIELD = "#document_comments";
     public static final String CHOOSE_FILE_BUTTON = "#document_file_name-mediaSourceFileButton";
+    public static final String FILE_TEXT = "//*[@id='documentCreate']/div[2]/div[2]/div[1]";
     public static final String DOCUMENT_MANAGER_TABLE_ROW1 = "#documentManagerTable_row_0";
     public static final String DOCUMENT_MANAGER_SEARCH_FIELD = "#documentManagerTableControlsTableSearch";
     public static final String DOCUMENT_MANAGER_TABLE_ROW1_COL1 = "#documentManagerTable_row_0_col_0";
@@ -77,7 +78,7 @@ public class DocumentsPage extends BasePage {
                 && MainPage.verifyGetAttribute(By.cssSelector(DOCUMENT_DESCRIPTION_FIELD),documentBean.getDescription())
                 && MainPage.verifyGetAttribute(By.cssSelector(DOCUMENT_DATE_FIELD),documentBean.getDocumentDate())
                 && MainPage.verifyGetAttribute(By.cssSelector(COMMENTS_FIELD),documentBean.getComments())
-                && MainPage.verifyGetAttribute(By.cssSelector(CHOOSE_FILE_BUTTON),documentBean.getSourceFile())){
+                && MainPage.verifyGetText(By.xpath(FILE_TEXT),documentBean.getSourceFile())){
                 ExtentReportsSetUp.testingPass(LogPage.VERIFY_DOCUMENT_PASS);
             }
         } catch (Exception e) {
