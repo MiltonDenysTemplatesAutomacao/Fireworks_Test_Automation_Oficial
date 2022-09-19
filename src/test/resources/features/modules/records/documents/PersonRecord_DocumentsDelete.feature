@@ -6,7 +6,7 @@
 Feature: Edits to Relationships
 
   @DeleteDocumentScenario @Done @Documents
-  Scenario: Record - Relationships - verify edits to relationships are reflected on both records
+  Scenario: Record - Documents - verify a document can be searched and deleted
     Given I login as "firestarterUsername", "firestarterPassword", "firestarterFullName"
     When I create a person
       |FirstName|LastName |Role1    |EmailAddress                 |EmailType  |EmailOptInMethod|StudentType|StudentStatusCategory |StudentStatus  |StudentStatusDate|EntryTerm|
