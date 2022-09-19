@@ -4,6 +4,14 @@ import io.cucumber.java.en.When;
 import pages.SmartSearchPage;
 
 public class SmartSearchSteps {
+    @When("I verify smart search results {string}")
+    public static void verifySearchResults(String results) {
+        SmartSearchPage.verifySearchResults(results);
+    }
+    @When("I click on run search button")
+    public static void runSearch() {
+        SmartSearchPage.runSearch();
+    }
     @When("I click on create smart search button")
     public static void navigateSmartSearchPage() {
         SmartSearchPage.createNewSmartSearch();
@@ -19,6 +27,10 @@ public class SmartSearchSteps {
     @When("I fill {string} text condition value group {string}")
     public static void fillTextConditionValue(String search,String index) {
         SmartSearchPage.fillTextConditionValue(search,index);
+    }
+    @When("I open smart search {string}")
+    public static void openSearch(String search) {
+        SmartSearchPage.openSearch(search);
     }
     @When("I click on save this search button")
     public static void clickSaveThisSearch() {

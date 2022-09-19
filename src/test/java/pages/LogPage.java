@@ -644,5 +644,13 @@ public class LogPage {
     public static final String VERIFY_PACKAGE_SETTINGS_LOADED_FAIL = "Fail while trying to verify if package settings were loaded";
     public static final String CLICK_REVIEW_IMPORT_PASS = "I click on review import button";
     public static final String CLICK_REVIEW_IMPORT_FAIL = "Fail while trying to click on review import button";
+    public static final String VERIFY_SEARCH_RESULTS_PASS = "I verify smart search results '%s'";
+    public static final String VERIFY_SEARCH_RESULTS_FAIL = "Fail while trying to verify smart search results '%s'";
+    public static final String DELETE_DOCUMENT_PASS = "I delete a document";
+    public static final String DELETE_DOCUMENT_FAIL = "Fail while trying to delete a document";
+    public static final String OPEN_SEARCH_PASS = "I open smart search '%s'";
+    public static final String OPEN_SEARCH_FAIL = "Fail while trying to open smart search '%s'";
+    public static final String RUN_SEARCH_PASS = "I click on run search button";
+    public static final String RUN_SEARCH_FAIL = "Fail while trying to click on run search button";
 
 }

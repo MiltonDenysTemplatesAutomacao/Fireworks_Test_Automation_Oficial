@@ -14,6 +14,10 @@ public class DocumentsSteps {
     public static void openDocument(String document) {
         DocumentsPage.openDocument(document);
     }
+    @Then("I delete a document")
+    public static void deleteDocument() {
+        DocumentsPage.deleteDocument();
+    }
     @Then("I create a document")
     public static void createDocument() {
         DocumentsPage.createDocument();

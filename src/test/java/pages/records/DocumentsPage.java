@@ -23,7 +23,18 @@ public class DocumentsPage extends BasePage {
     public static final String DOCUMENT_MANAGER_SEARCH_FIELD = "#documentManagerTableControlsTableSearch";
     public static final String DOCUMENT_MANAGER_TABLE_ROW1_COL1 = "#documentManagerTable_row_0_col_0";
     public static final String REPLACE_FILE_MODAL_CONTINUE_BUTTON = "#modalSubmitButtonreplaceFileDocument";
+    public static final String DELETE_DOCUMENT_BUTTON = "#deleteDocumentButton";
+    public static final String DOCUMENT_DELETE_MODAL_YES_DELETE_BUTTON = "#modalSubmitButtondeleteDocument";
 
+    public static void deleteDocument() {
+        try {
+            MainPage.clickOption(By.cssSelector(DELETE_DOCUMENT_BUTTON));
+            MainPage.clickOption(By.cssSelector(DOCUMENT_DELETE_MODAL_YES_DELETE_BUTTON));
+            ExtentReportsSetUp.testingPass(LogPage.DELETE_DOCUMENT_PASS);
+        } catch (Exception e) {
+            FailureDelegatePage.handlePageException(LogPage.DELETE_DOCUMENT_FAIL);
+        }
+    }
     public static void confirmReplaceFile(){
         try {
             MainPage.clickOption(By.cssSelector(REPLACE_FILE_MODAL_CONTINUE_BUTTON));
