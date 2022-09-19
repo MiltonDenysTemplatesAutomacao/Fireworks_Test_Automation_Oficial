@@ -44,6 +44,7 @@ Feature: Edits to Relationships
     And I navigate to smart search page
     And I open smart search "DocumentSearch4220"
     When I click on run search button
-
+    And I verify results on smart search table "No search results to display."
+    And I verify result count on smart search table "This Smart Search returned 0 results"
 
 

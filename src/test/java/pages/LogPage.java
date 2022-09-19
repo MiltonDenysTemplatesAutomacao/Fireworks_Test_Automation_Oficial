@@ -652,5 +652,9 @@ public class LogPage {
     public static final String OPEN_SEARCH_FAIL = "Fail while trying to open smart search '%s'";
     public static final String RUN_SEARCH_PASS = "I click on run search button";
     public static final String RUN_SEARCH_FAIL = "Fail while trying to click on run search button";
+    public static final String VERIFY_SMART_SEARCH_RESULTS_PASS = "I verify results on smart search table '%s'";
+    public static final String VERIFY_SMART_SEARCH_RESULTS_FAIL = "Fail while trying to verify results on smart search table '%s'";
+    public static final String VERIFY_RESULT_COUNT_PASS = "I verify result count on smart search table '%s'";
+    public static final String VERIFY_RESULT_COUNT_FAIL = "Fail while trying to verify result count on smart search table '%s'";
 
 }

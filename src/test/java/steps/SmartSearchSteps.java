@@ -12,6 +12,14 @@ public class SmartSearchSteps {
     public static void runSearch() {
         SmartSearchPage.runSearch();
     }
+    @When("I verify result count on smart search table {string}")
+    public static void verifyResultCount(String numRecords) {
+        SmartSearchPage.verifyResultCount(numRecords);
+    }
+    @When("I verify results on smart search table {string}")
+    public static void verifySmartSearchResults(String results) {
+        SmartSearchPage.verifySmartSearchResults(results);
+    }
     @When("I click on create smart search button")
     public static void navigateSmartSearchPage() {
         SmartSearchPage.createNewSmartSearch();

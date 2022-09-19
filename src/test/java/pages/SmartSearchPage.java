@@ -12,6 +12,8 @@ public class SmartSearchPage extends BasePage{
     public static final String SMART_SEARCH_MANAGER_TABLE_ROW_0 = "#searchManagerTable_row_0_col_0";
     public static final String RUN_DROPDOWN_BUTTON = "#runDropdown";
     public static final String RUN_SEARCH_BUTTON = "#searchRun";
+    public static final String SMART_SEARCH_MANAGER_TABLE_ROW_0_COL_0 = "#searchResultsTable_row_0_col_0";
+    public static final String RESULT_COUNT_TEXT = "#resultCountOuter";
 
     private static String groupConditionFieldDropdown(String index){
         return String.format("#s2id_groups_%s_conditions_%s_field_id",index,index);
@@ -21,6 +23,32 @@ public class SmartSearchPage extends BasePage{
     }
     private static String groupConditionConditionValueTextField(String index){
         return String.format("#groups_%s_conditions_%s_value1",index,index);
+    }
+    public static void verifyResultCount(String numRecords){
+        String passMessage = String.format(LogPage.VERIFY_RESULT_COUNT_PASS,numRecords);
+        String failMessage = String.format(LogPage.VERIFY_RESULT_COUNT_FAIL,numRecords);
+        try {
+            if(MainPage.verifyGetText(By.cssSelector(RESULT_COUNT_TEXT),numRecords)){
+                ExtentReportsSetUp.testingPass(passMessage);
+            }else{
+                FailureDelegatePage.handlePageException(failMessage);
+            }
+        } catch (Exception e) {
+            FailureDelegatePage.handlePageException(failMessage);
+        }
+    }
+    public static void verifySmartSearchResults(String results){
+        String passMessage = String.format(LogPage.VERIFY_SMART_SEARCH_RESULTS_PASS,results);
+        String failMessage = String.format(LogPage.VERIFY_SMART_SEARCH_RESULTS_FAIL,results);
+        try {
+            if(MainPage.verifyGetText(By.cssSelector(SMART_SEARCH_MANAGER_TABLE_ROW_0_COL_0),results)){
+                ExtentReportsSetUp.testingPass(passMessage);
+            }else{
+                FailureDelegatePage.handlePageException(failMessage);
+            }
+        } catch (Exception e) {
+            FailureDelegatePage.handlePageException(failMessage);
+        }
     }
     public static void runSearch(){
         try {
