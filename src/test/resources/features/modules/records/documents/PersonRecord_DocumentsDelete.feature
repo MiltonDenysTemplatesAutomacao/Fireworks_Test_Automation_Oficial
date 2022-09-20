@@ -3,7 +3,7 @@
 #Regression testcase TL-1162: Search for documents
 
 @DeleteDocument
-Feature: Edits to Relationships
+Feature: Delete a Document
 
   @DeleteDocumentScenario @Done @Documents
   Scenario: Record - Documents - verify a document can be searched and deleted

@@ -4,7 +4,7 @@
 #Regression testcase TL-1152: Document Manager
 
 @CreateEditDocument
-Feature: Edits to Relationships
+Feature: Create/Edits to Relationships
 
   @CreateEditDocumentScenarios @Done @Documents
   Scenario: Record - Relationships - verify edits to relationships are reflected on both records

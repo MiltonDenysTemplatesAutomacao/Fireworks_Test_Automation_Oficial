@@ -658,5 +658,15 @@ public class LogPage {
     public static final String VERIFY_RESULT_COUNT_FAIL = "Fail while trying to verify result count on smart search table '%s'";
     public static final String VERIFY_IF_DOCUMENTS_TAB_IS_VISIBLE_PASS = "I validate if documents tab is visible";
     public static final String VERIFY_IF_DOCUMENTS_TAB_IS_VISIBLE_FAIL = "Fail while trying to validate if documents tab is visible";
+    public static final String VERIFY_IF_CREATE_BUTTON_IS_NOT_VISIBLE_PASS = "I validate if create button is not displayed";
+    public static final String VERIFY_IF_CREATE_BUTTON_IS_NOT_VISIBLE_FAIL = "Fail while trying to validate if create button is not displayed";
+    public static final String VERIFY_IF_CLEAR_CHANGES_BUTTON_IS_NOT_VISIBLE_PASS = "I validate if clear changes button is not displayed";
+    public static final String VERIFY_IF_CLEAR_CHANGES_BUTTON_IS_NOT_VISIBLE_FAIL = "Fail while trying to validate if clear changes button is not displayed";
+    public static final String VERIFY_IF_SAVE_CHANGES_BUTTON_IS_NOT_VISIBLE_PASS = "I validate if save changes button is not displayed";
+    public static final String VERIFY_IF_SAVE_CHANGES_BUTTON_IS_NOT_VISIBLE_FAIL = "Fail while trying to validate if save changes button is not displayed";
+    public static final String VERIFY_IF_DOCUMENT_VIEW_BUTTON_IS_VISIBLE_PASS = "I validate if document view button is displayed";
+    public static final String VERIFY_IF_DOCUMENT_VIEW_BUTTON_IS_VISIBLE_FAIL = "Fail while trying to validate if document view button is displayed";
+    public static final String VERIFY_IF_DOCUMENT_DOWN_LOAD_BUTTON_IS_VISIBLE_PASS = "I validate if document download button is displayed";
+    public static final String VERIFY_IF_DOCUMENT_DOWN_LOAD_BUTTON_IS_VISIBLE_FAIL = "Fail while trying to validate if document download button is displayed";
 
 }

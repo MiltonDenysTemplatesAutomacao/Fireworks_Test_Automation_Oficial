@@ -8,6 +8,7 @@ import pages.FailureDelegatePage;
 import pages.LogPage;
 import pages.MainPage;
 import pages.PersonNavPage;
+import pages.ClearChangesPage;
 
 public class DocumentsPage extends BasePage {
 
@@ -26,8 +27,66 @@ public class DocumentsPage extends BasePage {
     public static final String REPLACE_FILE_MODAL_CONTINUE_BUTTON = "#modalSubmitButtonreplaceFileDocument";
     public static final String DELETE_DOCUMENT_BUTTON = "#deleteDocumentButton";
     public static final String DOCUMENT_DELETE_MODAL_YES_DELETE_BUTTON = "#modalSubmitButtondeleteDocument";
+    public static final String DOCUMENT_SAVE_CHANGES_BUTTON = "#documentSaveButton";
+    public static final String DOCUMENT_VIEW_BUTTON = "#fileView";
+    public static final String DOCUMENT_DOWNLOAD_BUTTON = "#fileDownload";
 
-    public static void verifyIfDocumentsTabIsVisible(){
+    public static void verifyIfDocumentDownLoadButtonIsVisible(){
+        try {
+            if (checkIfElementIsVisible(By.cssSelector(DOCUMENT_DOWNLOAD_BUTTON))){
+                ExtentReportsSetUp.testingPass(LogPage.VERIFY_IF_DOCUMENT_DOWN_LOAD_BUTTON_IS_VISIBLE_PASS);
+            }else{
+                FailureDelegatePage.handlePageException(LogPage.VERIFY_IF_DOCUMENT_DOWN_LOAD_BUTTON_IS_VISIBLE_FAIL);
+            }
+        } catch (Exception e) {
+            FailureDelegatePage.handlePageException(LogPage.VERIFY_IF_DOCUMENT_DOWN_LOAD_BUTTON_IS_VISIBLE_FAIL);
+        }
+    }
+    public static void verifyIfDocumentViewButtonIsVisible(){
+        try {
+            if (checkIfElementIsVisible(By.cssSelector(DOCUMENT_VIEW_BUTTON))){
+                ExtentReportsSetUp.testingPass(LogPage.VERIFY_IF_DOCUMENT_VIEW_BUTTON_IS_VISIBLE_PASS);
+            }else{
+                FailureDelegatePage.handlePageException(LogPage.VERIFY_IF_DOCUMENT_VIEW_BUTTON_IS_VISIBLE_FAIL);
+            }
+        } catch (Exception e) {
+            FailureDelegatePage.handlePageException(LogPage.VERIFY_IF_DOCUMENT_VIEW_BUTTON_IS_VISIBLE_FAIL);
+        }
+    }
+    public static void verifyIfSaveChangesButtonIsNotVisible(){
+        try {
+            if (!checkIfElementIsVisible(By.cssSelector(DOCUMENT_SAVE_CHANGES_BUTTON))){
+                ExtentReportsSetUp.testingPass(LogPage.VERIFY_IF_SAVE_CHANGES_BUTTON_IS_NOT_VISIBLE_PASS);
+            }else{
+                FailureDelegatePage.handlePageException(LogPage.VERIFY_IF_SAVE_CHANGES_BUTTON_IS_NOT_VISIBLE_FAIL);
+            }
+        } catch (Exception e) {
+            FailureDelegatePage.handlePageException(LogPage.VERIFY_IF_SAVE_CHANGES_BUTTON_IS_NOT_VISIBLE_FAIL);
+        }
+    }
+    public static void verifyIfClearChangesButtonIsNotVisible(){
+        try {
+            if (!checkIfElementIsVisible(By.cssSelector(ClearChangesPage.CLEAR_CHANGES_BUTTON))){
+                ExtentReportsSetUp.testingPass(LogPage.VERIFY_IF_CLEAR_CHANGES_BUTTON_IS_NOT_VISIBLE_PASS);
+            }else{
+                FailureDelegatePage.handlePageException(LogPage.VERIFY_IF_CLEAR_CHANGES_BUTTON_IS_NOT_VISIBLE_FAIL);
+            }
+        } catch (Exception e) {
+            FailureDelegatePage.handlePageException(LogPage.VERIFY_IF_CLEAR_CHANGES_BUTTON_IS_NOT_VISIBLE_FAIL);
+        }
+    }
+    public static void verifyIfCreateButtonIsNotVisible(){
+        try {
+            if (!checkIfElementIsVisible(By.cssSelector(CREATE_DOCUMENT_BUTTON))){
+                ExtentReportsSetUp.testingPass(LogPage.VERIFY_IF_CREATE_BUTTON_IS_NOT_VISIBLE_PASS);
+            }else{
+                FailureDelegatePage.handlePageException(LogPage.VERIFY_IF_CREATE_BUTTON_IS_NOT_VISIBLE_FAIL);
+            }
+        } catch (Exception e) {
+            FailureDelegatePage.handlePageException(LogPage.VERIFY_IF_CREATE_BUTTON_IS_NOT_VISIBLE_FAIL);
+        }
+    }
+    public static void verifyIfDocumentsTabIsNotVisible(){
         try {
             if (!checkIfElementIsVisible(By.cssSelector(PersonNavPage.DOCUMENTS_TAB))){
                 ExtentReportsSetUp.testingPass(LogPage.VERIFY_IF_DOCUMENTS_TAB_IS_VISIBLE_PASS);

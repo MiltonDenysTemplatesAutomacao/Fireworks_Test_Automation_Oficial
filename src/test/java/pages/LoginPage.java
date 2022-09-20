@@ -180,6 +180,7 @@ public class LoginPage {
         usernameParameter.put("tasksNoAdminNoArchiveUsername", TASKS_NO_ADMIN_NO_ARCHIVE_USERNAME);
         usernameParameter.put("nonFERAdminUsername", NON_FER_ADMIN_USERNAME);
         usernameParameter.put("documentsNoAccessUsername", DOCUMENTS_NO_ACCESS_USERNAME);
+        usernameParameter.put("documentsReadOnlyUsername", DOCUMENTS_READ_ONLY_USERNAME);
         return usernameParameter.get(username);
     }
     /*
@@ -193,6 +194,7 @@ public class LoginPage {
         passwordParameter.put("tasksNoAdminNoArchivePassword", TASKS_NO_ADMIN_NO_ARCHIVE_PASSWORD);
         passwordParameter.put("nonFERAdminPassword", NON_FER_ADMIN_PASSWORD);
         passwordParameter.put("documentsNoAccessPassword", DOCUMENTS_NO_ACCESS_PASSWORD);
+        passwordParameter.put("documentsReadOnlyPassword", DOCUMENTS_READ_ONLY_PASSWORD);
         return passwordParameter.get(password);
     }
     /*
@@ -206,6 +208,7 @@ public class LoginPage {
         fullnameParameter.put("tasksNoAdminNoArchiveFullName", TASKS_NO_ADMIN_NO_ARCHIVE_FULL_NAME);
         fullnameParameter.put("nonFERAdminFullName", NON_FER_ADMIN_FULL_NAME);
         fullnameParameter.put("documentsNoAccessFullName", DOCUMENTS_NO_ACCESS_FULL_NAME);
+        fullnameParameter.put("documentsReadOnlyFullName", DOCUMENTS_READ_ONLY_FULL_NAME);
         return fullnameParameter.get(fullname);
     }
 

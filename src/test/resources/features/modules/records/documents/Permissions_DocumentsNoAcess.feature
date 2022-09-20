@@ -2,7 +2,7 @@
 #Regression testcase TL-1148: Documents Permissions: No Access
 
 @DocumentsPermissionsNoAccess
-Feature: Edits to Relationships
+Feature: Documents Permissions: No Access
 
   @DocumentsPermissionsNoAccess @Fix @Documents
   Scenario: Record - Documents - verify this permissions group can not access documents
@@ -16,4 +16,4 @@ Feature: Edits to Relationships
     And I navigate to people on records
     And I open a people record by "Elisabeth"
     And I validate if "Elisabeth"summary opened properly
-    And I validate if documents tab is visible
+    And I validate if documents tab is not visible

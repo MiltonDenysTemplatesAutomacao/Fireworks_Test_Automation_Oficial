@@ -14,10 +14,31 @@ public class DocumentsSteps {
     public static void openDocument(String document) {
         DocumentsPage.openDocument(document);
     }
-    @Then("I validate if documents tab is visible")
-    public static void verifyIfdocumentsTabIsVisible() {
-        DocumentsPage.verifyIfDocumentsTabIsVisible();
+    @Then("I validate if documents tab is not visible")
+    public static void verifyIfDocumentsTabIsNotVisible() {
+        DocumentsPage.verifyIfDocumentsTabIsNotVisible();
     }
+    @Then("I validate if create button is not displayed")
+    public static void verifyIfCreateButtonIsNotVisible() {
+        DocumentsPage.verifyIfCreateButtonIsNotVisible();
+    }
+    @Then("I validate if clear changes button is not displayed")
+    public static void verifyIfClearChangesButtonIsNotVisible() {
+        DocumentsPage.verifyIfClearChangesButtonIsNotVisible();
+    }
+    @Then("I validate if document view button is displayed")
+    public static void verifyIfDocumentViewButtonIsVisible() {
+        DocumentsPage.verifyIfDocumentViewButtonIsVisible();
+    }
+    @Then("I validate if document download button is displayed")
+    public static void verifyIfDocumentDownLoadButtonIsVisible() {
+        DocumentsPage.verifyIfDocumentDownLoadButtonIsVisible();
+    }
+    @Then("I validate if save changes button is not displayed")
+    public static void verifyIfSaveChangesButtonIsNotVisible() {
+        DocumentsPage.verifyIfSaveChangesButtonIsNotVisible();
+    }
+
     @Then("I delete a document")
     public static void deleteDocument() {
         DocumentsPage.deleteDocument();
