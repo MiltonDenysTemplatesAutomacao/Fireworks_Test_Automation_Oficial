@@ -5,6 +5,7 @@ import org.openqa.selenium.By;
 
 public class PersonNavPage extends BasePage{
 
+    public static final String DOCUMENTS_TAB = "#recordNavTab_documents";
     public static final String RECORD_NAV_TAB_ID_TYPES = "recordNavTab_id_types";
     private static final String RECORD_NAV_TAB_CONTACT = "recordNavTab_contact";
     private static final String STUDENT_STATUS_TAB = "#recordNavTab_status";
@@ -15,7 +16,6 @@ public class PersonNavPage extends BasePage{
     private static final String FINANCIAL_AID_TAB = "#recordNavTab_financial_affairs";
     private static final String EMPLOYMENT_TAB = "#recordNavTab_employment";
     private static final String RECORD_NAV_TAB_BASIC = "recordNavTab_basic";
-    private static final String DOCUMENTS_TAB = "#recordNavTab_documents";
 
     public static void navigateToDocuments(){
         try {

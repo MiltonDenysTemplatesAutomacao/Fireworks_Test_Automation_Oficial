@@ -7,6 +7,7 @@ import pages.BasePage;
 import pages.FailureDelegatePage;
 import pages.LogPage;
 import pages.MainPage;
+import pages.PersonNavPage;
 
 public class DocumentsPage extends BasePage {
 
@@ -26,6 +27,17 @@ public class DocumentsPage extends BasePage {
     public static final String DELETE_DOCUMENT_BUTTON = "#deleteDocumentButton";
     public static final String DOCUMENT_DELETE_MODAL_YES_DELETE_BUTTON = "#modalSubmitButtondeleteDocument";
 
+    public static void verifyIfDocumentsTabIsVisible(){
+        try {
+            if (!checkIfElementIsVisible(By.cssSelector(PersonNavPage.DOCUMENTS_TAB))){
+                ExtentReportsSetUp.testingPass(LogPage.VERIFY_IF_DOCUMENTS_TAB_IS_VISIBLE_PASS);
+            }else{
+                FailureDelegatePage.handlePageException(LogPage.VERIFY_IF_DOCUMENTS_TAB_IS_VISIBLE_FAIL);
+            }
+        } catch (Exception e) {
+            FailureDelegatePage.handlePageException(LogPage.VERIFY_IF_DOCUMENTS_TAB_IS_VISIBLE_FAIL);
+        }
+    }
     public static void deleteDocument() {
         try {
             MainPage.clickOption(By.cssSelector(DELETE_DOCUMENT_BUTTON));

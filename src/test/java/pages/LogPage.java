@@ -656,5 +656,7 @@ public class LogPage {
     public static final String VERIFY_SMART_SEARCH_RESULTS_FAIL = "Fail while trying to verify results on smart search table '%s'";
     public static final String VERIFY_RESULT_COUNT_PASS = "I verify result count on smart search table '%s'";
     public static final String VERIFY_RESULT_COUNT_FAIL = "Fail while trying to verify result count on smart search table '%s'";
+    public static final String VERIFY_IF_DOCUMENTS_TAB_IS_VISIBLE_PASS = "I validate if documents tab is visible";
+    public static final String VERIFY_IF_DOCUMENTS_TAB_IS_VISIBLE_FAIL = "Fail while trying to validate if documents tab is visible";
 
 }

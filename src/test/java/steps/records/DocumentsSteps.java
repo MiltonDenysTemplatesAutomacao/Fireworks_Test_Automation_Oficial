@@ -14,6 +14,10 @@ public class DocumentsSteps {
     public static void openDocument(String document) {
         DocumentsPage.openDocument(document);
     }
+    @Then("I validate if documents tab is visible")
+    public static void verifyIfdocumentsTabIsVisible() {
+        DocumentsPage.verifyIfDocumentsTabIsVisible();
+    }
     @Then("I delete a document")
     public static void deleteDocument() {
         DocumentsPage.deleteDocument();
