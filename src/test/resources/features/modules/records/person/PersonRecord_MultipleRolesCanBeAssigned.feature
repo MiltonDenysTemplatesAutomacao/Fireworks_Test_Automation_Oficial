@@ -22,7 +22,7 @@ Feature: Multiple roles can be assigned
     And I verify content of the suspended record person 0
     And I verify content of the first possible match record person 1
     And I merge duplicates
-    And I verify merge preview
+    And I verify merge preview 0
     And I confirm merge and close
     And I navigate to duplicates
     And I validate if "Isao Takahata" record lo longer exists on the duplicates page

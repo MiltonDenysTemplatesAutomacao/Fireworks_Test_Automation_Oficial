@@ -21,9 +21,9 @@ public class DuplicatesSteps {
     public static void mergeDuplicates() {
         DuplicatesPage.mergeDuplicates();
     }
-    @Then("I verify merge preview")
-    public static void verifyMergePreview() {
-        DuplicatesPage.verifyMergePreview();
+    @Then("I verify merge preview {int}")
+    public static void verifyMergePreview(int person) {
+        DuplicatesPage.verifyMergePreview(person);
     }
     @Then("I confirm merge and close")
     public static void confirmMergeAndClose() {
