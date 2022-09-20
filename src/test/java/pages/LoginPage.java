@@ -181,6 +181,7 @@ public class LoginPage {
         usernameParameter.put("nonFERAdminUsername", NON_FER_ADMIN_USERNAME);
         usernameParameter.put("documentsNoAccessUsername", DOCUMENTS_NO_ACCESS_USERNAME);
         usernameParameter.put("documentsReadOnlyUsername", DOCUMENTS_READ_ONLY_USERNAME);
+        usernameParameter.put("documentsNoDeleteUsername", DOCUMENTS_NO_DELETE_USERNAME);
         return usernameParameter.get(username);
     }
     /*
@@ -195,6 +196,7 @@ public class LoginPage {
         passwordParameter.put("nonFERAdminPassword", NON_FER_ADMIN_PASSWORD);
         passwordParameter.put("documentsNoAccessPassword", DOCUMENTS_NO_ACCESS_PASSWORD);
         passwordParameter.put("documentsReadOnlyPassword", DOCUMENTS_READ_ONLY_PASSWORD);
+        passwordParameter.put("documentsNoDeletePassword", DOCUMENTS_NO_DELETE_PASSWORD);
         return passwordParameter.get(password);
     }
     /*
@@ -209,6 +211,7 @@ public class LoginPage {
         fullnameParameter.put("nonFERAdminFullName", NON_FER_ADMIN_FULL_NAME);
         fullnameParameter.put("documentsNoAccessFullName", DOCUMENTS_NO_ACCESS_FULL_NAME);
         fullnameParameter.put("documentsReadOnlyFullName", DOCUMENTS_READ_ONLY_FULL_NAME);
+        fullnameParameter.put("documentsNoDeleteFullName", DOCUMENTS_NO_DELETE_FULL_NAME);
         return fullnameParameter.get(fullname);
     }
 

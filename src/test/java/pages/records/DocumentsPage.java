@@ -31,6 +31,17 @@ public class DocumentsPage extends BasePage {
     public static final String DOCUMENT_VIEW_BUTTON = "#fileView";
     public static final String DOCUMENT_DOWNLOAD_BUTTON = "#fileDownload";
 
+    public static void verifyIfDeleteButtonIsNotVisible(){
+        try {
+            if (!checkIfElementIsVisible(By.cssSelector(DELETE_DOCUMENT_BUTTON))){
+                ExtentReportsSetUp.testingPass(LogPage.VERIFY_IF_DELETE_BUTTON_IS_NOT_VISIBLE_PASS);
+            }else{
+                FailureDelegatePage.handlePageException(LogPage.VERIFY_IF_DELETE_BUTTON_IS_NOT_VISIBLE_FAIL);
+            }
+        } catch (Exception e) {
+            FailureDelegatePage.handlePageException(LogPage.VERIFY_IF_DELETE_BUTTON_IS_NOT_VISIBLE_FAIL);
+        }
+    }
     public static void verifyIfDocumentDownLoadButtonIsVisible(){
         try {
             if (checkIfElementIsVisible(By.cssSelector(DOCUMENT_DOWNLOAD_BUTTON))){

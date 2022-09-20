@@ -30,6 +30,10 @@ public class DocumentsSteps {
     public static void verifyIfDocumentViewButtonIsVisible() {
         DocumentsPage.verifyIfDocumentViewButtonIsVisible();
     }
+    @Then("I validate if delete button on documents is not displayed")
+    public static void verifyIfDeleteButtonIsNotVisible() {
+        DocumentsPage.verifyIfDeleteButtonIsNotVisible();
+    }
     @Then("I validate if document download button is displayed")
     public static void verifyIfDocumentDownLoadButtonIsVisible() {
         DocumentsPage.verifyIfDocumentDownLoadButtonIsVisible();

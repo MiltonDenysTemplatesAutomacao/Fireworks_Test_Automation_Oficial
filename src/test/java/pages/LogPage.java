@@ -668,5 +668,7 @@ public class LogPage {
     public static final String VERIFY_IF_DOCUMENT_VIEW_BUTTON_IS_VISIBLE_FAIL = "Fail while trying to validate if document view button is displayed";
     public static final String VERIFY_IF_DOCUMENT_DOWN_LOAD_BUTTON_IS_VISIBLE_PASS = "I validate if document download button is displayed";
     public static final String VERIFY_IF_DOCUMENT_DOWN_LOAD_BUTTON_IS_VISIBLE_FAIL = "Fail while trying to validate if document download button is displayed";
+    public static final String VERIFY_IF_DELETE_BUTTON_IS_NOT_VISIBLE_PASS = "I validate if delete button on documents is not displayed";
+    public static final String VERIFY_IF_DELETE_BUTTON_IS_NOT_VISIBLE_FAIL = "Fail while trying to validate if delete button on documents is not displayed";
 
 }
