@@ -11,10 +11,6 @@ Feature: Unsubscribed Data is preserved
       |FirstName  |LastName |EmailAddress          |EmailType|EmailOptInMethod |Role1   |StudentType|StudentStatus|StudentStatusCategory|StudentStatusDate|EntryTerm  |
       |Sarah      |Goode    |sgoode@cabinetbed.com |Personal |Inquiry          |Student |Freshman   |Accepted     |Accepted             |10/24/2016       |Fall 2017  |
     And I validate if "Person has been created." message is correct
-    And I go to Home page
-    And I go to Home page
-    When I quick search "FirstName"
-    And I open a record
     And I validate if "Sarah"summary opened properly
     And I navigate to contact
     #to set the person email opt-in status to Unsubscribe and verify hover over messages would indicate it can not be deleted

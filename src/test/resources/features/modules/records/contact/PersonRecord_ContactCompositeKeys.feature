@@ -11,8 +11,6 @@ Feature: Contact field groups: Composite Keys
       |FirstName|LastName |EmailAddress        |EmailType|EmailOptInMethod |Role1    |Phone         |PhoneType|Address1     |City      |State   |PostalCode|Country       |
       |Ray      |Kroc     |rkroc@mcdonalds.com |Personal |Inquiry          |Person   |(478) 623-1285|Mobile   |335 Dover Ct |Broomfield|Colorado|80020     |United States |
     And I validate if "Person has been created." message is correct
-    And I navigate to people on records
-    And I open a people record by "Ray"
     Then I validate if "Ray Kroc"summary opened properly
     And I navigate to contact
     And I add a name group "0"

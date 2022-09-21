@@ -11,8 +11,6 @@ Feature: Summary Panel Display
     And I create a person
       |FirstName	|LastName		|EmailAddress	     |EmailType  |EmailOptInMethod  |Role1   |StudentType|StudentStatusCategory|StudentStatus    |StudentStatusDate|EntryTerm|
       |Hank         |Williams       |HWilliams@music.com |Personal   |Inquiry           |Student | Freshman  |Deposited            |Active-Deposited |08/18/2018       |Fall 2019|
-    And I navigate to people on records
-    And I open a people record by "Hank"
     And I validate if "Hank"summary opened properly
     When I add in summary field "Email Address"
     And I add in summary field "Class Of"

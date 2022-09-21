@@ -12,8 +12,6 @@ Feature: Financial Aid Payment Only
       |Irving   |Berlin   |IBerlin@music.com    |Personal   |Inquiry          |Student|Freshman   |Accepted             |Accepted         |08/25/201        |Fall 2017|
     And I validate if "Person has been created." message is correct
     #add Financial Aid Interests only
-    And I navigate to people on records
-    And I open a people record by "Irving"
     And I validate if "Irving"summary opened properly
     And I navigate to Financial Aid
     And I update Financial Aid Interest "Music", "Piano", "Yes", "09/26/2017" group "0"

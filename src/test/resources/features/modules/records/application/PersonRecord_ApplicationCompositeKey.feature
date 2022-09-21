@@ -11,8 +11,6 @@ Feature: Application Composite Key
       |FirstName |LastName  |EmailAddress                  |EmailType  |EmailOptInMethod |Role1   |StudentType|StudentStatusCategory |StudentStatus  |StudentStatusDate|EntryTerm|
       |Reginald  |Mantle    |reginaldmantle@riverdale.edu  |Personal   |Inquiry          |Student |Freshman   |Accepted              |Accepted       |01/15/2016       |Fall 2017|
     And I validate if "Person has been created." message is correct
-    And I navigate to people on records
-    And I open a people record by "Reginald"
     And I validate if "Reginald"summary opened properly
     And I navigate to Applications
     When I update application "Fall 2016", "Agriculture", "Completed", "Early Action", "Online", "07/19/2016", "", "", "", "", "", "", "", "" group "0"

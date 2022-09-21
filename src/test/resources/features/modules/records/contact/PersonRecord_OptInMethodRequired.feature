@@ -18,9 +18,6 @@ Feature: Email Address: Opt-In Method field
     And I clickQuickAddPersonSaveAndGo
     Then I validate if "Person has been created" message is correct
     #to verify the email includes the opt-in method
-    And I go to Home page
-    When I quick search "FirstName"
-    And I open a record
     And I validate if "Willie"summary opened properly
     And I navigate to contact
     And I verify email address "WNelson@music.com", "Personal", "", "Inquiry", "", "", "", "1", "1" group "0"

@@ -16,9 +16,6 @@ Feature: Update to Valid changes Active Primary flags
       |Herbie    |Nichols   |HNichols@music.com   |Personal   |Inquiry          |Student|Freshman   |Accepted             |Accepted         |01/15/2016       |Fall 2017|
     And I validate if "Person has been created." message is correct
     #to update email to a status of Bounce and see active and primary checkboxs reflect the update
-    And I go to Home page
-    When I quick search "FirstName"
-    And I open a record
     And I validate if "Herbie"summary opened properly
     And I navigate to contact
     And I update email on contact for person "", "", "Bounce", "", "", "", "", "" and group "0"
@@ -39,9 +36,6 @@ Feature: Update to Valid changes Active Primary flags
       |Angelo   |Badalamenti  |ABadalamenti@music.com |Personal   |Inquiry          |Student|Freshman   |Accepted             |Accepted         |01/15/2016       |Fall 2017|
     And I validate if "Person has been created." message is correct
     #to create a new active email
-    And I go to Home page
-    When I quick search "FirstName"
-    And I open a record
     And I validate if "Angelo"summary opened properly
     And I navigate to contact
     And I add a new email on contact for person group "0"

@@ -20,8 +20,6 @@ Feature: School Without Scores
       |Gabriel    |Batistuta    |gbatistuta@futbol.net  |Personal |Inquiry          |Student |Freshman   |Accepted              |Accepted       |01/16/2016       |Fall 2017|Final          |11/11/2016    |06/01/2015    |No             |Yes               |9999.999  |00               |2    |This is a High School Transcript comment1  |No          |3        |750      |No |Yes     |98.97     |No             |Yes         |
     Then I validate if "Person has been created." message is correct
     #to add a high school and transcript
-    And I navigate to people on records
-    And I open a people record by "Gabriel"
     And I validate if "Gabriel"summary opened properly
     And I navigate to Education
     And I update school in education for person "Hinkley High School", "", "", "", "", "", "" group "0"

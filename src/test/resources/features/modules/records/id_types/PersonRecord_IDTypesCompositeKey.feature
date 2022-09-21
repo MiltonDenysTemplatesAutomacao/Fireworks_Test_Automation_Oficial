@@ -12,8 +12,6 @@ Feature: ID Types: Composite Key
       |FirstName  |LastName |EmailAddress               |EmailType  |EmailOptInMethod  |Role1   |StudentStatusCategory|StudentStatus    |StudentStatusDate|EntryTerm  |StudentType|IdRecordedDate|IDType        |IDNumber|WhoAddedID   |
       |Thomas     |Edison    |thomasedison@thirdrail.com|Personal   |Inquiry           |Student |Accepted             |Accepted         |09/28/2016       |Fall 2017  |Freshman   |09/27/2016    |Universal App |8675309 |Fire Starter |
     And I validate if "Person has been created" message is correct
-    And I navigate to people on records
-    And I open a people record by "Thomas"
     And I validate if "Thomas"summary opened properly
     And I navigate to ID Types
     And I update External Id group "0" person 0

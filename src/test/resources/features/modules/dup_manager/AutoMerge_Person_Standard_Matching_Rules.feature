@@ -34,8 +34,6 @@ Feature: Auto-Merge: Person: Standard Matching Rules
     And I update "", "" and "583-23-9879" to update citizenship
     And I click on save changes on basic
     And I close alert if return this message "A duplicate Student record was found and automatically merged with the new record."
-    And I navigate to people on records
-    And I open a people record by "FlyingFinn"
     And I validate if "FlyingFinn"summary opened properly
     And I navigate to contact
     And I verify name on contact for person "FlyingFinn", "Kolehmainen", "", "", "", "", "1", "1" group "0"
@@ -59,8 +57,6 @@ Feature: Auto-Merge: Person: Standard Matching Rules
       |Hiromasa  |Yonebayashi |Person    |hYonebayashi@japanesedirectors.com |Personal   |Inquiry         |
     And I validate if "Person has been created." message is correct
     #to create a relationship between person1 and person2
-    And I navigate to people on records
-    And I open a people record by "Yoshifumi"
     And I validate if "Yoshifumi"summary opened properly
     And I navigate to Relationship
     When I create a relationship
@@ -78,8 +74,6 @@ Feature: Auto-Merge: Person: Standard Matching Rules
     |TOEFL |72918   |01/15/2016  |Fire Starter  |ID Comment |
     When I update "IDType", "IDNumber", "RecordedDate", "WhoAddedID", and "Comments" to update external ID Types for person
     And I close alert if return this message "Person has been updated."
-    And I navigate to people on records
-    And I open a people record by "Hiromasa"
     And I validate if "Hiromasa"summary opened properly
     And I navigate to ID Types
     When I update "IDType", "IDNumber", "RecordedDate", "WhoAddedID", and "Comments" to update external ID Types for person
@@ -182,8 +176,6 @@ Feature: Auto-Merge: Person: Standard Matching Rules
       |Eric       |Liddell   |Student |ELiddell@sprinters.com|Personal   |Inquiry         |8437237166|Home     |Freshman   |Inquiry-Active |Inquiry              |01/15/2016       |Fall 2017|126 Wentworth Street|Charleston |South Carolina|29401     |United States|
     And I validate if "Person has been created." message is correct
     #adding a middle name to the existing record will not effect the matching rules
-    And I navigate to people on records
-    And I open a people record by "Eric"
     And I validate if "Eric"summary opened properly
     And I navigate to contact
     When I create a name on contact for person "", "", "Henry", "", "", "", "", "" group "0"
@@ -200,15 +192,13 @@ Feature: Auto-Merge: Person: Standard Matching Rules
       |Eric       |Liddell   |Student |8437237166|Home     |Freshman   |Inquiry-Active |Inquiry              |01/15/2016       |Fall 2017|126 Wentworth Street|Charleston |South Carolina|29401     |United States|
     And I close alert if return this message "A duplicate Student record was found and automatically merged with the new record."
 
-  @VerifyCreatedCctiveRecordsComparedAgainstArchivedRule12 @Done @DupManager
+  @VerifyCreatedActiveRecordsComparedAgainstArchivedRule12 @Done @DupManager
   Scenario: Record - DupManager - verify created active records are compared against archived records for exact matches
     Given I login as "firestarterUsername", "firestarterPassword", "firestarterFullName"
     When I create a person
       |FirstName  |LastName  |Role1   |Phone       |PhoneType|StudentType|StudentStatus  |StudentStatusCategory|StudentStatusDate|EntryTerm|Address1      |City        |State   |PostalCode|Country      |
       |Bernice    |Petkere   |Student |531-359-5638|Home     |Freshman   |Inquiry-Active |Inquiry              |11/25/2019       |Fall 2020|584 Sunbeam Dr|Centreville |Virginia|20120     |United States|
     And I validate if "Person has been created." message is correct
-    And I navigate to people on records
-    And I open a people record by "Bernice"
     And I validate if "Bernice"summary opened properly
     And I verify Header Record Status "Active" for person
     And I update Header Record Status "Archived" for person
@@ -217,10 +207,7 @@ Feature: Auto-Merge: Person: Standard Matching Rules
     When I create a person
       |FirstName  |LastName  |Role1   |Phone       |PhoneType|StudentType|StudentStatus  |StudentStatusCategory  |StudentStatusDate|EntryTerm|Address1      |City        |State   |PostalCode|Country      |
       |Bernice    |Petkere   |Student |531-359-5638|Home     |Freshman   |Complete       |Applicant              |11/25/2019       |Fall 2020|584 Sunbeam Dr|Centreville |Virginia|20120     |United States|
-    And I validate if "Person has been created." message is correct
     And I close alert if return this message "A duplicate Student record was found and automatically merged with the new record."
-    And I navigate to people on records
-    And I open a people record by "Bernice"
     And I validate if "Bernice"summary opened properly
     And I verify Header Record Status "Active" for person
 
@@ -231,8 +218,6 @@ Feature: Auto-Merge: Person: Standard Matching Rules
       |FirstName  |LastName |Role1   |Phone       |PhoneType|StudentType|StudentStatus  |StudentStatusCategory|StudentStatusDate|EntryTerm|Address1       |City           |State   |PostalCode|Country      |EmailAddress          |EmailType  |EmailOptInMethod  |
       |Harry      |Ruby     |Student |904-724-3398|Home     |Freshman   |Inquiry-Active |Inquiry              |11/25/2019       |Fall 2020|105 Virginia St|Fort Washington|Maryland|20744     |United States|HRuby@tinpanalley.com |Personal   |Inquiry           |
     And I validate if "Person has been created." message is correct
-    And I navigate to people on records
-    And I open a people record by "Harry"
     And I validate if "Harry"summary opened properly
     And I verify Header Record Status "Active" for person
     And I update Header Record Status "Archived" for person
@@ -243,8 +228,6 @@ Feature: Auto-Merge: Person: Standard Matching Rules
       |FirstName   |LastName |Role1   |StudentType|StudentStatus  |StudentStatusCategory|StudentStatusDate|EntryTerm|EmailAddress               |EmailType  |EmailOptInMethod  |
       |Harold      |Ruby     |Student |Freshman   |Inquiry-Active |Inquiry              |11/25/2019       |Fall 2020|HaroldRuby@tinpanalley.com |Personal   |Inquiry           |
     And I validate if "Person has been created." message is correct
-    And I navigate to people on records
-    And I open a people record by "Harold"
     And I validate if "Harold"summary opened properly
     And I navigate to contact
     When I update phone number in contact for person "904-724-3398", "Home", "", "", "", "", "", "" field group "0"
@@ -263,8 +246,6 @@ Feature: Auto-Merge: Person: Standard Matching Rules
       |FirstName  |LastName |Role1   |Phone       |PhoneType|StudentType|StudentStatus  |StudentStatusCategory|StudentStatusDate|EntryTerm|
       |Campbell   |Smith    |Student |842-156-9253|Home     |Freshman   |Inquiry-Active |Inquiry              |11/25/2019       |Fall 2020|
     And I validate if "Person has been created." message is correct
-    And I navigate to people on records
-    And I open a people record by "Campbell"
     And I validate if "Campbell"summary opened properly
     And I navigate to basic
     And I update birth values "02/21/1997", "United States", "Charleston", "South Carolina"

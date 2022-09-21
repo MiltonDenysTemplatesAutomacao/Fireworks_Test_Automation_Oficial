@@ -23,8 +23,6 @@ Feature: Add Relationships
       |Jimmy     |Katz      |JKatz@Mulholland-Drive.com|Personal   |Inquiry           |Student |Accepted             |Accepted         |03/15/2019       |Fall 2019  |Freshman    |
     And I validate if "Person has been created" message is correct
   #to create a person relationship from the student record
-    And I navigate to people on records
-    And I open a people record by "Jimmy"
     And I validate if "Jimmy Katz"summary opened properly
     Then I verify Header Role "Student"
     And I navigate to Relationship

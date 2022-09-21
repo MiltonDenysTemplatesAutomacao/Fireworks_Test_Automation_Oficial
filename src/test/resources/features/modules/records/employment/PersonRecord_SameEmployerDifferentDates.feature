@@ -16,8 +16,6 @@ Feature: Employment Relationship
       |Barbara     |Randolph |BRandolph@music.com |Personal   |Inquiry          |Student|Freshman   |Accepted             |Accepted         |06/12/2019       |Fall 2019|
     And I validate if "Person has been created." message is correct
     #add an employment record
-    And I navigate to people on records
-    And I open a people record by "Barbara"
     And I validate if "Barbara"summary opened properly
     And I navigate to Employment
     And I pick an organization Employer "TobaccoRoad" group "0"

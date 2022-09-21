@@ -19,8 +19,6 @@ Feature: Update to Valid changes all matching emails
     And I clickQuickAddPersonSaveAndGo
     And I validate if "Person has been created." message is correct
     #to add a bounced email address which matches the email of record1
-    And I navigate to people on records
-    And I open a people record by "Margaret"
     Then I validate if "Margaret Brayton"summary opened properly
     And I navigate to contact
     And I add a new email on contact for person group "0"

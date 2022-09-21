@@ -24,8 +24,6 @@ Feature: University with ACT
       |Robert     |Wise     |RWise@directors.net    |Personal   |Inquiry          |Student |Freshman   |Accepted              |Accepted       |04/15/2020       |Fall 2020|Final          |11/11/2013    |11/11/2014    |Yes            |Yes                |-2.222  |2.200            |1    |No          |Transcript comment|Accounting|Associate of Applied Science |Associate    |Yes          |11/11/2015|Agriculture |10         |
     And I validate if "Person has been created." message is correct
     #to add a university with a transcript and a test score
-    And I navigate to people on records
-    And I open a people record by "Robert"
     And I validate if "Robert"summary opened properly
     And I navigate to Education
     And I update school in education for person "Rosebudgardner University", "", "", "", "University comment", "", "" group "0"

@@ -20,8 +20,6 @@ Feature: Employment Relationships
       |Chelsea    |Prescott   |cprescott@verizon.net  |Personal   |Inquiry          |Volunteer |
     And I validate if "Person has been created." message is correct
     #to add an employment record
-    And I navigate to people on records
-    And I open a people record by "Chelsea"
     And I validate if "Chelsea"summary opened properly
     And I navigate to Employment
     And I pick an organization Employer "Loudoun County" group "0"

@@ -16,8 +16,6 @@ Feature: Employment Required Field
       |Choker   |Campbell |BCampbell@music.com  |Personal   |Inquiry          |Student|Freshman   |Accepted             |Accepted         |03/17/2019       |Fall 2019|
     And I validate if "Person has been created." message is correct
     #add employment comment to trigger required fields validation
-    And I navigate to people on records
-    And I open a people record by "Choker"
     And I validate if "Choker"summary opened properly
     And I navigate to Employment
     And I update Employment "", "", "", "", "Comment" group "0"

@@ -12,9 +12,6 @@ Feature: Email Address field group validation
       |David    |Hussey   |Student  |(512) 249-5214|Business  |Freshman   |Accepted     |Accepted             |09/20/2016       |Fall 2017  |
     And I validate if "Person has been created." message is correct
     #to enter only the email address
-    And I go to Home page
-    When I quick search "FirstName"
-    And I open a record
     And I validate if "David"summary opened properly
     And I navigate to contact
     And I update email on contact for person "dhussey@mcdowells.com", "", "", "", "", "", "", "" and group "0"

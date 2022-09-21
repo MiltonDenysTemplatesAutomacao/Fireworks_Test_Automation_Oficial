@@ -22,8 +22,6 @@ Feature: Add University Relationship
       |Hiroshi    |Teshigahara|HTeshigahara@Japanese-masters.com  |Personal   |Inquiry          |Student |Freshman   |Accepted              |Accepted       |04/05/2020       |Fall 2020|Final          |11/11/2013    |11/11/2014    |Yes            |Yes                |99.234  |1.100            |1    |No          |Transcript comment|Accounting|Associate of Applied Science |Associate    |Yes          |11/11/2015|Agriculture |10         |
     And I validate if "Person has been created." message is correct
     #to add a university and transcript to the student
-    And I navigate to people on records
-    And I open a people record by "Hiroshi"
     And I validate if "Hiroshi"summary opened properly
     And I navigate to Education
     And I update school in education for person "SevenSamurai University", "", "", "", "School comment visible in Relationship", "", "" group "0"

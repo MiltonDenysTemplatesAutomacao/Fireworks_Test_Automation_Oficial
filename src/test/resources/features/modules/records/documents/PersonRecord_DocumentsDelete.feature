@@ -12,8 +12,6 @@ Feature: Delete a Document
       |FirstName|LastName |Role1    |EmailAddress                 |EmailType  |EmailOptInMethod|StudentType|StudentStatusCategory |StudentStatus  |StudentStatusDate|EntryTerm|
       |Caroline |Grimaldi |Student  |PrincessCaroline@hanover.com |Personal   |Inquiry         |Transfer   |Enrolled              |Enrolled       |02/12/2020       |Fall 2019|
     And I validate if "Person has been created." message is correct
-    And I navigate to people on records
-    And I open a people record by "Caroline"
     And I validate if "Caroline"summary opened properly
     And I navigate to Documents
     And I create a document

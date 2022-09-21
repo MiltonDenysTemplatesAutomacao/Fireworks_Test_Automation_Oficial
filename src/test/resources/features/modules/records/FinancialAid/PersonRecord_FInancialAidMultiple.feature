@@ -13,8 +13,6 @@ Feature: Financial Aid Multiple records can be added
       |Vincent  |Youmans  |VYoumans@music.com  |Personal   |College Fair     |Student|Freshman   |Accepted             |Accepted         |01/25/2016       |Fall 2017|
     And I validate if "Person has been created." message is correct
     #to add the 1st Financial Aid record with two Aid components
-    And I navigate to people on records
-    And I open a people record by "Vincent"
     And I validate if "Vincent"summary opened properly
     And I navigate to Financial Aid
     And I update Financial Aid "Scholarship", "Awarded", "Fall 2018", "07/07/2017", "9", "85" group "0"

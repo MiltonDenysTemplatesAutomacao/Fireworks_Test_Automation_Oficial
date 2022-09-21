@@ -16,8 +16,6 @@ Feature: Employment Relationship
       |Dave     |Berry    |DBerry@music.com  |Personal   |Inquiry          |Student|Freshman   |Accepted             |Accepted         |06/15/2020       |Fall 2021|
     And I validate if "Person has been created." message is correct
     #to add an employment record
-    And I navigate to people on records
-    And I open a people record by "Dave"
     And I validate if "Dave"summary opened properly
     And I navigate to Employment
     And I pick an organization Employer "Decca Data Systems" group "0"

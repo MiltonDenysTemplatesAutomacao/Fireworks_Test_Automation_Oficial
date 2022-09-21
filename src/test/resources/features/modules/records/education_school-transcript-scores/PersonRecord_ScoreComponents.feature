@@ -10,9 +10,7 @@ Feature: Education Scores: Add Multiple
     When I create a person
       |FirstName  |LastName |EmailAddress           |EmailType  |EmailOptInMethod |Role1   |StudentType|StudentStatusCategory |StudentStatus  |StudentStatusDate|EntryTerm|
       |Willard    |Scott    |wscott@mcdonalds.com   |Personal   |Inquiry          |Student |Freshman   |Accepted              |Accepted       |09/19/2016       |Fall 2017|
-    #And I validate if "Person has been created." message is correct
-    And I navigate to people on records
-    And I open a people record by "Willard"
+    And I validate if "Person has been created." message is correct
     And I validate if "Willard"summary opened properly
     And I navigate to Education
     #to pick SAT R2016 score type and verify components

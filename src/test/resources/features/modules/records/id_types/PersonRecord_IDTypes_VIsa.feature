@@ -11,8 +11,6 @@ Feature: ID Types: Visa Number
       |FirstName  |LastName   |EmailAddress    |EmailType  |EmailOptInMethod  |Role1   |StudentStatusCategory|StudentStatus    |StudentStatusDate|EntryTerm  |StudentType|IDType|IDNumber|IdRecordedDate|WhoAddedID   |Comments     |
       |Rosetta    |Tharpe    |RTharpe@music.com|Personal   |Inquiry           |Student |Accepted             |Accepted         |01/15/2016       |Fall 2017  |Freshman   |Visa  |78751   |01/27/2016    |Fire Starter |Visa Comment |
     And I validate if "Person has been created" message is correct
-    And I navigate to people on records
-    And I open a people record by "Rosetta"
     And I validate if "Rosetta"summary opened properly
     And I navigate to ID Types
     And I update External Id group "0" person 0

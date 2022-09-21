@@ -13,8 +13,6 @@ Feature: ID Types: Visa Number
       |           |         |                    |           |                  |        |                     |                 |                 |           |           |09/27/2016    |Got your number Jenny |Common App|8675309 |Fire Starter |
     And I validate if "Person has been created" message is correct
     #to enter Date and Comments to trigger validation
-    And I navigate to people on records
-    And I open a people record by "Granville"
     And I validate if "Granville"summary opened properly
     And I navigate to ID Types
     And I update External Id group "0" person 0

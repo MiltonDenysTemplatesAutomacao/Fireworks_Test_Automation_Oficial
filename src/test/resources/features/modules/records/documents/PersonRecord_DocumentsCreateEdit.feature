@@ -14,8 +14,6 @@ Feature: Create/Edits to Relationships
       |Grace    |Kelly    |Student  |princessgrace@monaco.com |Personal   |Inquiry         |Graduate   |Enrolled              |Enrolled       |08/12/2019       |Fall 2019|
     And I validate if "Person has been created." message is correct
     #to create a new document
-    And I navigate to people on records
-    And I open a people record by "Grace"
     And I validate if "Grace"summary opened properly
     And I navigate to Documents
     And I create a document

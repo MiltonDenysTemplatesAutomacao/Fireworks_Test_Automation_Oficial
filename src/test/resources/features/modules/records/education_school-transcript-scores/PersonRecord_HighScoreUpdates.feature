@@ -13,8 +13,6 @@ Feature: Education Scores: Add Multiple
       |FirstName  |LastName |EmailAddress           |EmailType  |EmailOptInMethod |Role1   |StudentType|StudentStatusCategory |StudentStatus  |StudentStatusDate|EntryTerm|
       |Michael    |Redgrave |MRedgrave@actors.net   |Personal   |Inquiry          |Student |Freshman   |Accepted              |Accepted       |01/15/2016       |Fall 2017|
     And I validate if "Person has been created." message is correct
-    And I navigate to people on records
-    And I open a people record by "Michael"
     And I validate if "Michael"summary opened properly
     And I navigate to Education
     When I update score on Education for person "SAT (R2016)", "1290", "10/14/2014", "Score Report", "First score", "490", "800", "", "", "" group "0"

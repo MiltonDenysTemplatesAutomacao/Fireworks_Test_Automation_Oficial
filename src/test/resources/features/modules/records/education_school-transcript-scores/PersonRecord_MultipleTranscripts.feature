@@ -21,8 +21,6 @@ Feature: Multiples Transcripts
       |Akim       |Tamiroff     |ATamiroff@actors.net  |Personal |Inquiry          |Student |Freshman   |Accepted              |Accepted       |01/15/2016       |Fall 2017|7th Semester   |11/11/2016    |           |           |06/01/2015    |No |No             |Yes                |3        |750      |3.33    |3.300            |2    |Yes     |98.97     |No             |Yes         |No          |Transcript1       |
       |Akim       |Tamiroff     |ATamiroff@actors.net  |Personal |Inquiry          |Student |Freshman   |Accepted              |Accepted       |01/15/2016       |Fall 2017|Student Life   |11/12/2016    |10/10/2002 |10/10/2028 |06/01/2015    |No |No             |Yes                |3        |750      |100.000 |3.300            |2    |Yes     |98.97     |No             |Yes         |No          |Transcript2       |
     Then I validate if "Person has been created." message is correct
-    And I navigate to people on records
-    And I open a people record by "Akim"
     And I validate if "Akim"summary opened properly
     And I navigate to Education
     #to add a high school with two transcripts
@@ -54,8 +52,6 @@ Feature: Multiples Transcripts
       |Danny       |Devito     |dannydevito@actors.net  |Personal |Inquiry          |Student |Freshman   |Accepted              |Accepted       |01/15/2016       |Fall 2017|7th Semester   |11/11/2016    |Yes                |
       |Danny       |Devito     |dannydevito@actors.net  |Personal |Inquiry          |Student |Freshman   |Accepted              |Accepted       |01/15/2016       |Fall 2017|7th Semester   |11/11/2016    |Yes                |
     Then I validate if "Person has been created." message is correct
-    And I navigate to people on records
-    And I open a people record by "Danny"
     And I validate if "Danny"summary opened properly
     And I navigate to Education
     And I update school in education for person "Chaminade", "", "", "", "", "", "" group "0"

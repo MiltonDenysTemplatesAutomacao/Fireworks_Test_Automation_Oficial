@@ -72,8 +72,6 @@ Feature: Edits to Relationships
       |FirstName  |LastName |Role1                |EmailAddress                 |EmailType  |EmailOptInMethod|Role1   |StudentStatusCategory|StudentStatus    |StudentStatusDate|EntryTerm  |StudentType |
       |Shellyz    |Marsh    |SMarsh@SouthPark.com |JSimpson@simpsonscartoon.com |Personal   |Inquiry         |Student |Accepted             |Accepted         |01/15/2016       |Fall 2017  |Freshman    |
     And I validate if "Person has been created." message is correct
-    And I navigate to people on records
-    And I open a people record by "Shellyz Marsh"
     And I validate if "Shellyz Marsh"summary opened properly
     And I navigate to Relationship
     When I create a relationship

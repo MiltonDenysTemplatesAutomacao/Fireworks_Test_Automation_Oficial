@@ -14,9 +14,6 @@ Feature: Contact Active and Primary flags
       |John       |Hooker   |JHooker@music.com |Personal |Inquiry          |Student |Freshman   |Accepted     |Accepted             |07/15/2020       |Spring 2021|1     |1      |
       |           |         |JHooker2@music.com |School   |Inquiry          |        |           |             |                     |                 |           |1     |0      |
     And I validate if "Person has been created." message is correct
-    And I go to Home page
-    When I quick search "FirstName"
-    And I open a record
     And I validate if "John"summary opened properly
     And I navigate to contact
     And I verify email address "0" fields

@@ -12,9 +12,6 @@ Feature: Time Zone: Updated based on Primary Address
       |Muddy    |Waters   |Person  |(904) 721-1894|Home      |
     And I validate if "Person has been created." message is correct
     #adding a physical address updates the phone time zone
-    And I go to Home page
-    When I quick search "FirstName"
-    And I open a record
     And I validate if "Muddy"summary opened properly
     And I navigate to contact
     And I create address on contact for person "19 S 22nd St", "", "", "", "Philadelphia", "Pennsylvania", "", "United States", "19103", "Mailing", "", "", "1", "1", group "0"

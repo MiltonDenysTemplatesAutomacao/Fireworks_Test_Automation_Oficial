@@ -10,8 +10,6 @@ Feature: Education Scores Required Fields
       |FirstName  |LastName  |EmailAddress              |EmailType|EmailOptInMethod |Role1   |StudentType|StudentStatusCategory |StudentStatus  |StudentStatusDate|EntryTerm|
       |Jacob      |Arnold    |jacobarnold@actors.net   |Personal  |Inquiry          |Student |Freshman   |Accepted              |Accepted       |01/15/2016       |Fall 2017|
     Then I validate if "Person has been created." message is correct
-    And I navigate to people on records
-    And I open a people record by "Jacob"
     And I validate if "Jacob"summary opened properly
     And I navigate to Education
     And I update score on Education for person "", "", "", "", "comments", "", "", "", "", "" group "0"

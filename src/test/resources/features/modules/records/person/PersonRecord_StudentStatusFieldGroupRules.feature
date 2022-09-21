@@ -12,10 +12,7 @@ Feature: Student Status
       |Stephen    |Foster   |JFoster@music.com |Personal   |Inquiry           |Student|Freshman   |Inquiry              |Inquiry-Active   |03/11/2017       |Spring 2018|0     |0      |
       |           |         |                  |           |                  |       |           |Accepted             |Accepted-Special |04/03/2017       |Fall 2017  |1     |1      |
     Then I validate if "Person has been created" message is correct
-    And I go to Home page
-    When I quick search "FirstName"
     Then I validate if "Stephen"summary opened properly
-    And I open a record
     And I click on student status
     And I click on add student status "0"
     And I update student status group "1" person 1

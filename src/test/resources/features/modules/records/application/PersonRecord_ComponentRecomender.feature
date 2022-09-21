@@ -23,8 +23,6 @@ Feature: Application Components and Recommenders
       |Chuck     |Clayton   |cclayton@riverdale.edu |Personal   |Inquiry          |Student |Freshman   |Accepted              |Accepted       |01/15/2016       |Fall 2017|
     And I validate if "Person has been created." message is correct
     #to create an application
-    And I navigate to people on records
-    And I open a people record by "Chuck Clayton"
     And I validate if "Chuck Clayton"summary opened properly
     And I navigate to Applications
     When I update application "Fall 2019", "Accounting", "In Progress", "Early Action", "Online", "06/22/2018 7:30 PM", "", "", "", "", "", "", "", "" group "0"

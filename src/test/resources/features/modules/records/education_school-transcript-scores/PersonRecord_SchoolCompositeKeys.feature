@@ -15,8 +15,6 @@ Feature: Education: School: No duplicate
       |Name				         |Role		                 |Address1        |City	      |State     |PostalCode |Country	     |IDType |IDNumber |RecordedDate|WhoAddedID   |
       |HeavyWeight High School   |Post-Secondary Institution |621 Rose Drive  |San Carlos |California|94070      |United States  |CEEB   |89199    |05/11/2020  |Fire Starter |
     Then I validate if "Organization has been created." message is correct
-    And I navigate to people on records
-    And I open a people record by "Buster"
     And I validate if "Buster"summary opened properly
     And I navigate to Education
     And I update school in education for person "HeavyWeight", "", "", "", "HollywoodVideo Comments", "", "" group "0"

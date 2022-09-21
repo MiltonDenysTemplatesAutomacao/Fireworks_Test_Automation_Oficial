@@ -11,9 +11,6 @@ Feature: Email Address: Opt-In Status and Date
       |FirstName|LastName   |EmailAddress                    |EmailType  |EmailOptInMethod |Role1 |
       |Scott    |Tenorman   |STenorman@fire-engine-red.com   |Personal   |Inquiry          |Person|
     And I validate if "Person has been created." message is correct
-    And I go to Home page
-    When I quick search "FirstName"
-    And I open a record
     And I validate if "Scott"summary opened properly
     And I navigate to contact
     #to changes Opt-In Status To Either Subscribed or Unsubscribed. Opposite of Current Value.

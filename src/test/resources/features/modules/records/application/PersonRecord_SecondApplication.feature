@@ -13,8 +13,6 @@ Feature: Second Application
       |Alfred     |Capone    |aCapone@missing.comt  |Personal   |Inquiry          |Student |Freshman   |Accepted              |Accepted       |01/15/2016       |Fall 2017|
     And I validate if "Person has been created." message is correct
     #to add two applications
-    And I navigate to people on records
-    And I open a people record by "Alfred"
     And I validate if "Alfred"summary opened properly
     And I navigate to Applications
     When I update application "Spring 2017", "Accounting", "In Progress", "Regular Decision", "Common Application", "01/20/2017 12:00 AM", "", "", "", "", "", "", "", "" group "0"

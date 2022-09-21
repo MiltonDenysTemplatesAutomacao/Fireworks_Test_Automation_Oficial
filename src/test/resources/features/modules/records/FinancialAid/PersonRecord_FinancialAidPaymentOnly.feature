@@ -14,8 +14,6 @@ Feature: Financial Aid Payment Only
       |FirstName|LastName |EmailAddress         |EmailType  |EmailOptInMethod |Role1  |StudentType|StudentStatusCategory|StudentStatus    |StudentStatusDate|EntryTerm|
       |Don      |Henley   |desperado@music.com  |Personal   |College Fair     |Student|Freshman   |Accepted             |Accepted         |02/27/2018       |Fall 2018|
     And I validate if "Person has been created." message is correct
-    And I navigate to people on records
-    And I open a people record by "Don"
     And I validate if "Don"summary opened properly
     And I navigate to Financial Aid
     And I update FinancialAidPayment "08/10/2017 12:00 AM", "1000.00", "Application", "Credit Card", "Fire Starter", "Payment comment" group "0"
@@ -97,8 +95,6 @@ Feature: Financial Aid Payment Only
       |FirstName  |LastName   |EmailAddress                      |EmailType  |EmailOptInMethod |Role1  |StudentType|StudentStatusCategory|StudentStatus    |StudentStatusDate|EntryTerm|
       |Valerie    |Bertinelli |valeriebertinelli@wisconsin.com   |Personal   |Inquiry          |Student|Freshman   |Accepted             |Accepted         |06/20/2017       |Fall 2017|
     And I validate if "Person has been created." message is correct
-    And I navigate to people on records
-    And I open a people record by "Valerie"
     And I validate if "Amy"summary opened properly
     And I navigate to Financial Aid
     And I verify application "Fall 2020", "Accounting", "Completed", "Regular Decision", "Paper", "10/06/2020 12:00 PM", "Agriculture", "", "11", "", "Commuter", "Agriculture", "10/08/2020 9:00 AM", "application notes" group "0"

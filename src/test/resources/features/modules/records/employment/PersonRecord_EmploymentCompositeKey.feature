@@ -15,8 +15,6 @@ Feature: EmploymentCompositeKey
       |FirstName |LastName |EmailAddress            |EmailType  |EmailOptInMethod |Role1  |StudentType|StudentStatusCategory|StudentStatus    |StudentStatusDate|EntryTerm|
       |Billy     |Eckstine |billyeckstine@music.com |Personal   |Inquiry          |Student|Freshman   |Accepted             |Accepted         |06/15/2020       |Fall 2021|
     And I validate if "Person has been created." message is correct
-    And I navigate to people on records
-    And I open a people record by "Billy"
     And I validate if "Billy"summary opened properly
     And I navigate to Employment
     And I pick an organization Employer "DrumsAlongTheMohawk" group "0"

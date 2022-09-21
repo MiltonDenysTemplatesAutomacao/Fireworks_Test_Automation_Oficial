@@ -14,10 +14,6 @@ Feature: Display Fields
       |           |           |                       |           |                  |        |Applicant            |Denied           |04/03/2018       |Fall 2018  |1     |1       |       |         |             |
     And I validate if "Person has been created" message is correct
     #to add the Student Role so that the Student fields are available
-    And I go to Home page
-    And I quick search "FirstName"
-    And I validate if result for "FirstName" is correct
-    And I open a record
     And I verify Header Role "Person"
     And I update Header Role "Student"
     And I close alert if return this message "Person has been updated."

@@ -31,8 +31,6 @@ Feature: School Relationships
       |Cleo       |Brovloskeee  |CBrovloski@music.com  |Personal |Inquiry          |Student |Freshman   |Applicant            |Waitlisted       |02/15/2020       |Fall 2021|
     Then I validate if "Person has been created." message is correct
     #to add a school to the student
-    Given I go to Home page
-    And I quick search "FirstName"
     And I validate if "Cleo"summary opened properly
     And I open a record
     And I navigate to Education
