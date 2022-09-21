@@ -20,8 +20,6 @@ Feature: Auto-Merge: Person: Standard Matching Rules
       |FirstName  |LastName    |Role1     |EmailAddress             |EmailType  |EmailOptInMethod|StudentType|StudentStatusCategory |StudentStatus  |StudentStatusDate|EntryTerm|
       |Hannes     |Kolehmainen |Student   |HKolehmainen@runners.com |Personal   |Inquiry         |Freshman   |Accepted              |Accepted       |01/25/2016       |Fall 2017|
     And I validate if "Person has been created." message is correct
-    And I navigate to people on records
-    And I open a people record by "Hannes"
     And I validate if "Hannes"summary opened properly
     And I navigate to basic
     And I update "", "" and "583-23-9879" to update citizenship
@@ -31,8 +29,6 @@ Feature: Auto-Merge: Person: Standard Matching Rules
       |FirstName  |LastName    |Role1     |EmailAddress             |EmailType  |EmailOptInMethod|StudentType|StudentStatusCategory |StudentStatus  |StudentStatusDate|EntryTerm|Phone          |PhoneType|
       |FlyingFinn |Kolehmainen |Student   |HKolehmainen@runners.com |Personal   |Inquiry         |Freshman   |Accepted              |Accepted       |01/25/2016       |Fall 2017|(401) 619-4444 |Home     |
     And I validate if "Person has been created." message is correct
-    And I navigate to people on records
-    And I open a people record by "FlyingFinn"
     And I validate if "FlyingFinn"summary opened properly
     And I navigate to basic
     And I update "", "" and "583-23-9879" to update citizenship

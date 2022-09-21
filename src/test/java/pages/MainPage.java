@@ -21,6 +21,7 @@ public class MainPage extends BasePage{
         wait(1000);
     }
     public static void navigateToFeature(By by)throws Exception{
+        waitElementBy(by,10);
         scrollToElement(by);
         scrollTo("-150");
         waitElementBy(by,10);

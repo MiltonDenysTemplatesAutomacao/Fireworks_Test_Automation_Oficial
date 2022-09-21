@@ -22,6 +22,10 @@ public class PersonBasicSteps {
     public static void updateBirthValues(String date,String country,String city,String state) {
         PersonBasicPage.updateBirthValues(date,country,city,state);
     }
+    @Then("I update record flag values {string}, {string}")
+    public static void updatePersonRecordFlagValues(String flagDeceased,String flagVeteran) {
+        PersonBasicPage.updatePersonRecordFlagValues(flagDeceased,flagVeteran);
+    }
     @Then("I update culture values {string}, {string}, {string}, {string}, {string}, {string}")
     public static void updateCultureValues(String ethnicity,String race,String gender,String maritalStatus,String primaryLanguage, String religion) {
         PersonBasicPage.updateCultureValues(ethnicity,race,gender,maritalStatus,primaryLanguage,religion);

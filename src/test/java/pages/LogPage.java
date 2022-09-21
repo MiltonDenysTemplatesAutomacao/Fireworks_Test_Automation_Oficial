@@ -670,5 +670,7 @@ public class LogPage {
     public static final String VERIFY_IF_DOCUMENT_DOWN_LOAD_BUTTON_IS_VISIBLE_FAIL = "Fail while trying to validate if document download button is displayed";
     public static final String VERIFY_IF_DELETE_BUTTON_IS_NOT_VISIBLE_PASS = "I validate if delete button on documents is not displayed";
     public static final String VERIFY_IF_DELETE_BUTTON_IS_NOT_VISIBLE_FAIL = "Fail while trying to validate if delete button on documents is not displayed";
+    public static final String UPDATE_PERSON_RECORD_FLAG_VALUES_PASS = "I update record flag values";
+    public static final String UPDATE_PERSON_RECORD_FLAG_VALUES_FAIL = "Fail while trying to update record flag values";
 
 }

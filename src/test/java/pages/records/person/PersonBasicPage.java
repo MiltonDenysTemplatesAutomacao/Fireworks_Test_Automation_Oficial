@@ -80,6 +80,26 @@ public class PersonBasicPage extends BasePage {
     private static final String FIREWORKS_ID = "#person_hashid";
     private static final String HIGH_SCORE_FIELD = "#high_score";
 
+
+    public static void updatePersonRecordFlagValues(String flagDeceased,String flagVeteran){
+
+        try {
+            if(flagDeceased != ""){
+                scrollToElement(By.cssSelector(DECEASED_CHECKBOX));
+                scrollTo("-150");
+                BasePage.click(By.cssSelector(DECEASED_CHECKBOX));
+            }
+            if(flagVeteran != ""){
+                scrollToElement(By.cssSelector(VETERAN_CHECKBOX));
+                scrollTo("-150");
+                BasePage.click(By.cssSelector(VETERAN_CHECKBOX));
+            }
+            ExtentReportsSetUp.testingPass(LogPage.UPDATE_PERSON_RECORD_FLAG_VALUES_PASS);
+        } catch (Exception e) {
+            FailureDelegatePage.handlePageException(LogPage.UPDATE_PERSON_RECORD_FLAG_VALUES_FAIL);
+        }
+    }
+
     public static void verifySystemGeneratedValues(String fireworksID,String highScore){
         try {
             if(MainPage.verifyGetText(By.cssSelector(FIREWORKS_ID),fireworksID)
@@ -126,6 +146,7 @@ public class PersonBasicPage extends BasePage {
 
             scrollToElement(By.cssSelector(CLASS_OF_DROPDOWN));
 
+            if(deceased!=""){
             switch (deceased){
                 case "Deceased":
                     deceasedValidation = checkBoxIsActive(By.cssSelector(DECEASED_CHECKBOX));
@@ -134,6 +155,10 @@ public class PersonBasicPage extends BasePage {
                     deceasedValidation = !checkBoxIsActive(By.cssSelector(DECEASED_CHECKBOX));
                     break;
             }
+            }else{
+                deceasedValidation=true;
+            }
+            if(studentFlag!=""){
             switch (studentFlag){
                 case "Student Flag":
                     studentFlagValidation = checkBoxIsActive(By.cssSelector(STUDENT_FLAG_CHECKBOX));
@@ -142,6 +167,10 @@ public class PersonBasicPage extends BasePage {
                     studentFlagValidation = !checkBoxIsActive(By.cssSelector(STUDENT_FLAG_CHECKBOX));
                     break;
             }
+            }else{
+                studentFlagValidation = true;
+            }
+            if(firstGeneration!=""){
             switch (firstGeneration){
                 case "FirstGeneration":
                     firstGenerationValidation = checkBoxIsActive(By.cssSelector(FIRST_GENERATION_CHECKBOX));
@@ -149,7 +178,10 @@ public class PersonBasicPage extends BasePage {
                 case "":
                     firstGenerationValidation = !checkBoxIsActive(By.cssSelector(FIRST_GENERATION_CHECKBOX));
                     break;
+            }}else{
+                firstGenerationValidation=true;
             }
+            if(internationalStudent!=""){
             switch (internationalStudent){
                 case "InternationalStudent":
                     internationalStudentValidation = checkBoxIsActive(By.cssSelector(INTERNATIONAL_STUDENT_CHECKBOX));
@@ -157,7 +189,10 @@ public class PersonBasicPage extends BasePage {
                 case "":
                     internationalStudentValidation = !checkBoxIsActive(By.cssSelector(INTERNATIONAL_STUDENT_CHECKBOX));
                     break;
+            }}else{
+                internationalStudentValidation=true;
             }
+            if(legacy!=""){
             switch (legacy){
                 case "Legacy":
                     legacyValidation = checkBoxIsActive(By.cssSelector(LEGACY_CHECKBOX));
@@ -165,7 +200,10 @@ public class PersonBasicPage extends BasePage {
                 case "":
                     legacyValidation = !checkBoxIsActive(By.cssSelector(LEGACY_CHECKBOX));
                     break;
+            }}else{
+                legacyValidation=true;
             }
+            if(stateResident!=""){
             switch (stateResident){
                 case "StateResident":
                     stateResidentValidation = checkBoxIsActive(By.cssSelector(STATE_RESIDENT_CHECKBOX));
@@ -173,7 +211,10 @@ public class PersonBasicPage extends BasePage {
                 case "":
                     stateResidentValidation = !checkBoxIsActive(By.cssSelector(STATE_RESIDENT_CHECKBOX));
                     break;
+            }}else{
+                stateResidentValidation=true;
             }
+            if(veteran!=""){
             switch (veteran){
                 case "Veteran":
                     veteranValidation = checkBoxIsActive(By.cssSelector(VETERAN_CHECKBOX));
@@ -181,6 +222,8 @@ public class PersonBasicPage extends BasePage {
                 case "":
                     veteranValidation = !checkBoxIsActive(By.cssSelector(VETERAN_CHECKBOX));
                     break;
+            }}else{
+                veteranValidation=true;
             }
             if(deceasedValidation
                     && studentFlagValidation
