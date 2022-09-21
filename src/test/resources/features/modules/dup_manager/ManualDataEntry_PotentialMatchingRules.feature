@@ -37,3 +37,10 @@ Feature: Manual Data Entry: Person: Potential Matching Rules
     And I verify merge preview 0
     And I confirm merge and close
     #to verify the address fields, primary flags, and role are correct
+    And I navigate to people on records
+    And I open a people record by "Timothy"
+    And I validate if "Timothy"summary opened properly
+    And I verify Header Role "Multiple"
+    And I navigate to contact
+    And I verify address on contact por person "10124 Emerald Park Dr", "", "", "", "Houston", "", "Texas", "", "United States", "77070", "TX15", "Home", "", "", "1", "1" group "0"
+    And I verify address on contact por person "9520 Emerald Park Dr", "", "", "", "Elk Grove", "", "California", "", "United States", "95758", "CA03", "Home", "", "", "1", "0" group "1"
