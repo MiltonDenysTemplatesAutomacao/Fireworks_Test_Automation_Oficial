@@ -144,8 +144,8 @@ public class LogPage {
     public static final String VERIFY_STUDENT_BASIC_FIELDS_FAIL = "Fail while trying to verify the Basic fields for a student record";
     public static final String VERIFY_CONTENT_OF_SUSPENDED_RECORD_PASS = "I verify content of the suspended record person '%s'";
     public static final String VERIFY_CONTENT_OF_SUSPENDED_RECORD_FAIL = "Fail while trying to verify content of the suspended record person '%s'";
-    public static final String VERIFY_CONTENT_OF_FIRST_POSSIBLE_MATCH_PASS = "Fail while trying to verify content of the suspended record person '%s'";
-    public static final String VERIFY_CONTENT_OF_FIRST_POSSIBLE_MATCH_FAIL = "Fail while trying to verify content of the suspended record person '%s'";
+    public static final String VERIFY_CONTENT_OF_POSSIBLE_MATCH_PASS = "I verify content of the '%s' suspended record person '%s'";
+    public static final String VERIFY_CONTENT_OF_POSSIBLE_MATCH_FAIL = "Fail while trying to verify content of the '%s' suspended record person '%s'";
     public static final String MERGE_DUPLICATES_PASS = "I merge duplicates";
     public static final String MERGE_DUPLICATES_FAIL = "Fail while trying to merge duplicates";
     public static final String VERIFY_MERGE_PREVIEW_PASS = "I verify merge preview '%s'";
@@ -674,5 +674,7 @@ public class LogPage {
     public static final String VERIFY_IF_DELETE_BUTTON_IS_NOT_VISIBLE_FAIL = "Fail while trying to validate if delete button on documents is not displayed";
     public static final String UPDATE_PERSON_RECORD_FLAG_VALUES_PASS = "I update record flag values";
     public static final String UPDATE_PERSON_RECORD_FLAG_VALUES_FAIL = "Fail while trying to update record flag values";
+    public static final String OPEN_DUPLICATE_PASS = "I open a duplicate";
+    public static final String OPEN_DUPLICATE_FAIL = "Fail while trying to open a duplicate";
 
 }

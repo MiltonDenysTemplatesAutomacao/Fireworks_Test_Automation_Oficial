@@ -13,9 +13,9 @@ public class DuplicatesSteps {
     public static void makeSuspendedRecordActive() {
         DuplicatesPage.makeSuspendedRecordActive();
     }
-    @Then("I verify content of the first possible match record person {int}")
-    public static void verifyContentOfFirstPossibleMatch(int person) {
-        DuplicatesPage.verifyContentOfFirstPossibleMatch(person);
+    @Then("I verify content of the {string} possible match record person {int}")
+    public static void verifyContentOfPossibleMatch(String possibleMatch,int person) {
+        DuplicatesPage.verifyContentOfPossibleMatch(possibleMatch,person);
     }
     @Then("I merge duplicates")
     public static void mergeDuplicates() {
@@ -28,6 +28,10 @@ public class DuplicatesSteps {
     @Then("I confirm merge and close")
     public static void confirmMergeAndClose() {
         DuplicatesPage.confirmMergeAndClose();
+    }
+    @Then("I open a duplicate")
+    public static void openDuplicate() {
+        DuplicatesPage.openDuplicate();
     }
     @Then("I confirm merge and go")
     public static void confirmMergeAndGo() {

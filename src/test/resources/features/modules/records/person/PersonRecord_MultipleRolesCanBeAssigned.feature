@@ -20,7 +20,7 @@ Feature: Multiple roles can be assigned
 
     Then I validate if "A potential duplicate Student record was found while creating this record; it has been placed in the Duplicate Manager for review." message is correct
     And I verify content of the suspended record person 0
-    And I verify content of the first possible match record person 1
+    And I verify content of the "0" possible match record person 1
     And I merge duplicates
     And I verify merge preview 0
     And I confirm merge and close

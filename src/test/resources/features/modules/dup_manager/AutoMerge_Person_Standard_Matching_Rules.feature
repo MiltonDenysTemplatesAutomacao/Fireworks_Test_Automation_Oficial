@@ -110,7 +110,7 @@ Feature: Auto-Merge: Person: Standard Matching Rules
     And I validate if "A potential duplicate Student record was found while creating this record; it has been placed in the Duplicate Manager for review." message is correct
     #to verify content of Suspended Record and the First Match then make the record Active
     And I verify content of the suspended record person 0
-    And I verify content of the first possible match record person 1
+    And I verify content of the "0" possible match record person 1
     And I make suspended record active
     And I close alert if return this message "Incoming record successfully activated."
     #to verify the record was removed from the Duplicates Page
@@ -133,7 +133,7 @@ Feature: Auto-Merge: Person: Standard Matching Rules
       |Koji       |Wakamatsu |Student |KWakamatsu2@japanesenewwavedirectors.net|Personal   |Inquiry         |Freshman   |Inquiry-Active |Inquiry              |01/25/2020       |Fall 2021|
     And I close alert if return this message "A potential duplicate Student record was found while creating this record; it has been placed in the Duplicate Manager for review."
     And I verify content of the suspended record person 0
-    And I verify content of the first possible match record person 1
+    And I verify content of the "0" possible match record person 1
 
   @ResolutionRulesForStudentDataRule10 @Fix @DupManager
   Scenario: Record - DupManager - verify resolution rules for student data
