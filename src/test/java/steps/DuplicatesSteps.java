@@ -29,6 +29,10 @@ public class DuplicatesSteps {
     public static void confirmMergeAndClose() {
         DuplicatesPage.confirmMergeAndClose();
     }
+    @Then("I confirm merge and go")
+    public static void confirmMergeAndGo() {
+        DuplicatesPage.confirmMergeAndGo();
+    }
     @Then("I validate if {string} record lo longer exists on the duplicates page")
     public static void verifyIfRecordNoLongerExistsOnDuplicatesPage(String fullname) {
         DuplicatesPage.verifyIfRecordNoLongerExistsOnDuplicatesPage(fullname);

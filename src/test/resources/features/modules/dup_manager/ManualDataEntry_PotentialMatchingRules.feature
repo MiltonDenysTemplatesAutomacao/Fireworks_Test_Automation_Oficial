@@ -4,6 +4,8 @@
 #Regression testcase TL-280: Non-Student: Resolution Rules for grouped data
 #Regression testcase TL-169 rule 6: FN-LN-BDate
 #Regression testcase TL-608: Record Flag Values are Reflected in Merged Record
+#Regression testcase TL-169: rule 7 FN-Email-PostalCode(first 5)
+#Regression test for FW-10046: Bounce email address not reset to Primary after partial match merge
 
 @PotentialMatchRules
 Feature: Manual Data Entry: Person: Potential Matching Rules
@@ -85,3 +87,37 @@ Feature: Manual Data Entry: Person: Potential Matching Rules
     And I verify birth values "12/08/1934", "", "", ""
     And I verify record flags "Deceased", "", "", "", "", "", "Veteran"
 
+  @PotentialMatchRules7 @Done @DupManager
+  Scenario: Record - DupManager - Potential match - FN-Email-PostalCode
+    Given I login as "firestarterUsername", "firestarterPassword", "firestarterFullName"
+    #to create a student and person record with a partial match
+    When I create a person
+      |FirstName  |LastName  |Role1    |EmailAddress        |EmailType  |EmailOptInMethod|StudentType|StudentStatusCategory |StudentStatus  |StudentStatusDate|EntryTerm|Address1              |City      |State      |PostalCode|Country       |
+      |Tyson      |Apostol   |Student  |tyson@realfamous.net|Personal   |Inquiry         |Freshman   |Accepted              |Accepted       |01/25/2016       |Fall 2017|395 N. State St.      |Lindon    |Utah       |84042     |United States |
+    And I validate if "Person has been created." message is correct
+    #to update the email status to Bounce
+    And I validate if "Tyson"summary opened properly
+    And I navigate to contact
+    And I update email on contact for person "", "", "Bounce", "", "", "", "", "" and group "0"
+    And I click on save changes in contact for person
+    And I close alert if return this message "Person has been updated."
+    And I verify email address "", "", "Bounce", "", "", "", "", "0", "0" group "0"
+    When I create a person
+      |FirstName  |LastName |Role1     |Address1              |City      |State      |PostalCode|Country       |EmailAddress        |EmailType  |EmailOptInMethod|StudentType|StudentStatusCategory |StudentStatus  |StudentStatusDate|EntryTerm|
+      |Tyson      |Fury     |Person    |584 W. Gillman Lane   |Lindon    |Utah       |84042     |United States |tyson@realfamous.net|Personal   |Application     |           |                      |               |                 |         |
+      |Tyson      |Apostol  |Student   |395 N. State St.      |Lindon    |Utah       |84042     |United States |tyson@realfamous.net|Personal   |Inquiry         |Freshman   |Accepted              |Accepted       |01/25/2016       |Fall 2017|
+    And I close alert if return this message "A potential duplicate Person record was found while creating this record; it has been placed in the Duplicate Manager for review."
+    #to verify the suspended and possible match records then merge those records
+    And I verify content of the suspended record person 0
+    And I verify content of the first possible match record person 1
+    And I merge duplicates
+    And I verify merge preview 1
+    And I confirm merge and go
+    #to verify the address fields, primary flags, and role are correct
+    And I validate if "Tyson Apostol"summary opened properly
+    And I navigate to contact
+    And I verify name on contact for person "Tyson", "Apostol", "", "", "", "", "1", "1" group "0"
+    And I verify name on contact for person "Tyson", "Fury", "", "", "", "", "1", "0" group "1"
+    And I verify address on contact por person "395 N. State St.", "", "", "", "Lindon", "", "Utah", "", "United States", "84042", "UT01", "Home", "", "", "1", "1" group "0"
+    And I verify address on contact por person "584 W. Gillman Lane", "", "", "", "Lindon", "", "Utah", "", "United States", "84042", "UT01", "Home", "", "", "1", "0" group "1"
+    And I verify email address "", "", "Bounce", "", "", "", "", "", "" group "0"

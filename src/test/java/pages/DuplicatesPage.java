@@ -101,13 +101,18 @@ public class DuplicatesPage extends BasePage{
 
     public static void confirmMergeAndClose(){
         try {
-            waitUntilElementToBeSelected(By.cssSelector(CANCEL_MERGE_BUTTON),20);
-            scrollToElement(By.cssSelector(PREVIEW_MERGE_MATCH_COUNTRY));
-            waitUntilElementToBeSelected(By.id(MERGE_AND_CLOSE_BUTTON),20);
-            click(By.id(MERGE_AND_CLOSE_BUTTON));
+            MainPage.clickOption(By.id(MERGE_AND_CLOSE_BUTTON));
             ExtentReportsSetUp.testingPass(LogPage.CONFIRM_MERGE_AND_CLOSE_PASS);
         } catch (Exception e) {
             FailureDelegatePage.handlePageException(LogPage.CONFIRM_MERGE_AND_CLOSE_FAIL);
+        }
+    }
+    public static void confirmMergeAndGo(){
+        try {
+            MainPage.clickOption(By.id(MERGE_AND_GO_BUTTON));
+            ExtentReportsSetUp.testingPass(LogPage.CONFIRM_MERGE_AND_GO_PASS);
+        } catch (Exception e) {
+            FailureDelegatePage.handlePageException(LogPage.CONFIRM_MERGE_AND_GO_FAIL);
         }
     }
 
