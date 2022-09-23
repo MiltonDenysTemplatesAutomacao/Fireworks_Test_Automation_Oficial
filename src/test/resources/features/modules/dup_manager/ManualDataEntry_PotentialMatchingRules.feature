@@ -7,6 +7,8 @@
 #Regression testcase TL-169: rule 7 FN-Email-PostalCode(first 5)
 #Regression test for FW-10046: Bounce email address not reset to Primary after partial match merge
 #Regression testcase TL-216: Comparison: Multiple Potential Matches
+#Regression testcase TL-169 rule 10: FN-Zip-Phone
+#Regression testcase TL-203: Grouped fields: All active groups considered
 
 @PotentialMatchRules
 Feature: Manual Data Entry: Person: Potential Matching Rules
@@ -179,3 +181,52 @@ Feature: Manual Data Entry: Person: Potential Matching Rules
     And I validate if "Tetsuji Takechi" record lo longer exists on the duplicates page
     And I search "LastName" on duplicate manager person 0
     And I validate if "Tetsuji Takechi" record lo longer exists on the duplicates page
+
+  @PotentialMatchRules10 @Done @DupManager
+  Scenario: Record - DupManager - existing student with non-primary field groups is matched to an incoming person
+    Given I login as "firestarterUsername", "firestarterPassword", "firestarterFullName"
+    #to create a student and then add non-primary name and address data
+    When I create a person
+      |FirstName  |LastName  |FullName       |Role1    |StudentType|StudentStatusCategory |StudentStatus  |StudentStatusDate|EntryTerm|Phone          |PhoneType|Address1              |City         |State         |PostalCode|Country      |
+      |Eliza      |Pinckney  |Eliza Pinckney |Student  |Freshman   |Inquiry               |Inquiry-Active |01/25/2026       |Fall 2017|(215) 925-5968 |Home     |261 Island Park Dr    |Daniel Island|South Carolina|29492     |United States|
+    And I validate if "Person has been created." message is correct
+    And I validate if "Eliza"summary opened properly
+    And I navigate to contact
+    And I add a name group "0"
+    When I create a name on contact for person "Elizabeth", "Lucas", "", "", "", "", "1", "" group "1"
+    And I add phone "0"
+    When I update phone number in contact for person "(803) 252-1974", "Home", "", "", "", "", "1", "" field group "1"
+    And I add address "0"
+    And I create address on contact for person "37 Church St", "", "", "", "Charleston", "South Carolina", "", "United States", "29401", "Home", "", "", "1", "", group "1"
+    And I click on save changes in contact for person
+    And I close alert if return this message "Person has been updated."
+    #to create a donor record that matches the non-primary field groups
+    When I create a person
+      |FirstName  |LastName |FullName        |Role1    |Phone          |PhoneType|Address1              |City         |State         |PostalCode|Country      |StudentType|StudentStatusCategory |StudentStatus  |StudentStatusDate|EntryTerm|
+      |Elizabeth  |Lucas    |Elizabeth Lucas |Donor    |(803) 252-1974 |Home     |37 Church St          |Charleston   |South Carolina|29401     |United States|           |                      |               |                 |         |
+      |Eliza      |Pinckney |Eliza Pinckney  |Student  |(215) 925-5968 |Home     |261 Island Park Dr    |Daniel Island|South Carolina|29492     |United States|Freshman   |Inquiry               |Inquiry-Active |01/25/2016       |Fall 2017|
+    And I close alert if return this message "A potential duplicate Person record was found while creating this record; it has been placed in the Duplicate Manager for review."
+    #to verify content of suspended record and first possible match then merge the records
+    And I verify content of the suspended record person 0
+    And I verify content of the "0" possible match record person 1
+    And I merge duplicates
+    And I verify merge preview 1
+    And I confirm merge and close
+    #to verify the records are no longer listed on the duplicates page
+    And I navigate to duplicates
+    And I validate if "Eliza Pinckney" record lo longer exists on the duplicates page
+    And I search "LastName" on duplicate manager person 1
+    And I validate if "Eliza Pinckney" record lo longer exists on the duplicates page
+    #to verify contact data
+    And I navigate to people on records
+    And I open a people record by "Pinckney"
+    And I validate if "Pinckney"summary opened properly
+    And I verify Header Role "Multiple"
+    And I navigate to contact
+    And I verify name on contact for person "Eliza", "Pinckney", "", "", "", "", "1", "1" group "0"
+    And I verify name on contact for person "Elizabeth", "Lucas", "", "", "", "", "1", "" group "1"
+    And I verify phone number on contact for person "(215) 925-5968", "Home", "", "", "", "", "", "", "1", "1", group "0"
+    And I verify phone number on contact for person "(803) 252-1974", "Home", "", "", "", "", "", "", "1", "", group "1"
+    And I verify address on contact por person "261 Island Park Dr", "", "", "", "Daniel Island", "", "South Carolina", "", "United States", "29492", "SC02", "Home", "", "", "1", "1" group "0"
+    And I verify address on contact por person "37 Church St", "", "", "", "Charleston", "", "South Carolina", "", "United States", "29401", "SC02", "Home", "", "", "1", "" group "1"
+

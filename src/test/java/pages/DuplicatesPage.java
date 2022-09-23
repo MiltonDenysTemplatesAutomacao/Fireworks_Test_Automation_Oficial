@@ -188,7 +188,7 @@ public class DuplicatesPage extends BasePage{
     public static void verifyMergePreview(int person){
         String passMessage = String.format(LogPage.VERIFY_MERGE_PREVIEW_PASS,person);
         String failMessage = String.format(LogPage.VERIFY_MERGE_PREVIEW_FAIL,person);
-        wait(1000);
+        wait(2000);
         try {
             if(MainPage.verifyGetText(By.cssSelector(PREVIEW_MERGE_MATCH_NAME),(mass.get(person).get("FullName")))
                     && MainPage.verifyGetText(By.cssSelector(PREVIEW_MERGE_MATCH_PREFERRED_NAME),(mass.get(person).get("PreferredName")))

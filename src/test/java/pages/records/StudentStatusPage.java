@@ -92,10 +92,14 @@ public class StudentStatusPage extends BasePage {
                 MainPage.fillField(By.cssSelector(statusCommentsField(index)),mass.get(person).get("Comments"));
             }
             if (mass.get(person).get("Active") != null) {
-                MainPage.clickOption(By.cssSelector(statusActiveCheckbox(index)));
+                scrollToElement(By.cssSelector(statusActiveCheckbox(index)));
+                scrollTo("-150");
+                BasePage.click(By.cssSelector(statusActiveCheckbox(index)));
             }
             if (mass.get(person).get("Primary") != null) {
-                MainPage.clickOption(By.cssSelector(statusPrimaryCheckbox(index)));
+                scrollToElement(By.cssSelector(statusPrimaryCheckbox(index)));
+                scrollTo("-150");
+                BasePage.click(By.cssSelector(statusPrimaryCheckbox(index)));
             }
             ExtentReportsSetUp.testingPass(passMessage);
         } catch (Exception e) {
