@@ -554,27 +554,36 @@ public class GlobalNavPage extends BasePage {
      */
     public static void quickAddStaff(DataTable data) {
         BasePage.wait(3000);
+        int quickAddStaffDelay = 10;
 
         try {
             mass = data.asMaps(String.class, String.class);
             if (mass.get(0).get("FirstName") != null) {
+                waitElementBy(By.cssSelector(QUICK_ADD_STAFF_FIRST_NAME_FIELD), quickAddStaffDelay);
                 BasePage.write(By.cssSelector(QUICK_ADD_STAFF_FIRST_NAME_FIELD), mass.get(0).get("FirstName"));
             }
             if (mass.get(0).get("LastName") != null) {
+                waitElementBy(By.cssSelector(QUICK_ADD_STAFF_LAST_NAME_FIELD), quickAddStaffDelay);
                 BasePage.write(By.cssSelector(QUICK_ADD_STAFF_LAST_NAME_FIELD), mass.get(0).get("LastName"));
             }
             if (mass.get(0).get("EmailAddress") != null) {
+                waitElementBy(By.cssSelector(QUICK_ADD_STAFF_EMAIL_ADDRESS_FIELD), quickAddStaffDelay);
                 BasePage.write(By.cssSelector(QUICK_ADD_STAFF_EMAIL_ADDRESS_FIELD), mass.get(0).get("EmailAddress"));
             }
             if (mass.get(0).get("AccountStartDate") != null) {
+                waitElementBy(By.cssSelector(QUICK_ADD_STAFF_ACCOUNT_START_DATE), quickAddStaffDelay);
                 BasePage.write(By.cssSelector(QUICK_ADD_STAFF_ACCOUNT_START_DATE), mass.get(0).get("AccountStartDate"));
             }
             if (mass.get(0).get("AccountEndDate") != null) {
+                waitElementBy(By.cssSelector(QUICK_ADD_STAFF_ACCOUNT_END_DATE), quickAddStaffDelay);
                 BasePage.write(By.cssSelector(QUICK_ADD_STAFF_ACCOUNT_END_DATE), mass.get(0).get("AccountEndDate"));
             }
             if (mass.get(0).get("PermissionGroup") != null) {
+                waitElementBy(By.cssSelector(QUICK_ADD_STAFF_PERMISSIONS_GROUP_DROPDOWN), quickAddStaffDelay);
                 BasePage.click(By.cssSelector(QUICK_ADD_STAFF_PERMISSIONS_GROUP_DROPDOWN));
-                BasePage.selectElementsList(By.cssSelector(QUICK_ADD_STAFF_PERMISSIONS_GROUP_DROPDOWN_LIST), "a");
+                waitElementBy(By.cssSelector(PersonPage.SELECT_DROP), quickAddStaffDelay);
+                BasePage.selectElementsList(By.cssSelector(PersonPage.SELECT_DROP), "a");
+                wait(1000);
                 clickOnListOfElements(mass.get(0).get("PermissionGroup"));
             }
             ExtentReportsSetUp.testingPass(LogPage.QUICK_ADD_STAFF_PASS);
@@ -614,6 +623,7 @@ public class GlobalNavPage extends BasePage {
      */
     public static void quickAddStaffSaveGoButton() {
         try {
+            waitUntilElementToBeSelected(By.cssSelector(QUICK_ADD_STAFF_SAVE_GO_BUTTON),10);
             click(By.cssSelector(QUICK_ADD_STAFF_SAVE_GO_BUTTON));
             ExtentReportsSetUp.testingPass(LogPage.CLICK_QUICK_ADD_STAFF_SAVE_AND_GO_PASS);
         } catch (Exception e) {

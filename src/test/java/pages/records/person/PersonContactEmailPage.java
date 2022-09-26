@@ -112,7 +112,6 @@ public class PersonContactEmailPage extends BasePage {
     public static void createEmail(ContactEmailBean email, String group){
         String passMessage = String.format(LogPage.CREATE_EMAIL_PASS,group);
         String failMessage = String.format(LogPage.CREATE_EMAIL_FAIL,group);
-        int createEmailDelay=20;
         try {
             if(email.getEmailAddress()!=""){
                 MainPage.fillField(By.cssSelector(emailAddressField(group)), email.getEmailAddress());

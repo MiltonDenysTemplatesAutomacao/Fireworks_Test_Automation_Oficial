@@ -676,5 +676,9 @@ public class LogPage {
     public static final String UPDATE_PERSON_RECORD_FLAG_VALUES_FAIL = "Fail while trying to update record flag values";
     public static final String OPEN_DUPLICATE_PASS = "I open a duplicate";
     public static final String OPEN_DUPLICATE_FAIL = "Fail while trying to open a duplicate";
+    public static final String VERIFY_CONTACT_ORGANIZATION_NAME_PASS = "I verify organization name '%s' on contact";
+    public static final String VERIFY_CONTACT_ORGANIZATION_NAME_FAIL = "Fail while trying to verify organization name '%s' on contact";
+    public static final String VERIFY_ORG_NAME_IS_1TO1_PASS = "I verify organization name is 1 to 1";
+    public static final String VERIFY_ORG_NAME_IS_1TO1_FAIL = "Fail while trying to verify organization name is 1 to 1";
 
 }

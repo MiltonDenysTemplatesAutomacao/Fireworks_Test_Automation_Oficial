@@ -32,6 +32,7 @@ public class MainPage extends BasePage{
         scrollTo("-150");
         return checkIfElementIsVisible(by);
     }
+
     public static boolean verifyCheckboxActiveOrNot(By by,String value)throws Exception{
         boolean validation = false;
         if(value!="" && value != null){

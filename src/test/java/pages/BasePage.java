@@ -82,7 +82,10 @@ public class BasePage {
     public static boolean checkIfElementIsEnabled(By by) throws Exception {
         return DriverBase.getDriver().findElement(by).isEnabled();
     }
-
+    public static boolean verifyIfElementsIsVisible(By by)throws Exception{
+        Boolean isPresent = DriverBase.getDriver().findElements(by).size() > 0;
+        return isPresent;
+    }
     /*
      * Method to save elements in a list
      */
