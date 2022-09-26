@@ -319,6 +319,13 @@ public class ImportFieldsPage extends BasePage {
         fieldParameter.put("Opt In Method", "opt_in_method_id");
         fieldParameter.put("Phone Number", "phone_number");
         fieldParameter.put("Phone Type", "phone_type");
+        fieldParameter.put("Street 1", "address_1");
+        fieldParameter.put("Street 2", "address_2");
+        fieldParameter.put("City", "address_city");
+        fieldParameter.put("State", "address_state");
+        fieldParameter.put("Zip", "address_postal_code");
+        fieldParameter.put("Country", "address_country");
+        fieldParameter.put("Address Type", "address_type");
         fieldParameter.put("STUDENT_TYPE", "student_type");
         fieldParameter.put("STUDENT_CATEGORY", "student_status_category");
         fieldParameter.put("STUDENT_STATUS", "student_status");
@@ -332,6 +339,13 @@ public class ImportFieldsPage extends BasePage {
         fieldParameter.put("OPTIN", "opt_in_method_id");
         fieldParameter.put("PHONE_NUMBER", "phone_number");
         fieldParameter.put("PHONE_TYPE", "phone_type");
+        fieldParameter.put("STREET_1", "address_1");
+        fieldParameter.put("STREET_2", "address_2");
+        fieldParameter.put("CITY", "address_city");
+        fieldParameter.put("STATE", "address_state");
+        fieldParameter.put("ZIP", "address_postal_code");
+        fieldParameter.put("COUNTRY", "address_country");
+        fieldParameter.put("ADDRESS_TYPE", "address_type");
         return fieldParameter.get(field);
     }
 
