@@ -680,5 +680,7 @@ public class LogPage {
     public static final String VERIFY_CONTACT_ORGANIZATION_NAME_FAIL = "Fail while trying to verify organization name '%s' on contact";
     public static final String VERIFY_ORG_NAME_IS_1TO1_PASS = "I verify organization name is 1 to 1";
     public static final String VERIFY_ORG_NAME_IS_1TO1_FAIL = "Fail while trying to verify organization name is 1 to 1";
+    public static final String VERIFY_ORG_ADDRESS_PASS = "I verify address on contact for organization group '%s'";
+    public static final String VERIFY_ORG_ADDRESS_FAIL = "Fail while trying to verify address on contact for organization group '%s'";
 
 }
