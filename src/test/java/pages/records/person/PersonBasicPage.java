@@ -434,7 +434,7 @@ public class PersonBasicPage extends BasePage {
     public static void updateBirthValues(String date,String country,String city,String state) {
         try {
             if (date != "") {
-                MainPage.fillField(By.cssSelector(BIRTH_DATE), date);
+                MainPage.fillDateField(By.cssSelector(BIRTH_DATE), date);
             }
             if (country != "") {
                 MainPage.clickOptionList(By.cssSelector(BIRTH_COUNTRY_DROPDOWN),

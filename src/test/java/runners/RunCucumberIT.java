@@ -7,7 +7,7 @@ import static io.cucumber.junit.platform.engine.Constants.*;
 @Suite
 @IncludeEngines("cucumber")
 @SelectClasspathResource(".")
-@IncludeTags("AutoMergeOrganizationMatchingRules7")
+@IncludeTags("NonstudentResolutionRulesFor1a1FieldsScenario")
 @ConfigurationParameter(key = PLUGIN_PROPERTY_NAME, value = "pretty")
 @ConfigurationParameter(key = PLUGIN_PROPERTY_NAME, value = "rerun:failed_scenarios/failed_scenarios.txt")
 
