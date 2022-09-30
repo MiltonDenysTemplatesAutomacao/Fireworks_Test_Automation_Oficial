@@ -29,7 +29,7 @@ public class ClearChangesPage extends BasePage{
         try {
             switch (parameter){
                 case "Person":
-                    scrollToElement(By.id(ActionsPage.ACTION_COMMENTS_FIELD));
+                    scrollToElement(By.cssSelector(ActionsPage.ACTION_COMMENTS_FIELD));
                     break;
                 case "Organization":
                     scrollToElement(By.id(OrgPage.ORG_ACTION_COMMENTS_FIELD));

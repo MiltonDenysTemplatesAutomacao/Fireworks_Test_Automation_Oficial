@@ -28,7 +28,7 @@ Feature: Non-Student: Resolution Rules for grouped data
     And I click on add action button
     And I update action person "0"
     Then I click on Save Changes button in Actions
-    And I validate if "Action has been created." message is correct
+    And I close alert if return this message "Action has been created."
     #to add an email address that matches the first record and triggers a potential match
     And I navigate to contact
     And I update email on contact for person "SMcKenna@actors.com", "Personal", "", "Inquiry", "", "", "1", "" and group "0"
@@ -51,11 +51,11 @@ Feature: Non-Student: Resolution Rules for grouped data
     And I verify action Datatable values index "0", values "Campus Events", "Admitted Student Day: Attend", "Fire Starter", "01/01/2016", ""
     And I open an action "Campus Events"
     And I use datatable
-    |Comments              |
-    |person1ActionComment  |
-
+    |Comments              |ActionDateTime      |Category     |Action                       |Staff        |
+    |person1ActionComment  |01/01/2016 2:00 PM  |Campus Events|Admitted Student Day: Attend |Fire Starter |
+    |person2ActionComment  |                    |             |                             |             |
     And I verify default action values index "0"
-#    And I verify default action values index "1"
+    And I verify default action values index "1"
 
   @PotencialMatchEmailAddressesMerged @Done @DupManager
   Scenario: Record - DupManager - verify duplicate actions are merged during potential match merge

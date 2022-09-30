@@ -690,5 +690,11 @@ public class LogPage {
     public static final String VERIFY_DUPLICATE_FOUND_FAIL = "Fail while trying to verify if it is able to see '%s'";
     public static final String VERIFY_DUPLICATE_NOT_FOUND_PASS = "I verify if it is not able to see '%s'";
     public static final String VERIFY_DUPLICATE_NOT_FOUND_FAIL = "Fail while trying to verify if it is not able to see '%s'";
+    public static final String VERIFY_ACTION_ATTRIBUTES_PASS = "I verify actions attributes '%s'";
+    public static final String VERIFY_ACTION_ATTRIBUTES_FAIL = "Fail while trying to verify actions attributes '%s'";
+    public static final String VERIFY_ACTION_DETAILS_PASS = "I verify actions details '%s'";
+    public static final String VERIFY_ACTION_DETAILS_FAIL = "Fail while trying to verify actions details '%s'";
+    public static final String VERIFY_ACTION_DATE_FIELD_PASS = "Fail while trying to verify actions details '%s'";
+    public static final String VERIFY_ACTION_DATE_FIELD_FAIL = "Fail while trying to verify actions details '%s'";
 
 }

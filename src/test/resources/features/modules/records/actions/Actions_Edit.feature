@@ -42,5 +42,6 @@ Feature: Actions Edit actions
     #to verify default values of a new Action after editing an action
     And I navigate to Actions
     And I click on add action button
+    And I verify current action date time
     And I verify default action values index "2"
 

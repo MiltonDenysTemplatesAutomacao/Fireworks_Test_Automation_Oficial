@@ -17,7 +17,7 @@ public class ActionsPage extends BasePage {
     public static final String ACTION_CATEGORY_DROPDOWN = "s2id_action_category_id";
     public static final String ACTION_DROPDOWN = "s2id_action_id";
     public static final String ACTION_STAFF_DROPDOWN = "s2id_action_staff";
-    public static final String ACTION_COMMENTS_FIELD = "action_comments";
+    public static final String ACTION_COMMENTS_FIELD = "#action_comments";
     public static final String ACTION_DATE_FIELD = "#action_date";
     public static final String DETAILS_LABEL = ".//*[@data-field-group-label='Details']";
     public static final String ACTION_SAVE_CHANGES_BUTTON = "actionSaveChangesButton";
@@ -151,11 +151,20 @@ public class ActionsPage extends BasePage {
             FailureDelegatePage.handlePageException(LogPage.DELETE_ACTION_FAIL);
         }
     }
+    public static void verifyCurrentActionDateField(){
+        try {
+            if(verifyCurrentDateField(By.cssSelector(ACTION_DATE_FIELD))){
+                ExtentReportsSetUp.testingPass(LogPage.VERIFY_BASIC_IDENTIFICATION_VALUES_PASS);
+            }else{
+                FailureDelegatePage.handlePageException(LogPage.VERIFY_BASIC_IDENTIFICATION_VALUES_FAIL);
+            }
+        } catch (Exception e) {
+            FailureDelegatePage.handlePageException(LogPage.VERIFY_BASIC_IDENTIFICATION_VALUES_FAIL);
+        }
+    }
     public static void verifyDefaultActionValues(String index){
         try {
-            if(verifyDateField(By.cssSelector(ACTION_DATE_FIELD))
-                && verifyActionAttributes(index)
-                && verifyActionDetails(index)){
+            if(verifyActionAttributes(index)&& verifyActionDetails(index)){
                 ExtentReportsSetUp.testingPass(LogPage.VERIFY_DEFAULT_ACTION_VALUES_PASS);
             }else{
                 FailureDelegatePage.handlePageException(LogPage.VERIFY_DEFAULT_ACTION_VALUES_FAIL);
@@ -176,68 +185,48 @@ public class ActionsPage extends BasePage {
             FailureDelegatePage.handlePageException(LogPage.VERIFY_ACTION_VALUES_FAIL);
         }
     }
-    public static boolean verifyActionAttributes(String index)throws Exception{
-        boolean staffValidation = false;
-        boolean actionDateTimeValidation = false;
-        boolean commentsValidation = false;
-        waitElementBy(By.cssSelector(CREATE_ACTION_PANEL_TITLE),20);
-
+    public static boolean verifyActionAttributes(String index) {
         int indexNumber = Integer.parseInt(index);
-        if(mass.get(indexNumber).get("Staff") !=null){
-            String staffText = getText(By.id(ACTION_STAFF_DROPDOWN));
-            staffValidation = staffText.contains(mass.get(indexNumber).get("Staff"));
-        }else{
-            staffValidation=true;
+        boolean validation = false;
+        String passMessage = String.format(LogPage.VERIFY_ACTION_ATTRIBUTES_PASS,index);
+        String failMessage = String.format(LogPage.VERIFY_ACTION_ATTRIBUTES_FAIL,index);
+        try {
+            if (MainPage.verifyGetText(By.id(ACTION_STAFF_DROPDOWN), mass.get(indexNumber).get("Staff"))
+                    && MainPage.verifyGetAttribute(By.cssSelector(ACTION_DATE_FIELD), mass.get(indexNumber).get("ActionDateTime"))
+                    && MainPage.verifyGetAttribute(By.cssSelector(ACTION_COMMENTS_FIELD), mass.get(indexNumber).get("Comments"))) {
+                    validation = true;
+                ExtentReportsSetUp.testingPass(passMessage);
+            } else {
+                validation = false;
+                FailureDelegatePage.handlePageException(failMessage);
+            }
+        } catch (Exception e) {
+            FailureDelegatePage.handlePageException(failMessage);
         }
-        if(mass.get(indexNumber).get("ActionDateField") !=null){
-            String actionDateTimeText = getAtribute(By.cssSelector(ACTION_DATE_FIELD),"value");
-            actionDateTimeValidation = actionDateTimeText.contains(mass.get(indexNumber).get("ActionDateField"));
-        }else{
-            actionDateTimeValidation=true;
-        }
-        if(mass.get(indexNumber).get("Comments") !=null){
-            String commentsText = getAtribute(By.id(ACTION_COMMENTS_FIELD),"value");
-            commentsValidation = commentsText.contains(mass.get(indexNumber).get("Comments"));
-        }else{
-            commentsValidation=true;
-        }
-        return staffValidation && actionDateTimeValidation && commentsValidation;
+        return validation;
     }
 
-    public static boolean verifyActionDetails(String index)throws Exception{
-
-        boolean categoryValidation = false;
-        boolean actionValidation = false;
-        boolean actionTypeValidation = false;
-        boolean actionVisibilityValidation = false;
+    public static boolean verifyActionDetails(String index){
+        String passMessage = String.format(LogPage.VERIFY_ACTION_DETAILS_PASS,index);
+        String failMessage = String.format(LogPage.VERIFY_ACTION_DETAILS_FAIL,index);
         int indexNumber = Integer.parseInt(index);
-        waitElementBy(By.cssSelector(CREATE_ACTION_PANEL_TITLE),20);
+        boolean validation = false;
 
-        if(mass.get(indexNumber).get("Category") !=null){
-            String categoryText = getText(By.id(ACTION_CATEGORY_DROPDOWN));
-            categoryValidation = categoryText.contains(mass.get(indexNumber).get("Category"));
-        }else{
-            categoryValidation=true;
+        try {
+            if(MainPage.verifyGetText(By.id(ACTION_CATEGORY_DROPDOWN),mass.get(indexNumber).get("Category"))
+                && MainPage.verifyGetText(By.id(ACTION_DROPDOWN),mass.get(indexNumber).get("Action"))
+                && MainPage.verifyGetText(By.id(ACTION_TYPE_DISABLED_DROPDOWN),mass.get(indexNumber).get("ActionType"))
+                && MainPage.verifyGetText(By.id(ACTION_VISIBILITY_DISABLED_DROPDOWN),mass.get(indexNumber).get("ActionVisibility"))){
+                validation = true;
+                ExtentReportsSetUp.testingPass(passMessage);
+            }else{
+                validation = false;
+                FailureDelegatePage.handlePageException(failMessage);
+            }
+        } catch (Exception e) {
+            FailureDelegatePage.handlePageException(failMessage);
         }
-        if(mass.get(indexNumber).get("Action") !=null){
-            String actionText = getText(By.id(ACTION_DROPDOWN));
-            actionValidation = actionText.contains(mass.get(indexNumber).get("Action"));
-        }else{
-            actionValidation=true;
-        }
-        if(mass.get(indexNumber).get("ActionType") !=null){
-            String actionTypeText = getText(By.id(ACTION_TYPE_DISABLED_DROPDOWN));
-            actionTypeValidation = actionTypeText.contains(mass.get(indexNumber).get("ActionType"));
-        }else{
-            actionTypeValidation=true;
-        }
-        if(mass.get(indexNumber).get("ActionVisibility") !=null){
-            String actionVisibilityText = getText(By.id(ACTION_VISIBILITY_DISABLED_DROPDOWN));
-            actionVisibilityValidation = actionVisibilityText.contains(mass.get(indexNumber).get("ActionVisibility"));
-        }else{
-            actionVisibilityValidation=true;
-        }
-        return categoryValidation && actionValidation && actionTypeValidation && actionVisibilityValidation;
+        return validation;
     }
     public static void openAction(String action){
         try {
@@ -304,11 +293,11 @@ public class ActionsPage extends BasePage {
                         mass.get(personNumber).get("Staff"),
                         By.cssSelector(PersonPage.SELECT_DROP));
             }
-            if (mass.get(personNumber).get("ActionDateField") != null) {
-                MainPage.fillDateField(By.cssSelector(ACTION_DATE_FIELD),mass.get(personNumber).get("ActionDateField"));
+            if (mass.get(personNumber).get("ActionDateTime") != null) {
+                MainPage.fillDateField(By.cssSelector(ACTION_DATE_FIELD),mass.get(personNumber).get("ActionDateTime"));
             }
             if (mass.get(personNumber).get("Comments") != null) {
-                MainPage.fillField(By.id(ACTION_COMMENTS_FIELD),mass.get(personNumber).get("Comments"));
+                MainPage.fillField(By.cssSelector(ACTION_COMMENTS_FIELD),mass.get(personNumber).get("Comments"));
             }
             ExtentReportsSetUp.testingPass(passMessage);
         } catch (Exception e) {
@@ -318,9 +307,7 @@ public class ActionsPage extends BasePage {
 
     public static void clickSaveChangesActions(){
         try {
-            scrollToTheBottom();
-            wait(2000);
-            click(By.id(ACTION_SAVE_CHANGES_BUTTON));
+            MainPage.clickOption(By.id(ACTION_SAVE_CHANGES_BUTTON));
             ExtentReportsSetUp.testingPass(LogPage.SAVE_CHANGES_PASS);
         } catch (Exception e) {
             FailureDelegatePage.handlePageException(LogPage.SAVE_CHANGES_FAIL);

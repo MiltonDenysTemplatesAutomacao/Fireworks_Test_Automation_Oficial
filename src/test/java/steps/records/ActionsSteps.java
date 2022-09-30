@@ -42,6 +42,10 @@ public class ActionsSteps {
     public static void verifyDefaultActionValues(String index) {
         ActionsPage.verifyDefaultActionValues(index);
     }
+    @Then("I verify current action date time")
+    public static void verifyCurrentActionDateField() {
+        ActionsPage.verifyCurrentActionDateField();
+    }
     @Then("I delete action")
     public static void deleteAction() {
         ActionsPage.deleteAction();

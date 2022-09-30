@@ -228,7 +228,7 @@ public class BasePage {
         return dtf.format(now);
     }
 
-    public static boolean verifyDateField(By by)throws Exception{
+    public static boolean verifyCurrentDateField(By by)throws Exception{
         String currentDateTime = currentDateTime();
         String dateTimeText = getAtribute(by,"value");
         return dateTimeText.equals(currentDateTime);
