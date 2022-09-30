@@ -682,5 +682,9 @@ public class LogPage {
     public static final String VERIFY_ORG_NAME_IS_1TO1_FAIL = "Fail while trying to verify organization name is 1 to 1";
     public static final String VERIFY_ORG_ADDRESS_PASS = "I verify address on contact for organization group '%s'";
     public static final String VERIFY_ORG_ADDRESS_FAIL = "Fail while trying to verify address on contact for organization group '%s'";
+    public static final String VERIFY_ACTION_MANAGER_TABLE_ROW1_IS_DISPLAYED_PASS = "I verify if action manager table on actions is displayed";
+    public static final String VERIFY_ACTION_MANAGER_TABLE_ROW1_IS_DISPLAYED_FAIL = "Fail while trying to verify if action manager table on actions is displayed";
+    public static final String VERIFY_ACTION_MANAGER_TABLE_ROW2_IS_NOT_DISPLAYED_PASS = "I verify if action manager table on actions row 2 is not displayed";
+    public static final String VERIFY_ACTION_MANAGER_TABLE_ROW2_IS_NOT_DISPLAYED_FAIL = "Fail while trying to verify if action manager table on actions row 2 is not displayed";
 
 }

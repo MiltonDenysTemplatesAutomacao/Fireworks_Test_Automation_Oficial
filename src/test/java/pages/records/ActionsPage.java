@@ -32,6 +32,32 @@ public class ActionsPage extends BasePage {
     public static final String DELETE_ACTION_DISABLED_BUTTON = "#deleteActionButton[disabled]";
     public static final String DELETE_ACTION_CONFIRM_MODAL_LABEL = "#deleteConfirmModalLabel";
     public static final String DELETE_ACTION_CANCEL_BUTTON = "#modalCancelButtondeleteConfirm";
+    public static final String ACTIONS_MANAGER_TABLE_ROW1 = "#actionsSummaryTable_row_0";
+    public static final String ACTIONS_MANAGER_TABLE_ROW2 = "#actionsSummaryTable_row_1";
+
+    public static void verifyActionManagerTableRow2IsNotDisplayed(){
+        try {
+            if(!verifyIfElementsIsVisible(By.cssSelector(ACTIONS_MANAGER_TABLE_ROW2))){
+                ExtentReportsSetUp.testingPass(LogPage.VERIFY_ACTION_MANAGER_TABLE_ROW2_IS_NOT_DISPLAYED_PASS);
+            }else{
+                FailureDelegatePage.handlePageException(LogPage.VERIFY_ACTION_MANAGER_TABLE_ROW2_IS_NOT_DISPLAYED_FAIL);
+            }
+        } catch (Exception e) {
+            FailureDelegatePage.handlePageException(LogPage.VERIFY_ACTION_MANAGER_TABLE_ROW2_IS_NOT_DISPLAYED_FAIL);
+        }
+    }
+    public static void verifyActionManagerTableRow1IsDisplayed(){
+        try {
+            waitElementBy(By.cssSelector(ACTIONS_MANAGER_TABLE_ROW1),10);
+            if(verifyIfElementsIsVisible(By.cssSelector(ACTIONS_MANAGER_TABLE_ROW1))){
+                ExtentReportsSetUp.testingPass(LogPage.VERIFY_ACTION_MANAGER_TABLE_ROW1_IS_DISPLAYED_PASS);
+            }else{
+                FailureDelegatePage.handlePageException(LogPage.VERIFY_ACTION_MANAGER_TABLE_ROW1_IS_DISPLAYED_FAIL);
+            }
+        } catch (Exception e) {
+            FailureDelegatePage.handlePageException(LogPage.VERIFY_ACTION_MANAGER_TABLE_ROW1_IS_DISPLAYED_FAIL);
+        }
+    }
 
     public static void validateDeleteModalIsNotVisible(){
         try {

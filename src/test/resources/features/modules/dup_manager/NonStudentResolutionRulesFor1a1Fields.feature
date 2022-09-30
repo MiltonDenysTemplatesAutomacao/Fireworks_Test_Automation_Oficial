@@ -2,7 +2,7 @@
 #Regression testcase TL-229: Non-student: Resolution Rules for 1:1 Fields
 
 @NonstudentResolutionRulesFor1a1Fields
-Feature: Auto Merge: Organization: Matching Rules
+Feature: Non-student: Resolution Rules for 1:1 Fields
 
   @NonstudentResolutionRulesFor1a1FieldsScenario @Done @DupManager
   Scenario: Record - DupManager - Check resolution rules for Org 1:1

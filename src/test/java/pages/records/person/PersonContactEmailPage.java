@@ -13,9 +13,9 @@ public class PersonContactEmailPage extends BasePage {
     private static final String EMAIL_ADDRESS_FIELD = "#entity_email_%s_email_address";
     private static final String EMAIL_TYPE_ELEMENT = "#entity_email_%s_email_type_component";
     private static final String EMAIL_OPT_IN_METHOD_ELEMENT = "#entity_email_%s_opt_in_method_id_component";
-    private static final String EMAIL_OPT_IN_STATUS_ELEMENT = "#entity_email_%s_opt_in_status_component";
+    private static final String EMAIL_OPT_IN_STATUS_ELEMENT = "#entity_email_%s_opt_in_status_toggle";
     private static final String EMAIL_OPT_IN_DATE_FIELD = "#entity_email_%s_opt_in_date";
-    private static final String EMAIL_STATUS_ELEMENT = "#entity_email_%s_email_status_component";
+    private static final String EMAIL_STATUS_ELEMENT = "#entity_email_%s_email_status_toggle";
     private static final String EMAIL_ACTIVE_CHECKBOX = "#entity_email_%s_active";
     private static final String EMAIL_PRIMARY_CHECKBOX = "#entity_email_%s_primary";
     private static final String EMAIL_COMMENTS_FIELD = "#entity_email_%s_email_comments";
@@ -83,7 +83,7 @@ public class PersonContactEmailPage extends BasePage {
                     && MainPage.verifyGetText(By.cssSelector(emailOptInMethodElement(group)),email.getEmailOptInMethod())
                     && MainPage.verifyGetText(By.cssSelector(emailOptInStatusElement(group)),email.getEmailOptInStatus())
                     && MainPage.verifyGetText(By.cssSelector(emailOptInDateField(group)),email.getEmailOptInDate())
-                    && MainPage.verifyGetText(By.cssSelector(emailStatusElement(group)),email.getEmailOptInStatus())
+                    && MainPage.verifyGetText(By.cssSelector(emailStatusElement(group)),email.getEmailStatus())
                     && MainPage.verifyGetText(By.cssSelector(emailCommentsField(group)),email.getEmailComments())
                     && MainPage.verifyCheckboxActiveOrNot(By.cssSelector(emailActiveCheckbox(group)),email.getActive())
                     && MainPage.verifyCheckboxActiveOrNot(By.cssSelector(emailPrimaryCheckbox(group)),email.getPrimary())){

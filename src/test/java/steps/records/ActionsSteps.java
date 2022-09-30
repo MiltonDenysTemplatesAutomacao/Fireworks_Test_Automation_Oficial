@@ -13,6 +13,14 @@ public class ActionsSteps {
     public static void updateAction(String person) {
         ActionsPage.updateAction(person);
     }
+    @Then("I verify if action manager table on actions row 1 is displayed")
+    public static void verifyActionManagerTableRow1IsDisplayed() {
+        ActionsPage.verifyActionManagerTableRow1IsDisplayed();
+    }
+    @Then("I verify if action manager table on actions row 2 is not displayed")
+    public static void verifyActionManagerTableRow2IsNotDisplayed() {
+        ActionsPage.verifyActionManagerTableRow2IsNotDisplayed();
+    }
     @Then("I click on Save Changes button in Actions")
     public static void clickSaveChangesActions() {
         ActionsPage.clickSaveChangesActions();
