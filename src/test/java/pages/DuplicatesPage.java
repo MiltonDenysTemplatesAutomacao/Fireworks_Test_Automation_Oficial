@@ -9,6 +9,7 @@ public class DuplicatesPage extends BasePage{
     private static final String DUPLICATE_MANAGER_TABLE = "#duplicateManagerTable";
     private static final String DUPLICATE_MANAGER_SEARCH_FIELD = "#duplicateManagerTableControlsTableSearch";
     private static final String DUPLICATEMANAGERTABLE_ROW_0_COL_0 = "#duplicateManagerTable_row_0_col_0";
+    private static final String DUPLICATE_MANAGER_FIRST_ROW_ELEMENT = "#duplicateManagerTable_row_0";
 
     private static final String SUSPENDED_RECORD_NAME = "#table-duplicate-record-suspended [data-field-name='full_name_with_middle']";
     private static final String SUSPENDED_RECORD_PREFERRED_NAME = "#table-duplicate-record-suspended [data-field-name='preferred_name']";
@@ -94,6 +95,32 @@ public class DuplicatesPage extends BasePage{
         return String.format("#table-duplicate-record-%s [data-field-name='created_at']",possibleMatch);
     }
 
+    public static void verifyDuplicateNotFound(String duplicate){
+        String passMessage = String.format(LogPage.VERIFY_DUPLICATE_NOT_FOUND_PASS,duplicate);
+        String failMessage = String.format(LogPage.VERIFY_DUPLICATE_NOT_FOUND_FAIL,duplicate);
+        try {
+            if(MainPage.verifyIfElementsIsVisible(By.cssSelector(DUPLICATE_MANAGER_FIRST_ROW_ELEMENT))){
+                ExtentReportsSetUp.testingPass(passMessage);
+            }else{
+                FailureDelegatePage.handlePageException(failMessage);
+            }
+        } catch (Exception e) {
+            FailureDelegatePage.handlePageException(failMessage);
+        }
+    }
+    public static void verifyDuplicateFound(String duplicate){
+        String passMessage = String.format(LogPage.VERIFY_DUPLICATE_FOUND_PASS,duplicate);
+        String failMessage = String.format(LogPage.VERIFY_DUPLICATE_FOUND_FAIL,duplicate);
+        try {
+            if(MainPage.verifyGetText(By.cssSelector(DUPLICATE_MANAGER_FIRST_ROW_ELEMENT),duplicate)){
+                ExtentReportsSetUp.testingPass(passMessage);
+            }else{
+                FailureDelegatePage.handlePageException(failMessage);
+            }
+        } catch (Exception e) {
+            FailureDelegatePage.handlePageException(failMessage);
+        }
+    }
     public static void openDuplicate(){
         try {
             MainPage.clickOption(By.cssSelector(DUPLICATEMANAGERTABLE_ROW_0_COL_0));

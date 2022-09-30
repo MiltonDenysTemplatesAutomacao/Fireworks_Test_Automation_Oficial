@@ -686,5 +686,9 @@ public class LogPage {
     public static final String VERIFY_ACTION_MANAGER_TABLE_ROW1_IS_DISPLAYED_FAIL = "Fail while trying to verify if action manager table on actions is displayed";
     public static final String VERIFY_ACTION_MANAGER_TABLE_ROW2_IS_NOT_DISPLAYED_PASS = "I verify if action manager table on actions row 2 is not displayed";
     public static final String VERIFY_ACTION_MANAGER_TABLE_ROW2_IS_NOT_DISPLAYED_FAIL = "Fail while trying to verify if action manager table on actions row 2 is not displayed";
+    public static final String VERIFY_DUPLICATE_FOUND_PASS = "I verify if it is able to see '%s'";
+    public static final String VERIFY_DUPLICATE_FOUND_FAIL = "Fail while trying to verify if it is able to see '%s'";
+    public static final String VERIFY_DUPLICATE_NOT_FOUND_PASS = "I verify if it is not able to see '%s'";
+    public static final String VERIFY_DUPLICATE_NOT_FOUND_FAIL = "Fail while trying to verify if it is not able to see '%s'";
 
 }

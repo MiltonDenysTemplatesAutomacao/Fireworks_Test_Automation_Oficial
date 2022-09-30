@@ -45,5 +45,13 @@ public class DuplicatesSteps {
     public static void searchDuplicateManager(String parameter,int person) {
         DuplicatesPage.searchDuplicateManager(parameter,person);
     }
+    @Then("I verify if it is able to see {string}")
+    public static void verifyDuplicateFound(String duplicate) {
+        DuplicatesPage.verifyDuplicateFound(duplicate);
+    }
+    @Then("I verify if it is not able to see {string}")
+    public static void verifyDuplicateNotFound(String duplicate) {
+        DuplicatesPage.verifyDuplicateNotFound(duplicate);
+    }
 
 }

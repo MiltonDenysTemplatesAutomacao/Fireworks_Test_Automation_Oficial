@@ -260,76 +260,21 @@ public class ActionsPage extends BasePage {
      */
     public static void verifyActionDataTableValues(String index,String category, String action, String staff, String actionDate, String comments){
         try {
-            waitElementBy(By.cssSelector(ACTIONS_MANAGER_TABLE), 20);
-            String text = getText(By.cssSelector(ACTIONS_MANAGER_TABLE));
-            boolean categoryValidation = false;
-            boolean actionValidation = false;
-            boolean staffValidation = false;
-            boolean actionDateValidation = false;
-            boolean commentsValidation = false;
-
-            if(index!=""){
-                int indexNumber = Integer.parseInt(index);
-
-                if (mass.get(indexNumber).get("Category") != null) {
-                    categoryValidation = text.contains(mass.get(indexNumber).get("Category"));
-                }else{
-                    categoryValidation=true;
-                }
-                if (mass.get(indexNumber).get("Action") != null) {
-                    actionValidation = text.contains(mass.get(indexNumber).get("Action"));
-                }else{
-                    actionValidation=true;
-                }
-                if (mass.get(indexNumber).get("Staff") != null) {
-                    staffValidation = text.contains(mass.get(indexNumber).get("Staff"));
-                }else{
-                    staffValidation=true;
-                }
-                if (mass.get(indexNumber).get("ActionDate") != null) {
-                    actionDateValidation = text.contains(mass.get(indexNumber).get("ActionDate"));
-                }else{
-                    actionDateValidation=true;
-                }
-                if (mass.get(indexNumber).get("Comments") != null) {
-                    commentsValidation = text.contains(mass.get(indexNumber).get("Comments"));
-                }else{
-                    commentsValidation=true;
-                }
+            int indexNumber = Integer.parseInt(index);
+            if(MainPage.verifyGetText(By.cssSelector(ACTIONS_MANAGER_TABLE),mass.get(indexNumber).get("Category"))
+                && MainPage.verifyGetText(By.cssSelector(ACTIONS_MANAGER_TABLE),mass.get(indexNumber).get("Action"))
+                && MainPage.verifyGetText(By.cssSelector(ACTIONS_MANAGER_TABLE),mass.get(indexNumber).get("Staff"))
+                && MainPage.verifyGetText(By.cssSelector(ACTIONS_MANAGER_TABLE),mass.get(indexNumber).get("ActionDate"))
+                && MainPage.verifyGetText(By.cssSelector(ACTIONS_MANAGER_TABLE),mass.get(indexNumber).get("Comments"))){
+                ExtentReportsSetUp.testingPass(LogPage.VERIFY_ACTION_DATA_TABLE_VALUES_PASS);
+            }else{
+                FailureDelegatePage.handlePageException(LogPage.VERIFY_ACTION_DATA_TABLE_VALUES_FAIL);
             }
-            if(index==""){
-                if (category != "") {
-                    categoryValidation = text.contains(category);
-                }else{
-                    categoryValidation=true;
-                }
-                if (action != "") {
-                    actionValidation = text.contains(action);
-                }else{
-                    actionValidation=true;
-                }
-                if (staff != "") {
-                    staffValidation = text.contains(staff);
-                }else{
-                    staffValidation=true;
-                }
-                if (actionDate != "") {
-                    actionDateValidation = text.contains(actionDate);
-                }else{
-                    actionDateValidation=true;
-                }
-                if (comments != "") {
-                    commentsValidation = text.contains(comments);
-                }else{
-                    commentsValidation=true;
-                }
-            }
-
-            if(categoryValidation
-                && actionValidation
-                && staffValidation
-                && actionDateValidation
-                && commentsValidation){
+            if(MainPage.verifyGetText(By.cssSelector(ACTIONS_MANAGER_TABLE),category)
+                    && MainPage.verifyGetText(By.cssSelector(ACTIONS_MANAGER_TABLE),action)
+                    && MainPage.verifyGetText(By.cssSelector(ACTIONS_MANAGER_TABLE),staff)
+                    && MainPage.verifyGetText(By.cssSelector(ACTIONS_MANAGER_TABLE),actionDate)
+                    && MainPage.verifyGetText(By.cssSelector(ACTIONS_MANAGER_TABLE),comments)){
                 ExtentReportsSetUp.testingPass(LogPage.VERIFY_ACTION_DATA_TABLE_VALUES_PASS);
             }else{
                 FailureDelegatePage.handlePageException(LogPage.VERIFY_ACTION_DATA_TABLE_VALUES_FAIL);

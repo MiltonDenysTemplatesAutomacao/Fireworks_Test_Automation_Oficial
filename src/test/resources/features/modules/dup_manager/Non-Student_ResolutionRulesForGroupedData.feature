@@ -8,8 +8,8 @@ Feature: Non-Student: Resolution Rules for grouped data
   Scenario: Record - DupManager - verify duplicate actions are merged during potential match merge
     Given I login as "firestarterUsername", "firestarterPassword", "firestarterFullName"
     When I create a person
-      |FirstName  |LastName  |Role1    |EmailAddress        |EmailType  |EmailOptInMethod|Phone     |PhoneType|Category     |Action                       |Staff       |ActionDateTime    |ActionDate|Comments            |
-      |Shivaughn  |McKenna   |Person   |SMcKenna@actors.com |Personal   |Inquiry         |8722959142|Mobile   |Campus Events|Admitted Student Day: Attend |Fire Starter|01/01/2016 2:00 PM|01/01/2016|person1ActionComment|
+      |FirstName  |LastName  |Role1    |EmailAddress        |EmailType  |EmailOptInMethod|Phone     |PhoneType|Category     |Action                       |Staff       |ActionDateTime    |ActionDateField|Comments            |
+      |Shivaughn  |McKenna   |Person   |SMcKenna@actors.com |Personal   |Inquiry         |8722959142|Mobile   |Campus Events|Admitted Student Day: Attend |Fire Starter|01/01/2016 2:00 PM|01/01/2016     |person1ActionComment|
     And I validate if "Person has been created." message is correct
     #to add an action to this person record
     And I validate if "Shivaughn"summary opened properly
@@ -19,8 +19,8 @@ Feature: Non-Student: Resolution Rules for grouped data
     Then I click on Save Changes button in Actions
     And I validate if "Action has been created." message is correct
     When I create a person
-      |FirstName  |LastName  |Role1   |Phone     |PhoneType|Category     |Action                       |Staff       |ActionDateTime    |ActionDate|Comments            |
-      |Siobhan    |McKenna   |Person  |8722959142|Mobile   |Campus Events|Admitted Student Day: Attend |Fire Starter|01/01/2016 2:00 PM|01/01/2016|person2ActionComment|
+      |FirstName  |LastName  |Role1   |Phone     |PhoneType|Category     |Action                       |Staff       |ActionDateTime    |ActionDateField|Comments            |
+      |Siobhan    |McKenna   |Person  |8722959142|Mobile   |Campus Events|Admitted Student Day: Attend |Fire Starter|01/01/2016 2:00 PM|01/01/2016     |person2ActionComment|
     And I validate if "Person has been created." message is correct
     #to add an identical action to this person record
     And I validate if "Siobhan McKenna"summary opened properly
@@ -50,8 +50,12 @@ Feature: Non-Student: Resolution Rules for grouped data
     And I verify if action manager table on actions row 2 is not displayed
     And I verify action Datatable values index "0", values "Campus Events", "Admitted Student Day: Attend", "Fire Starter", "01/01/2016", ""
     And I open an action "Campus Events"
+    And I use datatable
+    |Comments              |
+    |person1ActionComment  |
+
     And I verify default action values index "0"
-    And I verify default action values index "1"
+#    And I verify default action values index "1"
 
   @PotencialMatchEmailAddressesMerged @Done @DupManager
   Scenario: Record - DupManager - verify duplicate actions are merged during potential match merge
