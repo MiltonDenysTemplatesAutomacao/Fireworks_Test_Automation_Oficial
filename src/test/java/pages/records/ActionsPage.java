@@ -156,10 +156,10 @@ public class ActionsPage extends BasePage {
             if(verifyCurrentDateField(By.cssSelector(ACTION_DATE_FIELD))){
                 ExtentReportsSetUp.testingPass(LogPage.VERIFY_BASIC_IDENTIFICATION_VALUES_PASS);
             }else{
-                FailureDelegatePage.handlePageException(LogPage.VERIFY_BASIC_IDENTIFICATION_VALUES_FAIL);
+                FailureDelegatePage.handlePageException(LogPage.VERIFY_ACTION_DATE_FIELD_PASS);
             }
         } catch (Exception e) {
-            FailureDelegatePage.handlePageException(LogPage.VERIFY_BASIC_IDENTIFICATION_VALUES_FAIL);
+            FailureDelegatePage.handlePageException(LogPage.VERIFY_ACTION_DATE_FIELD_FAIL);
         }
     }
     public static void verifyDefaultActionValues(String index){

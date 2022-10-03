@@ -696,5 +696,7 @@ public class LogPage {
     public static final String VERIFY_ACTION_DETAILS_FAIL = "Fail while trying to verify actions details '%s'";
     public static final String VERIFY_ACTION_DATE_FIELD_PASS = "Fail while trying to verify actions details '%s'";
     public static final String VERIFY_ACTION_DATE_FIELD_FAIL = "Fail while trying to verify actions details '%s'";
+    public static final String VERIFY_ROLES_ACTIVE_PASS = "I verify if '%s' role are selected";
+    public static final String VERIFY_ROLES_ACTIVE_FAIL = "Fail while trying to verify if '%s' role are selected";
 
 }

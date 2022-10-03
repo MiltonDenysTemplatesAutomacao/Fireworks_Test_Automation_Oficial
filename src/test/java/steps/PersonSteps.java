@@ -32,9 +32,9 @@ public class PersonSteps {
     public static void updateHeaderRole(String role) {
         PersonPage.updateHeaderRole(role);
     }
-    @Then("I verify all three roles are selected in the role dropdown")
-    public static void verifyAllthreeRolesAreSelected() {
-        PersonPage.verifyAllthreeRolesAreSelected();
+    @Then("verify if {string} role are selected")
+    public static void verifyRolesActive(String role) {
+        PersonPage.verifyRolesActive(role);
     }
     @Then("I open a people record by {string}")
     public static void openPeopleRecord(String search) {

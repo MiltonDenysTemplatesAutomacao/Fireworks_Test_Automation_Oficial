@@ -103,10 +103,14 @@ public class PersonPage extends BasePage{
     private static final String PEOPLE_MANAGER_TABLE_ROW1_COL1_LINK = "#peopleManagerTable_row_0_col_0_link_0";
     private static final String HEADER_ROLE_DROPDOWN_OPTION3 = "div.btn-group.autoSubmit.dropDownSelect.open > ul > li:nth-child(3)";
     private static final String HEADER_ROLE_DROPDOWN_OPTION3_ACTIVE = "div.btn-group.autoSubmit.dropDownSelect.open > ul > li:nth-child(3).active";
+    private static final String HEADER_ROLE_DROPDOWN_OPTION6 = "div.btn-group.autoSubmit.dropDownSelect.open > ul > li:nth-child(6)";
+    private static final String HEADER_ROLE_DROPDOWN_OPTION6_ACTIVE = "div.btn-group.autoSubmit.dropDownSelect.open > ul > li:nth-child(6).active";
     private static final String HEADER_ROLE_DROPDOWN_OPTION8 = "div.btn-group.autoSubmit.dropDownSelect.open > ul > li:nth-child(8)";
     private static final String HEADER_ROLE_DROPDOWN_OPTION8_ACTIVE = "div.btn-group.autoSubmit.dropDownSelect.open > ul > li:nth-child(8).active";
     private static final String HEADER_ROLE_DROPDOWN_OPTION9 = "div.btn-group.autoSubmit.dropDownSelect.open > ul > li:nth-child(9)";
     private static final String HEADER_ROLE_DROPDOWN_OPTION9_ACTIVE = "div.btn-group.autoSubmit.dropDownSelect.open > ul > li:nth-child(9).active";
+    private static final String HEADER_ROLE_DROPDOWN_OPTION11 = "div.btn-group.autoSubmit.dropDownSelect.open > ul > li:nth-child(11)";
+    private static final String HEADER_ROLE_DROPDOWN_OPTION11_ACTIVE = "div.btn-group.autoSubmit.dropDownSelect.open > ul > li:nth-child(11).active";
     private static final String CREATE_PERSON_BUTTON = "top-controls-create-new-person";
     private static final String COMPOSER_SAVE_CHANGES_BUTTON = "saveChangesBtnPersonCreate";
 
@@ -410,38 +414,37 @@ public class PersonPage extends BasePage{
         }
     }
 
-    public static void verifyAllthreeRolesAreSelected(){
+    private static String rolesList(String roles) {
+        HashMap<String, String> rolesList = new HashMap<>();
+        rolesList.put("Donor", HEADER_ROLE_DROPDOWN_OPTION3);
+        rolesList.put("Person", HEADER_ROLE_DROPDOWN_OPTION6);
+        rolesList.put("Sibling", HEADER_ROLE_DROPDOWN_OPTION8);
+        rolesList.put("Student", HEADER_ROLE_DROPDOWN_OPTION9);
+        rolesList.put("Volunteer", HEADER_ROLE_DROPDOWN_OPTION11);
+        return rolesList.get(roles);
+    }
+    private static String rolesListActive(String roles) {
+        HashMap<String, String> rolesListActive = new HashMap<>();
+        rolesListActive.put("Donor", HEADER_ROLE_DROPDOWN_OPTION3_ACTIVE);
+        rolesListActive.put("Person", HEADER_ROLE_DROPDOWN_OPTION6_ACTIVE);
+        rolesListActive.put("Sibling", HEADER_ROLE_DROPDOWN_OPTION8_ACTIVE);
+        rolesListActive.put("Student", HEADER_ROLE_DROPDOWN_OPTION9_ACTIVE);
+        rolesListActive.put("Volunteer", HEADER_ROLE_DROPDOWN_OPTION11_ACTIVE);
+        return rolesListActive.get(roles);
+    }
+    public static void verifyRolesActive(String role){
+        String passMessage = String.format(LogPage.VERIFY_ROLES_ACTIVE_PASS,role);
+        String failMessage = String.format(LogPage.VERIFY_ROLES_ACTIVE_FAIL,role);
         try {
-            waitElementBy(By.cssSelector(HEADER_ROLE_ELEMENT),20);
-            click(By.cssSelector(HEADER_ROLE_ELEMENT));
-
-            String roleDropdown3 = getText(By.cssSelector(HEADER_ROLE_DROPDOWN_OPTION3));
-            String roleDropdown3Active = getText(By.cssSelector(HEADER_ROLE_DROPDOWN_OPTION3_ACTIVE));
-            boolean role1Person2Validation = false;
-            if(roleDropdown3.equals(mass.get(1).get("Role1")) && roleDropdown3Active.equals(mass.get(1).get("Role1"))){
-                role1Person2Validation=true;
-            }
-            String roleDropdown8 = getText(By.cssSelector(HEADER_ROLE_DROPDOWN_OPTION8));
-            String roleDropdown8Active = getText(By.cssSelector(HEADER_ROLE_DROPDOWN_OPTION8_ACTIVE));
-            boolean role1Person1Validation = false;
-            if(roleDropdown8.equals(mass.get(0).get("Role1")) && roleDropdown8Active.equals(mass.get(0).get("Role1"))){
-                role1Person1Validation=true;
-            }
-            String roleDropdown9 = getText(By.cssSelector(HEADER_ROLE_DROPDOWN_OPTION9));
-            String roleDropdown9Active = getText(By.cssSelector(HEADER_ROLE_DROPDOWN_OPTION9_ACTIVE));
-            boolean role2Person1Validation = false;
-            if(roleDropdown9.equals(mass.get(0).get("Role2")) && roleDropdown9Active.equals(mass.get(0).get("Role2"))){
-                role2Person1Validation=true;
-            }
-
-            if(role1Person2Validation && role1Person1Validation && role2Person1Validation){
-                click(By.cssSelector(HEADER_ROLE_ELEMENT));
-                ExtentReportsSetUp.testingPass(LogPage.VERIFY_ALL_THREE_ROLES_ARE_SELECTED_PASS);
+            MainPage.clickOption(By.cssSelector(HEADER_ROLE_ELEMENT));
+            if(MainPage.verifyGetText(By.cssSelector(rolesListActive(role)),role)){
+                ExtentReportsSetUp.testingPass(passMessage);
             }else{
-                FailureDelegatePage.handlePageException(LogPage.VERIFY_ALL_THREE_ROLES_ARE_SELECTED_FAIL);
+                FailureDelegatePage.handlePageException(failMessage);
             }
+            MainPage.clickOption(By.cssSelector(HEADER_ROLE_ELEMENT));
         } catch (Exception e) {
-            FailureDelegatePage.handlePageException(LogPage.VERIFY_ALL_THREE_ROLES_ARE_SELECTED_FAIL);
+            FailureDelegatePage.handlePageException(failMessage);
         }
     }
 
@@ -538,12 +541,16 @@ public class PersonPage extends BasePage{
                     String assignedStaff = getText(By.cssSelector(HEADER_ASSIGNED_STAFF_ELEMENT));
                     if(studentType.contains("Student Type")&& assignedStaff.contains("Assigned Staff")){
                         ExtentReportsSetUp.testingPass(passMessage);
+                    }else{
+                        FailureDelegatePage.handlePageException(failMessage);
                     }
                     break;
                 case "Multiple":
                     String roleElement = getText(By.cssSelector(HEADER_ROLE_ELEMENT));
                     if(roleElement.contains(headerRole)){
                         ExtentReportsSetUp.testingPass(passMessage);
+                    }else{
+                        FailureDelegatePage.handlePageException(failMessage);
                     }
                     break;
                 default:
