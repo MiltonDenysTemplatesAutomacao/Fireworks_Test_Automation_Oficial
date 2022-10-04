@@ -698,5 +698,7 @@ public class LogPage {
     public static final String VERIFY_ACTION_DATE_FIELD_FAIL = "Fail while trying to verify actions details '%s'";
     public static final String VERIFY_ROLES_ACTIVE_PASS = "I verify if '%s' role are selected";
     public static final String VERIFY_ROLES_ACTIVE_FAIL = "Fail while trying to verify if '%s' role are selected";
+    public static final String QUICK_SEARCH_FROM_HEADER_PASS = "I quick search '%s' from header";
+    public static final String QUICK_SEARCH_FROM_HEADER_FAIL = "Fail while trying to quick search '%s' from header";
 
 }

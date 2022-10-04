@@ -632,9 +632,7 @@ public class PersonPage extends BasePage{
     }
     public static void saveChangesBtnPersonContact(){
         try {
-            waitElementBy(By.id(SAVE_CHANGES_BTN_PERSON_CONTACT),20);
-            scrollToTheBottom();
-            BasePage.click(By.id(SAVE_CHANGES_BTN_PERSON_CONTACT));
+            MainPage.clickOption(By.id(SAVE_CHANGES_BTN_PERSON_CONTACT));
             ExtentReportsSetUp.testingPass(LogPage.SAVE_CHANGES_PASS);
         } catch (Exception e) {
             FailureDelegatePage.handlePageException(LogPage.SAVE_CHANGES_FAIL);

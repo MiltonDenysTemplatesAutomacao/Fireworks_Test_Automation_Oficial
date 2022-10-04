@@ -23,6 +23,10 @@ public class MainSteps {
     public static void toUseDatatable(DataTable data) {
         MainPage.toUseDatatable(data);
     }
+    @When("I quick search {string} from header")
+    public static void quickSearchFromHeader(String data) {
+        MainPage.quickSearchFromHeader(data);
+    }
 
 
 }

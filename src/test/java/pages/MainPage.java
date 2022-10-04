@@ -3,11 +3,17 @@ package pages;
 import config.extent_reports.ExtentReportsSetUp;
 import io.cucumber.datatable.DataTable;
 import org.openqa.selenium.By;
+import org.testng.reporters.jq.Main;
 
 import static pages.GlobalNavPage.QUICK_ADD_PERSON_OPT_IN_METHOD_DROPDOWN;
 import static pages.GlobalNavPage.QUICK_ADD_PERSON_OPT_IN_METHOD_DROPDOWN_LIST;
 
 public class MainPage extends BasePage{
+    public static final String QUICK_SEARCH_MAGNIFYING_GLASS = "#quickFindToggle";
+    public static final String HEADER_QUICK_SEARCH_FIELD = "#headerSearch";
+    public static final String HEADER_QUICK_SEARCH_BUTTON = "#navSearchSubmitButton";
+
+
 
     public static void attachFile(String sourceFile, By by)throws Exception{
         String filePath = getFile(sourceFile);
@@ -212,6 +218,19 @@ public class MainPage extends BasePage{
 
     public static void createDatatable(DataTable data){
         mass = data.asMaps(String.class, String.class);
+    }
+
+    public static void quickSearchFromHeader(String data){
+        String passMessage = String.format(LogPage.QUICK_SEARCH_FROM_HEADER_PASS,data);
+        String failMessage = String.format(LogPage.QUICK_SEARCH_FROM_HEADER_FAIL,data);
+        try {
+            MainPage.clickOption(By.cssSelector(QUICK_SEARCH_MAGNIFYING_GLASS));
+            MainPage.fillField(By.cssSelector(HEADER_QUICK_SEARCH_FIELD),data);
+            MainPage.clickOption(By.cssSelector(HEADER_QUICK_SEARCH_BUTTON));
+            ExtentReportsSetUp.testingPass(passMessage);
+        } catch (Exception e) {
+            FailureDelegatePage.handlePageException(failMessage);
+        }
     }
     public static void selectQuickAddEmailOptIn(String emailOptIn){
         String errorMessage = String.format(LogPage.SELECT_QUICK_ADD_EMAIL_OPT_IN_FAIL, emailOptIn);
