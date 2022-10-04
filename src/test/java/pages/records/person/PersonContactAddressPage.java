@@ -78,6 +78,23 @@ public class PersonContactAddressPage extends BasePage{
         return String.format("#entity_address_%s_primary",index);
     }
 
+    public static void verifyNoAddress(String group){
+        String passMessage = String.format(LogPage.VERIFY_NO_ADDRESS_PASS,group);
+        String failMessage = String.format(LogPage.VERIFY_NO_ADDRESS_FAIL,group);
+        try {
+            if(!verifyIfElementsIsVisible(By.cssSelector(address1Field(group)))
+                && !verifyIfElementsIsVisible(By.cssSelector(addressCityField(group)))
+                && !verifyIfElementsIsVisible(By.cssSelector(addressStateElement(group)))
+                && !verifyIfElementsIsVisible(By.cssSelector(addressCountryElement(group)))
+                && !verifyIfElementsIsVisible(By.cssSelector(addressPostalCodeField(group)))){
+                ExtentReportsSetUp.testingPass(passMessage);
+            } else {
+                FailureDelegatePage.handlePageException(failMessage);
+            }
+        } catch (Exception e) {
+            FailureDelegatePage.handlePageException(failMessage);
+        }
+    }
     public static void verifyAddress(ContactAddressBean address, String group){
         String passMessage = String.format(LogPage.VERIFY_ADDRESS_PASS,group);
         String failMessage = String.format(LogPage.VERIFY_ADDRESS_FAIL,group);

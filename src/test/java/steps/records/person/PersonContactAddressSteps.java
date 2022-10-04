@@ -53,4 +53,8 @@ public class PersonContactAddressSteps {
     public static void addAddress(String group) {
         PersonContactAddressPage.addAddress(group);
     }
+    @And("I verify if there is no Address group {string}")
+    public static void verifyNoAddress(String group) {
+        PersonContactAddressPage.verifyNoAddress(group);
+    }
 }

@@ -700,5 +700,7 @@ public class LogPage {
     public static final String VERIFY_ROLES_ACTIVE_FAIL = "Fail while trying to verify if '%s' role are selected";
     public static final String QUICK_SEARCH_FROM_HEADER_PASS = "I quick search '%s' from header";
     public static final String QUICK_SEARCH_FROM_HEADER_FAIL = "Fail while trying to quick search '%s' from header";
+    public static final String VERIFY_NO_ADDRESS_PASS = "I verify if there is no Address group '%s'";
+    public static final String VERIFY_NO_ADDRESS_FAIL = "Fail while trying to verify if there is no Address group '%s'";
 
 }

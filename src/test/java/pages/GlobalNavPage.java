@@ -390,16 +390,16 @@ public class GlobalNavPage extends BasePage {
                 BasePage.write(By.cssSelector(QUICK_ADD_PERSON_ADDRESS1_FIELD), mass.get(0).get("Address1"));
             }
             if (mass.get(0).get("Address2") != null) {
-                waitElementBy(By.cssSelector(QUICK_ADD_PERSON_ADDRESS1_FIELD),quickAddPersonDelay);
-                BasePage.write(By.cssSelector(QUICK_ADD_PERSON_ADDRESS1_FIELD), mass.get(0).get("Address2"));
+                waitElementBy(By.cssSelector(QUICK_ADD_PERSON_ADDRESS2_FIELD),quickAddPersonDelay);
+                BasePage.write(By.cssSelector(QUICK_ADD_PERSON_ADDRESS2_FIELD), mass.get(0).get("Address2"));
             }
             if (mass.get(0).get("Address3") != null) {
-                waitElementBy(By.cssSelector(QUICK_ADD_PERSON_ADDRESS1_FIELD),quickAddPersonDelay);
-                BasePage.write(By.cssSelector(QUICK_ADD_PERSON_ADDRESS1_FIELD), mass.get(0).get("Address3"));
+                waitElementBy(By.cssSelector(QUICK_ADD_PERSON_ADDRESS3_FIELD),quickAddPersonDelay);
+                BasePage.write(By.cssSelector(QUICK_ADD_PERSON_ADDRESS3_FIELD), mass.get(0).get("Address3"));
             }
             if (mass.get(0).get("Address4") != null) {
-                waitElementBy(By.cssSelector(QUICK_ADD_PERSON_ADDRESS1_FIELD),quickAddPersonDelay);
-                BasePage.write(By.cssSelector(QUICK_ADD_PERSON_ADDRESS1_FIELD), mass.get(0).get("Address4"));
+                waitElementBy(By.cssSelector(QUICK_ADD_PERSON_ADDRESS4_FIELD),quickAddPersonDelay);
+                BasePage.write(By.cssSelector(QUICK_ADD_PERSON_ADDRESS4_FIELD), mass.get(0).get("Address4"));
             }
             if (mass.get(0).get("City") != null) {
                 waitElementBy(By.cssSelector(QUICK_ADD_PERSON_CITY_FIELD),quickAddPersonDelay);
