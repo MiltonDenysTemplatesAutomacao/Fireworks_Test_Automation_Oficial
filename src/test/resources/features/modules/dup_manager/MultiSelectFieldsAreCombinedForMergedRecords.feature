@@ -5,7 +5,7 @@
 Feature: Multi-select fields are Combined for Merged Records
 
   @PotentialMatchRacesRolesMerged @Done @DupManager
-  Scenario: Record - DupManager - verify multi-select fields are combined for merged records
+  Scenario: DupManager - verify multi-select fields are combined for merged records
     Given I login as "firestarterUsername", "firestarterPassword", "firestarterFullName"
     #to add a person record
     When I create a person

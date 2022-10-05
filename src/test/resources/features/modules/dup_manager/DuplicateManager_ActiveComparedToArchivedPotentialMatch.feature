@@ -5,7 +5,7 @@
 Feature: Comparison to Archived Records
 
   @ComparisonToArchivedRecordsScenarios @Done @DupManager
-  Scenario: Record - DupManager - Exact match - SSN + Last Name
+  Scenario: DupManager - Exact match - SSN + Last Name
     Given I login as "firestarterUsername", "firestarterPassword", "firestarterFullName"
     When I create a person
       |FirstName  |LastName  |Role1     |StudentType|StudentStatusCategory |StudentStatus   |StudentStatusDate|EntryTerm|Phone        |PhoneType|Address1                 |City         |State  |PostalCode|Country       |

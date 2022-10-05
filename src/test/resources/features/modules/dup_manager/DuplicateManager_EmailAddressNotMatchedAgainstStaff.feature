@@ -5,7 +5,7 @@
 Feature: Comparison to Staff Records
 
   @ComparisonToStaffRecordsScenarios @Done @DupManager
-  Scenario: Record - DupManager - verify student and person email addresses are not validated as duplicates against staff
+  Scenario: DupManager - verify student and person email addresses are not validated as duplicates against staff
     Given I login as "firestarterUsername", "firestarterPassword", "firestarterFullName"
     #to add a person record
     When I create a staff

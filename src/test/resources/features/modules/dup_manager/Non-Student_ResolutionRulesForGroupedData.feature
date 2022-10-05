@@ -5,7 +5,7 @@
 Feature: Non-Student: Resolution Rules for grouped data
 
   @PotencialMatchDuplicateActionsMerged @Done @DupManager
-  Scenario: Record - DupManager - verify duplicate actions are merged during potential match merge
+  Scenario: DupManager - verify duplicate actions are merged during potential match merge
     Given I login as "firestarterUsername", "firestarterPassword", "firestarterFullName"
     When I create a person
       |FirstName  |LastName  |Role1    |EmailAddress        |EmailType  |EmailOptInMethod|Phone     |PhoneType|Category     |Action                       |Staff       |ActionDateTime    |ActionDateField|Comments            |

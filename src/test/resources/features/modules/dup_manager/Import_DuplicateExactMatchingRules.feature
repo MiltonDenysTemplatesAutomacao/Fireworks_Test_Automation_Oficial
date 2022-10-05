@@ -5,7 +5,7 @@
 Feature: Manual Data Entry: Person: Potential Matching Rules
 
   @DuplicateExactMatchingRulesScenario @Fix @DupManager
-  Scenario: Record - DupManager - verify the exact match rules using import
+  Scenario: DupManager - verify the exact match rules using import
     Given I login as "firestarterUsername", "firestarterPassword", "firestarterFullName"
     When I create a staff
       |FirstName |LastName  |FullName  |EmailAddress       |EmailType|PermissionGroup |

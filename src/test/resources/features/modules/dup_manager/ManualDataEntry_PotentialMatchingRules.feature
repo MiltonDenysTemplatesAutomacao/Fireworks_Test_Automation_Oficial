@@ -16,7 +16,7 @@
 Feature: Manual Data Entry: Person: Potential Matching Rules
 
   @PotentialMatchRules3 @Done @DupManager
-  Scenario: Record - DupManager - verify a potential match on first last and email address is detected
+  Scenario: DupManager - verify a potential match on first last and email address is detected
     Given I login as "firestarterUsername", "firestarterPassword", "firestarterFullName"
     When I create a person
       |FirstName  |LastName  |Role1     |EmailAddress       |EmailType  |EmailOptInMethod|StudentType|StudentStatusCategory |StudentStatus  |StudentStatusDate|EntryTerm|

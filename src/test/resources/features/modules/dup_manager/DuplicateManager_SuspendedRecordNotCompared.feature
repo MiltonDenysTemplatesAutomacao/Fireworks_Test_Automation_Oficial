@@ -5,7 +5,7 @@
 Feature: Comparison to Suspended Records
 
   @ComparisonToSuspendedRecordsScenario @Done @DupManager
-  Scenario: Record - DupManager - verify incoming or updated records are not matched against suspended records
+  Scenario: DupManager - verify incoming or updated records are not matched against suspended records
     Given I login as "firestarterUsername", "firestarterPassword", "firestarterFullName"
     #to add a person record
     When I create a person

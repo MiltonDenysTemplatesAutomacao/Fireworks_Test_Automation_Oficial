@@ -5,7 +5,7 @@
 Feature: Non-Student Record Merged with Existing Student Record
 
   @NonStudentRecordMergedWithExistingStudentRecordScenario @Done @DupManager
-  Scenario: Record - DupManager - that an existing student keeps their email as primary when merged with incoming non-student
+  Scenario: DupManager - that an existing student keeps their email as primary when merged with incoming non-student
     Given I login as "firestarterUsername", "firestarterPassword", "firestarterFullName"
     #to add a person record
     When I create a person

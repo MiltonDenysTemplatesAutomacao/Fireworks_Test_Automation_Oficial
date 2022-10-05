@@ -5,7 +5,7 @@
 Feature: Non-Student: Resolution Rules for grouped data
 
   @DuplicateManagerDeletedRecordsAreRemovedScenarios @Done @DupManager
-  Scenario: Record - DupManager - verify deleting a duplicate removes other record from duplicate manager
+  Scenario: DupManager - verify deleting a duplicate removes other record from duplicate manager
     Given I login as "firestarterUsername", "firestarterPassword", "firestarterFullName"
     When I create a person
       |FirstName  |LastName  |Role1    |EmailAddress         |EmailType  |EmailOptInMethod|StudentType|StudentStatus|StudentStatusCategory|StudentStatusDate|EntryTerm|

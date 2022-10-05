@@ -5,7 +5,7 @@
 Feature: Non-student: Resolution Rules for 1:1 Fields
 
   @NonstudentResolutionRulesFor1a1FieldsScenario @Done @DupManager
-  Scenario: Record - DupManager - Check resolution rules for Org 1:1
+  Scenario: DupManager - Check resolution rules for Org 1:1
     Given I login as "firestarterUsername", "firestarterPassword", "firestarterFullName"
     When I create a person
       |FirstName  |LastName  |Role1    |EmailAddress            |EmailType  |EmailOptInMethod|

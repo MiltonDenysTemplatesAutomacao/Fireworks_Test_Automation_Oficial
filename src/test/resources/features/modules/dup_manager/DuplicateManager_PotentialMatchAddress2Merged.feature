@@ -6,7 +6,7 @@
 Feature: Comparison to Staff Records
 
   @PotentialMatchAddress2MergedScenario @Done @DupManager
-  Scenario: Record - DupManager - Address2 is included in merged addresses
+  Scenario: DupManager - Address2 is included in merged addresses
     Given I login as "firestarterUsername", "firestarterPassword", "firestarterFullName"
     #to add a person record
     When I create a person
