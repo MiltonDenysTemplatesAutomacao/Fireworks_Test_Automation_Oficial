@@ -52,4 +52,8 @@ public class GlobalNavSteps {
     public static void navigateAdminPanelPage() {
         GlobalNavPage.navigateAdminPanelPage();
     }
+    @When("I navigate to scheduler")
+    public static void navigateToScheduler() {
+        GlobalNavPage.navigateToScheduler();
+    }
 }

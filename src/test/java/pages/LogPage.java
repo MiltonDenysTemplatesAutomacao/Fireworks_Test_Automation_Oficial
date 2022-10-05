@@ -702,5 +702,9 @@ public class LogPage {
     public static final String QUICK_SEARCH_FROM_HEADER_FAIL = "Fail while trying to quick search '%s' from header";
     public static final String VERIFY_NO_ADDRESS_PASS = "I verify if there is no Address group '%s'";
     public static final String VERIFY_NO_ADDRESS_FAIL = "Fail while trying to verify if there is no Address group '%s'";
+    public static final String NAVIGATE_TO_SCHEDULER_PASS = "I navigate to scheduler";
+    public static final String NAVIGATE_TO_SCHEDULER_FAIL = "Fail while trying to navigate to scheduler";
+    public static final String CREATE_NEW_JOB_PASS = "I create a new schedule";
+    public static final String CREATE_NEW_JOB_FAIL = "Fail while trying to create a new schedule";
 
 }

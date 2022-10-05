@@ -111,6 +111,16 @@ public class GlobalNavPage extends BasePage {
     public static final String FOOTER_SETTINGS_ADMIN_PANEL_MENU_ITEM = "#global_nav_crm_admin";
     public static final String PACKAGES_TAB = "Packages";
 
+    public static void navigateToScheduler(){
+        try {
+            MainPage.clickOption(By.cssSelector(FOOTER_TOOLS_MENU));
+            MainPage.clickOption(By.cssSelector(FOOTER_TOOLS_SCHEDULER_MENU_ITEM));
+            waitElementBy(By.cssSelector(SchedulerPage.JOBS_MANAGER_TABLE),10);
+            ExtentReportsSetUp.testingPass(LogPage.NAVIGATE_TO_SCHEDULER_PASS);
+        } catch (Exception e) {
+            FailureDelegatePage.handlePageException(LogPage.NAVIGATE_TO_SCHEDULER_FAIL);
+        }
+    }
     public static void navigateImportsPackagesPage(){
         try {
             waitUntilElementToBeSelected(By.cssSelector(FOOTER_TOOLS_MENU),20);
