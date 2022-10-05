@@ -20,6 +20,7 @@ public class EmailWizardPage extends BasePage{
     public static final String SINGLE_RECIPIENT_PICKER_BUTTON = "#emailAddressPickerTrigger";
     public static final String SINGLE_RECIPIENT_PICKER_MODAL_SEARCH_BOX = "#emailAddressPickerModalTableControlsTableSearch";
     public static final String SINGLE_RECIPIENT_PICKER_MODAL_FIRST_ROW_ELEMENT = "#emailAddressPickerModalTable_row_0";
+    public static final String SINGLE_RECIPIENT_PICKER_MODAL_FIRST_ROW_CHECKBOX = "//*[@id='emailAddressPickerModalTable_row_0_col_0']/button";
     public static final String SINGLE_RECIPIENT_PICKER_MODAL_CHOOSE_BUTTON = "#modalSubmitButtonemailAddressPicker";
     public static final String SAVE_AND_CONTINUE_BUTTON = "//button[text()='Save & Continue']";
     public static final String SENDER_NAME_FIELD = "#sender_name";
@@ -207,7 +208,7 @@ public class EmailWizardPage extends BasePage{
                 MainPage.picker(By.cssSelector(SINGLE_RECIPIENT_PICKER_BUTTON),
                         By.cssSelector(SINGLE_RECIPIENT_PICKER_MODAL_SEARCH_BOX),
                         By.cssSelector(SINGLE_RECIPIENT_PICKER_MODAL_FIRST_ROW_ELEMENT),
-                        By.cssSelector(SINGLE_RECIPIENT_PICKER_MODAL_FIRST_ROW_ELEMENT),
+                        By.xpath(SINGLE_RECIPIENT_PICKER_MODAL_FIRST_ROW_CHECKBOX),
                         By.cssSelector(SINGLE_RECIPIENT_PICKER_MODAL_CHOOSE_BUTTON),
                         singleEmail);
             }
