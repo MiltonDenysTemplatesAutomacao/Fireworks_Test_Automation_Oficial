@@ -2,6 +2,7 @@ package pages;
 
 import config.DriverBase;
 import config.extent_reports.ExtentReportsSetUp;
+import io.cucumber.datatable.DataTable;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
@@ -29,11 +30,211 @@ public class BasePage {
 
     /********* Utils ************/
 
-//    public static void openHomePage() throws Exception {
-//        Dotenv dotenv = Dotenv.load();
-//        DriverBase.getDriver().get(dotenv.get("APP_URL"));
-//
-//    }
+    public static void attachFile(String sourceFile, By by)throws Exception{
+        String filePath = getFile(sourceFile);
+        waitElementBy(by,10);
+        scrollToElement(by);
+        scrollTo("-150");
+        click(by);
+        wait(2000);
+        copyToTheClipboard(filePath);
+        attachFile();
+        wait(1000);
+    }
+    public static void navigateToFeature(By by)throws Exception{
+        waitElementBy(by,10);
+        scrollToElement(by);
+        scrollTo("-150");
+        waitElementBy(by,10);
+        BasePage.click(by);
+    }
+    public static boolean verifyIfElementIsVisible(By by)throws Exception{
+        scrollToElement(by);
+        scrollTo("-150");
+        return checkIfElementIsVisible(by);
+    }
+
+    public static boolean verifyCheckboxActiveOrNot(By by,String value)throws Exception{
+        boolean validation = false;
+        if(value!="" && value != null){
+            switch(value){
+                case "1":
+                    validation = checkBoxIsActive(by);
+                    break;
+                case "0":
+                    validation = !checkBoxIsActive(by);
+                    break;
+                default: throw new IllegalArgumentException("Unhandled index. Update business logic");
+            }
+        }else{
+            validation=true;
+        }
+        return validation;
+    }
+    public static void addDeleteWithPlusButton(By by)throws Exception{
+        waitUntilElementToBeSelected(by,10);
+        scrollToElement(by);
+        scrollTo("-150");
+        wait(1000);
+        click(by);
+    }
+    public static boolean validateCurrentDateTimeWithoutHour(By by,String value)throws Exception{
+        boolean validation = false;
+        if(value!="" && value!= null){
+            wait(1000);
+            scrollToElement(by);
+            scrollTo("-150");
+            String currentDateTimeWithoutHour = currentDateTimeWithoutHour();
+            validation = currentDateTimeWithoutHour.contains(value);
+        }else{
+            validation=true;
+        }
+        return validation;
+    }
+    public static boolean verifyGetText(By by,String value)throws Exception{
+        boolean validation = false;
+        if(value!="" && value!= null){
+            wait(1000);
+            scrollToElement(by);
+            scrollTo("-150");
+            String returnText = getText(by);
+            validation = returnText.contains(value);
+        }else{
+            validation=true;
+        }
+        return validation;
+    }
+
+    public static boolean verifyGetAttribute(By by, String value)throws Exception{
+        boolean validation = false;
+        if(value!="" && value !=null){
+            wait(1000);
+            scrollToElement(by);
+            scrollTo("-150");
+            String returnText = getAtribute(by,"value");
+            validation = returnText.contains(value);
+        }else{
+            validation=true;
+        }
+        return validation;
+    }
+    public static void picker(By pickerButton,By searchField, By recordPickerModalTableRow1,By orgPickerModalTableRow1Checkbox,By modalChooseButton,String value)throws Exception{
+        pickerButtonClick(pickerButton);
+        searchPicker(searchField,recordPickerModalTableRow1,orgPickerModalTableRow1Checkbox,value);
+        modalChooseButton(modalChooseButton);
+    }
+    public static void pickerButtonClick(By pickerButton)throws Exception{
+        wait(1000);
+        scrollToElement(pickerButton);
+        scrollTo("-150");
+        waitElementBy(pickerButton,10);
+        click(pickerButton);
+    }
+    public static void searchPicker(By searchField,By recordPickerModalTableRow1,By orgPickerModalTableRow1Checkbox,String value)throws Exception{
+        int delay = 10;
+        waitElementBy(searchField,delay);
+        write(searchField,value);
+        wait(4000);
+        if(verifyIfContains(recordPickerModalTableRow1,value)){
+            wait(2000);
+            click(orgPickerModalTableRow1Checkbox);
+        }else{
+            FailureDelegatePage.handlePageException(LogPage.SEARCH_PICKER_FAIL);
+        }
+    }
+    public static void modalChooseButton(By modalChooseButton)throws Exception{
+        click(modalChooseButton);
+    }
+    public static void inputOptionField(By by,String value,By inputField)throws Exception{
+        int delay = 10;
+        scrollToElement(by);
+        scrollTo("-150");
+        wait(1000);
+        click(by);
+        waitElementBy(inputField,delay);
+        write(inputField,value);
+        waitElementBy(inputField,delay);
+        KeyPage.pressKey(inputField,"Enter");
+    }
+    public static void clickOption(By by)throws Exception{
+        waitUntilElementToBeSelected(by,10);
+        scrollToElement(by);
+        scrollTo("-150");
+        waitUntilElementPresence(by,10);
+        BasePage.click(by);
+    }
+    public static void selectOptionList(By by, String value,By dropDownList)throws Exception{
+        int delay = 10;
+        wait(1000);
+        scrollToElement(by);
+        scrollTo("-150");
+        waitElementBy(by,delay);
+        click(by);
+        waitElementBy(dropDownList,delay);
+        write(dropDownList,value);
+        KeyPage.pressKey(dropDownList,"Enter");
+
+    }
+    public static void clickOptionList(By by, String value, By dropDownList, String tag)throws Exception{
+        int delay = 10;
+        wait(1000);
+        scrollToElement(by);
+        scrollTo("-150");
+        waitElementBy(by,delay);
+        click(by);
+        wait(1000);
+        BasePage.selectElementsList(dropDownList, tag);
+        wait(2000);
+        clickOnListOfElements(value);
+    }
+    public static void clickOptionList(By by, String value, By dropDownList)throws Exception{
+        clickOptionList(by,value,dropDownList,"a");
+    }
+    public static void clickOptionListContains(By by, String value, By dropDownList, String tag)throws Exception{
+        int delay = 10;
+        wait(1000);
+        scrollToElement(by);
+        scrollTo("-150");
+        waitElementBy(by,delay);
+        click(by);
+        wait(1000);
+        BasePage.selectElementsList(dropDownList, tag);
+        wait(2000);
+        clickOnListOfElementsContains(value);
+    }
+    public static void clickOptionListContains(By by, String value, By dropDownList)throws Exception{
+        clickOptionListContains(by,value,dropDownList,"a");
+    }
+
+    public static void fillDateField(By by,String value)throws Exception{
+        int delay = 10;
+        scrollToElement(by);
+        scrollTo("-150");
+        waitElementBy(by,delay);
+        KeyPage.erase(by);
+        waitElementBy(by,delay);
+        write(by,value);
+        waitElementBy(by,delay);
+        KeyPage.pressKey(by,"Enter");
+    }
+
+    public static void fillField(By by,String value)throws Exception{
+        int delay = 10;
+        waitElementBy(by,delay);
+        scrollToElement(by);
+        scrollTo("-150");
+        waitElementBy(by,delay);
+        write(by,value);
+
+    }
+    public static void toUseDatatable(DataTable data){
+        createDatatable(data);
+    }
+
+    public static void createDatatable(DataTable data){
+        mass = data.asMaps(String.class, String.class);
+    }
+
     public static String getFile(String path){
         String pathToFile = dataFilePath+path;
         return pathToFile;
