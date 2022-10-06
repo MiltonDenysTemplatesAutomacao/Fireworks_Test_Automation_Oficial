@@ -28,4 +28,8 @@ public class EmailWizardSteps {
     public static void updateEmailFinishTab(String category, String action, String staff, String actionDateTime, String comments) {
         EmailWizardPage.updateEmailFinishTab(category,action,staff,actionDateTime,comments);
     }
+    @When("I verify RecipientsPreview {string}, {string}, {string}, {string}, {string}")
+    public static void verifyRecipientsPreview(String firstName, String lastName, String emailAddress, String reason, String validRecipients) {
+        EmailWizardPage.verifyRecipientsPreview(firstName,lastName,emailAddress,reason,validRecipients);
+    }
 }

@@ -119,9 +119,12 @@ public class BasePage {
         return validation;
     }
     public static void picker(By pickerButton,By searchField, By recordPickerModalTableRow1,By orgPickerModalTableRow1Checkbox,By modalChooseButton,String value)throws Exception{
-        pickerButtonClick(pickerButton);
-        searchPicker(searchField,recordPickerModalTableRow1,orgPickerModalTableRow1Checkbox,value);
-        modalChooseButton(modalChooseButton);
+        if(value!="" && value !=null){
+            pickerButtonClick(pickerButton);
+            searchPicker(searchField,recordPickerModalTableRow1,orgPickerModalTableRow1Checkbox,value);
+            modalChooseButton(modalChooseButton);
+        }
+
     }
     public static void pickerButtonClick(By pickerButton)throws Exception{
         wait(1000);
@@ -132,100 +135,117 @@ public class BasePage {
     }
     public static void searchPicker(By searchField,By recordPickerModalTableRow1,By orgPickerModalTableRow1Checkbox,String value)throws Exception{
         int delay = 10;
-        waitElementBy(searchField,delay);
-        write(searchField,value);
-        wait(4000);
-        if(verifyIfContains(recordPickerModalTableRow1,value)){
-            wait(2000);
-            click(orgPickerModalTableRow1Checkbox);
-        }else{
-            FailureDelegatePage.handlePageException(LogPage.SEARCH_PICKER_FAIL);
+        if(value!="" && value !=null){
+            waitElementBy(searchField,delay);
+            write(searchField,value);
+            wait(4000);
+            if(verifyIfContains(recordPickerModalTableRow1,value)){
+                wait(2000);
+                click(orgPickerModalTableRow1Checkbox);
+            }else{
+                FailureDelegatePage.handlePageException(LogPage.SEARCH_PICKER_FAIL);
+            }
         }
     }
     public static void modalChooseButton(By modalChooseButton)throws Exception{
         click(modalChooseButton);
     }
     public static void inputOptionField(By by,String value,By inputField)throws Exception{
-        int delay = 10;
-        scrollToElement(by);
-        scrollTo("-150");
-        wait(1000);
-        click(by);
-        waitElementBy(inputField,delay);
-        write(inputField,value);
-        waitElementBy(inputField,delay);
-        KeyPage.pressKey(inputField,"Enter");
+        if(value!="" && value !=null){
+            int delay = 10;
+            scrollToElement(by);
+            scrollTo("-150");
+            wait(1000);
+            click(by);
+            waitElementBy(inputField,delay);
+            write(inputField,value);
+            waitElementBy(inputField,delay);
+            KeyPage.pressKey(inputField,"Enter");
+        }
     }
     public static void clickOption(By by)throws Exception{
         waitUntilElementToBeSelected(by,10);
         scrollToElement(by);
         scrollTo("-150");
-        waitUntilElementPresence(by,10);
+        waitUntilElementToBeSelected(by,10);
         BasePage.click(by);
     }
     public static void selectOptionList(By by, String value,By dropDownList)throws Exception{
         int delay = 10;
-        wait(1000);
-        scrollToElement(by);
-        scrollTo("-150");
-        waitElementBy(by,delay);
-        click(by);
-        waitElementBy(dropDownList,delay);
-        write(dropDownList,value);
-        KeyPage.pressKey(dropDownList,"Enter");
-
+        if(value!="" && value !=null){
+            wait(1000);
+            scrollToElement(by);
+            scrollTo("-150");
+            waitElementBy(by,delay);
+            click(by);
+            waitElementBy(dropDownList,delay);
+            write(dropDownList,value);
+            KeyPage.pressKey(dropDownList,"Enter");
+        }
     }
     public static void clickOptionList(By by, String value, By dropDownList, String tag)throws Exception{
         int delay = 10;
-        wait(1000);
-        scrollToElement(by);
-        scrollTo("-150");
-        waitElementBy(by,delay);
-        click(by);
-        wait(1000);
-        BasePage.selectElementsList(dropDownList, tag);
-        wait(2000);
-        clickOnListOfElements(value);
+        if(value!="" && value !=null){
+            wait(1000);
+            scrollToElement(by);
+            scrollTo("-150");
+            waitElementBy(by,delay);
+            click(by);
+            wait(1000);
+            BasePage.selectElementsList(dropDownList, tag);
+            wait(2000);
+            clickOnListOfElements(value);
+        }
     }
     public static void clickOptionList(By by, String value, By dropDownList)throws Exception{
-        clickOptionList(by,value,dropDownList,"a");
+        if(value!="" && value !=null){
+            clickOptionList(by,value,dropDownList,"a");
+        }
+
     }
     public static void clickOptionListContains(By by, String value, By dropDownList, String tag)throws Exception{
         int delay = 10;
-        wait(1000);
-        scrollToElement(by);
-        scrollTo("-150");
-        waitElementBy(by,delay);
-        click(by);
-        wait(1000);
-        BasePage.selectElementsList(dropDownList, tag);
-        wait(2000);
-        clickOnListOfElementsContains(value);
+        if(value!="" && value !=null){
+            wait(1000);
+            scrollToElement(by);
+            scrollTo("-150");
+            waitElementBy(by,delay);
+            click(by);
+            wait(1000);
+            BasePage.selectElementsList(dropDownList, tag);
+            wait(2000);
+            clickOnListOfElementsContains(value);
+        }
     }
     public static void clickOptionListContains(By by, String value, By dropDownList)throws Exception{
-        clickOptionListContains(by,value,dropDownList,"a");
+        if(value!="" && value !=null){
+            clickOptionListContains(by,value,dropDownList,"a");
+        }
     }
 
     public static void fillDateField(By by,String value)throws Exception{
-        int delay = 10;
-        scrollToElement(by);
-        scrollTo("-150");
-        waitElementBy(by,delay);
-        KeyPage.erase(by);
-        waitElementBy(by,delay);
-        write(by,value);
-        waitElementBy(by,delay);
-        KeyPage.pressKey(by,"Enter");
+        if(value!="" && value !=null){
+            int delay = 10;
+            scrollToElement(by);
+            scrollTo("-150");
+            waitElementBy(by,delay);
+            KeyPage.erase(by);
+            waitElementBy(by,delay);
+            write(by,value);
+            waitElementBy(by,delay);
+            KeyPage.pressKey(by,"Enter");
+        }
     }
 
     public static void fillField(By by,String value)throws Exception{
-        int delay = 10;
-        waitElementBy(by,delay);
-        scrollToElement(by);
-        scrollTo("-150");
-        waitElementBy(by,delay);
-        write(by,value);
-
+        if(value!="" && value !=null){
+            int delay = 10;
+            waitElementBy(by,delay);
+            scrollToElement(by);
+            scrollTo("-150");
+            waitElementBy(by,delay);
+            write(by,value);
+        }
     }
     public static void toUseDatatable(DataTable data){
         createDatatable(data);

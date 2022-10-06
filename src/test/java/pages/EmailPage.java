@@ -16,8 +16,16 @@ public class EmailPage extends BasePage{
     public static final String EMAIL_MANAGER_SEARCH_FIELD = "#emailManagerTableControlsTableSearch";
     public static final String EMAIL_MANAGER_TABLE_ROW1_COLUMN1 = "#emailManagerTable_row_0_col_0";
     public static final String EMAIL_MANAGER_TABLE_ROW1_COLUMN3 = "#emailManagerTable_row_0_col_3";
+    public static final String SCHEDULE_EMAIL_BUTTON = "#scheduleEmail";
 
-
+    public static void scheduleEmail(){
+        try {
+            clickOption(By.cssSelector(SCHEDULE_EMAIL_BUTTON));
+            ExtentReportsSetUp.testingPass(LogPage.SCHEDULE_EMAIL_PASS);
+        } catch (Exception e) {
+            FailureDelegatePage.handlePageException(LogPage.SCHEDULE_EMAIL_FAIL);
+        }
+    }
     public static void verifyEmailFound(String emailName){
         try {
             waitElementBy(By.cssSelector(EMAIL_MANAGER_TABLE),20);

@@ -21,4 +21,8 @@ public class EmailSteps {
     public static void waitUntilEmailSent(String emailName) {
         EmailPage.waitUntilEmailSent(emailName);
     }
+    @When("I schedule an email")
+    public static void scheduleEmail() {
+        EmailPage.scheduleEmail();
+    }
 }

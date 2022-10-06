@@ -706,5 +706,19 @@ public class LogPage {
     public static final String NAVIGATE_TO_SCHEDULER_FAIL = "Fail while trying to navigate to scheduler";
     public static final String CREATE_NEW_JOB_PASS = "I create a new schedule";
     public static final String CREATE_NEW_JOB_FAIL = "Fail while trying to create a new schedule";
+    public static final String SCHEDULE_EMAIL_PASS = "I schedule an email";
+    public static final String SCHEDULE_EMAIL_FAIL = "Fail while trying to schedule an email";
+    public static final String VERIFY_RECIPIENTS_PREVIEW_PASS = "I verify RecipientsPreview";
+    public static final String VERIFY_RECIPIENTS_PREVIEW_FAIL = "Fail while trying to verify RecipientsPreview";
+    public static final String UPDATE_JOB_DETAILS_PASS = "I update update Frequency1Weekly";
+    public static final String UPDATE_JOB_DETAILS_FAIL = "Fail while trying to update update Frequency1Weekly";
+    public static final String UPDATE_FREQUENCY1_WEEKLY_PASS = "I update update Frequency1Weekly";
+    public static final String UPDATE_FREQUENCY1_WEEKLY_FAIL = "Fail while trying to update update Frequency1Weekly";
+    public static final String UPDATE_EXCLUDE1_DATE_PASS = "I update Exclude1Date";
+    public static final String UPDATE_EXCLUDE1_DATE_FAIL = "Fail while trying to update Exclude1Date";
+    public static final String UPDATE_NOTIFY_RECIPIENTS_PASS = "I update Notify Recipients";
+    public static final String UPDATE_NOTIFY_RECIPIENTS_FAIL = "Fail while trying to update Notify Recipients";
+    public static final String CLICK_JOB_SAVE_BUTTON_PASS = "I click on job save button";
+    public static final String CLICK_JOB_SAVE_BUTTON_FAIL = "Fail while trying to click on job save button";
 
 }

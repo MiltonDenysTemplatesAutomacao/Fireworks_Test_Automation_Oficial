@@ -41,7 +41,24 @@ public class EmailWizardPage extends BasePage{
     public static final String ACTION_STAFF_DROPDOWN = "#select2-chosen-26";
     public static final String ACTION_DATE_FIELD = "#action_date";
     public static final String ACTION_COMMENTS_FIELD = "#action_comments";
+    public static final String PREVIEW_RECIPIENTS_MODAL_TABLE = "#previewEmailRecipientsTable_row_0";
 
+    public static void verifyRecipientsPreview(String firstName, String lastName, String emailAddress, String reason, String validRecipients){
+        try {
+            wait(2000);
+            if(verifyGetText(By.cssSelector(PREVIEW_RECIPIENTS_MODAL_TABLE),firstName)
+                    && verifyGetText(By.cssSelector(PREVIEW_RECIPIENTS_MODAL_TABLE),lastName)
+                    && verifyGetText(By.cssSelector(PREVIEW_RECIPIENTS_MODAL_TABLE),emailAddress)
+                    && verifyGetText(By.cssSelector(PREVIEW_RECIPIENTS_MODAL_TABLE),reason)
+                    && verifyGetText(By.cssSelector(PREVIEW_RECIPIENTS_MODAL_TABLE),validRecipients)){
+                ExtentReportsSetUp.testingPass(LogPage.VERIFY_RECIPIENTS_PREVIEW_PASS);
+            }else{
+                FailureDelegatePage.handlePageException(LogPage.VERIFY_RECIPIENTS_PREVIEW_FAIL);
+            }
+        } catch (Exception e) {
+            FailureDelegatePage.handlePageException(LogPage.VERIFY_RECIPIENTS_PREVIEW_FAIL);
+        }
+    }
     public static void updateEmailFinishTab(String category, String action, String staff, String actionDateTime, String comments){
         try {
             if (category != ""){
@@ -80,7 +97,6 @@ public class EmailWizardPage extends BasePage{
         } catch (Exception e) {
             FailureDelegatePage.handlePageException(LogPage.ADD_EMAIL_ATTACHMENT_FAIL);
         }
-
     }
     public static void addEmailAttachment(String attachment){
         try {
@@ -154,10 +170,7 @@ public class EmailWizardPage extends BasePage{
     public static void clickSaveAndContinue(){
         try {
             wait(1000);
-            scrollToTheBottom();
-            wait(5000);
-            waitUntilElementToBeSelected(By.xpath(SAVE_AND_CONTINUE_BUTTON),20);
-            click(By.xpath(SAVE_AND_CONTINUE_BUTTON));
+            clickOption(By.xpath(SAVE_AND_CONTINUE_BUTTON));
             ExtentReportsSetUp.testingPass(LogPage.CLICK_SAVE_AND_CONTINUE_PASS);
         } catch (Exception e) {
             FailureDelegatePage.handlePageException(LogPage.CLICK_SAVE_AND_CONTINUE_PASS);

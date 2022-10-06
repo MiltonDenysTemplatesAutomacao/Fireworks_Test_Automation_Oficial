@@ -43,7 +43,7 @@ Feature: Exact match auto-merge on rule 5: IDType-ID-LastName,Email recipients c
     And I click on save and continue on Marketing Email Composer
     And I update Email Headers Tab "", "firestarter@fire-engine-red.com", "", "Subject Actions NotShared 6100", "", ""
     And I click on save and continue on Marketing Email Composer
-    And I update Email Content Tab "Body content Actions NotShared 6100", "teste"
+    And I update Email Content Tab "Body content Actions NotShared 6100", ""
     And I click on save and continue on Marketing Email Composer
     And I close alert if return this message "Email has been updated."
     And I click on finish tab
