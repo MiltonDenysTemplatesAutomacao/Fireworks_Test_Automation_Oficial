@@ -720,5 +720,17 @@ public class LogPage {
     public static final String UPDATE_NOTIFY_RECIPIENTS_FAIL = "Fail while trying to update Notify Recipients";
     public static final String CLICK_JOB_SAVE_BUTTON_PASS = "I click on job save button";
     public static final String CLICK_JOB_SAVE_BUTTON_FAIL = "Fail while trying to click on job save button";
+    public static final String SEARCH_JOBS_MANAGER_PASS = "I search a schedule job '%s'";
+    public static final String SEARCH_JOBS_MANAGER_FAIL = "Fail while trying to search a schedule job '%s'";
+    public static final String OPEN_SCHEDULED_JOB_PASS = "I open a schedule job '%s'";
+    public static final String OPEN_SCHEDULED_JOB_FAIL = "Fail while trying to open a schedule job '%s'";
+    public static final String VERIFY_JOB_DETAILS_PASS = "I verify job details";
+    public static final String VERIFY_JOB_DETAILS_FAIL = "Fail while trying to verify job details";
+    public static final String VERIFY_FREQUENCY1_WEEKLY_PASS = "I verify Frequency1Weekly";
+    public static final String VERIFY_FREQUENCY1_WEEKLY_FAIL = "Fail while trying to verify Frequency1Weekly";
+    public static final String VERIFY_EXCLUDE1_DATE_PASS = "I verify Exclude1Date";
+    public static final String VERIFY_EXCLUDE1_DATE_FAIL = "Fail while trying to verify Exclude1Date";
+    public static final String VERIFY_CHECKBOX_DEFAULTS_PASS = "I verify Checkbox Defaults";
+    public static final String VERIFY_CHECKBOX_DEFAULTS_FAIL = "Fail while trying to verify Checkbox Defaults";
 
 }

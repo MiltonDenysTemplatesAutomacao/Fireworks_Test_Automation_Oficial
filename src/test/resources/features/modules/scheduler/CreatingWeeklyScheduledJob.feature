@@ -35,8 +35,16 @@ Feature: Scheduler required fields
     And I confirm EmailSend
     #to enter schedule data for the email
     When I update job details "Scheduler Test Weekly Email", "", "01/20/2019 7:10 AM", "Alaska", ""
-    And I update update Frequency1Weekly "Every Week", "Monday", "02:30 PM", "03/29/2021 2:31 PM"
+    And I update Frequency1Weekly "Every Week", "Monday", "02:30 PM", "03/29/2021 2:31 PM"
     And I update Exclude1Date "03/05/2021"
     And I update Notify Recipients "notify@fire-engine-red.com"
     #And I click on job save button
     And I close alert if return this message "Scheduled Job has been created."
+    #to verify the scheduled email job
+    And I navigate to scheduler
+    And I open a schedule job "Scheduler Test Weekly Email"
+    When I verify job details "Scheduler Test Weekly Email", "", "01/20/2019 7:10 AM", "Alaska"
+    And I verify Frequency1Weekly "Every Week", "Monday", "02:30 PM", "03/29/2021 2:31 PM"
+    And I verify Exclude1Date "03/05/2021"
+    And I verify Checkbox Defaults
+    #to verify scheduled jobs can be deleted

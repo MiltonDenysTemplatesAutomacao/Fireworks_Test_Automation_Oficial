@@ -22,7 +22,93 @@ public class SchedulerPage extends BasePage{
     public static final String FREQUENCY1_ENDS_DATE_TIME_FIELD = "#frequency_0_end";
     public static final String NOTIFY_RECIPIENTS_EMAIL_FIELD = "#notification_recipients";
     public static final String JOB_SAVE_BUTTON = "#scheduleFormSubmitButton";
+    public static final String JOBS_MANAGER_SEARCH_FIELD = "#schedulerJobTableControlsTableSearch";
+    public static final String JOBS_MANAGER_TABLE_ROW1_COL1 = "#schedulerJobTable_row_0_col_0";
+    public static final String SCHEDULED_TASK_NAME_FIELD = "#activity_id_readable";
+    public static final String EXCLUDE1_DATE_FIELD = "#exclude_0_date";
+    public static final String JOB_ACTIVE_CHECKBOX = "#scheduler_active";
+    public static final String OVERRIDE_ACTION_DATE_CHECKBOX = "#action_date_override";
+    public static final String SEND_NOTIFICATION_AT_RUNTIME_CHECKBOX = "#send_notification";
+    public static final String SEND_NOTIFICATION_BEFORE_RUNTIME_CHECKBOX = "#send_before";
+    public static final String SEND_NOTIFICATION_IF_ERRORS_CHECKBOX = "#notify_errors_only";
+    public static final String SEND_NOTIFICATION_LAST_DAY_CHECKBOX = "#notify_last_repeat";
 
+    public static void verifyCheckboxDefaults(){
+        try {
+            if(verifyCheckboxActiveOrNot(By.cssSelector(JOB_ACTIVE_CHECKBOX),"1")
+                    && verifyCheckboxActiveOrNot(By.cssSelector(OVERRIDE_ACTION_DATE_CHECKBOX),"1")
+                    && verifyCheckboxActiveOrNot(By.cssSelector(SEND_NOTIFICATION_AT_RUNTIME_CHECKBOX),"1")
+                    && verifyCheckboxActiveOrNot(By.cssSelector(SEND_NOTIFICATION_BEFORE_RUNTIME_CHECKBOX),"0")
+                    && verifyCheckboxActiveOrNot(By.cssSelector(SEND_NOTIFICATION_IF_ERRORS_CHECKBOX),"0")
+                    && verifyCheckboxActiveOrNot(By.cssSelector(SEND_NOTIFICATION_LAST_DAY_CHECKBOX),"0")){
+                    ExtentReportsSetUp.testingPass(LogPage.VERIFY_CHECKBOX_DEFAULTS_PASS);
+            }else{
+                FailureDelegatePage.handlePageException(LogPage.VERIFY_CHECKBOX_DEFAULTS_FAIL);
+            }
+        } catch (Exception e) {
+            FailureDelegatePage.handlePageException(LogPage.VERIFY_CHECKBOX_DEFAULTS_FAIL);
+        }
+    }
+    public static void verifyExclude1Date(String date){
+        try {
+            if(verifyGetAttribute(By.cssSelector(EXCLUDE1_DATE_FIELD),date)){
+                ExtentReportsSetUp.testingPass(LogPage.VERIFY_EXCLUDE1_DATE_PASS);
+            }else{
+                FailureDelegatePage.handlePageException(LogPage.VERIFY_EXCLUDE1_DATE_FAIL);
+            }
+        } catch (Exception e) {
+            FailureDelegatePage.handlePageException(LogPage.VERIFY_EXCLUDE1_DATE_FAIL);
+        }
+    }
+    public static void verifyFrequency1Weekly(String frequency,String dayOfWeek,String time,String endDateTime){
+        try {
+            if(verifyGetText(By.cssSelector(FREQUENCY1_DROPDOWN),frequency)
+                && verifyGetText(By.cssSelector(FREQUENCY1_DAY_OF_WEEK_DROPDOWN),dayOfWeek)
+                    && verifyGetAttribute(By.cssSelector(FREQUENCY1_TIME_FIELD),time)
+                    && verifyGetAttribute(By.cssSelector(FREQUENCY1_ENDS_DATE_TIME_FIELD),endDateTime)){
+                    ExtentReportsSetUp.testingPass(LogPage.VERIFY_FREQUENCY1_WEEKLY_PASS);
+            }else{
+                FailureDelegatePage.handlePageException(LogPage.VERIFY_FREQUENCY1_WEEKLY_FAIL);
+            }
+        } catch (Exception e) {
+            FailureDelegatePage.handlePageException(LogPage.VERIFY_FREQUENCY1_WEEKLY_PASS);
+        }
+    }
+    public static void verifyJobDetails(SchedulerBean scheduler){
+        try {
+            if(verifyGetAttribute(By.cssSelector(JOB_NAME_FIELD),scheduler.getJobName())
+                && verifyGetText(By.cssSelector(SCHEDULED_TASK_NAME_FIELD),scheduler.getTaskName())
+                    && verifyGetAttribute(By.cssSelector(START_DATE_TIME_FIELD),scheduler.getStartDateTime())
+                    && verifyGetText(By.cssSelector(TIME_ZONE_DROPDOWN),scheduler.getTimeZone())){
+                    ExtentReportsSetUp.testingPass(LogPage.VERIFY_JOB_DETAILS_PASS);
+            }else{
+                FailureDelegatePage.handlePageException(LogPage.VERIFY_JOB_DETAILS_FAIL);
+            }
+        } catch (Exception e) {
+            FailureDelegatePage.handlePageException(LogPage.VERIFY_JOB_DETAILS_FAIL);
+        }
+    }
+    public static void openScheduledJob(String job){
+        String passMessage = String.format(LogPage.OPEN_SCHEDULED_JOB_PASS,job);
+        String failMessage = String.format(LogPage.OPEN_SCHEDULED_JOB_FAIL,job);
+        try {
+            searchJobsManager(job);
+            clickOption(By.cssSelector(JOBS_MANAGER_TABLE_ROW1_COL1));
+            ExtentReportsSetUp.testingPass(passMessage);
+        } catch (Exception e) {
+            FailureDelegatePage.handlePageException(failMessage);
+        }
+    }
+    public static void searchJobsManager(String job){
+        String passMessage = String.format(LogPage.SEARCH_JOBS_MANAGER_PASS,job);
+        String failMessage = String.format(LogPage.SEARCH_JOBS_MANAGER_FAIL,job);
+        try {
+            fillField(By.cssSelector(JOBS_MANAGER_SEARCH_FIELD),job);
+            ExtentReportsSetUp.testingPass(passMessage);
+        } catch (Exception e) {
+            FailureDelegatePage.handlePageException(failMessage);
+        }
+    }
     public static void clickJobSaveButton(){
         try {
             clickOption(By.cssSelector(JOB_SAVE_BUTTON));
@@ -41,7 +127,7 @@ public class SchedulerPage extends BasePage{
     }
     public static void updateExclude1Date(String date){
         try {
-            fillDateField(By.cssSelector(FREQUENCY1_TIME_FIELD),date);
+            fillDateField(By.cssSelector(EXCLUDE1_DATE_FIELD),date);
             ExtentReportsSetUp.testingPass(LogPage.UPDATE_EXCLUDE1_DATE_PASS);
         } catch (Exception e) {
             FailureDelegatePage.handlePageException(LogPage.UPDATE_EXCLUDE1_DATE_FAIL);
