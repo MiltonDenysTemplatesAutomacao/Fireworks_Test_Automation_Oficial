@@ -35,9 +35,17 @@ public class SchedulerSteps {
     public static void updateFrequency1Weekly(String frequency,String dayOfWeek,String time,String endDateTime) {
         SchedulerPage.updateFrequency1Weekly(frequency,dayOfWeek,time,endDateTime);
     }
+    @When("I update Frequency1Monthly {string}, {string}, {string}, {string}")
+    public static void updateFrequency1Monthly(String frequency,String dayOfWeek,String time,String endDateTime) {
+        SchedulerPage.updateFrequency1Monthly(frequency,dayOfWeek,time,endDateTime);
+    }
     @When("I verify Frequency1Weekly {string}, {string}, {string}, {string}")
     public static void verifyFrequency1Weekly(String frequency,String dayOfWeek,String time,String endDateTime) {
         SchedulerPage.verifyFrequency1Weekly(frequency,dayOfWeek,time,endDateTime);
+    }
+    @When("I verify Frequency1Monthly {string}, {string}, {string}, {string}")
+    public static void verifyFrequency1Monthly(String frequency,String monthDay,String time,String endDateTime) {
+        SchedulerPage.verifyFrequency1Monthly(frequency,monthDay,time,endDateTime);
     }
     @When("I update Exclude1Date {string}")
     public static void updateExclude1Date(String date) {
@@ -62,6 +70,18 @@ public class SchedulerSteps {
     @When("I verify Checkbox Defaults")
     public static void verifyCheckboxDefaults() {
         SchedulerPage.verifyCheckboxDefaults();
+    }
+    @When("I delete job")
+    public static void deleteJob() {
+        SchedulerPage.deleteJob();
+    }
+    @When("I search a schedule job {string}")
+    public static void searchJobsManager(String job) {
+        SchedulerPage.searchJobsManager(job);
+    }
+    @When("I validate if schedule job {string} is not displayed")
+    public static void validateIfJobIsNotDisplayed(String job) {
+        SchedulerPage.validateIfJobIsNotDisplayed(job);
     }
 
 }

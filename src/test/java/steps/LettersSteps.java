@@ -12,6 +12,14 @@ public class LettersSteps {
     public static void updateLetterPersonAction(int index) {
         LettersPage.updateLetterPersonAction(index);
     }
+    @And("I update letter content person {int}")
+    public static void updateLetterContent(int index) {
+        LettersPage.updateLetterContent(index);
+    }
+    @And("I click on schedule letter button")
+    public static void scheduleLetter() {
+        LettersPage.scheduleLetterButton();
+    }
     @And("I click on create letter button")
     public static void createLetter() {
         LettersPage.createLetter();

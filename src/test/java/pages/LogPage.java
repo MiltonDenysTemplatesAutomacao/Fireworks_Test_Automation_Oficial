@@ -732,5 +732,17 @@ public class LogPage {
     public static final String VERIFY_EXCLUDE1_DATE_FAIL = "Fail while trying to verify Exclude1Date";
     public static final String VERIFY_CHECKBOX_DEFAULTS_PASS = "I verify Checkbox Defaults";
     public static final String VERIFY_CHECKBOX_DEFAULTS_FAIL = "Fail while trying to verify Checkbox Defaults";
+    public static final String DELETE_JOB_PASS = "I delete job";
+    public static final String DELETE_JOB_FAIL = "Fail while trying to delete job";
+    public static final String VALIDATE_IF_JOB_IS_NOT_DISPLAYED_PASS = "Fail while trying to delete job";
+    public static final String VALIDATE_IF_JOB_IS_NOT_DISPLAYED_FAIL = "Fail while trying to delete job";
+    public static final String UPDATE_LETTER_CONTENT_PASS = "I update letter content person";
+    public static final String UPDATE_LETTER_CONTENT_FAIL = "Fail while trying to update letter content person";
+    public static final String SCHEDULE_LETTER_BUTTON_PASS = "I click on schedule letter button";
+    public static final String SCHEDULE_LETTER_BUTTON_FAIL = "Fail while trying to click on schedule letter button";
+    public static final String UPDATE_FREQUENCY1_MONTHLY_PASS = "I update Frequency1Monthly";
+    public static final String UPDATE_FREQUENCY1_MONTHLY_FAIL = "Fail while trying to update Frequency1Monthly";
+    public static final String VERIFY_FREQUENCY1_MONTHLY_PASS = "I verify Frequency1Monthly";
+    public static final String VERIFY_FREQUENCY1_MONTHLY_FAIL = "Fail while trying to verify Frequency1Monthly";
 
 }

@@ -3,7 +3,7 @@
 #Regression testcase TL-777: Deleting a scheduled job
 
 @CreatingAWeeklyScheduledJob
-Feature: Scheduler required fields
+Feature: Creating a weekly scheduled job / Deleting a scheduled job
 
   @VerifyAnEmailCanBeScheduledWeekly @Done @Scheduler
   Scenario: Scheduler - verify an email can be scheduled weekly
@@ -48,3 +48,9 @@ Feature: Scheduler required fields
     And I verify Exclude1Date "03/05/2021"
     And I verify Checkbox Defaults
     #to verify scheduled jobs can be deleted
+    And I delete job
+    And I close alert if return this message "Scheduled Job has been deleted"
+    #to verify deleted jobs are removed from Scheduler Manager
+    When I search a schedule job "Scheduler Test Weekly Email"
+    Then I validate if schedule job "Scheduler Test Weekly Email" is not displayed
+

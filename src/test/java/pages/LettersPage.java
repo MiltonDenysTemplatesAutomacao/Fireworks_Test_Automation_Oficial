@@ -9,10 +9,11 @@ public class LettersPage extends BasePage{
     private static final String LETTER_TEMPLATES_TAB = "body > section > div > ul > li:nth-child(2) > a";
     private static final String USER_ACTION_SECTION_LABEL = "//p[contains(text(), 'User Action')]";
     private static final String ACTION_CATEGORY_DROPDOWN = "div#s2id_action_category_id.select2-container.form-control.select2.select2 a.select2-choice";
-    private static final String ACTION_CATEGORY_DROPDOWN_LIST = "select2-results-23";
+    private static final String ACTION_CATEGORY_DROPDOWN_LIST = "s2id_autogen30_search";
     private static final String ACTION_DROPDOWN = "div#s2id_action_id.select2-container.form-control.select2.select2 a.select2-choice";
-    private static final String ACTION_DROPDOWN_LIST = "select2-results-24";
+    private static final String ACTION_DROPDOWN_LIST = "s2id_autogen31_search";
     private static final String ACTION_STAFF_DROPDOWN = "div#s2id_action_staff.select2-container.form-control.select2 a.select2-choice";
+    private static final String ACTION_STAFF_DROPDOWN_LIST = "s2id_autogen34_search";
     private static final String ACTION_VISIBILITY = "#s2id_action_visibility_id";
     private static final String ACTION_VISIBILITY_LIST = "select2-results-26";
     private static final String CREATE_NEW_LETTER_BUTTON = "#top-controls-create-new-letter";
@@ -20,7 +21,7 @@ public class LettersPage extends BasePage{
     public static final String DROPDOWN_INPUT_FIELD_ELEMENT = "s2id_autogen1_search";
     private static final String LETTER_NAME_FIELD = "#name";
     private static final String SMART_SEARCH_DROPDOWN = "div#s2id_saved_search_id.select2-container.form-control.select2.select2 a.select2-choice";
-    private static final String SMART_SEARCH_DROPDOWN_LIST = "select2-results-2";
+    private static final String SMART_SEARCH_DROPDOWN_LIST = "#select2-results-2";
     private static final String LETTER_FORMAT_DROPDOWN = "#select2-chosen-23";
     private static final String SYSTEM_ACTION_CATEGORY_ELEMENT = "div#s2id_system_action_category_id.select2-container.select2-container-disabled.form-control.actionCategoryIdSelector.parentSelect.select2";
     private static final String READ_ONLY_ACTION_TYPE_ELEMENT = "div#s2id_action_type_id.select2-container.select2-container-disabled.form-control.actionTypeIdSelector.select2";
@@ -38,6 +39,39 @@ public class LettersPage extends BasePage{
     private static final String PREVIEW_RECIPIENTS_MODAL_MESSAGE = "//*[@id='previewRecipientsModal']/div/div/div[2]/p";
     private static final String PREVIEW_RECIPIENTS_LETTER_RECIPIENTS = "//h1[text()='Letter Recipients']";
     private static final String PREVIEW_RECIPIENTS_MODAL_OK_BUTTON = "div.in button.modalConfirm";
+    private static final String LETTER_FORMAT_DROPDOWN_FIELD = "div#s2id_letter_size_format_id.select2-container.form-control.select2.select2 a.select2-choice";
+    private static final String LETTER_FORMAT_DROPDOWN_FIELD_LIST = "#s2id_autogen24_search";
+    private static final String LETTER_CONTENT_IFRAME_BODY_ELEMENT = "body#tinymce";
+    private static final String LETTER_CONTENT_IFRAME_ELEMENT = "content_ifr";
+    private static final String LETTER_SCHEDULE_BUTTON = "#letterFormScheduleButton";
+
+    public static void scheduleLetterButton(){
+        try {
+            clickOption(By.cssSelector(LETTER_SCHEDULE_BUTTON));
+            ExtentReportsSetUp.testingPass(LogPage.SCHEDULE_LETTER_BUTTON_PASS);
+        } catch (Exception e) {
+            FailureDelegatePage.handlePageException(LogPage.SCHEDULE_LETTER_BUTTON_FAIL);
+        }
+    }
+
+    public static void updateLetterContent(int index){
+        try {
+            if(mass.get(index).get("LetterFormat")!= null){
+                selectOptionList(By.cssSelector(LETTER_FORMAT_DROPDOWN_FIELD),
+                        mass.get(index).get("LetterFormat"),
+                        By.cssSelector(LETTER_FORMAT_DROPDOWN_FIELD_LIST));
+            }
+            if(mass.get(index).get("LetterContent")!= null){
+                switchToIFrame(LETTER_CONTENT_IFRAME_ELEMENT);
+                waitElementBy(By.cssSelector(LETTER_CONTENT_IFRAME_BODY_ELEMENT), 10);
+                BasePage.write(By.cssSelector(LETTER_CONTENT_IFRAME_BODY_ELEMENT),mass.get(index).get("LetterContent"));
+                switchToDefaultContent();
+            }
+            ExtentReportsSetUp.testingPass(LogPage.UPDATE_LETTER_CONTENT_PASS);
+        } catch (Exception e) {
+            FailureDelegatePage.handlePageException(LogPage.UPDATE_LETTER_CONTENT_FAIL);
+        }
+    }
 
     public static void confirmRecipientsModal(){
         try {
@@ -99,7 +133,7 @@ public class LettersPage extends BasePage{
             if (mass.get(index).get("SmartSearch") != null) {
                 MainPage.clickOptionList(By.cssSelector(SMART_SEARCH_DROPDOWN),
                         mass.get(index).get("SmartSearch"),
-                        By.cssSelector(SMART_SEARCH_DROPDOWN_LIST));
+                        By.cssSelector(PersonPage.SELECT_DROP));
             }
             if (mass.get(0).get("SingleRecipient") != null) {
                 MainPage.picker(By.cssSelector(SINGLE_RECIPIENT_PICKER_BUTTON),
@@ -207,22 +241,22 @@ public class LettersPage extends BasePage{
         wait(2000);
         try {
             if (mass.get(index).get("Category") != null) {
-                MainPage.clickOptionList(By.cssSelector(ACTION_CATEGORY_DROPDOWN),
+                MainPage.selectOptionList(By.cssSelector(ACTION_CATEGORY_DROPDOWN),
                         mass.get(index).get("Category"),
                         By.id(ACTION_CATEGORY_DROPDOWN_LIST));
             }
             if (mass.get(index).get("Action") != null) {
-                MainPage.clickOptionList(By.cssSelector(ACTION_DROPDOWN),
+                MainPage.selectOptionList(By.cssSelector(ACTION_DROPDOWN),
                         mass.get(index).get("Action"),
                         By.id(ACTION_DROPDOWN_LIST));
             }
             if (mass.get(index).get("Staff") != null) {
-                MainPage.clickOptionList(By.cssSelector(ACTION_STAFF_DROPDOWN),
+                MainPage.selectOptionList(By.cssSelector(ACTION_STAFF_DROPDOWN),
                         mass.get(index).get("Staff"),
-                        By.cssSelector(ACTION_STAFF_DROPDOWN));
+                        By.id(ACTION_STAFF_DROPDOWN_LIST));
             }
             if (mass.get(index).get("Visibility") != null) {
-                MainPage.clickOptionList(By.cssSelector(ACTION_VISIBILITY),
+                MainPage.selectOptionList(By.cssSelector(ACTION_VISIBILITY),
                         mass.get(index).get("Visibility"),
                         By.id(ACTION_VISIBILITY_LIST));
             }
@@ -230,7 +264,7 @@ public class LettersPage extends BasePage{
                 MainPage.fillField(By.cssSelector(ACTION_COMMENTS_FIELD), mass.get(index).get("Comments"));
             }
             if (mass.get(index).get("ActionDateTime") != null) {
-                MainPage.fillField(By.cssSelector(ACTION_DATE_FIELD), mass.get(index).get("ActionDateTime"));
+                MainPage.fillDateField(By.cssSelector(ACTION_DATE_FIELD), mass.get(index).get("ActionDateTime"));
             }
             ExtentReportsSetUp.testingPass(LogPage.UPDATE_LETTER_PERSON_ACTION_PASS);
         } catch (Exception e) {

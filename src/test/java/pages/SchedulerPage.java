@@ -32,7 +32,32 @@ public class SchedulerPage extends BasePage{
     public static final String SEND_NOTIFICATION_BEFORE_RUNTIME_CHECKBOX = "#send_before";
     public static final String SEND_NOTIFICATION_IF_ERRORS_CHECKBOX = "#notify_errors_only";
     public static final String SEND_NOTIFICATION_LAST_DAY_CHECKBOX = "#notify_last_repeat";
+    public static final String DELETE_JOB_BUTTON = "#schedulerJobHeaderDeleteButton";
+    public static final String DELETE_JOB_CONFIRM_DELETE_BUTTON = "#modalSubmitButtondeleteSchedulerJobConfirm";
+    public static final String FREQUENCY1_MONTH_DAY_DROPDOWN = "div#s2id_frequency_0_monthday.select2-container.form-control.repeat.select2.required a.select2-choice";
 
+    public static void validateIfJobIsNotDisplayed(String job){
+        String passMessage = String.format(LogPage.VALIDATE_IF_JOB_IS_NOT_DISPLAYED_PASS,job);
+        String failMessage = String.format(LogPage.VALIDATE_IF_JOB_IS_NOT_DISPLAYED_FAIL,job);
+        try {
+            if(!verifyGetText(By.cssSelector(JOBS_MANAGER_TABLE_ROW1_COL1),job)){
+                ExtentReportsSetUp.testingPass(passMessage);
+            }else{
+                FailureDelegatePage.handlePageException(failMessage);
+            }
+        } catch (Exception e) {
+            FailureDelegatePage.handlePageException(failMessage);
+        }
+    }
+    public static void deleteJob(){
+        try {
+            clickOption(By.cssSelector(DELETE_JOB_BUTTON));
+            clickOption(By.cssSelector(DELETE_JOB_CONFIRM_DELETE_BUTTON));
+            ExtentReportsSetUp.testingPass(LogPage.DELETE_JOB_PASS);
+        } catch (Exception e) {
+            FailureDelegatePage.handlePageException(LogPage.DELETE_JOB_FAIL);
+        }
+    }
     public static void verifyCheckboxDefaults(){
         try {
             if(verifyCheckboxActiveOrNot(By.cssSelector(JOB_ACTIVE_CHECKBOX),"1")
@@ -58,6 +83,20 @@ public class SchedulerPage extends BasePage{
             }
         } catch (Exception e) {
             FailureDelegatePage.handlePageException(LogPage.VERIFY_EXCLUDE1_DATE_FAIL);
+        }
+    }
+    public static void verifyFrequency1Monthly(String frequency,String dayOfWeek,String time,String endDateTime){
+        try {
+            if(verifyGetText(By.cssSelector(FREQUENCY1_DROPDOWN),frequency)
+                && verifyGetText(By.cssSelector(FREQUENCY1_MONTH_DAY_DROPDOWN),dayOfWeek)
+                    && verifyGetAttribute(By.cssSelector(FREQUENCY1_TIME_FIELD),time)
+                    && verifyGetAttribute(By.cssSelector(FREQUENCY1_ENDS_DATE_TIME_FIELD),endDateTime)){
+                    ExtentReportsSetUp.testingPass(LogPage.VERIFY_FREQUENCY1_MONTHLY_PASS);
+            }else{
+                FailureDelegatePage.handlePageException(LogPage.VERIFY_FREQUENCY1_MONTHLY_FAIL);
+            }
+        } catch (Exception e) {
+            FailureDelegatePage.handlePageException(LogPage.VERIFY_FREQUENCY1_MONTHLY_FAIL);
         }
     }
     public static void verifyFrequency1Weekly(String frequency,String dayOfWeek,String time,String endDateTime){
@@ -142,6 +181,17 @@ public class SchedulerPage extends BasePage{
             ExtentReportsSetUp.testingPass(LogPage.UPDATE_FREQUENCY1_WEEKLY_PASS);
         } catch (Exception e) {
             FailureDelegatePage.handlePageException(LogPage.UPDATE_FREQUENCY1_WEEKLY_FAIL);
+        }
+    }
+    public static void updateFrequency1Monthly(String frequency,String frequencyDayOfMonth,String frequencyTime,String frequencyEndDateTime){
+        try {
+            inputOptionField(By.cssSelector(FREQUENCY1_DROPDOWN), frequency,By.cssSelector(DROPDOWN_INPUT_FIELD_ELEMENT));
+            inputOptionField(By.cssSelector(FREQUENCY1_MONTH_DAY_DROPDOWN), frequencyDayOfMonth,By.cssSelector(DROPDOWN_INPUT_FIELD_ELEMENT));
+            fillDateField(By.cssSelector(FREQUENCY1_TIME_FIELD),frequencyTime);
+            fillDateField(By.cssSelector(FREQUENCY1_ENDS_DATE_TIME_FIELD),frequencyEndDateTime);
+            ExtentReportsSetUp.testingPass(LogPage.UPDATE_FREQUENCY1_MONTHLY_PASS);
+        } catch (Exception e) {
+            FailureDelegatePage.handlePageException(LogPage.UPDATE_FREQUENCY1_MONTHLY_FAIL);
         }
     }
 

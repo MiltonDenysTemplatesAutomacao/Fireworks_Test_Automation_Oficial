@@ -170,14 +170,14 @@ public class BasePage {
         waitUntilElementToBeSelected(by,10);
         BasePage.click(by);
     }
-    public static void selectOptionList(By by, String value,By dropDownList)throws Exception{
+    public static void selectOptionList(By dropDown, String value,By dropDownList)throws Exception{
         int delay = 10;
         if(value!="" && value !=null){
             wait(1000);
-            scrollToElement(by);
+            scrollToElement(dropDown);
             scrollTo("-150");
-            waitElementBy(by,delay);
-            click(by);
+            waitElementBy(dropDown,delay);
+            click(dropDown);
             waitElementBy(dropDownList,delay);
             write(dropDownList,value);
             KeyPage.pressKey(dropDownList,"Enter");
