@@ -172,6 +172,16 @@ public class SchedulerPage extends BasePage{
             FailureDelegatePage.handlePageException(LogPage.UPDATE_EXCLUDE1_DATE_FAIL);
         }
     }
+    public static void updateFrequency1Daily(String frequency,String time,String endDateTime){
+        try {
+            inputOptionField(By.cssSelector(FREQUENCY1_DROPDOWN), frequency,By.cssSelector(DROPDOWN_INPUT_FIELD_ELEMENT));
+            fillDateField(By.cssSelector(FREQUENCY1_TIME_FIELD),time);
+            fillDateField(By.cssSelector(FREQUENCY1_ENDS_DATE_TIME_FIELD),endDateTime);
+            ExtentReportsSetUp.testingPass(LogPage.UPDATE_FREQUENCY1_DAILY_PASS);
+        } catch (Exception e) {
+            FailureDelegatePage.handlePageException(LogPage.UPDATE_FREQUENCY1_DAILY_FAIL);
+        }
+    }
     public static void updateFrequency1Weekly(String frequency,String dayOfWeek,String time,String endDateTime){
         try {
             inputOptionField(By.cssSelector(FREQUENCY1_DROPDOWN), frequency,By.cssSelector(DROPDOWN_INPUT_FIELD_ELEMENT));

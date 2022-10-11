@@ -35,6 +35,10 @@ public class SchedulerSteps {
     public static void updateFrequency1Weekly(String frequency,String dayOfWeek,String time,String endDateTime) {
         SchedulerPage.updateFrequency1Weekly(frequency,dayOfWeek,time,endDateTime);
     }
+    @When("I update Frequency1Daily {string}, {string}, {string}")
+    public static void updateFrequency1Daily(String frequency,String time,String endDateTime) {
+        SchedulerPage.updateFrequency1Daily(frequency,time,endDateTime);
+    }
     @When("I update Frequency1Monthly {string}, {string}, {string}, {string}")
     public static void updateFrequency1Monthly(String frequency,String dayOfWeek,String time,String endDateTime) {
         SchedulerPage.updateFrequency1Monthly(frequency,dayOfWeek,time,endDateTime);

@@ -714,6 +714,8 @@ public class LogPage {
     public static final String UPDATE_JOB_DETAILS_FAIL = "Fail while trying to update update Frequency1Weekly";
     public static final String UPDATE_FREQUENCY1_WEEKLY_PASS = "I update update Frequency1Weekly";
     public static final String UPDATE_FREQUENCY1_WEEKLY_FAIL = "Fail while trying to update update Frequency1Weekly";
+    public static final String UPDATE_FREQUENCY1_DAILY_PASS = "I update update Frequency1Daily";
+    public static final String UPDATE_FREQUENCY1_DAILY_FAIL = "Fail while trying to update update Frequency1Daily";
     public static final String UPDATE_EXCLUDE1_DATE_PASS = "I update Exclude1Date";
     public static final String UPDATE_EXCLUDE1_DATE_FAIL = "Fail while trying to update Exclude1Date";
     public static final String UPDATE_NOTIFY_RECIPIENTS_PASS = "I update Notify Recipients";
