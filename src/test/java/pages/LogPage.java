@@ -756,5 +756,7 @@ public class LogPage {
     public static final String UPDATE_START_TAB_FAIL = "Fail while trying to update start tab";
     public static final String UPDATE_BODY_TAB_PASS = "I update body tab";
     public static final String UPDATE_BODY_TAB_FAIL = "Fail while trying to update body tab";
+    public static final String CLICK_SCHEDULE_PASS = "I click on schedule button";
+    public static final String CLICK_SCHEDULE_FAIL = "Fail while trying to click on schedule button";
 
 }

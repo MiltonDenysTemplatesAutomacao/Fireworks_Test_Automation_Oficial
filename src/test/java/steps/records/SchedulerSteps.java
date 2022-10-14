@@ -12,6 +12,10 @@ public class SchedulerSteps {
     public static void createNewJob(String jobType) {
         SchedulerPage.createNewJob(jobType);
     }
+    @When("I click on schedule button")
+    public static void clickSchedule() {
+        SchedulerPage.clickSchedule();
+    }
     @When("I update job details {string}, {string}, {string}, {string}, {string}")
     public static void updateJobDetails(String jobName,String taskName,String startDateTime,String timeZone,String importFile) {
         SchedulerBean scheduler = new SchedulerBean();

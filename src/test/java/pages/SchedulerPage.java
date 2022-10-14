@@ -40,7 +40,16 @@ public class SchedulerPage extends BasePage{
     public static final String DELETE_JOB_CONFIRM_DELETE_BUTTON = "#modalSubmitButtondeleteSchedulerJobConfirm";
     public static final String FREQUENCY1_MONTH_DAY_DROPDOWN = "div#s2id_frequency_0_monthday.select2-container.form-control.repeat.select2.required a.select2-choice";
     public static final String PREVIEW_CALENDAR_ITEM_TIME_ELEMENT = "//*[starts-with(@class, 'fc-time')]";
+    public static final String FINISH_SCHEDULE_BUTTON = "#scheduleTextMessage";
 
+    public static void clickSchedule(){
+        try {
+            clickOption(By.cssSelector(FINISH_SCHEDULE_BUTTON));
+            ExtentReportsSetUp.testingPass(LogPage.CLICK_SCHEDULE_PASS);
+        } catch (Exception e) {
+            FailureDelegatePage.handlePageException(LogPage.CLICK_SCHEDULE_FAIL);
+        }
+    }
     public static void validateNumbersOfElements(int elements){
         try {
             wait(3000);
