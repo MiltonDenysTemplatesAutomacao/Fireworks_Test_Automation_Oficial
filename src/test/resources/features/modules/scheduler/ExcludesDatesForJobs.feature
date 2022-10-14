@@ -27,13 +27,27 @@ Feature: Exclude dates for jobs
     And I update letter content person 0
     And I update letter person action index 0
     When I click on schedule letter button
-    When I update job details "Scheduled Exclude Dates 7070", "", "10/11/22 12:01 AM", "Alaska", ""
-    And I update Frequency1Daily "Every Day", "12:02 AM", "10/11/22 11:59 PM AM"
+    When I update job details "Scheduled Exclude Dates 7070", "", "10/10/22 12:01 AM", "Alaska", ""
+    And I update Frequency1Daily "Every Day", "12:02 AM", "10/12/22 11:59 PM AM"
     And I click on job save button
     And I close alert if return this message "Scheduled Job has been created."
     #to verify the number of scheduled jobs in the calendar before exclusions are added
     #working on validate calendar method
-    #When I validate if numbers of elements "1" on
+    When I validate numbers of elements 3 on calendar
     #to update the job to add an excluded date
-    #And I update Exclude1Date "10/07/2022"
+    And I update Exclude1Date "10/11/22"
+    When I validate numbers of elements 2 on calendar
+    And I click on job save button
+    And I close alert if return this message "Scheduled Job has been updated."
+    #to update the start date and verify the number of scheduled jobs in the calendar was updated
+    When I update job details "", "", "10/08/22 12:01 AM", "", ""
+    And I click on job save button
+    And I close alert if return this message "Scheduled Job has been updated."
+    When I validate numbers of elements 4 on calendar
+    #to update the end date and verify the number of scheduled jobs in the calendar was updated
+    And I update Frequency1Daily "", "", "10/13/22 11:59 PM AM"
+    And I click on job save button
+    And I close alert if return this message "Scheduled Job has been updated."
+    When I validate numbers of elements 5 on calendar
+
 

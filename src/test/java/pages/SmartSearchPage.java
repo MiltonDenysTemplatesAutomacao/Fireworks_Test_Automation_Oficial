@@ -119,7 +119,7 @@ public class SmartSearchPage extends BasePage{
         String failMessage = String.format(LogPage.SELECT_OPERATOR_FAIL, search, index);
 
         try {
-            wait(1000);
+            wait(3000);
             MainPage.clickOptionList(By.cssSelector(operatorDropdown(index)),
                     search,
                     By.cssSelector(PersonPage.SELECT_DROP));

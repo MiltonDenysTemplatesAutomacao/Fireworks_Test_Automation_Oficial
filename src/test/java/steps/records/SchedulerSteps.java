@@ -43,6 +43,10 @@ public class SchedulerSteps {
     public static void updateFrequency1Monthly(String frequency,String dayOfWeek,String time,String endDateTime) {
         SchedulerPage.updateFrequency1Monthly(frequency,dayOfWeek,time,endDateTime);
     }
+    @When("I validate numbers of elements {int} on calendar")
+    public static void validateNumbersOfElements(int elements) {
+        SchedulerPage.validateNumbersOfElements(elements);
+    }
     @When("I verify Frequency1Weekly {string}, {string}, {string}, {string}")
     public static void verifyFrequency1Weekly(String frequency,String dayOfWeek,String time,String endDateTime) {
         SchedulerPage.verifyFrequency1Weekly(frequency,dayOfWeek,time,endDateTime);

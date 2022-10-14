@@ -3,6 +3,9 @@ package pages;
 import bean.SchedulerBean;
 import config.extent_reports.ExtentReportsSetUp;
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
+
+import java.util.List;
 
 public class SchedulerPage extends BasePage{
     public static final String JOBS_MANAGER_TABLE = "#schedulerJobTable";
@@ -35,7 +38,24 @@ public class SchedulerPage extends BasePage{
     public static final String DELETE_JOB_BUTTON = "#schedulerJobHeaderDeleteButton";
     public static final String DELETE_JOB_CONFIRM_DELETE_BUTTON = "#modalSubmitButtondeleteSchedulerJobConfirm";
     public static final String FREQUENCY1_MONTH_DAY_DROPDOWN = "div#s2id_frequency_0_monthday.select2-container.form-control.repeat.select2.required a.select2-choice";
+    public static final String PREVIEW_CALENDAR_ITEM_TIME_ELEMENT = "//*[starts-with(@class, 'fc-time')]";
 
+    public static void validateNumbersOfElements(int elements){
+        try {
+            wait(3000);
+            scrollToElement(By.xpath(PREVIEW_CALENDAR_ITEM_TIME_ELEMENT));
+            scrollTo("-150");
+            List<WebElement> headerStudent = findElements(By.xpath(PREVIEW_CALENDAR_ITEM_TIME_ELEMENT));
+            int headerStudentSize = headerStudent.size();
+            if(elements==headerStudentSize){
+                ExtentReportsSetUp.testingPass(LogPage.VALIDATE_NUMBERS_OF_ELEMENTS_PASS);
+            }else{
+                FailureDelegatePage.handlePageException(LogPage.VALIDATE_NUMBERS_OF_ELEMENTS_FAIL);
+            }
+        } catch (Exception e) {
+            FailureDelegatePage.handlePageException(LogPage.VALIDATE_NUMBERS_OF_ELEMENTS_FAIL);
+        }
+    }
     public static void validateIfJobIsNotDisplayed(String job){
         String passMessage = String.format(LogPage.VALIDATE_IF_JOB_IS_NOT_DISPLAYED_PASS,job);
         String failMessage = String.format(LogPage.VALIDATE_IF_JOB_IS_NOT_DISPLAYED_FAIL,job);

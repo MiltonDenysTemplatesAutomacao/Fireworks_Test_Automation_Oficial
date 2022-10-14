@@ -746,5 +746,7 @@ public class LogPage {
     public static final String UPDATE_FREQUENCY1_MONTHLY_FAIL = "Fail while trying to update Frequency1Monthly";
     public static final String VERIFY_FREQUENCY1_MONTHLY_PASS = "I verify Frequency1Monthly";
     public static final String VERIFY_FREQUENCY1_MONTHLY_FAIL = "Fail while trying to verify Frequency1Monthly";
+    public static final String VALIDATE_NUMBERS_OF_ELEMENTS_PASS = "I validate numbers of elements on calendar";
+    public static final String VALIDATE_NUMBERS_OF_ELEMENTS_FAIL = "Fail while trying to validate numbers of elements  on calendar";
 
 }
