@@ -33,7 +33,7 @@ public class PersonContactPhonePage extends BasePage {
         return String.format("#entity_phone_%s_phone_time_zone_component",index);
     }
     private static String phoneOptInMethodElement(String index){
-        return String.format("#entity_phone_%s_phone_number",index);
+        return String.format("#entity_phone_%s_text_messaging_opt_in_method_toggle",index);
     }
     private static String phoneOptInMethodElementList(String index){
         return String.format("#entity_phone_%s_text_messaging_opt_in_method_dropdown_menu",index);

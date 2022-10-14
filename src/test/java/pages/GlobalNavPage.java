@@ -27,6 +27,8 @@ public class GlobalNavPage extends BasePage {
     public static final String FOOTER_RECORDS_ORGANIZATION_MENU_ITEM = "#global_nav_orgs";
     public static final String FOOTER_COMMUNICATIONS_MENU = "#global_nav_comm_toggle";
     public static final String FOOTER_COMMUNICATIONS_LETTERS_MENU_ITEM = "#global_nav_letters";
+    public static final String FOOTER_COMMUNICATIONS_TEXTS_MENU_ITEM = "#global_nav_sms";
+    public static final String MANAGER_TABLE_ELEMENT = "#textMessagingManagerTable";
 
 
     /*
@@ -111,6 +113,16 @@ public class GlobalNavPage extends BasePage {
     public static final String FOOTER_SETTINGS_ADMIN_PANEL_MENU_ITEM = "#global_nav_crm_admin";
     public static final String PACKAGES_TAB = "Packages";
 
+    public static void navigateTextMessagePage(){
+        try {
+            MainPage.clickOption(By.cssSelector(FOOTER_COMMUNICATIONS_MENU));
+            MainPage.clickOption(By.cssSelector(FOOTER_COMMUNICATIONS_TEXTS_MENU_ITEM));
+            waitElementBy(By.cssSelector(MANAGER_TABLE_ELEMENT),10);
+            ExtentReportsSetUp.testingPass(LogPage.NAVIGATE_TEXT_MESSAGE_PAGE_PASS);
+        } catch (Exception e) {
+            FailureDelegatePage.handlePageException(LogPage.NAVIGATE_TEXT_MESSAGE_PAGE_FAIL);
+        }
+    }
     public static void navigateToScheduler(){
         try {
             MainPage.clickOption(By.cssSelector(FOOTER_TOOLS_MENU));

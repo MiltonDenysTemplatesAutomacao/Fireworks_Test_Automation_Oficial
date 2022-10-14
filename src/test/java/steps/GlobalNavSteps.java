@@ -44,6 +44,10 @@ public class GlobalNavSteps {
     public static void navigateSmartSearchPage() {
         GlobalNavPage.navigateSmartSearchPage();
     }
+    @When("I navigate to text message page")
+    public static void navigateTextMessagePage() {
+        GlobalNavPage.navigateTextMessagePage();
+    }
     @When("I navigate to email manager page")
     public static void navigateEmailManagerPage() {
         GlobalNavPage.navigateEmailManagerPage();

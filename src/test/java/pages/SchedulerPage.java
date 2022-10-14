@@ -13,9 +13,10 @@ public class SchedulerPage extends BasePage{
     public static final String CREATE_JOB_BUTTON = "#top-controls-create-new-job";
     public static final String CREATE_JOB_BUTTON_LIST = "#top-controls-create-new-job-dropdown-menu";
     public static final String PICK_BUTTON = "#picker_input_trigger_button";
-    public static final String PICKER_SEARCH_FIELD = "#emailPickerModalTableControlsTableSearch";
-    public static final String PICKER_MODAL_TABLE_ROW1_COL1 = "#emailPickerModalTable_row_0_col_0";
-    public static final String PICKER_MODAL_CHOOSE_BUTTON = "#modalSubmitButtonemailPicker";
+    public static final String PICKER_SEARCH_FIELD = "#textMessagePickerModalTableControlsTableSearch";
+    public static final String PICKER_MODAL_TABLE_ROW1_COL1 = "#textMessagePickerModalTable_row_0";
+    public static final String PICKER_MODAL_TABLE_ROW1_CHECKBOX = "rowSelectCheckbox";
+    public static final String PICKER_MODAL_CHOOSE_BUTTON = "#modalSubmitButtontextMessagePicker";
     public static final String START_DATE_TIME_FIELD = "#start_date";
     public static final String TIME_ZONE_DROPDOWN = "#s2id_timezone_id.select2-container.form-control.select2.required a.select2-choice";
     public static final String DROPDOWN_INPUT_FIELD_ELEMENT = "#select2-drop.select2-drop.select2-display-none.select2-with-searchbox.select2-drop-active div.select2-search input";
@@ -232,7 +233,7 @@ public class SchedulerPage extends BasePage{
             picker(By.cssSelector((PICK_BUTTON)),
                     By.cssSelector(PICKER_SEARCH_FIELD),
                     By.cssSelector(PICKER_MODAL_TABLE_ROW1_COL1),
-                    By.cssSelector(PICKER_MODAL_TABLE_ROW1_COL1),
+                    By.className(PICKER_MODAL_TABLE_ROW1_CHECKBOX),
                     By.cssSelector(PICKER_MODAL_CHOOSE_BUTTON),scheduler.getTaskName());
             fillDateField(By.cssSelector(START_DATE_TIME_FIELD), scheduler.getStartDateTime());
             inputOptionField(By.cssSelector(TIME_ZONE_DROPDOWN), scheduler.getTimeZone(),By.cssSelector(DROPDOWN_INPUT_FIELD_ELEMENT));

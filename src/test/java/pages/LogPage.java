@@ -710,8 +710,8 @@ public class LogPage {
     public static final String SCHEDULE_EMAIL_FAIL = "Fail while trying to schedule an email";
     public static final String VERIFY_RECIPIENTS_PREVIEW_PASS = "I verify RecipientsPreview";
     public static final String VERIFY_RECIPIENTS_PREVIEW_FAIL = "Fail while trying to verify RecipientsPreview";
-    public static final String UPDATE_JOB_DETAILS_PASS = "I update update Frequency1Weekly";
-    public static final String UPDATE_JOB_DETAILS_FAIL = "Fail while trying to update update Frequency1Weekly";
+    public static final String UPDATE_JOB_DETAILS_PASS = "I update job details";
+    public static final String UPDATE_JOB_DETAILS_FAIL = "Fail while trying to update job details";
     public static final String UPDATE_FREQUENCY1_WEEKLY_PASS = "I update update Frequency1Weekly";
     public static final String UPDATE_FREQUENCY1_WEEKLY_FAIL = "Fail while trying to update update Frequency1Weekly";
     public static final String UPDATE_FREQUENCY1_DAILY_PASS = "I update update Frequency1Daily";
@@ -748,5 +748,13 @@ public class LogPage {
     public static final String VERIFY_FREQUENCY1_MONTHLY_FAIL = "Fail while trying to verify Frequency1Monthly";
     public static final String VALIDATE_NUMBERS_OF_ELEMENTS_PASS = "I validate numbers of elements on calendar";
     public static final String VALIDATE_NUMBERS_OF_ELEMENTS_FAIL = "Fail while trying to validate numbers of elements  on calendar";
+    public static final String NAVIGATE_TEXT_MESSAGE_PAGE_PASS = "I navigate to text message page";
+    public static final String NAVIGATE_TEXT_MESSAGE_PAGE_FAIL = "Fail while trying to navigate to text message page";
+    public static final String CREATE_TEXT_MESSAGE_PASS = "I click on create text button";
+    public static final String CREATE_TEXT_MESSAGE_FAIL = "Fail while trying to click on create text button";
+    public static final String UPDATE_START_TAB_PASS = "I update start tab";
+    public static final String UPDATE_START_TAB_FAIL = "Fail while trying to update start tab";
+    public static final String UPDATE_BODY_TAB_PASS = "I update body tab";
+    public static final String UPDATE_BODY_TAB_FAIL = "Fail while trying to update body tab";
 
 }

@@ -118,10 +118,10 @@ public class BasePage {
         }
         return validation;
     }
-    public static void picker(By pickerButton,By searchField, By recordPickerModalTableRow1,By orgPickerModalTableRow1Checkbox,By modalChooseButton,String value)throws Exception{
+    public static void picker(By pickerButton,By searchField, By pickerModalTableRow1,By pickerModalTableRow1Checkbox,By modalChooseButton,String value)throws Exception{
         if(value!="" && value !=null){
             pickerButtonClick(pickerButton);
-            searchPicker(searchField,recordPickerModalTableRow1,orgPickerModalTableRow1Checkbox,value);
+            searchPicker(searchField,pickerModalTableRow1,pickerModalTableRow1Checkbox,value);
             modalChooseButton(modalChooseButton);
         }
 
