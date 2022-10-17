@@ -760,5 +760,11 @@ public class LogPage {
     public static final String CLICK_SCHEDULE_FAIL = "Fail while trying to click on schedule button";
     public static final String CONFIRM_SCHEDULE_PASS = "I confirm schedule";
     public static final String CONFIRM_SCHEDULE_FAIL = "Fail while trying to confirm schedule";
+    public static final String NAVIGATE_REPORTS_PAGE_PASS = "I navigate to reports page";
+    public static final String NAVIGATE_REPORTS_PAGE_FAIL = "Fail while trying to navigate to reports page";
+    public static final String CLICK_REPORT_BUTTON_PASS = "I click on create report button";
+    public static final String CLICK_REPORT_BUTTON_FAIL = "Fail while trying to click on create report button";
+    public static final String CLICK_RUN_REPORT_BUTTON_PASS = "I click on run report button";
+    public static final String CLICK_RUN_REPORT_BUTTON_FAIL = "Fail while trying to click on run report button";
 
 }

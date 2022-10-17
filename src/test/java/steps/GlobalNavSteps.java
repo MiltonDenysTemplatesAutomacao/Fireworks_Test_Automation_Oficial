@@ -31,6 +31,10 @@ public class GlobalNavSteps {
     public static void navigatePeoplePage() {
         GlobalNavPage.navigatePersonPage();
     }
+    @And("I navigate to reports page")
+    public static void navigateReportsPage() {
+        GlobalNavPage.navigateReportsPage();
+    }
     @And("I log out")
     public static void logout() {
         GlobalNavPage.logout();

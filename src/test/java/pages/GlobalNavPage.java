@@ -112,7 +112,18 @@ public class GlobalNavPage extends BasePage {
     public static final String FOOTER_SETTINGS_MENU = "#global_nav_settings_toggle";
     public static final String FOOTER_SETTINGS_ADMIN_PANEL_MENU_ITEM = "#global_nav_crm_admin";
     public static final String PACKAGES_TAB = "Packages";
+    public static final String FOOTER_TOOLS_REPORTS_MENU_ITEM = "#global_nav_report_manager";
 
+    public static void navigateReportsPage(){
+        try {
+            MainPage.clickOption(By.cssSelector(FOOTER_TOOLS_MENU));
+            MainPage.clickOption(By.cssSelector(FOOTER_TOOLS_REPORTS_MENU_ITEM));
+            waitElementBy(By.cssSelector(ReportsPage.REPORTS_MANAGER_TABLE),10);
+            ExtentReportsSetUp.testingPass(LogPage.NAVIGATE_REPORTS_PAGE_PASS);
+        } catch (Exception e) {
+            FailureDelegatePage.handlePageException(LogPage.NAVIGATE_REPORTS_PAGE_FAIL);
+        }
+    }
     public static void navigateTextMessagePage(){
         try {
             MainPage.clickOption(By.cssSelector(FOOTER_COMMUNICATIONS_MENU));
