@@ -21,6 +21,17 @@ public class TextMessagesPage extends BasePage {
     public static final String SINGLE_RECIPIENT_PICKER_MODAL_FIRST_ROW_CHECKBOX = "#phoneNumberPickerModalTable_row_0_col_0 > div > input";
     public static final String SINGLE_RECIPIENT_PICKER_MODAL_CHOOSE_BUTTON = "#modalSubmitButtonphoneNumberPicker";
     public static final String MESSAGE_CONTENT_FIELD = "#message_content";
+    public static final String CONFIRM_SCHEDULE_BUTTON = "#modalSubmitButtonscheduleConfirm";
+
+    public static void confirmSchedule(){
+        try {
+            clickOption(By.cssSelector((CONFIRM_SCHEDULE_BUTTON)));
+            ExtentReportsSetUp.testingPass(LogPage.CONFIRM_SCHEDULE_PASS);
+        } catch (Exception e) {
+            FailureDelegatePage.handlePageException(LogPage.CONFIRM_SCHEDULE_FAIL);
+        }
+    }
+
 
     public static void updateBodyTab(String content){
         try {

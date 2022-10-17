@@ -25,5 +25,7 @@ Feature: Ability to schedule text messages from Communications
     And I click on "Save & Continue"
     And I update body tab "Text Message for Professor"
     And I click on "Save & Continue"
+    And I click on "Save & Continue"
     And I close alert if return this message "Text has been updated."
     And I click on schedule button
+    #And I confirm schedule

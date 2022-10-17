@@ -16,5 +16,9 @@ public class TextMessagesSteps {
     public static void updateBodyTab(String content) {
         TextMessagesPage.updateBodyTab(content);
     }
+    @Then("I confirm schedule")
+    public static void confirmSchedule() {
+        TextMessagesPage.confirmSchedule();
+    }
 
 }
