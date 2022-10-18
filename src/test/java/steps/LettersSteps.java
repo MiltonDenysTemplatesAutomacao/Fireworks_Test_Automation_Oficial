@@ -49,7 +49,7 @@ public class LettersSteps {
         LettersPage.verifyLetterSystemAction(systemActionsCategory,systemActionsAction);
     }
     @And("I click on create PDF")
-    public static void verifyLetterSystemAction() {
+    public static void createPDF() {
         LettersPage.createPDF();
     }
     @And("I verify recipients modal")

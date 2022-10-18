@@ -101,9 +101,7 @@ public class LettersPage extends BasePage{
     }
     public static void createPDF(){
         try {
-            scrollToElement(By.cssSelector(ACTION_COMMENTS_FIELD));
-            waitElementBy(By.cssSelector(LETTER_CREATE_PDF),20);
-            click(By.cssSelector(LETTER_CREATE_PDF));
+            clickOption(By.cssSelector(LETTER_CREATE_PDF));
             ExtentReportsSetUp.testingPass(LogPage.CREATE_PDF_PASS);
         } catch (Exception e) {
             FailureDelegatePage.handlePageException(LogPage.CREATE_PDF_FAIL);
