@@ -14,8 +14,8 @@ Feature: User-defined Letter Actions
     And I navigate to smart search page
     And I click on create smart search button
     And I select "Last Name" search field group "0" condition "0" in smart search composer
-    And I select "equals" operator field group "0" in smart search composer
-    And I fill "Goldstein" text condition value group "0"
+    And I select "equals" operator field group "0" condition "0" in smart search composer
+    And I fill "Goldstein" text group "0" condition "0"
     And I fill smart search name "CreateLetter1067 Search"
     And I click on save this search button
     And I close alert if return this message "Smart Search has been created."

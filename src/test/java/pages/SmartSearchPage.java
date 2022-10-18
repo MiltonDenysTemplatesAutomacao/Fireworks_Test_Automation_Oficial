@@ -7,7 +7,7 @@ public class SmartSearchPage extends BasePage{
     public static final String CREATE_SEARCH_BUTTON = "#top-controls-create-new-smart-search";
     public static final String SAVE_SEARCH_BUTTON = "#saveSearchSave";
     public static final String SEARCH_NAME_FIELD = "#savedSearchName";
-    public static final String SMART_SEARCH_RESULTS_TABLE = "#searchResultsTable_row_0";
+    public static final String SMART_SEARCH_RESULTS_TABLE = "#searchResultsTable";
     public static final String SMART_SEARCH_MANAGER_TABLE = "#searchManagerTableControlsTableSearch";
     public static final String SMART_SEARCH_MANAGER_TABLE_ROW_0 = "#searchManagerTable_row_0_col_0";
     public static final String RUN_DROPDOWN_BUTTON = "#runDropdown";
@@ -79,7 +79,9 @@ public class SmartSearchPage extends BasePage{
     }
     public static void runSearch(){
         try {
+            wait(2000);
             MainPage.clickOption(By.cssSelector(RUN_DROPDOWN_BUTTON));
+            wait(1000);
             MainPage.clickOption(By.cssSelector(RUN_SEARCH_BUTTON));
             ExtentReportsSetUp.testingPass(LogPage.RUN_SEARCH_PASS);
         } catch (Exception e) {
@@ -111,17 +113,20 @@ public class SmartSearchPage extends BasePage{
         }
     }
     public static void fillSmartSearchName(String searchName){
+        String passMessage = String.format(LogPage.FILL_SMART_SEARCH_NAME_PASS,searchName);
+        String failMessage = String.format(LogPage.FILL_SMART_SEARCH_NAME_FAIL,searchName);
         try {
             MainPage.fillField(By.cssSelector(SEARCH_NAME_FIELD), searchName);
-            ExtentReportsSetUp.testingPass(LogPage.FILL_SMART_SEARCH_NAME_PASS);
+            ExtentReportsSetUp.testingPass(passMessage);
         } catch (Exception e) {
-            FailureDelegatePage.handlePageException(LogPage.FILL_SMART_SEARCH_NAME_FAIL);
+            FailureDelegatePage.handlePageException(failMessage);
         }
     }
 
     public static void clickSaveThisSearch(){
         try {
             clickOption(By.cssSelector(SAVE_SEARCH_BUTTON));
+            wait(2000);
             ExtentReportsSetUp.testingPass(LogPage.CLICK_SAVE_THIS_SEARCH_PASS);
         } catch (Exception e) {
             FailureDelegatePage.handlePageException(LogPage.CLICK_SAVE_THIS_SEARCH_FAIL);

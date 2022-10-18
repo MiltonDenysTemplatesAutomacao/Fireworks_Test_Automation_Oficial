@@ -342,8 +342,8 @@ public class LogPage {
     public static final String FILL_TEXT_CONDITION_VALUE_FAIL = "Fail while trying to fill '%s' text condition value group '%s'";
     public static final String CLICK_SAVE_THIS_SEARCH_PASS = "I click on save this search button";
     public static final String CLICK_SAVE_THIS_SEARCH_FAIL = "Fail while trying to click on save this search button";
-    public static final String FILL_SMART_SEARCH_NAME_PASS = "I fill smart search name {string}";
-    public static final String FILL_SMART_SEARCH_NAME_FAIL = "Fail while trying to fill smart search name {string}";
+    public static final String FILL_SMART_SEARCH_NAME_PASS = "I fill smart search name '%s'";
+    public static final String FILL_SMART_SEARCH_NAME_FAIL = "Fail while trying to fill smart search name '%s'";
     public static final String NAVIGATE_EMAIL_MANAGER_PAGE_PASS = "I navigate to email manager page";
     public static final String NAVIGATE_EMAIL_MANAGER_PAGE_FAIL = "Fail while trying to navigate to email manager page";
     public static final String CREATE_NEW_EMAIL_PASS = "I click on create a new email button";

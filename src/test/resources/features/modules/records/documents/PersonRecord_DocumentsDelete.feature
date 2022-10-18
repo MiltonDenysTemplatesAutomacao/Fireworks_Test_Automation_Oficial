@@ -22,8 +22,8 @@ Feature: Delete a Document
     And I navigate to smart search page
     And I click on create smart search button
     And I select "File" search field group "0" in smart search composer
-    And I select "equals" operator field group "0" in smart search composer
-    And I fill "DocTests-File2.pdf" text condition value group "0"
+    And I select "equals" operator field group "0" condition "0" in smart search composer
+    And I fill "DocTests-File2.pdf" text group "0" condition "0"
     And I fill smart search name "DocumentSearch4220"
     And I click on save this search button
     And I verify smart search results "Grimaldi, Caroline"

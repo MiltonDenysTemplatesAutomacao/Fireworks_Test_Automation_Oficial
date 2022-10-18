@@ -244,6 +244,7 @@ public class BasePage {
             scrollToElement(by);
             scrollTo("-150");
             waitElementBy(by,delay);
+            KeyPage.erase(by);
             write(by,value);
         }
     }
