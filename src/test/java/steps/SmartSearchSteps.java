@@ -28,17 +28,21 @@ public class SmartSearchSteps {
     public static void selectSearchField(String search,String group,String condition) {
         SmartSearchPage.selectSearchField(search,group,condition);
     }
-    @When("I select {string} operator field group {string} in smart search composer")
-    public static void selectOperator(String search,String index) {
-        SmartSearchPage.selectOperator(search,index);
+    @When("I select {string} operator field group {string} condition {string} in smart search composer")
+    public static void selectOperator(String search,String group,String operator) {
+        SmartSearchPage.selectOperator(search,group,operator);
     }
-    @When("I fill {string} text condition value group {string}")
-    public static void fillTextConditionValue(String search,String index) {
-        SmartSearchPage.fillTextConditionValue(search,index);
+    @When("I fill {string} text group {string} condition {string}")
+    public static void fillTextConditionValue(String search,String group,String operator) {
+        SmartSearchPage.fillTextConditionValue(search,group,operator);
     }
     @When("I open smart search {string}")
     public static void openSearch(String search) {
         SmartSearchPage.openSearch(search);
+    }
+    @When("I select match {string}")
+    public static void selectMatch(String match) {
+        SmartSearchPage.selectMatch(match);
     }
     @When("I click on save this search button")
     public static void clickSaveThisSearch() {

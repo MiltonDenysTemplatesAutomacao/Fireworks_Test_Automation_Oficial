@@ -768,5 +768,7 @@ public class LogPage {
     public static final String CLICK_RUN_REPORT_BUTTON_FAIL = "Fail while trying to click on run report button";
     public static final String ADD_GROUP_SMART_SEARCH_COMPOSER_PASS = "I add a new group on smart search composer '%s'";
     public static final String ADD_GROUP_SMART_SEARCH_COMPOSER_FAIL = "Fail while trying to add a new group on smart search composer '%s'";
+    public static final String SELECT_MATCH_PASS = "I select match '%s'";
+    public static final String SELECT_MATCH_FAIL = "Fail while trying to select match '%s'";
 
 }

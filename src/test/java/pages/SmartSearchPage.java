@@ -14,18 +14,30 @@ public class SmartSearchPage extends BasePage{
     public static final String RUN_SEARCH_BUTTON = "#searchRun";
     public static final String SMART_SEARCH_MANAGER_TABLE_ROW_0_COL_0 = "#searchResultsTable_row_0_col_0";
     public static final String RESULT_COUNT_TEXT = "#resultCountOuter";
+    public static final String MATCH_SELECT = "#masterMatchCondition";
 
     private static String groupConditionFieldDropdown(String group,String condition){
         return String.format("#s2id_groups_%s_conditions_%s_field_id",group,condition);
     }
-    private static String operatorDropdown(String index){
-        return String.format("#s2id_groups_%s_conditions_%s_operator",index,index);
+    private static String operatorDropdown(String group,String operator){
+        return String.format("#s2id_groups_%s_conditions_%s_operator",group,operator);
     }
-    private static String groupConditionConditionValueTextField(String index){
-        return String.format("#groups_%s_conditions_%s_value1",index,index);
+    private static String groupConditionConditionValueTextField(String group,String operator){
+        return String.format("#groups_%s_conditions_%s_value1",group,operator);
     }
     private static String groupAddPlusSign(String index){
         return String.format("#groups_%s_query_group_add_dropdown",index);
+    }
+    public static void selectMatch(String match){
+        String passMessage = String.format(LogPage.SELECT_MATCH_PASS,match);
+        String failMessage = String.format(LogPage.SELECT_MATCH_FAIL,match);
+        try {
+            clickOption(By.cssSelector(MATCH_SELECT));
+            clickOption(By.linkText(match));
+            ExtentReportsSetUp.testingPass(passMessage);
+        } catch (Exception e) {
+            FailureDelegatePage.handlePageException(failMessage);
+        }
     }
     public static void addGroupSmartSearchComposer(String index){
         String passMessage = String.format(LogPage.ADD_GROUP_SMART_SEARCH_COMPOSER_PASS,index);
@@ -116,24 +128,24 @@ public class SmartSearchPage extends BasePage{
 
         }
     }
-    public static void fillTextConditionValue(String search,String index){
-        String passMessage = String.format(LogPage.FILL_TEXT_CONDITION_VALUE_PASS, search, index);
-        String failMessage = String.format(LogPage.FILL_TEXT_CONDITION_VALUE_FAIL, search, index);
+    public static void fillTextConditionValue(String search,String group,String operator){
+        String passMessage = String.format(LogPage.FILL_TEXT_CONDITION_VALUE_PASS, group, operator);
+        String failMessage = String.format(LogPage.FILL_TEXT_CONDITION_VALUE_FAIL, group, group);
         try {
-            MainPage.fillField(By.cssSelector(groupConditionConditionValueTextField(index)),search);
+            MainPage.fillField(By.cssSelector(groupConditionConditionValueTextField(group,operator)),search);
             ExtentReportsSetUp.testingPass(passMessage);
         } catch (Exception e) {
             FailureDelegatePage.handlePageException(failMessage);
         }
 
     }
-    public static void selectOperator(String search,String index){
-        String passMessage = String.format(LogPage.SELECT_OPERATOR_PASS, search, index);
-        String failMessage = String.format(LogPage.SELECT_OPERATOR_FAIL, search, index);
+    public static void selectOperator(String search,String group,String operator){
+        String passMessage = String.format(LogPage.SELECT_OPERATOR_PASS, group,operator);
+        String failMessage = String.format(LogPage.SELECT_OPERATOR_FAIL, group,operator);
 
         try {
             wait(3000);
-            MainPage.clickOptionList(By.cssSelector(operatorDropdown(index)),
+            MainPage.clickOptionList(By.cssSelector(operatorDropdown(group,operator)),
                     search,
                     By.cssSelector(PersonPage.SELECT_DROP));
             ExtentReportsSetUp.testingPass(passMessage);
