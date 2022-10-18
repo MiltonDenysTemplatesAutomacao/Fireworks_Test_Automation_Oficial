@@ -1,7 +1,6 @@
 #Author: Milton Silva
 #Regression testcase TL-109 (2 of 3): User-defined Letter Actions
 
-
 @UserDefinedLetterActions
 Feature: User-defined Letter Actions
 
@@ -14,7 +13,7 @@ Feature: User-defined Letter Actions
     And I validate if "Person has been created." message is correct
     And I navigate to smart search page
     And I click on create smart search button
-    And I select "Last Name" search field group "0" in smart search composer
+    And I select "Last Name" search field group "0" condition "0" in smart search composer
     And I select "equals" operator field group "0" in smart search composer
     And I fill "Goldstein" text condition value group "0"
     And I fill smart search name "CreateLetter1067 Search"

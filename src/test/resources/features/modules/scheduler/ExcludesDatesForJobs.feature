@@ -13,7 +13,7 @@ Feature: Exclude dates for jobs
     And I validate if "Person has been created." message is correct
     And I navigate to smart search page
     And I click on create smart search button
-    And I select "Last Name" search field group "0" in smart search composer
+    And I select "Last Name" search field group "0" condition "0" in smart search composer
     And I select "equals" operator field group "0" in smart search composer
     And I fill "Wheaton" text condition value group "0"
     And I fill smart search name "SearchForScheduledLetter7070"

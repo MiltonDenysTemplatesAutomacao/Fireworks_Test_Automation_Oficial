@@ -24,9 +24,9 @@ public class SmartSearchSteps {
     public static void navigateSmartSearchPage() {
         SmartSearchPage.createNewSmartSearch();
     }
-    @When("I select {string} search field group {string} in smart search composer")
-    public static void selectSearchField(String search,String index) {
-        SmartSearchPage.selectSearchField(search,index);
+    @When("I select {string} search field group {string} condition {string} in smart search composer")
+    public static void selectSearchField(String search,String group,String condition) {
+        SmartSearchPage.selectSearchField(search,group,condition);
     }
     @When("I select {string} operator field group {string} in smart search composer")
     public static void selectOperator(String search,String index) {
@@ -43,6 +43,10 @@ public class SmartSearchSteps {
     @When("I click on save this search button")
     public static void clickSaveThisSearch() {
         SmartSearchPage.clickSaveThisSearch();
+    }
+    @When("I add a new group on smart search composer {string}")
+    public static void addGroupSmartSearchComposer(String index) {
+        SmartSearchPage.addGroupSmartSearchComposer(index);
     }
     @When("I fill smart search name {string}")
     public static void fillSmartSearchName(String searchName) {

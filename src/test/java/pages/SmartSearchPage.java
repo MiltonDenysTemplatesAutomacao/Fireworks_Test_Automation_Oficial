@@ -15,8 +15,8 @@ public class SmartSearchPage extends BasePage{
     public static final String SMART_SEARCH_MANAGER_TABLE_ROW_0_COL_0 = "#searchResultsTable_row_0_col_0";
     public static final String RESULT_COUNT_TEXT = "#resultCountOuter";
 
-    private static String groupConditionFieldDropdown(String index){
-        return String.format("#s2id_groups_%s_conditions_%s_field_id",index,index);
+    private static String groupConditionFieldDropdown(String group,String condition){
+        return String.format("#s2id_groups_%s_conditions_%s_field_id",group,condition);
     }
     private static String operatorDropdown(String index){
         return String.format("#s2id_groups_%s_conditions_%s_operator",index,index);
@@ -24,6 +24,21 @@ public class SmartSearchPage extends BasePage{
     private static String groupConditionConditionValueTextField(String index){
         return String.format("#groups_%s_conditions_%s_value1",index,index);
     }
+    private static String groupAddPlusSign(String index){
+        return String.format("#groups_%s_query_group_add_dropdown",index);
+    }
+    public static void addGroupSmartSearchComposer(String index){
+        String passMessage = String.format(LogPage.ADD_GROUP_SMART_SEARCH_COMPOSER_PASS,index);
+        String failMessage = String.format(LogPage.ADD_GROUP_SMART_SEARCH_COMPOSER_FAIL,index);
+        try {
+            clickOption(By.cssSelector(groupAddPlusSign(index)));
+            clickOption(By.xpath("//*[text() = 'Query Group' and not(text()[2])]"));
+            ExtentReportsSetUp.testingPass(passMessage);
+        } catch (Exception e) {
+            FailureDelegatePage.handlePageException(failMessage);
+        }
+    }
+
     public static void verifyResultCount(String numRecords){
         String passMessage = String.format(LogPage.VERIFY_RESULT_COUNT_PASS,numRecords);
         String failMessage = String.format(LogPage.VERIFY_RESULT_COUNT_FAIL,numRecords);
@@ -127,11 +142,11 @@ public class SmartSearchPage extends BasePage{
         }
 
     }
-    public static void selectSearchField(String search,String index){
-        String passMessage = String.format(LogPage.SELECT_SEARCH_FIELD_PASS, search, index);
-        String failMessage = String.format(LogPage.SELECT_SEARCH_FIELD_FAIL, search, index);
+    public static void selectSearchField(String search,String group,String condition){
+        String passMessage = String.format(LogPage.SELECT_SEARCH_FIELD_PASS, group, condition);
+        String failMessage = String.format(LogPage.SELECT_SEARCH_FIELD_FAIL, group, condition);
         try {
-            MainPage.clickOptionList(By.cssSelector(groupConditionFieldDropdown(index)),
+            MainPage.clickOptionList(By.cssSelector(groupConditionFieldDropdown(group,condition)),
                     search,
                     By.cssSelector(PersonPage.SELECT_DROP));
             ExtentReportsSetUp.testingPass(passMessage);

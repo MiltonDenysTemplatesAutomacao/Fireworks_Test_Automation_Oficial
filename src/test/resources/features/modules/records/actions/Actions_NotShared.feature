@@ -27,7 +27,7 @@ Feature: Exact match auto-merge on rule 5: IDType-ID-LastName,Email recipients c
     And I validate if "Person has been created." message is correct
     And I navigate to smart search page
     And I click on create smart search button
-    And I select "Last Name" search field group "0" in smart search composer
+    And I select "Last Name" search field group "0" condition "0" in smart search composer
     And I select "equals" operator field group "0" in smart search composer
     And I fill "Rutherford" text condition value group "0"
     And I fill smart search name "Search for Test6100"
