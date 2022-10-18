@@ -22,7 +22,7 @@ public class LettersPage extends BasePage{
     private static final String LETTER_NAME_FIELD = "#name";
     private static final String SMART_SEARCH_DROPDOWN = "div#s2id_saved_search_id.select2-container.form-control.select2.select2 a.select2-choice";
     private static final String SMART_SEARCH_DROPDOWN_LIST = "#select2-results-2";
-    private static final String LETTER_FORMAT_DROPDOWN = "#select2-chosen-23";
+    private static final String LETTER_FORMAT_DROPDOWN = "#select2-chosen-24";
     private static final String SYSTEM_ACTION_CATEGORY_ELEMENT = "div#s2id_system_action_category_id.select2-container.select2-container-disabled.form-control.actionCategoryIdSelector.parentSelect.select2";
     private static final String READ_ONLY_ACTION_TYPE_ELEMENT = "div#s2id_action_type_id.select2-container.select2-container-disabled.form-control.actionTypeIdSelector.select2";
     private static final String READ_ONLY_ACTION_VISIBILITY_ELEMENT = "div#s2id_action_visibility_id.select2-container.select2-container-disabled.form-control.actionVisibilityIdSelector.select2";
@@ -185,22 +185,20 @@ public class LettersPage extends BasePage{
 
     }
 
+    public static boolean validateLetterFormat(String letterContent)throws Exception{
+        scrollToElement(By.id(LetterTemplatePage.LETTER_CONTENT_IFRAME_ELEMENT));
+        scrollTo("-150");
+        switchToIFrame(LetterTemplatePage.LETTER_CONTENT_IFRAME_ELEMENT);
+        boolean verification = verifyGetText(By.cssSelector(LETTER_CONTENT_IFRAME_BODY_ELEMENT),letterContent);
+        switchToDefaultContent();
+        return verification;
+    }
     public static void verifyDraftLetter(String letterName,String search,String letterFormat,String letterContent){
         try {
-            scrollToElement(By.id(LOAD_TEMPLATE_DROPDOWN));
-            String letterNameText = getText(By.cssSelector(LETTER_NAME_FIELD));
-            String searchText = getText(By.cssSelector(SMART_SEARCH_DROPDOWN));
-            wait(4000);
-            scrollToElement(By.cssSelector(SMART_SEARCH_DROPDOWN));
-            String letterFormatText = getText(By.cssSelector(LETTER_FORMAT_DROPDOWN));
-            scrollToElement(By.cssSelector(LETTER_FORMAT_DROPDOWN));
-            switchToIFrame(LetterTemplatePage.LETTER_CONTENT_IFRAME_ELEMENT);
-            String letterContentText = getText(By.id(LetterTemplatePage.LETTER_CONTENT_IFRAME_BODY_ELEMENT));
-            switchToDefaultContent();
-            if(letterNameText.equals(letterName)
-                && searchText.equals(search)
-                && letterFormatText.equals(letterFormat)
-                && letterContentText.equals(letterContent)){
+            if(verifyGetAttribute(By.cssSelector(LETTER_NAME_FIELD),letterName)
+                && verifyGetText(By.cssSelector(SMART_SEARCH_DROPDOWN),search)
+                && verifyGetText(By.cssSelector(LETTER_FORMAT_DROPDOWN),letterFormat)
+                && validateLetterFormat(letterContent)){
                 ExtentReportsSetUp.testingPass(LogPage.VERIFY_DRAFT_LETTER_PASS);
             }else{
                 FailureDelegatePage.handlePageException(LogPage.VERIFY_DRAFT_LETTER_FAIL);

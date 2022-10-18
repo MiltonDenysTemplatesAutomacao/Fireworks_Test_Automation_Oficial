@@ -94,9 +94,7 @@ public class SmartSearchPage extends BasePage{
 
     public static void clickSaveThisSearch(){
         try {
-            scrollToElement(By.cssSelector(SEARCH_NAME_FIELD));
-            waitUntilElementToBeSelected(By.cssSelector(SAVE_SEARCH_BUTTON),20);
-            click(By.cssSelector(SAVE_SEARCH_BUTTON));
+            clickOption(By.cssSelector(SAVE_SEARCH_BUTTON));
             ExtentReportsSetUp.testingPass(LogPage.CLICK_SAVE_THIS_SEARCH_PASS);
         } catch (Exception e) {
             FailureDelegatePage.handlePageException(LogPage.CLICK_SAVE_THIS_SEARCH_FAIL);
