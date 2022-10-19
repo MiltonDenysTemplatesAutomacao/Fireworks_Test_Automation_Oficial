@@ -1,6 +1,7 @@
 package pages;
 
 import config.extent_reports.ExtentReportsSetUp;
+import io.reactivex.rxjava3.internal.operators.flowable.FlowableAny;
 import org.openqa.selenium.By;
 
 public class LetterTemplatePage extends BasePage{
@@ -11,14 +12,54 @@ public class LetterTemplatePage extends BasePage{
     public static final String LETTER_FORMAT_DROPDOWN = "#s2id_letter_size_format_id";
     public static final String LETTER_CONTENT_IFRAME_ELEMENT = "content_ifr";
     public static final String LETTER_CONTENT_IFRAME_BODY_ELEMENT = "tinymce";
-    public static final String SAVE_TEMPLATE_BUTTON = "saveTemplate";
+    public static final String SAVE_TEMPLATE_BUTTON = "#saveTemplate";
+    public static final String LETTER_TEMPLATE_MANAGER_SEARCH_FIELD = "#letterTemplateManagerTableControlsTableSearch";
+    public static final String LETTER_TEMPLATE_TABLE_ROW1_COL1 = "#letterTemplateManagerTable_row_0_col_0";
+    public static final String INCLUDE_LETTER_CHECKBOX = "#includeLetterCheckbox";
 
-
+    public static void verifyLetterTemplate(int index){
+        try {
+            if(verifyGetAttribute(By.cssSelector(TEMPLATE_NAME_FIELD),mass.get(index).get("TemplateName"))
+                && verifyGetAttribute(By.cssSelector(TEMPLATE_DESCRIPTION_FIELD),mass.get(index).get("TemplateDescription"))
+                && verifyGetText(By.cssSelector(TEMPLATE_RECORD_TYPE_DROPDOWN),mass.get(index).get("RecordType"))
+                && verifyCheckboxActiveOrNot(By.cssSelector(INCLUDE_LETTER_CHECKBOX),mass.get(index).get("IncludeLetterCheckbox"))
+                && verifyGetText(By.cssSelector(LETTER_FORMAT_DROPDOWN),mass.get(index).get("LetterFormat"))
+                && verifyElementWithIFrame(By.id(LETTER_CONTENT_IFRAME_ELEMENT),
+                    LETTER_CONTENT_IFRAME_ELEMENT,
+                    By.id(LETTER_CONTENT_IFRAME_BODY_ELEMENT),
+                    mass.get(index).get("LetterContent"))){
+                ExtentReportsSetUp.testingPass(LogPage.VERIFY_LETTER_TEMPLATE_PASS);
+            }else{
+                FailureDelegatePage.handlePageException(LogPage.VERIFY_LETTER_TEMPLATE_FAIL);
+            }
+        } catch (Exception e) {
+            FailureDelegatePage.handlePageException(LogPage.VERIFY_LETTER_TEMPLATE_FAIL);
+        }
+    }
+    public static void searchTemplateManager(String template){
+        String passMessage = String.format(LogPage.SEARCH_TEMPLATE_MANAGER_PASS,template);
+        String failMessage = String.format(LogPage.SEARCH_TEMPLATE_MANAGER_FAIL,template);
+        try {
+            fillField(By.cssSelector(LETTER_TEMPLATE_MANAGER_SEARCH_FIELD),template);
+            ExtentReportsSetUp.testingPass(passMessage);
+        } catch (Exception e) {
+            FailureDelegatePage.handlePageException(failMessage);
+        }
+    }
+    public static void openTemplate(String template){
+        String passMessage = String.format(LogPage.OPEN_TEMPLATE_MANAGER_PASS,template);
+        String failMessage = String.format(LogPage.OPEN_TEMPLATE_MANAGER_FAIL,template);
+        try {
+            searchTemplateManager(template);
+            clickOption(By.cssSelector(LETTER_TEMPLATE_TABLE_ROW1_COL1));
+            ExtentReportsSetUp.testingPass(passMessage);
+        } catch (Exception e) {
+            FailureDelegatePage.handlePageException(failMessage);
+        }
+    }
     public static void saveTemplate(){
         try {
-            scrollToElement(By.cssSelector(LettersPage.ACTION_COMMENTS_FIELD));
-            waitUntilElementToBeSelected(By.id(SAVE_TEMPLATE_BUTTON),20);
-            click(By.id(SAVE_TEMPLATE_BUTTON));
+            clickOption(By.cssSelector(SAVE_TEMPLATE_BUTTON));
             ExtentReportsSetUp.testingPass(LogPage.SAVE_TEMPLATE_PASS);
         } catch (Exception e) {
             FailureDelegatePage.handlePageException(LogPage.SAVE_TEMPLATE_FAIL);
@@ -46,6 +87,9 @@ public class LetterTemplatePage extends BasePage{
                 MainPage.clickOptionList(By.cssSelector(TEMPLATE_RECORD_TYPE_DROPDOWN),
                         mass.get(person).get("RecordType"),
                         By.cssSelector(PersonPage.SELECT_DROP));
+            }
+            if (mass.get(person).get("IncludeLetterCheckbox") != null) {
+                clickOption(By.cssSelector(INCLUDE_LETTER_CHECKBOX));
             }
             if (mass.get(person).get("LetterFormat") != null) {
                 MainPage.clickOptionList(By.cssSelector(LETTER_FORMAT_DROPDOWN),

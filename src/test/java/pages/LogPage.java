@@ -772,5 +772,17 @@ public class LogPage {
     public static final String SELECT_MATCH_FAIL = "Fail while trying to select match '%s'";
     public static final String NUMBER_OF_RECORDS_PASS = "I validate number of records '%s'";
     public static final String NUMBER_OF_RECORDS_FAIL = "Fail while trying validate number of records '%s'";
+    public static final String NAVIGATE_LETTERS_TEMPLATES_PAGE_PASS = "I navigate to Letters Template Page";
+    public static final String NAVIGATE_LETTERS_TEMPLATES_PAGE_FAIL = "Fail while trying to navigate to Letters Template Page";
+    public static final String UPDATE_LETTER_ORG_ACTION_PASS = "I update Letter Org Action";
+    public static final String UPDATE_LETTER_ORG_ACTION_FAIL = "Fail while trying to update Letter Org Action";
+    public static final String SEARCH_TEMPLATE_MANAGER_PASS = "I search template '%s'";
+    public static final String SEARCH_TEMPLATE_MANAGER_FAIL = "Fail while trying to search template '%s'";
+    public static final String OPEN_TEMPLATE_MANAGER_PASS = "I open template '%s'";
+    public static final String OPEN_TEMPLATE_MANAGER_FAIL = "Fail while trying to open template '%s'";
+    public static final String VERIFY_LETTER_TEMPLATE_PASS = "I verify letter template";
+    public static final String VERIFY_LETTER_TEMPLATE_FAIL = "Fail while trying to verify letter template";
+    public static final String VERIFY_LETTER_ORG_ACTION_PASS = "I verify Letter Org Action";
+    public static final String VERIFY_LETTER_ORG_ACTION_FAIL = "Fail while trying to verify Letter Org Action";
 
 }

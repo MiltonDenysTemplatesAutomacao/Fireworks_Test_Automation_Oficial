@@ -71,6 +71,14 @@ public class BasePage {
         }
         return validation;
     }
+    public static boolean verifyElementWithIFrame(By element,String iframe,By elementToValidate,String value)throws Exception{
+        scrollToElement(element);
+        scrollTo("-150");
+        switchToIFrame(iframe);
+        boolean verification = verifyGetText(elementToValidate,value);
+        switchToDefaultContent();
+        return verification;
+    }
     public static void addDeleteWithPlusButton(By by)throws Exception{
         waitUntilElementToBeSelected(by,10);
         scrollToElement(by);
@@ -170,7 +178,7 @@ public class BasePage {
         waitUntilElementToBeSelected(by,10);
         BasePage.click(by);
     }
-    public static void selectOptionList(By dropDown, String value,By dropDownList)throws Exception{
+    public static void selectOptionList(By dropDown, String value,By inputField)throws Exception{
         int delay = 10;
         if(value!="" && value !=null){
             wait(1000);
@@ -178,9 +186,9 @@ public class BasePage {
             scrollTo("-150");
             waitElementBy(dropDown,delay);
             click(dropDown);
-            waitElementBy(dropDownList,delay);
-            write(dropDownList,value);
-            KeyPage.pressKey(dropDownList,"Enter");
+            waitElementBy(inputField,delay);
+            write(inputField,value);
+            KeyPage.pressKey(inputField,"Enter");
         }
     }
     public static void clickOptionList(By by, String value, By dropDownList, String tag)throws Exception{

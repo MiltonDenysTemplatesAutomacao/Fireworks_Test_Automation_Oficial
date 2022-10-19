@@ -1,12 +1,13 @@
 package pages;
 
+import bean.ActionBean;
 import config.extent_reports.ExtentReportsSetUp;
 import org.openqa.selenium.By;
 
 public class LettersPage extends BasePage{
 
     public static final String ACTION_COMMENTS_FIELD = "#action_comments";
-    private static final String LETTER_TEMPLATES_TAB = "body > section > div > ul > li:nth-child(2) > a";
+    public static final String LETTER_TEMPLATES_TAB = "body > section > div > ul > li:nth-child(2) > a";
     private static final String USER_ACTION_SECTION_LABEL = "//p[contains(text(), 'User Action')]";
     private static final String ACTION_CATEGORY_DROPDOWN = "div#s2id_action_category_id.select2-container.form-control.select2.select2 a.select2-choice";
     private static final String ACTION_CATEGORY_DROPDOWN_LIST = "s2id_autogen30_search";
@@ -44,7 +45,46 @@ public class LettersPage extends BasePage{
     private static final String LETTER_CONTENT_IFRAME_BODY_ELEMENT = "body#tinymce";
     private static final String LETTER_CONTENT_IFRAME_ELEMENT = "content_ifr";
     private static final String LETTER_SCHEDULE_BUTTON = "#letterFormScheduleButton";
+    private static final String ORG_ACTION_CATEGORY_DROPDOWN = "div#s2id_org_action_category_id.select2-container.form-control.select2.select2 a.select2-choice";
+    private static final String ORG_ACTION_DROPDOWN = "div#s2id_org_action_id.select2-container.form-control.select2.select2 a.select2-choice";
+    private static final String ORG_ACTION_INPUT_FIELD = "#s2id_autogen20_search";
 
+    public static void verifyLetterOrgAction(ActionBean actionBean){
+        try {
+            if(verifyGetText(By.cssSelector(ORG_ACTION_CATEGORY_DROPDOWN),actionBean.getCategory())
+                && verifyGetText(By.cssSelector(ORG_ACTION_DROPDOWN),actionBean.getAction())
+                && verifyGetText(By.cssSelector(ACTION_STAFF_DROPDOWN),actionBean.getStaff())
+                && verifyGetText(By.cssSelector(ORG_ACTION_DROPDOWN),actionBean.getAction())
+                && verifyGetText(By.cssSelector(ACTION_DATE_FIELD),actionBean.getActionDate())
+                && verifyGetText(By.cssSelector(ACTION_COMMENTS_FIELD),actionBean.getComments())){
+                ExtentReportsSetUp.testingPass(LogPage.VERIFY_LETTER_ORG_ACTION_PASS);
+            }else{
+                FailureDelegatePage.handlePageException(LogPage.VERIFY_LETTER_ORG_ACTION_FAIL);
+            }
+        } catch (Exception e) {
+            FailureDelegatePage.handlePageException(LogPage.VERIFY_LETTER_ORG_ACTION_FAIL);
+        }
+    }
+    public static void updateLetterOrgAction(ActionBean actionBean){
+        try {
+            clickOptionList(By.cssSelector(ORG_ACTION_CATEGORY_DROPDOWN),
+                    actionBean.getCategory(),
+                    By.cssSelector(PersonPage.SELECT_DROP));
+            selectOptionList(By.cssSelector(ORG_ACTION_DROPDOWN),
+                    actionBean.getAction(),
+                    By.cssSelector(ORG_ACTION_INPUT_FIELD));
+            clickOptionList(By.cssSelector(ACTION_STAFF_DROPDOWN),
+                    actionBean.getStaff(),
+                    By.cssSelector(PersonPage.SELECT_DROP));
+            clickOptionList(By.cssSelector(ACTION_DATE_FIELD),
+                    actionBean.getActionDate(),
+                    By.cssSelector(PersonPage.SELECT_DROP));
+            fillField(By.cssSelector(ACTION_COMMENTS_FIELD),actionBean.getComments());
+            ExtentReportsSetUp.testingPass(LogPage.UPDATE_LETTER_ORG_ACTION_PASS);
+        } catch (Exception e) {
+            FailureDelegatePage.handlePageException(LogPage.UPDATE_LETTER_ORG_ACTION_FAIL);
+        }
+    }
     public static void scheduleLetterButton(){
         try {
             clickOption(By.cssSelector(LETTER_SCHEDULE_BUTTON));
@@ -270,8 +310,7 @@ public class LettersPage extends BasePage{
     }
     public static void navigateToTemplatesTab(){
         try {
-            waitUntilElementToBeSelected(By.cssSelector(LETTER_TEMPLATES_TAB),20);
-            click(By.cssSelector(LETTER_TEMPLATES_TAB));
+            clickOption(By.cssSelector(LETTER_TEMPLATES_TAB));
             ExtentReportsSetUp.testingPass(LogPage.NAVIGATE_TO_TEMPLATES_TAB_PASS);
         } catch (Exception e) {
             FailureDelegatePage.handlePageException(LogPage.NAVIGATE_TO_TEMPLATES_TAB_FAIL);

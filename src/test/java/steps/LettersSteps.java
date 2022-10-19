@@ -1,7 +1,10 @@
 package steps;
 
+import bean.ActionBean;
+import bean.ContactAddressBean;
 import io.cucumber.java.en.And;
 import pages.LettersPage;
+import pages.records.organization.OrgContactAddressPage;
 
 public class LettersSteps {
     @And("I navigate to template tab")
@@ -55,6 +58,26 @@ public class LettersSteps {
     @And("I verify recipients modal")
     public static void verifyRecipientsModal() {
         LettersPage.verifyRecipientsModal();
+    }
+    @And("I update Letter Org Action {string}, {string}, {string}, {string}, {string}")
+    public static void updateLetterOrgAction(String category, String action,String staff,String actionDateTime,String comments) {
+        ActionBean actionBean = new ActionBean();
+        actionBean.setCategory(category);
+        actionBean.setAction(action);
+        actionBean.setStaff(staff);
+        actionBean.setActionDate(actionDateTime);
+        actionBean.setComments(comments);
+        LettersPage.updateLetterOrgAction(actionBean);
+    }
+    @And("I verify Letter Org Action {string}, {string}, {string}, {string}, {string}")
+    public static void verifyLetterOrgAction(String category, String action,String staff,String actionDateTime,String comments) {
+        ActionBean actionBean = new ActionBean();
+        actionBean.setCategory(category);
+        actionBean.setAction(action);
+        actionBean.setStaff(staff);
+        actionBean.setActionDate(actionDateTime);
+        actionBean.setComments(comments);
+        LettersPage.verifyLetterOrgAction(actionBean);
     }
     @And("I confirm recipients modal")
     public static void confirmRecipientsModal() {
