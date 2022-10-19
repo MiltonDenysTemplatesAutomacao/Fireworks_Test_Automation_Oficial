@@ -15,6 +15,7 @@ public class SmartSearchPage extends BasePage{
     public static final String SMART_SEARCH_MANAGER_TABLE_ROW_0_COL_0 = "#searchResultsTable_row_0_col_0";
     public static final String RESULT_COUNT_TEXT = "#resultCountOuter";
     public static final String MATCH_SELECT = "#masterMatchCondition";
+    public static final String NUMBER_RESULTS = "//p[@class='tableInfo section-subtitle']";
 
     private static String groupConditionFieldDropdown(String group,String condition){
         return String.format("#s2id_groups_%s_conditions_%s_field_id",group,condition);
@@ -27,6 +28,19 @@ public class SmartSearchPage extends BasePage{
     }
     private static String groupAddPlusSign(String index){
         return String.format("#groups_%s_query_group_add_dropdown",index);
+    }
+    public static void numberOfRecords(String results){
+        String passMessage = String.format(LogPage.NUMBER_OF_RECORDS_PASS,results);
+        String failMessage = String.format(LogPage.NUMBER_OF_RECORDS_FAIL,results);
+        try {
+            if(verifyGetText(By.xpath(NUMBER_RESULTS),results)){
+                ExtentReportsSetUp.testingPass(passMessage);
+            }else{
+                FailureDelegatePage.handlePageException(failMessage);
+            }
+        } catch (Exception e) {
+            FailureDelegatePage.handlePageException(failMessage);
+        }
     }
     public static void selectMatch(String match){
         String passMessage = String.format(LogPage.SELECT_MATCH_PASS,match);

@@ -12,6 +12,10 @@ public class SmartSearchSteps {
     public static void runSearch() {
         SmartSearchPage.runSearch();
     }
+    @When("I validate number of records {string}")
+    public static void numberOfRecords(String results) {
+        SmartSearchPage.numberOfRecords(results);
+    }
     @When("I verify result count on smart search table {string}")
     public static void verifyResultCount(String numRecords) {
         SmartSearchPage.verifyResultCount(numRecords);

@@ -770,5 +770,7 @@ public class LogPage {
     public static final String ADD_GROUP_SMART_SEARCH_COMPOSER_FAIL = "Fail while trying to add a new group on smart search composer '%s'";
     public static final String SELECT_MATCH_PASS = "I select match '%s'";
     public static final String SELECT_MATCH_FAIL = "Fail while trying to select match '%s'";
+    public static final String NUMBER_OF_RECORDS_PASS = "I validate number of records '%s'";
+    public static final String NUMBER_OF_RECORDS_FAIL = "Fail while trying validate number of records '%s'";
 
 }
