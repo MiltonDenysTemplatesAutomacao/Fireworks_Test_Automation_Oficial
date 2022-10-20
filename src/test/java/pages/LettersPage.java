@@ -235,25 +235,16 @@ public class LettersPage extends BasePage{
         } catch (Exception e) {
             FailureDelegatePage.handlePageException(LogPage.UPDATE_LETTER_DETAILS_FAIL);
         }
-
     }
     public static void verifyLetterPersonAction(String category,String action,String actionType,String actionVisibility, String staff, String date,String comments){
         try {
-            scrollToElement(By.cssSelector(SYSTEM_ACTION_CATEGORY_ELEMENT));
-            String categoryText = getText(By.cssSelector(ACTION_CATEGORY_DROPDOWN));
-            String actionText = getText(By.cssSelector(ACTION_DROPDOWN));
-            String actionTypeText = getText(By.cssSelector(READ_ONLY_ACTION_TYPE_ELEMENT));
-            String actionVisibilityText = getText(By.cssSelector(READ_ONLY_ACTION_VISIBILITY_ELEMENT));
-            String staffText = getText(By.cssSelector(ACTION_STAFF_DROPDOWN));
-            String dateText = getAtribute(By.cssSelector(ACTION_DATE_FIELD),"value");
-            String commentsText = getAtribute(By.cssSelector(ACTION_COMMENTS_FIELD),"value");
-             if(categoryText.equals(category)
-                && actionText.equals(action)
-                && actionTypeText.contains(actionType)
-                && actionVisibilityText.contains(actionVisibility)
-                && staffText.equals(staff)
-                && dateText.equals(date)
-                && commentsText.equals(comments)){
+            if(verifyGetText(By.cssSelector(ACTION_CATEGORY_DROPDOWN),category)
+                && verifyGetText(By.cssSelector(ACTION_DROPDOWN),action)
+                && verifyGetText(By.cssSelector(READ_ONLY_ACTION_TYPE_ELEMENT),actionType)
+                && verifyGetText(By.cssSelector(READ_ONLY_ACTION_VISIBILITY_ELEMENT),actionVisibility)
+                && verifyGetText(By.cssSelector(ACTION_STAFF_DROPDOWN),staff)
+                && verifyGetAttribute(By.cssSelector(ACTION_DATE_FIELD),date)
+                && verifyGetAttribute(By.cssSelector(ACTION_COMMENTS_FIELD),comments)){
                 ExtentReportsSetUp.testingPass(LogPage.VERIFY_LETTER_PERSON_ACTION_PASS);
             }else{
                 FailureDelegatePage.handlePageException(LogPage.VERIFY_LETTER_PERSON_ACTION_FAIL);
@@ -261,7 +252,6 @@ public class LettersPage extends BasePage{
         } catch (Exception e) {
             FailureDelegatePage.handlePageException(LogPage.VERIFY_LETTER_PERSON_ACTION_FAIL);
         }
-
     }
 
     public static boolean validateLetterFormat(String letterContent)throws Exception{
