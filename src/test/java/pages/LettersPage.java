@@ -3,6 +3,7 @@ package pages;
 import bean.ActionBean;
 import config.extent_reports.ExtentReportsSetUp;
 import org.openqa.selenium.By;
+import pages.records.application.ApplicationsPage;
 
 public class LettersPage extends BasePage{
 
@@ -33,7 +34,7 @@ public class LettersPage extends BasePage{
     private static final String RECORD_PICKER_MODAL_TABLE_ROW1 = "#recordPickerModalTable_row_0";
     private static final String RECORD_PICKER_MODAL_TABLE_ROW1_CHECKBOX = "#recordPickerModalTable_row_0_col_0";
     private static final String RECORD_PICKER_MODAL_CHOOSE_BUTTON = "#modalSubmitButtonrecordPicker";
-    private static final String INCLUDE_LABELS_CHECKBOX = "includeLabelsCheckbox";
+    private static final String INCLUDE_LABELS_CHECKBOX = "#includeLabelsCheckbox";
     private static final String SYSTEM_ACTION_ACTION_ELEMENT = "div#s2id_system_action_id.select2-container.select2-container-disabled.form-control.actionIdSelector.childSelect.select2";
     private static final String LETTER_CREATE_PDF = "#createPDF";
     private static final String PREVIEW_RECIPIENTS_MODAL = "#previewRecipientsModalLabel";
@@ -48,6 +49,44 @@ public class LettersPage extends BasePage{
     private static final String ORG_ACTION_CATEGORY_DROPDOWN = "div#s2id_org_action_category_id.select2-container.form-control.select2.select2 a.select2-choice";
     private static final String ORG_ACTION_DROPDOWN = "div#s2id_org_action_id.select2-container.form-control.select2.select2 a.select2-choice";
     private static final String ORG_ACTION_INPUT_FIELD = "#s2id_autogen20_search";
+    private static final String LABEL_FORMAT_DROPDOWN = "div#s2id_label_size_format_id.select2-container.form-control.select2.select2 a.select2-choice";
+    private static final String LABEL_CONTENT_IFRAME_ELEMENT = "label_content_ifr";
+
+    public static void verifyLabels(String labelFormat,String labelContent){
+        try {
+            if(verifyGetText(By.cssSelector(LABEL_FORMAT_DROPDOWN),labelFormat)
+                && verifyElementWithIFrame(By.id(LABEL_CONTENT_IFRAME_ELEMENT),
+                    LABEL_CONTENT_IFRAME_ELEMENT,
+                    By.cssSelector(LETTER_CONTENT_IFRAME_BODY_ELEMENT),
+                    labelContent)){
+                ExtentReportsSetUp.testingPass(LogPage.VERIFY_LABELS_PASS);
+            }else{
+                FailureDelegatePage.handlePageException(LogPage.VERIFY_LABELS_FAIL);
+            }
+        } catch (Exception e) {
+            FailureDelegatePage.handlePageException(LogPage.VERIFY_LABELS_FAIL);
+        }
+    }
+    public static void updateLabels(String labelFormat,String labelContent){
+        try {
+            clickOptionList(By.cssSelector(LABEL_FORMAT_DROPDOWN),
+                    labelFormat,
+                    By.cssSelector(PersonPage.SELECT_DROP));
+            fillElementWithIFrame(LABEL_CONTENT_IFRAME_ELEMENT,
+                    By.cssSelector(LETTER_CONTENT_IFRAME_BODY_ELEMENT),labelContent);
+            ExtentReportsSetUp.testingPass(LogPage.UPDATE_LABELS_PASS);
+        } catch (Exception e) {
+            FailureDelegatePage.handlePageException(LogPage.UPDATE_LABELS_FAIL);
+        }
+    }
+    public static void includeLabels(){
+        try {
+            clickCheckbox(By.cssSelector(INCLUDE_LABELS_CHECKBOX));
+            ExtentReportsSetUp.testingPass(LogPage.INCLUDE_LABELS_PASS);
+        } catch (Exception e) {
+            FailureDelegatePage.handlePageException(LogPage.INCLUDE_LABELS_FAIL);
+        }
+    }
 
     public static void verifyLetterOrgAction(ActionBean actionBean){
         try {
@@ -152,7 +191,7 @@ public class LettersPage extends BasePage{
         String errorMessage = String.format(LogPage.VERIFY_LETTER_SYSTEM_ACTION_FAIL, systemActionsCategory,systemActionsAction);
         String passMessage = String.format(LogPage.VERIFY_LETTER_SYSTEM_ACTION_PASS, systemActionsCategory,systemActionsAction);
         try {
-            scrollToElement(By.id(INCLUDE_LABELS_CHECKBOX));
+            scrollToElement(By.cssSelector(INCLUDE_LABELS_CHECKBOX));
             waitElementBy(By.cssSelector(SYSTEM_ACTION_CATEGORY_ELEMENT),20);
             boolean systemActionsCategoryValidation = verifyIfContains(By.cssSelector(SYSTEM_ACTION_CATEGORY_ELEMENT),systemActionsCategory);
             boolean systemActionsActionValidation = verifyIfContains(By.cssSelector(SYSTEM_ACTION_ACTION_ELEMENT),systemActionsAction);
@@ -279,22 +318,22 @@ public class LettersPage extends BasePage{
             if (mass.get(index).get("Category") != null) {
                 MainPage.selectOptionList(By.cssSelector(ACTION_CATEGORY_DROPDOWN),
                         mass.get(index).get("Category"),
-                        By.id(ACTION_CATEGORY_DROPDOWN_LIST));
+                        By.xpath(ApplicationsPage.INPUT_FIELD));
             }
             if (mass.get(index).get("Action") != null) {
                 MainPage.selectOptionList(By.cssSelector(ACTION_DROPDOWN),
                         mass.get(index).get("Action"),
-                        By.id(ACTION_DROPDOWN_LIST));
+                        By.xpath(ApplicationsPage.INPUT_FIELD));
             }
             if (mass.get(index).get("Staff") != null) {
                 MainPage.selectOptionList(By.cssSelector(ACTION_STAFF_DROPDOWN),
                         mass.get(index).get("Staff"),
-                        By.id(ACTION_STAFF_DROPDOWN_LIST));
+                        By.xpath(ApplicationsPage.INPUT_FIELD));
             }
             if (mass.get(index).get("Visibility") != null) {
                 MainPage.selectOptionList(By.cssSelector(ACTION_VISIBILITY),
                         mass.get(index).get("Visibility"),
-                        By.id(ACTION_VISIBILITY_LIST));
+                        By.xpath(ApplicationsPage.INPUT_FIELD));
             }
             if (mass.get(index).get("Comments") != null) {
                 MainPage.fillField(By.cssSelector(ACTION_COMMENTS_FIELD), mass.get(index).get("Comments"));

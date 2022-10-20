@@ -784,5 +784,11 @@ public class LogPage {
     public static final String VERIFY_LETTER_TEMPLATE_FAIL = "Fail while trying to verify letter template";
     public static final String VERIFY_LETTER_ORG_ACTION_PASS = "I verify Letter Org Action";
     public static final String VERIFY_LETTER_ORG_ACTION_FAIL = "Fail while trying to verify Letter Org Action";
+    public static final String INCLUDE_LABELS_PASS = "I include label";
+    public static final String INCLUDE_LABELS_FAIL = "Fail while trying include label";
+    public static final String UPDATE_LABELS_PASS = "I update label";
+    public static final String UPDATE_LABELS_FAIL = "Fail while trying update label";
+    public static final String VERIFY_LABELS_PASS = "I verify label";
+    public static final String VERIFY_LABELS_FAIL = "Fail while trying verify label";
 
 }

@@ -19,6 +19,14 @@ public class LettersSteps {
     public static void updateLetterContent(int index) {
         LettersPage.updateLetterContent(index);
     }
+    @And("I update labels {string}, {string}")
+    public static void updateLabels(String labelFormat,String labelContent) {
+        LettersPage.updateLabels(labelFormat,labelContent);
+    }
+    @And("I verify labels {string}, {string}")
+    public static void verifyLabels(String labelFormat,String labelContent) {
+        LettersPage.verifyLabels(labelFormat,labelContent);
+    }
     @And("I click on schedule letter button")
     public static void scheduleLetter() {
         LettersPage.scheduleLetterButton();
@@ -26,6 +34,10 @@ public class LettersSteps {
     @And("I click on create letter button")
     public static void createLetter() {
         LettersPage.createLetter();
+    }
+    @And("I include label")
+    public static void includeLabels() {
+        LettersPage.includeLabels();
     }
     @And("I load Template {string}")
     public static void loadTemplate(String templateName) {

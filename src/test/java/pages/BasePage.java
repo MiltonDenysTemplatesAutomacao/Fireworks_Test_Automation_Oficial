@@ -79,6 +79,12 @@ public class BasePage {
         switchToDefaultContent();
         return verification;
     }
+    public static void fillElementWithIFrame(String iFrame, By iFrameElement,String value)throws Exception{
+        switchToIFrame(iFrame);
+        waitElementBy(iFrameElement, 10);
+        BasePage.write(iFrameElement,value);
+        switchToDefaultContent();
+    }
     public static void addDeleteWithPlusButton(By by)throws Exception{
         waitUntilElementToBeSelected(by,10);
         scrollToElement(by);
@@ -176,6 +182,11 @@ public class BasePage {
         scrollToElement(by);
         scrollTo("-150");
         waitUntilElementToBeSelected(by,10);
+        BasePage.click(by);
+    }
+    public static void clickCheckbox(By by)throws Exception{
+        scrollToElement(by);
+        scrollTo("-150");
         BasePage.click(by);
     }
     public static void selectOptionList(By dropDown, String value,By inputField)throws Exception{
