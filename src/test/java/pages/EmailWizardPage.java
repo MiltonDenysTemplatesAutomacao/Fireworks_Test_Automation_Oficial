@@ -113,10 +113,9 @@ public class EmailWizardPage extends BasePage{
     }
     public static void fillBodyWithHTML(String bodyHTML){
         try {
-            switchToIFrame(HTML_CONTENT_IFRAME_ELEMENT);
-            waitElementBy(By.cssSelector(HTML_CONTENT_IFRAME_BODY_ELEMENT), 20);
-            BasePage.write(By.cssSelector(HTML_CONTENT_IFRAME_BODY_ELEMENT),bodyHTML);
-            switchToDefaultContent();
+            fillElementWithIFrame(HTML_CONTENT_IFRAME_ELEMENT,
+                    By.cssSelector(HTML_CONTENT_IFRAME_BODY_ELEMENT),
+                    bodyHTML);
         } catch (Exception e) {
             FailureDelegatePage.handlePageException(LogPage.FILL_BODY_WITH_HTML_FAIL);
         }

@@ -73,7 +73,8 @@ public class LettersPage extends BasePage{
                     labelFormat,
                     By.cssSelector(PersonPage.SELECT_DROP));
             fillElementWithIFrame(LABEL_CONTENT_IFRAME_ELEMENT,
-                    By.cssSelector(LETTER_CONTENT_IFRAME_BODY_ELEMENT),labelContent);
+                    By.cssSelector(LETTER_CONTENT_IFRAME_BODY_ELEMENT),
+                    labelContent);
             ExtentReportsSetUp.testingPass(LogPage.UPDATE_LABELS_PASS);
         } catch (Exception e) {
             FailureDelegatePage.handlePageException(LogPage.UPDATE_LABELS_FAIL);
@@ -141,10 +142,9 @@ public class LettersPage extends BasePage{
                         By.cssSelector(LETTER_FORMAT_DROPDOWN_FIELD_LIST));
             }
             if(mass.get(index).get("LetterContent")!= null){
-                switchToIFrame(LETTER_CONTENT_IFRAME_ELEMENT);
-                waitElementBy(By.cssSelector(LETTER_CONTENT_IFRAME_BODY_ELEMENT), 10);
-                BasePage.write(By.cssSelector(LETTER_CONTENT_IFRAME_BODY_ELEMENT),mass.get(index).get("LetterContent"));
-                switchToDefaultContent();
+                fillElementWithIFrame(LETTER_CONTENT_IFRAME_ELEMENT,
+                        By.cssSelector(LETTER_CONTENT_IFRAME_BODY_ELEMENT),
+                        mass.get(index).get("LetterContent"));
             }
             ExtentReportsSetUp.testingPass(LogPage.UPDATE_LETTER_CONTENT_PASS);
         } catch (Exception e) {
@@ -163,12 +163,9 @@ public class LettersPage extends BasePage{
     }
     public static void verifyRecipientsModal(){
         try {
-            waitElementBy(By.cssSelector(PREVIEW_RECIPIENTS_MODAL),20);
-            boolean previewRecipientsValidation = verifyIfEquals(By.cssSelector(PREVIEW_RECIPIENTS_MODAL),"Preview Recipients");
-            boolean previewRecipientsModalValidation = verifyIfEquals(By.xpath(PREVIEW_RECIPIENTS_MODAL_MESSAGE),"You are about to create this PDF. This cannot be undone.");
-            boolean previewRecipientsLetterValidation = verifyIfEquals(By.xpath(PREVIEW_RECIPIENTS_LETTER_RECIPIENTS),"Letter Recipients");
-
-            if(previewRecipientsValidation && previewRecipientsModalValidation && previewRecipientsLetterValidation){
+            if(verifyGetText(By.cssSelector(PREVIEW_RECIPIENTS_MODAL),"Preview Recipients")
+                    && verifyGetText(By.xpath(PREVIEW_RECIPIENTS_MODAL_MESSAGE),"You are about to create this PDF. This cannot be undone.")
+                    && verifyGetText(By.xpath(PREVIEW_RECIPIENTS_LETTER_RECIPIENTS),"Letter Recipients")){
                 ExtentReportsSetUp.testingPass(LogPage.VERIFY_RECIPIENTS_MODAL_PASS);
             }else{
                 FailureDelegatePage.handlePageException(LogPage.VERIFY_RECIPIENTS_MODAL_FAIL);
@@ -186,16 +183,12 @@ public class LettersPage extends BasePage{
             FailureDelegatePage.handlePageException(LogPage.CREATE_PDF_FAIL);
         }
     }
-
     public static void verifyLetterSystemAction(String systemActionsCategory, String systemActionsAction){
         String errorMessage = String.format(LogPage.VERIFY_LETTER_SYSTEM_ACTION_FAIL, systemActionsCategory,systemActionsAction);
         String passMessage = String.format(LogPage.VERIFY_LETTER_SYSTEM_ACTION_PASS, systemActionsCategory,systemActionsAction);
         try {
-            scrollToElement(By.cssSelector(INCLUDE_LABELS_CHECKBOX));
-            waitElementBy(By.cssSelector(SYSTEM_ACTION_CATEGORY_ELEMENT),20);
-            boolean systemActionsCategoryValidation = verifyIfContains(By.cssSelector(SYSTEM_ACTION_CATEGORY_ELEMENT),systemActionsCategory);
-            boolean systemActionsActionValidation = verifyIfContains(By.cssSelector(SYSTEM_ACTION_ACTION_ELEMENT),systemActionsAction);
-            if(systemActionsCategoryValidation && systemActionsActionValidation){
+            if(verifyGetText(By.cssSelector(SYSTEM_ACTION_CATEGORY_ELEMENT),systemActionsCategory)
+                && verifyGetText(By.cssSelector(SYSTEM_ACTION_ACTION_ELEMENT),systemActionsAction)){
                 ExtentReportsSetUp.testingPass(passMessage);
             }else{
                 FailureDelegatePage.handlePageException(errorMessage);
@@ -228,9 +221,7 @@ public class LettersPage extends BasePage{
 
     public static void updateLetterDetails(int index){
         try {
-            scrollToElement(By.id(LOAD_TEMPLATE_DROPDOWN));
-            waitElementBy(By.cssSelector(LETTER_NAME_FIELD),20);
-            write(By.cssSelector(LETTER_NAME_FIELD),mass.get(index).get("LetterName"));
+            fillField(By.cssSelector(LETTER_NAME_FIELD),mass.get(index).get("LetterName"));
             ExtentReportsSetUp.testingPass(LogPage.UPDATE_LETTER_DETAILS_PASS);
         } catch (Exception e) {
             FailureDelegatePage.handlePageException(LogPage.UPDATE_LETTER_DETAILS_FAIL);
@@ -255,13 +246,18 @@ public class LettersPage extends BasePage{
     }
 
     public static boolean validateLetterFormat(String letterContent)throws Exception{
-        scrollToElement(By.id(LetterTemplatePage.LETTER_CONTENT_IFRAME_ELEMENT));
-        scrollTo("-150");
-        switchToIFrame(LetterTemplatePage.LETTER_CONTENT_IFRAME_ELEMENT);
-        boolean verification = verifyGetText(By.cssSelector(LETTER_CONTENT_IFRAME_BODY_ELEMENT),letterContent);
-        switchToDefaultContent();
+        boolean verification = false;
+        if (verifyElementWithIFrame(By.id(LetterTemplatePage.LETTER_CONTENT_IFRAME_ELEMENT),
+                LetterTemplatePage.LETTER_CONTENT_IFRAME_ELEMENT,
+                By.id(LetterTemplatePage.LETTER_CONTENT_IFRAME_ELEMENT),
+                letterContent)){
+            verification = true;
+        } else {
+            verification = false;
+        }
         return verification;
     }
+
     public static void verifyDraftLetter(String letterName,String search,String letterFormat,String letterContent){
         try {
             if(verifyGetAttribute(By.cssSelector(LETTER_NAME_FIELD),letterName)

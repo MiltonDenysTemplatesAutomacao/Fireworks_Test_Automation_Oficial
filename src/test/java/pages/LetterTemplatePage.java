@@ -97,9 +97,9 @@ public class LetterTemplatePage extends BasePage{
                         By.cssSelector(PersonPage.SELECT_DROP));
             }
             if (mass.get(person).get("LetterContent") != null) {
-                switchToIFrame(LETTER_CONTENT_IFRAME_ELEMENT);
-                MainPage.fillField(By.id(LETTER_CONTENT_IFRAME_BODY_ELEMENT), mass.get(person).get("LetterContent"));
-                switchToDefaultContent();
+                fillElementWithIFrame(LETTER_CONTENT_IFRAME_ELEMENT,
+                        By.cssSelector(LETTER_CONTENT_IFRAME_BODY_ELEMENT),
+                        mass.get(person).get("LetterContent"));
             }
             ExtentReportsSetUp.testingPass(LogPage.UPDATE_LETTER_TEMPLATE_PASS);
         } catch (Exception e) {
