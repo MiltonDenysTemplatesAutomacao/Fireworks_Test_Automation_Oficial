@@ -98,7 +98,7 @@ public class LetterTemplatePage extends BasePage{
             }
             if (mass.get(person).get("LetterContent") != null) {
                 fillElementWithIFrame(LETTER_CONTENT_IFRAME_ELEMENT,
-                        By.cssSelector(LETTER_CONTENT_IFRAME_BODY_ELEMENT),
+                        By.id(LETTER_CONTENT_IFRAME_BODY_ELEMENT),
                         mass.get(person).get("LetterContent"));
             }
             ExtentReportsSetUp.testingPass(LogPage.UPDATE_LETTER_TEMPLATE_PASS);
