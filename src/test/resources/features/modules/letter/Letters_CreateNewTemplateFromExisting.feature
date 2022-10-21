@@ -11,9 +11,10 @@ Feature: Template: Load Template
     And I navigate to Letters Template Page
     And I click on create template button
     And I use datatable
-      |TemplateName       |TemplateDescription            |RecordType|LetterFormat                   |LetterContent                    |Category     |Action                        |Comments                         |
-      |Base Template      |Description Base Template      |Person    |Letter (8.5 x 11 no letterhead)|Letter content Base Template     |Campus Events|Admitted Student Day: Attend  |Action comment Base Template     |
-      |Overwrite Template |Description Overwrite Template |Person    |5 x 7 postcard (landscape)     |Letter content Overwrite Template|Campus Events|Admitted Student Day: Register|Action comment Overwrite Template|
+      |TemplateName       |TemplateDescription            |RecordType|LetterFormat                      |LetterContent                    |Category     |Action                        |Comments                         |
+      |Base Template      |Description Base Template      |Person    |Letter (8.5 x 11 no letterhead)   |Letter content Base Template     |Campus Events|Admitted Student Day: Attend  |Action comment Base Template     |
+      |Overwrite Template |Description Overwrite Template |Person    |5 x 7 postcard (landscape)        |Letter content Overwrite Template|Campus Events|Admitted Student Day: Register|Action comment Overwrite Template|
+      |Edited Template    |Description Overwrite Template |Person    |Letter (8.5 x 11 with letterhead) |Letter content Overwrite Template|             |                              |                                 |
     When I update letter template person 0
     And I update letter person action index 0
     And I click on save template button
@@ -27,14 +28,29 @@ Feature: Template: Load Template
     Then I close alert if return this message "Letter Template has been created."
     #to create a new template using load template
     And I navigate to template tab
-    When I open template "Base Template"
+    And I click on create template button
+    And I load Template "Base Template"
     And I verify letter template 0
     And I verify letter person action "Campus Events", "Admitted Student Day: Attend", "", "", "", "" and "Action comment Base Template"
     #to load a different template and verify it overwrites the previous data
     And I navigate to template tab
+    And I click on create template button
+    And I load Template "Overwrite Template"
+    And I verify letter template 1
+    And I verify letter person action "Campus Events", "Admitted Student Day: Register", "", "", "", "" and "Action comment Overwrite Template"
+#    #to edit the new template and save
+    When I update letter template person 2
+    And I click on save template button
+    Then I close alert if return this message "Letter Template has been created."
+    And I verify letter template 2
+    And I verify letter person action "Campus Events", "Admitted Student Day: Register", "", "", "", "" and "Action comment Overwrite Template"
+    #to verify all three templates exist
+    And I navigate to template tab
+    When I search template "Base Template"
+    Then I verify if template "Base Template" exists
+    When I search template "Edited Template"
+    Then I verify if template "Edited Template" exists
+    #to verify the loaded template was not altered
     When I open template "Overwrite Template"
     And I verify letter template 1
     And I verify letter person action "Campus Events", "Admitted Student Day: Register", "", "", "", "" and "Action comment Overwrite Template"
-    #to edit the new template and save
-
-

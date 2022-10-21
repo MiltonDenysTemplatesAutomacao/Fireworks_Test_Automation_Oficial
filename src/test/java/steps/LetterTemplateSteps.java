@@ -29,6 +29,9 @@ public class LetterTemplateSteps {
     public static void searchTemplateManager(String template) {
         LetterTemplatePage.searchTemplateManager(template);
     }
-
+    @And("I verify if template {string} exists")
+    public static void verifyIfTemplateExists(String template) {
+        LetterTemplatePage.verifyIfTemplateExists(template);
+    }
 
 }

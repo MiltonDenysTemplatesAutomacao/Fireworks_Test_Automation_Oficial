@@ -17,6 +17,20 @@ public class LetterTemplatePage extends BasePage{
     public static final String LETTER_TEMPLATE_TABLE_ROW1_COL1 = "#letterTemplateManagerTable_row_0_col_0";
     public static final String INCLUDE_LETTER_CHECKBOX = "#includeLetterCheckbox";
 
+    public static void verifyIfTemplateExists(String template){
+        String passMessage = String.format(LogPage.VERIFY_IF_TEMPLATE_EXISTS_PASS,template);
+        String failMessage = String.format(LogPage.VERIFY_IF_TEMPLATE_EXISTS_PASS,template);
+        try {
+            if(verifyGetText(By.cssSelector(LETTER_TEMPLATE_TABLE_ROW1_COL1),template)){
+                ExtentReportsSetUp.testingPass(passMessage);
+            }else{
+                FailureDelegatePage.handlePageException(failMessage);
+            }
+        } catch (Exception e) {
+            FailureDelegatePage.handlePageException(failMessage);
+        }
+    }
+
     public static void verifyLetterTemplate(int index){
         try {
             if(verifyGetAttribute(By.cssSelector(TEMPLATE_NAME_FIELD),mass.get(index).get("TemplateName"))
@@ -51,7 +65,9 @@ public class LetterTemplatePage extends BasePage{
         String failMessage = String.format(LogPage.OPEN_TEMPLATE_MANAGER_FAIL,template);
         try {
             searchTemplateManager(template);
+            wait(2000);
             clickOption(By.cssSelector(LETTER_TEMPLATE_TABLE_ROW1_COL1));
+            waitElementBy(By.cssSelector(TEMPLATE_NAME_FIELD),10);
             ExtentReportsSetUp.testingPass(passMessage);
         } catch (Exception e) {
             FailureDelegatePage.handlePageException(failMessage);
@@ -59,6 +75,7 @@ public class LetterTemplatePage extends BasePage{
     }
     public static void saveTemplate(){
         try {
+            wait(1000);
             clickOption(By.cssSelector(SAVE_TEMPLATE_BUTTON));
             ExtentReportsSetUp.testingPass(LogPage.SAVE_TEMPLATE_PASS);
         } catch (Exception e) {

@@ -55,6 +55,9 @@ public class BasePage {
     }
 
     public static boolean verifyCheckboxActiveOrNot(By by,String value)throws Exception{
+        wait(2000);
+        scrollToElement(by);
+        scrollTo("-150");
         boolean validation = false;
         if(value!="" && value != null){
             switch(value){
@@ -72,6 +75,7 @@ public class BasePage {
         return validation;
     }
     public static boolean verifyElementWithIFrame(By element,String iframe,By elementToValidate,String value)throws Exception{
+        wait(2000);
         scrollToElement(element);
         scrollTo("-150");
         switchToIFrame(iframe);
@@ -109,8 +113,10 @@ public class BasePage {
         boolean validation = false;
         if(value!="" && value!= null){
             wait(1000);
+            waitElementBy(by,10);
             scrollToElement(by);
             scrollTo("-150");
+            waitElementBy(by,10);
             String returnText = getText(by);
             validation = returnText.contains(value);
         }else{
@@ -123,8 +129,10 @@ public class BasePage {
         boolean validation = false;
         if(value!="" && value !=null){
             wait(1000);
+            waitElementBy(by,10);
             scrollToElement(by);
             scrollTo("-150");
+            waitElementBy(by,10);
             String returnText = getAtribute(by,"value");
             validation = returnText.contains(value);
         }else{
