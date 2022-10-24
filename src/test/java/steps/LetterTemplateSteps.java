@@ -25,6 +25,10 @@ public class LetterTemplateSteps {
     public static void openTemplate(String template) {
         LetterTemplatePage.openTemplate(template);
     }
+    @And("I click on Copy Template button")
+    public static void clickCopyTemplateButton() {
+        LetterTemplatePage.clickCopyTemplateButton();
+    }
     @And("I search template {string}")
     public static void searchTemplateManager(String template) {
         LetterTemplatePage.searchTemplateManager(template);

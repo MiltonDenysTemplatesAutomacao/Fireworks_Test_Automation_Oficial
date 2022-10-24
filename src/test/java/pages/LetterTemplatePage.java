@@ -16,10 +16,19 @@ public class LetterTemplatePage extends BasePage{
     public static final String LETTER_TEMPLATE_MANAGER_SEARCH_FIELD = "#letterTemplateManagerTableControlsTableSearch";
     public static final String LETTER_TEMPLATE_TABLE_ROW1_COL1 = "#letterTemplateManagerTable_row_0_col_0";
     public static final String INCLUDE_LETTER_CHECKBOX = "#includeLetterCheckbox";
+    public static final String COPY_LETTER_TEMPLATE_BUTTON = "#copyLetterTemplateButton";
 
+    public static void clickCopyTemplateButton(){
+        try {
+            clickOption(By.cssSelector(COPY_LETTER_TEMPLATE_BUTTON));
+            ExtentReportsSetUp.testingPass(LogPage.CLICK_COPY_TEMPLATE_BUTTON_PASS);
+        } catch (Exception e) {
+            FailureDelegatePage.handlePageException(LogPage.CLICK_COPY_TEMPLATE_BUTTON_FAIL);
+        }
+    }
     public static void verifyIfTemplateExists(String template){
         String passMessage = String.format(LogPage.VERIFY_IF_TEMPLATE_EXISTS_PASS,template);
-        String failMessage = String.format(LogPage.VERIFY_IF_TEMPLATE_EXISTS_PASS,template);
+        String failMessage = String.format(LogPage.VERIFY_IF_TEMPLATE_EXISTS_FAIL,template);
         try {
             if(verifyGetText(By.cssSelector(LETTER_TEMPLATE_TABLE_ROW1_COL1),template)){
                 ExtentReportsSetUp.testingPass(passMessage);

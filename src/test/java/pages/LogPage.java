@@ -792,5 +792,7 @@ public class LogPage {
     public static final String VERIFY_LABELS_FAIL = "Fail while trying verify label";
     public static final String VERIFY_IF_TEMPLATE_EXISTS_PASS = "I verify if template '%s' exists";
     public static final String VERIFY_IF_TEMPLATE_EXISTS_FAIL = "Fail while trying to verify if template '%s' exists";
+    public static final String CLICK_COPY_TEMPLATE_BUTTON_PASS = "I click on Copy Template button";
+    public static final String CLICK_COPY_TEMPLATE_BUTTON_FAIL = "Fail while trying to click on Copy Template button";
 
 }
