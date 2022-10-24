@@ -17,7 +17,19 @@ public class LetterTemplatePage extends BasePage{
     public static final String LETTER_TEMPLATE_TABLE_ROW1_COL1 = "#letterTemplateManagerTable_row_0_col_0";
     public static final String INCLUDE_LETTER_CHECKBOX = "#includeLetterCheckbox";
     public static final String COPY_LETTER_TEMPLATE_BUTTON = "#copyLetterTemplateButton";
+    public static final String DELETE_LETTER_TEMPLATE_BUTTON = "[data-target='#deleteLetterTemplateConfirmModal']";
+    public static final String DELETE_LETTER_TEMPLATE_MODAL_LABEL = "deleteLetterTemplateConfirmModalLabel";
+    public static final String DELETE_LETTER_TEMPLATE_SUBMIT_BUTTON = "#modalSubmitButtondeleteLetterTemplateConfirm";
 
+    public static void deleteLetterTemplate(){
+        try {
+            clickOption(By.cssSelector(DELETE_LETTER_TEMPLATE_BUTTON));
+            clickOption(By.cssSelector(DELETE_LETTER_TEMPLATE_SUBMIT_BUTTON));
+            ExtentReportsSetUp.testingPass(LogPage.DELETE_LETTER_TEMPLATE_PASS);
+        } catch (Exception e) {
+            FailureDelegatePage.handlePageException(LogPage.DELETE_LETTER_TEMPLATE_PASS);
+        }
+    }
     public static void clickCopyTemplateButton(){
         try {
             clickOption(By.cssSelector(COPY_LETTER_TEMPLATE_BUTTON));

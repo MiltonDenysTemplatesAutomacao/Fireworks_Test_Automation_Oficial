@@ -794,5 +794,7 @@ public class LogPage {
     public static final String VERIFY_IF_TEMPLATE_EXISTS_FAIL = "Fail while trying to verify if template '%s' exists";
     public static final String CLICK_COPY_TEMPLATE_BUTTON_PASS = "I click on Copy Template button";
     public static final String CLICK_COPY_TEMPLATE_BUTTON_FAIL = "Fail while trying to click on Copy Template button";
+    public static final String DELETE_LETTER_TEMPLATE_PASS = "I delete letter template";
+    public static final String DELETE_LETTER_TEMPLATE_FAIL = "Fail while trying to delete letter template";
 
 }

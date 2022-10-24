@@ -29,6 +29,10 @@ public class LetterTemplateSteps {
     public static void clickCopyTemplateButton() {
         LetterTemplatePage.clickCopyTemplateButton();
     }
+    @And("I delete letter template")
+    public static void deleteLetterTemplate() {
+        LetterTemplatePage.deleteLetterTemplate();
+    }
     @And("I search template {string}")
     public static void searchTemplateManager(String template) {
         LetterTemplatePage.searchTemplateManager(template);
