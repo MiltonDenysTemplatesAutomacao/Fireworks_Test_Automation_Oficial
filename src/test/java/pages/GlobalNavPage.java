@@ -28,6 +28,7 @@ public class GlobalNavPage extends BasePage {
     public static final String FOOTER_COMMUNICATIONS_MENU = "#global_nav_comm_toggle";
     public static final String FOOTER_COMMUNICATIONS_LETTERS_MENU_ITEM = "#global_nav_letters";
     public static final String FOOTER_COMMUNICATIONS_TEXTS_MENU_ITEM = "#global_nav_sms";
+    public static final String FOOTER_COMMUNICATIONS_CHATS_MENU_ITEM = "#global_nav_chat";
     public static final String MANAGER_TABLE_ELEMENT = "#textMessagingManagerTable";
 
 
@@ -114,6 +115,24 @@ public class GlobalNavPage extends BasePage {
     public static final String PACKAGES_TAB = "Packages";
     public static final String FOOTER_TOOLS_REPORTS_MENU_ITEM = "#global_nav_report_manager";
 
+    public static void navigateChatSettingsPage(){
+        try {
+            navigateChatsPage();
+            clickOption(By.cssSelector(ChatPage.SETTINGS_TAB));
+            ExtentReportsSetUp.testingPass(LogPage.NAVIGATE_CHAT_SETTINGS_PAGE_PASS);
+        } catch (Exception e) {
+            FailureDelegatePage.handlePageException(LogPage.NAVIGATE_CHAT_SETTINGS_PAGE_FAIL);
+        }
+    }
+    public static void navigateChatsPage(){
+        try {
+            clickOption(By.cssSelector(FOOTER_COMMUNICATIONS_MENU));
+            clickOption(By.cssSelector(FOOTER_COMMUNICATIONS_CHATS_MENU_ITEM));
+            ExtentReportsSetUp.testingPass(LogPage.NAVIGATE_CHATS_PAGE_PASS);
+        } catch (Exception e) {
+            FailureDelegatePage.handlePageException(LogPage.NAVIGATE_CHATS_PAGE_FAIL);
+        }
+    }
     public static void navigateLettersTemplatesPage(){
         try {
             navigateLettersPage();

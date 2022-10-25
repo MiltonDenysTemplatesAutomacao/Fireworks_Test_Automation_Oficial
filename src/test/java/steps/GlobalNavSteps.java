@@ -48,6 +48,10 @@ public class GlobalNavSteps {
     public static void navigateSmartSearchPage() {
         GlobalNavPage.navigateSmartSearchPage();
     }
+    @When("I navigate to chat setting page")
+    public static void navigateChatSettingsPage() {
+        GlobalNavPage.navigateChatSettingsPage();
+    }
     @When("I navigate to Letters Template Page")
     public static void navigateLettersTemplatesPage() {
         GlobalNavPage.navigateLettersTemplatesPage();

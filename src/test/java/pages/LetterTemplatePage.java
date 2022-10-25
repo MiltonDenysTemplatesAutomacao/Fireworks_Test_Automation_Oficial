@@ -27,7 +27,7 @@ public class LetterTemplatePage extends BasePage{
             clickOption(By.cssSelector(DELETE_LETTER_TEMPLATE_SUBMIT_BUTTON));
             ExtentReportsSetUp.testingPass(LogPage.DELETE_LETTER_TEMPLATE_PASS);
         } catch (Exception e) {
-            FailureDelegatePage.handlePageException(LogPage.DELETE_LETTER_TEMPLATE_PASS);
+            FailureDelegatePage.handlePageException(LogPage.DELETE_LETTER_TEMPLATE_FAIL);
         }
     }
     public static void clickCopyTemplateButton(){

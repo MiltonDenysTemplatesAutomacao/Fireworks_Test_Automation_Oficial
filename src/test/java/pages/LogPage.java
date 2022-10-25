@@ -796,5 +796,17 @@ public class LogPage {
     public static final String CLICK_COPY_TEMPLATE_BUTTON_FAIL = "Fail while trying to click on Copy Template button";
     public static final String DELETE_LETTER_TEMPLATE_PASS = "I delete letter template";
     public static final String DELETE_LETTER_TEMPLATE_FAIL = "Fail while trying to delete letter template";
+    public static final String NAVIGATE_CHATS_PAGE_PASS = "I navigate to chat page";
+    public static final String NAVIGATE_CHATS_PAGE_FAIL = "Fail while trying to navigate to chat page";
+    public static final String NAVIGATE_CHAT_SETTINGS_PAGE_PASS = "I navigate to chat setting page";
+    public static final String NAVIGATE_CHAT_SETTINGS_PAGE_FAIL = "Fail while trying to navigate to chat setting page";
+    public static final String UPDATE_EMAIL_CONTACT_PASS = "I update email contact in setting chat page '%s'";
+    public static final String UPDATE_EMAIL_CONTACT_FAIL = "Fail while trying to update email contact in setting chat page '%s'";
+    public static final String VERIFY_IMAGE_PASS = "I verify image thumbnail '%s' and filename '%s'";
+    public static final String VERIFY_IMAGE_FAIL = "Fail while trying to verify image thumbnail '%s' and filename '%s'";
+    public static final String UPLOAD_FILE_PASS = "I upload a file on chat settings page '%s'";
+    public static final String UPLOAD_FILE_FAIL = "Fail while trying to upload a file on chat settings page '%s'";
+    public static final String VALIDATE_ERROR_MESSAGE_PASS = "I validate if error message on chat settings page is correct '%s'";
+    public static final String VALIDATE_ERROR_MESSAGE_FAIL = "Fail while trying to validate if error message on chat settings page is correct '%s'";
 
 }
