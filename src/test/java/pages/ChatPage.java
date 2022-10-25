@@ -9,18 +9,28 @@ import java.util.Map;
 public class ChatPage extends BasePage{
     public static final String SETTINGS_TAB = "#chatSettingsTab";
     private static final String EMAIL_CONTACT_FIELD = "#contactEmail";
-    private static final String ADD_ATTACHMENTS_CHAT_SETTINGS_BUTTON = "#active-image-dz-mediaSourceFileButton";
-    private static final String ERROR_MESSAGE = "#active-image-dz-error";
+    private static final String ACTIVE_IMAGE_DROPZONE = "#active-image-dz-mediaSourceFileButton";
+    private static final String INACTIVE_IMAGE_DROPZONE = "#inactive-image-dz-mediaSourceFileButton";
+    private static final String HEADER_IMAGE_DROPZONE = "#header-image-dz-mediaSourceFileButton";
+    private static final String ACTIVE_ERROR_MESSAGE = "#active-image-dz-error";
+    private static final String INACTIVE_ERROR_MESSAGE = "#inactive-image-dz-error";
 
     private static String imageThumbnail(String thumbnail,String filename){
         return String.format("//div[@id = '%s_thumbnail']/img[@title = '%s']",thumbnail,filename);
     }
 
-    public static void validateErrorMessage(String errorMessage){
-        String passMessage = String.format(LogPage.VALIDATE_ERROR_MESSAGE_PASS,errorMessage);
-        String failMessage = String.format(LogPage.VALIDATE_ERROR_MESSAGE_FAIL,errorMessage);
+    public static String returnErrorMessageElement (String thumbnail){
+        Map<String, String> returnElement = new HashMap<String, String>();
+        returnElement.put("active", ACTIVE_ERROR_MESSAGE);
+        returnElement.put("inactive", INACTIVE_ERROR_MESSAGE);
+        return returnElement.get(thumbnail);
+    }
+
+    public static void validateErrorMessage(String thumbnail, String errorMessage){
+        String passMessage = String.format(LogPage.VALIDATE_ERROR_MESSAGE_PASS,thumbnail,errorMessage);
+        String failMessage = String.format(LogPage.VALIDATE_ERROR_MESSAGE_FAIL,thumbnail,errorMessage);
         try {
-            if(verifyGetText(By.cssSelector(ERROR_MESSAGE),errorMessage)){
+            if(verifyGetText(By.cssSelector(returnErrorMessageElement(thumbnail)),errorMessage)){
                 ExtentReportsSetUp.testingPass(passMessage);
             }else{
                 FailureDelegatePage.handlePageException(failMessage);
@@ -29,11 +39,18 @@ public class ChatPage extends BasePage{
             FailureDelegatePage.handlePageException(failMessage);
         }
     }
-    public static void uploadFile(String file){
-        String passMessage = String.format(LogPage.UPLOAD_FILE_PASS,file);
-        String failMessage = String.format(LogPage.UPLOAD_FILE_FAIL,file);
+    public static String returnUpdateButtonPath (String thumbnail){
+        Map<String, String> returnElement = new HashMap<String, String>();
+        returnElement.put("active", ACTIVE_IMAGE_DROPZONE);
+        returnElement.put("inactive", INACTIVE_IMAGE_DROPZONE);
+        returnElement.put("header", HEADER_IMAGE_DROPZONE);
+        return returnElement.get(thumbnail);
+    }
+    public static void uploadFile(String file,String thumbnail){
+        String passMessage = String.format(LogPage.UPLOAD_FILE_PASS,file,thumbnail);
+        String failMessage = String.format(LogPage.UPLOAD_FILE_FAIL,file,thumbnail);
         try {
-            attachFile(file,By.cssSelector(ADD_ATTACHMENTS_CHAT_SETTINGS_BUTTON));
+            attachFile(file,By.cssSelector(returnUpdateButtonPath(thumbnail)));
             ExtentReportsSetUp.testingPass(passMessage);
         } catch (Exception e) {
             FailureDelegatePage.handlePageException(failMessage);
@@ -44,9 +61,10 @@ public class ChatPage extends BasePage{
         String failMessage = String.format(LogPage.VERIFY_IMAGE_FAIL,thumbnail,filename);
         String thumbnailLocator = imageThumbnail(thumbnail,filename);
         try {
-            if(verifyIfElementsIsVisible(By.xpath(thumbnailLocator))){
+        if(verifyIfElementIsVisible(By.xpath(thumbnailLocator))){
                 ExtentReportsSetUp.testingPass(passMessage);
             }else{
+
                 FailureDelegatePage.handlePageException(failMessage);
             }
         } catch (Exception e) {

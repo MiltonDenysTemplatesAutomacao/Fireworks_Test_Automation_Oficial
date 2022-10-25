@@ -804,9 +804,9 @@ public class LogPage {
     public static final String UPDATE_EMAIL_CONTACT_FAIL = "Fail while trying to update email contact in setting chat page '%s'";
     public static final String VERIFY_IMAGE_PASS = "I verify image thumbnail '%s' and filename '%s'";
     public static final String VERIFY_IMAGE_FAIL = "Fail while trying to verify image thumbnail '%s' and filename '%s'";
-    public static final String UPLOAD_FILE_PASS = "I upload a file on chat settings page '%s'";
-    public static final String UPLOAD_FILE_FAIL = "Fail while trying to upload a file on chat settings page '%s'";
-    public static final String VALIDATE_ERROR_MESSAGE_PASS = "I validate if error message on chat settings page is correct '%s'";
-    public static final String VALIDATE_ERROR_MESSAGE_FAIL = "Fail while trying to validate if error message on chat settings page is correct '%s'";
+    public static final String UPLOAD_FILE_PASS = "I upload a file on chat settings page '%s' on '%s' thumbnail";
+    public static final String UPLOAD_FILE_FAIL = "Fail while trying to upload a file on chat settings page '%s' on '%s' thumbnail";
+    public static final String VALIDATE_ERROR_MESSAGE_PASS = "I validate if '%s' error message on chat settings page is correct '%s'";
+    public static final String VALIDATE_ERROR_MESSAGE_FAIL = "Fail while trying to validate if '%s' error message on chat settings page is correct '%s'";
 
 }

@@ -32,14 +32,12 @@ public class BasePage {
 
     public static void attachFile(String sourceFile, By by)throws Exception{
         String filePath = getFile(sourceFile);
-        waitElementBy(by,10);
-        scrollToElement(by);
-        scrollTo("-150");
-        click(by);
+        clickOption(by);
         wait(2000);
         copyToTheClipboard(filePath);
         attachFile();
         wait(1000);
+
     }
     public static void navigateToFeature(By by)throws Exception{
         waitElementBy(by,10);
