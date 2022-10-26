@@ -15,11 +15,26 @@ public class ChatPage extends BasePage{
     private static final String ACTIVE_ERROR_MESSAGE = "#active-image-dz-error";
     private static final String INACTIVE_ERROR_MESSAGE = "#inactive-image-dz-error";
     private static final String ENABLE_CHAT_CHECKBOX = "#is_live";
+    private static final String CHAT_MANAGER_SEARCH_FIELD = "#chatManagerTableControlsTableSearch";
 
     private static String imageThumbnail(String thumbnail,String filename){
         return String.format("//div[@id = '%s_thumbnail']/img[@title = '%s']",thumbnail,filename);
     }
 
+    public static void openChat(String chat){
+        try {
+            searchChatsManager(chat);
+        } catch (Exception e) {
+
+        }
+    }
+    public static void searchChatsManager(String chat){
+        try {
+            fillField(By.cssSelector(CHAT_MANAGER_SEARCH_FIELD),chat);
+        } catch (Exception e) {
+
+        }
+    }
     public static void setChatActive(){
         try {
             clickCheckbox(By.cssSelector(ENABLE_CHAT_CHECKBOX));

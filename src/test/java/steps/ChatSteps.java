@@ -17,6 +17,10 @@ public class ChatSteps {
     public static void setChatActive() {
         ChatPage.setChatActive();
     }
+    @When("I open chat {string}")
+    public static void openChat(String chat) {
+        ChatPage.openChat(chat);
+    }
     @When("I verify if chat checkbox is active or inactive {string}")
     public static void verifyChatCheckbox(String status) {
         ChatPage.verifyChatCheckbox(status);
