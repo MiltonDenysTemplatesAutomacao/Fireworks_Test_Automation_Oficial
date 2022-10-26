@@ -9,6 +9,18 @@ public class ChatSteps {
     public static void updateEmailContact(String emailContact) {
         ChatPage.updateEmailContact(emailContact);
     }
+    @When("I verify email contact in setting chat page {string}")
+    public static void verifyEmailContact(String emailContact) {
+        ChatPage.verifyEmailContact(emailContact);
+    }
+    @When("I set chat checkbox as active")
+    public static void setChatActive() {
+        ChatPage.setChatActive();
+    }
+    @When("I verify if chat checkbox is active or inactive {string}")
+    public static void verifyChatCheckbox(String status) {
+        ChatPage.verifyChatCheckbox(status);
+    }
     @When("I verify image thumbnail {string} and filename {string}")
     public static void verifyImage(String thumbnail,String filename) {
         ChatPage.verifyImage(thumbnail,filename);

@@ -14,11 +14,34 @@ public class ChatPage extends BasePage{
     private static final String HEADER_IMAGE_DROPZONE = "#header-image-dz-mediaSourceFileButton";
     private static final String ACTIVE_ERROR_MESSAGE = "#active-image-dz-error";
     private static final String INACTIVE_ERROR_MESSAGE = "#inactive-image-dz-error";
+    private static final String ENABLE_CHAT_CHECKBOX = "#is_live";
 
     private static String imageThumbnail(String thumbnail,String filename){
         return String.format("//div[@id = '%s_thumbnail']/img[@title = '%s']",thumbnail,filename);
     }
 
+    public static void setChatActive(){
+        try {
+            clickCheckbox(By.cssSelector(ENABLE_CHAT_CHECKBOX));
+            ExtentReportsSetUp.testingPass(LogPage.SET_CHAT_ACTIVE_PASS);
+        } catch (Exception e) {
+            FailureDelegatePage.handlePageException(LogPage.SET_CHAT_ACTIVE_FAIL);
+        }
+    }
+    /*
+     * if status is 0 validate if checkbox is not checked if it is 1 validate id checkbox is active
+     */
+    public static void verifyChatCheckbox(String status){
+        try {
+            if(verifyCheckboxActiveOrNot(By.cssSelector(ENABLE_CHAT_CHECKBOX),status)){
+                ExtentReportsSetUp.testingPass(LogPage.VERIFY_CHAT_CHECKBOX_PASS);
+            }else{
+                FailureDelegatePage.handlePageException(LogPage.VERIFY_CHAT_CHECKBOX_FAIL);
+            }
+        } catch (Exception e) {
+            FailureDelegatePage.handlePageException(LogPage.VERIFY_CHAT_CHECKBOX_FAIL);
+        }
+    }
     public static String returnErrorMessageElement (String thumbnail){
         Map<String, String> returnElement = new HashMap<String, String>();
         returnElement.put("active", ACTIVE_ERROR_MESSAGE);
@@ -71,6 +94,20 @@ public class ChatPage extends BasePage{
             FailureDelegatePage.handlePageException(failMessage);
         }
     }
+    public static void verifyEmailContact(String emailContact){
+        String passMessage = String.format(LogPage.UPDATE_EMAIL_CONTACT_PASS,emailContact);
+        String failMessage = String.format(LogPage.UPDATE_EMAIL_CONTACT_FAIL,emailContact);
+        try {
+            if(verifyGetAttribute(By.cssSelector(EMAIL_CONTACT_FIELD),emailContact)){
+                ExtentReportsSetUp.testingPass(passMessage);
+            }else{
+                FailureDelegatePage.handlePageException(failMessage);
+            }
+        } catch (Exception e) {
+            FailureDelegatePage.handlePageException(failMessage);
+        }
+    }
+
     public static void updateEmailContact(String emailContact){
         String passMessage = String.format(LogPage.UPDATE_EMAIL_CONTACT_PASS,emailContact);
         String failMessage = String.format(LogPage.UPDATE_EMAIL_CONTACT_FAIL,emailContact);

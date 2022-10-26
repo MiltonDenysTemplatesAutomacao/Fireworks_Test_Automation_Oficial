@@ -802,11 +802,17 @@ public class LogPage {
     public static final String NAVIGATE_CHAT_SETTINGS_PAGE_FAIL = "Fail while trying to navigate to chat setting page";
     public static final String UPDATE_EMAIL_CONTACT_PASS = "I update email contact in setting chat page '%s'";
     public static final String UPDATE_EMAIL_CONTACT_FAIL = "Fail while trying to update email contact in setting chat page '%s'";
+    public static final String VERIFY_EMAIL_CONTACT_PASS = "I verify email contact in setting chat page '%s'";
+    public static final String VERIFY_EMAIL_CONTACT_FAIL = "Fail while trying to verify email contact in setting chat page '%s'";
     public static final String VERIFY_IMAGE_PASS = "I verify image thumbnail '%s' and filename '%s'";
     public static final String VERIFY_IMAGE_FAIL = "Fail while trying to verify image thumbnail '%s' and filename '%s'";
     public static final String UPLOAD_FILE_PASS = "I upload a file on chat settings page '%s' on '%s' thumbnail";
     public static final String UPLOAD_FILE_FAIL = "Fail while trying to upload a file on chat settings page '%s' on '%s' thumbnail";
     public static final String VALIDATE_ERROR_MESSAGE_PASS = "I validate if '%s' error message on chat settings page is correct '%s'";
     public static final String VALIDATE_ERROR_MESSAGE_FAIL = "Fail while trying to validate if '%s' error message on chat settings page is correct '%s'";
+    public static final String VERIFY_CHAT_CHECKBOX_PASS = "I verify if chat checkbox is active or inactive";
+    public static final String VERIFY_CHAT_CHECKBOX_FAIL = "Fail while trying to verify if chat checkbox is active or inactive";
+    public static final String SET_CHAT_ACTIVE_PASS = "I set chat checkbox as active";
+    public static final String SET_CHAT_ACTIVE_FAIL = "Fail while trying to set chat checkbox as active";
 
 }
