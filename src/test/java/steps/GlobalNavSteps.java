@@ -72,4 +72,8 @@ public class GlobalNavSteps {
     public static void navigateToScheduler() {
         GlobalNavPage.navigateToScheduler();
     }
+    @When("I navigate to footer communications menu")
+    public static void navigateFooterCommunicationsMenu() {
+        GlobalNavPage.navigateFooterCommunicationsMenu();
+    }
 }

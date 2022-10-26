@@ -115,6 +115,14 @@ public class GlobalNavPage extends BasePage {
     public static final String PACKAGES_TAB = "Packages";
     public static final String FOOTER_TOOLS_REPORTS_MENU_ITEM = "#global_nav_report_manager";
 
+    public static void navigateFooterCommunicationsMenu(){
+        try {
+            clickOption(By.cssSelector(FOOTER_COMMUNICATIONS_MENU));
+            ExtentReportsSetUp.testingPass(LogPage.NAVIGATE_FOOTER_COMMUNICATIONS_MENU_PASS);
+        } catch (Exception e) {
+            FailureDelegatePage.handlePageException(LogPage.NAVIGATE_FOOTER_COMMUNICATIONS_MENU_FAIL);
+        }
+    }
     public static void navigateChatSettingsPage(){
         try {
             navigateChatsPage();

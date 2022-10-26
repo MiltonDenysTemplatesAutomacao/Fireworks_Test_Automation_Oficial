@@ -5,6 +5,9 @@ import io.cucumber.datatable.DataTable;
 import org.openqa.selenium.By;
 import org.testng.reporters.jq.Main;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import static pages.GlobalNavPage.QUICK_ADD_PERSON_OPT_IN_METHOD_DROPDOWN;
 import static pages.GlobalNavPage.QUICK_ADD_PERSON_OPT_IN_METHOD_DROPDOWN_LIST;
 
@@ -13,6 +16,43 @@ public class MainPage extends BasePage{
     public static final String HEADER_QUICK_SEARCH_FIELD = "#headerSearch";
     public static final String HEADER_QUICK_SEARCH_BUTTON = "#navSearchSubmitButton";
 
+    public static String returnElements (String elements){
+        Map<String, String> returnElement = new HashMap<String, String>();
+        returnElement.put("footerToolsMenu", GlobalNavPage.FOOTER_TOOLS_MENU);
+        returnElement.put("footerRecordsMenu", GlobalNavPage.FOOTER_RECORDS_MENU);
+        returnElement.put("footerQuickAddMenu", GlobalNavPage.FOOTER_QUICK_ADD_MEN);
+        returnElement.put("footerSettingsMenu", GlobalNavPage.FOOTER_SETTINGS_MENU);
+        returnElement.put("footerCommunicationsMenu", GlobalNavPage.FOOTER_COMMUNICATIONS_MENU);
+        returnElement.put("footerCommunicationsChatsMenuItem", GlobalNavPage.FOOTER_COMMUNICATIONS_CHATS_MENU_ITEM);
+        return returnElement.get(elements);
+    }
+
+    public static void validateIfElementIsVisible(String element){
+        String passMessage = String.format(LogPage.VALIDATE_IF_ELEMENT_IS_VISIBLE_PASS,element);
+        String failMessage = String.format(LogPage.VALIDATE_IF_ELEMENT_IS_VISIBLE_FAIL,element);
+        try {
+            if(verifyIfElementIsVisible(By.cssSelector(returnElements(element)))){
+                ExtentReportsSetUp.testingPass(passMessage);
+            }else{
+                FailureDelegatePage.handlePageException(failMessage);
+            }
+        } catch (Exception e) {
+            FailureDelegatePage.handlePageException(failMessage);
+        }
+    }
+    public static void validateIfElementIsNotVisible(String element){
+        String passMessage = String.format(LogPage.VALIDATE_IF_ELEMENT_IS_NOT_VISIBLE_PASS,element);
+        String failMessage = String.format(LogPage.VALIDATE_IF_ELEMENT_IS_NOT_VISIBLE_FAIL,element);
+        try {
+            if(!verifyIfElementIsVisible(By.cssSelector(returnElements(element)))){
+                ExtentReportsSetUp.testingPass(passMessage);
+            }else{
+                FailureDelegatePage.handlePageException(failMessage);
+            }
+        } catch (Exception e) {
+            FailureDelegatePage.handlePageException(failMessage);
+        }
+    }
     public static void quickSearchFromHeader(String data){
         String passMessage = String.format(LogPage.QUICK_SEARCH_FROM_HEADER_PASS,data);
         String failMessage = String.format(LogPage.QUICK_SEARCH_FROM_HEADER_FAIL,data);

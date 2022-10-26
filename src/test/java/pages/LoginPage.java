@@ -182,6 +182,7 @@ public class LoginPage {
         usernameParameter.put("documentsNoAccessUsername", DOCUMENTS_NO_ACCESS_USERNAME);
         usernameParameter.put("documentsReadOnlyUsername", DOCUMENTS_READ_ONLY_USERNAME);
         usernameParameter.put("documentsNoDeleteUsername", DOCUMENTS_NO_DELETE_USERNAME);
+        usernameParameter.put("chatsNoAccessUsername", CHATS_NO_ACCESS_USERNAME);
         return usernameParameter.get(username);
     }
     /*
@@ -197,6 +198,7 @@ public class LoginPage {
         passwordParameter.put("documentsNoAccessPassword", DOCUMENTS_NO_ACCESS_PASSWORD);
         passwordParameter.put("documentsReadOnlyPassword", DOCUMENTS_READ_ONLY_PASSWORD);
         passwordParameter.put("documentsNoDeletePassword", DOCUMENTS_NO_DELETE_PASSWORD);
+        passwordParameter.put("chatsNoAccessPassword", CHATS_NO_ACCESS_PASSWORD);
         return passwordParameter.get(password);
     }
     /*
@@ -212,6 +214,7 @@ public class LoginPage {
         fullnameParameter.put("documentsNoAccessFullName", DOCUMENTS_NO_ACCESS_FULL_NAME);
         fullnameParameter.put("documentsReadOnlyFullName", DOCUMENTS_READ_ONLY_FULL_NAME);
         fullnameParameter.put("documentsNoDeleteFullName", DOCUMENTS_NO_DELETE_FULL_NAME);
+        fullnameParameter.put("chatsNoAccessFullName", CHATS_NO_ACCESS_FULL_NAME);
         return fullnameParameter.get(fullname);
     }
 
