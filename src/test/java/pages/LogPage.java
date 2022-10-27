@@ -826,5 +826,19 @@ public class LogPage {
     public static final String OPEN_CHAT_FAIL = "Fail while trying to open chat";
     public static final String VERIFY_ELEMENT_VISIBLE_ON_CHAT_PAGE_PASS = "I validate if element on chat page '%s' is '%s'";
     public static final String VERIFY_ELEMENT_VISIBLE_ON_CHAT_PAGE_FAIL = "Fail while trying to validate if element on chat page '%s' is '%s'";
+    public static final String NAVIGATE_TO_MEDIA_PASS = "I navigate to media page";
+    public static final String NAVIGATE_TO_MEDIA_FAIL = "Fail while trying to navigate to media page";
+    public static final String CREATE_MEDIA_PASS = "I create media";
+    public static final String CREATE_MEDIA_FAIL = "Fail while trying to create media";
+    public static final String UPDATE_MEDIA_PASS = "I update media";
+    public static final String UPDATE_MEDIA_FAIL = "Fail while trying to update media";
+    public static final String STORAGE_USAGE1_PASS = "I storage usage 1";
+    public static final String STORAGE_USAGE1_FAIL = "Fail while trying to storage usage 1";
+    public static final String SEARCH_MEDIA_PASS = "I search media '%s'";
+    public static final String SEARCH_MEDIA_FAIL = "Fail while trying search media '%s'";
+    public static final String OPEN_MEDIA_PASS = "I open media '%s'";
+    public static final String OPEN_MEDIA_FAIL = "Fail while trying to open media '%s'";
+    public static final String VERIFY_MEDIA_PASS = "I verify media";
+    public static final String VERIFY_MEDIA_FAIL = "Fail while trying to verify media";
 
 }

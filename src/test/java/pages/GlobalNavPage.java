@@ -29,6 +29,7 @@ public class GlobalNavPage extends BasePage {
     public static final String FOOTER_COMMUNICATIONS_LETTERS_MENU_ITEM = "#global_nav_letters";
     public static final String FOOTER_COMMUNICATIONS_TEXTS_MENU_ITEM = "#global_nav_sms";
     public static final String FOOTER_COMMUNICATIONS_CHATS_MENU_ITEM = "#global_nav_chat";
+    public static final String FOOTER_COMMUNICATIONS_MEDIA_MENU_ITEM = "#global_nav_media";
     public static final String MANAGER_TABLE_ELEMENT = "#textMessagingManagerTable";
 
 
@@ -115,6 +116,15 @@ public class GlobalNavPage extends BasePage {
     public static final String PACKAGES_TAB = "Packages";
     public static final String FOOTER_TOOLS_REPORTS_MENU_ITEM = "#global_nav_report_manager";
 
+    public static void navigateToMedia(){
+        try {
+            clickOption(By.cssSelector(FOOTER_COMMUNICATIONS_MENU));
+            clickOption(By.cssSelector(FOOTER_COMMUNICATIONS_MEDIA_MENU_ITEM));
+            ExtentReportsSetUp.testingPass(LogPage.NAVIGATE_TO_MEDIA_PASS);
+        } catch (Exception e) {
+            FailureDelegatePage.handlePageException(LogPage.NAVIGATE_TO_MEDIA_FAIL);
+        }
+    }
     public static void navigateFooterCommunicationsMenu(){
         try {
             clickOption(By.cssSelector(FOOTER_COMMUNICATIONS_MENU));
