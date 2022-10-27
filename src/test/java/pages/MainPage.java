@@ -27,27 +27,24 @@ public class MainPage extends BasePage{
         return returnElement.get(elements);
     }
 
-    public static void validateIfElementIsVisible(String element){
-        String passMessage = String.format(LogPage.VALIDATE_IF_ELEMENT_IS_VISIBLE_PASS,element);
-        String failMessage = String.format(LogPage.VALIDATE_IF_ELEMENT_IS_VISIBLE_FAIL,element);
+
+    public static void validateIfElementIsVisible(String element,String status){
+        String passMessage = String.format(LogPage.VALIDATE_IF_ELEMENT_IS_VISIBLE_PASS,element,status);
+        String failMessage = String.format(LogPage.VALIDATE_IF_ELEMENT_IS_VISIBLE_FAIL,element,status);
         try {
-            if(verifyIfElementIsVisible(By.cssSelector(returnElements(element)))){
-                ExtentReportsSetUp.testingPass(passMessage);
-            }else{
-                FailureDelegatePage.handlePageException(failMessage);
-            }
-        } catch (Exception e) {
-            FailureDelegatePage.handlePageException(failMessage);
-        }
-    }
-    public static void validateIfElementIsNotVisible(String element){
-        String passMessage = String.format(LogPage.VALIDATE_IF_ELEMENT_IS_NOT_VISIBLE_PASS,element);
-        String failMessage = String.format(LogPage.VALIDATE_IF_ELEMENT_IS_NOT_VISIBLE_FAIL,element);
-        try {
-            if(!verifyIfElementIsVisible(By.cssSelector(returnElements(element)))){
-                ExtentReportsSetUp.testingPass(passMessage);
-            }else{
-                FailureDelegatePage.handlePageException(failMessage);
+            switch (status){
+                case "visible":
+                    if(verifyIfElementIsVisible(By.cssSelector(returnElements(element)))){
+                        ExtentReportsSetUp.testingPass(passMessage);
+                    }else{
+                        FailureDelegatePage.handlePageException(failMessage);
+                    }
+                case "not visible":
+                    if(!verifyIfElementIsVisible(By.cssSelector(returnElements(element)))){
+                        ExtentReportsSetUp.testingPass(passMessage);
+                    }else{
+                        FailureDelegatePage.handlePageException(failMessage);
+                    }
             }
         } catch (Exception e) {
             FailureDelegatePage.handlePageException(failMessage);

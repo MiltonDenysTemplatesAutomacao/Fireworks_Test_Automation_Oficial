@@ -49,7 +49,7 @@ public class ChatPage extends BasePage{
                     }else{
                         FailureDelegatePage.handlePageException(failMessage);
                     }
-                case "no visible":
+                case "not visible":
                     if(!verifyIfElementIsVisible(By.cssSelector(returnChatPageElements(element)))){
                         ExtentReportsSetUp.testingPass(passMessage);
                     }else{

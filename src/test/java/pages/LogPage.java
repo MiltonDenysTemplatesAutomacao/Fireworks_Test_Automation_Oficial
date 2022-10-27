@@ -814,8 +814,8 @@ public class LogPage {
     public static final String VERIFY_CHAT_CHECKBOX_FAIL = "Fail while trying to verify if chat checkbox is active or inactive";
     public static final String SET_CHAT_ACTIVE_PASS = "I set chat checkbox as active";
     public static final String SET_CHAT_ACTIVE_FAIL = "Fail while trying to set chat checkbox as active";
-    public static final String VALIDATE_IF_ELEMENT_IS_VISIBLE_PASS = "I validate if element '%s' is visible";
-    public static final String VALIDATE_IF_ELEMENT_IS_VISIBLE_FAIL = "Fail while trying to validate if element '%s' is visible";
+    public static final String VALIDATE_IF_ELEMENT_IS_VISIBLE_PASS = "I validate if element '%s' is '%s'";
+    public static final String VALIDATE_IF_ELEMENT_IS_VISIBLE_FAIL = "Fail while trying to validate if element '%s' is '%s'";
     public static final String VALIDATE_IF_ELEMENT_IS_NOT_VISIBLE_PASS = "I validate if element '%s' is not visible";
     public static final String VALIDATE_IF_ELEMENT_IS_NOT_VISIBLE_FAIL = "Fail while trying to validate if element '%s' is not visible";
     public static final String NAVIGATE_FOOTER_COMMUNICATIONS_MENU_PASS = "I navigate to footer communications menu";
