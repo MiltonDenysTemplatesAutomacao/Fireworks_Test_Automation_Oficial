@@ -16,23 +16,78 @@ public class ChatPage extends BasePage{
     private static final String INACTIVE_ERROR_MESSAGE = "#inactive-image-dz-error";
     private static final String ENABLE_CHAT_CHECKBOX = "#is_live";
     private static final String CHAT_MANAGER_SEARCH_FIELD = "#chatManagerTableControlsTableSearch";
+    private static final String CHAT_MANAGER_TABLE_ROW1_COL1 = "#chatManagerTable_row_0_col_0";
+    private static final String PRINT_CHAT_BUTTON = "#printChatButton";
+    private static final String MARK_CHAT_UNREAD_BUTTON = "#markUnreadButton";
+    private static final String DELETE_CHAT_BUTTON = "#deleteChatButton";
 
     private static String imageThumbnail(String thumbnail,String filename){
         return String.format("//div[@id = '%s_thumbnail']/img[@title = '%s']",thumbnail,filename);
     }
 
+    public static String returnChatPageElements (String elements){
+        Map<String, String> returnElement = new HashMap<String, String>();
+        returnElement.put("printChatButton", PRINT_CHAT_BUTTON);
+        returnElement.put("markChatUnreadButton", MARK_CHAT_UNREAD_BUTTON);
+        returnElement.put("deleteChatButton", DELETE_CHAT_BUTTON);
+        returnElement.put("activeImageDropzone", ACTIVE_IMAGE_DROPZONE);
+        returnElement.put("inactiveImageDropzone", INACTIVE_IMAGE_DROPZONE);
+        returnElement.put("headerImageDropzone", HEADER_IMAGE_DROPZONE);
+        return returnElement.get(elements);
+    }
+    /*
+     * validate if an element is visible or not by status
+     */
+    public static void verifyElementVisibleOnChatPage(String element,String status){
+        String passMessage = String.format(LogPage.VERIFY_ELEMENT_VISIBLE_ON_CHAT_PAGE_PASS,element,status);
+        String failMessage = String.format(LogPage.VERIFY_ELEMENT_VISIBLE_ON_CHAT_PAGE_FAIL,element,status);
+        try {
+            switch (status){
+                case "visible":
+                    if(verifyIfElementIsVisible(By.cssSelector(returnChatPageElements(element)))){
+                        ExtentReportsSetUp.testingPass(passMessage);
+                    }else{
+                        FailureDelegatePage.handlePageException(failMessage);
+                    }
+                case "no visible":
+                    if(!verifyIfElementIsVisible(By.cssSelector(returnChatPageElements(element)))){
+                        ExtentReportsSetUp.testingPass(passMessage);
+                    }else{
+                        FailureDelegatePage.handlePageException(failMessage);
+                    }
+            }
+        } catch (Exception e) {
+            FailureDelegatePage.handlePageException(failMessage);
+        }
+    }
+
     public static void openChat(String chat){
+        String passMessage = String.format(LogPage.OPEN_CHAT_PASS,chat);
+        String failMessage = String.format(LogPage.OPEN_CHAT_FAIL,chat);
         try {
             searchChatsManager(chat);
+            if(verifyGetText(By.cssSelector(CHAT_MANAGER_TABLE_ROW1_COL1),chat)){
+                clickOption(By.cssSelector(CHAT_MANAGER_TABLE_ROW1_COL1));
+                ExtentReportsSetUp.testingPass(passMessage);
+            }else{
+                FailureDelegatePage.handlePageException(failMessage);
+            }
         } catch (Exception e) {
-
+            FailureDelegatePage.handlePageException(failMessage);
         }
     }
     public static void searchChatsManager(String chat){
+        String passMessage = String.format(LogPage.SEARCH_CHATS_MANAGER_PASS,chat);
+        String failMessage = String.format(LogPage.SEARCH_CHATS_MANAGER_FAIL,chat);
         try {
             fillField(By.cssSelector(CHAT_MANAGER_SEARCH_FIELD),chat);
+            if(verifyGetText(By.cssSelector(CHAT_MANAGER_TABLE_ROW1_COL1),chat)){
+                ExtentReportsSetUp.testingPass(passMessage);
+            }else{
+                FailureDelegatePage.handlePageException(failMessage);
+            }
         } catch (Exception e) {
-
+            FailureDelegatePage.handlePageException(failMessage);
         }
     }
     public static void setChatActive(){

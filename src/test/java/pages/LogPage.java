@@ -820,5 +820,11 @@ public class LogPage {
     public static final String VALIDATE_IF_ELEMENT_IS_NOT_VISIBLE_FAIL = "Fail while trying to validate if element '%s' is not visible";
     public static final String NAVIGATE_FOOTER_COMMUNICATIONS_MENU_PASS = "I navigate to footer communications menu";
     public static final String NAVIGATE_FOOTER_COMMUNICATIONS_MENU_FAIL = "Fail while trying to navigate to footer communications menu";
+    public static final String SEARCH_CHATS_MANAGER_PASS = "I search chat";
+    public static final String SEARCH_CHATS_MANAGER_FAIL = "Fail while trying to search chat";
+    public static final String OPEN_CHAT_PASS = "I open chat";
+    public static final String OPEN_CHAT_FAIL = "Fail while trying to open chat";
+    public static final String VERIFY_ELEMENT_VISIBLE_ON_CHAT_PAGE_PASS = "I validate if element on chat page '%s' is '%s'";
+    public static final String VERIFY_ELEMENT_VISIBLE_ON_CHAT_PAGE_FAIL = "Fail while trying to validate if element on chat page '%s' is '%s'";
 
 }

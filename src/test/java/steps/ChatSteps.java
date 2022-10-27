@@ -21,6 +21,10 @@ public class ChatSteps {
     public static void openChat(String chat) {
         ChatPage.openChat(chat);
     }
+    @When("I validate if element on chat page {string} is {string}")
+    public static void verifyElementVisibleOnChatPage(String element,String status) {
+        ChatPage.verifyElementVisibleOnChatPage(element,status);
+    }
     @When("I verify if chat checkbox is active or inactive {string}")
     public static void verifyChatCheckbox(String status) {
         ChatPage.verifyChatCheckbox(status);
