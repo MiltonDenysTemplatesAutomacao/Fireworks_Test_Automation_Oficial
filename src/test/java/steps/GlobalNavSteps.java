@@ -52,6 +52,10 @@ public class GlobalNavSteps {
     public static void navigateChatSettingsPage() {
         GlobalNavPage.navigateChatSettingsPage();
     }
+    @When("I navigate to chats page")
+    public static void navigateChatsPage() {
+        GlobalNavPage.navigateChatsPage();
+    }
     @When("I navigate to Letters Template Page")
     public static void navigateLettersTemplatesPage() {
         GlobalNavPage.navigateLettersTemplatesPage();

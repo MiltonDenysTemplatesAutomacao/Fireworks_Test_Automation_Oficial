@@ -5,9 +5,10 @@
 @ChatSettingsViewButNotCreate
 Feature: Chat Settings - View but not Create
 
-  @ChatSettingsViewButNotCreateScenario @Done @Chats
+  @ChatSettingsViewButNotCreateScenario @Fix @Chats
   Scenario: verify this permissions group only has read only access to chats and settings
     Given I login as "firestarterUsername", "firestarterPassword", "firestarterFullName"
+    And I navigate to chats page
     And I open chat "Test3175"
     #the chat is read-only
     And I validate if element on chat page "printChatButton" is "visible"
