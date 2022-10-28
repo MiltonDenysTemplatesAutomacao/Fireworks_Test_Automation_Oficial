@@ -28,7 +28,7 @@ public class MainSteps {
         MainPage.quickSearchFromHeader(data);
     }
     @When("I validate if element {string} is {string}")
-    public static void validateIfElementIsVisible(String element,String status) {
-        MainPage.validateIfElementIsVisible(element,status);
+    public static void validateIfElementIsVisibleOrNot(String element,String status) {
+        MainPage.validateIfElementIsVisibleOrNot(element,status);
     }
 }

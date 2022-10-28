@@ -31,13 +31,14 @@ public class BasePage {
     /********* Utils ************/
 
     public static void attachFile(String sourceFile, By by)throws Exception{
-        String filePath = getFile(sourceFile);
-        clickOption(by);
-        wait(2000);
-        copyToTheClipboard(filePath);
-        attachFile();
-        wait(1000);
-
+        if(sourceFile!="" && sourceFile != null){
+            String filePath = getFile(sourceFile);
+            clickOption(by);
+            wait(2000);
+            copyToTheClipboard(filePath);
+            attachFile();
+            wait(1000);
+        }
     }
     public static void navigateToFeature(By by)throws Exception{
         waitElementBy(by,10);
@@ -132,6 +133,21 @@ public class BasePage {
             scrollTo("-150");
             waitElementBy(by,10);
             String returnText = getAtribute(by,"value");
+            validation = returnText.contains(value);
+        }else{
+            validation=true;
+        }
+        return validation;
+    }
+    public static boolean verifyGetAttribute(By by, String value,String tag)throws Exception{
+        boolean validation = false;
+        if(value!="" && value !=null){
+            wait(1000);
+            waitElementBy(by,10);
+            scrollToElement(by);
+            scrollTo("-150");
+            waitElementBy(by,10);
+            String returnText = getAtribute(by,tag);
             validation = returnText.contains(value);
         }else{
             validation=true;
@@ -415,6 +431,7 @@ public class BasePage {
     public static String getAtribute(By by, String value) throws Exception {
         return DriverBase.getDriver().findElement(by).getAttribute(value);
     }
+
 
 
     /*

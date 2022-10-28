@@ -832,13 +832,21 @@ public class LogPage {
     public static final String CREATE_MEDIA_FAIL = "Fail while trying to create media";
     public static final String UPDATE_MEDIA_PASS = "I update media";
     public static final String UPDATE_MEDIA_FAIL = "Fail while trying to update media";
-    public static final String STORAGE_USAGE1_PASS = "I storage usage 1";
-    public static final String STORAGE_USAGE1_FAIL = "Fail while trying to storage usage 1";
+    public static final String STORAGE_USAGE1_PASS = "I storage usage 1 '%s'";
+    public static final String STORAGE_USAGE1_FAIL = "Fail while trying to storage usage 1 '%s'";
+    public static final String STORAGE_USAGE2_PASS = "I storage usage 2 '%s'";
+    public static final String STORAGE_USAGE2_FAIL = "Fail while trying to storage usage 2 '%s'";
     public static final String SEARCH_MEDIA_PASS = "I search media '%s'";
     public static final String SEARCH_MEDIA_FAIL = "Fail while trying search media '%s'";
     public static final String OPEN_MEDIA_PASS = "I open media '%s'";
     public static final String OPEN_MEDIA_FAIL = "Fail while trying to open media '%s'";
     public static final String VERIFY_MEDIA_PASS = "I verify media";
     public static final String VERIFY_MEDIA_FAIL = "Fail while trying to verify media";
+    public static final String DELETE_MEDIA_PASS = "I delete media";
+    public static final String DELETE_MEDIA_FAIL = "Fail while trying to delete media";
+    public static final String VALIDATE_MEDIA_IS_VISIBLE_OR_NOT_PASS = "I validate if media '%s' is '%s'";
+    public static final String VALIDATE_MEDIA_IS_VISIBLE_OR_NOT_FAIL = "Fail while trying to validate if media '%s' is '%s'";
+    public static final String VALIDATE_STORAGE_VALUE_DIFFERENT_FROM_EACH_OTHER_PASS = "I validate if storage value are different from each other";
+    public static final String VALIDATE_STORAGE_VALUE_DIFFERENT_FROM_EACH_OTHER_FAIL = "Fail while trying to validate if storage value are different from each other";
 
 }

@@ -28,7 +28,7 @@ public class MainPage extends BasePage{
     }
 
 
-    public static void validateIfElementIsVisible(String element,String status){
+    public static void validateIfElementIsVisibleOrNot(String element,String status){
         String passMessage = String.format(LogPage.VALIDATE_IF_ELEMENT_IS_VISIBLE_PASS,element,status);
         String failMessage = String.format(LogPage.VALIDATE_IF_ELEMENT_IS_VISIBLE_FAIL,element,status);
         try {
@@ -39,12 +39,14 @@ public class MainPage extends BasePage{
                     }else{
                         FailureDelegatePage.handlePageException(failMessage);
                     }
+                    break;
                 case "not visible":
                     if(!verifyIfElementIsVisible(By.cssSelector(returnElements(element)))){
                         ExtentReportsSetUp.testingPass(passMessage);
                     }else{
                         FailureDelegatePage.handlePageException(failMessage);
                     }
+                    break;
             }
         } catch (Exception e) {
             FailureDelegatePage.handlePageException(failMessage);
