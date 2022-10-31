@@ -123,17 +123,11 @@ public class BasePage {
         }
         return validation;
     }
-
+        // improve this
     public static boolean verifyGetAttribute(By by, String value)throws Exception{
         boolean validation = false;
         if(value!="" && value !=null){
-            wait(1000);
-            waitElementBy(by,10);
-            scrollToElement(by);
-            scrollTo("-150");
-            waitElementBy(by,10);
-            String returnText = getAtribute(by,"value");
-            validation = returnText.contains(value);
+            verifyGetAttribute(by,value,"value");
         }else{
             validation=true;
         }
