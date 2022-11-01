@@ -34,6 +34,10 @@ public class ActionsSteps {
     public static void openAction(String action) {
         ActionsPage.openAction(action);
     }
+    @Then("I search an action {string}")
+    public static void searchAction(String action) {
+        ActionsPage.searchAction(action);
+    }
     @Then("I verify action values index {string}")
     public static void verifyActionValues(String index) {
         ActionsPage.verifyActionValues(index);
@@ -41,6 +45,10 @@ public class ActionsSteps {
     @Then("I verify default action values index {string}")
     public static void verifyDefaultActionValues(String index) {
         ActionsPage.verifyDefaultActionValues(index);
+    }
+    @Then("I validate if link text is correct {string}")
+    public static void verifyLinkText(String text) {
+        ActionsPage.verifyLinkText(text);
     }
     @Then("I verify current action date time")
     public static void verifyCurrentActionDateField() {

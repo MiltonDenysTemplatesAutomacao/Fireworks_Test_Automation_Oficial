@@ -41,7 +41,6 @@ public class TasksPage extends BasePage{
     public static final String TASK_DELETE_MODAL_LABEL = "deleteTaskModalLabel";
     public static final String ARCHIVE_TASK_BUTTON = "taskArchiveButton";
     public static final String ACTIVATE_TASK_BUTTON = "taskActivateButton";
-    public static final String CLEAR_CHANGES_DISABLED_BUTTON = "#clearChangesButton[disabled]";
     public static final String TASK_SAVE_CHANGES_DISABLED_BUTTON = "#taskSaveButton[disabled]";
     public static final String TASK_NAME_DISABLED_FIELD = "#task_name[disabled]";
     public static final String TASK_MANAGER_TABLE_FILTER_BUTTON = "div.btn-group.columnFilter";
@@ -147,7 +146,7 @@ public class TasksPage extends BasePage{
 
         try {
             if(checkIfElementIsVisible(By.xpath(TASK_TYPE_DISABLED_DROPDOWN))&&
-            checkIfElementIsVisible(By.cssSelector(CLEAR_CHANGES_DISABLED_BUTTON))&&
+            checkIfElementIsVisible(By.cssSelector(ClearChangesPage.CLEAR_CHANGES_DISABLED_BUTTON))&&
             checkIfElementIsVisible(By.cssSelector(TASK_SAVE_CHANGES_DISABLED_BUTTON))&&
             checkIfElementIsVisible(By.id(ACTIVATE_TASK_BUTTON))){
                 ExtentReportsSetUp.testingPass(LogPage.VALIDATE_TASK_READ_ONLY_PASS);
@@ -156,7 +155,6 @@ public class TasksPage extends BasePage{
             FailureDelegatePage.handlePageException(LogPage.VALIDATE_TASK_READ_ONLY_FAIL);
         }
     }
-
 
     /*
      * Method to click on Yes button on delete task modal

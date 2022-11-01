@@ -848,5 +848,13 @@ public class LogPage {
     public static final String VALIDATE_MEDIA_IS_VISIBLE_OR_NOT_FAIL = "Fail while trying to validate if media '%s' is '%s'";
     public static final String VALIDATE_STORAGE_VALUE_DIFFERENT_FROM_EACH_OTHER_PASS = "I validate if storage value are different from each other";
     public static final String VALIDATE_STORAGE_VALUE_DIFFERENT_FROM_EACH_OTHER_FAIL = "Fail while trying to validate if storage value are different from each other";
+    public static final String VERIFY_EMAIL_FOUND_PASS = "I verify if email '%s' is found";
+    public static final String VERIFY_EMAIL_FOUND_FAIL = "Fail while trying to verify if email '%s' is found";
+    public static final String OPEN_EMAIL_PASS = "I open email '%s'";
+    public static final String OPEN_EMAIL_FAIL = "Fail while trying to open email '%s'";
+    public static final String SEARCH_ACTION_PASS = "I search an action '%s'";
+    public static final String SEARCH_ACTION_FAIL = "Fail while trying to search an action '%s'";
+    public static final String VERIFY_LINK_TEXT_PASS = "I validate if link text is correct '%s'";
+    public static final String VERIFY_LINK_TEXT_FAIL = "Fail while trying to validate if link text is correct '%s'";
 
 }

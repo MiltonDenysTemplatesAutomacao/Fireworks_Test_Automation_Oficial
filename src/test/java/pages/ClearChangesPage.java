@@ -10,6 +10,7 @@ public class ClearChangesPage extends BasePage{
     public static final String CLEAR_CHANGES_BUTTON = "#clearChangesButton";
     public static final String MODAL_CLEAR_CHANGES_CONFIRMATION_LABEL = "#clearChangesConfirmationModalLabel";
     public static final String MODAL_CLEAR_CHANGES_CONFIRMATION_BUTTON = "#modalSubmitButtonclearChangesConfirmation";
+    public static final String CLEAR_CHANGES_DISABLED_BUTTON = "#clearChangesButton[disabled]";
 
     public static void clearChanges(){
         try {

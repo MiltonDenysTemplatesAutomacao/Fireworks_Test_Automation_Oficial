@@ -2,21 +2,72 @@ package pages;
 
 import config.extent_reports.ExtentReportsSetUp;
 import org.openqa.selenium.By;
+import pages.records.ActionsPage;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class EmailPage extends BasePage{
 
-    public static final String CREATE_NEW_EMAIL_BUTTON = "#top-controls-create-new-email";
-    public static final String EMAIL_TYPE_DIRECT = "top-controls-create-new-email-direct-link";
-    public static final String EMAIL_TYPE_MARKETING = "top-controls-create-new-email-marketing-link";
-    public static final String EMAIL_TYPE_NON_MARKETING = "top-controls-create-new-email-non-marketing-link";
-    public static final String SEND_EMAIL_BUTTON = "#sendEmail";
-    public static final String PREVIEW_RECIPIENTS_MODAL_LABEL = "#previewRecipientsModalLabel";
-    public static final String PREVIEW_RECIPIENTS_MODAL_OK_BUTTON = "#modalSubmitButtonpreviewRecipients";
-    public static final String EMAIL_MANAGER_TABLE = "#emailManagerTable";
-    public static final String EMAIL_MANAGER_SEARCH_FIELD = "#emailManagerTableControlsTableSearch";
-    public static final String EMAIL_MANAGER_TABLE_ROW1_COLUMN1 = "#emailManagerTable_row_0_col_0";
-    public static final String EMAIL_MANAGER_TABLE_ROW1_COLUMN3 = "#emailManagerTable_row_0_col_3";
-    public static final String SCHEDULE_EMAIL_BUTTON = "#scheduleEmail";
+    private static final String CREATE_NEW_EMAIL_BUTTON = "#top-controls-create-new-email";
+    private static final String EMAIL_TYPE_DIRECT = "top-controls-create-new-email-direct-link";
+    private static final String EMAIL_TYPE_MARKETING = "top-controls-create-new-email-marketing-link";
+    private static final String EMAIL_TYPE_NON_MARKETING = "top-controls-create-new-email-non-marketing-link";
+    private static final String SEND_EMAIL_BUTTON = "#sendEmail";
+    private static final String PREVIEW_RECIPIENTS_MODAL_LABEL = "#previewRecipientsModalLabel";
+    private static final String PREVIEW_RECIPIENTS_MODAL_OK_BUTTON = "#modalSubmitButtonpreviewRecipients";
+    private static final String EMAIL_MANAGER_TABLE = "#emailManagerTable";
+    private static final String EMAIL_MANAGER_SEARCH_FIELD = "#emailManagerTableControlsTableSearch";
+    private static final String EMAIL_MANAGER_TABLE_ROW1_COLUMN1 = "#emailManagerTable_row_0_col_0";
+    private static final String EMAIL_MANAGER_TABLE_ROW1_COLUMN3 = "#emailManagerTable_row_0_col_3";
+    private static final String SCHEDULE_EMAIL_BUTTON = "#scheduleEmail";
+
+    public static String returnElements (String elements){
+        Map<String, String> returnElement = new HashMap<String, String>();
+        returnElement.put("clearChangesDisabledButton", ClearChangesPage.CLEAR_CHANGES_DISABLED_BUTTON);
+        returnElement.put("deleteActionDisabledButton", ActionsPage.DELETE_ACTION_DISABLED_BUTTON);
+        returnElement.put("saveChangesDisabledButton", ActionsPage.SAVE_CHANGES_DISABLED_BUTTON);
+        return returnElement.get(elements);
+    }
+
+    public static void validateIfElementIsVisibleOrNotForEmail(String element,String status){
+        String passMessage = String.format(LogPage.VALIDATE_IF_ELEMENT_IS_VISIBLE_PASS,element,status);
+        String failMessage = String.format(LogPage.VALIDATE_IF_ELEMENT_IS_VISIBLE_FAIL,element,status);
+        try {
+            switch (status){
+                case "visible":
+                    if(verifyIfElementIsVisible(By.cssSelector(returnElements(element)))){
+                        ExtentReportsSetUp.testingPass(passMessage);
+                    }else{
+                        FailureDelegatePage.handlePageException(failMessage);
+                    }
+                    break;
+                case "not visible":
+                    if(!verifyIfElementIsVisible(By.cssSelector(returnElements(element)))){
+                        ExtentReportsSetUp.testingPass(passMessage);
+                    }else{
+                        FailureDelegatePage.handlePageException(failMessage);
+                    }
+                    break;
+            }
+        } catch (Exception e) {
+            FailureDelegatePage.handlePageException(failMessage);
+        }
+    }
+
+    public static void openEmail(String emailSearch){
+        String passMessage = String.format(LogPage.OPEN_EMAIL_PASS,emailSearch);
+        String failMessage = String.format(LogPage.OPEN_EMAIL_FAIL,emailSearch);
+        try {
+            searchEmailManager(emailSearch);
+            verifyEmailFound(emailSearch);
+            clickOption(By.cssSelector(EMAIL_MANAGER_TABLE_ROW1_COLUMN1));
+            ExtentReportsSetUp.testingPass(passMessage);
+        } catch (Exception e) {
+            FailureDelegatePage.handlePageException(failMessage);
+        }
+    }
+
 
     public static void scheduleEmail(){
         try {
@@ -27,16 +78,18 @@ public class EmailPage extends BasePage{
         }
     }
     public static void verifyEmailFound(String emailName){
+        String passMessage = String.format(LogPage.VERIFY_EMAIL_FOUND_PASS,emailName);
+        String failMessage = String.format(LogPage.VERIFY_EMAIL_FOUND_FAIL,emailName);
         try {
             waitElementBy(By.cssSelector(EMAIL_MANAGER_TABLE),20);
             String emailText= getText(By.cssSelector(EMAIL_MANAGER_TABLE_ROW1_COLUMN1));
             if(emailName.equals(emailText)){
-                System.out.println(true);
+                ExtentReportsSetUp.testingPass(passMessage);
             }else{
-                System.out.println(false);
+                FailureDelegatePage.handlePageException(failMessage);
             }
         } catch (Exception e) {
-
+            FailureDelegatePage.handlePageException(failMessage);
         }
 
     }

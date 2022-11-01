@@ -13,6 +13,10 @@ public class EmailSteps {
     public static void sendEmail() {
         EmailPage.sendEmail();
     }
+    @When("I open email {string}")
+    public static void openEmail(String emailSearch) {
+        EmailPage.openEmail(emailSearch);
+    }
     @When("I confirm EmailSend")
     public static void confirmEmailSend() {
         EmailPage.confirmEmailSend();
@@ -24,5 +28,9 @@ public class EmailSteps {
     @When("I schedule an email")
     public static void scheduleEmail() {
         EmailPage.scheduleEmail();
+    }
+    @When("I validate if element {string} is {string} for email")
+    public static void validateIfElementIsVisibleOrNotForEmail(String element,String status) {
+        EmailPage.validateIfElementIsVisibleOrNotForEmail(element,status);
     }
 }

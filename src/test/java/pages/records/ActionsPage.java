@@ -34,7 +34,22 @@ public class ActionsPage extends BasePage {
     public static final String DELETE_ACTION_CANCEL_BUTTON = "#modalCancelButtondeleteConfirm";
     public static final String ACTIONS_MANAGER_TABLE_ROW1 = "#actionsSummaryTable_row_0";
     public static final String ACTIONS_MANAGER_TABLE_ROW2 = "#actionsSummaryTable_row_1";
+    public static final String SAVE_CHANGES_DISABLED_BUTTON = "#actionSaveChangesButton[disabled]";
+    public static final String CHILDREN_LINK = "#child_action_link_62";
 
+    public static void verifyLinkText(String text){
+        String passMessage = String.format(LogPage.VERIFY_LINK_TEXT_PASS,text);
+        String failMessage = String.format(LogPage.VERIFY_LINK_TEXT_FAIL,text);
+        try {
+            if(verifyGetText(By.cssSelector(CHILDREN_LINK),text)){
+                ExtentReportsSetUp.testingPass(passMessage);
+            }else{
+                FailureDelegatePage.handlePageException(failMessage);
+            }
+        } catch (Exception e) {
+            FailureDelegatePage.handlePageException(failMessage);
+        }
+    }
     public static void verifyActionManagerTableRow2IsNotDisplayed(){
         try {
             if(!verifyIfElementsIsVisible(By.cssSelector(ACTIONS_MANAGER_TABLE_ROW2))){
@@ -239,9 +254,16 @@ public class ActionsPage extends BasePage {
         }
 
     }
-    public static void searchAction(String action)throws Exception{
-        waitUntilElementToBeSelected(By.id(ACTIONS_MANAGER_SEARCH_FIELD),20);
-        write(By.id(ACTIONS_MANAGER_SEARCH_FIELD),action);
+    public static void searchAction(String action){
+        String passMessage = String.format(LogPage.SEARCH_ACTION_PASS,action);
+        String failMessage = String.format(LogPage.SEARCH_ACTION_FAIL,action);
+        try {
+            waitUntilElementToBeSelected(By.id(ACTIONS_MANAGER_SEARCH_FIELD),20);
+            write(By.id(ACTIONS_MANAGER_SEARCH_FIELD),action);
+            ExtentReportsSetUp.testingPass(passMessage);
+        } catch (Exception e) {
+            FailureDelegatePage.handlePageException(failMessage);
+        }
     }
     /*
      * for this method if there is any value for index on step the values will come from datatable case there is no value for index
@@ -249,6 +271,7 @@ public class ActionsPage extends BasePage {
      */
     public static void verifyActionDataTableValues(String index,String category, String action, String staff, String actionDate, String comments){
         try {
+            wait(2000);
             int indexNumber = Integer.parseInt(index);
             if(MainPage.verifyGetText(By.cssSelector(ACTIONS_MANAGER_TABLE),mass.get(indexNumber).get("Category"))
                 && MainPage.verifyGetText(By.cssSelector(ACTIONS_MANAGER_TABLE),mass.get(indexNumber).get("Action"))

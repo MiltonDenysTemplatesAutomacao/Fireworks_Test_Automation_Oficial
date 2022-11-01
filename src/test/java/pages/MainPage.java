@@ -27,7 +27,6 @@ public class MainPage extends BasePage{
         return returnElement.get(elements);
     }
 
-
     public static void validateIfElementIsVisibleOrNot(String element,String status){
         String passMessage = String.format(LogPage.VALIDATE_IF_ELEMENT_IS_VISIBLE_PASS,element,status);
         String failMessage = String.format(LogPage.VALIDATE_IF_ELEMENT_IS_VISIBLE_FAIL,element,status);
