@@ -168,7 +168,7 @@ public class ActionsPage extends BasePage {
     }
     public static void verifyCurrentActionDateField(){
         try {
-            if(verifyCurrentDateField(By.cssSelector(ACTION_DATE_FIELD))){
+            if(verifyDateFieldWithoutHour(By.cssSelector(ACTION_DATE_FIELD))){
                 ExtentReportsSetUp.testingPass(LogPage.VERIFY_BASIC_IDENTIFICATION_VALUES_PASS);
             }else{
                 FailureDelegatePage.handlePageException(LogPage.VERIFY_ACTION_DATE_FIELD_PASS);

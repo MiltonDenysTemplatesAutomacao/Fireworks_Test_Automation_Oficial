@@ -51,6 +51,7 @@ Feature: Email Sent System Action
     And I verify action Datatable values index "0", values "", "", "", "", ""
     And I open an action "Email Event"
     And I verify action values index "0"
+    And I verify current action date time
     Then I validate if element "clearChangesDisabledButton" is "visible" for email
     Then I validate if element "deleteActionDisabledButton" is "visible" for email
     Then I validate if element "saveChangesDisabledButton" is "visible" for email

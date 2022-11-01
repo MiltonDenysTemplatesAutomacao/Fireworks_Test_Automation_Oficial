@@ -489,12 +489,12 @@ public class BasePage {
     public static boolean verifyCurrentDateField(By by)throws Exception{
         String currentDateTime = currentDateTime();
         String dateTimeText = getAtribute(by,"value");
-        return dateTimeText.equals(currentDateTime);
+        return dateTimeText.contains(currentDateTime);
     }
     public static boolean verifyDateFieldWithoutHour(By by)throws Exception{
         String currentDateTime = currentDateTimeWithoutHour();
         String dateTimeText = getAtribute(by,"value");
-        return dateTimeText.equals(currentDateTime);
+        return dateTimeText.contains(currentDateTime);
     }
     /*
      * Method to validate if a message contains the correct
