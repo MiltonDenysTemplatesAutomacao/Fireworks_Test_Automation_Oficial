@@ -31,14 +31,14 @@ Feature: Actions Edit actions
     And I verify action Datatable values index "0", values "", "", "", "", ""
     And I navigate to Actions
     And I open an action "Campus Events"
-    And I verify action values index "0"
+    And I verify default action values index "0"
     And I update action person "1"
     Then I click on Save Changes button in Actions
     And I close alert if return this message "Action has been updated."
     #to reopen the action to verify
     And I navigate to Actions
     And I open an action "Admitted Student Day: Register"
-    And I verify action values index "1"
+    And I verify default action values index "1"
     #to verify default values of a new Action after editing an action
     And I navigate to Actions
     And I click on add action button

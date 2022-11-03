@@ -40,6 +40,7 @@ public class ActionsPage extends BasePage {
     public static void verifyLinkText(String text){
         String passMessage = String.format(LogPage.VERIFY_LINK_TEXT_PASS,text);
         String failMessage = String.format(LogPage.VERIFY_LINK_TEXT_FAIL,text);
+        wait(1000);
         try {
             if(verifyGetText(By.cssSelector(CHILDREN_LINK),text)){
                 ExtentReportsSetUp.testingPass(passMessage);
@@ -189,17 +190,6 @@ public class ActionsPage extends BasePage {
         }
     }
 
-    public static void verifyActionValues(String index){
-        try {
-            if(verifyActionAttributes(index) && verifyActionDetails(index)){
-                ExtentReportsSetUp.testingPass(LogPage.VERIFY_ACTION_VALUES_PASS);
-            }else{
-                FailureDelegatePage.handlePageException(LogPage.VERIFY_ACTION_VALUES_FAIL);
-            }
-        } catch (Exception e) {
-            FailureDelegatePage.handlePageException(LogPage.VERIFY_ACTION_VALUES_FAIL);
-        }
-    }
     public static boolean verifyActionAttributes(String index) {
         int indexNumber = Integer.parseInt(index);
         boolean validation = false;

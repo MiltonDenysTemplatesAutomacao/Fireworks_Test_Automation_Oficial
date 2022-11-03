@@ -5,7 +5,7 @@
 @EmailSentSystemAction
 Feature: Email Sent System Action
 
-  @EmailSentSystemActionScenarios @Done @Email
+  @EmailSentSystemActionPersonScenarios @Done @Email
   Scenario: email actions are recorded for persons
     Given I login as "firestarterUsername", "firestarterPassword", "firestarterFullName"
     When I create a person
@@ -50,10 +50,38 @@ Feature: Email Sent System Action
       |Email Event  |Email Sent |Fire Starter |
     And I verify action Datatable values index "0", values "", "", "", "", ""
     And I open an action "Email Event"
-    And I verify action values index "0"
+    And I verify default action values index "0"
     And I verify current action date time
     Then I validate if element "clearChangesDisabledButton" is "visible" for email
     Then I validate if element "deleteActionDisabledButton" is "visible" for email
     Then I validate if element "saveChangesDisabledButton" is "visible" for email
     Then I validate if link text is correct "Campus Events: Admitted Student Day: Attend on 01/01/2016 by Fire Starter"
 
+  @EmailSentSystemActionOrganizationScenarios @Done @Email
+  Scenario: email actions are recorded for organizatons
+    Given I login as "firestarterUsername", "firestarterPassword", "firestarterFullName"
+    When I create an organization
+      |Name	         |Role		             |Phone		     |PhoneType  |Address1	 |City	  |State   |PostalCode |Country		  |Staff |Category|Action|ActionType|ActionVisibility|
+      |Illuminati HQ |Religious Institution  |201-793-5175   |Business   |205 West St|New York|New York|10282      |United States |Select|Select  |Select|Select    |Select          |
+    And I validate if "Organization has been created." message is correct
+    And I validate if "Illuminati HQ"summary opened properly
+    And I navigate to contact
+    And I click on create a new email on contact for organization "justyourimagination@orisit.com", "School", "", "Inquiry", "Subscribed", "", "", "" group "0"
+    And I click on save changes in contact for organization
+    And I close alert if return this message "Organization has been updated."
+    #to create an email
+    And I navigate to email manager page
+    And I click on create a new email button and select type "Marketing"
+    When I update Email Start Tab "", "User Email Actions Org test 6095", "", "", "justyourimagination@orisit.com"
+    And I click on save and continue on Marketing Email Composer
+    And I close alert if return this message "Email has been created."
+    And I update Email Headers Tab "", "sender.email@fire-engine-red.com", "", "Subject Line test 6095", "", ""
+    And I click on save and continue on Marketing Email Composer
+    And I close alert if return this message "Email has been updated."
+    And I update Email Content Tab "Body Content test 6095. Testing that user email actions are recorded to organization records when the email is sent", ""
+    And I click on save and continue on Marketing Email Composer
+    And I click on save and continue on Marketing Email Composer
+    And I validate if "Email has been updated." message is correct
+    And I click on finish tab
+    #verify the action fields are empty by default
+    And I verify default action values index "0"

@@ -38,10 +38,6 @@ public class ActionsSteps {
     public static void searchAction(String action) {
         ActionsPage.searchAction(action);
     }
-    @Then("I verify action values index {string}")
-    public static void verifyActionValues(String index) {
-        ActionsPage.verifyActionValues(index);
-    }
     @Then("I verify default action values index {string}")
     public static void verifyDefaultActionValues(String index) {
         ActionsPage.verifyDefaultActionValues(index);

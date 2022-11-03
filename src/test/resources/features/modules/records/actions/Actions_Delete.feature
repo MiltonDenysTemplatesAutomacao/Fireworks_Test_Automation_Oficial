@@ -24,7 +24,7 @@ Feature: Actions Delete Actions
     #to delete the action
     And I verify action Datatable values index "0", values "", "", "", "", ""
     And I open an action "Campus Events"
-    And I verify action values index "0"
+    And I verify default action values index "0"
     And I delete action
     Then I close alert if return this message "Action has been deleted."
     And I navigate to Actions
