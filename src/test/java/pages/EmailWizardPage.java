@@ -2,6 +2,7 @@ package pages;
 
 import config.extent_reports.ExtentReportsSetUp;
 import org.openqa.selenium.By;
+import pages.records.ActionsPage;
 
 public class EmailWizardPage extends BasePage{
 
@@ -43,6 +44,23 @@ public class EmailWizardPage extends BasePage{
     public static final String ACTION_COMMENTS_FIELD = "#action_comments";
     public static final String PREVIEW_RECIPIENTS_MODAL_TABLE = "#previewEmailRecipientsTable_row_0";
 
+    public static void verifyOrganizationActionFinishTab(String category, String action, String actionType, String actionVisibility,String staff, String actionDateTime, String comments){
+        try {
+            if(verifyGetText(By.id(OrgPage.ORG_ACTION_CATEGORY_DROPDOWN),category)
+                    && verifyGetText(By.id(OrgPage.ORG_ACTION_DROPDOWN),action)
+                    && verifyGetText(By.cssSelector(OrgPage.ACTION_TYPE_DISABLED_DROPDOWN),actionType)
+                    && verifyGetText(By.cssSelector(OrgPage.ACTION_VISIBILITY_DISABLED_DROPDOWN),actionVisibility)
+                    && verifyGetText(By.id(ActionsPage.ACTION_STAFF_DROPDOWN),staff)
+                    && verifyGetAttribute(By.cssSelector(ACTION_DATE_FIELD),actionDateTime)
+                    && verifyGetAttribute(By.cssSelector(ACTION_COMMENTS_FIELD),comments)){
+                ExtentReportsSetUp.testingPass(LogPage.VERIFY_RECIPIENTS_PREVIEW_PASS);
+            }else{
+                FailureDelegatePage.handlePageException(LogPage.VERIFY_RECIPIENTS_PREVIEW_FAIL);
+            }
+        } catch (Exception e) {
+            FailureDelegatePage.handlePageException(LogPage.VERIFY_RECIPIENTS_PREVIEW_FAIL);
+        }
+    }
     public static void verifyRecipientsPreview(String firstName, String lastName, String emailAddress, String reason, String validRecipients){
         try {
             wait(2000);
@@ -73,6 +91,34 @@ public class EmailWizardPage extends BasePage{
             }
             if (staff != ""){
                 MainPage.clickOptionList(By.cssSelector(ACTION_STAFF_DROPDOWN),
+                        staff,
+                        By.cssSelector(PersonPage.SELECT_DROP));
+            }
+            if (actionDateTime != ""){
+                MainPage.fillDateField(By.cssSelector(ACTION_DATE_FIELD), actionDateTime);
+            }
+            if (comments != ""){
+                MainPage.fillField(By.cssSelector(ACTION_COMMENTS_FIELD), comments);
+            }
+            ExtentReportsSetUp.testingPass(LogPage.UPDATE_EMAIL_FINISH_TAB_PASS);
+        } catch (Exception e) {
+            FailureDelegatePage.handlePageException(LogPage.UPDATE_EMAIL_FINISH_TAB_FAIL);
+        }
+    }
+    public static void updateOrgEmailFinishTab(String category, String action, String staff, String actionDateTime, String comments){
+        try {
+            if (category != ""){
+                MainPage.clickOptionList(By.id(OrgPage.ORG_ACTION_CATEGORY_DROPDOWN),
+                        category,
+                        By.cssSelector(PersonPage.SELECT_DROP));
+            }
+            if (action != ""){
+                MainPage.clickOptionList(By.id(OrgPage.ORG_ACTION_DROPDOWN),
+                        action,
+                        By.cssSelector(PersonPage.SELECT_DROP));
+            }
+            if (staff != ""){
+                MainPage.clickOptionList(By.id(ActionsPage.ACTION_STAFF_DROPDOWN),
                         staff,
                         By.cssSelector(PersonPage.SELECT_DROP));
             }

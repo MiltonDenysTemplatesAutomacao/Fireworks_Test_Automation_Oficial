@@ -8,6 +8,13 @@ import pages.records.application.ApplicationComponentsPage;
 import java.util.HashMap;
 
 public class OrgPage extends BasePage{
+    public static final String ACTION_CATEGORY_DROPDOWN = "div#s2id_org_action_category_id.select2-container.form-control.parentSelect.select2.required a.select2-choice";
+    public static final String ACTION_DROPDOWN = "div#s2id_org_action_id.select2-container.form-control.childSelect.select2.required a.select2-choice";
+    public static final String ACTION_TYPE_DISABLED_DROPDOWN = "div#s2id_org_action_type_id.select2-container.form-control.actionTypeIdSelector.select2.select2-container-disabled a.select2-choice";
+    public static final String ORG_ACTION_CATEGORY_DROPDOWN = "s2id_org_action_category_id";
+    public static final String ORG_ACTION_DROPDOWN = "s2id_org_action_id";
+    public static final String ACTION_VISIBILITY_DISABLED_DROPDOWN = "div#s2id_org_action_visibility_id.select2-container.form-control.actionVisibilityIdSelector.select2.select2-container-disabled a.select2-choice";
+    public static final String ACTION_STAFF_DROPDOWN = "div#s2id_org_action_staff.select2-container.form-control.select2.required a.select2-choice";
     public static final String HEADER_RECORD_STATUS_ELEMENT = "orgHeaderRecordStatusButton";
     public static final String HEADER_OK_TO_CONTACT_ELEMENT = "personHeaderContactButton";
     public static final String HEADER_ORG_CATEGORY_ELEMENT = "orgHeaderCategoryButton";
@@ -43,18 +50,11 @@ public class OrgPage extends BasePage{
     private static final String SUMMARY_DISPLAY_ORG_PHONE_NUMBER_DELETE_BUTTON = "//div[@id='summaryPanelFieldBlock_368']/div[2]/div/div/button";
     private static final String SUMMARY_DISPLAY_ORG_PHONE_TIME_ZONE_DELETE_BUTTON = "//div[@id='summaryPanelFieldBlock_509']/div[2]/div/div/button";
     private static final String SUMMARY_DISPLAY_ORG_FIREWORKS_ID_DELETE_BUTTON = "//div[@id='summaryPanelFieldBlock_436']/div[2]/div/div/button";
-    private static final String ORG_ACTION_CATEGORY_DROPDOWN = "s2id_org_action_category_id";
-    private static final String ORG_ACTION_DROPDOWN = "s2id_org_action_id";
     private static final String ORG_ACTION_STAFF_DROPDOWN = "s2id_org_action_staff";
     private static final String ORG_ACTION_DATE_FIELD = "#org_action_date";
     private static final String CREATE_ACTION_PANEL_TITLE = "div#actions span.panel-title.responsive-pull-left";
-    private static final String ACTION_STAFF_DROPDOWN = "div#s2id_org_action_staff.select2-container.form-control.select2.required a.select2-choice";
     private static final String ACTION_DATE_FIELD = "#org_action_date";
     private static final String ACTION_COMMENTS_FIELD = "#org_action_comments";
-    private static final String ACTION_CATEGORY_DROPDOWN = "div#s2id_org_action_category_id.select2-container.form-control.parentSelect.select2.required a.select2-choice";
-    private static final String ACTION_DROPDOWN = "div#s2id_org_action_id.select2-container.form-control.childSelect.select2.required a.select2-choice";
-    private static final String ACTION_TYPE_DISABLED_DROPDOWN = "div#s2id_org_action_type_id.select2-container.form-control.actionTypeIdSelector.select2.select2-container-disabled a.select2-choice";
-    private static final String ACTION_VISIBILITY_DISABLED_DROPDOWN = "div#s2id_org_action_visibility_id.select2-container.form-control.actionVisibilityIdSelector.select2.select2-container-disabled a.select2-choice";
     private static final String BASIC_ORG_ROLE_DROPDOWN = "div#s2id_org_role.select2-container.form-control.select2.required a.select2-choice";
     private static final String BASIC_ORG_TYPE_DROPDOWN = "div#s2id_org_type.select2-container.form-control.select2 a.select2-choice";
     private static final String BASIC_ORG_WEBSITE_FIELD = "#org_website";

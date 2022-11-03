@@ -84,4 +84,15 @@ Feature: Email Sent System Action
     And I validate if "Email has been updated." message is correct
     And I click on finish tab
     #verify the action fields are empty by default
-    And I verify default action values index "0"
+    And I verify action values for organization on finish tab index "Select", "Select", "Select", "Select", "Select", "", ""
+    #verify defaults after selecting a category and action
+    And I update Email Finish Tab for organization "Organization", "Call In", "Fire Starter", "01/01/2016", ""
+    #to send the email
+    And I send email
+    And I confirm EmailSend
+    Then I validate if "Email has been queued." message is correct
+    #to wait until the email is sent
+    And I navigate to email manager page
+    When I wait until email sent "User Email Actions Org test 6095"
+    And I open email "User Email Actions Org test 6095"
+    #to verify the actions were added to the organization

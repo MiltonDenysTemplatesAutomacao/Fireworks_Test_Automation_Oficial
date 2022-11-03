@@ -856,5 +856,7 @@ public class LogPage {
     public static final String SEARCH_ACTION_FAIL = "Fail while trying to search an action '%s'";
     public static final String VERIFY_LINK_TEXT_PASS = "I validate if link text is correct '%s'";
     public static final String VERIFY_LINK_TEXT_FAIL = "Fail while trying to validate if link text is correct '%s'";
+    public static final String VERIFY_ORGANIZATION_ACTION_FINISH_TAB_PASS = "Fail while trying to validate if link text is correct '%s'";
+    public static final String VERIFY_ORGANIZATION_ACTION_FINISH_TAB_FAIL = "Fail while trying to validate if link text is correct '%s'";
 
 }

@@ -28,6 +28,14 @@ public class EmailWizardSteps {
     public static void updateEmailFinishTab(String category, String action, String staff, String actionDateTime, String comments) {
         EmailWizardPage.updateEmailFinishTab(category,action,staff,actionDateTime,comments);
     }
+    @When("I verify action values for organization on finish tab index {string}, {string}, {string}, {string}, {string}, {string}, {string}")
+    public static void verifyOrganizationActionFinishTab(String category, String action, String actionType, String actionVisibility,String staff, String actionDateTime, String comments) {
+        EmailWizardPage.verifyOrganizationActionFinishTab(category,action,actionType,actionVisibility,staff,actionDateTime,comments);
+    }
+    @When("I update Email Finish Tab for organization {string}, {string}, {string}, {string}, {string}")
+    public static void updateOrgEmailFinishTab(String category, String action, String staff, String actionDateTime, String comments) {
+        EmailWizardPage.updateOrgEmailFinishTab(category,action,staff,actionDateTime,comments);
+    }
     @When("I verify RecipientsPreview {string}, {string}, {string}, {string}, {string}")
     public static void verifyRecipientsPreview(String firstName, String lastName, String emailAddress, String reason, String validRecipients) {
         EmailWizardPage.verifyRecipientsPreview(firstName,lastName,emailAddress,reason,validRecipients);
