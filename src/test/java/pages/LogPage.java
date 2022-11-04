@@ -818,6 +818,7 @@ public class LogPage {
     public static final String VALIDATE_IF_ELEMENT_IS_VISIBLE_FAIL = "Fail while trying to validate if element '%s' is '%s'";
     public static final String VALIDATE_IF_ELEMENT_IS_NOT_VISIBLE_PASS = "I validate if element '%s' is not visible";
     public static final String VALIDATE_IF_ELEMENT_IS_NOT_VISIBLE_FAIL = "Fail while trying to validate if element '%s' is not visible";
+    public static final String VALIDATE_IF_ELEMENT_ERROR = "Fail while trying to validate if element '%s' is visible or not";
     public static final String NAVIGATE_FOOTER_COMMUNICATIONS_MENU_PASS = "I navigate to footer communications menu";
     public static final String NAVIGATE_FOOTER_COMMUNICATIONS_MENU_FAIL = "Fail while trying to navigate to footer communications menu";
     public static final String SEARCH_CHATS_MANAGER_PASS = "I search chat";
@@ -856,7 +857,7 @@ public class LogPage {
     public static final String SEARCH_ACTION_FAIL = "Fail while trying to search an action '%s'";
     public static final String VERIFY_LINK_TEXT_PASS = "I validate if link text is correct '%s'";
     public static final String VERIFY_LINK_TEXT_FAIL = "Fail while trying to validate if link text is correct '%s'";
-    public static final String VERIFY_ORGANIZATION_ACTION_FINISH_TAB_PASS = "Fail while trying to validate if link text is correct '%s'";
-    public static final String VERIFY_ORGANIZATION_ACTION_FINISH_TAB_FAIL = "Fail while trying to validate if link text is correct '%s'";
+    public static final String NAVIGATE_EMAIL_SETTINGS_PAGE_PASS = "I navigate to Email settings page";
+    public static final String NAVIGATE_EMAIL_SETTINGS_PAGE_FAIL = "Fail while trying to navigate to Email settings page";
 
 }

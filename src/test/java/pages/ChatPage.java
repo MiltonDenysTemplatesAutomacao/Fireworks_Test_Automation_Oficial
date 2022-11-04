@@ -165,8 +165,8 @@ public class ChatPage extends BasePage{
         }
     }
     public static void verifyEmailContact(String emailContact){
-        String passMessage = String.format(LogPage.UPDATE_EMAIL_CONTACT_PASS,emailContact);
-        String failMessage = String.format(LogPage.UPDATE_EMAIL_CONTACT_FAIL,emailContact);
+        String passMessage = String.format(LogPage.VERIFY_EMAIL_CONTACT_PASS,emailContact);
+        String failMessage = String.format(LogPage.VERIFY_EMAIL_CONTACT_FAIL,emailContact);
         try {
             if(verifyGetAttribute(By.cssSelector(EMAIL_CONTACT_FIELD),emailContact)){
                 ExtentReportsSetUp.testingPass(passMessage);

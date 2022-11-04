@@ -11,6 +11,10 @@ public class GlobalNavSteps {
     public static void navigateToTask() {
         GlobalNavPage.navigateToTasks();
     }
+    @And("I navigate to Email settings page")
+    public static void navigateEmailSettingsPage() {
+        GlobalNavPage.navigateEmailSettingsPage();
+    }
     @And("I navigate to tools")
     public static void navigateToTools() {
         GlobalNavPage.navigateToTools();

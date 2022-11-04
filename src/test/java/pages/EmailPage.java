@@ -8,7 +8,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class EmailPage extends BasePage{
-
+    public static final String EMAIL_SETTINGS_TAB = "body > section > div > ul > li:nth-child(3) > a";
     private static final String CREATE_NEW_EMAIL_BUTTON = "#top-controls-create-new-email";
     private static final String EMAIL_TYPE_DIRECT = "top-controls-create-new-email-direct-link";
     private static final String EMAIL_TYPE_MARKETING = "top-controls-create-new-email-marketing-link";
@@ -33,27 +33,29 @@ public class EmailPage extends BasePage{
     }
 
     public static void validateIfElementIsVisibleOrNotForEmail(String element,String status){
-        String passMessage = String.format(LogPage.VALIDATE_IF_ELEMENT_IS_VISIBLE_PASS,element,status);
-        String failMessage = String.format(LogPage.VALIDATE_IF_ELEMENT_IS_VISIBLE_FAIL,element,status);
+        String passMessageVisible = String.format(LogPage.VALIDATE_IF_ELEMENT_IS_VISIBLE_PASS,element,status);
+        String failMessageVisible = String.format(LogPage.VALIDATE_IF_ELEMENT_IS_VISIBLE_FAIL,element,status);
+        String passMessageNotVisible = String.format(LogPage.VALIDATE_IF_ELEMENT_IS_NOT_VISIBLE_PASS,element,status);
+        String failMessageNotVisible = String.format(LogPage.VALIDATE_IF_ELEMENT_IS_NOT_VISIBLE_FAIL,element,status);
         try {
             switch (status){
                 case "visible":
                     if(verifyIfElementIsVisible(By.cssSelector(returnElements(element)))){
-                        ExtentReportsSetUp.testingPass(passMessage);
+                        ExtentReportsSetUp.testingPass(passMessageVisible);
                     }else{
-                        FailureDelegatePage.handlePageException(failMessage);
+                        FailureDelegatePage.handlePageException(failMessageVisible);
                     }
                     break;
                 case "not visible":
                     if(!verifyIfElementIsVisible(By.cssSelector(returnElements(element)))){
-                        ExtentReportsSetUp.testingPass(passMessage);
+                        ExtentReportsSetUp.testingPass(passMessageNotVisible);
                     }else{
-                        FailureDelegatePage.handlePageException(failMessage);
+                        FailureDelegatePage.handlePageException(failMessageNotVisible);
                     }
                     break;
             }
         } catch (Exception e) {
-            FailureDelegatePage.handlePageException(failMessage);
+            FailureDelegatePage.handlePageException(LogPage.VALIDATE_IF_ELEMENT_ERROR);
         }
     }
 
