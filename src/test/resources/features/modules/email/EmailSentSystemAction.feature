@@ -34,7 +34,7 @@ Feature: Email Sent System Action
     And I verify default action values index "1"
     #to send the email
     And I send email
-    And I confirm EmailSend
+    And I confirm EmailSend "Person"
     Then I validate if "Email has been queued." message is correct
     #to wait until the email is sent
     And I navigate to email manager page
@@ -55,7 +55,7 @@ Feature: Email Sent System Action
     Then I validate if element "clearChangesDisabledButton" is "visible" for email
     Then I validate if element "deleteActionDisabledButton" is "visible" for email
     Then I validate if element "saveChangesDisabledButton" is "visible" for email
-    Then I validate if link text is correct "Campus Events: Admitted Student Day: Attend on 01/01/2016 by Fire Starter"
+    Then I validate if link text is correct "Campus Events: Admitted Student Day: Attend on 01/01/2016 by Fire Starter" for "Person"
 
   @EmailSentSystemActionOrganizationScenarios @Done @Email
   Scenario: email actions are recorded for organizatons
@@ -89,10 +89,28 @@ Feature: Email Sent System Action
     And I update Email Finish Tab for organization "Organization", "Call In", "Fire Starter", "01/01/2016", ""
     #to send the email
     And I send email
-    And I confirm EmailSend
+    And I confirm EmailSend "Organization"
     Then I validate if "Email has been queued." message is correct
     #to wait until the email is sent
     And I navigate to email manager page
     When I wait until email sent "User Email Actions Org test 6095"
     And I open email "User Email Actions Org test 6095"
     #to verify the actions were added to the organization
+    And I navigate to organization on Records
+    And I open an organization record by "Illuminati HQ"
+    And I navigate to Actions
+    And I search an action "Email Event"
+    And I use datatable
+      |Category     |Action     |Staff        |ActionType|ActionVisibility|
+      |Email Event  |Email Sent |Fire Starter |          |                |
+      |Organization |Call In    |             |Staff     |Primary         |
+    And I verify action Datatable values index "0", values "", "", "", "", ""
+    And I verify current action date time on datatable
+    And I open an action "Email Event"
+    Then I validate if element "clearChangesDisabledButton" is "visible" for email
+    Then I validate if element "deleteActionDisabledButton" is "visible" for email
+    Then I validate if element "saveChangesDisabledButton" is "visible" for email
+    And I navigate to Actions
+    And I open an action "Organization"
+    And I verify action values for organization index 1
+    Then I validate if link text is correct "Email Event: Email Sent on 11/04/2022 by Fire Starter" for "Organization"

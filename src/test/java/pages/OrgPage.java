@@ -189,6 +189,7 @@ public class OrgPage extends BasePage{
 
     public static boolean verifyActionDetails(int indexNumber)throws Exception{
         boolean validation = false;
+        wait(2000);
         if (MainPage.verifyGetText(By.cssSelector(ACTION_CATEGORY_DROPDOWN), mass.get(indexNumber).get("Category"))
                 && MainPage.verifyGetText(By.cssSelector(ACTION_DROPDOWN), mass.get(indexNumber).get("Action"))
                 && MainPage.verifyGetText(By.cssSelector(ACTION_TYPE_DISABLED_DROPDOWN), mass.get(indexNumber).get("ActionType"))

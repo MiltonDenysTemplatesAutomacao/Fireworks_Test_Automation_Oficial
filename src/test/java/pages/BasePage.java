@@ -491,9 +491,14 @@ public class BasePage {
         String dateTimeText = getAtribute(by,"value");
         return dateTimeText.contains(currentDateTime);
     }
-    public static boolean verifyDateFieldWithoutHour(By by)throws Exception{
+    public static boolean verifyDateFieldWithoutHourByValue(By by)throws Exception{
         String currentDateTime = currentDateTimeWithoutHour();
         String dateTimeText = getAtribute(by,"value");
+        return dateTimeText.contains(currentDateTime);
+    }
+    public static boolean verifyDateFieldWithoutHourByText(By by)throws Exception{
+        String currentDateTime = currentDateTimeWithoutHour();
+        String dateTimeText = getText(by);
         return dateTimeText.contains(currentDateTime);
     }
     /*

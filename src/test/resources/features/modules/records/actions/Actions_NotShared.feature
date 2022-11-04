@@ -49,7 +49,7 @@ Feature: Exact match auto-merge on rule 5: IDType-ID-LastName,Email recipients c
     And I click on finish tab
     And I update Email Finish Tab "Campus Events", "Admitted Student Day: Register", "Fire Starter", "01/20/2020", "OriginalComments"
     And I send email
-    And I confirm EmailSend
+    And I confirm EmailSend "Person"
     Then I validate if "Email has been queued." message is correct
     #to wait until the email is sent
     And I wait until email sent "Actions NotShared 6100"

@@ -17,9 +17,9 @@ public class EmailSteps {
     public static void openEmail(String emailSearch) {
         EmailPage.openEmail(emailSearch);
     }
-    @When("I confirm EmailSend")
-    public static void confirmEmailSend() {
-        EmailPage.confirmEmailSend();
+    @When("I confirm EmailSend {string}")
+    public static void confirmEmailSend(String type) {
+        EmailPage.confirmEmailSend(type);
     }
     @When("I wait until email sent {string}")
     public static void waitUntilEmailSent(String emailName) {

@@ -15,7 +15,9 @@ public class EmailPage extends BasePage{
     private static final String EMAIL_TYPE_NON_MARKETING = "top-controls-create-new-email-non-marketing-link";
     private static final String SEND_EMAIL_BUTTON = "#sendEmail";
     private static final String PREVIEW_RECIPIENTS_MODAL_LABEL = "#previewRecipientsModalLabel";
+    private static final String PREVIEW_RECIPIENTS_ORG_MODAL_LABEL = "#previewOrgRecipientsModalLabel";
     private static final String PREVIEW_RECIPIENTS_MODAL_OK_BUTTON = "#modalSubmitButtonpreviewRecipients";
+    private static final String PREVIEW_RECIPIENTS_ORG_MODAL_OK_BUTTON = "#modalSubmitButtonpreviewOrgRecipients";
     private static final String EMAIL_MANAGER_TABLE = "#emailManagerTable";
     private static final String EMAIL_MANAGER_SEARCH_FIELD = "#emailManagerTableControlsTableSearch";
     private static final String EMAIL_MANAGER_TABLE_ROW1_COLUMN1 = "#emailManagerTable_row_0_col_0";
@@ -125,19 +127,36 @@ public class EmailPage extends BasePage{
         waitUntilElementToBeSelected(By.cssSelector(PREVIEW_RECIPIENTS_MODAL_OK_BUTTON),20);
         click(By.cssSelector(PREVIEW_RECIPIENTS_MODAL_OK_BUTTON));
     }
+    public static void confirmPreviewOrgOK()throws Exception{
+        waitUntilElementToBeSelected(By.cssSelector(PREVIEW_RECIPIENTS_ORG_MODAL_OK_BUTTON),20);
+        click(By.cssSelector(PREVIEW_RECIPIENTS_ORG_MODAL_OK_BUTTON));
+    }
     public static void verifySendEmailConfirmationModal()throws Exception{
         waitElementBy(By.cssSelector(PREVIEW_RECIPIENTS_MODAL_LABEL),20);
         verifyIfEquals(By.cssSelector(PREVIEW_RECIPIENTS_MODAL_LABEL),"Preview Recipients");
     }
-    public static void confirmEmailSend(){
+    public static void verifySendEmailOrgConfirmationModal()throws Exception{
+        waitElementBy(By.cssSelector(PREVIEW_RECIPIENTS_ORG_MODAL_LABEL),20);
+        verifyIfEquals(By.cssSelector(PREVIEW_RECIPIENTS_ORG_MODAL_LABEL),"Preview Recipients");
+    }
+    public static void confirmEmailSend(String type){
         try {
-            waitElementBy(By.cssSelector(PREVIEW_RECIPIENTS_MODAL_LABEL),20);
-            verifySendEmailConfirmationModal();
-            confirmPreviewOK();
-            ExtentReportsSetUp.testingPass(LogPage.CONFIRM_EMAIL_SEND_PASS);
+            switch (type){
+                case "Person":
+                    waitElementBy(By.cssSelector(PREVIEW_RECIPIENTS_MODAL_LABEL),20);
+                    verifySendEmailConfirmationModal();
+                    confirmPreviewOK();
+                    ExtentReportsSetUp.testingPass(LogPage.CONFIRM_EMAIL_SEND_PASS);
+                    break;
+                case "Organization":
+                    waitElementBy(By.cssSelector(PREVIEW_RECIPIENTS_ORG_MODAL_LABEL),20);
+                    verifySendEmailOrgConfirmationModal();
+                    confirmPreviewOrgOK();
+                    ExtentReportsSetUp.testingPass(LogPage.CONFIRM_EMAIL_SEND_PASS);
+                    break;
+            }
         } catch (Exception e) {
             FailureDelegatePage.handlePageException(LogPage.CONFIRM_EMAIL_SEND_PASS);
-
         }
     }
     public static void sendEmail(){

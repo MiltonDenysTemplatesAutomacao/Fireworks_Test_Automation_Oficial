@@ -42,13 +42,17 @@ public class ActionsSteps {
     public static void verifyDefaultActionValues(String index) {
         ActionsPage.verifyDefaultActionValues(index);
     }
-    @Then("I validate if link text is correct {string}")
-    public static void verifyLinkText(String text) {
-        ActionsPage.verifyLinkText(text);
+    @Then("I validate if link text is correct {string} for {string}")
+    public static void verifyLinkText(String text,String type) {
+        ActionsPage.verifyLinkText(text,type);
     }
     @Then("I verify current action date time")
     public static void verifyCurrentActionDateField() {
         ActionsPage.verifyCurrentActionDateField();
+    }
+    @Then("I verify current action date time on datatable")
+    public static void verifyCurrentActionDateFieldOnDataTable() {
+        ActionsPage.verifyCurrentActionDateFieldOnDataTable();
     }
     @Then("I delete action")
     public static void deleteAction() {

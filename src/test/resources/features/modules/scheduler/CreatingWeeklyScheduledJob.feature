@@ -32,7 +32,7 @@ Feature: Creating a weekly scheduled job / Deleting a scheduled job
     And I schedule an email
     #care about last validation here
     And I verify RecipientsPreview "Ann", "Savage", "ASavage@actors.com", "", ""
-    And I confirm EmailSend
+    And I confirm EmailSend "Person"
     #to enter schedule data for the email
     When I update job details "Scheduler Test Weekly Email", "", "01/20/2019 7:10 AM", "Alaska", ""
     And I update Frequency1Weekly "Every Week", "Monday", "02:30 PM", "03/29/2021 2:31 PM"

@@ -694,8 +694,8 @@ public class LogPage {
     public static final String VERIFY_ACTION_ATTRIBUTES_FAIL = "Fail while trying to verify actions attributes '%s'";
     public static final String VERIFY_ACTION_DETAILS_PASS = "I verify actions details '%s'";
     public static final String VERIFY_ACTION_DETAILS_FAIL = "Fail while trying to verify actions details '%s'";
-    public static final String VERIFY_ACTION_DATE_FIELD_PASS = "Fail while trying to verify actions details '%s'";
-    public static final String VERIFY_ACTION_DATE_FIELD_FAIL = "Fail while trying to verify actions details '%s'";
+    public static final String VERIFY_ACTION_DATE_FIELD_PASS = "I verify current action date time";
+    public static final String VERIFY_ACTION_DATE_FIELD_FAIL = "Fail while trying to verify current action date time";
     public static final String VERIFY_ROLES_ACTIVE_PASS = "I verify if '%s' role are selected";
     public static final String VERIFY_ROLES_ACTIVE_FAIL = "Fail while trying to verify if '%s' role are selected";
     public static final String QUICK_SEARCH_FROM_HEADER_PASS = "I quick search '%s' from header";

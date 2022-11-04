@@ -36,16 +36,28 @@ public class ActionsPage extends BasePage {
     public static final String ACTIONS_MANAGER_TABLE_ROW2 = "#actionsSummaryTable_row_1";
     public static final String SAVE_CHANGES_DISABLED_BUTTON = "#actionSaveChangesButton[disabled]";
     public static final String CHILDREN_LINK = "#child_action_link_62";
+    public static final String PARENT_LINK = "#parent_action_link_61";
 
-    public static void verifyLinkText(String text){
+    public static void verifyLinkText(String text,String type){
         String passMessage = String.format(LogPage.VERIFY_LINK_TEXT_PASS,text);
         String failMessage = String.format(LogPage.VERIFY_LINK_TEXT_FAIL,text);
         wait(1000);
         try {
-            if(verifyGetText(By.cssSelector(CHILDREN_LINK),text)){
-                ExtentReportsSetUp.testingPass(passMessage);
-            }else{
-                FailureDelegatePage.handlePageException(failMessage);
+            switch (type){
+                case "Person":
+                    if(verifyGetText(By.cssSelector(CHILDREN_LINK),text)){
+                        ExtentReportsSetUp.testingPass(passMessage);
+                    }else{
+                        FailureDelegatePage.handlePageException(failMessage);
+                    }
+                    break;
+                case "Organization":
+                    if(verifyGetText(By.cssSelector(PARENT_LINK),text)){
+                        ExtentReportsSetUp.testingPass(passMessage);
+                    }else{
+                        FailureDelegatePage.handlePageException(failMessage);
+                    }
+                    break;
             }
         } catch (Exception e) {
             FailureDelegatePage.handlePageException(failMessage);
@@ -169,7 +181,18 @@ public class ActionsPage extends BasePage {
     }
     public static void verifyCurrentActionDateField(){
         try {
-            if(verifyDateFieldWithoutHour(By.cssSelector(ACTION_DATE_FIELD))){
+            if(verifyDateFieldWithoutHourByValue(By.cssSelector(ACTION_DATE_FIELD))){
+                ExtentReportsSetUp.testingPass(LogPage.VERIFY_BASIC_IDENTIFICATION_VALUES_PASS);
+            }else{
+                FailureDelegatePage.handlePageException(LogPage.VERIFY_ACTION_DATE_FIELD_PASS);
+            }
+        } catch (Exception e) {
+            FailureDelegatePage.handlePageException(LogPage.VERIFY_ACTION_DATE_FIELD_FAIL);
+        }
+    }
+    public static void verifyCurrentActionDateFieldOnDataTable(){
+        try {
+            if(verifyDateFieldWithoutHourByText(By.cssSelector(ACTIONS_MANAGER_TABLE))){
                 ExtentReportsSetUp.testingPass(LogPage.VERIFY_BASIC_IDENTIFICATION_VALUES_PASS);
             }else{
                 FailureDelegatePage.handlePageException(LogPage.VERIFY_ACTION_DATE_FIELD_PASS);
@@ -250,6 +273,7 @@ public class ActionsPage extends BasePage {
         try {
             waitUntilElementToBeSelected(By.id(ACTIONS_MANAGER_SEARCH_FIELD),20);
             write(By.id(ACTIONS_MANAGER_SEARCH_FIELD),action);
+            wait(3000);
             ExtentReportsSetUp.testingPass(passMessage);
         } catch (Exception e) {
             FailureDelegatePage.handlePageException(failMessage);
