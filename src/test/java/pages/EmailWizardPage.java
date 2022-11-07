@@ -43,7 +43,31 @@ public class EmailWizardPage extends BasePage{
     public static final String ACTION_DATE_FIELD = "#action_date";
     public static final String ACTION_COMMENTS_FIELD = "#action_comments";
     public static final String PREVIEW_RECIPIENTS_MODAL_TABLE = "#previewEmailRecipientsTable_row_0";
+    public static final String TEXT = "#emailContentText";
+    public static final String HTML = "previewEmailContentHtml";
+    public static final String HTMLBody = "#html";
 
+    public static void verifyMessageHeader(String senderName,String senderEmail,String replyToEmail,String subject,String preheaders,String html,String text){
+        try {
+            if(verifyGetAttribute(By.cssSelector(SENDER_NAME_FIELD),senderName)
+                && verifyGetAttribute(By.cssSelector(SENDER_EMAIL_FIELD),senderEmail)
+                && verifyGetAttribute(By.cssSelector(REPLY_TO_EMAIL_FIELD),replyToEmail)
+                && verifyGetAttribute(By.cssSelector(SUBJECT_FIELD),subject)
+                && verifyGetAttribute(By.cssSelector(PREHEADERS_FIELD),preheaders)
+                //fix element to get text
+                    && verifyElementWithIFrame(By.id(HTML),
+                    HTML,
+                    By.cssSelector(HTMLBody),
+                    html)
+                && verifyGetAttribute(By.cssSelector(TEXT),text)){
+                ExtentReportsSetUp.testingPass(LogPage.VERIFY_MESSAGE_HEADER_PASS);
+            }else{
+                FailureDelegatePage.handlePageException(LogPage.VERIFY_MESSAGE_HEADER_FAIL);
+            }
+        } catch (Exception e) {
+            FailureDelegatePage.handlePageException(LogPage.VERIFY_MESSAGE_HEADER_FAIL);
+        }
+    }
     public static void verifyOrganizationActionFinishTab(String category, String action, String actionType, String actionVisibility,String staff, String actionDateTime, String comments){
         try {
             if(verifyGetText(By.id(OrgPage.ORG_ACTION_CATEGORY_DROPDOWN),category)

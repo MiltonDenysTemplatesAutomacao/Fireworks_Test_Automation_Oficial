@@ -127,7 +127,11 @@ public class BasePage {
     public static boolean verifyGetAttribute(By by, String value)throws Exception{
         boolean validation = false;
         if(value!="" && value !=null){
-            verifyGetAttribute(by,value,"value");
+            if (verifyGetAttribute(by,value,"value")){
+                validation=true;
+            }else{
+                validation=false;
+            }
         }else{
             validation=true;
         }

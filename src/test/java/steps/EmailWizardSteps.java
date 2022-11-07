@@ -40,4 +40,8 @@ public class EmailWizardSteps {
     public static void verifyRecipientsPreview(String firstName, String lastName, String emailAddress, String reason, String validRecipients) {
         EmailWizardPage.verifyRecipientsPreview(firstName,lastName,emailAddress,reason,validRecipients);
     }
+    @When("I validate message header {string}, {string}, {string}, {string}, {string}, {string}, {string}")
+    public static void verifyMessageHeader(String senderName,String senderEmail,String replyToEmail,String subject,String preheaders,String html,String text) {
+        EmailWizardPage.verifyMessageHeader(senderName,senderEmail,replyToEmail,subject,preheaders,html,text);
+    }
 }

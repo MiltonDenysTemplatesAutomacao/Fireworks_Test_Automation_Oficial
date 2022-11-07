@@ -859,5 +859,7 @@ public class LogPage {
     public static final String VERIFY_LINK_TEXT_FAIL = "Fail while trying to validate if link text is correct '%s'";
     public static final String NAVIGATE_EMAIL_SETTINGS_PAGE_PASS = "I navigate to Email settings page";
     public static final String NAVIGATE_EMAIL_SETTINGS_PAGE_FAIL = "Fail while trying to navigate to Email settings page";
+    public static final String VERIFY_MESSAGE_HEADER_PASS = "I validate message header";
+    public static final String VERIFY_MESSAGE_HEADER_FAIL = "Fail while trying to validate message header";
 
 }

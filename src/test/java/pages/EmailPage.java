@@ -72,7 +72,6 @@ public class EmailPage extends BasePage{
         }
     }
 
-
     public static void scheduleEmail(){
         try {
             clickOption(By.cssSelector(SCHEDULE_EMAIL_BUTTON));
