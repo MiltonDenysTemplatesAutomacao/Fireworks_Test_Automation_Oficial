@@ -82,6 +82,15 @@ public class BasePage {
         switchToDefaultContent();
         return verification;
     }
+    public static boolean verifyElementWithIFrameByAttribute(By element,String iframe,By elementToValidate,String value,String tag)throws Exception{
+        wait(2000);
+        scrollToElement(element);
+        scrollTo("-150");
+        switchToIFrame(iframe);
+        boolean verification = verifyGetAttribute(elementToValidate,value,tag);
+        switchToDefaultContent();
+        return verification;
+    }
     public static void fillElementWithIFrame(String iFrame, By iFrameElement,String value)throws Exception{
         switchToIFrame(iFrame);
         waitElementBy(iFrameElement, 10);
@@ -103,6 +112,21 @@ public class BasePage {
             scrollTo("-150");
             String currentDateTimeWithoutHour = currentDateTimeWithoutHour();
             validation = currentDateTimeWithoutHour.contains(value);
+        }else{
+            validation=true;
+        }
+        return validation;
+    }
+    public static boolean verifyGetTagName(By by,String value)throws Exception{
+        boolean validation = false;
+        if(value!="" && value!= null){
+            wait(1000);
+            waitElementBy(by,10);
+            scrollToElement(by);
+            scrollTo("-150");
+            waitElementBy(by,10);
+            String returnText = getTagName(by);
+            validation = returnText.contains(value);
         }else{
             validation=true;
         }
@@ -424,6 +448,9 @@ public class BasePage {
 
     public static String getText(By by) throws Exception {
         return DriverBase.getDriver().findElement(by).getText();
+    }
+    public static String getTagName(By by) throws Exception {
+        return DriverBase.getDriver().findElement(by).getTagName();
     }
 
     public static String getAtribute(By by, String value) throws Exception {

@@ -43,9 +43,30 @@ public class EmailWizardPage extends BasePage{
     public static final String ACTION_DATE_FIELD = "#action_date";
     public static final String ACTION_COMMENTS_FIELD = "#action_comments";
     public static final String PREVIEW_RECIPIENTS_MODAL_TABLE = "#previewEmailRecipientsTable_row_0";
-    public static final String TEXT = "#emailContentText";
+    public static final String TEXT = "previewEmailContentText";
+    public static final String TEXT_BODY = "/html/body";
+    public static final String TEXT_TAB = "//*[text() = 'Text']";
     public static final String HTML = "previewEmailContentHtml";
-    public static final String HTMLBody = "#html";
+    public static final String HTML_BODY = "/html/body/p";
+
+    public static boolean validateMessageBodyText(String value)throws Exception{
+        boolean validation = false;
+        clickOption(By.xpath(TEXT_TAB));
+        if(value!="" && value !=null){
+            if(verifyElementWithIFrameByAttribute(By.id(TEXT),
+                    TEXT,
+                    By.xpath(TEXT_BODY),
+                    value,
+                    "innerHTML")){
+                validation = true;
+            }else{
+                validation = false;
+            }
+        }else{
+            validation = true;
+        }
+        return validation;
+    }
 
     public static void verifyMessageHeader(String senderName,String senderEmail,String replyToEmail,String subject,String preheaders,String html,String text){
         try {
@@ -54,12 +75,11 @@ public class EmailWizardPage extends BasePage{
                 && verifyGetAttribute(By.cssSelector(REPLY_TO_EMAIL_FIELD),replyToEmail)
                 && verifyGetAttribute(By.cssSelector(SUBJECT_FIELD),subject)
                 && verifyGetAttribute(By.cssSelector(PREHEADERS_FIELD),preheaders)
-                //fix element to get text
                     && verifyElementWithIFrame(By.id(HTML),
                     HTML,
-                    By.cssSelector(HTMLBody),
+                    By.xpath(HTML_BODY),
                     html)
-                && verifyGetAttribute(By.cssSelector(TEXT),text)){
+                && validateMessageBodyText(text)){
                 ExtentReportsSetUp.testingPass(LogPage.VERIFY_MESSAGE_HEADER_PASS);
             }else{
                 FailureDelegatePage.handlePageException(LogPage.VERIFY_MESSAGE_HEADER_FAIL);
