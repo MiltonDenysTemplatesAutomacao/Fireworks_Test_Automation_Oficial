@@ -13,5 +13,13 @@ public class EmailSettingsSteps {
     public static void clickTestLists() {
         EmailSettingsPage.clickTestLists();
     }
+    @And("I click on create test list button")
+    public static void clickCreateTestListButton() {
+        EmailSettingsPage.clickCreateTestListButton();
+    }
+    @And("I update test list {string}, {string}, {string}")
+    public static void updateTestList(String name,String description,String recipients) {
+        EmailSettingsPage.updateTestList(name,description,recipients);
+    }
 
 }

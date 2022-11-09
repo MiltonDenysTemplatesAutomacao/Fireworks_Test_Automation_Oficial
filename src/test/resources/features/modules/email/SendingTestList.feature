@@ -10,4 +10,9 @@ Feature: Sending Test Email to Test List
     #to create a test list
     And I navigate to Email settings page
     And I click on Test Lists
+    And I click on create test list button
+    When I update test list "6035TestList", "Test List for 6035", "test1-6035@ferfun.com"
+    And I click on "Save Changes"
+    And I close alert if return this message "Email test list has been created."
+    #to send a test email to a test list
 

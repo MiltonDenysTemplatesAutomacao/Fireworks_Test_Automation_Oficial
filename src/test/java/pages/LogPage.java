@@ -863,5 +863,9 @@ public class LogPage {
     public static final String VERIFY_MESSAGE_HEADER_FAIL = "Fail while trying to validate message header";
     public static final String CLICK_TEST_LISTS_PASS = "I click on Test Lists";
     public static final String CLICK_TEST_LISTS_FAIL = "Fail while trying to click on Test Lists";
+    public static final String CLICK_CREATE_TEST_LIST_BUTTON_PASS = "FI click on create test list button";
+    public static final String CLICK_CREATE_TEST_LIST_BUTTON_FAIL = "Fail while trying to click on create test list button";
+    public static final String UPDATE_TEST_LIST_PASS = "I update test list";
+    public static final String UPDATE_TEST_LIST_FAIL = "Fail while trying to update test list";
 
 }

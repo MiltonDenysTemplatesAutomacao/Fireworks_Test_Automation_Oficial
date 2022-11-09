@@ -23,7 +23,29 @@ public class EmailSettingsPage extends BasePage {
     public static final String CAN_SPAM_COUNTRY_INPUT_FIELD = "#s2id_autogen2_search";
     public static final String CAN_SPAM_POSTAL_CODE = "#address_postal_code";
     public static final String TEST_LISTS_TAB = "#emailSettingsNavTab_test_lists";
+    public static final String CREATE_TEST_LIST_BUTTON = "#top-controls-create-new-test-list";
+    public static final String TEST_LIST_NAME = "#name";
+    public static final String TEST_LIST_DESCRIPTION = "#description";
+    public static final String TEST_LIST_RECIPIENTS = "#email_addresses";
 
+    public static void updateTestList(String name,String description,String recipients){
+        try {
+            fillField(By.cssSelector(TEST_LIST_NAME),name);
+            fillField(By.cssSelector(TEST_LIST_DESCRIPTION),description);
+            fillField(By.cssSelector(TEST_LIST_RECIPIENTS),recipients);
+            ExtentReportsSetUp.testingPass(LogPage.UPDATE_TEST_LIST_PASS);
+        } catch (Exception e) {
+            FailureDelegatePage.handlePageException(LogPage.UPDATE_TEST_LIST_FAIL);
+        }
+    }
+    public static void clickCreateTestListButton(){
+        try {
+            clickOption(By.cssSelector(CREATE_TEST_LIST_BUTTON));
+            ExtentReportsSetUp.testingPass(LogPage.CLICK_CREATE_TEST_LIST_BUTTON_PASS);
+        } catch (Exception e) {
+            FailureDelegatePage.handlePageException(LogPage.CLICK_CREATE_TEST_LIST_BUTTON_PASS);
+        }
+    }
     public static void clickTestLists(){
         try {
             clickOption(By.cssSelector(TEST_LISTS_TAB));
