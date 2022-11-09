@@ -23,7 +23,7 @@ Feature: Email Footer
     When I update Email Start Tab "", "Marketing Footer test 6010", "", "", "rbolle@ballet.com"
     And I click on save and continue on Marketing Email Composer
     And I close alert if return this message "Email has been created."
-    And I update Email Headers Tab "Fire Starter", "firestarter@fire-engine-red.com", "", "Subject Marketing Footer test 6010", "", ""
+    And I update Email Headers Tab "Fire Starter", "rbolle@ballet.com", "", "Subject Marketing Footer test 6010", "", ""
     And I click on save and continue on Marketing Email Composer
     And I close alert if return this message "Email has been updated."
     And I update Email Content Tab "HTML body content for Marketing Footer test 6010", "TEXT body content for Marketing Footer test 6010"
@@ -41,7 +41,7 @@ Feature: Email Footer
     When I wait until email sent "Marketing Footer test 6010"
     #to verify the sent email in mailtrap
     And I open email "Marketing Footer test 6010"
-    And I validate message header "Fire Starter", "firestarter@fire-engine-red.com", "", "Subject Marketing Footer test 6010", "", "HTML body content for Marketing Footer test 6010", "TEXT body content for Marketing Footer test 6010"
+    And I validate message header "Fire Starter", "firestarter@fire-engine-red.com", "", "Subject Marketing Footer test 6010", "", "HTML body content for Marketing Footer test 6010", "TEXT body content for Marketing Footer test 6010" status "visible"
     #to check the contents of the can-spam footer
 
   @EmailFooterScenario2 @Done @Email
@@ -82,5 +82,5 @@ Feature: Email Footer
     When I wait until email sent "No Footer test 6020"
     #to verify the sent email in mailtrap
     And I open email "No Footer test 6020"
-    #And I validate message header "Fire Starter", "firestarter@fire-engine-red.com", "", "Subject No Footer test 6020", "", "HTML body content for No Footer test 6020", "HTML body content for No Footer test 6020"
+    And I validate message header "Fire Starter", "firestarter@fire-engine-red.com", "", "Subject No Footer test 6020", "", "HTML body content for No Footer test 6020", "TEXT body content for No Footer test 6020" status "visible"
     #to check the contents of the can-spam footer

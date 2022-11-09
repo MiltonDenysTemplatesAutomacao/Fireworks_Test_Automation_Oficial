@@ -861,5 +861,7 @@ public class LogPage {
     public static final String NAVIGATE_EMAIL_SETTINGS_PAGE_FAIL = "Fail while trying to navigate to Email settings page";
     public static final String VERIFY_MESSAGE_HEADER_PASS = "I validate message header";
     public static final String VERIFY_MESSAGE_HEADER_FAIL = "Fail while trying to validate message header";
+    public static final String CLICK_TEST_LISTS_PASS = "I click on Test Lists";
+    public static final String CLICK_TEST_LISTS_FAIL = "Fail while trying to click on Test Lists";
 
 }

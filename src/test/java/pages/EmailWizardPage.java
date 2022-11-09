@@ -68,21 +68,40 @@ public class EmailWizardPage extends BasePage{
         return validation;
     }
 
-    public static void verifyMessageHeader(String senderName,String senderEmail,String replyToEmail,String subject,String preheaders,String html,String text){
+    public static void verifyMessageHeader(String senderName,String senderEmail,String replyToEmail,String subject,String preheaders,String html,String text,String status){
         try {
-            if(verifyGetAttribute(By.cssSelector(SENDER_NAME_FIELD),senderName)
-                && verifyGetAttribute(By.cssSelector(SENDER_EMAIL_FIELD),senderEmail)
-                && verifyGetAttribute(By.cssSelector(REPLY_TO_EMAIL_FIELD),replyToEmail)
-                && verifyGetAttribute(By.cssSelector(SUBJECT_FIELD),subject)
-                && verifyGetAttribute(By.cssSelector(PREHEADERS_FIELD),preheaders)
-                    && verifyElementWithIFrame(By.id(HTML),
-                    HTML,
-                    By.xpath(HTML_BODY),
-                    html)
-                && validateMessageBodyText(text)){
-                ExtentReportsSetUp.testingPass(LogPage.VERIFY_MESSAGE_HEADER_PASS);
-            }else{
-                FailureDelegatePage.handlePageException(LogPage.VERIFY_MESSAGE_HEADER_FAIL);
+            switch (status){
+                case "visible":
+                    if(verifyGetAttribute(By.cssSelector(SENDER_NAME_FIELD),senderName)
+                            && verifyGetAttribute(By.cssSelector(SENDER_EMAIL_FIELD),senderEmail)
+                            && verifyGetAttribute(By.cssSelector(REPLY_TO_EMAIL_FIELD),replyToEmail)
+                            && verifyGetAttribute(By.cssSelector(SUBJECT_FIELD),subject)
+                            && verifyGetAttribute(By.cssSelector(PREHEADERS_FIELD),preheaders)
+                            && verifyElementWithIFrame(By.id(HTML),
+                            HTML,
+                            By.xpath(HTML_BODY),
+                            html)
+                            && validateMessageBodyText(text)){
+                        ExtentReportsSetUp.testingPass(LogPage.VERIFY_MESSAGE_HEADER_PASS);
+                    }else{
+                        FailureDelegatePage.handlePageException(LogPage.VERIFY_MESSAGE_HEADER_FAIL);
+                    }
+                    break;
+                case "not visible":
+                    if(!verifyGetAttribute(By.cssSelector(SENDER_NAME_FIELD),senderName)
+                            && !verifyGetAttribute(By.cssSelector(SENDER_EMAIL_FIELD),senderEmail)
+                            && !verifyGetAttribute(By.cssSelector(REPLY_TO_EMAIL_FIELD),replyToEmail)
+                            && !verifyGetAttribute(By.cssSelector(SUBJECT_FIELD),subject)
+                            && !verifyGetAttribute(By.cssSelector(PREHEADERS_FIELD),preheaders)
+                            && !verifyElementWithIFrame(By.id(HTML),
+                            HTML,
+                            By.xpath(HTML_BODY),
+                            html)
+                            && !validateMessageBodyText(text)){
+                        ExtentReportsSetUp.testingPass(LogPage.VERIFY_MESSAGE_HEADER_PASS);
+                    }else{
+                        FailureDelegatePage.handlePageException(LogPage.VERIFY_MESSAGE_HEADER_FAIL);
+                    }
             }
         } catch (Exception e) {
             FailureDelegatePage.handlePageException(LogPage.VERIFY_MESSAGE_HEADER_FAIL);

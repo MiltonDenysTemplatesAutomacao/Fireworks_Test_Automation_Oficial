@@ -22,7 +22,16 @@ public class EmailSettingsPage extends BasePage {
     public static final String CAN_SPAM_COUNTRY_DROPDOWN = "#s2id_address_country";
     public static final String CAN_SPAM_COUNTRY_INPUT_FIELD = "#s2id_autogen2_search";
     public static final String CAN_SPAM_POSTAL_CODE = "#address_postal_code";
+    public static final String TEST_LISTS_TAB = "#emailSettingsNavTab_test_lists";
 
+    public static void clickTestLists(){
+        try {
+            clickOption(By.cssSelector(TEST_LISTS_TAB));
+            ExtentReportsSetUp.testingPass(LogPage.CLICK_TEST_LISTS_PASS);
+        } catch (Exception e) {
+            FailureDelegatePage.handlePageException(LogPage.CLICK_TEST_LISTS_FAIL);
+        }
+    }
     public static void setCANSPAMDefaultProfile(int index){
         try {
             fillField(By.cssSelector(CAN_SPAM_ORG_NAME_FIELD),mass.get(index).get("OrganizationName"));
