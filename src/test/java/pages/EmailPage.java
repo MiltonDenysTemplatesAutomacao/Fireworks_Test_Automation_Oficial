@@ -1,8 +1,11 @@
 package pages;
 
 import config.extent_reports.ExtentReportsSetUp;
+import io.github.cdimascio.dotenv.Dotenv;
 import org.openqa.selenium.By;
 import pages.records.ActionsPage;
+import support.mailtrap.MailTrapApi;
+import support.mailtrap.entity.MessageEntity;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -24,6 +27,35 @@ public class EmailPage extends BasePage{
     private static final String EMAIL_MANAGER_TABLE_ROW1_COLUMN3 = "#emailManagerTable_row_0_col_3";
     private static final String SCHEDULE_EMAIL_BUTTON = "#scheduleEmail";
 
+    public static void testEmailHasBeenSent(String subject ){
+        try {
+            //instaciate dotenv to get variables from .env file and set here
+            Dotenv dotenv = Dotenv.load();
+            //Instanciating MailTrap Api
+            MailTrapApi mailTrapApi = new MailTrapApi(dotenv.get("MAILTRAP_API_TOKEN"),dotenv.get("MAILTRAP_ACCOUNT_ID"),dotenv.get("MAILTRAP_INBOX_ID"));
+            //search message list by subject on mailtrap
+            MessageEntity[] response = mailTrapApi.searchMessage(subject);
+            //get the first message from the list
+            MessageEntity message = response[0];
+            //get the subject and save in a variable
+            String subjectFromApi = message.subject;
+            //get the from email and save in a variable
+            String fromEmailApi = message.from_email;
+            //get html body message and save in a variable(for this it is necessary a new request because html is not included on the first request)
+            String html = mailTrapApi.getHtmlBody(message.id);
+            //request for mail trap to delete a message
+            MessageEntity deletedMessage = mailTrapApi.deleteMessage(message.id);
+
+            if(subject.equals(message.subject)){
+                System.out.println(true);
+            }else{
+                System.out.println(false);
+            }
+
+        } catch (Exception e) {
+
+        }
+    }
     public static String returnElements (String elements){
         Map<String, String> returnElement = new HashMap<String, String>();
         returnElement.put("clearChangesDisabledButton", ClearChangesPage.CLEAR_CHANGES_DISABLED_BUTTON);

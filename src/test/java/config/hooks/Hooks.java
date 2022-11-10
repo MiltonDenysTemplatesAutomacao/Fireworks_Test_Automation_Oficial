@@ -1,16 +1,14 @@
 package config.hooks;
 
 import config.DriverBase;
-import config.browser_factory.DriverFactory;
 import config.extent_reports.ExtentReportsSetUp;
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
 import io.cucumber.java.Scenario;
-import io.github.cdimascio.dotenv.Dotenv;
 import io.cucumber.java.BeforeAll;
 import io.cucumber.java.AfterAll;
-import org.junit.AfterClass;
-import org.junit.BeforeClass;
+
+import io.github.cdimascio.dotenv.Dotenv;
 import org.openqa.selenium.remote.RemoteWebDriver;
 
 public class Hooks extends DriverBase {
@@ -24,9 +22,10 @@ public class Hooks extends DriverBase {
     @Before
     public void init(Scenario scenario) throws Exception {
         ExtentReportsSetUp.startTestReport(scenario.getName());
+        Dotenv dotenv = Dotenv.configure().load();
         instantiateDriverObject();
         driver = getDriver();
-        String url = System.getenv("APP_URL");
+        String url = dotenv.get("APP_URL");
         driver.get(url);
 
     }

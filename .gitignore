@@ -32,6 +32,7 @@
 *.ipr
 *.iws
 .idea
+.env
 
 
 # Miscelaneous #
