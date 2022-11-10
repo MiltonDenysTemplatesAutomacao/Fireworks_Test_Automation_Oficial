@@ -532,6 +532,29 @@ public class BasePage {
         String dateTimeText = getText(by);
         return dateTimeText.contains(currentDateTime);
     }
+
+    public static boolean verify2StringEquals(String actual, String expected) throws Exception {
+        boolean validation = false;
+        if(actual!="" && actual !=null){
+            if (actual.equals(expected)) {
+                validation = true;
+            }
+        }else{
+            validation = true;
+        }
+        return validation;
+    }
+    public static boolean verify2StringContains(String actual, String expected) throws Exception {
+        boolean validation = false;
+        if(actual!="" && actual !=null){
+            if (actual.contains(expected)) {
+                validation = true;
+            }
+        }else{
+            validation = true;
+        }
+        return validation;
+    }
     /*
      * Method to validate if a message contains the correct
      */

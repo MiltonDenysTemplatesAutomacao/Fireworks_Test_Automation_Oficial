@@ -27,7 +27,33 @@ public class EmailPage extends BasePage{
     private static final String EMAIL_MANAGER_TABLE_ROW1_COLUMN3 = "#emailManagerTable_row_0_col_3";
     private static final String SCHEDULE_EMAIL_BUTTON = "#scheduleEmail";
 
-    public static void testEmailHasBeenSent(String subject ){
+    public static void validateEmailOnMailTrap(String subject,String fromEmail,String fromName,String toName){
+        String passMessage = String.format(LogPage.VALIDATE_EMAIL_ON_MAIL_TRAP_PASS);
+        String failMessage = String.format(LogPage.VALIDATE_EMAIL_ON_MAIL_TRAP_PASS);
+        try {
+            //instaciate dotenv to get variables from .env file and set here
+            Dotenv dotenv = Dotenv.load();
+            //Instanciating MailTrap Api
+            MailTrapApi mailTrapApi = new MailTrapApi(dotenv.get("MAILTRAP_API_TOKEN"),dotenv.get("MAILTRAP_ACCOUNT_ID"),dotenv.get("MAILTRAP_INBOX_ID"));
+            //search message list by subject on mailtrap
+            MessageEntity[] response = mailTrapApi.searchMessage(subject);
+            //get the first message from the list
+            MessageEntity message = response[0];
+
+            if(verify2StringEquals(subject,message.subject)
+                && verify2StringEquals(fromEmail,message.from_email)
+                && verify2StringEquals(fromName,message.from_name)
+                && verify2StringEquals(toName,message.to_name)){
+                ExtentReportsSetUp.testingPass(passMessage);
+            }else{
+                FailureDelegatePage.handlePageException(failMessage);
+            }
+        } catch (Exception e) {
+            FailureDelegatePage.handlePageException(failMessage);
+        }
+    }
+
+    public static void testEmailHasBeenSent(String subject){
         try {
             //instaciate dotenv to get variables from .env file and set here
             Dotenv dotenv = Dotenv.load();

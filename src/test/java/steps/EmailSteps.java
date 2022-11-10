@@ -9,6 +9,14 @@ public class EmailSteps {
     public static void createNewEmail(String type) {
         EmailPage.createNewEmail(type);
     }
+//    @When("I search email by api on mail trap {string}")
+//    public static void searchEmailSubjectByApiOnMailTrap(String subject) {
+//        EmailPage.searchEmailSubjectByApiOnMailTrap(subject);
+//    }
+    @When("I verify if email was sent correctly {string}, {string}, {string}, {string}")
+    public static void validateEmailOnMailTrap(String subject,String fromEmail,String fromName,String toName) {
+        EmailPage.validateEmailOnMailTrap(subject,fromEmail,fromName,toName);
+    }
     @When("I send email")
     public static void sendEmail() {
         EmailPage.sendEmail();

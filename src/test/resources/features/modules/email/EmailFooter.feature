@@ -40,9 +40,13 @@ Feature: Email Footer
     And I navigate to email manager page
     When I wait until email sent "Marketing Footer test 6010"
     #to verify the sent email in mailtrap
-    And I open email "Marketing Footer test 6010"
-    And I validate message header "Fire Starter", "firestarter@fire-engine-red.com", "", "Subject Marketing Footer test 6010", "", "HTML body content for Marketing Footer test 6010", "TEXT body content for Marketing Footer test 6010" status "visible"
-    #to check the contents of the can-spam footer
+    #And I search email by api on mail trap "Marketing Footer test 6010"
+    When I verify if email was sent correctly "", "", "", ""
+
+
+#    And I open email "Marketing Footer test 6010"
+#    And I validate message header "Fire Starter", "firestarter@fire-engine-red.com", "", "Subject Marketing Footer test 6010", "", "HTML body content for Marketing Footer test 6010", "TEXT body content for Marketing Footer test 6010" status "visible"
+#    #to check the contents of the can-spam footer
 
   @EmailFooterScenario2 @Done @Email
   Scenario: verify FER Admin can disable the can-spam footer in marketing emails
