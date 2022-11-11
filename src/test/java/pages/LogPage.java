@@ -871,5 +871,7 @@ public class LogPage {
     public static final String VALIDATE_EMAIL_ON_MAIL_TRAP_FAIL = "Fail while trying to I verify if email was sent correctly";
     public static final String VALIDATE_HTML_AND_TEXT_ON_MAIL_TRAP_PASS = "I verify email content on mail trap is '%s' html '%s' text '%s'";
     public static final String VALIDATE_HTML_AND_TEXT_ON_MAIL_TRAP_FAIL = "Fail while trying to verify email content on mail trap is '%s' html '%s' text '%s'";
+    public static final String DISABLE_FOOTER_CHECKBOX_MESSAGE_PASS = "I click on disable message footer checkbox";
+    public static final String DISABLE_FOOTER_CHECKBOX_MESSAGE_FAIL = "Fail while trying to click on disable message footer checkbox";
 
 }

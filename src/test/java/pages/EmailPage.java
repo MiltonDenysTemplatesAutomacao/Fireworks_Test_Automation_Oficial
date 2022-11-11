@@ -45,6 +45,11 @@ public class EmailPage extends BasePage{
                         FailureDelegatePage.handlePageException(failMessage);
                     }
                     break;
+                /*
+                 * for 'not visible' put something on the parameter that should be empty like
+                 * And I verify email content on mail trap is "not visible" for subject "Subject Marketing Footer test 6010", "not validation necessary", "United States"
+                 * in the case above for exemple and did not have to validate html then I put 'not validation necessary' phrase
+                 */
                 case "not visible":
                     if(!verify2StringContains(mailTrapApi.getHtmlBody(message.id),html)
                             && !verify2StringContains(mailTrapApi.getTextBody(message.id),text) ){

@@ -50,11 +50,10 @@ Feature: Email Footer
     And I verify email content on mail trap is "visible" for subject "Subject Marketing Footer test 6010", "", "Aurora, Colorado 80010"
     And I verify email content on mail trap is "not visible" for subject "Subject Marketing Footer test 6010", "not validation necessary", "Aurora, Colorado 80010 0"
     And I verify email content on mail trap is "not visible" for subject "Subject Marketing Footer test 6010", "not validation necessary", "United States"
-
-
-#    And I open email "Marketing Footer test 6010"
-#    And I validate message header "Fire Starter", "firestarter@fire-engine-red.com", "", "Subject Marketing Footer test 6010", "", "HTML body content for Marketing Footer test 6010", "TEXT body content for Marketing Footer test 6010" status "visible"
-#    #to check the contents of the can-spam footer
+    And I verify email content on mail trap is "visible" for subject "Subject Marketing Footer test 6010", "", "We collected your email address from your "
+    And I verify email content on mail trap is "visible" for subject "Subject Marketing Footer test 6010", "", "Inquiry"
+    #verify this step parameter later
+    #And I verify email content on mail trap is "visible" for subject "Subject Marketing Footer test 6010", "", "testing.site.education/email/unsubscribe/"
 
   @EmailFooterScenario2 @Done @Email
   Scenario: verify FER Admin can disable the can-spam footer in marketing emails
@@ -76,6 +75,7 @@ Feature: Email Footer
     And I click on save and continue on Marketing Email Composer
     And I close alert if return this message "Email has been created."
     And I update Email Headers Tab "Fire Starter", "firestarter@fire-engine-red.com", "", "Subject No Footer test 6020", "", ""
+    And I click on disable message footer checkbox
     And I click on save and continue on Marketing Email Composer
     And I close alert if return this message "Email has been updated."
     And I update Email Content Tab "HTML body content for No Footer test 6020", "TEXT body content for No Footer test 6020"
@@ -93,6 +93,16 @@ Feature: Email Footer
     And I navigate to email manager page
     When I wait until email sent "No Footer test 6020"
     #to verify the sent email in mailtrap
-    And I open email "No Footer test 6020"
-    #And I validate message header "Fire Starter", "firestarter@fire-engine-red.com", "", "Subject No Footer test 6020", "", "HTML body content for No Footer test 6020", "TEXT body content for No Footer test 6020" status "visible"
-    #to check the contents of the can-spam footer
+    When I verify if email was sent correctly "Subject No Footer test 6020", "firestarter@fire-engine-red.com", "Fire Starter", "Nikolayevich Baryshnikov"
+    And I verify email content on mail trap is "visible" for subject "Subject No Footer test 6020", "HTML body content for No Footer test 6020", "TEXT body content for No Footer test 6020"
+    #the can-spam footer is not displayed
+    And I verify email content on mail trap is "not visible" for subject "Subject No Footer test 6020", "Inquiry", "not validation necessary"
+    And I verify email content on mail trap is "not visible" for subject "Subject No Footer test 6020", "Unsubscribe", "not validation necessary"
+    And I verify email content on mail trap is "not visible" for subject "Subject No Footer test 6020", "not validation necessary", "Fire Engine Red"
+    And I verify email content on mail trap is "not visible" for subject "Subject No Footer test 6020", "not validation necessary", "1100 E 6th Ave"
+    And I verify email content on mail trap is "not visible" for subject "Subject No Footer test 6020", "not validation necessary", "Aurora, Colorado 80010"
+    And I verify email content on mail trap is "not visible" for subject "Subject No Footer test 6020", "not validation necessary", "Aurora, Colorado 80010 0"
+    And I verify email content on mail trap is "not visible" for subject "Subject No Footer test 6020", "not validation necessary", "United States"
+    And I verify email content on mail trap is "not visible" for subject "Subject No Footer test 6020", "not validation necessary", "We collected your email address from your "
+    And I verify email content on mail trap is "not visible" for subject "Subject No Footer test 6020", "not validation necessary", "testing.site.education/email/unsubscribe/"
+

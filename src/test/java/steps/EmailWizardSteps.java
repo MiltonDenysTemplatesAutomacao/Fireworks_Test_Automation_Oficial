@@ -16,6 +16,10 @@ public class EmailWizardSteps {
     public static void updateEmailHeadersTab(String senderName,String senderEmail,String replyToEmail,String subject,String preheaders,String attachment) {
         EmailWizardPage.updateEmailHeadersTab(senderName,senderEmail,replyToEmail,subject,preheaders,attachment);
     }
+    @When("I click on disable message footer checkbox")
+    public static void disableFooterCheckbox() {
+        EmailWizardPage.disableFooterCheckbox();
+    }
     @When("I update Email Content Tab {string}, {string}")
     public static void updateEmailContentTab(String bodyHTML, String bodyText) {
         EmailWizardPage.updateEmailContentTab(bodyHTML,bodyText);

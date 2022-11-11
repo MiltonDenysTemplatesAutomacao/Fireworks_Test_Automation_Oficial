@@ -48,7 +48,16 @@ public class EmailWizardPage extends BasePage{
     public static final String TEXT_TAB = "//*[text() = 'Text']";
     public static final String HTML = "previewEmailContentHtml";
     public static final String HTML_BODY = "/html/body/p";
+    public static final String DISABLE_FOOTER_CHECKBOX = "#disable_footer";
 
+    public static void disableFooterCheckbox(){
+        try {
+            clickCheckbox(By.cssSelector(DISABLE_FOOTER_CHECKBOX));
+            ExtentReportsSetUp.testingPass(LogPage.DISABLE_FOOTER_CHECKBOX_MESSAGE_PASS);
+        } catch (Exception e) {
+            FailureDelegatePage.handlePageException(LogPage.DISABLE_FOOTER_CHECKBOX_MESSAGE_FAIL);
+        }
+    }
     public static boolean validateMessageBodyText(String value)throws Exception{
         boolean validation = false;
         clickOption(By.xpath(TEXT_TAB));
