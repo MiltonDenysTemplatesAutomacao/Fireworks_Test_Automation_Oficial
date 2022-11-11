@@ -555,6 +555,7 @@ public class BasePage {
         }
         return validation;
     }
+
     /*
      * Method to validate if a message contains the correct
      */

@@ -23,7 +23,7 @@ Feature: Email Footer
     When I update Email Start Tab "", "Marketing Footer test 6010", "", "", "rbolle@ballet.com"
     And I click on save and continue on Marketing Email Composer
     And I close alert if return this message "Email has been created."
-    And I update Email Headers Tab "Fire Starter", "rbolle@ballet.com", "", "Subject Marketing Footer test 6010", "", ""
+    And I update Email Headers Tab "Fire Starter", "firestarter@fire-engine-red.com", "", "Subject Marketing Footer test 6010", "", ""
     And I click on save and continue on Marketing Email Composer
     And I close alert if return this message "Email has been updated."
     And I update Email Content Tab "HTML body content for Marketing Footer test 6010", "TEXT body content for Marketing Footer test 6010"
@@ -40,8 +40,16 @@ Feature: Email Footer
     And I navigate to email manager page
     When I wait until email sent "Marketing Footer test 6010"
     #to verify the sent email in mailtrap
-    #And I search email by api on mail trap "Marketing Footer test 6010"
-    When I verify if email was sent correctly "", "", "", ""
+    When I verify if email was sent correctly "Subject Marketing Footer test 6010", "firestarter@fire-engine-red.com", "Fire Starter", "Roberto Bolle"
+    And I verify email content on mail trap is "visible" for subject "Subject Marketing Footer test 6010", "HTML body content for Marketing Footer test 6010", "TEXT body content for Marketing Footer test 6010"
+    #to check the contents of the can-spam footer
+    And I verify email content on mail trap is "visible" for subject "Subject Marketing Footer test 6010", "Inquiry", ""
+    And I verify email content on mail trap is "visible" for subject "Subject Marketing Footer test 6010", "Unsubscribe", ""
+    And I verify email content on mail trap is "visible" for subject "Subject Marketing Footer test 6010", "", "Fire Engine Red"
+    And I verify email content on mail trap is "visible" for subject "Subject Marketing Footer test 6010", "", "1100 E 6th Ave"
+    And I verify email content on mail trap is "visible" for subject "Subject Marketing Footer test 6010", "", "Aurora, Colorado 80010"
+    And I verify email content on mail trap is "not visible" for subject "Subject Marketing Footer test 6010", "not validation necessary", "Aurora, Colorado 80010 0"
+    And I verify email content on mail trap is "not visible" for subject "Subject Marketing Footer test 6010", "not validation necessary", "United States"
 
 
 #    And I open email "Marketing Footer test 6010"
@@ -86,5 +94,5 @@ Feature: Email Footer
     When I wait until email sent "No Footer test 6020"
     #to verify the sent email in mailtrap
     And I open email "No Footer test 6020"
-    And I validate message header "Fire Starter", "firestarter@fire-engine-red.com", "", "Subject No Footer test 6020", "", "HTML body content for No Footer test 6020", "TEXT body content for No Footer test 6020" status "visible"
+    #And I validate message header "Fire Starter", "firestarter@fire-engine-red.com", "", "Subject No Footer test 6020", "", "HTML body content for No Footer test 6020", "TEXT body content for No Footer test 6020" status "visible"
     #to check the contents of the can-spam footer

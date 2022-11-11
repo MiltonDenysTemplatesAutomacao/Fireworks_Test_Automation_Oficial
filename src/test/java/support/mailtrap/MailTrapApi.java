@@ -19,21 +19,24 @@ public class MailTrapApi {
     }
 
     public MessageEntity[] searchMessage(String term) throws Exception {
-
         Map<String, String> headers = new HashMap<String, String>();
         headers.put("Authorization", "Bearer " + this.apiToken);
         String endpoint = "https://mailtrap.io/api/accounts/"+accountId+"/inboxes/"+inboxId+"/messages?search="+term;
         return (MessageEntity[]) Http.Get(endpoint,MessageEntity[].class,headers);
     }
     public String getHtmlBody(String id) throws Exception {
-
         Map<String, String> headers = new HashMap<String, String>();
         headers.put("Authorization", "Bearer " + this.apiToken);
         String endpoint = "https://mailtrap.io/api/accounts/"+accountId+"/inboxes/"+inboxId+"/messages/"+id+"/body.html";
         return (String) Http.Get(endpoint,String.class,headers);
     }
+    public String getTextBody(String id) throws Exception {
+        Map<String, String> headers = new HashMap<String, String>();
+        headers.put("Authorization", "Bearer " + this.apiToken);
+        String endpoint = "https://mailtrap.io/api/accounts/"+accountId+"/inboxes/"+inboxId+"/messages/"+id+"/body.txt";
+        return (String) Http.Get(endpoint,String.class,headers);
+    }
     public MessageEntity deleteMessage(String id) throws Exception {
-
         Map<String, String> headers = new HashMap<String, String>();
         headers.put("Authorization", "Bearer " + this.apiToken);
         String endpoint = "https://mailtrap.io/api/accounts/"+accountId+"/inboxes/"+inboxId+"/messages/"+id;

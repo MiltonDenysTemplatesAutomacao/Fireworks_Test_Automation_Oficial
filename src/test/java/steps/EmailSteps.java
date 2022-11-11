@@ -17,6 +17,10 @@ public class EmailSteps {
     public static void validateEmailOnMailTrap(String subject,String fromEmail,String fromName,String toName) {
         EmailPage.validateEmailOnMailTrap(subject,fromEmail,fromName,toName);
     }
+    @When("I verify email content on mail trap is {string} for subject {string}, {string}, {string}")
+    public static void validateHtmlAndTextOnMailTrap(String condition,String subject,String html,String text) {
+        EmailPage.validateHtmlAndTextOnMailTrap(condition,subject,html,text);
+    }
     @When("I send email")
     public static void sendEmail() {
         EmailPage.sendEmail();

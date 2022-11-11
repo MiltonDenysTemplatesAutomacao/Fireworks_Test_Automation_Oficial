@@ -27,9 +27,40 @@ public class EmailPage extends BasePage{
     private static final String EMAIL_MANAGER_TABLE_ROW1_COLUMN3 = "#emailManagerTable_row_0_col_3";
     private static final String SCHEDULE_EMAIL_BUTTON = "#scheduleEmail";
 
+
+    public static void validateHtmlAndTextOnMailTrap(String condition, String subject, String html,String text){
+        String passMessage = String.format(LogPage.VALIDATE_HTML_AND_TEXT_ON_MAIL_TRAP_PASS,condition,html,text);
+        String failMessage = String.format(LogPage.VALIDATE_HTML_AND_TEXT_ON_MAIL_TRAP_FAIL,condition,html,text);
+        try {
+            Dotenv dotenv = Dotenv.load();
+            MailTrapApi mailTrapApi = new MailTrapApi(dotenv.get("MAILTRAP_API_TOKEN"),dotenv.get("MAILTRAP_ACCOUNT_ID"),dotenv.get("MAILTRAP_INBOX_ID"));
+            MessageEntity[] response = mailTrapApi.searchMessage(subject);
+            MessageEntity message = response[0];
+            switch (condition){
+                case "visible":
+                    if(verify2StringContains(mailTrapApi.getHtmlBody(message.id),html)
+                            && verify2StringContains(mailTrapApi.getTextBody(message.id),text) ){
+                            ExtentReportsSetUp.testingPass(passMessage);
+                    }else{
+                        FailureDelegatePage.handlePageException(failMessage);
+                    }
+                    break;
+                case "not visible":
+                    if(!verify2StringContains(mailTrapApi.getHtmlBody(message.id),html)
+                            && !verify2StringContains(mailTrapApi.getTextBody(message.id),text) ){
+                            ExtentReportsSetUp.testingPass(passMessage);
+                    }else{
+                            FailureDelegatePage.handlePageException(failMessage);
+                    }
+                    break;
+            }
+        } catch (Exception e) {
+            FailureDelegatePage.handlePageException(failMessage);
+        }
+    }
     public static void validateEmailOnMailTrap(String subject,String fromEmail,String fromName,String toName){
         String passMessage = String.format(LogPage.VALIDATE_EMAIL_ON_MAIL_TRAP_PASS);
-        String failMessage = String.format(LogPage.VALIDATE_EMAIL_ON_MAIL_TRAP_PASS);
+        String failMessage = String.format(LogPage.VALIDATE_EMAIL_ON_MAIL_TRAP_FAIL);
         try {
             //instaciate dotenv to get variables from .env file and set here
             Dotenv dotenv = Dotenv.load();
@@ -50,36 +81,6 @@ public class EmailPage extends BasePage{
             }
         } catch (Exception e) {
             FailureDelegatePage.handlePageException(failMessage);
-        }
-    }
-
-    public static void testEmailHasBeenSent(String subject){
-        try {
-            //instaciate dotenv to get variables from .env file and set here
-            Dotenv dotenv = Dotenv.load();
-            //Instanciating MailTrap Api
-            MailTrapApi mailTrapApi = new MailTrapApi(dotenv.get("MAILTRAP_API_TOKEN"),dotenv.get("MAILTRAP_ACCOUNT_ID"),dotenv.get("MAILTRAP_INBOX_ID"));
-            //search message list by subject on mailtrap
-            MessageEntity[] response = mailTrapApi.searchMessage(subject);
-            //get the first message from the list
-            MessageEntity message = response[0];
-            //get the subject and save in a variable
-            String subjectFromApi = message.subject;
-            //get the from email and save in a variable
-            String fromEmailApi = message.from_email;
-            //get html body message and save in a variable(for this it is necessary a new request because html is not included on the first request)
-            String html = mailTrapApi.getHtmlBody(message.id);
-            //request for mail trap to delete a message
-            MessageEntity deletedMessage = mailTrapApi.deleteMessage(message.id);
-
-            if(subject.equals(message.subject)){
-                System.out.println(true);
-            }else{
-                System.out.println(false);
-            }
-
-        } catch (Exception e) {
-
         }
     }
     public static String returnElements (String elements){

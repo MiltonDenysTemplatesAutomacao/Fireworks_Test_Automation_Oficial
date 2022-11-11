@@ -869,5 +869,7 @@ public class LogPage {
     public static final String UPDATE_TEST_LIST_FAIL = "Fail while trying to update test list";
     public static final String VALIDATE_EMAIL_ON_MAIL_TRAP_PASS = "I verify if email was sent correctly";
     public static final String VALIDATE_EMAIL_ON_MAIL_TRAP_FAIL = "Fail while trying to I verify if email was sent correctly";
+    public static final String VALIDATE_HTML_AND_TEXT_ON_MAIL_TRAP_PASS = "I verify email content on mail trap is '%s' html '%s' text '%s'";
+    public static final String VALIDATE_HTML_AND_TEXT_ON_MAIL_TRAP_FAIL = "Fail while trying to verify email content on mail trap is '%s' html '%s' text '%s'";
 
 }
