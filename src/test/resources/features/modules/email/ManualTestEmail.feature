@@ -26,3 +26,8 @@ Feature: Manual test email
     And I click on save and continue on Marketing Email Composer
     And I close alert if return this message "Email has been updated."
     #to send a test email with a note to two email addresses
+    And I send a test email "6030test@ferfun.com,", "test6030@ferfun.com", "Note with test email"
+
+#    And I click on save and continue on Marketing Email Composer
+#    And I close alert if return this message "Email has been updated."
+#

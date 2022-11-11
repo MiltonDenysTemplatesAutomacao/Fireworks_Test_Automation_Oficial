@@ -43,7 +43,7 @@ public class EmailSettingsPage extends BasePage {
             clickOption(By.cssSelector(CREATE_TEST_LIST_BUTTON));
             ExtentReportsSetUp.testingPass(LogPage.CLICK_CREATE_TEST_LIST_BUTTON_PASS);
         } catch (Exception e) {
-            FailureDelegatePage.handlePageException(LogPage.CLICK_CREATE_TEST_LIST_BUTTON_PASS);
+            FailureDelegatePage.handlePageException(LogPage.CLICK_CREATE_TEST_LIST_BUTTON_FAIL);
         }
     }
     public static void clickTestLists(){

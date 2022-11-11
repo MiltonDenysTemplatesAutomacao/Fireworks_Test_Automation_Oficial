@@ -20,6 +20,10 @@ public class EmailWizardSteps {
     public static void disableFooterCheckbox() {
         EmailWizardPage.disableFooterCheckbox();
     }
+    @When("I send a test email {string}, {string}, {string}")
+    public static void sendTestEmail(String email1,String email2, String testNote) {
+        EmailWizardPage.sendTestEmail(email1,email2,testNote);
+    }
     @When("I update Email Content Tab {string}, {string}")
     public static void updateEmailContentTab(String bodyHTML, String bodyText) {
         EmailWizardPage.updateEmailContentTab(bodyHTML,bodyText);

@@ -432,8 +432,8 @@ public class BasePage {
         DriverBase.getDriver().findElement(by).sendKeys(text);
     }
 
-    public static void write(String id_campo, String text) throws Exception {
-        write(By.id(id_campo), text);
+    public static void writeWithoutClear(By by, String text) throws Exception {
+        DriverBase.getDriver().findElement(by).sendKeys(text);
     }
 
     /********* Click ************/

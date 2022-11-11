@@ -49,7 +49,22 @@ public class EmailWizardPage extends BasePage{
     public static final String HTML = "previewEmailContentHtml";
     public static final String HTML_BODY = "/html/body/p";
     public static final String DISABLE_FOOTER_CHECKBOX = "#disable_footer";
+    public static final String TEST_EMAIL_ADDRESS_FIELD = "#quickTestAddress";
+    public static final String TEST_EMAIL_NOTE_FIELD = "#quickTestMessage";
+    public static final String SEND_TEST_EMAIL_BUTTON = "#sendTestMailButton";
 
+    public static void sendTestEmail(String email1,String email2, String testNote){
+
+        try {
+            fillField(By.cssSelector(TEST_EMAIL_ADDRESS_FIELD),email1);
+            writeWithoutClear(By.cssSelector(TEST_EMAIL_ADDRESS_FIELD),email2);
+            fillField(By.cssSelector(TEST_EMAIL_NOTE_FIELD),testNote);
+            clickOption(By.cssSelector(SEND_TEST_EMAIL_BUTTON));
+            ExtentReportsSetUp.testingPass(LogPage.SEND_TEST_EMAIL_BUTTON_PASS);
+        } catch (Exception e) {
+            FailureDelegatePage.handlePageException(LogPage.SEND_TEST_EMAIL_BUTTON_FAIL);
+        }
+    }
     public static void disableFooterCheckbox(){
         try {
             clickCheckbox(By.cssSelector(DISABLE_FOOTER_CHECKBOX));
