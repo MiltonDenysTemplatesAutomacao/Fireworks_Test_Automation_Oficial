@@ -21,5 +21,9 @@ public class EmailSettingsSteps {
     public static void updateTestList(String name,String description,String recipients) {
         EmailSettingsPage.updateTestList(name,description,recipients);
     }
+    @And("I verify test list {string}, {string}, {string}")
+    public static void verifyTestList(String name,String description,String recipients) {
+        EmailSettingsPage.verifyTestList(name,description,recipients);
+    }
 
 }

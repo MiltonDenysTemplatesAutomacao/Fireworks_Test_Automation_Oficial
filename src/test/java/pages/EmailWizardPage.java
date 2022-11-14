@@ -52,13 +52,23 @@ public class EmailWizardPage extends BasePage{
     public static final String TEST_EMAIL_ADDRESS_FIELD = "#quickTestAddress";
     public static final String TEST_EMAIL_NOTE_FIELD = "#quickTestMessage";
     public static final String SEND_TEST_EMAIL_BUTTON = "#sendTestMailButton";
+    public static final String TEST_LIST_PICKER_BUTTON = "#emailTestListPickerTrigger";
+    public static final String TEST_LIST_PICKER_SEARCH_FIELD = "#testRecipientListPickerModalTableControlsTableSearch";
+    public static final String TEST_LIST_PICKER_TABLE_ROW1 = "#testRecipientListPickerModalTable_row_0";
+    public static final String TEST_LIST_PICKER_TABLE_ROW1_CHECKBOX = "#testRecipientListPickerModalTable_row_0_col_0 > div > input";
+    public static final String TEST_LIST_PICKER_CHOOSE_BUTTON = "#modalSubmitButtontestRecipientListPicker";
 
 
-    public static void sendTestEmail(String email1,String email2, String testNote){
+    public static void sendTestEmail(String testList,String email, String testNote){
 
         try {
-            fillField(By.cssSelector(TEST_EMAIL_ADDRESS_FIELD),email1);
-            writeWithoutClear(By.cssSelector(TEST_EMAIL_ADDRESS_FIELD),email2);
+            picker(By.cssSelector(TEST_LIST_PICKER_BUTTON),
+                    By.cssSelector(TEST_LIST_PICKER_SEARCH_FIELD),
+                    By.cssSelector(TEST_LIST_PICKER_TABLE_ROW1),
+                    By.cssSelector(TEST_LIST_PICKER_TABLE_ROW1_CHECKBOX),
+                    By.cssSelector(TEST_LIST_PICKER_CHOOSE_BUTTON),
+                    testList);
+            fillField(By.cssSelector(TEST_EMAIL_ADDRESS_FIELD),email);
             fillField(By.cssSelector(TEST_EMAIL_NOTE_FIELD),testNote);
             clickOption(By.cssSelector(SEND_TEST_EMAIL_BUTTON));
             ExtentReportsSetUp.testingPass(LogPage.SEND_TEST_EMAIL_BUTTON_PASS);

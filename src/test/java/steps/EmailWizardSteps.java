@@ -22,8 +22,8 @@ public class EmailWizardSteps {
     }
 
     @When("I send a test email {string}, {string}, {string}")
-    public static void sendTestEmail(String email1,String email2, String testNote) {
-        EmailWizardPage.sendTestEmail(email1,email2,testNote);
+    public static void sendTestEmail(String testList,String email, String testNote) {
+        EmailWizardPage.sendTestEmail(testList,email,testNote);
     }
     @When("I update Email Content Tab {string}, {string}")
     public static void updateEmailContentTab(String bodyHTML, String bodyText) {

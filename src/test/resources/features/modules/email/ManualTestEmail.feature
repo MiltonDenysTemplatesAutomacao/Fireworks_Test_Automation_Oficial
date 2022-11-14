@@ -26,7 +26,7 @@ Feature: Manual test email
     And I click on save and continue on Marketing Email Composer
     And I close alert if return this message "Email has been updated."
     #to send a test email with a note to two email addresses
-    And I send a test email "6030test@ferfun.com,", "test6030@ferfun.com", "Note with test email"
+    And I send a test email "", "6030test@ferfun.com,test6030@ferfun.com", "Note with test email"
     #to check the mailbox for the first test email
     When I verify if email was sent correctly "Subject 6030 Test Email", "rnureyev@ballet.com", "Rudolph Nureyev", ""
     And I verify email content on mail trap is "visible" for subject "Subject 6030 Test Email", "Note with test email", ""

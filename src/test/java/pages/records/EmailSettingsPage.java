@@ -28,6 +28,19 @@ public class EmailSettingsPage extends BasePage {
     public static final String TEST_LIST_DESCRIPTION = "#description";
     public static final String TEST_LIST_RECIPIENTS = "#email_addresses";
 
+    public static void verifyTestList(String name,String description,String recipients){
+        try {
+            if(verifyGetAttribute(By.cssSelector(TEST_LIST_NAME),name)
+                && verifyGetAttribute(By.cssSelector(TEST_LIST_DESCRIPTION),description)
+                && verifyGetAttribute(By.cssSelector(TEST_LIST_RECIPIENTS),recipients)){
+                ExtentReportsSetUp.testingPass(LogPage.VERIFY_TEST_LIST_PASS);
+            }else{
+                FailureDelegatePage.handlePageException(LogPage.VERIFY_TEST_LIST_FAIL);
+            }
+        } catch (Exception e) {
+            FailureDelegatePage.handlePageException(LogPage.VERIFY_TEST_LIST_FAIL);
+        }
+    }
     public static void updateTestList(String name,String description,String recipients){
         try {
             fillField(By.cssSelector(TEST_LIST_NAME),name);
