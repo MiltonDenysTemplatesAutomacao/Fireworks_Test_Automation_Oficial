@@ -875,6 +875,12 @@ public class LogPage {
     public static final String DISABLE_FOOTER_CHECKBOX_MESSAGE_FAIL = "Fail while trying to click on disable message footer checkbox";
     public static final String SEND_TEST_EMAIL_BUTTON_PASS = "I send a test email";
     public static final String SEND_TEST_EMAIL_BUTTON_FAIL = "Fail while trying to send a test email";
+    public static final String DELETE_MAIL_TRAP_PASS = "I delete email on mail trap '%s'";
+    public static final String DELETE_MAIL_TRAP_FAIL = "Fail while trying to delete email on mail trap '%s'";
+    public static final String VERIFY_MANUAL_TEST_LOG_PASS = "I verify Manual test log '%s'";
+    public static final String VERIFY_MANUAL_TEST_LOG_FAIL = "Fail while trying to verify Manual test log '%s'";
+    public static final String VERIFY_TODAY_DATE_MANUAL_TEST_LOG_PASS = "I verify today´s date in Manual test log";
+    public static final String VERIFY_TODAY_DATE_MANUAL_TEST_LOG_FAIL = "Fail while trying to verify today´s date in Manual test log";
 
 
 

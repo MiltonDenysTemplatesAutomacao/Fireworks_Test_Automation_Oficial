@@ -53,6 +53,7 @@ public class EmailWizardPage extends BasePage{
     public static final String TEST_EMAIL_NOTE_FIELD = "#quickTestMessage";
     public static final String SEND_TEST_EMAIL_BUTTON = "#sendTestMailButton";
 
+
     public static void sendTestEmail(String email1,String email2, String testNote){
 
         try {

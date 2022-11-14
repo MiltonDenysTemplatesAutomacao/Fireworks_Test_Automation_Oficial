@@ -26,8 +26,47 @@ public class EmailPage extends BasePage{
     private static final String EMAIL_MANAGER_TABLE_ROW1_COLUMN1 = "#emailManagerTable_row_0_col_0";
     private static final String EMAIL_MANAGER_TABLE_ROW1_COLUMN3 = "#emailManagerTable_row_0_col_3";
     private static final String SCHEDULE_EMAIL_BUTTON = "#scheduleEmail";
+    private static final String MANUAL_TEST_LOG = "#manualTestLog";
 
+    public static void verifyTodayDateManualTestLog(){
+        try {
+            if(verifyDateFieldWithoutHourByText(By.cssSelector(MANUAL_TEST_LOG))){
+                ExtentReportsSetUp.testingPass(LogPage.VERIFY_TODAY_DATE_MANUAL_TEST_LOG_PASS);
+            }else{
+                FailureDelegatePage.handlePageException(LogPage.VERIFY_TODAY_DATE_MANUAL_TEST_LOG_FAIL);
+            }
+        } catch (Exception e) {
+            FailureDelegatePage.handlePageException(LogPage.VERIFY_ACTION_DATE_FIELD_FAIL);
+        }
+    }
 
+    public static void verifyManualTestLog(String log){
+        String passMessage = String.format(LogPage.VERIFY_MANUAL_TEST_LOG_PASS,log);
+        String failMessage = String.format(LogPage.VERIFY_MANUAL_TEST_LOG_FAIL,log);
+        try {
+            if(verifyGetText(By.cssSelector(MANUAL_TEST_LOG),log)){
+                ExtentReportsSetUp.testingPass(passMessage);
+            }else{
+                FailureDelegatePage.handlePageException(failMessage);
+            }
+        } catch (Exception e) {
+            FailureDelegatePage.handlePageException(failMessage);
+        }
+    }
+    public static void deleteMailTrap(String subject){
+        String passMessage = String.format(LogPage.DELETE_MAIL_TRAP_PASS,subject);
+        String failMessage = String.format(LogPage.DELETE_MAIL_TRAP_FAIL,subject);
+        try {
+            Dotenv dotenv = Dotenv.load();
+            MailTrapApi mailTrapApi = new MailTrapApi(dotenv.get("MAILTRAP_API_TOKEN"),dotenv.get("MAILTRAP_ACCOUNT_ID"),dotenv.get("MAILTRAP_INBOX_ID"));
+            MessageEntity[] response = mailTrapApi.searchMessage(subject);
+            MessageEntity message = response[0];
+            mailTrapApi.deleteMessage(message.id);
+            ExtentReportsSetUp.testingPass(passMessage);
+        } catch (Exception e) {
+            FailureDelegatePage.handlePageException(failMessage);
+        }
+    }
     public static void validateHtmlAndTextOnMailTrap(String condition, String subject, String html,String text){
         String passMessage = String.format(LogPage.VALIDATE_HTML_AND_TEXT_ON_MAIL_TRAP_PASS,condition,html,text);
         String failMessage = String.format(LogPage.VALIDATE_HTML_AND_TEXT_ON_MAIL_TRAP_FAIL,condition,html,text);
@@ -67,13 +106,17 @@ public class EmailPage extends BasePage{
         String passMessage = String.format(LogPage.VALIDATE_EMAIL_ON_MAIL_TRAP_PASS);
         String failMessage = String.format(LogPage.VALIDATE_EMAIL_ON_MAIL_TRAP_FAIL);
         try {
+            wait(2000);
             //instaciate dotenv to get variables from .env file and set here
             Dotenv dotenv = Dotenv.load();
             //Instanciating MailTrap Api
+            wait(2000);
             MailTrapApi mailTrapApi = new MailTrapApi(dotenv.get("MAILTRAP_API_TOKEN"),dotenv.get("MAILTRAP_ACCOUNT_ID"),dotenv.get("MAILTRAP_INBOX_ID"));
             //search message list by subject on mailtrap
+            wait(2000);
             MessageEntity[] response = mailTrapApi.searchMessage(subject);
             //get the first message from the list
+            wait(2000);
             MessageEntity message = response[0];
 
             if(verify2StringEquals(subject,message.subject)
