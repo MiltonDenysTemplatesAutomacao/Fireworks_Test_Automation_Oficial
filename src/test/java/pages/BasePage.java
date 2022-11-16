@@ -311,6 +311,16 @@ public class BasePage {
             write(by,value);
         }
     }
+    public static void fillFieldWithoutClear(By by,String value)throws Exception{
+        if(value!="" && value !=null){
+            int delay = 10;
+            waitElementBy(by,delay);
+            scrollToElement(by);
+            scrollTo("-150");
+            waitElementBy(by,delay);
+            writeWithoutClear(by,value);
+        }
+    }
     public static void toUseDatatable(DataTable data){
         createDatatable(data);
     }

@@ -883,6 +883,8 @@ public class LogPage {
     public static final String VERIFY_MANUAL_TEST_LOG_FAIL = "Fail while trying to verify Manual test log '%s'";
     public static final String VERIFY_TODAY_DATE_MANUAL_TEST_LOG_PASS = "I verify today´s date in Manual test log";
     public static final String VERIFY_TODAY_DATE_MANUAL_TEST_LOG_FAIL = "Fail while trying to verify today´s date in Manual test log";
+    public static final String UPDATE_RECIPIENTS_PASS = "I update recipients";
+    public static final String UPDATE_RECIPIENTS_FAIL = "Fail while trying to update recipients";
 
 
 

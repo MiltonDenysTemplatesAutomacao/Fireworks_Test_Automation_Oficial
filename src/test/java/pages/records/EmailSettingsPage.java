@@ -4,6 +4,7 @@ import config.extent_reports.ExtentReportsSetUp;
 import org.openqa.selenium.By;
 import pages.BasePage;
 import pages.FailureDelegatePage;
+import pages.KeyPage;
 import pages.LogPage;
 
 public class EmailSettingsPage extends BasePage {
@@ -28,6 +29,17 @@ public class EmailSettingsPage extends BasePage {
     public static final String TEST_LIST_DESCRIPTION = "#description";
     public static final String TEST_LIST_RECIPIENTS = "#email_addresses";
 
+    public static void updateRecipients(String recipients1,String recipients2){
+        try {
+            KeyPage.pressKey(By.cssSelector(TEST_LIST_RECIPIENTS),"Enter");
+            fillFieldWithoutClear(By.cssSelector(TEST_LIST_RECIPIENTS),recipients1);
+            KeyPage.pressKey(By.cssSelector(TEST_LIST_RECIPIENTS),"Enter");
+            fillFieldWithoutClear(By.cssSelector(TEST_LIST_RECIPIENTS),recipients2);
+            ExtentReportsSetUp.testingPass(LogPage.UPDATE_RECIPIENTS_PASS);
+        } catch (Exception e) {
+            FailureDelegatePage.handlePageException(LogPage.UPDATE_RECIPIENTS_FAIL);
+        }
+    }
     public static void verifyTestList(String name,String description,String recipients){
         try {
             if(verifyGetAttribute(By.cssSelector(TEST_LIST_NAME),name)
