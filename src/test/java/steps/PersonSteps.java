@@ -28,6 +28,10 @@ public class PersonSteps {
     public static void verifyHeaderRole(String role) {
         PersonPage.verifyHeaderRole(role);
     }
+    @Then("I update Header Assigned Staff {string}")
+    public static void updateHeaderAssignedStaff(String assignedStaff) {
+        PersonPage.updateHeaderAssignedStaff(assignedStaff);
+    }
     @Then("I update Header Role {string}")
     public static void updateHeaderRole(String role) {
         PersonPage.updateHeaderRole(role);

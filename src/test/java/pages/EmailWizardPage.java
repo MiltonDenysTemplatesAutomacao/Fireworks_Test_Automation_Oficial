@@ -57,8 +57,16 @@ public class EmailWizardPage extends BasePage{
     public static final String TEST_LIST_PICKER_TABLE_ROW1 = "#testRecipientListPickerModalTable_row_0";
     public static final String TEST_LIST_PICKER_TABLE_ROW1_CHECKBOX = "#testRecipientListPickerModalTable_row_0_col_0 > div > input";
     public static final String TEST_LIST_PICKER_CHOOSE_BUTTON = "#modalSubmitButtontestRecipientListPicker";
+    public static final String USE_COUNSELOR_AS_SENDER_NAME_CHECKBOX = "#use_assigned_counselor_name";
 
-
+    public static void clickUseAssignedCounselorCheckbox(){
+        try {
+            clickCheckbox(By.cssSelector(USE_COUNSELOR_AS_SENDER_NAME_CHECKBOX));
+            ExtentReportsSetUp.testingPass(LogPage.CLICK_USE_ASSIGNED_COUNSELOR_CHECKBOX_PASS);
+        } catch (Exception e) {
+            FailureDelegatePage.handlePageException(LogPage.CLICK_USE_ASSIGNED_COUNSELOR_CHECKBOX_FAIL);
+        }
+    }
     public static void sendTestEmail(String testList,String email, String testNote){
 
         try {

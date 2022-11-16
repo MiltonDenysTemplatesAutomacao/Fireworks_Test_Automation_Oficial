@@ -16,6 +16,10 @@ public class EmailWizardSteps {
     public static void updateEmailHeadersTab(String senderName,String senderEmail,String replyToEmail,String subject,String preheaders,String attachment) {
         EmailWizardPage.updateEmailHeadersTab(senderName,senderEmail,replyToEmail,subject,preheaders,attachment);
     }
+    @When("I click checkbox Use assigned counselor when available")
+    public static void clickUseAssignedCounselorCheckbox() {
+        EmailWizardPage.clickUseAssignedCounselorCheckbox();
+    }
     @When("I click on disable message footer checkbox")
     public static void disableFooterCheckbox() {
         EmailWizardPage.disableFooterCheckbox();

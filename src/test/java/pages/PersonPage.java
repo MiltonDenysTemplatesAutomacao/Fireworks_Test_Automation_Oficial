@@ -84,6 +84,7 @@ public class PersonPage extends BasePage{
     private static final String HEADER_ROLE_ELEMENT_LIST = ".//*[@class='btn-group autoSubmit dropDownSelect open']//*[@class='dropdown-menu']";
     private static final String HEADER_STUDENT_TYPE_ELEMENT = "#personHeaderStudentTypeButton";
     private static final String HEADER_ASSIGNED_STAFF_ELEMENT = "#personHeaderAssignedStaffButton";
+    private static final String HEADER_ASSIGNED_STAFF_ELEMENT_LIST = ".//*[@class='btn-group autoSubmit dropDownSelect open']//*[@class='dropdown-menu scrollable-menu']";
     private static final String HEADER_RECORD_STATUS_ELEMENT = "#personHeaderRecordStatusButton";
     private static final String ACTIONS_LABEL = "recordNavTab_actions";
     private static final String BASIC_LABEL = "recordNavTab_basic";
@@ -118,6 +119,18 @@ public class PersonPage extends BasePage{
         return String.format("//*[contains(text(),'%s')]",status);
     }
 
+    public static void updateHeaderAssignedStaff(String assignedStaff){
+        String passMessage = String.format(LogPage.UPDATE_HEADER_ASSIGNED_STAFF_PASS,assignedStaff);
+        String failMessage = String.format(LogPage.UPDATE_HEADER_ASSIGNED_STAFF_FAIL,assignedStaff);
+        try {
+            MainPage.clickOptionList(By.cssSelector(HEADER_ASSIGNED_STAFF_ELEMENT),
+                    assignedStaff,
+                    By.xpath(HEADER_ASSIGNED_STAFF_ELEMENT_LIST));
+            ExtentReportsSetUp.testingPass(passMessage);
+        } catch (Exception e) {
+            FailureDelegatePage.handlePageException(failMessage);
+        }
+    }
     public static void updateHeaderRecordStatus(String status){
         String passMessage = String.format(LogPage.UPDATE_HEADER_RECORD_STATUS_PASS,status);
         String failMessage = String.format(LogPage.UPDATE_HEADER_RECORD_STATUS_FAIL,status);
