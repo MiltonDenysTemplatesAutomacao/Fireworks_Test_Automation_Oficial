@@ -36,14 +36,14 @@ Feature: Sending Test Email to Test List
     #to send a test email to a test list
     And I send a test email "6035TestList", "", "Note to test list"
     #to check the mailbox for the first test email
-    When I verify if email was sent correctly "Send to Test List 6035", "firestarter@fire-engine-red.com", "Fire Starter", "test1-6035"
+    When I verify if email was sent correctly "Send to Test List 6035", "firestarter@fire-engine-red.com", "Fire Starter", "test1-6035@ferfun.com,test2-6035@ferfun.com,test3-6035@ferfun.com"
     And I verify email content on mail trap is "visible" for subject "Send to Test List 6035", "Note to test list", ""
     And I verify email content on mail trap is "visible" for subject "Send to Test List 6035", "Email 6035 HTML body content", ""
     And I verify email content on mail trap is "visible" for subject "Send to Test List 6035", "Preheaders 6035", ""
     #to delete the email from mailtrap
     And I delete email on mail trap "Send to Test List 6035"
     #to check the mailbox for the second test email
-    When I verify if email was sent correctly "Send to Test List 6035", "firestarter@fire-engine-red.com", "Fire Starter", "test2-6035"
+    When I verify if email was sent correctly "Send to Test List 6035", "firestarter@fire-engine-red.com", "Fire Starter", ""
     And I verify email content on mail trap is "visible" for subject "Send to Test List 6035", "Note to test list", ""
     And I verify email content on mail trap is "visible" for subject "Send to Test List 6035", "Email 6035 HTML body content", ""
     And I verify email content on mail trap is "visible" for subject "Send to Test List 6035", "Preheaders 6035", ""
@@ -54,12 +54,10 @@ Feature: Sending Test Email to Test List
     And I verify email content on mail trap is "visible" for subject "Send to Test List 6035", "Note to test list", ""
     And I verify email content on mail trap is "visible" for subject "Send to Test List 6035", "Email 6035 HTML body content", ""
     And I verify email content on mail trap is "visible" for subject "Send to Test List 6035", "Preheaders 6035", ""
-        #$testEmailRecipients = [$message1ToName, $message2ToName];
-  #$I->assertContains($normalizedTestEmailAddress, $testEmailRecipients);
-  #$I->assertContains($normalizedTestEmailAddress2, $testEmailRecipients);
     #the manual test log appears
     And I verify Manual test log "test1-6035@ferfun.com"
     And I verify Manual test log "test2-6035@ferfun.com"
     And I verify Manual test log "test3-6035@ferfun.com"
     #after reloading the page, the datetime is displayed in campus timezone
     And I verify today´s date in Manual test log
+    And I delete email on mail trap "Send to Test List 6035"

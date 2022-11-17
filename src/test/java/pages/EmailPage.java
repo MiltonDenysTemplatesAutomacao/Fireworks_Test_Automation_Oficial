@@ -122,7 +122,7 @@ public class EmailPage extends BasePage{
             if(verify2StringEquals(subject,message.subject)
                 && verify2StringEquals(fromEmail,message.from_email)
                 && verify2StringEquals(fromName,message.from_name)
-                && verify2StringEquals(toName,message.to_name)){
+                && verify2StringContains(toName,message.to_name)){
                 ExtentReportsSetUp.testingPass(passMessage);
             }else{
                 FailureDelegatePage.handlePageException(failMessage);
