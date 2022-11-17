@@ -4,6 +4,7 @@ import java.io.DataOutputStream;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.net.HttpURLConnection;
+import java.net.URI;
 import java.net.URL;
 import java.util.Map;
 
@@ -60,6 +61,9 @@ public class Http {
         }
 
         URL url = new URL(endpoint);
+        URI uri = new URI(url.getProtocol(), url.getUserInfo(), url.getHost(), url.getPort(), url.getPath(), url.getQuery(), url.getRef());
+        String correctEncodedURL=uri.toASCIIString();
+        url = new URL(correctEncodedURL);
         HttpURLConnection connection = (HttpURLConnection) url.openConnection();
         connection.setRequestMethod(method);
         connection.setUseCaches(false);

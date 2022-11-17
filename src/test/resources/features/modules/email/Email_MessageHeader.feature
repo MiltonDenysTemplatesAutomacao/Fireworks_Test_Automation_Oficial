@@ -25,7 +25,7 @@ Feature: Sending Test Email to Test List
     When I update Email Start Tab "", "Message Header Test 6040", "", "", "housedeGivenchy@designers.com"
     And I click on save and continue on Marketing Email Composer
     And I close alert if return this message "Email has been created."
-    And I update Email Headers Tab "Fire Starter", "firestarter@fire-engine-red.com", "", "6040 Message Header Test", "Preheaders 6040", ""
+    And I update Email Headers Tab "Fire Starter", "firestarter@fire-engine-red.com", "firestarter@fire-engine-red.com", "6040 Message Header Test", "Preheaders 6040", ""
     #to choose use assigned counselor for the sender name
     And I click checkbox Use assigned counselor when available
     And I click on save and continue on Marketing Email Composer
@@ -46,6 +46,6 @@ Feature: Sending Test Email to Test List
     When I wait until email sent "Message Header Test 6040"
     And I open email "Message Header Test 6040"
     #to verify the message data
-    When I verify if email was sent correctly "Message Header Test 6040", "firestarter@fire-engine-red.com", "Audrey Hepburn", "Hubert Givenchy"
-    And I verify email content on mail trap is "visible" for subject "Message Header Test 6040", "Email 6040 body content", ""
-    And I verify email content on mail trap is "visible" for subject "Message Header Test 6040", "Preheaders 6040", ""
+    When I verify if email was sent correctly "6040 Message Header Test", "firestarter@fire-engine-red.com", "Audrey Hepburn", "Hubert Givenchy"
+    And I verify email content on mail trap is "visible" for subject "6040 Message Header Test", "Email 6040 body content", ""
+    And I verify email content on mail trap is "visible" for subject "6040 Message Header Test", "Preheaders 6040", ""
