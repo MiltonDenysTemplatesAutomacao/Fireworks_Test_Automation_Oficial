@@ -28,7 +28,7 @@ Feature: Manual test email
     #to send a test email with a note to two email addresses
     And I send a test email "", "6030test@ferfun.com,test6030@ferfun.com", "Note with test email"
     #to check the mailbox for the first test email
-    When I verify if email was sent correctly "Subject 6030 Test Email", "rnureyev@ballet.com", "Rudolph Nureyev", ""
+    When I verify if email was sent correctly "Subject 6030 Test Email", "rnureyev@ballet.com", "Rudolph Nureyev", "6030test@ferfun.com,test6030@ferfun.com"
     And I verify email content on mail trap is "visible" for subject "Subject 6030 Test Email", "Note with test email", ""
     And I verify email content on mail trap is "visible" for subject "Subject 6030 Test Email", "Email 6030 HTML body content", ""
     #to delete the email from mailtrap
@@ -37,9 +37,6 @@ Feature: Manual test email
     When I verify if email was sent correctly "Subject 6030 Test Email", "rnureyev@ballet.com", "Rudolph Nureyev", ""
     And I verify email content on mail trap is "visible" for subject "Subject 6030 Test Email", "Note with test email", ""
     And I verify email content on mail trap is "visible" for subject "Subject 6030 Test Email", "Email 6030 HTML body content", ""
-    #$testEmailRecipients = [$message1ToName, $message2ToName];
-  #$I->assertContains($normalizedTestEmailAddress, $testEmailRecipients);
-  #$I->assertContains($normalizedTestEmailAddress2, $testEmailRecipients);
   #the manual test log appears
     And I verify Manual test log "6030test@ferfun.com"
     And I verify Manual test log "test6030@ferfun.com"
