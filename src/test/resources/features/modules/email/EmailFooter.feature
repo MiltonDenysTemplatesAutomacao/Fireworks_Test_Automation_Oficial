@@ -52,6 +52,7 @@ Feature: Email Footer
     And I verify email content on mail trap is "not visible" for subject "Subject Marketing Footer test 6010", "not validation necessary", "United States"
     And I verify email content on mail trap is "visible" for subject "Subject Marketing Footer test 6010", "", "We collected your email address from your "
     And I verify email content on mail trap is "visible" for subject "Subject Marketing Footer test 6010", "", "Inquiry"
+    And I delete email on mail trap "Subject Marketing Footer test 6010"
 
   @EmailFooterScenario2 @Done @Email
   Scenario: verify FER Admin can disable the can-spam footer in marketing emails
@@ -102,4 +103,5 @@ Feature: Email Footer
     And I verify email content on mail trap is "not visible" for subject "Subject No Footer test 6020", "not validation necessary", "Aurora, Colorado 80010 0"
     And I verify email content on mail trap is "not visible" for subject "Subject No Footer test 6020", "not validation necessary", "United States"
     And I verify email content on mail trap is "not visible" for subject "Subject No Footer test 6020", "not validation necessary", "We collected your email address from your "
+    And I delete email on mail trap "Subject Marketing Footer test 6020"
 

@@ -56,6 +56,7 @@ Feature: Email Sent System Action
     Then I validate if element "deleteActionDisabledButton" is "visible" for email
     Then I validate if element "saveChangesDisabledButton" is "visible" for email
     Then I validate if link text is correct "Campus Events: Admitted Student Day: Attend on 01/01/2016 by Fire Starter" for "Person"
+    And I delete email on mail trap "Email Actions test 6090"
 
   @EmailSentSystemActionOrganizationScenarios @Done @Email
   Scenario: email actions are recorded for organizatons
@@ -114,3 +115,4 @@ Feature: Email Sent System Action
     And I open an action "Organization"
     And I verify action values for organization index 1
     Then I validate if link text is correct "Email Event: Email Sent on 11/04/2022 by Fire Starter" for "Organization"
+    And I delete email on mail trap "User Email Actions Org test 6095"

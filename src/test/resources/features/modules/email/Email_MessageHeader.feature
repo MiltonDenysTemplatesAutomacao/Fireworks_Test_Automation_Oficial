@@ -49,3 +49,4 @@ Feature: Sending Test Email to Test List
     When I verify if email was sent correctly "6040 Message Header Test", "firestarter@fire-engine-red.com", "Audrey Hepburn", "Hubert Givenchy"
     And I verify email content on mail trap is "visible" for subject "6040 Message Header Test", "Email 6040 body content", ""
     And I verify email content on mail trap is "visible" for subject "6040 Message Header Test", "Preheaders 6040", ""
+    And I delete email on mail trap "6040 Message Header Test"
