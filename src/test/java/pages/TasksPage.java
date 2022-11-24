@@ -2,8 +2,8 @@ package pages;
 
 import config.extent_reports.ExtentReportsSetUp;
 import io.cucumber.datatable.DataTable;
+import org.junit.Assert;
 import org.openqa.selenium.By;
-import org.testng.Assert;
 
 public class TasksPage extends BasePage{
 

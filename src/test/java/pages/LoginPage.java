@@ -225,9 +225,9 @@ public class LoginPage {
         String errorMessage = String.format(LogPage.LOGIN_AS_FAIL, returnFullNameLoginParameter(fullName));
         String passMessage = String.format(LogPage.LOGIN_AS_PASS, returnFullNameLoginParameter(fullName));
         try {
-            BasePage.write(By.cssSelector(USERNAME_FIELD),returnUsernameLoginParameter(username));
-            BasePage.write(By.cssSelector(PASSWORD_FIELD),returnPasswordLoginParameter(password));
-            BasePage.click(By.cssSelector(LOGIN_BUTTON));
+            BasePage.fillField(By.cssSelector(USERNAME_FIELD),returnUsernameLoginParameter(username));
+            BasePage.fillField(By.cssSelector(PASSWORD_FIELD),returnPasswordLoginParameter(password));
+            BasePage.clickOption(By.cssSelector(LOGIN_BUTTON));
             if(BasePage.alertMessageContains(By.id("alertMessage"),returnFullNameLoginParameter(fullName))) {
                 ExtentReportsSetUp.testingPass(passMessage);
             }else {

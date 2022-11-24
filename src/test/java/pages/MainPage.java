@@ -1,9 +1,7 @@
 package pages;
 
 import config.extent_reports.ExtentReportsSetUp;
-import io.cucumber.datatable.DataTable;
 import org.openqa.selenium.By;
-import org.testng.reporters.jq.Main;
 
 import java.util.HashMap;
 import java.util.Map;

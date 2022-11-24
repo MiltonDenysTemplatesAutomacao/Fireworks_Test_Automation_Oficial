@@ -6,13 +6,10 @@ import org.openqa.selenium.Platform;
 import org.openqa.selenium.Proxy;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
-
 import java.net.MalformedURLException;
 import java.net.URL;
-
 import static config.browser_factory.DriverType.CHROME;
 import static config.browser_factory.DriverType.valueOf;
-
 import static org.openqa.selenium.Proxy.ProxyType.MANUAL;
 import static org.openqa.selenium.remote.CapabilityType.PROXY;
 
@@ -28,13 +25,13 @@ public class DriverFactory {
     private final String proxyUsername = System.getProperty("proxyUsername");
     private final String proxyPassword = System.getProperty("proxyPassword");
     private final String proxyDetails = String.format("%s:%d", proxyHostname, proxyPort);
-
     private static RemoteWebDriver driver;
     private final DriverType selectedDriverType;
 
     public DriverFactory() {
         DriverType driverType = CHROME;
         String browser = System.getProperty("browser", driverType.toString()).toUpperCase();
+
         try {
             driverType = valueOf(browser);
         } catch (IllegalArgumentException ignored) {
