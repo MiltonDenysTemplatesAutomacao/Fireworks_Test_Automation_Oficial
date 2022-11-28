@@ -15,27 +15,27 @@ public class Hooks extends DriverBase {
     private RemoteWebDriver driver;
 
     @BeforeAll
-    public static void initAll(){
+    public static void setUp(){
         ExtentReportsSetUp.initializeReport();
     }
 
     @Before
-    public void init(Scenario scenario) throws Exception {
+    public void beforeSuite(Scenario scenario) throws Exception {
         ExtentReportsSetUp.startTestReport(scenario.getName());
         Dotenv dotenv = Dotenv.configure().load();
         instantiateDriverObject();
         driver = getDriver();
         String url = dotenv.get("APP_URL");
         driver.get(url);
-
     }
-
     @After
-    public void finish() {
+    public void afterSuite() {
+        clearCookies();
         closeDriverObjects();
     }
     @AfterAll
-    public static void finishAll(){
+    public static void tearDown(){
+        closeDriverObjects();
         ExtentReportsSetUp.endTestReport();
     }
 }
