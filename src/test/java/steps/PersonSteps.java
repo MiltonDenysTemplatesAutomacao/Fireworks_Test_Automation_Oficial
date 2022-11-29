@@ -32,6 +32,14 @@ public class PersonSteps {
     public static void updateHeaderAssignedStaff(String assignedStaff) {
         PersonPage.updateHeaderAssignedStaff(assignedStaff);
     }
+    @Then("I update Header Ok to Contact {string}")
+    public static void updateHeaderOKToContact(String okToContact) {
+        PersonPage.updateHeaderOKToContact(okToContact);
+    }
+    @Then("I verify Header Ok to Contact {string}")
+    public static void verifyHeaderOKToContact(String okToContact) {
+        PersonPage.verifyHeaderOKToContact(okToContact);
+    }
     @Then("I update Header Role {string}")
     public static void updateHeaderRole(String role) {
         PersonPage.updateHeaderRole(role);

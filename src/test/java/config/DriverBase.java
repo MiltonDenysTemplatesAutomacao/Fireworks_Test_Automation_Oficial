@@ -15,7 +15,6 @@ public class DriverBase {
     private static ThreadLocal<DriverFactory> driverFactoryThread;
 
     public static void instantiateDriverObject() {
-        LOG.warn("Testing before Suite");
         driverFactoryThread = ThreadLocal.withInitial(() -> {
             DriverFactory driverFactory = new DriverFactory();
             webDriverThreadPool.add(driverFactory);

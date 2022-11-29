@@ -885,10 +885,18 @@ public class LogPage {
     public static final String VERIFY_TODAY_DATE_MANUAL_TEST_LOG_FAIL = "Fail while trying to verify today´s date in Manual test log";
     public static final String UPDATE_RECIPIENTS_PASS = "I update recipients";
     public static final String UPDATE_RECIPIENTS_FAIL = "Fail while trying to update recipients";
+    public static final String UPDATE_HEADER_OK_TO_CONTACT_PASS = "I update Ok to Contact '%s'";
+    public static final String UPDATE_HEADER_OK_TO_CONTACT_FAIL = "Fail while trying to update Ok to Contact '%s'";
     public static final String UPDATE_HEADER_ASSIGNED_STAFF_PASS = "I update Header Assigned Staff '%s'";
     public static final String UPDATE_HEADER_ASSIGNED_STAFF_FAIL = "Fail while trying to update Header Assigned Staff '%s'";
     public static final String CLICK_USE_ASSIGNED_COUNSELOR_CHECKBOX_PASS = "I click checkbox Use assigned counselor when available";
     public static final String CLICK_USE_ASSIGNED_COUNSELOR_CHECKBOX_FAIL = "Fail while trying to click checkbox Use assigned counselor when available";
+    public static final String VERIFY_HEADER_OK_TO_CONTACT_PASS = "I verify Header Ok to Contact '%s'";
+    public static final String VERIFY_HEADER_OK_TO_CONTACT_FAIL = "Fail while trying to verify Header Ok to Contact '%s'";
+    public static final String OPEN_PREVIEW_RECIPIENTS_MODAL_PASS = "I open preview recipients button";
+    public static final String OPEN_PREVIEW_RECIPIENTS_MODAL_FAIL = "Fail while trying to open preview recipients button";
+    public static final String CLOSE_PREVIEW_RECIPIENTS_MODAL_PASS = "I close preview recipients button";
+    public static final String CLOSE_PREVIEW_RECIPIENTS_MODAL_FAIL = "Fail while trying to close preview recipients button";
 
 
 

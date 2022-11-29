@@ -29,6 +29,14 @@ public class EmailWizardSteps {
     public static void sendTestEmail(String testList,String email, String testNote) {
         EmailWizardPage.sendTestEmail(testList,email,testNote);
     }
+    @When("I open preview recipients button")
+    public static void openPreviewRecipientsModal() {
+        EmailWizardPage.openPreviewRecipientsModal();
+    }
+    @When("I close preview recipients button")
+    public static void closePreviewRecipientsModal() {
+        EmailWizardPage.closePreviewRecipientsModal();
+    }
     @When("I update Email Content Tab {string}, {string}")
     public static void updateEmailContentTab(String bodyHTML, String bodyText) {
         EmailWizardPage.updateEmailContentTab(bodyHTML,bodyText);

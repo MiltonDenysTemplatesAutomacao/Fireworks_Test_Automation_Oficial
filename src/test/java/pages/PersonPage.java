@@ -113,12 +113,34 @@ public class PersonPage extends BasePage{
     private static final String HEADER_ROLE_DROPDOWN_OPTION11 = "div.btn-group.autoSubmit.dropDownSelect.open > ul > li:nth-child(11)";
     private static final String HEADER_ROLE_DROPDOWN_OPTION11_ACTIVE = "div.btn-group.autoSubmit.dropDownSelect.open > ul > li:nth-child(11).active";
     private static final String CREATE_PERSON_BUTTON = "top-controls-create-new-person";
+    private static final String HEADER_OK_TO_CONTACT_ELEMENT = "#personHeaderContactButton";
+    private static final String HEADER_OK_TO_CONTACT_ELEMENT_YES = "//*[text() = 'Yes' and not(text()[2])]";
+    private static final String HEADER_OK_TO_CONTACT_ELEMENT_NO = "//*[text() = 'No' and not(text()[2])]";
     private static final String COMPOSER_SAVE_CHANGES_BUTTON = "saveChangesBtnPersonCreate";
 
     private static String recordStatusList(String status){
         return String.format("//*[contains(text(),'%s')]",status);
     }
 
+    public static void updateHeaderOKToContact(String okToContact){
+        String passMessage = String.format(LogPage.UPDATE_HEADER_OK_TO_CONTACT_PASS,okToContact);
+        String failMessage = String.format(LogPage.UPDATE_HEADER_OK_TO_CONTACT_FAIL,okToContact);
+        try {
+            switch (okToContact){
+                case "Yes":
+                    clickOption(By.cssSelector(HEADER_OK_TO_CONTACT_ELEMENT));
+                    clickOption(By.xpath(HEADER_OK_TO_CONTACT_ELEMENT_YES));
+                    break;
+                case "No":
+                    clickOption(By.cssSelector(HEADER_OK_TO_CONTACT_ELEMENT));
+                    clickOption(By.xpath(HEADER_OK_TO_CONTACT_ELEMENT_NO));
+                    break;
+            }
+            ExtentReportsSetUp.testingPass(passMessage);
+        } catch (Exception e) {
+            FailureDelegatePage.handlePageException(failMessage);
+        }
+    }
     public static void updateHeaderAssignedStaff(String assignedStaff){
         String passMessage = String.format(LogPage.UPDATE_HEADER_ASSIGNED_STAFF_PASS,assignedStaff);
         String failMessage = String.format(LogPage.UPDATE_HEADER_ASSIGNED_STAFF_FAIL,assignedStaff);
@@ -146,7 +168,21 @@ public class PersonPage extends BasePage{
         String passMessage = String.format(LogPage.VERIFY_HEADER_RECORD_STATUS_PASS,status);
         String failMessage = String.format(LogPage.VERIFY_HEADER_RECORD_STATUS_FAIL,status);
         try{
+            wait(1000);
             if(MainPage.verifyGetText(By.cssSelector(HEADER_RECORD_STATUS_ELEMENT),status)){
+                ExtentReportsSetUp.testingPass(passMessage);
+            }else{
+                FailureDelegatePage.handlePageException(failMessage);
+            }
+        }catch(Exception e){
+            FailureDelegatePage.handlePageException(failMessage);
+        }
+    }
+    public static void verifyHeaderOKToContact(String okToContact){
+        String passMessage = String.format(LogPage.VERIFY_HEADER_OK_TO_CONTACT_PASS,okToContact);
+        String failMessage = String.format(LogPage.VERIFY_HEADER_OK_TO_CONTACT_FAIL,okToContact);
+        try{
+            if(MainPage.verifyGetText(By.cssSelector(HEADER_OK_TO_CONTACT_ELEMENT),okToContact)){
                 ExtentReportsSetUp.testingPass(passMessage);
             }else{
                 FailureDelegatePage.handlePageException(failMessage);

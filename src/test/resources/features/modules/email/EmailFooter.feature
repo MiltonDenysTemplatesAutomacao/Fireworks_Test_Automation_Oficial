@@ -33,7 +33,7 @@ Feature: Email Footer
     And I close alert if return this message "Email has been updated."
     #to send the email
     And I send email
-    And I verify RecipientsPreview "Roberto", "Bolle", "rbolle@ballet.com", "", ""
+    And I verify RecipientsPreview "Roberto", "Bolle", "rbolle@ballet.com", "", "1"
     And I confirm EmailSend "Person"
     Then I validate if "Email has been queued." message is correct
     #to wait until the email is sent
@@ -85,7 +85,7 @@ Feature: Email Footer
     #to send the email
     And I send email
     #fix last parameter here
-    And I verify RecipientsPreview "Nikolayevich", "Baryshnikov", "nBaryshnikov@ballet.com", "", ""
+    And I verify RecipientsPreview "Nikolayevich", "Baryshnikov", "nBaryshnikov@ballet.com", "", "1"
     And I confirm EmailSend "Person"
     Then I validate if "Email has been queued." message is correct
       #to wait until the email is sent

@@ -42,7 +42,9 @@ public class EmailWizardPage extends BasePage{
     public static final String ACTION_STAFF_DROPDOWN = "#select2-chosen-26";
     public static final String ACTION_DATE_FIELD = "#action_date";
     public static final String ACTION_COMMENTS_FIELD = "#action_comments";
-    public static final String PREVIEW_RECIPIENTS_MODAL_TABLE = "#previewEmailRecipientsTable_row_0";
+    public static final String PREVIEW_RECIPIENTS_MODAL_TABLE = "//table[starts-with(@id, 'previewEmailRecipientsTable') and contains(@aria-describedby, 'previewEmailRecipientsTable_info')]";
+    public static final String PREVIEW_RECIPIENTS_VALID_COUNT_MESSAGE = "//div[starts-with(@class, 'datatableControls') and contains(@data-dt-target, 'previewEmailRecipientsTable')]";
+    public static final String PREVIEW_RECIPIENTS_MODAL_CANCEL_BUTTON = "#modalCancelButtonpreviewRecipients";
     public static final String TEXT = "previewEmailContentText";
     public static final String TEXT_BODY = "/html/body";
     public static final String TEXT_TAB = "//*[text() = 'Text']";
@@ -59,6 +61,14 @@ public class EmailWizardPage extends BasePage{
     public static final String TEST_LIST_PICKER_CHOOSE_BUTTON = "#modalSubmitButtontestRecipientListPicker";
     public static final String USE_COUNSELOR_AS_SENDER_NAME_CHECKBOX = "#use_assigned_counselor_name";
 
+    public static void openPreviewRecipientsModal(){
+        try {
+            clickOption(By.cssSelector(PREVIEW_RECIPIENTS_BUTTON));
+            ExtentReportsSetUp.testingPass(LogPage.OPEN_PREVIEW_RECIPIENTS_MODAL_PASS);
+        } catch (Exception e) {
+            FailureDelegatePage.handlePageException(LogPage.OPEN_PREVIEW_RECIPIENTS_MODAL_FAIL);
+        }
+    }
     public static void clickUseAssignedCounselorCheckbox(){
         try {
             clickCheckbox(By.cssSelector(USE_COUNSELOR_AS_SENDER_NAME_CHECKBOX));
@@ -167,15 +177,23 @@ public class EmailWizardPage extends BasePage{
             FailureDelegatePage.handlePageException(LogPage.VERIFY_RECIPIENTS_PREVIEW_FAIL);
         }
     }
+    public static void closePreviewRecipientsModal(){
+        try {
+            clickOption(By.cssSelector(PREVIEW_RECIPIENTS_MODAL_CANCEL_BUTTON));
+            ExtentReportsSetUp.testingPass(LogPage.CLOSE_PREVIEW_RECIPIENTS_MODAL_PASS);
+        } catch (Exception e) {
+            FailureDelegatePage.handlePageException(LogPage.CLOSE_PREVIEW_RECIPIENTS_MODAL_FAIL);
+        }
+    }
     public static void verifyRecipientsPreview(String firstName, String lastName, String emailAddress, String reason, String validRecipients){
         try {
             wait(2000);
-            if(verifyGetText(By.cssSelector(PREVIEW_RECIPIENTS_MODAL_TABLE),firstName)
-                    && verifyGetText(By.cssSelector(PREVIEW_RECIPIENTS_MODAL_TABLE),lastName)
-                    && verifyGetText(By.cssSelector(PREVIEW_RECIPIENTS_MODAL_TABLE),emailAddress)
-                    && verifyGetText(By.cssSelector(PREVIEW_RECIPIENTS_MODAL_TABLE),reason)
-                    && verifyGetText(By.cssSelector(PREVIEW_RECIPIENTS_MODAL_TABLE),validRecipients)){
-                ExtentReportsSetUp.testingPass(LogPage.VERIFY_RECIPIENTS_PREVIEW_PASS);
+            if(verifyGetText(By.xpath(PREVIEW_RECIPIENTS_MODAL_TABLE),firstName)
+                    && verifyGetText(By.xpath(PREVIEW_RECIPIENTS_MODAL_TABLE),lastName)
+                    && verifyGetText(By.xpath(PREVIEW_RECIPIENTS_MODAL_TABLE),emailAddress)
+                    && verifyGetText(By.xpath(PREVIEW_RECIPIENTS_MODAL_TABLE),reason)
+                    && verifyGetText(By.xpath(PREVIEW_RECIPIENTS_VALID_COUNT_MESSAGE),"(Sending to " + validRecipients + " valid recipients)")){
+                    ExtentReportsSetUp.testingPass(LogPage.VERIFY_RECIPIENTS_PREVIEW_PASS);
             }else{
                 FailureDelegatePage.handlePageException(LogPage.VERIFY_RECIPIENTS_PREVIEW_FAIL);
             }
