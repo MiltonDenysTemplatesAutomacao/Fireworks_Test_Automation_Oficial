@@ -9,6 +9,10 @@ public class EmailSteps {
     public static void createNewEmail(String type) {
         EmailPage.createNewEmail(type);
     }
+    @When("I delete email")
+    public static void deleteEmail() {
+        EmailPage.deleteEmail();
+    }
 
     @When("I verify if email was sent correctly {string}, {string}, {string}, {string}")
     public static void validateEmailOnMailTrap(String subject,String fromEmail,String fromName,String toName) {

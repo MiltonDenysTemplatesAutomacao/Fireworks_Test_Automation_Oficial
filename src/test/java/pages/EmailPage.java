@@ -27,7 +27,18 @@ public class EmailPage extends BasePage{
     private static final String EMAIL_MANAGER_TABLE_ROW1_COLUMN3 = "#emailManagerTable_row_0_col_3";
     private static final String SCHEDULE_EMAIL_BUTTON = "#scheduleEmail";
     private static final String MANUAL_TEST_LOG = "#manualTestLog";
+    private static final String DELETE_DRAFT_EMAIL_BUTTON = "#emailHeaderDeleteButton";
+    private static final String DELETE_EMAIL_MODAL_SUBMIT_BUTTON = "#modalSubmitButtondeleteEmail";
 
+    public static void deleteEmail(){
+        try {
+            clickOption(By.cssSelector(DELETE_DRAFT_EMAIL_BUTTON));
+            clickOption(By.cssSelector(DELETE_EMAIL_MODAL_SUBMIT_BUTTON));
+            ExtentReportsSetUp.testingPass(LogPage.DELETE_EMAIL_PASS);
+        } catch (Exception e) {
+            FailureDelegatePage.handlePageException(LogPage.DELETE_EMAIL_PASS);
+        }
+    }
     public static void verifyTodayDateManualTestLog(){
         try {
             if(verifyDateFieldWithoutHourByText(By.cssSelector(MANUAL_TEST_LOG))){

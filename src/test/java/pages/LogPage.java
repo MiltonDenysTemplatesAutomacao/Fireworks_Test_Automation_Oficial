@@ -897,6 +897,8 @@ public class LogPage {
     public static final String OPEN_PREVIEW_RECIPIENTS_MODAL_FAIL = "Fail while trying to open preview recipients button";
     public static final String CLOSE_PREVIEW_RECIPIENTS_MODAL_PASS = "I close preview recipients button";
     public static final String CLOSE_PREVIEW_RECIPIENTS_MODAL_FAIL = "Fail while trying to close preview recipients button";
+    public static final String DELETE_EMAIL_PASS = "I delete email";
+    public static final String DELETE_EMAIL_FAIL = "Fail while trying delete email";
 
 
 
