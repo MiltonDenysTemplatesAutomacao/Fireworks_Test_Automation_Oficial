@@ -42,7 +42,7 @@ public class EmailWizardSteps {
         EmailWizardPage.updateEmailContentTab(bodyHTML,bodyText);
     }
     @When("I click on finish tab")
-    public static void updateEmailContentTab() {
+    public static void clickFinishTab() {
         EmailWizardPage.clickFinishTab();
     }
     @When("I update Email Finish Tab {string}, {string}, {string}, {string}, {string}")
