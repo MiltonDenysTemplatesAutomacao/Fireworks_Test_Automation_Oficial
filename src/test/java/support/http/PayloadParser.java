@@ -27,9 +27,8 @@ public class PayloadParser {
                 inputStream.close();
             }
             return writer.toString();
-        } else {
-            return "";
         }
+        return "";
     }
 
     public String toJson(Object objeto) throws Exception {

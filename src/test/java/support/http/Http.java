@@ -11,10 +11,8 @@ import java.util.Map;
 public class Http {
     public static Object Get(String endpoint, Class returnClassType, Map<String, String> headers) throws Exception
     {
-        Object body = null;
-
         try {
-            return Request("GET", endpoint, body, returnClassType, headers);
+            return Request("GET", endpoint, null, returnClassType, headers);
         } catch (Exception e) {
             throw e;
         }
@@ -41,10 +39,8 @@ public class Http {
 
     public static Object Delete(String endpoint, Class returnClassType, Map<String, String> headers) throws Exception
     {
-        Object body = null;
-
         try {
-            return Request("DELETE", endpoint, body, returnClassType, headers);
+            return Request("DELETE", endpoint, null, returnClassType, headers);
         } catch (Exception e) {
             throw e;
         }
