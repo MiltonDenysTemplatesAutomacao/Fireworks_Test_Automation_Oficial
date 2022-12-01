@@ -60,6 +60,7 @@ public class EmailWizardPage extends BasePage{
     public static final String TEST_LIST_PICKER_TABLE_ROW1_CHECKBOX = "#testRecipientListPickerModalTable_row_0_col_0 > div > input";
     public static final String TEST_LIST_PICKER_CHOOSE_BUTTON = "#modalSubmitButtontestRecipientListPicker";
     public static final String USE_COUNSELOR_AS_SENDER_NAME_CHECKBOX = "#use_assigned_counselor_name";
+    public static final String CLICK_ON_SAVE_CHANGES_ON_CONTENT_TAB = "#emailComposerBodyContentFormSubmitButton";
 
     public static void openPreviewRecipientsModal(){
         try {
@@ -258,11 +259,19 @@ public class EmailWizardPage extends BasePage{
         }
     }
 
+    public static void clickOnSaveChangesOnContentTab(){
+        try {
+            wait(5000);
+            clickOption(By.cssSelector(CLICK_ON_SAVE_CHANGES_ON_CONTENT_TAB));
+            ExtentReportsSetUp.testingPass(LogPage.CLICK_ON_SAVE_CHANGES_ON_CONTENT_TAB_PASS);
+        } catch (Exception e) {
+            FailureDelegatePage.handlePageException(LogPage.CLICK_ON_SAVE_CHANGES_ON_CONTENT_TAB_FAIL);
+        }
+    }
     public static void clickFinishTab(){
         try {
-            scrollToTheTop();
-            waitElementBy(By.cssSelector(EMAIL_FINISH_TAB),20);
-            click(By.cssSelector(EMAIL_FINISH_TAB));
+            wait(3000);
+            clickOption(By.cssSelector(EMAIL_FINISH_TAB));
             ExtentReportsSetUp.testingPass(LogPage.UPDATE_EMAIL_CONTENT_TAB_PASS);
         } catch (Exception e) {
             FailureDelegatePage.handlePageException(LogPage.ADD_EMAIL_ATTACHMENT_FAIL);
@@ -296,11 +305,13 @@ public class EmailWizardPage extends BasePage{
             waitElementBy(By.cssSelector(CHOOSE_HTML_LAYOUT),updateEmailContentTabDelay);
             if (bodyHTML != ""){
                 fillBodyWithHTML(bodyHTML);
+                wait(3000);
             }
             if (bodyText != ""){
                 scrollTo("450");
                 waitElementBy(By.id(CONTENT_PLAIN_TEXT_FIELD),20);
                 write(By.id(CONTENT_PLAIN_TEXT_FIELD),bodyText);
+                wait(3000);
             }
             ExtentReportsSetUp.testingPass(LogPage.UPDATE_EMAIL_CONTENT_TAB_PASS);
         } catch (Exception e) {

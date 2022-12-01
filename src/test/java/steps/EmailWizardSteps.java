@@ -45,6 +45,10 @@ public class EmailWizardSteps {
     public static void clickFinishTab() {
         EmailWizardPage.clickFinishTab();
     }
+    @When("I click on Save Changes on content tab")
+    public static void clickOnSaveChangesOnContentTab() {
+        EmailWizardPage.clickOnSaveChangesOnContentTab();
+    }
     @When("I update Email Finish Tab {string}, {string}, {string}, {string}, {string}")
     public static void updateEmailFinishTab(String category, String action, String staff, String actionDateTime, String comments) {
         EmailWizardPage.updateEmailFinishTab(category,action,staff,actionDateTime,comments);

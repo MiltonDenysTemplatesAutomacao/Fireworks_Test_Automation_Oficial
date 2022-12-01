@@ -905,6 +905,8 @@ public class LogPage {
     public static final String SEARCH_RECIPIENTS_TABLE_FAIL = "Fail while trying to search recipients table '%s'";
     public static final String VERIFY_NO_RESULTS_FOR_RECIPIENTS_PASS = "I verify if there are no results for recipients '%s'";
     public static final String VERIFY_NO_RESULTS_FOR_RECIPIENTS_FAIL = "Fail while trying to verify if there are no results for recipients '%s'";
+    public static final String CLICK_ON_SAVE_CHANGES_ON_CONTENT_TAB_PASS = "I click on Save Changes on content tab";
+    public static final String CLICK_ON_SAVE_CHANGES_ON_CONTENT_TAB_FAIL = "Fail while trying to click on Save Changes on content tab";
 
 
 
