@@ -899,6 +899,12 @@ public class LogPage {
     public static final String CLOSE_PREVIEW_RECIPIENTS_MODAL_FAIL = "Fail while trying to close preview recipients button";
     public static final String DELETE_EMAIL_PASS = "I delete email";
     public static final String DELETE_EMAIL_FAIL = "Fail while trying delete email";
+    public static final String VERIFY_CHANGE_NAME_FOR_PERSON3_IS_NOT_REFLECTED_PASS = "I verify if the name change for person 3 is not reflected '%s'";
+    public static final String VERIFY_CHANGE_NAME_FOR_PERSON3_IS_NOT_REFLECTED_FAIL = "Fail while trying to verify if the name change for person 3 is not reflected '%s'";
+    public static final String SEARCH_RECIPIENTS_TABLE_PASS = "I search recipients table '%s'";
+    public static final String SEARCH_RECIPIENTS_TABLE_FAIL = "Fail while trying to search recipients table '%s'";
+    public static final String VERIFY_NO_RESULTS_FOR_RECIPIENTS_PASS = "I verify if there are no results for recipients '%s'";
+    public static final String VERIFY_NO_RESULTS_FOR_RECIPIENTS_FAIL = "Fail while trying to verify if there are no results for recipients '%s'";
 
 
 

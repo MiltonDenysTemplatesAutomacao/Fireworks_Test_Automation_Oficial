@@ -46,6 +46,18 @@ public class EmailSteps {
     public static void confirmEmailSend(String type) {
         EmailPage.confirmEmailSend(type);
     }
+    @When("I verify if the name change for person 3 is not reflected {string} on line 2")
+    public static void verifyChangeNameForPerson3IsNotReflected(String name) {
+        EmailPage.verifyChangeNameForPerson3IsNotReflected(name);
+    }
+    @When("I verify if there are no results for recipients {string}")
+    public static void verifyNoResultsForRecipients(String search) {
+        EmailPage.verifyNoResultsForRecipients(search);
+    }
+    @When("I search recipients table {string}")
+    public static void searchRecipientsTable(String recipients) {
+        EmailPage.searchRecipientsTable(recipients);
+    }
     @When("I wait until email sent {string}")
     public static void waitUntilEmailSent(String emailName) {
         EmailPage.waitUntilEmailSent(emailName);

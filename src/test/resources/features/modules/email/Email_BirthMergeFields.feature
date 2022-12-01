@@ -70,3 +70,20 @@ Feature: Merge Fields Replacement when No Value
     When I verify if email was sent correctly "Subject 6140 for Rhodes Burkhart", "firestarter@fire-engine-red.com", "", "Rhodes Burkhart"
     And I verify email content on mail trap is "visible" for subject "Subject 6140 for Rhodes Burkhart", "Name: Rhodes Burkhart. The persons birth date is: . The persons birth city is: . The persons birth state is: . The persons birth country is:", "Rhodes Burkhart"
     #to update the name of person 3 to remove them from the smart search
+    And I navigate to people on records
+    And I open a people record by "Burkhart"
+    And I validate if "Burkhart"summary opened properly
+    And I navigate to contact
+    When I create a name on contact for person "Zelda", "", "", "", "", "", "", "" group "0"
+    And I click on save changes in contact for person
+    And I close alert if return this message "Person has been updated."
+    #to verify the recipient count remained static on the email manager and email reports page
+    And I navigate to email manager page
+    And I open email "Birth Merge Tag test 6140"
+    #to verify the recipients table remains static and the name change is not reflected
+    And I verify if the name change for person 3 is not reflected "Rhodes" on line 2
+    And I search recipients table "Zelda"
+    And I verify if there are no results for recipients "No search results to display."
+    And I delete email on mail trap "Subject 6140 for Rhodes Priestly"
+    And I delete email on mail trap "Subject 6140 for Rhodes Bramah"
+    And I delete email on mail trap "Subject 6140 for Rhodes Burkhart"

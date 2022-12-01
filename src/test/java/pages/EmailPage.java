@@ -29,7 +29,46 @@ public class EmailPage extends BasePage{
     private static final String MANUAL_TEST_LOG = "#manualTestLog";
     private static final String DELETE_DRAFT_EMAIL_BUTTON = "#emailHeaderDeleteButton";
     private static final String DELETE_EMAIL_MODAL_SUBMIT_BUTTON = "#modalSubmitButtondeleteEmail";
+    private static final String RECIPIENTS_TABLE_ROW1_COLUMN1 = "#recipientEmailManagerTable_row_0_col_0";
+    private static final String RECIPIENTS_TABLE_ROW2_COLUMN2 = "#recipientEmailManagerTable_row_1_col_1";
+    private static final String RECIPIENTS_TABLE_SEARCH_FIELD = "#recipientEmailManagerTableControlsTableSearch";
 
+    public static void searchRecipientsTable(String recipients){
+        String passMessage = String.format(LogPage.SEARCH_RECIPIENTS_TABLE_PASS,recipients);
+        String failMessage = String.format(LogPage.SEARCH_RECIPIENTS_TABLE_PASS,recipients);
+        try {
+            fillField(By.cssSelector(RECIPIENTS_TABLE_SEARCH_FIELD),recipients);
+            ExtentReportsSetUp.testingPass(passMessage);
+        } catch (Exception e) {
+            FailureDelegatePage.handlePageException(failMessage);
+        }
+    }
+    public static void verifyNoResultsForRecipients(String search){
+        String passMessage = String.format(LogPage.VERIFY_NO_RESULTS_FOR_RECIPIENTS_PASS,search);
+        String failMessage = String.format(LogPage.VERIFY_NO_RESULTS_FOR_RECIPIENTS_PASS,search);
+        try {
+            if(verifyGetText(By.cssSelector(RECIPIENTS_TABLE_ROW1_COLUMN1),search)){
+                ExtentReportsSetUp.testingPass(passMessage);
+            }else{
+                FailureDelegatePage.handlePageException(failMessage);
+            }
+        } catch (Exception e) {
+            FailureDelegatePage.handlePageException(failMessage);
+        }
+    }
+    public static void verifyChangeNameForPerson3IsNotReflected(String name){
+        String passMessage = String.format(LogPage.VERIFY_CHANGE_NAME_FOR_PERSON3_IS_NOT_REFLECTED_PASS,name);
+        String failMessage = String.format(LogPage.VERIFY_CHANGE_NAME_FOR_PERSON3_IS_NOT_REFLECTED_FAIL,name);
+        try {
+            if(verifyGetText(By.cssSelector(RECIPIENTS_TABLE_ROW2_COLUMN2),name)){
+                ExtentReportsSetUp.testingPass(passMessage);
+            }else{
+                FailureDelegatePage.handlePageException(failMessage);
+            }
+        } catch (Exception e) {
+            FailureDelegatePage.handlePageException(failMessage);
+        }
+    }
     public static void deleteEmail(){
         try {
             clickOption(By.cssSelector(DELETE_DRAFT_EMAIL_BUTTON));
