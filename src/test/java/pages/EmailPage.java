@@ -35,7 +35,7 @@ public class EmailPage extends BasePage{
 
     public static void searchRecipientsTable(String recipients){
         String passMessage = String.format(LogPage.SEARCH_RECIPIENTS_TABLE_PASS,recipients);
-        String failMessage = String.format(LogPage.SEARCH_RECIPIENTS_TABLE_PASS,recipients);
+        String failMessage = String.format(LogPage.SEARCH_RECIPIENTS_TABLE_FAIL,recipients);
         try {
             fillField(By.cssSelector(RECIPIENTS_TABLE_SEARCH_FIELD),recipients);
             ExtentReportsSetUp.testingPass(passMessage);
@@ -45,7 +45,7 @@ public class EmailPage extends BasePage{
     }
     public static void verifyNoResultsForRecipients(String search){
         String passMessage = String.format(LogPage.VERIFY_NO_RESULTS_FOR_RECIPIENTS_PASS,search);
-        String failMessage = String.format(LogPage.VERIFY_NO_RESULTS_FOR_RECIPIENTS_PASS,search);
+        String failMessage = String.format(LogPage.VERIFY_NO_RESULTS_FOR_RECIPIENTS_FAIL,search);
         try {
             if(verifyGetText(By.cssSelector(RECIPIENTS_TABLE_ROW1_COLUMN1),search)){
                 ExtentReportsSetUp.testingPass(passMessage);
@@ -75,7 +75,7 @@ public class EmailPage extends BasePage{
             clickOption(By.cssSelector(DELETE_EMAIL_MODAL_SUBMIT_BUTTON));
             ExtentReportsSetUp.testingPass(LogPage.DELETE_EMAIL_PASS);
         } catch (Exception e) {
-            FailureDelegatePage.handlePageException(LogPage.DELETE_EMAIL_PASS);
+            FailureDelegatePage.handlePageException(LogPage.DELETE_EMAIL_FAIL);
         }
     }
     public static void verifyTodayDateManualTestLog(){

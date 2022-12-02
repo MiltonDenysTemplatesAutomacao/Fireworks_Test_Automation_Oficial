@@ -45,6 +45,10 @@ public class EmailWizardSteps {
     public static void clickFinishTab() {
         EmailWizardPage.clickFinishTab();
     }
+    @When("I click on content tab")
+    public static void clickContentTab() {
+        EmailWizardPage.clickContentTab();
+    }
     @When("I click on Save Changes on content tab")
     public static void clickOnSaveChangesOnContentTab() {
         EmailWizardPage.clickOnSaveChangesOnContentTab();

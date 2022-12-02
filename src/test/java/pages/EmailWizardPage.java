@@ -37,6 +37,7 @@ public class EmailWizardPage extends BasePage{
     public static final String HTML_CONTENT_IFRAME_BODY_ELEMENT = "body#tinymce";
     public static final String CONTENT_PLAIN_TEXT_FIELD = "contentText";
     public static final String EMAIL_FINISH_TAB = "#timeline-step-actions";
+    public static final String EMAIL_CONTENT_TAB = "#timeline-step-body-content";
     public static final String ACTION_CATEGORY_DROPDOWN = "#select2-chosen-22";
     public static final String ACTION_DROPDOWN = "#select2-chosen-23";
     public static final String ACTION_STAFF_DROPDOWN = "#select2-chosen-26";
@@ -268,13 +269,22 @@ public class EmailWizardPage extends BasePage{
             FailureDelegatePage.handlePageException(LogPage.CLICK_ON_SAVE_CHANGES_ON_CONTENT_TAB_FAIL);
         }
     }
+    public static void clickContentTab(){
+        try {
+            wait(3000);
+            clickOption(By.cssSelector(EMAIL_CONTENT_TAB));
+            ExtentReportsSetUp.testingPass(LogPage.CLICK_CONTENT_TAB_PASS);
+        } catch (Exception e) {
+            FailureDelegatePage.handlePageException(LogPage.CLICK_CONTENT_TAB_FAIL);
+        }
+    }
     public static void clickFinishTab(){
         try {
             wait(3000);
             clickOption(By.cssSelector(EMAIL_FINISH_TAB));
-            ExtentReportsSetUp.testingPass(LogPage.UPDATE_EMAIL_CONTENT_TAB_PASS);
+            ExtentReportsSetUp.testingPass(LogPage.CLICK_FINISH_TAB_PASS);
         } catch (Exception e) {
-            FailureDelegatePage.handlePageException(LogPage.ADD_EMAIL_ATTACHMENT_FAIL);
+            FailureDelegatePage.handlePageException(LogPage.CLICK_FINISH_TAB_FAIL);
         }
     }
     public static void addEmailAttachment(String attachment){
