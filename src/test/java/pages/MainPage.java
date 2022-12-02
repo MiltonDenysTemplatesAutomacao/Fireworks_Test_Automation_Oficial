@@ -78,11 +78,12 @@ public class MainPage extends BasePage{
     public static void clickElementByText(String text){
         String errorMessage = String.format(LogPage.CLICK_ELEMENT_BY_TEXT_FAIL, text);
         String passMessage = String.format(LogPage.CLICK_ELEMENT_BY_TEXT_PASS, text);
+        wait(1000);
         try {
             waitUntilElementToBeSelected(By.xpath(getElementByText(text)),10);
             scrollToElement(By.xpath(getElementByText(text)));
             scrollTo("-150");
-            wait(1000);
+            wait(2000);
             BasePage.click(By.xpath(getElementByText(text)));
             ExtentReportsSetUp.testingPass(passMessage);
         } catch (Exception e) {

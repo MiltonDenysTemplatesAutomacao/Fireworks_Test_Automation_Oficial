@@ -225,6 +225,7 @@ public class GlobalNavPage extends BasePage {
     }
     public static void navigateEmailManagerPage(){
         try {
+            wait(2000);
             waitUntilElementToBeSelected(By.cssSelector(FOOTER_COMMUNICATIONS_MENU),20);
             click(By.cssSelector(FOOTER_COMMUNICATIONS_MENU));
             wait(2000);
