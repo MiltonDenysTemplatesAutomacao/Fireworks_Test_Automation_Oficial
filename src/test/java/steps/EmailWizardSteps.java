@@ -45,9 +45,17 @@ public class EmailWizardSteps {
     public static void clickFinishTab() {
         EmailWizardPage.clickFinishTab();
     }
+    @When("I send to relationship {string}")
+    public static void sendToRelationship(String relationship) {
+        EmailWizardPage.sendToRelationship(relationship);
+    }
     @When("I click on content tab")
     public static void clickContentTab() {
         EmailWizardPage.clickContentTab();
+    }
+    @When("I open content preview modal")
+    public static void openContentPreviewModal() {
+        EmailWizardPage.openContentPreviewModal();
     }
     @When("I click on Save Changes on content tab")
     public static void clickOnSaveChangesOnContentTab() {

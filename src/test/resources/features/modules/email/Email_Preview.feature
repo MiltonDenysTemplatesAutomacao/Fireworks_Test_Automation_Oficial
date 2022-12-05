@@ -20,13 +20,13 @@ Feature: Merge Fields Replacement when No Value
     #to verify preview of body content having no merge tags
     And I click on content tab
     And I update Email Content Tab "Preview without merge tags", ""
-    # work on this
+    And I open content preview modal
 #  ->openContentPreviewModal();
 #  $I->see($emailBodyContentNoMergeTags);
 #  $email->closeContentPreviewModal();
-  #to verify preview body content using merge tags
-    And I click on content tab
-    And I update Email Content Tab "Preview without merge tags", ""
+#  #to verify preview body content using merge tags
+#    And I click on content tab
+#    And I update Email Content Tab "Preview without merge tags", ""
 #  ->openContentPreviewModal();
 #  $I->see($person1->firstName);
 #  $I->see($person1->lastName);

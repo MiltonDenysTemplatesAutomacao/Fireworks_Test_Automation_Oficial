@@ -911,6 +911,12 @@ public class LogPage {
     public static final String CLICK_FINISH_TAB_FAIL = "Fail while trying to click on finish tab";
     public static final String CLICK_CONTENT_TAB_PASS = "I click on content tab";
     public static final String CLICK_CONTENT_TAB_FAIL = "Fail while trying to click on content tab";
+    public static final String OPEN_CONTENT_PREVIEW_MODAL_PASS = "I open content preview modal";
+    public static final String OPEN_CONTENT_PREVIEW_MODAL_FAIL = "Fail while trying to open content preview modal";
+    public static final String SET_CANSPAM_DEFAULT_PROFILE_PASS = "I update CAM-SPAM";
+    public static final String SET_CANSPAM_DEFAULT_PROFILE_FAIL = "Fail while trying to update CAM-SPAM";
+    public static final String SEND_TO_RELATIONSHIP_PASS = "I send to relationship '%s'";
+    public static final String SEND_TO_RELATIONSHIP_FAIL = "Fail while trying to send to relationship '%s'";
 
 
 

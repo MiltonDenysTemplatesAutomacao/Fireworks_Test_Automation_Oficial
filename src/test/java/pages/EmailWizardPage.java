@@ -62,7 +62,41 @@ public class EmailWizardPage extends BasePage{
     public static final String TEST_LIST_PICKER_CHOOSE_BUTTON = "#modalSubmitButtontestRecipientListPicker";
     public static final String USE_COUNSELOR_AS_SENDER_NAME_CHECKBOX = "#use_assigned_counselor_name";
     public static final String CLICK_ON_SAVE_CHANGES_ON_CONTENT_TAB = "#emailComposerBodyContentFormSubmitButton";
+    public static final String TINY_MCE_VIEW_PREVIEW_MENU_ITEM = "#previewTinyMCEButton";
+    public static final String TINY_MCE_VIEW_BUTTON = "#mceu_17";
+    public static final String PREVIEW_CONTENT_IFRAME = "/api/email/show-preview";
+    public static final String SEND_ONLY_TO_RELATIONSHIPS_CHECKBOX = "#send_to_connections";
+    public static final String RELATIONSHIP_TYPE_DROPDOWN = "div#s2id_connection_types.select2-container.select2-container-multi.form-control.selectpicker.select2";
+    public static final String RELATIONSHIP_TYPE_ELEMENT = "div#s2id_connection_types.select2-container.select2-container-multi.form-control.selectpicker.select2 ul.select2-choices li.select2-search-field input.select2-input";
 
+    public static void sendToRelationship(String relationship){
+        String passMessage = String.format(LogPage.SEND_TO_RELATIONSHIP_PASS,relationship);
+        String failMessage = String.format(LogPage.SEND_TO_RELATIONSHIP_FAIL,relationship);
+        try {
+            wait(2000);
+            clickCheckbox(By.cssSelector(SEND_ONLY_TO_RELATIONSHIPS_CHECKBOX));
+            selectOptionList(By.cssSelector(RELATIONSHIP_TYPE_DROPDOWN),
+                    relationship,
+                    By.cssSelector(RELATIONSHIP_TYPE_ELEMENT));
+            ExtentReportsSetUp.testingPass(passMessage);
+        } catch (Exception e) {
+            FailureDelegatePage.handlePageException(failMessage);
+        }
+    }
+    public static void clickTinyMCEViewButton()throws Exception{
+            clickOption(By.cssSelector(TINY_MCE_VIEW_BUTTON));
+    }
+
+    public static void openContentPreviewModal(){
+        try {
+            clickTinyMCEViewButton();
+            clickOption(By.cssSelector(TINY_MCE_VIEW_PREVIEW_MENU_ITEM));
+            switchToIFrame(PREVIEW_CONTENT_IFRAME);
+            ExtentReportsSetUp.testingPass(LogPage.OPEN_CONTENT_PREVIEW_MODAL_PASS);
+        } catch (Exception e) {
+            FailureDelegatePage.handlePageException(LogPage.OPEN_CONTENT_PREVIEW_MODAL_FAIL);
+        }
+    }
     public static void openPreviewRecipientsModal(){
         try {
             clickOption(By.cssSelector(PREVIEW_RECIPIENTS_BUTTON));

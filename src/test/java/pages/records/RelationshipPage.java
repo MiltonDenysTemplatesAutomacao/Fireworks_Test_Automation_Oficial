@@ -8,6 +8,8 @@ import pages.FailureDelegatePage;
 import pages.LogPage;
 import pages.MainPage;
 import pages.PersonPage;
+import pages.records.application.ApplicationsPage;
+
 import java.util.HashMap;
 
 public class RelationshipPage extends BasePage {
@@ -74,13 +76,13 @@ public class RelationshipPage extends BasePage {
     public static void updateRelationshipValues(String targetRole,String roleInRelationship,String comments){
         try {
             if(targetRole!=""){
-                MainPage.clickOptionList(By.cssSelector(RELATIONSHIP_TARGET_ROLE_DROPDOWN),
+                MainPage.selectOptionList(By.cssSelector(RELATIONSHIP_TARGET_ROLE_DROPDOWN),
                         targetRole,
-                        By.cssSelector(PersonPage.SELECT_DROP));        }
+                        By.xpath(ApplicationsPage.INPUT_FIELD));        }
             if(roleInRelationship!=""){
                 MainPage.clickOptionList(By.cssSelector(ROLE_OF_IN_RELATIONSHIP_DROPDOWN),
                         roleInRelationship,
-                        By.cssSelector(PersonPage.SELECT_DROP));
+                        By.xpath(ApplicationsPage.INPUT_FIELD));
             }
             if(comments!=""){
                 MainPage.fillField(By.cssSelector(RELATIONSHIPS_COMMENTS_FIELD), comments);

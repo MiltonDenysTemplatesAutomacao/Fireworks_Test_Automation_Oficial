@@ -99,9 +99,9 @@ public class EmailSettingsPage extends BasePage {
                     mass.get(index).get("Country"),
                     By.cssSelector(CAN_SPAM_COUNTRY_INPUT_FIELD));
             fillField(By.cssSelector(CAN_SPAM_POSTAL_CODE),mass.get(index).get("PostalCode"));
-            ExtentReportsSetUp.testingPass(LogPage.VERIFY_BASIC_IDENTIFICATION_VALUES_PASS);
+            ExtentReportsSetUp.testingPass(LogPage.SET_CANSPAM_DEFAULT_PROFILE_PASS);
         } catch (Exception e) {
-            FailureDelegatePage.handlePageException(LogPage.VERIFY_BASIC_IDENTIFICATION_VALUES_FAIL);
+            FailureDelegatePage.handlePageException(LogPage.SET_CANSPAM_DEFAULT_PROFILE_FAIL);
         }
     }
 }
