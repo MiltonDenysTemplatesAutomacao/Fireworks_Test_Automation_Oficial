@@ -26,7 +26,7 @@ Feature: Sending Emails to Relationships
     #create the parent record
     When I create a person
       |FirstName  |LastName |EmailAddress              |EmailType|EmailOptInMethod |Role1          |
-      |William    |Remick   |WilliamRemick@actors.com  |Personal |Student Search   |Parent/Guardian|
+      |William    |Remick   |WilliamRemick@actors.com  |Personal |Application      |Parent/Guardian|
     And I validate if "Person has been created." message is correct
     And I validate if "William Remick"summary opened properly
     And I navigate to basic
@@ -56,7 +56,7 @@ Feature: Sending Emails to Relationships
     And I send to relationship "Father"
     And I click on save and continue on Marketing Email Composer
     And I close alert if return this message "Email has been created."
-    And I update Email Headers Tab "Fire Starte", "firestarter@fire-engine-red.com", "", "Subject Line for [[NAME_FIRST]] [[NAME_LAST]]", "Preheader 6140 Birth Merge Tag test 6140", ""
+    And I update Email Headers Tab "Fire Starter", "firestarter@fire-engine-red.com", "", "Subject Line for [[NAME_FIRST]] [[NAME_LAST]]", "Preheader 6140 Birth Merge Tag test 6140", ""
     And I click on save and continue on Marketing Email Composer
     And I close alert if return this message "Email has been updated."
     And I update Email Content Tab "Parent data: [[NAME_FIRST]] [[NAME_LAST]]  Role: [[PERSON_ROLE]]  Email: [[EMAIL_ADDRESS]]  Birth date: [[BIRTH_DATE]].", "Parent data: [[NAME_FIRST]] [[NAME_LAST]]  Role: [[PERSON_ROLE]]  Email: [[EMAIL_ADDRESS]]  Birth date: [[BIRTH_DATE]]."
@@ -65,7 +65,8 @@ Feature: Sending Emails to Relationships
     And I close alert if return this message "Email has been updated."
     #to send the email
     And I click on finish tab
-    And I update Email Finish Tab "Campus Events", "Admitted Student Day: Register", "Fire Starter", "12/05/2022", ""
+    #\\\TODO\\\ fix action date time to get actual time
+    And I update Email Finish Tab "Campus Events", "Admitted Student Day: Register", "Fire Starter", "12/06/2022", "Test 6270 action comment"
     And I send email
     And I verify RecipientsPreview "William", "Remick", "WilliamRemick@actors.com", "", "1"
     And I confirm EmailSend "Person"
@@ -75,8 +76,21 @@ Feature: Sending Emails to Relationships
     When I wait until email sent "Email to Relationships 6270"
     #verify email is received with the expected relationship data
     When I verify if email was sent correctly "Subject Line for William Remick", "firestarter@fire-engine-red.com", "Fire Starter", "William Remick"
-    And I verify email content on mail trap is "visible" for subject "Subject Line for William Remick", "William Remick WilliamRemick@actors.com Parent/Guardian June 24, 1977 Application", ""
-
-
+    And I verify email content on mail trap is "visible" for subject "Subject Line for William Remick", "William Remick", ""
+    And I verify email content on mail trap is "visible" for subject "Subject Line for William Remick", "WilliamRemick@actors.com", ""
+    And I verify email content on mail trap is "visible" for subject "Subject Line for William Remick", "Parent/Guardian", ""
+    And I verify email content on mail trap is "visible" for subject "Subject Line for William Remick", "June 24, 1977", ""
+    And I verify email content on mail trap is "visible" for subject "Subject Line for William Remick", "Application", ""
+    #the email action to be posted to the student
+    And I navigate to people on records
+    And I open a people record by "Petruzzi"
+    And I validate if "Julian Petruzzi"summary opened properly
+    And I navigate to Actions
+    And I use datatable
+      |Category     |Action     |Staff        |Comments                 |
+      |Email Event  |Email Sent |Fire Starter |Test 6270 action comment |
+    And I verify action Datatable values index "0", values "", "", "", "", ""
+    And I verify current action date time on datatable
+    #the email actions NOT to be posted to the father
 
 
