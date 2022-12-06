@@ -917,6 +917,8 @@ public class LogPage {
     public static final String SET_CANSPAM_DEFAULT_PROFILE_FAIL = "Fail while trying to update CAM-SPAM";
     public static final String SEND_TO_RELATIONSHIP_PASS = "I send to relationship '%s'";
     public static final String SEND_TO_RELATIONSHIP_FAIL = "Fail while trying to send to relationship '%s'";
+    public static final String CONFIRM_NO_MARKETING_CONTENT_PASS = "I confirm NoMarketingContent";
+    public static final String CONFIRM_NO_MARKETING_CONTENT_FAIL = "Fail while trying to confirm NoMarketingContent";
 
 
 

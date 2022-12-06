@@ -46,6 +46,10 @@ public class EmailSteps {
     public static void confirmEmailSend(String type) {
         EmailPage.confirmEmailSend(type);
     }
+    @When("I confirm NoMarketingContent")
+    public static void confirmNoMarketingContent() {
+        EmailPage.confirmNoMarketingContent();
+    }
     @When("I verify if the name change for person 3 is not reflected {string} on line 2")
     public static void verifyChangeNameForPerson3IsNotReflected(String name) {
         EmailPage.verifyChangeNameForPerson3IsNotReflected(name);

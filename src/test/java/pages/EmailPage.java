@@ -32,7 +32,18 @@ public class EmailPage extends BasePage{
     private static final String RECIPIENTS_TABLE_ROW1_COLUMN1 = "#recipientEmailManagerTable_row_0_col_0";
     private static final String RECIPIENTS_TABLE_ROW2_COLUMN2 = "#recipientEmailManagerTable_row_1_col_1";
     private static final String RECIPIENTS_TABLE_SEARCH_FIELD = "#recipientEmailManagerTableControlsTableSearch";
+    private static final String CAN_SPAM_SEND_EMAIL_BUTTON = "#modalSubmitButtoncanSpam";
+    private static final String CAN_SPAM_AGREEMENT_CHECKBOX = "#canSpamAgreement";
 
+    public static void confirmNoMarketingContent(){
+        try {
+            clickCheckbox(By.cssSelector(CAN_SPAM_AGREEMENT_CHECKBOX));
+            clickOption(By.cssSelector(CAN_SPAM_SEND_EMAIL_BUTTON));
+            ExtentReportsSetUp.testingPass(LogPage.CONFIRM_NO_MARKETING_CONTENT_PASS);
+        } catch (Exception e) {
+            FailureDelegatePage.handlePageException(LogPage.CONFIRM_NO_MARKETING_CONTENT_FAIL);
+        }
+    }
     public static void searchRecipientsTable(String recipients){
         String passMessage = String.format(LogPage.SEARCH_RECIPIENTS_TABLE_PASS,recipients);
         String failMessage = String.format(LogPage.SEARCH_RECIPIENTS_TABLE_FAIL,recipients);

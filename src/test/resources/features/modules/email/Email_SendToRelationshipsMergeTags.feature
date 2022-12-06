@@ -56,7 +56,7 @@ Feature: Sending Emails to Relationships
     And I send to relationship "Father"
     And I click on save and continue on Marketing Email Composer
     And I close alert if return this message "Email has been created."
-    And I update Email Headers Tab "", "firestarter@fire-engine-red.com", "", "Subject Line for [[NAME_FIRST]] [[NAME_LAST]]", "Preheader 6140 Birth Merge Tag test 6140", ""
+    And I update Email Headers Tab "Fire Starte", "firestarter@fire-engine-red.com", "", "Subject Line for [[NAME_FIRST]] [[NAME_LAST]]", "Preheader 6140 Birth Merge Tag test 6140", ""
     And I click on save and continue on Marketing Email Composer
     And I close alert if return this message "Email has been updated."
     And I update Email Content Tab "Parent data: [[NAME_FIRST]] [[NAME_LAST]]  Role: [[PERSON_ROLE]]  Email: [[EMAIL_ADDRESS]]  Birth date: [[BIRTH_DATE]].", "Parent data: [[NAME_FIRST]] [[NAME_LAST]]  Role: [[PERSON_ROLE]]  Email: [[EMAIL_ADDRESS]]  Birth date: [[BIRTH_DATE]]."
@@ -75,7 +75,7 @@ Feature: Sending Emails to Relationships
     When I wait until email sent "Email to Relationships 6270"
     #verify email is received with the expected relationship data
     When I verify if email was sent correctly "Subject Line for William Remick", "firestarter@fire-engine-red.com", "Fire Starter", "William Remick"
-    #And I verify email content on mail trap is "visible" for subject "Subject Line for William Remick", "William Remick WilliamRemick@actors.com Parent/Guardian June 24, 1977 Application", ""
+    And I verify email content on mail trap is "visible" for subject "Subject Line for William Remick", "William Remick WilliamRemick@actors.com Parent/Guardian June 24, 1977 Application", ""
 
 
 
