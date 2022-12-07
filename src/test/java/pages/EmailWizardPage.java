@@ -69,6 +69,16 @@ public class EmailWizardPage extends BasePage{
     public static final String RELATIONSHIP_TYPE_DROPDOWN = "div#s2id_connection_types.select2-container.select2-container-multi.form-control.selectpicker.select2";
     public static final String RELATIONSHIP_TYPE_ELEMENT = "div#s2id_connection_types.select2-container.select2-container-multi.form-control.selectpicker.select2 ul.select2-choices li.select2-search-field input.select2-input";
 
+    public static void setCurrentActionDateOnEmailFinishTab(){
+        String currentDateTime = currentDateTimeWithoutHour();
+        try {
+            fillDateField(By.cssSelector(ACTION_DATE_FIELD),currentDateTime);
+            ExtentReportsSetUp.testingPass(LogPage.SET_CURRENT_ACTION_DATE_ON_EMAIL_FINISH_TAB_PASS);
+
+        } catch (Exception e) {
+            FailureDelegatePage.handlePageException(LogPage.SET_CURRENT_ACTION_DATE_ON_EMAIL_FINISH_TAB_FAIL);
+        }
+    }
     public static void sendToRelationship(String relationship){
         String passMessage = String.format(LogPage.SEND_TO_RELATIONSHIP_PASS,relationship);
         String failMessage = String.format(LogPage.SEND_TO_RELATIONSHIP_FAIL,relationship);

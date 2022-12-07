@@ -65,6 +65,10 @@ public class EmailWizardSteps {
     public static void updateEmailFinishTab(String category, String action, String staff, String actionDateTime, String comments) {
         EmailWizardPage.updateEmailFinishTab(category,action,staff,actionDateTime,comments);
     }
+    @When("I set current action date on Email Finish tab")
+    public static void setCurrentActionDateOnEmailFinishTab() {
+        EmailWizardPage.setCurrentActionDateOnEmailFinishTab();
+    }
     @When("I verify action values for organization on finish tab index {string}, {string}, {string}, {string}, {string}, {string}, {string}")
     public static void verifyOrganizationActionFinishTab(String category, String action, String actionType, String actionVisibility,String staff, String actionDateTime, String comments) {
         EmailWizardPage.verifyOrganizationActionFinishTab(category,action,actionType,actionVisibility,staff,actionDateTime,comments);

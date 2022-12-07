@@ -65,8 +65,8 @@ Feature: Sending Emails to Relationships
     And I close alert if return this message "Email has been updated."
     #to send the email
     And I click on finish tab
-    #\\\TODO\\\ fix action date time to get actual time
-    And I update Email Finish Tab "Campus Events", "Admitted Student Day: Register", "Fire Starter", "12/06/2022", "Test 6270 action comment"
+    And I update Email Finish Tab "Campus Events", "Admitted Student Day: Register", "Fire Starter", "", "Test 6270 action comment"
+    And I set current action date on Email Finish tab
     And I send email
     And I verify RecipientsPreview "William", "Remick", "WilliamRemick@actors.com", "", "1"
     And I confirm EmailSend "Person"
@@ -92,5 +92,9 @@ Feature: Sending Emails to Relationships
     And I verify action Datatable values index "0", values "", "", "", "", ""
     And I verify current action date time on datatable
     #the email actions NOT to be posted to the father
-
+    And I navigate to people on records
+    And I open a people record by "Remick"
+    And I validate if "William Remick"summary opened properly
+    And I navigate to Actions
+    Then I validate if action were deleted
 

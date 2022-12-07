@@ -919,6 +919,8 @@ public class LogPage {
     public static final String SEND_TO_RELATIONSHIP_FAIL = "Fail while trying to send to relationship '%s'";
     public static final String CONFIRM_NO_MARKETING_CONTENT_PASS = "I confirm NoMarketingContent";
     public static final String CONFIRM_NO_MARKETING_CONTENT_FAIL = "Fail while trying to confirm NoMarketingContent";
+    public static final String SET_CURRENT_ACTION_DATE_ON_EMAIL_FINISH_TAB_PASS = "I set current action date on Email Finish tab";
+    public static final String SET_CURRENT_ACTION_DATE_ON_EMAIL_FINISH_TAB_FAIL = "Fail while trying to set current action date on Email Finish tab";
 
 
 
