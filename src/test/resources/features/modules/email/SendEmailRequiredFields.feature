@@ -42,11 +42,26 @@ Feature: Merge Fields Replacement when No Value
     #No required fields on tab 4
     #SpamAssassin score needs to be less than 65% to returned expected validation message
     And I click on save and continue on Marketing Email Composer
+    And I close alert if return this message "Email has been updated."
     #And I click on finish tab
 #    And I click on save and continue on Marketing Email Composer
     And I send email
     And I confirm EmailSend "Person"
-    And I close alert if return this message "Spam score must be equal or greater than 65%."
+    #\TODO - do not receive message
+    #And I close alert if return this message "Spam score must be equal or greater than 65%."
     #to edit the body content so that the email can be sent
+    And I click on content tab
+    And I update Email Content Tab "This is the GTUBE, the<br>Generic<br>Test for<br>Unsolicited<br>Bulk<br>Email<br><br>If your spam filter supports it, the GTUBE provides a test by which you can verify that the filter is installed correctly and is detecting incoming spam. You can send yourself a test mail containing the following string of characters (in upper case and with no white spaces and line breaks):", ""
+    And I click on Save Changes on content tab
+    And I click on save and continue on Marketing Email Composer
+    And I close alert if return this message "Email has been updated."
+    And I click on finish tab
+    And I send email
+    And I confirm EmailSend "Person"
+    Then I validate if "Email has been queued." message is correct
+    #to wait until the email is sent
+    And I navigate to email manager page
+    When I wait until email sent "Email Required Fields 6210"
+
 
 

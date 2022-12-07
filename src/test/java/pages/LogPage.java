@@ -929,6 +929,10 @@ public class LogPage {
     public static final String CLICK_OK_BUTTON_ON_TINY_MCE_SOURCE_CODE_FAIL = "Fail while trying to click ok button on TinyMCESourceCode";
     public static final String CLICK_SUBMIT_FOR_HTML_VALIDATION_BUTTON_PASS = "I click on Submit for Html Validation button";
     public static final String CLICK_SUBMIT_FOR_HTML_VALIDATION_BUTTON_FAIL = "Fail while trying to click on Submit for Html Validation button";
+    public static final String CLICK_ON_GENERATE_PLAIN_TEXT_BUTTON_PASS = "I click on generate Plain Text Button";
+    public static final String CLICK_ON_GENERATE_PLAIN_TEXT_BUTTON_FAIL = "Fail while trying to click on generate Plain Text Button";
+    public static final String VERIFY_EMAIL_CONTENT_TAB_PASS = "I verify Email Content Tab";
+    public static final String VERIFY_EMAIL_CONTENT_TAB_FAIL = "Fail while trying to verify Email Content Tab";
 
 
 

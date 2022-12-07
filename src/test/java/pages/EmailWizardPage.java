@@ -72,7 +72,16 @@ public class EmailWizardPage extends BasePage{
     public static final String TINY_MCE_SOURCE_CODE_INPUT = "#mceu_31";
     public static final String SOURCE_CODE_OK_BUTTON = ".//*[@class='mce-widget mce-btn mce-primary mce-abs-layout-item mce-first mce-btn-has-text']";
     public static final String HTML_VALIDATION_BUTTON = "#htmlValidationButton";
+    public static final String GENERATE_PLAIN_TEXT_BUTTON = "#generateTextButton";
 
+    public static void clickOnGeneratePlainTextButton(){
+        try {
+            clickOption(By.cssSelector(GENERATE_PLAIN_TEXT_BUTTON));
+            ExtentReportsSetUp.testingPass(LogPage.CLICK_ON_GENERATE_PLAIN_TEXT_BUTTON_PASS);
+        } catch (Exception e) {
+            FailureDelegatePage.handlePageException(LogPage.CLICK_ON_GENERATE_PLAIN_TEXT_BUTTON_FAIL);
+        }
+    }
     public static void clickSubmitForHtmlValidationButton(){
         try {
             clickOption(By.cssSelector(HTML_VALIDATION_BUTTON));
@@ -389,6 +398,19 @@ public class EmailWizardPage extends BasePage{
                     bodyHTML);
         } catch (Exception e) {
             FailureDelegatePage.handlePageException(LogPage.FILL_BODY_WITH_HTML_FAIL);
+        }
+    }
+    public static void verifyEmailContentTab(String bodyHTML, String bodyText){
+        try {
+            if(verifyElementWithIFrame(By.cssSelector(HTML_CONTENT_IFRAME_ELEMENT),
+                    HTML_CONTENT_IFRAME_ELEMENT,
+                    By.cssSelector(HTML_CONTENT_IFRAME_BODY_ELEMENT),
+                    bodyHTML)
+            && verifyGetText(By.id(CONTENT_PLAIN_TEXT_FIELD),bodyText)){
+                ExtentReportsSetUp.testingPass(LogPage.VERIFY_EMAIL_CONTENT_TAB_PASS);
+            }
+        } catch (Exception e) {
+            FailureDelegatePage.handlePageException(LogPage.VERIFY_EMAIL_CONTENT_TAB_FAIL);
         }
     }
     public static void updateEmailContentTab(String bodyHTML, String bodyText){
