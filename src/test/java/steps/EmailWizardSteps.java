@@ -12,6 +12,22 @@ public class EmailWizardSteps {
     public static void clickSaveAndContinue() {
         EmailWizardPage.clickSaveAndContinue();
     }
+    @When("I click TinyMCESourceCode")
+    public static void clickTinyMCESourceCode() {
+        EmailWizardPage.clickTinyMCESourceCode();
+    }
+    @When("I click on Submit for Html Validation button")
+    public static void clickSubmitForHtmlValidationButton() {
+        EmailWizardPage.clickSubmitForHtmlValidationButton();
+    }
+    @When("I click ok button on TinyMCESourceCode")
+    public static void clickOkButtonOnTinyMCESourceCode() {
+        EmailWizardPage.clickOkButtonOnTinyMCESourceCode();
+    }
+    @When("I update TinyMCESourceCode {string}")
+    public static void updateTinyMCESourceCode(String html) {
+        EmailWizardPage.updateTinyMCESourceCode(html);
+    }
     @When("I update Email Headers Tab {string}, {string}, {string}, {string}, {string}, {string}")
     public static void updateEmailHeadersTab(String senderName,String senderEmail,String replyToEmail,String subject,String preheaders,String attachment) {
         EmailWizardPage.updateEmailHeadersTab(senderName,senderEmail,replyToEmail,subject,preheaders,attachment);

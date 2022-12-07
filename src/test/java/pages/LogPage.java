@@ -921,6 +921,14 @@ public class LogPage {
     public static final String CONFIRM_NO_MARKETING_CONTENT_FAIL = "Fail while trying to confirm NoMarketingContent";
     public static final String SET_CURRENT_ACTION_DATE_ON_EMAIL_FINISH_TAB_PASS = "I set current action date on Email Finish tab";
     public static final String SET_CURRENT_ACTION_DATE_ON_EMAIL_FINISH_TAB_FAIL = "Fail while trying to set current action date on Email Finish tab";
+    public static final String CLICK_TINY_MCE_SOURCE_CODE_PASS = "I click TinyMCESourceCode";
+    public static final String CLICK_TINY_MCE_SOURCE_CODE_FAIL = "Fail while trying to click TinyMCESourceCode";
+    public static final String UPDATE_TINY_MCE_SOURCE_CODE_PASS = "I update TinyMCESourceCode '%s'";
+    public static final String UPDATE_TINY_MCE_SOURCE_CODE_FAIL = "Fail while trying to update TinyMCESourceCode '%s'";
+    public static final String CLICK_OK_BUTTON_ON_TINY_MCE_SOURCE_CODE_PASS = "I click ok button on TinyMCESourceCode";
+    public static final String CLICK_OK_BUTTON_ON_TINY_MCE_SOURCE_CODE_FAIL = "Fail while trying to click ok button on TinyMCESourceCode";
+    public static final String CLICK_SUBMIT_FOR_HTML_VALIDATION_BUTTON_PASS = "I click on Submit for Html Validation button";
+    public static final String CLICK_SUBMIT_FOR_HTML_VALIDATION_BUTTON_FAIL = "Fail while trying to click on Submit for Html Validation button";
 
 
 

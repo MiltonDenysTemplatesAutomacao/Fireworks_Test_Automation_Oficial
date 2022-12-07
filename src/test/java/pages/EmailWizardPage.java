@@ -68,7 +68,45 @@ public class EmailWizardPage extends BasePage{
     public static final String SEND_ONLY_TO_RELATIONSHIPS_CHECKBOX = "#send_to_connections";
     public static final String RELATIONSHIP_TYPE_DROPDOWN = "div#s2id_connection_types.select2-container.select2-container-multi.form-control.selectpicker.select2";
     public static final String RELATIONSHIP_TYPE_ELEMENT = "div#s2id_connection_types.select2-container.select2-container-multi.form-control.selectpicker.select2 ul.select2-choices li.select2-search-field input.select2-input";
+    public static final String TINY_MCE_SOURCE_CODE_BUTTON = "#mceu_11-button";
+    public static final String TINY_MCE_SOURCE_CODE_INPUT = "#mceu_31";
+    public static final String SOURCE_CODE_OK_BUTTON = ".//*[@class='mce-widget mce-btn mce-primary mce-abs-layout-item mce-first mce-btn-has-text']";
+    public static final String HTML_VALIDATION_BUTTON = "#htmlValidationButton";
 
+    public static void clickSubmitForHtmlValidationButton(){
+        try {
+            clickOption(By.cssSelector(HTML_VALIDATION_BUTTON));
+            ExtentReportsSetUp.testingPass(LogPage.CLICK_SUBMIT_FOR_HTML_VALIDATION_BUTTON_PASS);
+        } catch (Exception e) {
+            FailureDelegatePage.handlePageException(LogPage.CLICK_SUBMIT_FOR_HTML_VALIDATION_BUTTON_FAIL);
+        }
+    }
+    public static void updateTinyMCESourceCode(String html){
+        String passMessage = String.format(LogPage.UPDATE_TINY_MCE_SOURCE_CODE_PASS,html);
+        String failMessage = String.format(LogPage.UPDATE_TINY_MCE_SOURCE_CODE_FAIL,html);
+        try {
+            fillField(By.cssSelector(TINY_MCE_SOURCE_CODE_INPUT),html);
+            ExtentReportsSetUp.testingPass(passMessage);
+        } catch (Exception e) {
+            FailureDelegatePage.handlePageException(failMessage);
+        }
+    }
+    public static void clickOkButtonOnTinyMCESourceCode(){
+        try {
+            clickOption(By.xpath(SOURCE_CODE_OK_BUTTON));
+            ExtentReportsSetUp.testingPass(LogPage.CLICK_OK_BUTTON_ON_TINY_MCE_SOURCE_CODE_PASS);
+        } catch (Exception e) {
+            FailureDelegatePage.handlePageException(LogPage.CLICK_OK_BUTTON_ON_TINY_MCE_SOURCE_CODE_FAIL);
+        }
+    }
+    public static void clickTinyMCESourceCode(){
+        try {
+            clickOption(By.cssSelector(TINY_MCE_SOURCE_CODE_BUTTON));
+            ExtentReportsSetUp.testingPass(LogPage.CLICK_TINY_MCE_SOURCE_CODE_PASS);
+        } catch (Exception e) {
+            FailureDelegatePage.handlePageException(LogPage.CLICK_TINY_MCE_SOURCE_CODE_FAIL);
+        }
+    }
     public static void setCurrentActionDateOnEmailFinishTab(){
         String currentDateTime = currentDateTimeWithoutHour();
         try {
