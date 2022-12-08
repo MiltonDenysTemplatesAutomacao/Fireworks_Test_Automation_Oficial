@@ -3,7 +3,7 @@
 #This test will not run locally unless the seeded default search is present
 
 @TextFromHTML
-Feature: Merge Fields Replacement when No Value
+Feature: Text from HTML
 
   @TextFromHTMLScenarios @Done @Email
   Scenario: verify text generated from html is correct

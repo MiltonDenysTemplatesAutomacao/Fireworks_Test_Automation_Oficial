@@ -2,7 +2,7 @@
 #Regression testcase TL-425: Email content preview
 
 @EmailContentPreview
-Feature: Merge Fields Replacement when No Value
+Feature: Email content preview
 
   @EmailContentPreview @Done @Email
   Scenario: verify we can preview email content with merge tags
@@ -21,6 +21,7 @@ Feature: Merge Fields Replacement when No Value
     And I click on content tab
     And I update Email Content Tab "Preview without merge tags", ""
     And I open content preview modal
+  #\TODO - work on this
 #  ->openContentPreviewModal();
 #  $I->see($emailBodyContentNoMergeTags);
 #  $email->closeContentPreviewModal();

@@ -2,7 +2,7 @@
 #Regression testcase TL-107: Verify Sender Email format is validated
 
 @VerifySenderEmailFormatIsValidated
-Feature: Merge Fields Replacement when No Value
+Feature: Verify Sender Email format is validated
 
   @VerifySenderEmailFormatIsValidatedScenarios @Done @Email
   Scenario: verify the sender email address format is validated

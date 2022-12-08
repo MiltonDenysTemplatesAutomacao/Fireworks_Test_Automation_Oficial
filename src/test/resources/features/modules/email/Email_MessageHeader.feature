@@ -2,7 +2,7 @@
 #Regression testcase TL-712: Message Header data is delivered in email
 
 @EmailMessageHeader
-Feature: Sending Test Email to Test List
+Feature: Message Header data is delivered in email
 
   @EmailMessageHeaderScenario @Done @Email
   Scenario: verify the message header in sent emails

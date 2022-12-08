@@ -2,7 +2,7 @@
 #Regression testcase TL-911: HTML test validation
 
 @HTMLTestValidation
-Feature: Merge Fields Replacement when No Value
+Feature: HTML test validation
 
   @HTMLTestValidationScenarios @Fix @Email
   Scenario: verify we can preview email content with merge tags

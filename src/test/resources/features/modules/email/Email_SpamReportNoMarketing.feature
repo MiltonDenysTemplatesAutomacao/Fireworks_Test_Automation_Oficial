@@ -2,7 +2,7 @@
 #Regression testcase TL-570: Email Status - Spam Report
 
 @EmailStatusSpamReport
-Feature: Merge Fields Replacement when No Value
+Feature: Email Status - Spam Report
 
   @EmailStatusSpamReportScenarios @Done @Email
   Scenario: verify recipients with spam report email addresses are excluded only from marketing emails

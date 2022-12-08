@@ -3,7 +3,7 @@
 #Seeded smart search is required to run this test
 
 @UsersCanDeleteDrafts
-Feature: Email Sent System Action
+Feature: Draft: Users can delete Drafts
 
   @UsersCanDeleteDraftsScenario @Done @Email
   Scenario: verify users can delete draft emails

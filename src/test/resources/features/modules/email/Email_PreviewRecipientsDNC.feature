@@ -3,7 +3,7 @@
 #Regression testcase TL-702: Preview Recipients
 
 @EmailsCannotBeSentToDoNotContactRecords
-Feature: Sending Test Email to Test List
+Feature: Preview Recipients
 
   @EmailsCannotBeSentToDoNotContactRecordsScenario @Done @Email
   Scenario: verify we can preview email recipients
