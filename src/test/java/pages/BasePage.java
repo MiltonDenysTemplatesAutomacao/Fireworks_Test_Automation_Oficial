@@ -74,13 +74,19 @@ public class BasePage {
         return validation;
     }
     public static boolean verifyElementWithIFrame(By element,String iframe,By elementToValidate,String value)throws Exception{
-        wait(2000);
-        scrollToElement(element);
-        scrollTo("-150");
-        switchToIFrame(iframe);
-        boolean verification = verifyGetText(elementToValidate,value);
-        switchToDefaultContent();
+       boolean verification=false;
+        if(value != "" && value != null){
+           wait(2000);
+           scrollToElement(element);
+           scrollTo("-150");
+           switchToIFrame(iframe);
+           verification = verifyGetText(elementToValidate,value);
+           switchToDefaultContent();
+       }else{
+            verification=true;
+        }
         return verification;
+
     }
     public static boolean verifyElementWithIFrameByAttribute(By element,String iframe,By elementToValidate,String value,String tag)throws Exception{
         wait(2000);

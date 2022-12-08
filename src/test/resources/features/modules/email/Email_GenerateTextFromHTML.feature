@@ -25,6 +25,14 @@ Feature: Merge Fields Replacement when No Value
     And I close alert if return this message "Email has been updated."
     #to update the plain text content
     And I click on content tab
-    #\TODO - work on this step
-    And I verify Email Content Tab "", "Updated Plain Text Body Content"
+    And I verify body text Email Content Tab "This"
+    And I verify body text Email Content Tab " is the "
+    And I verify body text Email Content Tab "body"
+    And I verify body text Email Content Tab " of an "
+    And I verify body text Email Content Tab "email"
     And I update Email Content Tab "", "Updated Plain Text Body Content"
+    And I click on "Save Changes"
+    And I close alert if return this message "Email has been updated."
+    #to verify the plain text was updated and the html content is unchanged
+    And I verify body html Email Content Tab "This is the body of an email"
+

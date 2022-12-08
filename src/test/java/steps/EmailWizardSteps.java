@@ -57,9 +57,13 @@ public class EmailWizardSteps {
     public static void updateEmailContentTab(String bodyHTML, String bodyText) {
         EmailWizardPage.updateEmailContentTab(bodyHTML,bodyText);
     }
-    @When("I verify Email Content Tab {string}, {string}")
-    public static void verifyEmailContentTab(String bodyHTML, String bodyText) {
-        EmailWizardPage.verifyEmailContentTab(bodyHTML,bodyText);
+    @When("I verify body text Email Content Tab {string}")
+    public static void verifyBodyTextEmailContentTab(String bodyText) {
+        EmailWizardPage.verifyBodyTextEmailContentTab(bodyText);
+    }
+    @When("I verify body html Email Content Tab {string}")
+    public static void verifyBodyHtmlEmailContentTab(String bodyHTML) {
+        EmailWizardPage.verifyBodyHtmlEmailContentTab(bodyHTML);
     }
     @When("I click on generate Plain Text Button")
     public static void clickOnGeneratePlainTextButton() {

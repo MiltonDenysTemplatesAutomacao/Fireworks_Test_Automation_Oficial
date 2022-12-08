@@ -400,17 +400,34 @@ public class EmailWizardPage extends BasePage{
             FailureDelegatePage.handlePageException(LogPage.FILL_BODY_WITH_HTML_FAIL);
         }
     }
-    public static void verifyEmailContentTab(String bodyHTML, String bodyText){
+    public static void verifyBodyHtmlEmailContentTab(String bodyHTML){
+        String bodyHTMLpassMessage = String.format(LogPage.VERIFY_BODY_HTML_EMAIL_CONTENT_TAB_PASS,bodyHTML);
+        String bodyHTMLfailMessage = String.format(LogPage.VERIFY_BODY_HTML_EMAIL_CONTENT_TAB_FAIL,bodyHTML);
         try {
-            if(verifyElementWithIFrame(By.cssSelector(HTML_CONTENT_IFRAME_ELEMENT),
+            if(verifyElementWithIFrame(By.id(HTML_CONTENT_IFRAME_ELEMENT),
                     HTML_CONTENT_IFRAME_ELEMENT,
                     By.cssSelector(HTML_CONTENT_IFRAME_BODY_ELEMENT),
-                    bodyHTML)
-            && verifyGetText(By.id(CONTENT_PLAIN_TEXT_FIELD),bodyText)){
-                ExtentReportsSetUp.testingPass(LogPage.VERIFY_EMAIL_CONTENT_TAB_PASS);
+                    bodyHTML)){
+                    ExtentReportsSetUp.testingPass(bodyHTMLpassMessage);
+            }else{
+                FailureDelegatePage.handlePageException(bodyHTMLfailMessage);
             }
         } catch (Exception e) {
-            FailureDelegatePage.handlePageException(LogPage.VERIFY_EMAIL_CONTENT_TAB_FAIL);
+            FailureDelegatePage.handlePageException(bodyHTMLfailMessage);
+        }
+    }
+    public static void verifyBodyTextEmailContentTab(String bodyText){
+
+        String bodyTextpassMessage = String.format(LogPage.VERIFY_BODY_TEXT_EMAIL_CONTENT_TAB_PASS,bodyText);
+        String bodyTextfailMessage = String.format(LogPage.VERIFY_BODY_TEXT_EMAIL_CONTENT_TAB_FAIL,bodyText);
+        try {
+            if(verifyGetText(By.id(CONTENT_PLAIN_TEXT_FIELD),bodyText)){
+                ExtentReportsSetUp.testingPass(bodyTextpassMessage);
+            }else{
+                FailureDelegatePage.handlePageException(bodyTextfailMessage);
+            }
+        } catch (Exception e) {
+            FailureDelegatePage.handlePageException(bodyTextfailMessage);
         }
     }
     public static void updateEmailContentTab(String bodyHTML, String bodyText){
