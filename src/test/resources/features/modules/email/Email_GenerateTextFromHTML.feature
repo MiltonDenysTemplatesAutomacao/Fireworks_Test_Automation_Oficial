@@ -35,4 +35,16 @@ Feature: Merge Fields Replacement when No Value
     And I close alert if return this message "Email has been updated."
     #to verify the plain text was updated and the html content is unchanged
     And I verify body html Email Content Tab "This is the body of an email"
+    And I verify body text Email Content Tab "Updated Plain Text Body Content"
+    #to update the html content
+    And I update Email Content Tab "This is <b>the</b> <u>updated</u> <i>HTML</i> body of an email", ""
+    And I click on "Save Changes"
+    #to verify generating the plain text version again will overwrite the existing text
+    And I click on generate Plain Text Button
+    And I click on generate Plain Text overwrite Button
+    And I click on "Save Changes"
+    And I close alert if return this message "Email has been updated."
+    And I verify body html Email Content Tab "This is the updated HTML body of an email"
+
+
 

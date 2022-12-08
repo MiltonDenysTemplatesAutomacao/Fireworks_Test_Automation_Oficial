@@ -69,6 +69,10 @@ public class EmailWizardSteps {
     public static void clickOnGeneratePlainTextButton() {
         EmailWizardPage.clickOnGeneratePlainTextButton();
     }
+    @When("I click on generate Plain Text overwrite Button")
+    public static void clickOnGeneratePlainTextOverwriteButton() {
+        EmailWizardPage.clickOnGeneratePlainTextOverwriteButton();
+    }
     @When("I click on finish tab")
     public static void clickFinishTab() {
         EmailWizardPage.clickFinishTab();

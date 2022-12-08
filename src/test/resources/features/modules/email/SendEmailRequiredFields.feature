@@ -4,7 +4,7 @@
 @SendEmailRequiredFields
 Feature: Merge Fields Replacement when No Value
 
-  @SendEmailRequiredFieldsScenarios @Done @Email
+  @SendEmailRequiredFieldsScenarios @Fix @Email
   Scenario: email required fields
     Given I login as "firestarterUsername", "firestarterPassword", "firestarterFullName"
     When I create a person

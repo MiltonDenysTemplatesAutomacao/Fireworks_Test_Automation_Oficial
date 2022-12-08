@@ -73,9 +73,20 @@ public class EmailWizardPage extends BasePage{
     public static final String SOURCE_CODE_OK_BUTTON = ".//*[@class='mce-widget mce-btn mce-primary mce-abs-layout-item mce-first mce-btn-has-text']";
     public static final String HTML_VALIDATION_BUTTON = "#htmlValidationButton";
     public static final String GENERATE_PLAIN_TEXT_BUTTON = "#generateTextButton";
+    public static final String GENERATE_PLAIN_TEXT_OVERWRITE_BUTTON = "#modalSubmitButtonoverwriteTextMessage";
 
+    public static void clickOnGeneratePlainTextOverwriteButton(){
+        try {
+            wait(2000);
+            clickOption(By.cssSelector(GENERATE_PLAIN_TEXT_OVERWRITE_BUTTON));
+            ExtentReportsSetUp.testingPass(LogPage.CLICK_ON_GENERATE_PLAIN_TEXT_OVERWRITE_BUTTON_PASS);
+        } catch (Exception e) {
+            FailureDelegatePage.handlePageException(LogPage.CLICK_ON_GENERATE_PLAIN_TEXT_OVERWRITE_BUTTON_FAIL);
+        }
+    }
     public static void clickOnGeneratePlainTextButton(){
         try {
+            wait(2000);
             clickOption(By.cssSelector(GENERATE_PLAIN_TEXT_BUTTON));
             ExtentReportsSetUp.testingPass(LogPage.CLICK_ON_GENERATE_PLAIN_TEXT_BUTTON_PASS);
         } catch (Exception e) {

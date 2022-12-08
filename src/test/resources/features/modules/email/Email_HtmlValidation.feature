@@ -4,7 +4,7 @@
 @HTMLTestValidation
 Feature: Merge Fields Replacement when No Value
 
-  @HTMLTestValidationScenarios @Done @Email
+  @HTMLTestValidationScenarios @Fix @Email
   Scenario: verify we can preview email content with merge tags
     Given I login as "firestarterUsername", "firestarterPassword", "firestarterFullName"
     #to create an email
