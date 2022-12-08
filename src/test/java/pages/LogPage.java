@@ -937,6 +937,8 @@ public class LogPage {
     public static final String VERIFY_BODY_TEXT_EMAIL_CONTENT_TAB_FAIL = "Fail while trying to verify body text Email Content Tab '%s'";
     public static final String CLICK_ON_GENERATE_PLAIN_TEXT_OVERWRITE_BUTTON_PASS = "I click on generate Plain Text overwrite Button";
     public static final String CLICK_ON_GENERATE_PLAIN_TEXT_OVERWRITE_BUTTON_FAIL = "Fail while trying to click on generate Plain Text overwrite Button";
+    public static final String CLICK_URL_VALIDATION_BUTTON_PASS = "I click on url validation button";
+    public static final String CLICK_URL_VALIDATION_BUTTON_FAIL = "Fail while trying to click on url validation button";
 
 
 

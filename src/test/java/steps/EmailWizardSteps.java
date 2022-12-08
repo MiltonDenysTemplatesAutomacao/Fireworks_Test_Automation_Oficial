@@ -12,6 +12,10 @@ public class EmailWizardSteps {
     public static void clickSaveAndContinue() {
         EmailWizardPage.clickSaveAndContinue();
     }
+    @When("I click on url validation button")
+    public static void clickUrlValidationButton() {
+        EmailWizardPage.clickUrlValidationButton();
+    }
     @When("I click TinyMCESourceCode")
     public static void clickTinyMCESourceCode() {
         EmailWizardPage.clickTinyMCESourceCode();

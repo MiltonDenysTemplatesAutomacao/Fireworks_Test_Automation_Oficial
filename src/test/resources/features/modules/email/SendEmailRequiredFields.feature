@@ -2,7 +2,7 @@
 #Regression testcase TL-105: Send Email: Required fields
 
 @SendEmailRequiredFields
-Feature: Merge Fields Replacement when No Value
+Feature: Send Email: Required fields
 
   @SendEmailRequiredFieldsScenarios @Fix @Email
   Scenario: email required fields
