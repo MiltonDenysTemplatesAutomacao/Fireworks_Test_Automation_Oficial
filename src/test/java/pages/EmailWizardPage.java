@@ -37,6 +37,7 @@ public class EmailWizardPage extends BasePage{
     public static final String HTML_CONTENT_IFRAME_BODY_ELEMENT = "body#tinymce";
     public static final String CONTENT_PLAIN_TEXT_FIELD = "contentText";
     public static final String EMAIL_FINISH_TAB = "#timeline-step-actions";
+    public static final String EMAIL_HEADERS_TAB = "#timeline-step-headers-attachments";
     public static final String EMAIL_CONTENT_TAB = "#timeline-step-body-content";
     public static final String ACTION_CATEGORY_DROPDOWN = "#select2-chosen-22";
     public static final String ACTION_DROPDOWN = "#select2-chosen-23";
@@ -398,14 +399,18 @@ public class EmailWizardPage extends BasePage{
             FailureDelegatePage.handlePageException(LogPage.CLICK_FINISH_TAB_FAIL);
         }
     }
+    public static void clickHeadersTab(){
+        try {
+            wait(3000);
+            clickOption(By.cssSelector(EMAIL_HEADERS_TAB));
+            ExtentReportsSetUp.testingPass(LogPage.CLICK_HEADERS_TAB_PASS);
+        } catch (Exception e) {
+            FailureDelegatePage.handlePageException(LogPage.CLICK_HEADERS_TAB_FAIL);
+        }
+    }
     public static void addEmailAttachment(String attachment){
         try {
-            waitElementBy(By.cssSelector(PREHEADERS_FIELD),20);
-            scrollToElement(By.cssSelector(PREHEADERS_FIELD));
-            waitElementBy(By.cssSelector(ADD_ATTACHMENTS_DROPZONE_BUTTON),20);
-            click(By.cssSelector(ADD_ATTACHMENTS_DROPZONE_BUTTON));
-            copyToTheClipboard(attachment);
-            attachFile();
+            attachFile(attachment,By.cssSelector(ADD_ATTACHMENTS_DROPZONE_BUTTON));
         } catch (Exception e) {
             FailureDelegatePage.handlePageException(LogPage.ADD_EMAIL_ATTACHMENT_FAIL);
         }

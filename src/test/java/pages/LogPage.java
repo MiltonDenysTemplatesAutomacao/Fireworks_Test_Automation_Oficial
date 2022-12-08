@@ -909,6 +909,8 @@ public class LogPage {
     public static final String CLICK_ON_SAVE_CHANGES_ON_CONTENT_TAB_FAIL = "Fail while trying to click on Save Changes on content tab";
     public static final String CLICK_FINISH_TAB_PASS = "I click on finish tab";
     public static final String CLICK_FINISH_TAB_FAIL = "Fail while trying to click on finish tab";
+    public static final String CLICK_HEADERS_TAB_PASS = "I click on headers tab";
+    public static final String CLICK_HEADERS_TAB_FAIL = "Fail while trying to click on headers tab";
     public static final String CLICK_CONTENT_TAB_PASS = "I click on content tab";
     public static final String CLICK_CONTENT_TAB_FAIL = "Fail while trying to click on content tab";
     public static final String OPEN_CONTENT_PREVIEW_MODAL_PASS = "I open content preview modal";

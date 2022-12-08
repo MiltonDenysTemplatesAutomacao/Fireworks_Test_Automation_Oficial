@@ -77,6 +77,10 @@ public class EmailWizardSteps {
     public static void clickOnGeneratePlainTextOverwriteButton() {
         EmailWizardPage.clickOnGeneratePlainTextOverwriteButton();
     }
+    @When("I click on headers Tab")
+    public static void clickHeadersTab() {
+        EmailWizardPage.clickHeadersTab();
+    }
     @When("I click on finish tab")
     public static void clickFinishTab() {
         EmailWizardPage.clickFinishTab();
