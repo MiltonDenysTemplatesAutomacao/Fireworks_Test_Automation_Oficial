@@ -35,6 +35,24 @@ public class EmailPage extends BasePage{
     private static final String CAN_SPAM_SEND_EMAIL_BUTTON = "#modalSubmitButtoncanSpam";
     private static final String CAN_SPAM_AGREEMENT_CHECKBOX = "#canSpamAgreement";
 
+    public static void validateAttachmentFileName(String subject , String fileName){
+        String passMessage = String.format(LogPage.VALIDATE_ATTACHMENT_FILE_NAME_PASS,fileName);
+        String failMessage = String.format(LogPage.VALIDATE_ATTACHMENT_FILE_NAME_FAIL,fileName);
+        try {
+            Dotenv dotenv = Dotenv.load();
+            MailTrapApi mailTrapApi = new MailTrapApi(dotenv.get("MAILTRAP_API_TOKEN"),dotenv.get("MAILTRAP_ACCOUNT_ID"),dotenv.get("MAILTRAP_INBOX_ID"));
+            MessageEntity[] response = mailTrapApi.searchMessage(subject);
+            MessageEntity message = response[0];
+            if(verify2StringContains(mailTrapApi.getAttachmentFileName(message.id),fileName)){
+                ExtentReportsSetUp.testingPass(passMessage);
+            }else{
+                FailureDelegatePage.handlePageException(failMessage);
+            }
+        } catch (Exception e) {
+            FailureDelegatePage.handlePageException(LogPage.VALIDATE_ATTACHMENT_FILE_NAME_FAIL);
+
+        }
+    }
     public static void confirmNoMarketingContent(){
         try {
             clickCheckbox(By.cssSelector(CAN_SPAM_AGREEMENT_CHECKBOX));

@@ -941,6 +941,8 @@ public class LogPage {
     public static final String CLICK_ON_GENERATE_PLAIN_TEXT_OVERWRITE_BUTTON_FAIL = "Fail while trying to click on generate Plain Text overwrite Button";
     public static final String CLICK_URL_VALIDATION_BUTTON_PASS = "I click on url validation button";
     public static final String CLICK_URL_VALIDATION_BUTTON_FAIL = "Fail while trying to click on url validation button";
+    public static final String VALIDATE_ATTACHMENT_FILE_NAME_PASS = "I validate attachment file names subject filename '%s'";
+    public static final String VALIDATE_ATTACHMENT_FILE_NAME_FAIL = "Fail while trying to validate attachment file names subject filename '%s'";
 
 
 

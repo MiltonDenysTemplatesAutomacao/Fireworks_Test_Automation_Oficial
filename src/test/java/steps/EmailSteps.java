@@ -22,6 +22,10 @@ public class EmailSteps {
     public static void validateHtmlAndTextOnMailTrap(String condition,String subject,String html,String text) {
         EmailPage.validateHtmlAndTextOnMailTrap(condition,subject,html,text);
     }
+    @When("I validate attachment file names subject {string} filename {string}")
+    public static void validateAttachmentFileName(String subject, String fileName) {
+        EmailPage.validateAttachmentFileName(subject,fileName);
+    }
     @When("I delete email on mail trap {string}")
     public static void deleteMailTrap(String subject) {
         EmailPage.deleteMailTrap(subject);

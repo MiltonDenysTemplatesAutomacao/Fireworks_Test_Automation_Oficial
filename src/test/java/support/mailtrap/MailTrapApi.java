@@ -42,5 +42,11 @@ public class MailTrapApi {
         String endpoint = "https://mailtrap.io/api/accounts/"+accountId+"/inboxes/"+inboxId+"/messages/"+id;
         return (MessageEntity) Http.Delete(endpoint,MessageEntity.class,headers);
     }
+    public String getAttachmentFileName(String id) throws Exception {
+        Map<String, String> headers = new HashMap<String, String>();
+        headers.put("Authorization", "Bearer " + this.apiToken);
+        String endpoint = "https://mailtrap.io/api/accounts/"+accountId+"/inboxes/"+inboxId+"/messages/"+id+"/attachments";
+        return (String) Http.Delete(endpoint,MessageEntity.class,headers);
+    }
 
 }
