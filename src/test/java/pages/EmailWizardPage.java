@@ -76,7 +76,21 @@ public class EmailWizardPage extends BasePage{
     public static final String GENERATE_PLAIN_TEXT_BUTTON = "#generateTextButton";
     public static final String GENERATE_PLAIN_TEXT_OVERWRITE_BUTTON = "#modalSubmitButtonoverwriteTextMessage";
     public static final String URL_VALIDATION_BUTTON = "#urlValidationButton";
+    public static final String EMAIL_ATTACHMENT_FILE_MESSAGE = "col-md-10";
 
+    public static void emailAttachmentMessage(String message){
+        String passMessage = String.format(LogPage.EMAIL_ATTACHMENT_MESSAGE_PASS,message);
+        String failMessage = String.format(LogPage.EMAIL_ATTACHMENT_MESSAGE_FAIL,message);
+        try {
+            if(verifyGetText(By.className(EMAIL_ATTACHMENT_FILE_MESSAGE),message)){
+                ExtentReportsSetUp.testingPass(passMessage);
+            }else{
+                FailureDelegatePage.handlePageException(failMessage);
+            }
+        } catch (Exception e) {
+            FailureDelegatePage.handlePageException(failMessage);
+        }
+    }
     public static void clickUrlValidationButton(){
         try {
             clickOption(By.cssSelector(URL_VALIDATION_BUTTON));

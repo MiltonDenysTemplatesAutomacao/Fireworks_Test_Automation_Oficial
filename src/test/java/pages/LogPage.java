@@ -943,6 +943,8 @@ public class LogPage {
     public static final String CLICK_URL_VALIDATION_BUTTON_FAIL = "Fail while trying to click on url validation button";
     public static final String VALIDATE_ATTACHMENT_FILE_NAME_PASS = "I validate attachment file names subject filename '%s'";
     public static final String VALIDATE_ATTACHMENT_FILE_NAME_FAIL = "Fail while trying to validate attachment file names subject filename '%s'";
+    public static final String EMAIL_ATTACHMENT_MESSAGE_PASS = "I validate email attachment file message '%s'";
+    public static final String EMAIL_ATTACHMENT_MESSAGE_FAIL = "Fail while trying to validate email attachment file message '%s'";
 
 
 
