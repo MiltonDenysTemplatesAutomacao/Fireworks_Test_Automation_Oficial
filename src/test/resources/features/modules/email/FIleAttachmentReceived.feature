@@ -41,5 +41,4 @@ Feature: File Attachment received
     And I verify email content on mail trap is "visible" for subject "File Attachment test 6330", "Preheader File Attachment test 6330", "Preheader File Attachment test 6330"
     And I verify email content on mail trap is "visible" for subject "File Attachment test 6330", "Body content File Attachment test 6330", "Body content File Attachment test 6330"
     #to verify the attachment filenames
-    #\TODO validate attachment filenames
     And I validate attachment file names subject "Subject File Attachment test 6330" filename "93KBmediafile.png"

@@ -46,7 +46,7 @@ public class MailTrapApi {
         Map<String, String> headers = new HashMap<String, String>();
         headers.put("Authorization", "Bearer " + this.apiToken);
         String endpoint = "https://mailtrap.io/api/accounts/"+accountId+"/inboxes/"+inboxId+"/messages/"+id+"/attachments";
-        return (String) Http.Delete(endpoint,MessageEntity.class,headers);
+        return (String) Http.Get(endpoint,String.class,headers);
     }
 
 }
