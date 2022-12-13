@@ -40,6 +40,10 @@ public class EmailWizardSteps {
     public static void emailAttachmentMessage(String message) {
         EmailWizardPage.emailAttachmentMessage(message);
     }
+    @When("I validate if I do not see disable footer checkbox")
+    public static void dontSeeDisableFooterCheckbox() {
+        EmailWizardPage.dontSeeDisableFooterCheckbox();
+    }
     @When("I click checkbox Use assigned counselor when available")
     public static void clickUseAssignedCounselorCheckbox() {
         EmailWizardPage.clickUseAssignedCounselorCheckbox();
@@ -64,6 +68,22 @@ public class EmailWizardSteps {
     @When("I update Email Content Tab {string}, {string}")
     public static void updateEmailContentTab(String bodyHTML, String bodyText) {
         EmailWizardPage.updateEmailContentTab(bodyHTML,bodyText);
+    }
+    @When("I verify spam score {string}")
+    public static void verifySpamScore(String spamScore) {
+        EmailWizardPage.verifySpamScore(spamScore);
+    }
+    @When("I click on spam Assassin Score")
+    public static void clickOnSpamAssassinScore() {
+        EmailWizardPage.clickOnSpamAssassinScore();
+    }
+    @When("I click on spam Assassin modal ok button")
+    public static void clickOnSpamModalOkButton() {
+        EmailWizardPage.clickOnSpamModalOkButton();
+    }
+    @When("I validate HTML Message SpamAssassin Details {string}, {string}")
+    public static void validateHtmlMessageSpamAssassinDetails(String errorsFound,String lastRun) {
+        EmailWizardPage.validateHtmlMessageSpamAssassinDetails(errorsFound,lastRun);
     }
     @When("I verify body text Email Content Tab {string}")
     public static void verifyBodyTextEmailContentTab(String bodyText) {

@@ -77,6 +77,67 @@ public class EmailWizardPage extends BasePage{
     public static final String GENERATE_PLAIN_TEXT_OVERWRITE_BUTTON = "#modalSubmitButtonoverwriteTextMessage";
     public static final String URL_VALIDATION_BUTTON = "#urlValidationButton";
     public static final String EMAIL_ATTACHMENT_FILE_MESSAGE = "col-md-10";
+    public static final String SPAM_ASSASSIN_SCORE = "#spamAssassinFwScoreHtml";
+    public static final String SPAM_ASSASSIN_MODAL_PANEL_ELEMENT = "#spamAssassinPanel";
+    public static final String SPAM_ASSASSIN_MODAL_OK_BUTTON = "#modalSubmitButtonspamAssassinDetails";
+
+    public static void validateHtmlMessageSpamAssassinDetails(String errorsFound,String lastRun){
+        String passMessage = String.format(LogPage.VALIDATE_HTML_MESSAGE_SPAM_ASSASSIN_DETAILS_PASS,errorsFound,lastRun);
+        String failMessage = String.format(LogPage.VALIDATE_HTML_MESSAGE_SPAM_ASSASSIN_DETAILS_FAIL,errorsFound,lastRun);
+        try {
+            if(verifyGetText(By.cssSelector(SPAM_ASSASSIN_MODAL_PANEL_ELEMENT),errorsFound)
+                && verifyGetText(By.cssSelector(SPAM_ASSASSIN_MODAL_PANEL_ELEMENT),lastRun)){
+                ExtentReportsSetUp.testingPass(passMessage);
+            }else{
+                FailureDelegatePage.handlePageException(failMessage);
+            }
+        } catch (Exception e) {
+            FailureDelegatePage.handlePageException(failMessage);
+        }
+    }
+    public static void clickOnSpamModalOkButton(){
+        try {
+            clickOption(By.cssSelector(SPAM_ASSASSIN_MODAL_OK_BUTTON));
+            ExtentReportsSetUp.testingPass(LogPage.CLICK_ON_SPAM_MODAL_OK_BUTTON_PASS);
+        } catch (Exception e) {
+            FailureDelegatePage.handlePageException(LogPage.CLICK_ON_SPAM_MODAL_OK_BUTTON_PASS);
+        }
+    }
+    public static void clickOnSpamAssassinScore(){
+        try {
+            clickOption(By.cssSelector(SPAM_ASSASSIN_SCORE));
+            ExtentReportsSetUp.testingPass(LogPage.CLICK_ON_SPAM_ASSASSIN_SCORE_PASS);
+        } catch (Exception e) {
+            FailureDelegatePage.handlePageException(LogPage.CLICK_ON_SPAM_ASSASSIN_SCORE_FAIL);
+        }
+    }
+    public static void verifySpamScore(String spamScore){
+        String passMessage = String.format(LogPage.VERIFY_SPAM_SCORE_PASS,spamScore);
+        String failMessage = String.format(LogPage.VERIFY_SPAM_SCORE_FAIL,spamScore);
+        try {
+            wait(3000);
+            if(verifyGetText(By.cssSelector(SPAM_ASSASSIN_SCORE),spamScore)){
+                ExtentReportsSetUp.testingPass(passMessage);
+            }else{
+                FailureDelegatePage.handlePageException(failMessage);
+            }
+        } catch (Exception e) {
+            FailureDelegatePage.handlePageException(failMessage);
+        }
+    }
+    public static void dontSeeDisableFooterCheckbox(){
+        String passMessage = String.format(LogPage.DONT_SEE_DISABLE_FOOTER_CHECKBOX_PASS);
+        String failMessage = String.format(LogPage.DONT_SEE_DISABLE_FOOTER_CHECKBOX_FAIL);
+        try {
+            if(!MainPage.verifyIfElementsIsVisible(By.cssSelector(DISABLE_FOOTER_CHECKBOX))){
+                ExtentReportsSetUp.testingPass(passMessage);
+            }else{
+                FailureDelegatePage.handlePageException(failMessage);
+            }
+        } catch (Exception e) {
+            FailureDelegatePage.handlePageException(failMessage);
+        }
+    }
 
     public static void emailAttachmentMessage(String message){
         String passMessage = String.format(LogPage.EMAIL_ATTACHMENT_MESSAGE_PASS,message);

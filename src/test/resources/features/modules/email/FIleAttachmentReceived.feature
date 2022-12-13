@@ -4,7 +4,7 @@
 @FileAttachmentReceived
 Feature: File Attachment received
 
-  @FileAttachmentReceivedScenarios @Fix @Email
+  @FileAttachmentReceivedScenarios @Done @Email
   Scenario: verify an attachment sent with an email is received
     Given I login as "firestarterUsername", "firestarterPassword", "firestarterFullName"
     When I create a person
