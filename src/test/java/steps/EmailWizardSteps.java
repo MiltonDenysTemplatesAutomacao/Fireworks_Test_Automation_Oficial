@@ -73,6 +73,14 @@ public class EmailWizardSteps {
     public static void verifySpamScore(String spamScore) {
         EmailWizardPage.verifySpamScore(spamScore);
     }
+    @When("I verify spam score sent {string}")
+    public static void verifySpamScoreSent(String spamScore) {
+        EmailWizardPage.verifySpamScoreSent(spamScore);
+    }
+    @When("I wait until spam score update {string}")
+    public static void waitUntilSpamScoreUpdates(String spamScore) {
+        EmailWizardPage.waitUntilSpamScoreUpdates(spamScore);
+    }
     @When("I click on spam Assassin Score")
     public static void clickOnSpamAssassinScore() {
         EmailWizardPage.clickOnSpamAssassinScore();

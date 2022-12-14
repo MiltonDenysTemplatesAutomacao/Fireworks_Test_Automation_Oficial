@@ -80,7 +80,25 @@ public class EmailWizardPage extends BasePage{
     public static final String SPAM_ASSASSIN_SCORE = "#spamAssassinFwScoreHtml";
     public static final String SPAM_ASSASSIN_MODAL_PANEL_ELEMENT = "#spamAssassinPanel";
     public static final String SPAM_ASSASSIN_MODAL_OK_BUTTON = "#modalSubmitButtonspamAssassinDetails";
+    public static final String SPAM_ASSASSIN_SCORE_SENT = "#spamAssassinScore";
 
+    public static void waitUntilSpamScoreUpdates(String spamScore){
+        int counter = 0;
+        try {
+            String currentScore = getText(By.cssSelector(SPAM_ASSASSIN_SCORE));
+            while(currentScore== spamScore && counter <10){
+                refreshPage();
+                currentScore = getText(By.cssSelector(SPAM_ASSASSIN_SCORE));
+            }
+            if(!currentScore.contains(spamScore)){
+                ExtentReportsSetUp.testingPass(LogPage.WAIT_UNTIL_SPAM_SCORE_UPDATES_PASS);
+            }else{
+                counter++;
+            }
+        } catch (Exception e) {
+            FailureDelegatePage.handlePageException(LogPage.WAIT_UNTIL_SPAM_SCORE_UPDATES_FAIL);
+        }
+    }
     public static void validateHtmlMessageSpamAssassinDetails(String errorsFound,String lastRun){
         String passMessage = String.format(LogPage.VALIDATE_HTML_MESSAGE_SPAM_ASSASSIN_DETAILS_PASS,errorsFound,lastRun);
         String failMessage = String.format(LogPage.VALIDATE_HTML_MESSAGE_SPAM_ASSASSIN_DETAILS_FAIL,errorsFound,lastRun);
@@ -117,6 +135,20 @@ public class EmailWizardPage extends BasePage{
         try {
             wait(3000);
             if(verifyGetText(By.cssSelector(SPAM_ASSASSIN_SCORE),spamScore)){
+                ExtentReportsSetUp.testingPass(passMessage);
+            }else{
+                FailureDelegatePage.handlePageException(failMessage);
+            }
+        } catch (Exception e) {
+            FailureDelegatePage.handlePageException(failMessage);
+        }
+    }
+    public static void verifySpamScoreSent(String spamScore){
+        String passMessage = String.format(LogPage.VERIFY_SPAM_SCORE_SENT_PASS,spamScore);
+        String failMessage = String.format(LogPage.VERIFY_SPAM_SCORE_SENT_FAIL,spamScore);
+        try {
+            wait(3000);
+            if(verifyGetText(By.cssSelector(SPAM_ASSASSIN_SCORE_SENT),spamScore)){
                 ExtentReportsSetUp.testingPass(passMessage);
             }else{
                 FailureDelegatePage.handlePageException(failMessage);

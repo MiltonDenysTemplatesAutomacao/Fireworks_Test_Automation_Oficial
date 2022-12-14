@@ -949,12 +949,16 @@ public class LogPage {
     public static final String DONT_SEE_DISABLE_FOOTER_CHECKBOX_FAIL = "Fail while trying to validate if I do not see disable footer checkbox";
     public static final String VERIFY_SPAM_SCORE_PASS = "I verify spam score '%s'";
     public static final String VERIFY_SPAM_SCORE_FAIL = "Fail while trying to verify spam score '%s'";
+    public static final String VERIFY_SPAM_SCORE_SENT_PASS = "I verify spam score sent '%s'";
+    public static final String VERIFY_SPAM_SCORE_SENT_FAIL = "Fail while trying to verify spam score sent '%s'";
     public static final String CLICK_ON_SPAM_ASSASSIN_SCORE_PASS = "I click on spam Assassin Score";
     public static final String CLICK_ON_SPAM_ASSASSIN_SCORE_FAIL = "Fail while trying to click on spam Assassin Score";
     public static final String VALIDATE_HTML_MESSAGE_SPAM_ASSASSIN_DETAILS_PASS = "I validate HTML Message SpamAssassin Details Errors found: '%s', Last Run: '%s'";
     public static final String VALIDATE_HTML_MESSAGE_SPAM_ASSASSIN_DETAILS_FAIL = "Fail while trying to validate HTML Message SpamAssassin Details Errors found: '%s', Last Run: '%s'";
     public static final String CLICK_ON_SPAM_MODAL_OK_BUTTON_PASS = "I click on spam Assassin modal ok button";
-    public static final String CLICK_ON_SPAM_MODAL_OK_BUTTON_FAIL = "Fail while trying to click on spam Assassin modal ok button'";
+    public static final String CLICK_ON_SPAM_MODAL_OK_BUTTON_FAIL = "Fail while trying to click on spam Assassin modal ok button";
+    public static final String WAIT_UNTIL_SPAM_SCORE_UPDATES_PASS = "I wait until spam score update";
+    public static final String WAIT_UNTIL_SPAM_SCORE_UPDATES_FAIL = "I wait until spam score update";
 
 
 
