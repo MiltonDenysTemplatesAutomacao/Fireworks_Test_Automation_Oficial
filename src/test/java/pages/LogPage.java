@@ -958,7 +958,9 @@ public class LogPage {
     public static final String CLICK_ON_SPAM_MODAL_OK_BUTTON_PASS = "I click on spam Assassin modal ok button";
     public static final String CLICK_ON_SPAM_MODAL_OK_BUTTON_FAIL = "Fail while trying to click on spam Assassin modal ok button";
     public static final String WAIT_UNTIL_SPAM_SCORE_UPDATES_PASS = "I wait until spam score update";
-    public static final String WAIT_UNTIL_SPAM_SCORE_UPDATES_FAIL = "I wait until spam score update";
+    public static final String WAIT_UNTIL_SPAM_SCORE_UPDATES_FAIL = "Fail while trying to wait until spam score update";
+    public static final String CLICK_EMAIL_CLIENT_PREVIEW_BUTTON_PASS = "I click on email client preview button";
+    public static final String CLICK_EMAIL_CLIENT_PREVIEW_BUTTON_FAIL = "Fail while trying to click on email client preview button";
 
 
 

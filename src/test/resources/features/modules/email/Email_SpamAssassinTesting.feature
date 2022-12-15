@@ -3,7 +3,7 @@
 #FW-7402: Disable CAN SPAM Footer option not visible in NonMarketing emails
 
 @SpamAssassinTesting
-Feature: File Attachment received
+Feature: SpamAssassin testing
 
   @SpamAssassinTestingScenario @Done @Email
   Scenario: verify an attachment sent with an email is received

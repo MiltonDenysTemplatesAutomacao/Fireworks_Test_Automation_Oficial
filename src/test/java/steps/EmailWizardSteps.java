@@ -77,6 +77,10 @@ public class EmailWizardSteps {
     public static void verifySpamScoreSent(String spamScore) {
         EmailWizardPage.verifySpamScoreSent(spamScore);
     }
+    @When("I click on email client preview button")
+    public static void clickEmailClientPreviewButton() {
+        EmailWizardPage.clickEmailClientPreviewButton();
+    }
     @When("I wait until spam score update {string}")
     public static void waitUntilSpamScoreUpdates(String spamScore) {
         EmailWizardPage.waitUntilSpamScoreUpdates(spamScore);

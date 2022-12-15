@@ -81,7 +81,16 @@ public class EmailWizardPage extends BasePage{
     public static final String SPAM_ASSASSIN_MODAL_PANEL_ELEMENT = "#spamAssassinPanel";
     public static final String SPAM_ASSASSIN_MODAL_OK_BUTTON = "#modalSubmitButtonspamAssassinDetails";
     public static final String SPAM_ASSASSIN_SCORE_SENT = "#spamAssassinScore";
+    public static final String LITMUS_CLIENT_PREVIEW_BUTTON = "#createLitmusTest";
 
+    public static void clickEmailClientPreviewButton(){
+        try {
+            clickOption(By.cssSelector(LITMUS_CLIENT_PREVIEW_BUTTON));
+            ExtentReportsSetUp.testingPass(LogPage.CLICK_EMAIL_CLIENT_PREVIEW_BUTTON_PASS);
+        } catch (Exception e) {
+            FailureDelegatePage.handlePageException(LogPage.CLICK_EMAIL_CLIENT_PREVIEW_BUTTON_FAIL);
+        }
+    }
     public static void waitUntilSpamScoreUpdates(String spamScore){
         int counter = 0;
         try {
