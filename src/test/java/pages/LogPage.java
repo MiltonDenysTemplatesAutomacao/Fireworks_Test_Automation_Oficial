@@ -961,6 +961,14 @@ public class LogPage {
     public static final String WAIT_UNTIL_SPAM_SCORE_UPDATES_FAIL = "Fail while trying to wait until spam score update";
     public static final String CLICK_EMAIL_CLIENT_PREVIEW_BUTTON_PASS = "I click on email client preview button";
     public static final String CLICK_EMAIL_CLIENT_PREVIEW_BUTTON_FAIL = "Fail while trying to click on email client preview button";
+    public static final String NAVIGATE_TO_BASIC_TEST_PASS = "I navigate to basic tab";
+    public static final String NAVIGATE_TO_BASIC_TEST_FAIL = "Fail while trying to navigate to basic tab";
+    public static final String UPDATE_CITIZENSHIP_VALUES_PASS = "I update citizenship values";
+    public static final String UPDATE_CITIZENSHIP_VALUES_FAIL = "Fail while trying to update citizenship values";
+    public static final String CLICK_BUTTON_TEST_PASS = "I click on button '%s'";
+    public static final String CLICK_BUTTON_TEST_FAIL = "Fail while trying to click on button '%s'";
+    public static final String VALIDATE_ALERT_MESSAGE_PASS = "I verify if alert message '%s' is correct";
+    public static final String VALIDATE_ALERT_MESSAGE_FAIL = "Fail while verifying if alert message '%s' is correct";
 
 
 

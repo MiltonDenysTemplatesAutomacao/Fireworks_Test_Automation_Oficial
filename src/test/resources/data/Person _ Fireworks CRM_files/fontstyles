@@ -1,0 +1,311 @@
+
+@font-face {
+    font-family: "Aboriginal Sans";
+    src: url("/build/fonts/AboriginalSansREGULAR.ttf");
+    
+}
+@font-face {
+    font-family: "Abyssinica SIL";
+    src: url("/build/fonts/Abyssinica_SIL.ttf");
+    
+}
+@font-face {
+    font-family: "Ayar";
+    src: url("/build/fonts/ayar.ttf");
+    
+}
+@font-face {
+    font-family: "Dai Bann SIL Book";
+    src: url("/build/fonts/DBSILBR.ttf");
+    
+}
+@font-face {
+    font-family: "Damase";
+    src: url("/build/fonts/damase_v.2.ttf");
+    
+}
+@font-face {
+    font-family: "DejaVu Sans";
+    src: url("/build/fonts/DejaVuSans.ttf");
+    
+}
+@font-face {
+    font-family: "DejaVu Sans";
+    src: url("/build/fonts/DejaVuSans-Bold.ttf");
+    font-weight:bold;
+}
+@font-face {
+    font-family: "DejaVu Sans";
+    src: url("/build/fonts/DejaVuSans-Oblique.ttf");
+    font-style:italic;
+}
+@font-face {
+    font-family: "DejaVu Sans";
+    src: url("/build/fonts/DejaVuSans-BoldOblique.ttf");
+    font-weight:bold;font-style:italic;
+}
+@font-face {
+    font-family: "DejaVu Sans Condensed";
+    src: url("/build/fonts/DejaVuSansCondensed.ttf");
+    
+}
+@font-face {
+    font-family: "DejaVu Sans Condensed";
+    src: url("/build/fonts/DejaVuSansCondensed-Bold.ttf");
+    font-weight:bold;
+}
+@font-face {
+    font-family: "DejaVu Sans Condensed";
+    src: url("/build/fonts/DejaVuSansCondensed-Oblique.ttf");
+    font-style:italic;
+}
+@font-face {
+    font-family: "DejaVu Sans Condensed";
+    src: url("/build/fonts/DejaVuSansCondensed-BoldOblique.ttf");
+    font-weight:bold;font-style:italic;
+}
+@font-face {
+    font-family: "DejaVu Sans Mono";
+    src: url("/build/fonts/DejaVuSansMono.ttf");
+    
+}
+@font-face {
+    font-family: "DejaVu Sans Mono";
+    src: url("/build/fonts/DejaVuSansMono-Bold.ttf");
+    font-weight:bold;
+}
+@font-face {
+    font-family: "DejaVu Sans Mono";
+    src: url("/build/fonts/DejaVuSansMono-Oblique.ttf");
+    font-style:italic;
+}
+@font-face {
+    font-family: "DejaVu Sans Mono";
+    src: url("/build/fonts/DejaVuSansMono-BoldOblique.ttf");
+    font-weight:bold;font-style:italic;
+}
+@font-face {
+    font-family: "DejaVu Serif";
+    src: url("/build/fonts/DejaVuSerif.ttf");
+    
+}
+@font-face {
+    font-family: "DejaVu Serif";
+    src: url("/build/fonts/DejaVuSerif-Bold.ttf");
+    font-weight:bold;
+}
+@font-face {
+    font-family: "DejaVu Serif";
+    src: url("/build/fonts/DejaVuSerif-Italic.ttf");
+    font-style:italic;
+}
+@font-face {
+    font-family: "DejaVu Serif";
+    src: url("/build/fonts/DejaVuSerif-BoldItalic.ttf");
+    font-weight:bold;font-style:italic;
+}
+@font-face {
+    font-family: "DejaVu Serif Condensed";
+    src: url("/build/fonts/DejaVuSerifCondensed.ttf");
+    
+}
+@font-face {
+    font-family: "DejaVu Serif Condensed";
+    src: url("/build/fonts/DejaVuSerifCondensed-Bold.ttf");
+    font-weight:bold;
+}
+@font-face {
+    font-family: "DejaVu Serif Condensed";
+    src: url("/build/fonts/DejaVuSerifCondensed-Italic.ttf");
+    font-style:italic;
+}
+@font-face {
+    font-family: "DejaVu Serif Condensed";
+    src: url("/build/fonts/DejaVuSerifCondensed-BoldItalic.ttf");
+    font-weight:bold;font-style:italic;
+}
+@font-face {
+    font-family: "Dhyana";
+    src: url("/build/fonts/Dhyana-Regular.ttf");
+    
+}
+@font-face {
+    font-family: "Dhyana";
+    src: url("/build/fonts/Dhyana-Bold.ttf");
+    font-weight:bold;
+}
+@font-face {
+    font-family: "FreeMono";
+    src: url("/build/fonts/FreeMono.ttf");
+    
+}
+@font-face {
+    font-family: "FreeMono";
+    src: url("/build/fonts/FreeMonoBold.ttf");
+    font-weight:bold;
+}
+@font-face {
+    font-family: "FreeMono";
+    src: url("/build/fonts/FreeMonoOblique.ttf");
+    font-style:italic;
+}
+@font-face {
+    font-family: "FreeMono";
+    src: url("/build/fonts/FreeMonoBoldOblique.ttf");
+    font-weight:bold;font-style:italic;
+}
+@font-face {
+    font-family: "FreeSans";
+    src: url("/build/fonts/FreeSans.ttf");
+    
+}
+@font-face {
+    font-family: "FreeSans";
+    src: url("/build/fonts/FreeSansBold.ttf");
+    font-weight:bold;
+}
+@font-face {
+    font-family: "FreeSans";
+    src: url("/build/fonts/FreeSansOblique.ttf");
+    font-style:italic;
+}
+@font-face {
+    font-family: "FreeSans";
+    src: url("/build/fonts/FreeSansBoldOblique.ttf");
+    font-weight:bold;font-style:italic;
+}
+@font-face {
+    font-family: "FreeSerif";
+    src: url("/build/fonts/FreeSerif.ttf");
+    
+}
+@font-face {
+    font-family: "FreeSerif";
+    src: url("/build/fonts/FreeSerifBold.ttf");
+    font-weight:bold;
+}
+@font-face {
+    font-family: "FreeSerif";
+    src: url("/build/fonts/FreeSerifItalic.ttf");
+    font-style:italic;
+}
+@font-face {
+    font-family: "FreeSerif";
+    src: url("/build/fonts/FreeSerifBoldItalic.ttf");
+    font-weight:bold;font-style:italic;
+}
+@font-face {
+    font-family: "Garuda";
+    src: url("/build/fonts/Garuda.ttf");
+    
+}
+@font-face {
+    font-family: "Garuda";
+    src: url("/build/fonts/Garuda-Bold.ttf");
+    font-weight:bold;
+}
+@font-face {
+    font-family: "Garuda";
+    src: url("/build/fonts/Garuda-Oblique.ttf");
+    font-style:italic;
+}
+@font-face {
+    font-family: "Garuda";
+    src: url("/build/fonts/Garuda-BoldOblique.ttf");
+    font-weight:bold;font-style:italic;
+}
+@font-face {
+    font-family: "Jomolhari";
+    src: url("/build/fonts/Jomolhari.ttf");
+    
+}
+@font-face {
+    font-family: "KhmerOS";
+    src: url("/build/fonts/KhmerOS.ttf");
+    
+}
+@font-face {
+    font-family: "Lanna Alif";
+    src: url("/build/fonts/lannaalif-v1-03.ttf");
+    
+}
+@font-face {
+    font-family: "Lateef";
+    src: url("/build/fonts/LateefRegOT.ttf");
+    
+}
+@font-face {
+    font-family: "OCR-B 10";
+    src: url("/build/fonts/ocrb10.ttf");
+    
+}
+@font-face {
+    font-family: "Padauk Book";
+    src: url("/build/fonts/Padauk-book.ttf");
+    
+}
+@font-face {
+    font-family: "Taamey David CLM";
+    src: url("/build/fonts/TaameyDavidCLM-Medium.ttf");
+    
+}
+@font-face {
+    font-family: "Tai Heritage Pro";
+    src: url("/build/fonts/TaiHeritagePro.ttf");
+    
+}
+@font-face {
+    font-family: "Tharlon";
+    src: url("/build/fonts/Tharlon-Regular.ttf");
+    
+}
+@font-face {
+    font-family: "Times Newer Roman";
+    src: url("/build/fonts/TimesNewerRoman-Regular.ttf");
+    
+}
+@font-face {
+    font-family: "Times Newer Roman";
+    src: url("/build/fonts/TimesNewerRoman-Bold.ttf");
+    font-weight:bold;
+}
+@font-face {
+    font-family: "Times Newer Roman";
+    src: url("/build/fonts/TimesNewerRoman-Italic.ttf");
+    font-style:italic;
+}
+@font-face {
+    font-family: "Times Newer Roman";
+    src: url("/build/fonts/TimesNewerRoman-BoldItalic.ttf");
+    font-weight:bold;font-style:italic;
+}
+@font-face {
+    font-family: "UnBatang";
+    src: url("/build/fonts/UnBatang_0613.ttf");
+    
+}
+@font-face {
+    font-family: "XB Riyaz";
+    src: url("/build/fonts/XB Riyaz.ttf");
+    
+}
+@font-face {
+    font-family: "XB Riyaz";
+    src: url("/build/fonts/XB RiyazBd.ttf");
+    font-weight:bold;
+}
+@font-face {
+    font-family: "XB Riyaz";
+    src: url("/build/fonts/XB RiyazIt.ttf");
+    font-style:italic;
+}
+@font-face {
+    font-family: "XB Riyaz";
+    src: url("/build/fonts/XB RiyazBdIt.ttf");
+    font-weight:bold;font-style:italic;
+}
+@font-face {
+    font-family: "Zawgyi One";
+    src: url("/build/fonts/ZawgyiOne.ttf");
+    
+}

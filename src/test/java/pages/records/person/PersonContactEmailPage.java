@@ -51,6 +51,7 @@ public class PersonContactEmailPage extends BasePage {
     public static String emailPrimaryCheckbox(String index){
         return String.format(EMAIL_PRIMARY_CHECKBOX,index);
     }
+
     public static String emailPlusSignElement(String index){
         return String.format(EMAIL_PLUS_SIGN_ELEMENT,index);
     }
@@ -153,9 +154,9 @@ public class PersonContactEmailPage extends BasePage {
         }
     }
 
-    public static void addEmail(String group){
+    public static void addEmail(String index){
         try {
-            MainPage.addDeleteWithPlusButton(By.cssSelector(emailPlusSignElement(group)));
+            MainPage.addDeleteWithPlusButton(By.cssSelector(emailPlusSignElement(index)));
             ExtentReportsSetUp.testingPass(LogPage.ADD_EMAIL_PASS);
         } catch (Exception e) {
             FailureDelegatePage.handlePageException(LogPage.ADD_EMAIL_FAIL);

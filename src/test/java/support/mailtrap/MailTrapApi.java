@@ -48,5 +48,4 @@ public class MailTrapApi {
         String endpoint = "https://mailtrap.io/api/accounts/"+accountId+"/inboxes/"+inboxId+"/messages/"+id+"/attachments";
         return (String) Http.Get(endpoint,String.class,headers);
     }
-
 }

@@ -27,4 +27,4 @@ Feature: Litmus Testing
     #to run the Litmus test
     And I click on email client preview button
     #the Litmus window heading contains date test was run
-    @TODO-
+    #TODO-
