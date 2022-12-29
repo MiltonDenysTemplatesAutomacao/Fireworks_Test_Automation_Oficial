@@ -247,6 +247,7 @@ public class BasePage {
             scrollTo("-150");
             waitElementBy(dropDown,delay);
             click(dropDown);
+            wait(1000);
             waitElementBy(inputField,delay);
             write(inputField,value);
             KeyPage.pressKey(inputField,"Enter");
@@ -260,7 +261,7 @@ public class BasePage {
             scrollTo("-150");
             waitElementBy(by,delay);
             click(by);
-            wait(1000);
+            wait(3000);
             BasePage.selectElementsList(dropDownList, tag);
             wait(2000);
             clickOnListOfElements(value);
@@ -280,9 +281,9 @@ public class BasePage {
             scrollTo("-150");
             waitElementBy(by,delay);
             click(by);
-            wait(1000);
+            wait(3000);
             BasePage.selectElementsList(dropDownList, tag);
-            wait(2000);
+            wait(3000);
             clickOnListOfElementsContains(value);
         }
     }

@@ -969,6 +969,14 @@ public class LogPage {
     public static final String CLICK_BUTTON_TEST_FAIL = "Fail while trying to click on button '%s'";
     public static final String VALIDATE_ALERT_MESSAGE_PASS = "I verify if alert message '%s' is correct";
     public static final String VALIDATE_ALERT_MESSAGE_FAIL = "Fail while verifying if alert message '%s' is correct";
+    public static final String NAVIGATE_TO_CONTACT_TEST_PASS = "I navigate to contact option";
+    public static final String NAVIGATE_TO_CONTACT_TEST_FAIL = "Fail while verifying to navigate to contact option";
+    public static final String CREATE_NAME_TEST_PASS = "I create name on contact tab for group '%s'";
+    public static final String CREATE_NAME_TEST_FAIL = "Fail while trying to create name on contact tab for group '%s'";
+    public static final String QUICK_SEARCH_FROM_HOME_PAGE_PASS = "I quick search '%s' on home page";
+    public static final String QUICK_SEARCH_FROM_HOME_PAGE_FAIL = "Fail while trying to quick search '%s' on home page";
+    public static final String VERIFY_QUICK_SEARCH_RESULTS_PASS = "I verify if quick search result '%s' is correct";
+    public static final String VERIFY_QUICK_SEARCH_RESULTS_FAIL = "Fail while trying to verify if quick search result '%s' is correct";
 
 
 

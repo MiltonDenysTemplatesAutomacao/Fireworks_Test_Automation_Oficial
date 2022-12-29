@@ -127,7 +127,7 @@ public class EmailWizardPage extends BasePage{
             clickOption(By.cssSelector(SPAM_ASSASSIN_MODAL_OK_BUTTON));
             ExtentReportsSetUp.testingPass(LogPage.CLICK_ON_SPAM_MODAL_OK_BUTTON_PASS);
         } catch (Exception e) {
-            FailureDelegatePage.handlePageException(LogPage.CLICK_ON_SPAM_MODAL_OK_BUTTON_PASS);
+            FailureDelegatePage.handlePageException(LogPage.CLICK_ON_SPAM_MODAL_OK_BUTTON_FAIL);
         }
     }
     public static void clickOnSpamAssassinScore(){
